@@ -5,7 +5,7 @@ interface
 uses
   Winapi.Windows, Winapi.Messages, System.SysUtils, System.Variants, System.Classes, Vcl.Graphics,
   Vcl.Controls, Vcl.Forms, Vcl.Dialogs, Vcl.StdCtrls, Vcl.ExtCtrls,
-  Vcl.Imaging.pngimage, Vcl.Mask;
+  Vcl.Imaging.pngimage, Vcl.Mask, Vcl.Imaging.jpeg;
 
 type
   TFormLogin = class(TForm)
@@ -17,13 +17,13 @@ type
     PnlButton: TPanel;
     PnlEdit: TPanel;
     CheckBox1: TCheckBox;
-    imgLogo: TImage;
     EdtSenha: TEdit;
     MaskEdit1: TMaskEdit;
     LblCPF: TLabel;
     Label1: TLabel;
     LblCadastro: TLabel;
-    Label2: TLabel;
+    Image1: TImage;
+    Label3: TLabel;
   private
     { Private declarations }
   public

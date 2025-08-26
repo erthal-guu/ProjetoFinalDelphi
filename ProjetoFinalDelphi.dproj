@@ -103,6 +103,8 @@
     <PropertyGroup Condition="'$(Cfg_1_Win32)'!=''">
         <DCC_RemoteDebug>false</DCC_RemoteDebug>
         <AppDPIAwarenessMode>PerMonitorV2</AppDPIAwarenessMode>
+        <VerInfo_IncludeVerInfo>true</VerInfo_IncludeVerInfo>
+        <VerInfo_Locale>1033</VerInfo_Locale>
     </PropertyGroup>
     <PropertyGroup Condition="'$(Cfg_1_Win64)'!=''">
         <AppDPIAwarenessMode>PerMonitorV2</AppDPIAwarenessMode>
@@ -128,9 +130,17 @@
             <FormType>dfm</FormType>
         </DCCReference>
         <DCCReference Include="src\Model\uFormCadastro.Model.pas"/>
-        <DCCReference Include="src\uFormCadastro.repository.pas"/>
+        <DCCReference Include="src\repository\uFormCadastro.repository.pas"/>
         <DCCReference Include="src\Services\uFormCadastro.services.pas"/>
         <DCCReference Include="src\controller\uFormCadastro.Controller.pas"/>
+        <DCCReference Include="src\controller\uFormLogin.controller.pas"/>
+        <DCCReference Include="src\Model\uFormLogin.Model.pas"/>
+        <DCCReference Include="src\repository\uFormLogin.repository.pas"/>
+        <DCCReference Include="src\Services\uFormLogin.services.pas"/>
+        <DCCReference Include="src\View\uFormLogin.View.pas">
+            <Form>FormLogin</Form>
+            <FormType>dfm</FormType>
+        </DCCReference>
         <BuildConfiguration Include="Base">
             <Key>Base</Key>
         </BuildConfiguration>
@@ -151,6 +161,10 @@
                 <Source>
                     <Source Name="MainSource">ProjetoFinalDelphi.dpr</Source>
                 </Source>
+                <Excluded_Packages>
+                    <Excluded_Packages Name="$(BDSBIN)\dcloffice2k290.bpl">Microsoft Office 2000 Sample Automation Server Wrapper Components</Excluded_Packages>
+                    <Excluded_Packages Name="$(BDSBIN)\dclofficexp290.bpl">Microsoft Office XP Sample Automation Server Wrapper Components</Excluded_Packages>
+                </Excluded_Packages>
             </Delphi.Personality>
             <Deployment Version="4">
                 <DeployFile LocalName="Win32\Debug\ProjetoFinalDelphi.exe" Configuration="Debug" Class="ProjectOutput">

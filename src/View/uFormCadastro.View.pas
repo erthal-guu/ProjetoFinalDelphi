@@ -11,7 +11,6 @@ type
   TFormCadastro = class(TForm)
     PnlMain: TPanel;
     PnlFormulario: TPanel;
-    imgLogo: TImage;
     PnlLabel: TPanel;
     LblLogin: TLabel;
     LblCadastro: TLabel;
@@ -25,6 +24,8 @@ type
     PnlButton: TPanel;
     LblEnviar: TLabel;
     PnlBackground: TPanel;
+    Label3: TLabel;
+    Image1: TImage;
   private
     { Private declarations }
   public
