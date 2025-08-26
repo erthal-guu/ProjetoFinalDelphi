@@ -127,6 +127,10 @@
             <Form>FormCadastro</Form>
             <FormType>dfm</FormType>
         </DCCReference>
+        <DCCReference Include="src\Model\uFormCadastro.Model.pas"/>
+        <DCCReference Include="src\uFormCadastro.repository.pas"/>
+        <DCCReference Include="src\Services\uFormCadastro.services.pas"/>
+        <DCCReference Include="src\controller\uFormCadastro.Controller.pas"/>
         <BuildConfiguration Include="Base">
             <Key>Base</Key>
         </BuildConfiguration>
