@@ -2,17 +2,13 @@ program ProjetoFinalDelphi;
 
 uses
   Vcl.Forms,
-  uFormLogin in 'src\View\uFormLogin.pas' {Form1},
-  loginForm.services in 'src\Services\loginForm.services.pas',
-  LoginForm.Model in 'src\Model\LoginForm.Model.pas',
-  LoginForm.controller in 'src\controller\LoginForm.controller.pas',
-  LoginForm.repository in 'src\repository\LoginForm.repository.pas';
+  uFormCadastro.View in 'src\View\uFormCadastro.View.pas' {FormCadastro};
 
 {$R *.res}
 
 begin
   Application.Initialize;
   Application.MainFormOnTaskbar := True;
-  Application.CreateForm(TForm1, Form1);
+  Application.CreateForm(TFormCadastro, FormCadastro);
   Application.Run;
 end.

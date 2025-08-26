@@ -1,4 +1,4 @@
-unit uFormLogin;
+unit uFormLogin.View;
 
 interface
 
@@ -8,11 +8,11 @@ uses
   Vcl.Imaging.pngimage, Vcl.Mask;
 
 type
-  TForm1 = class(TForm)
+  TFormLogin = class(TForm)
     PnlMain: TPanel;
     PnlFormulario: TPanel;
-    Panel2: TPanel;
-    Panel3: TPanel;
+    PnlBackground: TPanel;
+    PnlCadastrar: TPanel;
     LblLogin: TLabel;
     PnlButton: TPanel;
     PnlEdit: TPanel;
@@ -23,6 +23,7 @@ type
     LblCPF: TLabel;
     Label1: TLabel;
     LblCadastro: TLabel;
+    Label2: TLabel;
   private
     { Private declarations }
   public
@@ -30,7 +31,7 @@ type
   end;
 
 var
-  Form1: TForm1;
+  FormLogin: TFormLogin;
 
 implementation
 

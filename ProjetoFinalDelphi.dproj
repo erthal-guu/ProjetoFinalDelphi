@@ -1,6 +1,6 @@
 ﻿<Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
     <PropertyGroup>
-        <ProjectGuid>{D89B4381-1055-4EF4-95BC-49316E5C89D4}</ProjectGuid>
+        <ProjectGuid>{A0527BB7-D0EA-44B7-971C-3C27D3B3FCBE}</ProjectGuid>
         <ProjectVersion>20.1</ProjectVersion>
         <FrameworkType>VCL</FrameworkType>
         <Base>True</Base>
@@ -103,8 +103,6 @@
     <PropertyGroup Condition="'$(Cfg_1_Win32)'!=''">
         <DCC_RemoteDebug>false</DCC_RemoteDebug>
         <AppDPIAwarenessMode>PerMonitorV2</AppDPIAwarenessMode>
-        <VerInfo_IncludeVerInfo>true</VerInfo_IncludeVerInfo>
-        <VerInfo_Locale>1033</VerInfo_Locale>
     </PropertyGroup>
     <PropertyGroup Condition="'$(Cfg_1_Win64)'!=''">
         <AppDPIAwarenessMode>PerMonitorV2</AppDPIAwarenessMode>
@@ -125,13 +123,10 @@
         <DelphiCompile Include="$(MainSource)">
             <MainSource>MainSource</MainSource>
         </DelphiCompile>
-        <DCCReference Include="src\View\uFormLogin.pas">
-            <Form>Form1</Form>
+        <DCCReference Include="src\View\uFormCadastro.View.pas">
+            <Form>FormCadastro</Form>
+            <FormType>dfm</FormType>
         </DCCReference>
-        <DCCReference Include="src\Services\loginForm.services.pas"/>
-        <DCCReference Include="src\Model\LoginForm.Model.pas"/>
-        <DCCReference Include="src\controller\LoginForm.controller.pas"/>
-        <DCCReference Include="src\repository\LoginForm.repository.pas"/>
         <BuildConfiguration Include="Base">
             <Key>Base</Key>
         </BuildConfiguration>
@@ -152,10 +147,6 @@
                 <Source>
                     <Source Name="MainSource">ProjetoFinalDelphi.dpr</Source>
                 </Source>
-                <Excluded_Packages>
-                    <Excluded_Packages Name="$(BDSBIN)\dcloffice2k290.bpl">Microsoft Office 2000 Sample Automation Server Wrapper Components</Excluded_Packages>
-                    <Excluded_Packages Name="$(BDSBIN)\dclofficexp290.bpl">Microsoft Office XP Sample Automation Server Wrapper Components</Excluded_Packages>
-                </Excluded_Packages>
             </Delphi.Personality>
             <Deployment Version="4">
                 <DeployFile LocalName="Win32\Debug\ProjetoFinalDelphi.exe" Configuration="Debug" Class="ProjectOutput">

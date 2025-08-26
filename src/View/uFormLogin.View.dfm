@@ -1,7 +1,7 @@
-object Form1: TForm1
+object FormLogin: TFormLogin
   Left = 0
   Top = 0
-  Caption = 'Form1'
+  Caption = 'FormLogin'
   ClientHeight = 853
   ClientWidth = 1127
   Color = clBtnFace
@@ -33,8 +33,6 @@ object Form1: TForm1
       Font.Style = [fsItalic]
       ParentFont = False
       TabOrder = 0
-      ExplicitLeft = 0
-      ExplicitTop = -1
       object imgLogo: TImage
         Left = 392
         Top = 85
@@ -664,7 +662,7 @@ object Form1: TForm1
           9086808134040CA42160200D0103695F00381E01CABDE9EF430000000049454E
           44AE426082}
       end
-      object Panel3: TPanel
+      object PnlCadastrar: TPanel
         Left = 56
         Top = 582
         Width = 241
@@ -674,16 +672,16 @@ object Form1: TForm1
         object LblLogin: TLabel
           Left = 0
           Top = 0
-          Width = 138
+          Width = 151
           Height = 75
           Margins.Right = 0
           Align = alLeft
-          Caption = 'N'#227'o tem um login ?'
+          Caption = 'N'#227'o tem uma conta ?'
           ExplicitHeight = 21
         end
         object LblCadastro: TLabel
           AlignWithMargins = True
-          Left = 142
+          Left = 155
           Top = 0
           Width = 82
           Height = 75
@@ -701,16 +699,16 @@ object Form1: TForm1
           Font.Style = [fsUnderline]
           ParentColor = False
           ParentFont = False
+          ExplicitLeft = 142
           ExplicitHeight = 21
         end
       end
       object PnlButton: TPanel
-        Left = 43
+        Left = 40
         Top = 472
         Width = 867
         Height = 89
         BevelOuter = bvNone
-        Caption = 'Enviar'
         Color = clHighlight
         Ctl3D = True
         Font.Charset = ANSI_CHARSET
@@ -722,6 +720,25 @@ object Form1: TForm1
         ParentCtl3D = False
         ParentFont = False
         TabOrder = 1
+        object Label2: TLabel
+          AlignWithMargins = True
+          Left = 3
+          Top = 38
+          Width = 861
+          Height = 48
+          Margins.Top = 38
+          Align = alClient
+          Alignment = taCenter
+          Caption = 'Enviar'
+          Font.Charset = ANSI_CHARSET
+          Font.Color = clHighlightText
+          Font.Height = -16
+          Font.Name = 'Arial'
+          Font.Style = [fsBold, fsItalic]
+          ParentFont = False
+          ExplicitWidth = 49
+          ExplicitHeight = 18
+        end
       end
       object PnlEdit: TPanel
         Left = 40
@@ -783,8 +800,6 @@ object Form1: TForm1
           ParentFont = False
           PasswordChar = '*'
           TabOrder = 1
-          ExplicitLeft = 115
-          ExplicitTop = 127
         end
         object MaskEdit1: TMaskEdit
           AlignWithMargins = True
@@ -801,7 +816,7 @@ object Form1: TForm1
         end
       end
     end
-    object Panel2: TPanel
+    object PnlBackground: TPanel
       Left = 1009
       Top = 1
       Width = 117
@@ -816,6 +831,8 @@ object Form1: TForm1
       ParentBackground = False
       ParentFont = False
       TabOrder = 1
+      ExplicitLeft = 1015
+      ExplicitTop = -1
     end
   end
 end
