@@ -14,15 +14,16 @@ type
     Panel2: TPanel;
     Panel3: TPanel;
     LblLogin: TLabel;
-    PnlButton: TPanel;
-    PnlEdit: TPanel;
-    CheckBox1: TCheckBox;
-    imgLogo: TImage;
-    EdtSenha: TEdit;
-    MaskEdit1: TMaskEdit;
-    LblCPF: TLabel;
-    Label1: TLabel;
     LblCadastro: TLabel;
+    PnlButton: TPanel;
+    BtnEnviar: TButton;
+    PnlEdit: TPanel;
+    EdtSenha: TEdit;
+    CheckBox1: TCheckBox;
+    EdtCPF: TMaskEdit;
+    MaskEdit1: TMaskEdit;
+    imgLogo: TImage;
+    procedure EdtCPFChange(Sender: TObject);
   private
     { Private declarations }
   public
@@ -36,5 +37,11 @@ implementation
 
 {$R *.dfm}
 
+procedure TForm1.EdtCPFChange(Sender: TObject);
+begin
+if Length(EdtCPF.text)>11 then begin
+  ShowMessage('Quantidade de Caracteres inváidas');
+end;
+end;
 
 end.

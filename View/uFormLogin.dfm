@@ -20,22 +20,19 @@ object Form1: TForm1
     Color = clHighlightText
     ParentBackground = False
     TabOrder = 0
+    ExplicitLeft = 24
+    ExplicitTop = -8
     object PnlFormulario: TPanel
       Left = 1
       Top = 1
       Width = 1008
       Height = 851
       Align = alLeft
-      Font.Charset = DEFAULT_CHARSET
-      Font.Color = clWindowText
-      Font.Height = -16
-      Font.Name = 'Segoe UI'
-      Font.Style = [fsItalic]
-      ParentFont = False
       TabOrder = 0
+      ExplicitLeft = -5
       object imgLogo: TImage
         Left = 392
-        Top = 85
+        Top = 112
         Width = 177
         Height = 157
         Picture.Data = {
@@ -666,136 +663,113 @@ object Form1: TForm1
         Left = 56
         Top = 582
         Width = 241
-        Height = 75
+        Height = 19
         BevelOuter = bvNone
         TabOrder = 0
         object LblLogin: TLabel
           Left = 0
           Top = 0
-          Width = 138
-          Height = 75
-          Margins.Right = 0
+          Width = 105
+          Height = 19
           Align = alLeft
           Caption = 'N'#227'o tem um login ?'
-          ExplicitHeight = 21
+          ExplicitLeft = 56
+          ExplicitTop = 26
+          ExplicitHeight = 15
         end
         object LblCadastro: TLabel
           AlignWithMargins = True
-          Left = 142
+          Left = 108
           Top = 0
-          Width = 82
-          Height = 75
-          Margins.Left = 4
+          Width = 62
+          Height = 16
           Margins.Top = 0
-          Margins.Right = 0
-          Margins.Bottom = 0
           Align = alLeft
           Caption = 'Cadastre-se'
           Color = clCornflowerblue
           Font.Charset = DEFAULT_CHARSET
-          Font.Color = clBlue
-          Font.Height = -16
+          Font.Color = clWindowText
+          Font.Height = -12
           Font.Name = 'Segoe UI'
           Font.Style = [fsUnderline]
           ParentColor = False
           ParentFont = False
-          ExplicitHeight = 21
+          ExplicitLeft = 111
+          ExplicitHeight = 19
         end
       end
       object PnlButton: TPanel
-        Left = 43
-        Top = 472
-        Width = 867
-        Height = 89
+        Left = 40
+        Top = 504
+        Width = 870
+        Height = 57
         BevelOuter = bvNone
-        Caption = 'Enviar'
-        Color = clHighlight
-        Ctl3D = True
-        Font.Charset = DEFAULT_CHARSET
-        Font.Color = clHighlightText
-        Font.Height = -16
-        Font.Name = 'Segoe UI'
-        Font.Style = [fsItalic]
-        ParentBackground = False
-        ParentCtl3D = False
-        ParentFont = False
+        Caption = 'PnlButton'
         TabOrder = 1
+        object BtnEnviar: TButton
+          Left = 0
+          Top = 0
+          Width = 870
+          Height = 57
+          Align = alClient
+          Caption = 'Enviar'
+          TabOrder = 0
+        end
       end
       object PnlEdit: TPanel
         Left = 40
-        Top = 248
+        Top = 312
         Width = 873
-        Height = 201
+        Height = 153
         BevelOuter = bvNone
         TabOrder = 2
-        object LblCPF: TLabel
-          AlignWithMargins = True
-          Left = 3
-          Top = 76
-          Width = 867
-          Height = 21
-          Align = alTop
-          Caption = 'Senha:'
-          ExplicitWidth = 46
-        end
-        object Label1: TLabel
-          AlignWithMargins = True
-          Left = 3
-          Top = 3
-          Width = 867
-          Height = 21
-          Align = alTop
-          Caption = 'CPF:'
-          ExplicitWidth = 30
-        end
-        object CheckBox1: TCheckBox
-          AlignWithMargins = True
-          Left = 3
-          Top = 156
-          Width = 151
-          Height = 42
-          Margins.Top = 10
-          Align = alLeft
-          Caption = 'Salvar credenciais'
-          Font.Charset = EASTEUROPE_CHARSET
-          Font.Color = clWindow
-          Font.Height = -16
-          Font.Name = 'Segoe UI'
-          Font.Style = [fsItalic]
-          ParentFont = False
-          TabOrder = 0
-        end
         object EdtSenha: TEdit
           AlignWithMargins = True
           Left = 3
-          Top = 103
+          Top = 67
           Width = 867
           Height = 40
           Align = alTop
           AutoSize = False
+          Color = clWhitesmoke
           Font.Charset = DEFAULT_CHARSET
           Font.Color = clWindowText
           Font.Height = -16
           Font.Name = 'Segoe UI'
           Font.Style = [fsItalic]
           ParentFont = False
-          PasswordChar = '*'
-          TabOrder = 1
-          ExplicitLeft = 115
-          ExplicitTop = 127
+          TabOrder = 0
+          TextHint = 'Digite sua Senha'
+          ExplicitLeft = 0
+          ExplicitTop = 47
         end
-        object MaskEdit1: TMaskEdit
+        object CheckBox1: TCheckBox
           AlignWithMargins = True
           Left = 3
-          Top = 30
+          Top = 130
+          Width = 121
+          Height = 20
+          Margins.Top = 20
+          Align = alLeft
+          Caption = 'Salvar credenciais'
+          TabOrder = 1
+          ExplicitLeft = 56
+          ExplicitTop = 139
+          ExplicitHeight = 17
+        end
+        object EdtCPF: TMaskEdit
+          AlignWithMargins = True
+          Left = 3
+          Top = 3
           Width = 867
-          Height = 40
+          Height = 41
+          Margins.Bottom = 20
           Align = alTop
-          AutoSize = False
-          EditMask = '999.999.999-99'
+          EditMask = '###.###.###-##;1;_'
           MaxLength = 14
           TabOrder = 2
           Text = '   .   .   -  '
+          ExplicitWidth = 866
         end
       end
     end
@@ -814,6 +788,18 @@ object Form1: TForm1
       ParentBackground = False
       ParentFont = False
       TabOrder = 1
+      ExplicitLeft = 1015
+      ExplicitTop = -1
     end
+  end
+  object MaskEdit1: TMaskEdit
+    Left = 176
+    Top = 41
+    Width = 119
+    Height = 23
+    EditMask = '000.000.000-99;0;_'
+    MaxLength = 14
+    TabOrder = 1
+    Text = '000.000.000-99;0;'
   end
 end
