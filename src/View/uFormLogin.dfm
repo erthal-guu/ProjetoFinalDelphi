@@ -33,6 +33,8 @@ object Form1: TForm1
       Font.Style = [fsItalic]
       ParentFont = False
       TabOrder = 0
+      ExplicitLeft = 0
+      ExplicitTop = -1
       object imgLogo: TImage
         Left = 392
         Top = 85
@@ -711,11 +713,11 @@ object Form1: TForm1
         Caption = 'Enviar'
         Color = clHighlight
         Ctl3D = True
-        Font.Charset = DEFAULT_CHARSET
+        Font.Charset = ANSI_CHARSET
         Font.Color = clHighlightText
         Font.Height = -16
-        Font.Name = 'Segoe UI'
-        Font.Style = [fsItalic]
+        Font.Name = 'Segoe UI Semibold'
+        Font.Style = [fsBold]
         ParentBackground = False
         ParentCtl3D = False
         ParentFont = False

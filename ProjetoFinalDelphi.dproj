@@ -128,6 +128,10 @@
         <DCCReference Include="src\View\uFormLogin.pas">
             <Form>Form1</Form>
         </DCCReference>
+        <DCCReference Include="src\Services\loginForm.services.pas"/>
+        <DCCReference Include="src\Model\LoginForm.Model.pas"/>
+        <DCCReference Include="src\controller\LoginForm.controller.pas"/>
+        <DCCReference Include="src\repository\LoginForm.repository.pas"/>
         <BuildConfiguration Include="Base">
             <Key>Base</Key>
         </BuildConfiguration>
