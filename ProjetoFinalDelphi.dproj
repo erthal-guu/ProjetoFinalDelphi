@@ -141,6 +141,12 @@
             <Form>FormLogin</Form>
             <FormType>dfm</FormType>
         </DCCReference>
+        <DCCReference Include="src\Model\uUsuarioModel.pas"/>
+        <DCCReference Include="src\repository\uDMConexao.pas">
+            <Form>DataModule1</Form>
+            <FormType>dfm</FormType>
+            <DesignClass>TDataModule</DesignClass>
+        </DCCReference>
         <BuildConfiguration Include="Base">
             <Key>Base</Key>
         </BuildConfiguration>

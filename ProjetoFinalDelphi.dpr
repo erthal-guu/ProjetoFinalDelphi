@@ -13,7 +13,9 @@ uses
   uFormLogin.Model in 'src\Model\uFormLogin.Model.pas',
   uFormLogin.repository in 'src\repository\uFormLogin.repository.pas',
   uFormLogin.services in 'src\Services\uFormLogin.services.pas',
-  uFormLogin.View in 'src\View\uFormLogin.View.pas' {FormLogin};
+  uFormLogin.View in 'src\View\uFormLogin.View.pas' {FormLogin},
+  uUsuarioModel in 'src\Model\uUsuarioModel.pas',
+  uDMConexao in 'src\repository\uDMConexao.pas' {DataModule1: TDataModule};
 
 {$R *.res}
 
@@ -22,5 +24,6 @@ begin
   Application.MainFormOnTaskbar := True;
   Application.CreateForm(TFormLogin, FormLogin);
   Application.CreateForm(TFormCadastro, FormCadastro);
+  Application.CreateForm(TDataModule1, DataModule1);
   Application.Run;
 end.

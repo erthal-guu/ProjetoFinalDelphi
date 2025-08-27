@@ -5,7 +5,7 @@ interface
 uses
   Winapi.Windows, Winapi.Messages, System.SysUtils, System.Variants, System.Classes, Vcl.Graphics,
   Vcl.Controls, Vcl.Forms, Vcl.Dialogs, Vcl.Mask, Vcl.StdCtrls,
-  Vcl.Imaging.pngimage, Vcl.ExtCtrls;
+  Vcl.Imaging.pngimage, Vcl.ExtCtrls, uUsuarioModel;
 
 type
   TFormCadastro = class(TForm)
@@ -38,9 +38,9 @@ type
 
 var
   FormCadastro: TFormCadastro;
+  Usuario : TUsuario;
 
 implementation
-
 {$R *.dfm}
 
 procedure TFormCadastro.PnlButtonClick(Sender: TObject);
@@ -53,7 +53,7 @@ begin
   ShowMessage('O Campo de Senha não pode ficar Vazio');
   exit;
   end;
-  if EdtSenha.ControlCount<8 then begin
+  if Length(EdtSenha.Text)<8 then begin
     ShowMessage('A senha deve Conter Pelo menos "8" Caracteres');
   end;
 end;
@@ -67,6 +67,7 @@ procedure TFormCadastro.PnlButtonMouseLeave(Sender: TObject);
 begin
   PnlButton.Color:=clHighlight;
 end;
+
 
 
 
