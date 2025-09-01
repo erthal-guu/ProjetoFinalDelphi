@@ -1,5 +1,5 @@
 object DataModule1: TDataModule1
-  Height = 708
+  Height = 918
   Width = 1131
   object FDConnection1: TFDConnection
     Params.Strings = (
@@ -9,19 +9,19 @@ object DataModule1: TDataModule1
       'Server=localhost'
       'DriverID=PG')
     Connected = True
-    Left = 544
-    Top = 344
+    Left = 496
+    Top = 288
   end
   object FDPhysPgDriverLink1: TFDPhysPgDriverLink
     VendorLib = 
       'C:\Users\Gustavo Erthal\Desktop\ProjetoFinal Delphi\lib\libpq.dl' +
       'l'
-    Left = 640
-    Top = 344
+    Left = 600
+    Top = 288
   end
-  object FDQuery1: TFDQuery
+  object FDQuery: TFDQuery
     Connection = FDConnection1
-    Left = 472
-    Top = 344
+    Left = 400
+    Top = 288
   end
 end

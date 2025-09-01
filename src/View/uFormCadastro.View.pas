@@ -3,9 +3,10 @@ unit uFormCadastro.View;
 interface
 
 uses
-  Winapi.Windows, Winapi.Messages, System.SysUtils, System.Variants, System.Classes, Vcl.Graphics,
+  Winapi.Windows, Winapi.Messages, System.SysUtils, System.Variants,
+  System.Classes, Vcl.Graphics,
   Vcl.Controls, Vcl.Forms, Vcl.Dialogs, Vcl.Mask, Vcl.StdCtrls,
-  Vcl.Imaging.pngimage, Vcl.ExtCtrls, uUsuarioModel;
+  Vcl.Imaging.pngimage, Vcl.ExtCtrls, uUsuarioDTO, UsuarioCadastroController;
 
 type
   TFormCadastro = class(TForm)
@@ -30,6 +31,7 @@ type
     procedure PnlButtonMouseEnter(Sender: TObject);
     procedure PnlButtonMouseLeave(Sender: TObject);
     procedure PnlButtonClick(Sender: TObject);
+    function ValidarCampos: Boolean;
   private
     { Private declarations }
   public
@@ -38,23 +40,31 @@ type
 
 var
   FormCadastro: TFormCadastro;
-  Usuario : TUsuario;
 
 implementation
+
 {$R *.dfm}
 
 procedure TFormCadastro.PnlButtonClick(Sender: TObject);
+var
+  Controller: TUsuarioController;
+  UsuarioDTO: TUsuarioDTO;
 begin
-  if EdtCPF.text = '' then begin
-  ShowMessage('O Campo de CPF não pode ficar Vazio');
-  exit;
-  end;
-  if EdtSenha.Text = '' then begin
-  ShowMessage('O Campo de Senha não pode ficar Vazio');
-  exit;
-  end;
-  if Length(EdtSenha.Text)<8 then begin
-    ShowMessage('A senha deve Conter Pelo menos "8" Caracteres');
+
+  if ValidarCampos = True then begin
+    UsuarioDTO := TUsuarioDTO.Create;
+    Controller := TUsuarioController.Create;
+    try
+      Controller.CriarObjeto(UsuarioDTO, EdtNome.Text, EdtCPF.Text, EdtSenha.Text);
+      Controller.SalvarUsuario(UsuarioDTO);
+
+      ShowMessage('Usuário salvo com sucesso!');
+    finally
+      Controller.Free;
+    end;
+
+  end else begin
+    exit;
   end;
 end;
 
@@ -65,10 +75,22 @@ end;
 
 procedure TFormCadastro.PnlButtonMouseLeave(Sender: TObject);
 begin
-  PnlButton.Color:=clHighlight;
+  PnlButton.Color := clHighlight;
 end;
 
-
-
+function TFormCadastro.ValidarCampos: Boolean;
+begin
+  if EdtCPF.Text = '' then begin
+    ShowMessage('O Campo de CPF não pode ficar Vazio');
+    exit;
+  end;
+  if EdtSenha.Text = '' then begin
+    ShowMessage('O Campo de Senha não pode ficar Vazio');
+    exit;
+  end;
+  if Length(EdtSenha.Text) < 8 then begin
+    ShowMessage('A senha deve Conter Pelo menos "8" Caracteres');
+  end;
+end;
 
 end.

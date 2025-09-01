@@ -9,18 +9,16 @@ uses
   FireDAC.Phys.PGDef, FireDAC.Phys.PG, Data.DB, FireDAC.Comp.Client,
   Data.FMTBcd, Data.SqlExpr, FireDAC.Stan.Param, FireDAC.DatS,
   FireDAC.DApt.Intf, FireDAC.DApt, FireDAC.Comp.DataSet;
-
 type
   TDataModule1 = class(TDataModule)
     FDConnection1: TFDConnection;
     FDPhysPgDriverLink1: TFDPhysPgDriverLink;
-    FDQuery1: TFDQuery;
+    FDQuery: TFDQuery;
   private
     { Private declarations }
   public
     { Public declarations }
   end;
-
 var
   DataModule1: TDataModule1;
 

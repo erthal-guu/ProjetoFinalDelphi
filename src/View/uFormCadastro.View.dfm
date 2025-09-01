@@ -27,7 +27,7 @@ object FormCadastro: TFormCadastro
       Width = 1120
       Height = 848
       Align = alClient
-      Color = 14124544
+      Color = clHighlight
       Font.Charset = DEFAULT_CHARSET
       Font.Color = clWindowText
       Font.Height = -16
@@ -36,8 +36,6 @@ object FormCadastro: TFormCadastro
       ParentBackground = False
       ParentFont = False
       TabOrder = 0
-      ExplicitLeft = 553
-      ExplicitWidth = 568
       object Image1: TImage
         Left = 1
         Top = 1
@@ -2486,8 +2484,8 @@ object FormCadastro: TFormCadastro
           04411A1614320882200882342C28641004411004695850C82008822008D2B0A0
           904110044110A4614121832008822048C3F2FF01A52ECB9477B10FDA00000000
           49454E44AE426082}
-        ExplicitLeft = -5
-        ExplicitTop = 2
+        ExplicitLeft = -1
+        ExplicitTop = 0
       end
       object PnlFormulario: TPanel
         Left = 567
@@ -2504,8 +2502,6 @@ object FormCadastro: TFormCadastro
         ParentBackground = False
         ParentFont = False
         TabOrder = 0
-        ExplicitLeft = 568
-        ExplicitTop = -1
         object Image2: TImage
           AlignWithMargins = True
           Left = 1

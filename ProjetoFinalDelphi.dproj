@@ -129,13 +129,11 @@
             <Form>FormCadastro</Form>
             <FormType>dfm</FormType>
         </DCCReference>
-        <DCCReference Include="src\Model\uFormCadastro.Model.pas"/>
-        <DCCReference Include="src\repository\uFormCadastro.repository.pas"/>
+        <DCCReference Include="src\repository\UsuarioCadastrorepository.pas"/>
         <DCCReference Include="src\Services\uFormCadastro.services.pas"/>
-        <DCCReference Include="src\controller\uFormCadastro.Controller.pas"/>
+        <DCCReference Include="src\controller\UsuarioCadastroController.pas"/>
         <DCCReference Include="src\controller\uFormLogin.controller.pas"/>
-        <DCCReference Include="src\Model\uFormLogin.Model.pas"/>
-        <DCCReference Include="src\repository\uFormLogin.repository.pas"/>
+        <DCCReference Include="src\repository\UsuarioLoginRepository.pas"/>
         <DCCReference Include="src\Services\uFormLogin.services.pas"/>
         <DCCReference Include="src\View\uFormLogin.View.pas">
             <Form>FormLogin</Form>
@@ -147,6 +145,7 @@
             <FormType>dfm</FormType>
             <DesignClass>TDataModule</DesignClass>
         </DCCReference>
+        <DCCReference Include="src\DTO\uUsuarioDTO.pas"/>
         <BuildConfiguration Include="Base">
             <Key>Base</Key>
         </BuildConfiguration>
