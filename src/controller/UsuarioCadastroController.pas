@@ -6,7 +6,7 @@ uses uUsuarioDTO;
 type TUsuarioController = class
   public
     procedure SalvarUsuario(UsuarioController : TUsuarioDTO);
-    procedure CriarObjeto(UsuarioDTO: TUsuarioDTO; aNome, aCPF, aSenha: String);
+    procedure CriarObjeto(aNome, aCPF, aSenha: String);
     function ValidarUsuario(UsuarioValido : TUsuarioDTO):Boolean;
   end;
 
@@ -15,7 +15,9 @@ implementation
 { TUsuarioController }
 
 procedure TUsuarioController.CriarObjeto;
+var UsuarioDTO : TUsuarioDTO;
 begin
+    UsuarioDTO := TUsuarioDTO.Create;
     UsuarioDTO.setNome(aNome);
     UsuarioDTO.setCPF(aCPF);
     UsuarioDTO.setSenha(aSenha);

@@ -52,12 +52,9 @@ var
 begin
 
   if ValidarCampos = True then begin
-    UsuarioDTO := TUsuarioDTO.Create;
     Controller := TUsuarioController.Create;
     try
-      Controller.CriarObjeto(UsuarioDTO, EdtNome.Text, EdtCPF.Text, EdtSenha.Text);
-      Controller.SalvarUsuario(UsuarioDTO);
-
+      Controller.CriarObjeto(EdtNome.Text, EdtCPF.Text, EdtSenha.Text);
       ShowMessage('Usuário salvo com sucesso!');
     finally
       Controller.Free;
