@@ -6,30 +6,30 @@ uses uDMConexao,FireDAC.Comp.Client, System.SysUtils,uUsuarioDTO;
 type TCadastroRepository = class
 private
   FQuery:TFDQuery;
-  procedure inserirAluno(aUsuario : TUsuarioDTO);
 public
-constructor Create(Query:TFDQuery);
+procedure inserirUsuario(aUsuario : TUsuarioDTO);
+constructor Create(Query : TFDQuery);
 end;
 implementation
 
 
 { TCadastrRepository }
 
-constructor TCadastroRepository.Create(Query: TFDQuery);
+constructor TCadastroRepository.Create(Query : TFDQuery);
 begin
-FQuery := Query;
+  inherited Create;
+  FQuery := Query;
 end;
 
 
-procedure TCadastroRepository.inserirAluno(aUsuario : TUsuarioDTO);
+procedure TCadastroRepository.inserirUsuario(aUsuario : TUsuarioDTO);
 begin
-  aUsuario := TUsuarioDTO.Create;
-  FQuery.close;
-  FQuery.SQL.Add('INSERT INTO usuarios (nome,CPF, senha) VALUES (:nome,:CPF,:senha)');
-  FQuery.ParamByName('nome').AsString := aUsuario.getNome ;
-  FQuery.ParamByName('cpf').AsString := aUsuario.getCPF ;
-  FQuery.ParamByName('senha').AsString := aUsuario.getSenha;
-  FQuery.ExecSQL;
+  Self.FQuery.close;
+  Self.FQuery.SQL.Add('INSERT INTO usuarios (nome,CPF,senha) VALUES (:nome,:CPF,:senha)');
+  Self.FQuery.ParamByName('nome').AsString := aUsuario.getNome ;
+  Self.FQuery.ParamByName('cpf').AsString := aUsuario.getCPF ;
+  Self.FQuery.ParamByName('senha').AsString := aUsuario.getSenha;
+  Self.FQuery.ExecSQL;
 end;
 
 end.

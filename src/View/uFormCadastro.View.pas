@@ -32,6 +32,7 @@ type
     procedure PnlButtonMouseLeave(Sender: TObject);
     procedure PnlButtonClick(Sender: TObject);
     function ValidarCampos: Boolean;
+    procedure LimparCampos;
   private
     { Private declarations }
   public
@@ -45,17 +46,26 @@ implementation
 
 {$R *.dfm}
 
+procedure TFormCadastro.LimparCampos;
+begin
+  EdtNome.Clear;
+  EdtCPF.Clear;
+  EdtSenha.Clear;
+end;
+
 procedure TFormCadastro.PnlButtonClick(Sender: TObject);
 var
   Controller: TUsuarioController;
   UsuarioDTO: TUsuarioDTO;
 begin
-
   if ValidarCampos = True then begin
     Controller := TUsuarioController.Create;
     try
-      Controller.CriarObjeto(EdtNome.Text, EdtCPF.Text, EdtSenha.Text);
+      UsuarioDTO := Controller.CriarObjeto(EdtNome.Text, EdtCPF.Text,
+        EdtSenha.Text);
+      Controller.SalvarUsuario(UsuarioDTO);
       ShowMessage('Usuário salvo com sucesso!');
+      LimparCampos;
     finally
       Controller.Free;
     end;
@@ -63,6 +73,7 @@ begin
   end else begin
     exit;
   end;
+  Self.Close;
 end;
 
 procedure TFormCadastro.PnlButtonMouseEnter(Sender: TObject);
@@ -87,7 +98,9 @@ begin
   end;
   if Length(EdtSenha.Text) < 8 then begin
     ShowMessage('A senha deve Conter Pelo menos "8" Caracteres');
+    exit;
   end;
+  Result := True;
 end;
 
 end.

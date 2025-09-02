@@ -1,12 +1,12 @@
 unit UsuarioCadastroController;
 
 interface
-uses uUsuarioDTO;
+uses uUsuarioDTO,UsuarioCadastrorepository,uDMConexao;
 
 type TUsuarioController = class
   public
-    procedure SalvarUsuario(UsuarioController : TUsuarioDTO);
-    procedure CriarObjeto(aNome, aCPF, aSenha: String);
+    procedure SalvarUsuario(UsuarioDTO : TUsuarioDTO);
+    function CriarObjeto(aNome, aCPF, aSenha: String) : TUsuarioDTO;
     function ValidarUsuario(UsuarioValido : TUsuarioDTO):Boolean;
   end;
 
@@ -14,20 +14,23 @@ implementation
 
 { TUsuarioController }
 
-procedure TUsuarioController.CriarObjeto;
+function TUsuarioController.CriarObjeto;
 var UsuarioDTO : TUsuarioDTO;
 begin
     UsuarioDTO := TUsuarioDTO.Create;
     UsuarioDTO.setNome(aNome);
     UsuarioDTO.setCPF(aCPF);
     UsuarioDTO.setSenha(aSenha);
+    Result := UsuarioDTO;
 end;
 
-procedure TUsuarioController.SalvarUsuario(UsuarioController: TUsuarioDTO);
-var UsuarioDTO : TUsuarioDTO;
+procedure TUsuarioController.SalvarUsuario(UsuarioDTO: TUsuarioDTO);
+var Repository : TCadastroRepository;
 begin
-if ValidarUsuario(UsuarioController) = False then begin
-end;
+  if ValidarUsuario(UsuarioDTO) then begin
+    Repository := TCadastroRepository.Create(DataModule1.FDQuery);
+    Repository.inserirUsuario(UsuarioDTO)
+  end;
 end;
 
 function TUsuarioController.ValidarUsuario(UsuarioValido: TUsuarioDTO):Boolean;

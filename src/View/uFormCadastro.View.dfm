@@ -4642,7 +4642,6 @@ object FormCadastro: TFormCadastro
               Font.Name = 'Segoe UI'
               Font.Style = [fsItalic]
               ParentFont = False
-              PasswordChar = '*'
               TabOrder = 2
             end
           end
