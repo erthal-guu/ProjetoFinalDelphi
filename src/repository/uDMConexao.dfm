@@ -8,14 +8,11 @@ object DataModule1: TDataModule1
       'Password=root'
       'Server=localhost'
       'DriverID=PG')
-    Connected = True
     Left = 496
     Top = 288
   end
   object FDPhysPgDriverLink1: TFDPhysPgDriverLink
-    VendorLib = 
-      'C:\Users\Gustavo Erthal\Desktop\ProjetoFinal Delphi\lib\libpq.dl' +
-      'l'
+    VendorLib = 'C:\Users\Gustavo Erthal\Desktop\ProjetoFinal Delphi\lib\libpq.dl'
     Left = 600
     Top = 288
   end

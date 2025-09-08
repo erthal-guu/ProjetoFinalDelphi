@@ -14,13 +14,15 @@ uses
   uFormLogin.View in 'src\View\uFormLogin.View.pas' {FormLogin},
   uUsuarioModel in 'src\Model\uUsuarioModel.pas',
   uDMConexao in 'src\repository\uDMConexao.pas' {DataModule1: TDataModule},
-  uUsuarioDTO in 'src\DTO\uUsuarioDTO.pas';
+  uUsuarioDTO in 'src\DTO\uUsuarioDTO.pas',
+  uFormMain.view in 'src\View\uFormMain.view.pas' {FormMain};
 
 {$R *.res}
 
 begin
   Application.Initialize;
   Application.MainFormOnTaskbar := True;
+  Application.CreateForm(TFormMain, FormMain);
   Application.CreateForm(TFormCadastro, FormCadastro);
   Application.CreateForm(TFormLogin, FormLogin);
   Application.CreateForm(TDataModule1, DataModule1);

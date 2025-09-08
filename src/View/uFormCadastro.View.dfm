@@ -4651,9 +4651,8 @@ object FormCadastro: TFormCadastro
             Width = 459
             Height = 58
             Cursor = crHandPoint
-            BevelOuter = bvNone
             Caption = 'Enviar'
-            Color = clHighlight
+            Color = clHotLight
             Ctl3D = True
             Font.Charset = ANSI_CHARSET
             Font.Color = clHighlightText
