@@ -22,8 +22,6 @@ object FormMain: TFormMain
     Color = clWhite
     ParentBackground = False
     TabOrder = 0
-    ExplicitLeft = -32
-    ExplicitTop = 8
     object Image1: TImage
       Left = 1
       Top = 65
@@ -2498,8 +2496,6 @@ object FormMain: TFormMain
         Color = clHotLight
         ParentBackground = False
         TabOrder = 0
-        ExplicitLeft = 0
-        ExplicitTop = 51
         object PnlButton4: TPanel
           AlignWithMargins = True
           Left = 231
@@ -2512,9 +2508,40 @@ object FormMain: TFormMain
           Color = clBtnHighlight
           ParentBackground = False
           TabOrder = 0
-          ExplicitLeft = 3
-          ExplicitTop = 3
           object Label2: TLabel
+            AlignWithMargins = True
+            Left = 4
+            Top = 9
+            Width = 59
+            Height = 19
+            Margins.Top = 8
+            Margins.Right = 20
+            Align = alLeft
+            Caption = 'Cadastros'
+            Color = clWhite
+            Font.Charset = ANSI_CHARSET
+            Font.Color = clBlack
+            Font.Height = -12
+            Font.Name = 'Arial'
+            Font.Style = [fsBold]
+            ParentColor = False
+            ParentFont = False
+            ExplicitTop = 0
+          end
+        end
+        object PnlButton1: TPanel
+          AlignWithMargins = True
+          Left = 3
+          Top = 5
+          Width = 70
+          Height = 32
+          Margins.Top = 5
+          Margins.Bottom = 5
+          Align = alLeft
+          Color = clWhite
+          ParentBackground = False
+          TabOrder = 1
+          object Label1: TLabel
             AlignWithMargins = True
             Left = 4
             Top = 9
@@ -2535,40 +2562,6 @@ object FormMain: TFormMain
             ExplicitHeight = 15
           end
         end
-        object PnlButton1: TPanel
-          AlignWithMargins = True
-          Left = 3
-          Top = 5
-          Width = 70
-          Height = 32
-          Margins.Top = 5
-          Margins.Bottom = 5
-          Align = alLeft
-          Color = clWhite
-          ParentBackground = False
-          TabOrder = 1
-          ExplicitLeft = -25
-          object Label1: TLabel
-            AlignWithMargins = True
-            Left = 4
-            Top = 9
-            Width = 59
-            Height = 19
-            Margins.Top = 8
-            Margins.Right = 20
-            Align = alLeft
-            Caption = 'Cadastros'
-            Color = clWhite
-            Font.Charset = ANSI_CHARSET
-            Font.Color = clBlack
-            Font.Height = -12
-            Font.Name = 'Arial'
-            Font.Style = [fsBold]
-            ParentColor = False
-            ParentFont = False
-            ExplicitLeft = 10
-          end
-        end
         object PnlButton3: TPanel
           AlignWithMargins = True
           Left = 155
@@ -2581,8 +2574,6 @@ object FormMain: TFormMain
           Color = clWhite
           ParentBackground = False
           TabOrder = 2
-          ExplicitLeft = 148
-          ExplicitTop = 13
           object Label3: TLabel
             AlignWithMargins = True
             Left = 4
@@ -2614,8 +2605,6 @@ object FormMain: TFormMain
           Color = clWhite
           ParentBackground = False
           TabOrder = 3
-          ExplicitLeft = 43
-          ExplicitTop = 13
           object Label4: TLabel
             AlignWithMargins = True
             Left = 4

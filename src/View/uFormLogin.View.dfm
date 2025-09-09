@@ -36,13 +36,11 @@ object FormLogin: TFormLogin
       ParentBackground = False
       ParentFont = False
       TabOrder = 0
-      ExplicitLeft = 2
-      ExplicitTop = -1
       object Image1: TImage
         AlignWithMargins = True
-        Left = 593
+        Left = 585
         Top = 4
-        Width = 528
+        Width = 536
         Height = 840
         Margins.Left = 40
         Align = alClient
@@ -2726,13 +2724,13 @@ object FormLogin: TFormLogin
           5CCE0AA555212A0EF6D9FFB97F111B4CC5F3891104415412526204415435A4C4
           0882A86A4889110451D590122308A2AA212546104455434A8C2088AA86941841
           10550D29318220AA9A5F4C27BCDFD4A713650000000049454E44AE426082}
-        ExplicitLeft = 596
-        ExplicitTop = 7
+        ExplicitLeft = 588
+        ExplicitTop = -36
       end
       object PnlFormulario: TPanel
         Left = 1
         Top = 1
-        Width = 552
+        Width = 544
         Height = 846
         Align = alLeft
         Color = clWindow
@@ -2748,7 +2746,7 @@ object FormLogin: TFormLogin
           AlignWithMargins = True
           Left = 1
           Top = 1
-          Width = 550
+          Width = 542
           Height = 844
           Margins.Left = 0
           Margins.Top = 0
@@ -4764,16 +4762,14 @@ object FormLogin: TFormLogin
             31C61863CC642CB28D31C618638C998C45B631C618638C3193B1C836C618638C
             31663216D9C618638C31C64CE6FF0354967C0B2894C5A90000000049454E44AE
             426082}
-          ExplicitLeft = 80
-          ExplicitTop = -48
-          ExplicitWidth = 105
-          ExplicitHeight = 105
+          ExplicitLeft = 2
+          ExplicitTop = 0
         end
         object PnlContainer: TPanel
           AlignWithMargins = True
           Left = 21
           Top = 101
-          Width = 510
+          Width = 502
           Height = 644
           Margins.Left = 20
           Margins.Top = 100
@@ -4781,31 +4777,31 @@ object FormLogin: TFormLogin
           Margins.Bottom = 100
           Align = alClient
           BevelOuter = bvNone
-          Color = 15395562
+          Color = 15329769
           ParentBackground = False
           TabOrder = 0
           object LblTitulo: TLabel
             AlignWithMargins = True
             Left = 3
             Top = 120
-            Width = 504
-            Height = 65
+            Width = 496
+            Height = 56
             Margins.Top = 120
             Align = alTop
             Alignment = taCenter
             Caption = 'Login'
-            Font.Charset = DEFAULT_CHARSET
+            Font.Charset = ANSI_CHARSET
             Font.Color = clHighlight
             Font.Height = -48
-            Font.Name = 'Segoe UI'
-            Font.Style = [fsBold, fsItalic]
+            Font.Name = 'Arial'
+            Font.Style = [fsBold]
             ParentFont = False
-            ExplicitWidth = 125
+            ExplicitWidth = 129
           end
           object PnlEdit: TPanel
             AlignWithMargins = True
-            Left = 17
-            Top = 237
+            Left = 20
+            Top = 223
             Width = 465
             Height = 273
             Margins.Bottom = 0
@@ -4814,12 +4810,14 @@ object FormLogin: TFormLogin
             object LblSenha: TLabel
               AlignWithMargins = True
               Left = 3
-              Top = 76
+              Top = 85
               Width = 459
-              Height = 21
+              Height = 29
               Align = alTop
               Caption = 'Senha:'
-              ExplicitWidth = 46
+              Color = clSilver
+              ParentColor = False
+              ExplicitTop = 89
             end
             object LblNome: TLabel
               AlignWithMargins = True
@@ -4831,27 +4829,17 @@ object FormLogin: TFormLogin
               Caption = 'CPF:'
               ExplicitWidth = 30
             end
-            object EdtCPF: TMaskEdit
-              AlignWithMargins = True
-              Left = 3
-              Top = 30
-              Width = 459
-              Height = 40
-              Cursor = crHandPoint
-              Align = alTop
-              AutoSize = False
-              EditMask = '999.999.999-99'
-              MaxLength = 14
-              TabOrder = 0
-              Text = '   .   .   -  '
-            end
             object EdtSenha: TEdit
               AlignWithMargins = True
-              Left = 3
-              Top = 103
-              Width = 459
+              Left = 5
+              Top = 123
+              Width = 455
               Height = 40
               Cursor = crHandPoint
+              Margins.Left = 5
+              Margins.Top = 6
+              Margins.Right = 5
+              Margins.Bottom = 0
               Align = alTop
               AutoSize = False
               Font.Charset = DEFAULT_CHARSET
@@ -4861,54 +4849,73 @@ object FormLogin: TFormLogin
               Font.Style = [fsItalic]
               ParentFont = False
               PasswordChar = '*'
-              TabOrder = 1
+              TabOrder = 0
             end
-          end
-          object PnlButton: TPanel
-            AlignWithMargins = True
-            Left = 17
-            Top = 421
-            Width = 459
-            Height = 60
-            Cursor = crHandPoint
-            Margins.Left = 20
-            Margins.Right = 30
-            Margins.Bottom = 0
-            BevelOuter = bvNone
-            Caption = 'Enviar'
-            Color = clHighlight
-            Ctl3D = True
-            Font.Charset = ANSI_CHARSET
-            Font.Color = clHighlightText
-            Font.Height = -16
-            Font.Name = 'Arial'
-            Font.Style = [fsBold, fsItalic]
-            ParentBackground = False
-            ParentCtl3D = False
-            ParentFont = False
-            TabOrder = 1
-            OnClick = PnlButtonClick
-            OnMouseEnter = PnlButtonMouseEnter
-            OnMouseLeave = PnlButtonMouseLeave
+            object EdtCPF: TMaskEdit
+              AlignWithMargins = True
+              Left = 10
+              Top = 32
+              Width = 450
+              Height = 40
+              Cursor = crHandPoint
+              Margins.Left = 10
+              Margins.Top = 5
+              Margins.Right = 5
+              Margins.Bottom = 10
+              Align = alTop
+              AutoSize = False
+              BevelInner = bvNone
+              BevelOuter = bvNone
+              EditMask = '999.999.999-99'
+              MaxLength = 14
+              TabOrder = 1
+              Text = '   .   .   -  '
+            end
+            object PnlButton: TPanel
+              AlignWithMargins = True
+              Left = 5
+              Top = 201
+              Width = 465
+              Height = 73
+              Margins.Left = 0
+              Margins.Top = 0
+              Margins.Right = 0
+              Margins.Bottom = 40
+              BevelOuter = bvNone
+              Caption = 'Entrar'
+              Color = clHighlight
+              Font.Charset = ANSI_CHARSET
+              Font.Color = clWhite
+              Font.Height = -21
+              Font.Name = 'Arial Black'
+              Font.Style = [fsBold]
+              ParentBackground = False
+              ParentFont = False
+              TabOrder = 2
+              OnClick = PnlButtonClick
+              OnMouseEnter = PnlButtonMouseEnter
+              OnMouseLeave = PnlButtonMouseLeave
+            end
           end
           object PnlLabel: TPanel
             AlignWithMargins = True
             Left = 3
-            Top = 191
-            Width = 504
+            Top = 182
+            Width = 496
             Height = 24
             Margins.Bottom = 40
             Align = alTop
             BevelOuter = bvNone
-            TabOrder = 2
+            TabOrder = 1
+            ExplicitTop = 191
           end
           object PnlCadastrar: TPanel
             Left = 20
-            Top = 499
+            Top = 516
             Width = 285
             Height = 65
             BevelOuter = bvNone
-            TabOrder = 3
+            TabOrder = 2
             object LblLogin: TLabel
               Left = 0
               Top = 0
@@ -4917,7 +4924,7 @@ object FormLogin: TFormLogin
               Margins.Right = 0
               Align = alLeft
               Caption = 'N'#227'o tem uma conta ?'
-              ExplicitHeight = 21
+              ExplicitLeft = 10
             end
             object LblCadastro: TLabel
               AlignWithMargins = True
@@ -4939,8 +4946,8 @@ object FormLogin: TFormLogin
               Font.Style = [fsUnderline]
               ParentColor = False
               ParentFont = False
-              OnClick = LblCadastroClick
-              ExplicitHeight = 21
+              ExplicitLeft = 171
+              ExplicitTop = -6
             end
           end
         end

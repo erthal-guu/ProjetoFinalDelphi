@@ -3,9 +3,11 @@ unit uFormLogin.View;
 interface
 
 uses
-  Winapi.Windows, Winapi.Messages, System.SysUtils, System.Variants, System.Classes, Vcl.Graphics,
+  Winapi.Windows, Winapi.Messages, System.SysUtils, System.Variants,
+  System.Classes, Vcl.Graphics,
   Vcl.Controls, Vcl.Forms, Vcl.Dialogs, Vcl.StdCtrls, Vcl.ExtCtrls,
-  Vcl.Imaging.pngimage, Vcl.Mask, Vcl.Imaging.jpeg,uFormCadastro.View;
+  Vcl.Imaging.pngimage, Vcl.Mask, Vcl.Imaging.jpeg, uUsuarioDTO,
+  UsuarioLoginController;
 
 type
   TFormLogin = class(TForm)
@@ -13,23 +15,24 @@ type
     PnlBackground: TPanel;
     Image1: TImage;
     PnlFormulario: TPanel;
+    Image2: TImage;
     PnlContainer: TPanel;
+    LblTitulo: TLabel;
     PnlEdit: TPanel;
     LblSenha: TLabel;
     LblNome: TLabel;
-    EdtCPF: TMaskEdit;
     EdtSenha: TEdit;
-    PnlButton: TPanel;
+    EdtCPF: TMaskEdit;
     PnlLabel: TPanel;
-    LblTitulo: TLabel;
     PnlCadastrar: TPanel;
     LblLogin: TLabel;
     LblCadastro: TLabel;
-    Image2: TImage;
-    procedure LblCadastroClick(Sender: TObject);
+    PnlButton: TPanel;
+    function ValidarCampos: Boolean;
+    procedure LimparCampos;
+    procedure PnlButtonClick(Sender: TObject);
     procedure PnlButtonMouseEnter(Sender: TObject);
     procedure PnlButtonMouseLeave(Sender: TObject);
-    procedure PnlButtonClick(Sender: TObject);
   private
     { Private declarations }
   public
@@ -43,41 +46,64 @@ implementation
 
 {$R *.dfm}
 
+uses uFormCadastro.View;
 
 
-procedure TFormLogin.LblCadastroClick(Sender: TObject);
+
+procedure TFormLogin.LimparCampos;
 begin
-  FormCadastro.Show;
+  EdtCPF.Clear;
+  EdtSenha.Clear;
 end;
 
 
 procedure TFormLogin.PnlButtonClick(Sender: TObject);
+var
+  Controller: TUsuarioController;
+  UsuarioDTO: TUsuarioDTO;
 begin
-  if EdtCPF.text = '' then begin
-  ShowMessage('O Campo de CPF não pode ficar Vazio');
-  exit;
+  try
+    Controller := TUsuarioController.Create;
+    UsuarioDTO := Controller.CriarObjeto(EdtCPF.Text, EdtSenha.Text);
+    if ValidarCampos and Controller.ValidarLogin(UsuarioDTO) then begin
+      ShowMessage('Login Bem Sucedido');
+    end else begin
+      ShowMessage('CPF ou Senha inválidos!');
+      LimparCampos;
+    end;
+  finally
+    Controller.Free;
   end;
-  if EdtSenha.Text = '' then begin
-  ShowMessage('O Campo de Senha não pode ficar Vazio');
-  exit;
-  end;
-
-  if EdtSenha.ControlCount<8 then begin
-    ShowMessage('A senha deve Conter Pelo menos "8" Caracteres');
-  end;
-
 end;
 
 procedure TFormLogin.PnlButtonMouseEnter(Sender: TObject);
 begin
-  PnlButton.Color := $00D76B00;
+    PnlButton.Color := $00D76B00;
 end;
+
 
 procedure TFormLogin.PnlButtonMouseLeave(Sender: TObject);
 begin
-  PnlButton.Color:=clHighlight;
+  PnlButton.Color := clHighlight;
 end;
 
 
+
+function TFormLogin.ValidarCampos: Boolean;
+begin
+  if EdtCPF.Text = '' then begin
+    ShowMessage('O Campo de CPF não pode ficar Vazio');
+    exit;
+  end;
+  if EdtSenha.Text = '' then begin
+    ShowMessage('O Campo de Senha não pode ficar Vazio');
+    exit;
+  end;
+  if Length(EdtSenha.Text) < 6 then begin
+    ShowMessage('A senha deve Conter Pelo menos "6" Caracteres');
+    exit;
+  end;
+  Result := True;
+end;
 
 end.

@@ -6,7 +6,7 @@ uses
   Winapi.Windows, Winapi.Messages, System.SysUtils, System.Variants,
   System.Classes, Vcl.Graphics,
   Vcl.Controls, Vcl.Forms, Vcl.Dialogs, Vcl.Mask, Vcl.StdCtrls,
-  Vcl.Imaging.pngimage, Vcl.ExtCtrls, uUsuarioDTO, UsuarioCadastroController;
+  Vcl.Imaging.pngimage, Vcl.ExtCtrls, uUsuarioDTO, UsuarioCadastroController,uFormLogin.View;
 
 type
   TFormCadastro = class(TForm)
@@ -33,6 +33,7 @@ type
     procedure PnlButtonClick(Sender: TObject);
     function ValidarCampos: Boolean;
     procedure LimparCampos;
+    procedure LblCadastroClick(Sender: TObject);
   private
     { Private declarations }
   public
@@ -45,6 +46,11 @@ var
 implementation
 
 {$R *.dfm}
+
+procedure TFormCadastro.LblCadastroClick(Sender: TObject);
+begin
+FormLogin.Show;
+end;
 
 procedure TFormCadastro.LimparCampos;
 begin
@@ -88,16 +94,21 @@ end;
 
 function TFormCadastro.ValidarCampos: Boolean;
 begin
+  if EdtNome.Text = '' then begin
+    ShowMessage('O Campo de NOME não pode ficar Vazio');
+    exit;
+  end;
+
   if EdtCPF.Text = '' then begin
     ShowMessage('O Campo de CPF não pode ficar Vazio');
     exit;
   end;
   if EdtSenha.Text = '' then begin
-    ShowMessage('O Campo de Senha não pode ficar Vazio');
+    ShowMessage('O Campo de SENHA não pode ficar Vazio');
     exit;
   end;
-  if Length(EdtSenha.Text) < 8 then begin
-    ShowMessage('A senha deve Conter Pelo menos "8" Caracteres');
+  if Length(EdtSenha.Text) < 5 then begin
+    ShowMessage('A senha deve Conter Pelo menos "5" Caracteres');
     exit;
   end;
   Result := True;

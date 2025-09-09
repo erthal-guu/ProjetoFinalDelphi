@@ -4647,18 +4647,18 @@ object FormCadastro: TFormCadastro
           end
           object PnlButton: TPanel
             Left = 23
-            Top = 496
+            Top = 497
             Width = 459
-            Height = 58
+            Height = 73
             Cursor = crHandPoint
             Caption = 'Enviar'
             Color = clHotLight
             Ctl3D = True
             Font.Charset = ANSI_CHARSET
             Font.Color = clHighlightText
-            Font.Height = -16
-            Font.Name = 'Arial'
-            Font.Style = [fsBold, fsItalic]
+            Font.Height = -21
+            Font.Name = 'Arial Black'
+            Font.Style = [fsBold]
             ParentBackground = False
             ParentCtl3D = False
             ParentFont = False
@@ -4704,6 +4704,7 @@ object FormCadastro: TFormCadastro
               Font.Style = [fsUnderline]
               ParentColor = False
               ParentFont = False
+              OnClick = LblCadastroClick
               ExplicitHeight = 21
             end
           end
