@@ -27,11 +27,11 @@ implementation
 
 {$R *.dfm}
 
-uses uFormCadastro.View, uFormLogin.View,uFormHome.view;
+uses uFormCadastroView, uFormLoginView,uFormHomeView;
 
 procedure TFormMain.FormShow(Sender: TObject);
 begin
-  showCadastro;
+  showLogin;
 end;
 
 procedure TFormMain.showCadastro;
@@ -42,8 +42,8 @@ end;
 
 procedure TFormMain.showHome;
 begin
-FormHome.Parent := Panel1;
-FormHome.Show;
+  FormHome.Parent := Panel1;
+  FormHome.Show;
 end;
 
 procedure TFormMain.showLogin;

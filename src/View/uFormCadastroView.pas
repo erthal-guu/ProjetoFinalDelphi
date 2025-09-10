@@ -1,4 +1,4 @@
-unit uFormCadastro.View;
+unit uFormCadastroView;
 
 interface
 
@@ -7,7 +7,7 @@ uses
   System.Classes, Vcl.Graphics,
   Vcl.Controls, Vcl.Forms, Vcl.Dialogs, Vcl.Mask, Vcl.StdCtrls,
   Vcl.Imaging.pngimage, Vcl.ExtCtrls, uUsuarioDTO, UsuarioCadastroController,
-  uMainController,uFormLogin.view;
+  uMainController,uFormLoginView;
 
 type
   TFormCadastro = class(TForm)

@@ -125,7 +125,7 @@
         <DelphiCompile Include="$(MainSource)">
             <MainSource>MainSource</MainSource>
         </DelphiCompile>
-        <DCCReference Include="src\View\uFormCadastro.View.pas">
+        <DCCReference Include="src\View\uFormCadastroView.pas">
             <Form>FormCadastro</Form>
             <FormType>dfm</FormType>
         </DCCReference>
@@ -135,7 +135,7 @@
         <DCCReference Include="src\controller\UsuarioLoginController.pas"/>
         <DCCReference Include="src\repository\UsuarioLoginRepository.pas"/>
         <DCCReference Include="src\Services\uFormLogin.services.pas"/>
-        <DCCReference Include="src\View\uFormLogin.View.pas">
+        <DCCReference Include="src\View\uFormLoginView.pas">
             <Form>FormLogin</Form>
             <FormType>dfm</FormType>
         </DCCReference>
@@ -149,11 +149,35 @@
         <DCCReference Include="src\View\uFormMain.pas">
             <Form>FormMain</Form>
         </DCCReference>
-        <DCCReference Include="src\View\uFormHome.view.pas">
+        <DCCReference Include="src\View\uFormHomeView.pas">
             <Form>FormHome</Form>
             <FormType>dfm</FormType>
         </DCCReference>
         <DCCReference Include="src\controller\uMainController.pas"/>
+        <DCCReference Include="src\View\uFormCadastroUsuariosView.pas">
+            <Form>FormCadastroUsuarios</Form>
+            <FormType>dfm</FormType>
+        </DCCReference>
+        <DCCReference Include="src\View\uFormCadastroClientesView.pas">
+            <Form>FormCadastroClientes</Form>
+            <FormType>dfm</FormType>
+        </DCCReference>
+        <DCCReference Include="src\View\uFormCadastroFuncionariosView.pas">
+            <Form>FormCadastroFuncionarios</Form>
+            <FormType>dfm</FormType>
+        </DCCReference>
+        <DCCReference Include="uFormCadastroFornecedoresView.pas">
+            <Form>FormCadastroFornecedores</Form>
+            <FormType>dfm</FormType>
+        </DCCReference>
+        <DCCReference Include="src\View\uFormCadastroServiçosView.pas">
+            <Form>FormCadastroServiços</Form>
+            <FormType>dfm</FormType>
+        </DCCReference>
+        <DCCReference Include="src\View\uFormCadastroPeçasView.pas">
+            <Form>FormCadastroPeças</Form>
+            <FormType>dfm</FormType>
+        </DCCReference>
         <BuildConfiguration Include="Base">
             <Key>Base</Key>
         </BuildConfiguration>
