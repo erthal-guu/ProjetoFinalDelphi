@@ -12,26 +12,13 @@ uses
   uFormCadastroFuncionariosView,
   uFormCadastroFornecedoresView,
   uFormCadastroPeçasView,
-  uFormCadastroServiçosView;
+  uFormCadastroServiçosView, Vcl.ToolWin, Vcl.ActnMan, Vcl.ActnCtrls,
+  Vcl.ActnMenus;
 
 type
   TFormHome = class(TForm)
     PnlMain: TPanel;
-    PgCntrl: TPageControl;
-    TabSheet1: TTabSheet;
-    PnlMenu: TPanel;
-    PnlServiços: TPanel;
-    PnlPeças: TPanel;
-    PnlFornecedores: TPanel;
-    PnlFuncionarios: TPanel;
-    PnlClientes: TPanel;
-    PnlUsuarios: TPanel;
-    procedure PnlUsuariosClick(Sender: TObject);
-    procedure PnlClientesClick(Sender: TObject);
-    procedure PnlFuncionariosClick(Sender: TObject);
-    procedure PnlFornecedoresClick(Sender: TObject);
-    procedure PnlPeçasClick(Sender: TObject);
-    procedure PnlServiçosClick(Sender: TObject);
+    Image1: TImage;
   private
     { Private declarations }
   public
@@ -45,34 +32,5 @@ implementation
 
 {$R *.dfm}
 
-procedure TFormHome.PnlClientesClick(Sender: TObject);
-begin
-  FormCadastroClientes.Show;
-end;
-
-procedure TFormHome.PnlFornecedoresClick(Sender: TObject);
-begin
-  FormCadastroFornecedores.Show
-end;
-
-procedure TFormHome.PnlFuncionariosClick(Sender: TObject);
-begin
-  FormCadastroFuncionarios.Show
-end;
-
-procedure TFormHome.PnlPeçasClick(Sender: TObject);
-begin
-  FormCadastroPeças.Show
-end;
-
-procedure TFormHome.PnlServiçosClick(Sender: TObject);
-begin
-  FormCadastroServiços.Show
-end;
-
-procedure TFormHome.PnlUsuariosClick(Sender: TObject);
-begin
-  FormCadastroUsuarios.show;
-end;
 
 end.

@@ -5,7 +5,7 @@ interface
 uses
   Winapi.Windows, Winapi.Messages, System.SysUtils, System.Variants, System.Classes, Vcl.Graphics,
   Vcl.Controls, Vcl.Forms, Vcl.Dialogs, Vcl.StdCtrls, Vcl.ExtCtrls,
-  Vcl.Imaging.pngimage, Vcl.ComCtrls;
+  Vcl.Imaging.pngimage, Vcl.ComCtrls, Vcl.Menus;
 
 type
   TFormMain = class(TForm)
@@ -51,5 +51,6 @@ begin
   FormLogin.Parent := Panel1;
   FormLogin.Show;
 end;
+
 
 end.

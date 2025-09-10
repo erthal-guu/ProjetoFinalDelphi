@@ -166,16 +166,16 @@
             <Form>FormCadastroFuncionarios</Form>
             <FormType>dfm</FormType>
         </DCCReference>
-        <DCCReference Include="uFormCadastroFornecedoresView.pas">
-            <Form>FormCadastroFornecedores</Form>
-            <FormType>dfm</FormType>
-        </DCCReference>
         <DCCReference Include="src\View\uFormCadastroServiçosView.pas">
             <Form>FormCadastroServiços</Form>
             <FormType>dfm</FormType>
         </DCCReference>
         <DCCReference Include="src\View\uFormCadastroPeçasView.pas">
             <Form>FormCadastroPeças</Form>
+            <FormType>dfm</FormType>
+        </DCCReference>
+        <DCCReference Include="src\View\uFormCadastroFornecedoresView.pas">
+            <Form>FormCadastroFornecedores</Form>
             <FormType>dfm</FormType>
         </DCCReference>
         <BuildConfiguration Include="Base">
