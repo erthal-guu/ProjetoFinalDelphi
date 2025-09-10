@@ -146,9 +146,14 @@
             <DesignClass>TDataModule</DesignClass>
         </DCCReference>
         <DCCReference Include="src\DTO\uUsuarioDTO.pas"/>
-        <DCCReference Include="src\View\uFormMain.view.pas">
+        <DCCReference Include="src\View\uFormMain.pas">
             <Form>FormMain</Form>
         </DCCReference>
+        <DCCReference Include="src\View\uFormHome.view.pas">
+            <Form>FormHome</Form>
+            <FormType>dfm</FormType>
+        </DCCReference>
+        <DCCReference Include="src\controller\uMainController.pas"/>
         <BuildConfiguration Include="Base">
             <Key>Base</Key>
         </BuildConfiguration>

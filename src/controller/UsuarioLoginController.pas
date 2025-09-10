@@ -1,7 +1,7 @@
   unit UsuarioLoginController;
 
   interface
-  uses  uUsuarioDTO,UsuarioLoginRepository,uDMConexao,uFormMain.view,
+  uses  uUsuarioDTO,UsuarioLoginRepository,uDMConexao,
   Vcl.Dialogs;
 
 
@@ -10,7 +10,6 @@
       Function ValidarLogin(UsuarioDTO : TUsuarioDTO): Boolean;
       function CriarObjeto( aCPF, aSenha: String) : TUsuarioDTO;
        function ValidarUsuarioDTO(UsuarioValido: TUsuarioDTO): Boolean;
-      procedure LoginSucedido;
     end;
 
   implementation
@@ -24,11 +23,6 @@
     UsuarioDTO.setCPF(aCPF);
     UsuarioDTO.setSenha(aSenha);
     Result := UsuarioDTO;
-  end;
-
-  procedure TUsuarioController.LoginSucedido;
-  begin
-  FormMain.show;
   end;
 
   Function TUsuarioController.ValidarLogin(UsuarioDTO: TUsuarioDTO):Boolean;

@@ -15,15 +15,18 @@ uses
   uUsuarioModel in 'src\Model\uUsuarioModel.pas',
   uDMConexao in 'src\repository\uDMConexao.pas' {DataModule1: TDataModule},
   uUsuarioDTO in 'src\DTO\uUsuarioDTO.pas',
-  uFormMain.view in 'src\View\uFormMain.view.pas' {FormMain};
+  uFormMain in 'src\View\uFormMain.pas' {FormMain},
+  uFormHome.view in 'src\View\uFormHome.view.pas' {FormHome},
+  uMainController in 'src\controller\uMainController.pas';
 
 {$R *.res}
 
 begin
   Application.Initialize;
   Application.MainFormOnTaskbar := True;
-  Application.CreateForm(TFormLogin, FormLogin);
   Application.CreateForm(TFormMain, FormMain);
+  Application.CreateForm(TFormLogin, FormLogin);
+  Application.CreateForm(TFormHome, FormHome);
   Application.CreateForm(TFormCadastro, FormCadastro);
   Application.CreateForm(TDataModule1, DataModule1);
   Application.Run;

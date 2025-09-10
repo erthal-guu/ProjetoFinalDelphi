@@ -7,13 +7,12 @@ uses
   System.Classes, Vcl.Graphics,
   Vcl.Controls, Vcl.Forms, Vcl.Dialogs, Vcl.StdCtrls, Vcl.ExtCtrls,
   Vcl.Imaging.pngimage, Vcl.Mask, Vcl.Imaging.jpeg, uUsuarioDTO,
-  UsuarioLoginController;
+  UsuarioLoginController, uMainController;
 
 type
   TFormLogin = class(TForm)
     PnlMain: TPanel;
     PnlBackground: TPanel;
-    Image1: TImage;
     PnlFormulario: TPanel;
     Image2: TImage;
     PnlContainer: TPanel;
@@ -28,11 +27,13 @@ type
     LblLogin: TLabel;
     LblCadastro: TLabel;
     PnlButton: TPanel;
+    Image1: TImage;
     function ValidarCampos: Boolean;
     procedure LimparCampos;
     procedure PnlButtonClick(Sender: TObject);
     procedure PnlButtonMouseEnter(Sender: TObject);
     procedure PnlButtonMouseLeave(Sender: TObject);
+    procedure LblCadastroClick(Sender: TObject);
   private
     { Private declarations }
   public
@@ -46,9 +47,10 @@ implementation
 
 {$R *.dfm}
 
-uses uFormCadastro.View;
-
-
+procedure TFormLogin.LblCadastroClick(Sender: TObject);
+begin
+  MainController.showCadastro;
+end;
 
 procedure TFormLogin.LimparCampos;
 begin
@@ -67,6 +69,7 @@ begin
     UsuarioDTO := Controller.CriarObjeto(EdtCPF.Text, EdtSenha.Text);
     if ValidarCampos and Controller.ValidarLogin(UsuarioDTO) then begin
       ShowMessage('Login Bem Sucedido');
+      MainController.showHome;
     end else begin
       ShowMessage('CPF ou Senha inválidos!');
       LimparCampos;

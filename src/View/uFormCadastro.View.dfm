@@ -1,9 +1,11 @@
 object FormCadastro: TFormCadastro
   Left = 0
   Top = 0
+  Align = alClient
+  BorderStyle = bsNone
   Caption = 'FormCadastro'
-  ClientHeight = 850
-  ClientWidth = 1122
+  ClientHeight = 889
+  ClientWidth = 1138
   Color = clBtnFace
   Font.Charset = DEFAULT_CHARSET
   Font.Color = clWindowText
@@ -15,17 +17,19 @@ object FormCadastro: TFormCadastro
   object PnlMain: TPanel
     Left = 0
     Top = 0
-    Width = 1122
-    Height = 850
+    Width = 1138
+    Height = 889
     Align = alClient
     Color = clHighlightText
     ParentBackground = False
     TabOrder = 0
+    ExplicitWidth = 1122
+    ExplicitHeight = 850
     object PnlBackground: TPanel
       Left = 1
       Top = 1
-      Width = 1120
-      Height = 848
+      Width = 1136
+      Height = 887
       Align = alClient
       Color = clHighlight
       Font.Charset = DEFAULT_CHARSET
@@ -36,11 +40,13 @@ object FormCadastro: TFormCadastro
       ParentBackground = False
       ParentFont = False
       TabOrder = 0
+      ExplicitWidth = 1120
+      ExplicitHeight = 848
       object Image1: TImage
         Left = 1
         Top = 1
-        Width = 566
-        Height = 846
+        Width = 582
+        Height = 885
         Align = alClient
         Center = True
         Picture.Data = {
@@ -2486,12 +2492,14 @@ object FormCadastro: TFormCadastro
           49454E44AE426082}
         ExplicitLeft = -1
         ExplicitTop = 0
+        ExplicitWidth = 566
+        ExplicitHeight = 846
       end
       object PnlFormulario: TPanel
-        Left = 567
+        Left = 583
         Top = 1
         Width = 552
-        Height = 846
+        Height = 885
         Align = alRight
         Color = clWindow
         Font.Charset = DEFAULT_CHARSET
@@ -2502,12 +2510,14 @@ object FormCadastro: TFormCadastro
         ParentBackground = False
         ParentFont = False
         TabOrder = 0
+        ExplicitLeft = 567
+        ExplicitHeight = 846
         object Image2: TImage
           AlignWithMargins = True
           Left = 1
           Top = 1
           Width = 550
-          Height = 844
+          Height = 883
           Margins.Left = 0
           Margins.Top = 0
           Margins.Right = 0
@@ -4524,13 +4534,14 @@ object FormCadastro: TFormCadastro
             426082}
           ExplicitLeft = 2
           ExplicitTop = 2
+          ExplicitHeight = 844
         end
         object PnlContainer: TPanel
           AlignWithMargins = True
           Left = 21
           Top = 61
           Width = 510
-          Height = 684
+          Height = 723
           Margins.Left = 20
           Margins.Top = 60
           Margins.Right = 20
@@ -4540,6 +4551,7 @@ object FormCadastro: TFormCadastro
           Color = 15395562
           ParentBackground = False
           TabOrder = 0
+          ExplicitHeight = 684
           object LblTitulo: TLabel
             AlignWithMargins = True
             Left = 3
@@ -4649,15 +4661,15 @@ object FormCadastro: TFormCadastro
             Left = 23
             Top = 497
             Width = 459
-            Height = 73
+            Height = 50
             Cursor = crHandPoint
             Caption = 'Enviar'
             Color = clHotLight
             Ctl3D = True
             Font.Charset = ANSI_CHARSET
             Font.Color = clHighlightText
-            Font.Height = -21
-            Font.Name = 'Arial Black'
+            Font.Height = -19
+            Font.Name = 'Nirmala Text'
             Font.Style = [fsBold]
             ParentBackground = False
             ParentCtl3D = False

@@ -10,10 +10,7 @@ Coordinates=270,10,61,58
 [Image2]
 Coordinates=109,10,57,58
 
-[Image1]
-Coordinates=415,10,57,58
-
 []
-Coordinates=10,10,89,58
+Coordinates=415,10,57,58
 Visible=True
 

@@ -6,7 +6,8 @@ uses
   Winapi.Windows, Winapi.Messages, System.SysUtils, System.Variants,
   System.Classes, Vcl.Graphics,
   Vcl.Controls, Vcl.Forms, Vcl.Dialogs, Vcl.Mask, Vcl.StdCtrls,
-  Vcl.Imaging.pngimage, Vcl.ExtCtrls, uUsuarioDTO, UsuarioCadastroController,uFormLogin.View;
+  Vcl.Imaging.pngimage, Vcl.ExtCtrls, uUsuarioDTO, UsuarioCadastroController,
+  uMainController,uFormLogin.view;
 
 type
   TFormCadastro = class(TForm)
@@ -49,7 +50,7 @@ implementation
 
 procedure TFormCadastro.LblCadastroClick(Sender: TObject);
 begin
-FormLogin.Show;
+  MainController.showLogin;
 end;
 
 procedure TFormCadastro.LimparCampos;
@@ -70,8 +71,11 @@ begin
       UsuarioDTO := Controller.CriarObjeto(EdtNome.Text, EdtCPF.Text,
         EdtSenha.Text);
       Controller.SalvarUsuario(UsuarioDTO);
-      ShowMessage('Usuário salvo com sucesso!');
       LimparCampos;
+      ShowMessage('Usuário salvo com sucesso!');
+      MainController.showHome;
+
+
     finally
       Controller.Free;
     end;
