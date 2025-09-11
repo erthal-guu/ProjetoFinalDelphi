@@ -1,4 +1,5 @@
 object FormHome: TFormHome
+  AlignWithMargins = True
   Left = 0
   Top = 0
   Align = alClient
@@ -7,13 +8,14 @@ object FormHome: TFormHome
   ClientHeight = 712
   ClientWidth = 1122
   Color = clBtnFace
-  Font.Charset = DEFAULT_CHARSET
+  Font.Charset = ANSI_CHARSET
   Font.Color = clWindowText
-  Font.Height = -12
-  Font.Name = 'Segoe UI'
+  Font.Height = -32
+  Font.Name = 'Arial'
   Font.Style = []
+  Menu = MainMenu1
   WindowState = wsMaximized
-  TextHeight = 15
+  TextHeight = 36
   object PnlMain: TPanel
     Left = 0
     Top = 0
@@ -23,7 +25,6 @@ object FormHome: TFormHome
     Color = clWhite
     ParentBackground = False
     TabOrder = 0
-    ExplicitHeight = 692
     object Image1: TImage
       Left = 1
       Top = 1
@@ -2854,6 +2855,38 @@ object FormHome: TFormHome
       ExplicitLeft = 2
       ExplicitTop = 88
       ExplicitHeight = 609
+    end
+  end
+  object MainMenu1: TMainMenu
+    OwnerDraw = True
+    Left = 536
+    Top = 72
+    object Cadastror1: TMenuItem
+      Caption = 'Cadastros'
+      object Usuarios1: TMenuItem
+        Caption = 'Usuarios'
+        OnClick = Usuarios1Click
+      end
+      object Usuarios2: TMenuItem
+        Caption = 'Clientes'
+        OnClick = Usuarios2Click
+      end
+      object Funcionarios1: TMenuItem
+        Caption = 'Funcionarios'
+        OnClick = Funcionarios1Click
+      end
+      object Funcionarios2: TMenuItem
+        Caption = 'Fornecedores'
+        OnClick = Funcionarios2Click
+      end
+      object Peas1: TMenuItem
+        Caption = 'Pe'#231'as'
+        OnClick = Peas1Click
+      end
+      object Peas2: TMenuItem
+        Caption = 'Servi'#231'os'
+        OnClick = Peas2Click
+      end
     end
   end
 end

@@ -31,7 +31,7 @@ uses uFormCadastroView, uFormLoginView,uFormHomeView;
 
 procedure TFormMain.FormShow(Sender: TObject);
 begin
-  showLogin;
+  ShowHome;
 end;
 
 procedure TFormMain.showCadastro;

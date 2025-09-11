@@ -23,15 +23,17 @@ uses
   uFormCadastroFuncionariosView in 'src\View\uFormCadastroFuncionariosView.pas' {FormCadastroFuncionarios},
   uFormCadastroServiçosView in 'src\View\uFormCadastroServiçosView.pas' {FormCadastroServiços},
   uFormCadastroPeçasView in 'src\View\uFormCadastroPeçasView.pas' {FormCadastroPeças},
-  uFormCadastroFornecedoresView in 'src\View\uFormCadastroFornecedoresView.pas' {FormCadastroFornecedores};
+  uFormCadastroFornecedoresView in 'src\View\uFormCadastroFornecedoresView.pas' {FormCadastroFornecedores},
+  Vcl.Themes,
+  Vcl.Styles;
 
 {$R *.res}
 
 begin
   Application.Initialize;
   Application.MainFormOnTaskbar := True;
-  Application.CreateForm(TFormMain, FormMain);
   Application.CreateForm(TFormHome, FormHome);
+  Application.CreateForm(TFormMain, FormMain);
   Application.CreateForm(TFormLogin, FormLogin);
   Application.CreateForm(TFormCadastro, FormCadastro);
   Application.CreateForm(TDataModule1, DataModule1);

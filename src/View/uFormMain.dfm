@@ -22,6 +22,5 @@ object FormMain: TFormMain
     Align = alClient
     BevelOuter = bvNone
     TabOrder = 0
-    ExplicitHeight = 691
   end
 end
