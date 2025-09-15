@@ -2,7 +2,7 @@ unit uMainController;
 
 interface
 
-uses uFormMain;
+uses uFormMainView;
 
 type TMainController = class
   public

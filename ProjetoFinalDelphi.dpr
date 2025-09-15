@@ -15,7 +15,6 @@ uses
   uUsuarioModel in 'src\Model\uUsuarioModel.pas',
   uDMConexao in 'src\repository\uDMConexao.pas' {DataModule1: TDataModule},
   uUsuarioDTO in 'src\DTO\uUsuarioDTO.pas',
-  uFormMain in 'src\View\uFormMain.pas' {FormMain},
   uFormHomeView in 'src\View\uFormHomeView.pas' {FormHome},
   uMainController in 'src\controller\uMainController.pas',
   uFormCadastroUsuariosView in 'src\View\uFormCadastroUsuariosView.pas' {FormCadastroUsuarios},
@@ -24,8 +23,15 @@ uses
   uFormCadastroServiçosView in 'src\View\uFormCadastroServiçosView.pas' {FormCadastroServiços},
   uFormCadastroPeçasView in 'src\View\uFormCadastroPeçasView.pas' {FormCadastroPeças},
   uFormCadastroFornecedoresView in 'src\View\uFormCadastroFornecedoresView.pas' {FormCadastroFornecedores},
+<<<<<<< HEAD
   Vcl.Themes,
   Vcl.Styles;
+=======
+  uFormCadastroVeiculosView in 'src\View\uFormCadastroVeiculosView.pas' {FormCadastroVeiculos},
+  uFormCadastroAgendamentosView in 'src\View\uFormCadastroAgendamentosView.pas' {FormCadastroAgendamentos},
+  uFormCadastroOrdensServiçoView in 'src\View\uFormCadastroOrdensServiçoView.pas' {FormCadastroOrdensServiço},
+  uFormMainView in 'src\View\uFormMainView.pas' {FormMain};
+>>>>>>> c49b2d9 (ConfiguraÃ§Ãµes graficas iniciais da tela de home)
 
 {$R *.res}
 
@@ -43,5 +49,9 @@ begin
   Application.CreateForm(TFormCadastroServiços, FormCadastroServiços);
   Application.CreateForm(TFormCadastroPeças, FormCadastroPeças);
   Application.CreateForm(TFormCadastroFornecedores, FormCadastroFornecedores);
+  Application.CreateForm(TFormCadastroVeiculos, FormCadastroVeiculos);
+  Application.CreateForm(TFormCadastroAgendamentos, FormCadastroAgendamentos);
+  Application.CreateForm(TFormCadastroOrdensServiço, FormCadastroOrdensServiço);
+  Application.CreateForm(TFormMain, FormMain);
   Application.Run;
 end.

@@ -106,6 +106,7 @@
         <AppDPIAwarenessMode>PerMonitorV2</AppDPIAwarenessMode>
         <VerInfo_IncludeVerInfo>true</VerInfo_IncludeVerInfo>
         <VerInfo_Locale>1033</VerInfo_Locale>
+        <Icon_MainIcon>ProjetoFinalDelphi_Icon1.ico</Icon_MainIcon>
     </PropertyGroup>
     <PropertyGroup Condition="'$(Cfg_1_Win64)'!=''">
         <AppDPIAwarenessMode>PerMonitorV2</AppDPIAwarenessMode>
@@ -147,9 +148,6 @@
             <DesignClass>TDataModule</DesignClass>
         </DCCReference>
         <DCCReference Include="src\DTO\uUsuarioDTO.pas"/>
-        <DCCReference Include="src\View\uFormMain.pas">
-            <Form>FormMain</Form>
-        </DCCReference>
         <DCCReference Include="src\View\uFormHomeView.pas">
             <Form>FormHome</Form>
             <FormType>dfm</FormType>
@@ -169,15 +167,27 @@
         </DCCReference>
         <DCCReference Include="src\View\uFormCadastroServiçosView.pas">
             <Form>FormCadastroServiços</Form>
-            <FormType>dfm</FormType>
         </DCCReference>
         <DCCReference Include="src\View\uFormCadastroPeçasView.pas">
             <Form>FormCadastroPeças</Form>
-            <FormType>dfm</FormType>
         </DCCReference>
         <DCCReference Include="src\View\uFormCadastroFornecedoresView.pas">
             <Form>FormCadastroFornecedores</Form>
             <FormType>dfm</FormType>
+        </DCCReference>
+        <DCCReference Include="src\View\uFormCadastroVeiculosView.pas">
+            <Form>FormCadastroVeiculos</Form>
+            <FormType>dfm</FormType>
+        </DCCReference>
+        <DCCReference Include="src\View\uFormCadastroAgendamentosView.pas">
+            <Form>FormCadastroAgendamentos</Form>
+            <FormType>dfm</FormType>
+        </DCCReference>
+        <DCCReference Include="src\View\uFormCadastroOrdensServiçoView.pas">
+            <Form>FormCadastroOrdensServiço</Form>
+        </DCCReference>
+        <DCCReference Include="src\View\uFormMainView.pas">
+            <Form>FormMain</Form>
         </DCCReference>
         <BuildConfiguration Include="Base">
             <Key>Base</Key>
