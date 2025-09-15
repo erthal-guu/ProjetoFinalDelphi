@@ -1,9 +1,9 @@
-﻿object FormCadastroOrdensServiço: TFormCadastroOrdensServiço
+﻿object FormOrdensServiço: TFormOrdensServiço
   Left = 0
   Top = 0
-  Caption = 'FormCadastroOrdensServi'#231'o'
-  ClientHeight = 441
-  ClientWidth = 624
+  Caption = 'FormOrdensServi'#231'o'
+  ClientHeight = 667
+  ClientWidth = 1124
   Color = clBtnFace
   Font.Charset = DEFAULT_CHARSET
   Font.Color = clWindowText
@@ -14,13 +14,11 @@
   object Panel1: TPanel
     Left = 0
     Top = 0
-    Width = 624
-    Height = 441
+    Width = 1124
+    Height = 667
     Align = alClient
     TabOrder = 0
-    ExplicitLeft = 232
-    ExplicitTop = 224
-    ExplicitWidth = 185
-    ExplicitHeight = 41
+    ExplicitWidth = 624
+    ExplicitHeight = 441
   end
 end

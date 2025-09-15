@@ -7,7 +7,7 @@ uses
   Vcl.Controls, Vcl.Forms, Vcl.Dialogs, Vcl.ExtCtrls;
 
 type
-  TFormCadastroOrdensServiço = class(TForm)
+  TFormOrdensServiço = class(TForm)
     Panel1: TPanel;
   private
     { Private declarations }
@@ -16,7 +16,7 @@ type
   end;
 
 var
-  FormCadastroOrdensServiço: TFormCadastroOrdensServiço;
+  FormOrdensServiço: TFormOrdensServiço;
 
 implementation
 

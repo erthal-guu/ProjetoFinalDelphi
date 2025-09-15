@@ -4,67 +4,46 @@ interface
 
 uses
   Winapi.Windows, Winapi.Messages, System.SysUtils, System.Variants, System.Classes, Vcl.Graphics,
-  Vcl.Controls, Vcl.Forms, Vcl.Dialogs, Vcl.Mask, Vcl.StdCtrls,
-  Vcl.Imaging.pngimage, Vcl.ExtCtrls, Vcl.ComCtrls, Vcl.Menus,
+  Vcl.Controls, Vcl.Forms, Vcl.Dialogs, Vcl.ExtCtrls,
+  uFormCadastroAgendamentosView,
   uFormCadastroUsuariosView,
   uFormCadastroClientesView,
   uFormCadastroFuncionariosView,
   uFormCadastroFornecedoresView,
+  uFormCadastroVeiculosView,
   uFormCadastroPeçasView,
   uFormCadastroServiçosView,
-<<<<<<< HEAD
-=======
-  uFormCadastroVeiculosView,
-  uFormCadastroOrdensServiçoView,
->>>>>>> c49b2d9 (ConfiguraÃ§Ãµes graficas iniciais da tela de home)
-   Vcl.ToolWin, Vcl.ActnMan, Vcl.ActnCtrls,
-  Vcl.ActnMenus;
+  uFormCadastroOrdensServiçoView, Vcl.Menus, Vcl.Imaging.pngimage;
+
 
 type
   TFormHome = class(TForm)
-    PnlMain: TPanel;
-    Image1: TImage;
+    Panel1: TPanel;
     MainMenu1: TMainMenu;
-<<<<<<< HEAD
-    Cadastror1: TMenuItem;
-    Usuarios1: TMenuItem;
-    Usuarios2: TMenuItem;
-    Funcionarios1: TMenuItem;
-    Funcionarios2: TMenuItem;
-    Peas1: TMenuItem;
-    Peas2: TMenuItem;
-    procedure Usuarios1Click(Sender: TObject);
-    procedure Usuarios2Click(Sender: TObject);
-    procedure Funcionarios1Click(Sender: TObject);
-    procedure Funcionarios2Click(Sender: TObject);
-    procedure Peas1Click(Sender: TObject);
-    procedure Peas2Click(Sender: TObject);
-=======
     Cadastros1: TMenuItem;
-    Cadastros: TMenuItem;
+    Usuarios: TMenuItem;
     Clientes: TMenuItem;
+    Funcionarios: TMenuItem;
     Fornecedores: TMenuItem;
-    Funcionários: TMenuItem;
-    Veículos: TMenuItem;
+    Peças: TMenuItem;
+    Veiculos: TMenuItem;
     Serviços: TMenuItem;
     OrdensServiço: TMenuItem;
-    Relatórios: TMenuItem;
-    Financeiro: TMenuItem;
-    Sair1: TMenuItem;
-    Panel1: TPanel;
-    Peças: TMenuItem;
     Agendamentos: TMenuItem;
-    procedure Sair1Click(Sender: TObject);
-    procedure CadastrosClick(Sender: TObject);
-    procedure ClientesClick(Sender: TObject);
+    Relatorios: TMenuItem;
+    Financeiro: TMenuItem;
+    Sair: TMenuItem;
+    Image1: TImage;
+    procedure SairClick(Sender: TObject);
+    procedure FuncionariosClick(Sender: TObject);
     procedure FornecedoresClick(Sender: TObject);
-    procedure FuncionáriosClick(Sender: TObject);
-    procedure VeículosClick(Sender: TObject);
+    procedure PeçasClick(Sender: TObject);
+    procedure VeiculosClick(Sender: TObject);
     procedure ServiçosClick(Sender: TObject);
     procedure OrdensServiçoClick(Sender: TObject);
-    procedure PeçasClick(Sender: TObject);
     procedure AgendamentosClick(Sender: TObject);
->>>>>>> c49b2d9 (ConfiguraÃ§Ãµes graficas iniciais da tela de home)
+    procedure UsuariosClick(Sender: TObject);
+    procedure ClientesClick(Sender: TObject);
   private
     { Private declarations }
   public
@@ -78,19 +57,37 @@ implementation
 
 {$R *.dfm}
 
-uses uFormCadastroAgendamentosView;
 
-
-procedure TFormHome.AgendamentosClick(Sender: TObject);
+procedure TFormHome.FuncionariosClick(Sender: TObject);
 begin
-  FormCadastroAgendamentos.Position := poScreenCenter;
-  FormCadastroAgendamentos.Show;
+  FormCadastroFuncionarios.Show;
+  FormCadastroFuncionarios.Position := poScreenCenter;
 end;
 
-procedure TFormHome.CadastrosClick(Sender: TObject);
+procedure TFormHome.SairClick(Sender: TObject);
+begin
+  if MessageDlg('Deseja realmente fechar a aplicação?', mtConfirmation,
+  [mbYes, mbNo], 0) = mrYes then begin
+    Application.Terminate;
+  end;
+end;
+
+procedure TFormHome.ServiçosClick(Sender: TObject);
+begin
+  FormCadastroServiços.Position := poScreenCenter;
+  FormCadastroServiços.Show;
+end;
+
+procedure TFormHome.UsuariosClick(Sender: TObject);
 begin
   FormCadastroUsuarios.Position := poScreenCenter;
   FormCadastroUsuarios.Show;
+end;
+
+procedure TFormHome.VeiculosClick(Sender: TObject);
+begin
+  FormCadastroVeiculos.Position := poScreenCenter;
+  FormCadastroVeiculos.Show;
 end;
 
 procedure TFormHome.ClientesClick(Sender: TObject);
@@ -101,20 +98,14 @@ end;
 
 procedure TFormHome.FornecedoresClick(Sender: TObject);
 begin
-  FormCadastroFuncionarios.Position := poScreenCenter;
-  FormCadastroFuncionarios.Show;
-end;
-
-procedure TFormHome.FuncionáriosClick(Sender: TObject);
-begin
   FormCadastroFornecedores.Position := poScreenCenter;
   FormCadastroFornecedores.Show;
 end;
 
-procedure TFormHome.VeículosClick(Sender: TObject);
+procedure TFormHome.OrdensServiçoClick(Sender: TObject);
 begin
-  FormCadastroVeiculos.Position := poScreenCenter;
-  FormCadastroVeiculos.Show;
+  FormOrdensServiço.Position := poScreenCenter;
+  FormOrdensServiço.Show;
 end;
 
 procedure TFormHome.PeçasClick(Sender: TObject);
@@ -123,58 +114,10 @@ begin
   FormCadastroPeças.Show;
 end;
 
-procedure TFormHome.ServiçosClick(Sender: TObject);
+procedure TFormHome.AgendamentosClick(Sender: TObject);
 begin
-  FormCadastroServiços.Position := poScreenCenter;
-  FormCadastroServiços.Show;
-end;
-
-procedure TFormHome.OrdensServiçoClick(Sender: TObject);
-begin
-  FormCadastroOrdensServiço.Position := poScreenCenter;
-  FormCadastroOrdensServiço.Show;
-end;
-
-
-procedure TFormHome.Sair1Click(Sender: TObject);
-begin
-  if MessageDlg('Deseja realmente fechar a aplicação?', mtConfirmation, [mbYes, mbNo], 0) = mrYes then begin
-    Application.Terminate;
-  end;
-end;
-
-
-
-
-procedure TFormHome.Usuarios1Click(Sender: TObject);
-begin
-  FormCadastroUsuarios.show;
-end;
-
-
-procedure TFormHome.Usuarios2Click(Sender: TObject);
-begin
-  FormCadastroClientes.show;
-end;
-
-procedure TFormHome.Funcionarios1Click(Sender: TObject);
-begin
-  FormCadastroFuncionarios.Show;
-end;
-
-procedure TFormHome.Funcionarios2Click(Sender: TObject);
-begin
-  FormCadastroFornecedores.Show;
-end;
-
-procedure TFormHome.Peas1Click(Sender: TObject);
-begin
-  FormCadastroPeças.Show;
-end;
-
-procedure TFormHome.Peas2Click(Sender: TObject);
-begin
-  FormCadastroServiços.Show;
+  FormAgendamentos.Position := poScreenCenter;
+  FormAgendamentos.Show;
 end;
 
 

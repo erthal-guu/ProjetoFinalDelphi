@@ -15,7 +15,6 @@ uses
   uUsuarioModel in 'src\Model\uUsuarioModel.pas',
   uDMConexao in 'src\repository\uDMConexao.pas' {DataModule1: TDataModule},
   uUsuarioDTO in 'src\DTO\uUsuarioDTO.pas',
-  uFormHomeView in 'src\View\uFormHomeView.pas' {FormHome},
   uMainController in 'src\controller\uMainController.pas',
   uFormCadastroUsuariosView in 'src\View\uFormCadastroUsuariosView.pas' {FormCadastroUsuarios},
   uFormCadastroClientesView in 'src\View\uFormCadastroClientesView.pas' {FormCadastroClientes},
@@ -23,15 +22,11 @@ uses
   uFormCadastroServiçosView in 'src\View\uFormCadastroServiçosView.pas' {FormCadastroServiços},
   uFormCadastroPeçasView in 'src\View\uFormCadastroPeçasView.pas' {FormCadastroPeças},
   uFormCadastroFornecedoresView in 'src\View\uFormCadastroFornecedoresView.pas' {FormCadastroFornecedores},
-<<<<<<< HEAD
-  Vcl.Themes,
-  Vcl.Styles;
-=======
   uFormCadastroVeiculosView in 'src\View\uFormCadastroVeiculosView.pas' {FormCadastroVeiculos},
-  uFormCadastroAgendamentosView in 'src\View\uFormCadastroAgendamentosView.pas' {FormCadastroAgendamentos},
-  uFormCadastroOrdensServiçoView in 'src\View\uFormCadastroOrdensServiçoView.pas' {FormCadastroOrdensServiço},
-  uFormMainView in 'src\View\uFormMainView.pas' {FormMain};
->>>>>>> c49b2d9 (ConfiguraÃ§Ãµes graficas iniciais da tela de home)
+  uFormCadastroAgendamentosView in 'src\View\uFormCadastroAgendamentosView.pas' {FormAgendamentos},
+  uFormCadastroOrdensServiçoView in 'src\View\uFormCadastroOrdensServiçoView.pas' {FormOrdensServiço},
+  uFormMainView in 'src\View\uFormMainView.pas' {FormMain},
+  uFormHomeView in 'src\View\uFormHomeView.pas' {FormHome};
 
 {$R *.res}
 
@@ -39,9 +34,9 @@ begin
   Application.Initialize;
   Application.MainFormOnTaskbar := True;
   Application.CreateForm(TFormHome, FormHome);
-  Application.CreateForm(TFormMain, FormMain);
   Application.CreateForm(TFormLogin, FormLogin);
   Application.CreateForm(TFormCadastro, FormCadastro);
+  Application.CreateForm(TFormMain, FormMain);
   Application.CreateForm(TDataModule1, DataModule1);
   Application.CreateForm(TFormCadastroUsuarios, FormCadastroUsuarios);
   Application.CreateForm(TFormCadastroClientes, FormCadastroClientes);
@@ -50,8 +45,11 @@ begin
   Application.CreateForm(TFormCadastroPeças, FormCadastroPeças);
   Application.CreateForm(TFormCadastroFornecedores, FormCadastroFornecedores);
   Application.CreateForm(TFormCadastroVeiculos, FormCadastroVeiculos);
-  Application.CreateForm(TFormCadastroAgendamentos, FormCadastroAgendamentos);
-  Application.CreateForm(TFormCadastroOrdensServiço, FormCadastroOrdensServiço);
+  Application.CreateForm(TFormAgendamentos, FormAgendamentos);
+  Application.CreateForm(TFormOrdensServiço, FormOrdensServiço);
   Application.CreateForm(TFormMain, FormMain);
+  Application.CreateForm(TFormCadastroVeiculos, FormCadastroVeiculos);
+  Application.CreateForm(TFormMain, FormMain);
+  Application.CreateForm(TFormHome, FormHome);
   Application.Run;
 end.

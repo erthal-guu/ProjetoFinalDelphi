@@ -13,7 +13,6 @@ type
   TFormCadastro = class(TForm)
     PnlMain: TPanel;
     PnlBackground: TPanel;
-    Image1: TImage;
     PnlFormulario: TPanel;
     PnlContainer: TPanel;
     LblTitulo: TLabel;
@@ -29,6 +28,7 @@ type
     LblLogin: TLabel;
     LblCadastro: TLabel;
     Image2: TImage;
+    Image1: TImage;
     procedure PnlButtonMouseEnter(Sender: TObject);
     procedure PnlButtonMouseLeave(Sender: TObject);
     procedure PnlButtonClick(Sender: TObject);

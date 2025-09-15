@@ -1,7 +1,7 @@
-object FormCadastroAgendamentos: TFormCadastroAgendamentos
+object FormAgendamentos: TFormAgendamentos
   Left = 0
   Top = 0
-  Caption = 'FormCadastroAgendamentos'
+  Caption = 'FormAgendamentos'
   ClientHeight = 683
   ClientWidth = 1095
   Color = clBtnFace
@@ -18,7 +18,5 @@ object FormCadastroAgendamentos: TFormCadastroAgendamentos
     Height = 683
     Align = alClient
     TabOrder = 0
-    ExplicitWidth = 624
-    ExplicitHeight = 441
   end
 end

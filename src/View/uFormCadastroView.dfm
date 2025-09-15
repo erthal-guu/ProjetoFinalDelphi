@@ -23,8 +23,6 @@ object FormCadastro: TFormCadastro
     Color = clHighlightText
     ParentBackground = False
     TabOrder = 0
-    ExplicitWidth = 1122
-    ExplicitHeight = 850
     object PnlBackground: TPanel
       Left = 1
       Top = 1
@@ -40,8 +38,6 @@ object FormCadastro: TFormCadastro
       ParentBackground = False
       ParentFont = False
       TabOrder = 0
-      ExplicitWidth = 1120
-      ExplicitHeight = 848
       object Image1: TImage
         Left = 1
         Top = 1
@@ -2490,10 +2486,8 @@ object FormCadastro: TFormCadastro
           04411A1614320882200882342C28641004411004695850C82008822008D2B0A0
           904110044110A4614121832008822048C3F2FF01A52ECB9477B10FDA00000000
           49454E44AE426082}
-        ExplicitLeft = -1
-        ExplicitTop = 0
-        ExplicitWidth = 566
-        ExplicitHeight = 846
+        ExplicitLeft = 9
+        ExplicitTop = 2
       end
       object PnlFormulario: TPanel
         Left = 583
@@ -2510,8 +2504,6 @@ object FormCadastro: TFormCadastro
         ParentBackground = False
         ParentFont = False
         TabOrder = 0
-        ExplicitLeft = 567
-        ExplicitHeight = 846
         object Image2: TImage
           AlignWithMargins = True
           Left = 1
@@ -4551,7 +4543,6 @@ object FormCadastro: TFormCadastro
           Color = 15395562
           ParentBackground = False
           TabOrder = 0
-          ExplicitHeight = 684
           object LblTitulo: TLabel
             AlignWithMargins = True
             Left = 3

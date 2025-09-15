@@ -12,7 +12,9 @@ object DataModule1: TDataModule1
     Top = 288
   end
   object FDPhysPgDriverLink1: TFDPhysPgDriverLink
-    VendorLib = 'C:\Users\siqueira.6989\Desktop\ProjetoFinalDelphi\lib'
+    VendorLib = 
+      'C:\Users\Gustavo Erthal\Desktop\ProjetoFinal Delphi\lib\libpq.dl' +
+      'l'
     Left = 600
     Top = 288
   end

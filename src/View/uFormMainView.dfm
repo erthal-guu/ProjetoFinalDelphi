@@ -1,10 +1,9 @@
 object FormMain: TFormMain
   Left = 0
   Top = 0
-  Align = alClient
   Caption = 'FormMain'
-  ClientHeight = 441
-  ClientWidth = 624
+  ClientHeight = 672
+  ClientWidth = 1112
   Color = clBtnFace
   Font.Charset = DEFAULT_CHARSET
   Font.Color = clWindowText
@@ -15,8 +14,8 @@ object FormMain: TFormMain
   object Panel1: TPanel
     Left = 0
     Top = 0
-    Width = 624
-    Height = 441
+    Width = 1112
+    Height = 672
     Align = alClient
     TabOrder = 0
     ExplicitLeft = 232

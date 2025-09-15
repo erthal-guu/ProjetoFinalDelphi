@@ -7,7 +7,7 @@ uses
   Vcl.Controls, Vcl.Forms, Vcl.Dialogs, Vcl.ExtCtrls;
 
 type
-  TFormCadastroAgendamentos = class(TForm)
+  TFormAgendamentos = class(TForm)
     Panel1: TPanel;
   private
     { Private declarations }
@@ -16,7 +16,7 @@ type
   end;
 
 var
-  FormCadastroAgendamentos: TFormCadastroAgendamentos;
+  FormAgendamentos: TFormAgendamentos;
 
 implementation
 

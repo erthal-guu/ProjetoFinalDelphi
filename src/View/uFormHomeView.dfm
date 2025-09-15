@@ -1,47 +1,38 @@
-<<<<<<< HEAD
-object FormHome: TFormHome
-  AlignWithMargins = True
-=======
 ﻿object FormHome: TFormHome
->>>>>>> c49b2d9 (Configurações graficas iniciais da tela de home)
   Left = 0
   Top = 0
   Align = alClient
+  BorderStyle = bsSingle
   Caption = 'FormHome'
-  ClientHeight = 673
-  ClientWidth = 1106
+  ClientHeight = 657
+  ClientWidth = 1116
   Color = clBtnFace
-  Font.Charset = ANSI_CHARSET
+  Font.Charset = DEFAULT_CHARSET
   Font.Color = clWindowText
-<<<<<<< HEAD
-  Font.Height = -32
-  Font.Name = 'Arial'
-  Font.Style = []
-  Menu = MainMenu1
-  WindowState = wsMaximized
-  TextHeight = 36
-=======
-  Font.Height = -21
+  Font.Height = -12
   Font.Name = 'Segoe UI'
   Font.Style = []
   Menu = MainMenu1
+  Position = poDesigned
   WindowState = wsMaximized
-  TextHeight = 30
->>>>>>> c49b2d9 (Configurações graficas iniciais da tela de home)
-  object PnlMain: TPanel
+  TextHeight = 15
+  object Panel1: TPanel
     Left = 0
     Top = 0
-    Width = 1106
-    Height = 673
+    Width = 1116
+    Height = 657
     Align = alClient
-    Color = clWhite
+    BevelOuter = bvNone
+    Color = clBtnHighlight
     ParentBackground = False
     TabOrder = 0
+    ExplicitWidth = 1121
+    ExplicitHeight = 649
     object Image1: TImage
-      Left = 1
-      Top = 1
-      Width = 1104
-      Height = 630
+      Left = 0
+      Top = 0
+      Width = 1116
+      Height = 657
       Align = alClient
       Center = True
       Picture.Data = {
@@ -2401,56 +2392,45 @@ object FormHome: TFormHome
         A0642108822008829400942C044110044190128092852008822008520250B210
         04411004414A004A168220088220480940C94210044110042901285908822008
         822025E0FF0230CBEE5B25A8833E0000000049454E44AE426082}
-      ExplicitLeft = 0
-      ExplicitTop = -5
-    end
-    object Panel1: TPanel
-      Left = 1
-      Top = 631
-      Width = 1104
-      Height = 41
-      Align = alBottom
-      Color = 14079702
-      ParentBackground = False
-      TabOrder = 0
+      ExplicitLeft = -48
+      ExplicitTop = -48
     end
   end
   object MainMenu1: TMainMenu
-    OwnerDraw = True
-    Left = 544
-    Top = 344
+    Left = 224
+    Top = 112
     object Cadastros1: TMenuItem
-      Caption = '&Cadastros'
-      object Cadastros: TMenuItem
+      Caption = 'Cadastros'
+      object Usuarios: TMenuItem
         Caption = 'Usuarios'
-        OnClick = CadastrosClick
+        OnClick = UsuariosClick
       end
       object Clientes: TMenuItem
         Caption = 'Clientes'
         OnClick = ClientesClick
       end
+      object Funcionarios: TMenuItem
+        Caption = 'Funcionarios'
+        OnClick = FuncionariosClick
+      end
       object Fornecedores: TMenuItem
         Caption = 'Fornecedores'
         OnClick = FornecedoresClick
       end
-      object Funcionários: TMenuItem
-        Caption = 'Funcion'#225'rios'
-        OnClick = FuncionáriosClick
-      end
-      object Veículos: TMenuItem
-        Caption = 'Ve'#237'culos'
-        OnClick = VeículosClick
-      end
       object Peças: TMenuItem
         Caption = 'Pe'#231'as'
         OnClick = PeçasClick
+      end
+      object Veiculos: TMenuItem
+        Caption = 'Ve'#237'culos'
+        OnClick = VeiculosClick
       end
       object Serviços: TMenuItem
         Caption = 'Servi'#231'os'
         OnClick = ServiçosClick
       end
       object OrdensServiço: TMenuItem
-        Caption = 'Ordens Servi'#231'o'
+        Caption = 'Ordens de Servi'#231'o'
         OnClick = OrdensServiçoClick
       end
       object Agendamentos: TMenuItem
@@ -2458,47 +2438,15 @@ object FormHome: TFormHome
         OnClick = AgendamentosClick
       end
     end
-    object Relatórios: TMenuItem
+    object Relatorios: TMenuItem
       Caption = 'Relat'#243'rios'
     end
     object Financeiro: TMenuItem
       Caption = 'Financeiro'
     end
-    object Sair1: TMenuItem
+    object Sair: TMenuItem
       Caption = 'Sair'
-      OnClick = Sair1Click
-    end
-  end
-  object MainMenu1: TMainMenu
-    OwnerDraw = True
-    Left = 536
-    Top = 72
-    object Cadastror1: TMenuItem
-      Caption = 'Cadastros'
-      object Usuarios1: TMenuItem
-        Caption = 'Usuarios'
-        OnClick = Usuarios1Click
-      end
-      object Usuarios2: TMenuItem
-        Caption = 'Clientes'
-        OnClick = Usuarios2Click
-      end
-      object Funcionarios1: TMenuItem
-        Caption = 'Funcionarios'
-        OnClick = Funcionarios1Click
-      end
-      object Funcionarios2: TMenuItem
-        Caption = 'Fornecedores'
-        OnClick = Funcionarios2Click
-      end
-      object Peas1: TMenuItem
-        Caption = 'Pe'#231'as'
-        OnClick = Peas1Click
-      end
-      object Peas2: TMenuItem
-        Caption = 'Servi'#231'os'
-        OnClick = Peas2Click
-      end
+      OnClick = SairClick
     end
   end
 end

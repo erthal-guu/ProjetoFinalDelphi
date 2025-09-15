@@ -106,7 +106,6 @@
         <AppDPIAwarenessMode>PerMonitorV2</AppDPIAwarenessMode>
         <VerInfo_IncludeVerInfo>true</VerInfo_IncludeVerInfo>
         <VerInfo_Locale>1033</VerInfo_Locale>
-        <Icon_MainIcon>ProjetoFinalDelphi_Icon1.ico</Icon_MainIcon>
     </PropertyGroup>
     <PropertyGroup Condition="'$(Cfg_1_Win64)'!=''">
         <AppDPIAwarenessMode>PerMonitorV2</AppDPIAwarenessMode>
@@ -148,10 +147,6 @@
             <DesignClass>TDataModule</DesignClass>
         </DCCReference>
         <DCCReference Include="src\DTO\uUsuarioDTO.pas"/>
-        <DCCReference Include="src\View\uFormHomeView.pas">
-            <Form>FormHome</Form>
-            <FormType>dfm</FormType>
-        </DCCReference>
         <DCCReference Include="src\controller\uMainController.pas"/>
         <DCCReference Include="src\View\uFormCadastroUsuariosView.pas">
             <Form>FormCadastroUsuarios</Form>
@@ -180,14 +175,20 @@
             <FormType>dfm</FormType>
         </DCCReference>
         <DCCReference Include="src\View\uFormCadastroAgendamentosView.pas">
-            <Form>FormCadastroAgendamentos</Form>
+            <Form>FormAgendamentos</Form>
             <FormType>dfm</FormType>
         </DCCReference>
         <DCCReference Include="src\View\uFormCadastroOrdensServiçoView.pas">
-            <Form>FormCadastroOrdensServiço</Form>
+            <Form>FormOrdensServiço</Form>
+            <FormType>dfm</FormType>
         </DCCReference>
         <DCCReference Include="src\View\uFormMainView.pas">
             <Form>FormMain</Form>
+            <FormType>dfm</FormType>
+        </DCCReference>
+        <DCCReference Include="src\View\uFormHomeView.pas">
+            <Form>FormHome</Form>
+            <FormType>dfm</FormType>
         </DCCReference>
         <BuildConfiguration Include="Base">
             <Key>Base</Key>
