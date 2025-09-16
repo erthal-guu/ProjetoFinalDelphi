@@ -34,6 +34,7 @@ type
     Financeiro: TMenuItem;
     Sair: TMenuItem;
     Image1: TImage;
+    Panel2: TPanel;
     procedure SairClick(Sender: TObject);
     procedure FuncionariosClick(Sender: TObject);
     procedure FornecedoresClick(Sender: TObject);

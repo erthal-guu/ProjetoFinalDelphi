@@ -21,12 +21,13 @@ end;
 
 procedure TMainController.showHome;
 begin
-FormMain.ShowHome;
+  FormMain.ShowHome;
 end;
 
 procedure TMainController.showLogin;
 begin
   FormMain.showLogin;
 end;
+
 
 end.

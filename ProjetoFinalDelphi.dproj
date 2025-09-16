@@ -182,12 +182,12 @@
             <Form>FormOrdensServiço</Form>
             <FormType>dfm</FormType>
         </DCCReference>
-        <DCCReference Include="src\View\uFormMainView.pas">
-            <Form>FormMain</Form>
-            <FormType>dfm</FormType>
-        </DCCReference>
         <DCCReference Include="src\View\uFormHomeView.pas">
             <Form>FormHome</Form>
+            <FormType>dfm</FormType>
+        </DCCReference>
+        <DCCReference Include="src\View\uFormMainView.pas">
+            <Form>FormMain</Form>
             <FormType>dfm</FormType>
         </DCCReference>
         <BuildConfiguration Include="Base">

@@ -47,9 +47,12 @@ implementation
 
 {$R *.dfm}
 
+
+
 procedure TFormLogin.LblCadastroClick(Sender: TObject);
 begin
   MainController.showCadastro;
+  Self.Close;
 end;
 
 procedure TFormLogin.LimparCampos;
@@ -68,7 +71,7 @@ begin
     Controller := TUsuarioController.Create;
     UsuarioDTO := Controller.CriarObjeto(EdtCPF.Text, EdtSenha.Text);
     if ValidarCampos and Controller.ValidarLogin(UsuarioDTO) then begin
-      ShowMessage('Login Bem Sucedido !!');
+      ShowMessage('Login Bem Sucedido !');
       MainController.showHome;
     end else begin
       ShowMessage('CPF ou Senha inválidos!');

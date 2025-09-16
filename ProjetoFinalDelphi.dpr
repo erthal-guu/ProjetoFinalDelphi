@@ -25,31 +25,31 @@ uses
   uFormCadastroVeiculosView in 'src\View\uFormCadastroVeiculosView.pas' {FormCadastroVeiculos},
   uFormCadastroAgendamentosView in 'src\View\uFormCadastroAgendamentosView.pas' {FormAgendamentos},
   uFormCadastroOrdensServiçoView in 'src\View\uFormCadastroOrdensServiçoView.pas' {FormOrdensServiço},
-  uFormMainView in 'src\View\uFormMainView.pas' {FormMain},
-  uFormHomeView in 'src\View\uFormHomeView.pas' {FormHome};
+  uFormHomeView in 'src\View\uFormHomeView.pas' {FormHome},
+  uFormMainView in 'src\View\uFormMainView.pas' {FormMain};
 
 {$R *.res}
 
 begin
   Application.Initialize;
   Application.MainFormOnTaskbar := True;
-  Application.CreateForm(TFormHome, FormHome);
   Application.CreateForm(TFormLogin, FormLogin);
-  Application.CreateForm(TFormCadastro, FormCadastro);
+  Application.CreateForm(TFormHome, FormHome);
   Application.CreateForm(TFormMain, FormMain);
+  Application.CreateForm(TFormCadastroPeças, FormCadastroPeças);
+  Application.CreateForm(TFormCadastro, FormCadastro);
   Application.CreateForm(TDataModule1, DataModule1);
   Application.CreateForm(TFormCadastroUsuarios, FormCadastroUsuarios);
   Application.CreateForm(TFormCadastroClientes, FormCadastroClientes);
   Application.CreateForm(TFormCadastroFuncionarios, FormCadastroFuncionarios);
   Application.CreateForm(TFormCadastroServiços, FormCadastroServiços);
-  Application.CreateForm(TFormCadastroPeças, FormCadastroPeças);
   Application.CreateForm(TFormCadastroFornecedores, FormCadastroFornecedores);
   Application.CreateForm(TFormCadastroVeiculos, FormCadastroVeiculos);
   Application.CreateForm(TFormAgendamentos, FormAgendamentos);
   Application.CreateForm(TFormOrdensServiço, FormOrdensServiço);
-  Application.CreateForm(TFormMain, FormMain);
   Application.CreateForm(TFormCadastroVeiculos, FormCadastroVeiculos);
   Application.CreateForm(TFormMain, FormMain);
   Application.CreateForm(TFormHome, FormHome);
+  Application.CreateForm(TFormMain, FormMain);
   Application.Run;
 end.

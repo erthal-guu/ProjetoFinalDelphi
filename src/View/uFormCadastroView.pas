@@ -51,6 +51,7 @@ implementation
 procedure TFormCadastro.LblCadastroClick(Sender: TObject);
 begin
   MainController.showLogin;
+  Self.Close;
 end;
 
 procedure TFormCadastro.LimparCampos;

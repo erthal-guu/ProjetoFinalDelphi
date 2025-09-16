@@ -2,24 +2,25 @@ object FormMain: TFormMain
   Left = 0
   Top = 0
   Caption = 'FormMain'
-  ClientHeight = 672
-  ClientWidth = 1112
+  ClientHeight = 646
+  ClientWidth = 1111
   Color = clBtnFace
   Font.Charset = DEFAULT_CHARSET
   Font.Color = clWindowText
   Font.Height = -12
   Font.Name = 'Segoe UI'
   Font.Style = []
+  WindowState = wsMaximized
   TextHeight = 15
-  object Panel1: TPanel
+  object PnlMain: TPanel
     Left = 0
     Top = 0
-    Width = 1112
-    Height = 672
+    Width = 1111
+    Height = 646
     Align = alClient
     TabOrder = 0
-    ExplicitLeft = 232
-    ExplicitTop = 224
+    ExplicitLeft = 472
+    ExplicitTop = 320
     ExplicitWidth = 185
     ExplicitHeight = 41
   end

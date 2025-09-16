@@ -9,15 +9,13 @@ uses
 
 type
   TFormMain = class(TForm)
-    Panel1: TPanel;
-    procedure FormShow(Sender: TObject);
+    PnlMain: TPanel;
   private
     { Private declarations }
   public
-    { Public declarations }
-    procedure showCadastro;
-    procedure showLogin;
-    procedure showHome;
+    procedure ShowLogin;
+    procedure ShowHome;
+    procedure ShowCadastro;
   end;
 
 var
@@ -25,32 +23,25 @@ var
 
 implementation
 
-{$R *.dfm}
-
 uses uFormCadastroView, uFormLoginView,uFormHomeView;
 
-procedure TFormMain.FormShow(Sender: TObject);
-begin
-  showLogin;
-end;
+{$R *.dfm}
 
-procedure TFormMain.showCadastro;
+{ TFormMain }
+
+procedure TFormMain.ShowCadastro;
 begin
-  FormCadastro.Parent := Panel1;
   FormCadastro.Show;
 end;
 
-procedure TFormMain.showHome;
+procedure TFormMain.ShowHome;
 begin
-  FormHome.Parent := Panel1;
   FormHome.Show;
 end;
 
-procedure TFormMain.showLogin;
+procedure TFormMain.ShowLogin;
 begin
-  FormLogin.Parent := Panel1;
   FormLogin.Show;
 end;
-
 
 end.

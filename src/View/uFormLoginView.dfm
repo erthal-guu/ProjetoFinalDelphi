@@ -2,10 +2,9 @@ object FormLogin: TFormLogin
   Left = 0
   Top = 0
   Align = alClient
-  BorderStyle = bsNone
   Caption = 'FormLogin'
-  ClientHeight = 889
-  ClientWidth = 1143
+  ClientHeight = 850
+  ClientWidth = 1127
   Color = clBtnFace
   Font.Charset = DEFAULT_CHARSET
   Font.Color = clWindowText
@@ -17,17 +16,19 @@ object FormLogin: TFormLogin
   object PnlMain: TPanel
     Left = 0
     Top = 0
-    Width = 1143
-    Height = 889
+    Width = 1127
+    Height = 850
     Align = alClient
     Color = clHighlightText
     ParentBackground = False
     TabOrder = 0
+    ExplicitWidth = 1143
+    ExplicitHeight = 889
     object PnlBackground: TPanel
       Left = 1
       Top = 1
-      Width = 1141
-      Height = 887
+      Width = 1125
+      Height = 848
       Align = alClient
       Color = clHotLight
       Font.Charset = DEFAULT_CHARSET
@@ -38,11 +39,13 @@ object FormLogin: TFormLogin
       ParentBackground = False
       ParentFont = False
       TabOrder = 0
+      ExplicitWidth = 1141
+      ExplicitHeight = 887
       object Image1: TImage
         Left = 545
         Top = 1
-        Width = 595
-        Height = 885
+        Width = 579
+        Height = 846
         Align = alClient
         Center = True
         Picture.Data = {
@@ -2489,13 +2492,12 @@ object FormLogin: TFormLogin
         ExplicitLeft = -1
         ExplicitTop = 0
         ExplicitWidth = 566
-        ExplicitHeight = 846
       end
       object PnlFormulario: TPanel
         Left = 1
         Top = 1
         Width = 544
-        Height = 885
+        Height = 846
         Align = alLeft
         Color = clWindow
         Font.Charset = DEFAULT_CHARSET
@@ -2506,12 +2508,13 @@ object FormLogin: TFormLogin
         ParentBackground = False
         ParentFont = False
         TabOrder = 0
+        ExplicitHeight = 885
         object Image2: TImage
           AlignWithMargins = True
           Left = 1
           Top = 1
           Width = 542
-          Height = 883
+          Height = 844
           Margins.Left = 0
           Margins.Top = 0
           Margins.Right = 0
@@ -4526,16 +4529,15 @@ object FormLogin: TFormLogin
             31C61863CC642CB28D31C618638C998C45B631C618638C3193B1C836C618638C
             31663216D9C618638C31C64CE6FF0354967C0B2894C5A90000000049454E44AE
             426082}
-          ExplicitLeft = 2
+          ExplicitLeft = -1
           ExplicitTop = 0
-          ExplicitHeight = 844
         end
         object PnlContainer: TPanel
           AlignWithMargins = True
           Left = 21
           Top = 101
           Width = 502
-          Height = 683
+          Height = 644
           Margins.Left = 20
           Margins.Top = 100
           Margins.Right = 20
@@ -4545,6 +4547,7 @@ object FormLogin: TFormLogin
           Color = 15329769
           ParentBackground = False
           TabOrder = 0
+          ExplicitHeight = 683
           object LblTitulo: TLabel
             AlignWithMargins = True
             Left = 3
@@ -4644,6 +4647,7 @@ object FormLogin: TFormLogin
               Top = 200
               Width = 465
               Height = 50
+              Cursor = crHandPoint
               Margins.Left = 0
               Margins.Top = 0
               Margins.Right = 0
@@ -4698,6 +4702,7 @@ object FormLogin: TFormLogin
               Top = 0
               Width = 82
               Height = 65
+              Cursor = crHandPoint
               Margins.Left = 4
               Margins.Top = 0
               Margins.Right = 0
@@ -4712,8 +4717,9 @@ object FormLogin: TFormLogin
               Font.Style = [fsUnderline]
               ParentColor = False
               ParentFont = False
+              Transparent = True
               OnClick = LblCadastroClick
-              ExplicitHeight = 21
+              ExplicitTop = -3
             end
           end
         end

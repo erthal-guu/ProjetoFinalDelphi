@@ -2,10 +2,10 @@
   Left = 0
   Top = 0
   Align = alClient
-  BorderStyle = bsSingle
+  BorderStyle = bsNone
   Caption = 'FormHome'
-  ClientHeight = 657
-  ClientWidth = 1116
+  ClientHeight = 696
+  ClientWidth = 1132
   Color = clBtnFace
   Font.Charset = DEFAULT_CHARSET
   Font.Color = clWindowText
@@ -19,20 +19,20 @@
   object Panel1: TPanel
     Left = 0
     Top = 0
-    Width = 1116
-    Height = 657
+    Width = 1132
+    Height = 696
     Align = alClient
     BevelOuter = bvNone
     Color = clBtnHighlight
     ParentBackground = False
     TabOrder = 0
-    ExplicitWidth = 1121
-    ExplicitHeight = 649
+    ExplicitWidth = 1116
+    ExplicitHeight = 657
     object Image1: TImage
       Left = 0
       Top = 0
-      Width = 1116
-      Height = 657
+      Width = 1132
+      Height = 624
       Align = alClient
       Center = True
       Picture.Data = {
@@ -2392,8 +2392,18 @@
         A0642108822008829400942C044110044190128092852008822008520250B210
         04411004414A004A168220088220480940C94210044110042901285908822008
         822025E0FF0230CBEE5B25A8833E0000000049454E44AE426082}
-      ExplicitLeft = -48
-      ExplicitTop = -48
+      ExplicitTop = -2
+    end
+    object Panel2: TPanel
+      Left = 0
+      Top = 624
+      Width = 1132
+      Height = 72
+      Align = alBottom
+      Color = 3348992
+      ParentBackground = False
+      TabOrder = 0
+      ExplicitTop = 630
     end
   end
   object MainMenu1: TMainMenu
