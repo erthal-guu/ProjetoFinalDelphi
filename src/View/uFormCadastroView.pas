@@ -51,6 +51,7 @@ implementation
 procedure TFormCadastro.LblCadastroClick(Sender: TObject);
 begin
   MainController.showLogin;
+  Application.ProcessMessages;
   Self.Close;
 end;
 

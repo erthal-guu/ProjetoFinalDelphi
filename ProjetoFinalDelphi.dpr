@@ -33,11 +33,11 @@ uses
 begin
   Application.Initialize;
   Application.MainFormOnTaskbar := True;
-  Application.CreateForm(TFormLogin, FormLogin);
   Application.CreateForm(TFormHome, FormHome);
+  Application.CreateForm(TFormLogin, FormLogin);
+  Application.CreateForm(TFormCadastro, FormCadastro);
   Application.CreateForm(TFormMain, FormMain);
   Application.CreateForm(TFormCadastroPeças, FormCadastroPeças);
-  Application.CreateForm(TFormCadastro, FormCadastro);
   Application.CreateForm(TDataModule1, DataModule1);
   Application.CreateForm(TFormCadastroUsuarios, FormCadastroUsuarios);
   Application.CreateForm(TFormCadastroClientes, FormCadastroClientes);

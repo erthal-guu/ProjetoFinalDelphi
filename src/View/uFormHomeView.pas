@@ -13,12 +13,11 @@ uses
   uFormCadastroVeiculosView,
   uFormCadastroPeçasView,
   uFormCadastroServiçosView,
-  uFormCadastroOrdensServiçoView, Vcl.Menus, Vcl.Imaging.pngimage;
+  uFormCadastroOrdensServiçoView, Vcl.Menus, Vcl.Imaging.pngimage, Vcl.StdCtrls;
 
 
 type
   TFormHome = class(TForm)
-    Panel1: TPanel;
     MainMenu1: TMainMenu;
     Cadastros1: TMenuItem;
     Usuarios: TMenuItem;
@@ -29,12 +28,11 @@ type
     Veiculos: TMenuItem;
     Serviços: TMenuItem;
     OrdensServiço: TMenuItem;
-    Agendamentos: TMenuItem;
     Relatorios: TMenuItem;
     Financeiro: TMenuItem;
     Sair: TMenuItem;
+    Panel1: TPanel;
     Image1: TImage;
-    Panel2: TPanel;
     procedure SairClick(Sender: TObject);
     procedure FuncionariosClick(Sender: TObject);
     procedure FornecedoresClick(Sender: TObject);

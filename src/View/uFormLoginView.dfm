@@ -22,8 +22,6 @@ object FormLogin: TFormLogin
     Color = clHighlightText
     ParentBackground = False
     TabOrder = 0
-    ExplicitWidth = 1143
-    ExplicitHeight = 889
     object PnlBackground: TPanel
       Left = 1
       Top = 1
@@ -39,8 +37,6 @@ object FormLogin: TFormLogin
       ParentBackground = False
       ParentFont = False
       TabOrder = 0
-      ExplicitWidth = 1141
-      ExplicitHeight = 887
       object Image1: TImage
         Left = 545
         Top = 1
@@ -2489,9 +2485,8 @@ object FormLogin: TFormLogin
           04411A1614320882200882342C28641004411004695850C82008822008D2B0A0
           904110044110A4614121832008822048C3F2FF01A52ECB9477B10FDA00000000
           49454E44AE426082}
-        ExplicitLeft = -1
-        ExplicitTop = 0
-        ExplicitWidth = 566
+        ExplicitLeft = 547
+        ExplicitTop = -1
       end
       object PnlFormulario: TPanel
         Left = 1
@@ -2508,7 +2503,6 @@ object FormLogin: TFormLogin
         ParentBackground = False
         ParentFont = False
         TabOrder = 0
-        ExplicitHeight = 885
         object Image2: TImage
           AlignWithMargins = True
           Left = 1
@@ -4547,7 +4541,6 @@ object FormLogin: TFormLogin
           Color = 15329769
           ParentBackground = False
           TabOrder = 0
-          ExplicitHeight = 683
           object LblTitulo: TLabel
             AlignWithMargins = True
             Left = 3
@@ -4719,7 +4712,7 @@ object FormLogin: TFormLogin
               ParentFont = False
               Transparent = True
               OnClick = LblCadastroClick
-              ExplicitTop = -3
+              ExplicitHeight = 21
             end
           end
         end

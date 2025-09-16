@@ -11,16 +11,372 @@ object FormCadastroUsuarios: TFormCadastroUsuarios
   Font.Name = 'Segoe UI'
   Font.Style = []
   TextHeight = 15
-  object Panel1: TPanel
+  object PageControl1: TPageControl
     Left = 0
     Top = 0
     Width = 1118
     Height = 664
+    ActivePage = Usuarios
     Align = alClient
+    Font.Charset = DEFAULT_CHARSET
+    Font.Color = clWindowText
+    Font.Height = -19
+    Font.Name = 'Segoe UI'
+    Font.Style = []
+    ParentFont = False
     TabOrder = 0
-    ExplicitLeft = 472
-    ExplicitTop = 328
-    ExplicitWidth = 185
-    ExplicitHeight = 41
+    object Usuarios: TTabSheet
+      Caption = 'Usuarios'
+      object Panel2: TPanel
+        Left = 0
+        Top = 0
+        Width = 1110
+        Height = 624
+        Align = alClient
+        TabOrder = 0
+        ExplicitLeft = 464
+        ExplicitTop = 296
+        ExplicitWidth = 185
+        ExplicitHeight = 41
+        object Panel1: TPanel
+          Left = 1
+          Top = 1
+          Width = 1108
+          Height = 622
+          Align = alClient
+          TabOrder = 0
+          ExplicitLeft = 464
+          ExplicitTop = 296
+          ExplicitWidth = 185
+          ExplicitHeight = 41
+          object Panel3: TPanel
+            Left = 925
+            Top = 1
+            Width = 182
+            Height = 477
+            Align = alRight
+            BevelOuter = bvNone
+            Color = 14145495
+            ParentBackground = False
+            TabOrder = 0
+            ExplicitLeft = 909
+            ExplicitTop = 41
+            object PnlSair: TPanel
+              AlignWithMargins = True
+              Left = 5
+              Top = 375
+              Width = 172
+              Height = 41
+              Margins.Left = 5
+              Margins.Top = 20
+              Margins.Right = 5
+              Margins.Bottom = 10
+              Align = alTop
+              Caption = 'Sair'
+              Font.Charset = DEFAULT_CHARSET
+              Font.Color = clWindowText
+              Font.Height = -15
+              Font.Name = 'Segoe UI'
+              Font.Style = []
+              ParentFont = False
+              TabOrder = 0
+              ExplicitTop = 162
+            end
+            object Panel5: TPanel
+              AlignWithMargins = True
+              Left = 5
+              Top = 91
+              Width = 172
+              Height = 41
+              Margins.Left = 5
+              Margins.Top = 20
+              Margins.Right = 5
+              Margins.Bottom = 10
+              Align = alTop
+              Caption = 'Editar'
+              Font.Charset = DEFAULT_CHARSET
+              Font.Color = clWindowText
+              Font.Height = -15
+              Font.Name = 'Segoe UI'
+              Font.Style = []
+              ParentFont = False
+              TabOrder = 1
+            end
+            object Panel6: TPanel
+              AlignWithMargins = True
+              Left = 5
+              Top = 20
+              Width = 172
+              Height = 41
+              Margins.Left = 5
+              Margins.Top = 20
+              Margins.Right = 5
+              Margins.Bottom = 10
+              Align = alTop
+              Caption = 'Adicionar'
+              Font.Charset = DEFAULT_CHARSET
+              Font.Color = clWindowText
+              Font.Height = -15
+              Font.Name = 'Segoe UI'
+              Font.Style = []
+              ParentFont = False
+              TabOrder = 2
+            end
+            object PnlRestaurar: TPanel
+              AlignWithMargins = True
+              Left = 5
+              Top = 304
+              Width = 172
+              Height = 41
+              Margins.Left = 5
+              Margins.Top = 20
+              Margins.Right = 5
+              Margins.Bottom = 10
+              Align = alTop
+              Caption = 'Restaurar'
+              Font.Charset = DEFAULT_CHARSET
+              Font.Color = clWindowText
+              Font.Height = -15
+              Font.Name = 'Segoe UI'
+              Font.Style = []
+              ParentFont = False
+              TabOrder = 3
+              ExplicitTop = 162
+            end
+            object PnlPesquisar: TPanel
+              AlignWithMargins = True
+              Left = 5
+              Top = 233
+              Width = 172
+              Height = 41
+              Margins.Left = 5
+              Margins.Top = 20
+              Margins.Right = 5
+              Margins.Bottom = 10
+              Align = alTop
+              Caption = 'Pesquisar'
+              Font.Charset = DEFAULT_CHARSET
+              Font.Color = clWindowText
+              Font.Height = -15
+              Font.Name = 'Segoe UI'
+              Font.Style = []
+              ParentFont = False
+              TabOrder = 4
+              ExplicitTop = 162
+            end
+            object Panel10: TPanel
+              AlignWithMargins = True
+              Left = 5
+              Top = 162
+              Width = 172
+              Height = 41
+              Margins.Left = 5
+              Margins.Top = 20
+              Margins.Right = 5
+              Margins.Bottom = 10
+              Align = alTop
+              Caption = 'Excluir'
+              Font.Charset = DEFAULT_CHARSET
+              Font.Color = clWindowText
+              Font.Height = -15
+              Font.Name = 'Segoe UI'
+              Font.Style = []
+              ParentFont = False
+              TabOrder = 5
+            end
+          end
+          object Panel7: TPanel
+            Left = 1
+            Top = 478
+            Width = 1106
+            Height = 143
+            Align = alBottom
+            BevelOuter = bvNone
+            Color = 14145495
+            ParentBackground = False
+            TabOrder = 1
+          end
+          object DBGrid1: TDBGrid
+            AlignWithMargins = True
+            Left = 21
+            Top = 21
+            Width = 884
+            Height = 437
+            Margins.Left = 20
+            Margins.Top = 20
+            Margins.Right = 20
+            Margins.Bottom = 20
+            Align = alClient
+            TabOrder = 2
+            TitleFont.Charset = DEFAULT_CHARSET
+            TitleFont.Color = clWindowText
+            TitleFont.Height = -19
+            TitleFont.Name = 'Segoe UI'
+            TitleFont.Style = []
+          end
+        end
+      end
+    end
+    object Grupos: TTabSheet
+      Caption = 'Grupos'
+      ImageIndex = 1
+      object PnlMain: TPanel
+        Left = 0
+        Top = 0
+        Width = 1110
+        Height = 624
+        Align = alClient
+        TabOrder = 0
+        ExplicitLeft = 464
+        ExplicitTop = 296
+        ExplicitWidth = 185
+        ExplicitHeight = 41
+        object PnlButton: TPanel
+          Left = 927
+          Top = 1
+          Width = 182
+          Height = 495
+          Align = alRight
+          BevelOuter = bvNone
+          Color = 15329769
+          ParentBackground = False
+          TabOrder = 0
+          ExplicitLeft = 930
+          ExplicitTop = -4
+          ExplicitHeight = 479
+          object PnlExcluir: TPanel
+            AlignWithMargins = True
+            Left = 10
+            Top = 162
+            Width = 162
+            Height = 41
+            Margins.Left = 10
+            Margins.Top = 20
+            Margins.Right = 10
+            Margins.Bottom = 10
+            Align = alTop
+            BevelOuter = bvNone
+            Caption = 'Excluir'
+            Color = clHotLight
+            Font.Charset = DEFAULT_CHARSET
+            Font.Color = clWhite
+            Font.Height = -15
+            Font.Name = 'Segoe UI'
+            Font.Style = []
+            ParentBackground = False
+            ParentFont = False
+            TabOrder = 0
+            ExplicitLeft = 6
+            ExplicitTop = 163
+            ExplicitWidth = 170
+          end
+          object PnlEditar: TPanel
+            AlignWithMargins = True
+            Left = 10
+            Top = 91
+            Width = 162
+            Height = 41
+            Margins.Left = 10
+            Margins.Top = 20
+            Margins.Right = 10
+            Margins.Bottom = 10
+            Align = alTop
+            BevelOuter = bvNone
+            Caption = 'Editar'
+            Color = clHotLight
+            Font.Charset = DEFAULT_CHARSET
+            Font.Color = clWhite
+            Font.Height = -15
+            Font.Name = 'Segoe UI'
+            Font.Style = []
+            ParentBackground = False
+            ParentFont = False
+            TabOrder = 1
+            ExplicitLeft = 6
+            ExplicitTop = 92
+            ExplicitWidth = 170
+          end
+          object PnlAdicionar: TPanel
+            AlignWithMargins = True
+            Left = 10
+            Top = 20
+            Width = 162
+            Height = 41
+            Margins.Left = 10
+            Margins.Top = 20
+            Margins.Right = 10
+            Margins.Bottom = 10
+            Align = alTop
+            BevelOuter = bvNone
+            Caption = 'Adicionar'
+            Color = clHighlight
+            Font.Charset = DEFAULT_CHARSET
+            Font.Color = clWhite
+            Font.Height = -15
+            Font.Name = 'Segoe UI'
+            Font.Style = []
+            ParentBackground = False
+            ParentFont = False
+            TabOrder = 2
+            ExplicitLeft = 6
+            ExplicitTop = 21
+            ExplicitWidth = 170
+          end
+        end
+        object PnlEdt: TPanel
+          AlignWithMargins = True
+          Left = 21
+          Top = 496
+          Width = 1088
+          Height = 124
+          Margins.Left = 20
+          Margins.Top = 0
+          Margins.Right = 0
+          Align = alBottom
+          BevelOuter = bvNone
+          Color = 15329769
+          ParentBackground = False
+          TabOrder = 1
+        end
+        object PnlGrid: TPanel
+          AlignWithMargins = True
+          Left = 21
+          Top = 11
+          Width = 886
+          Height = 475
+          Margins.Left = 20
+          Margins.Top = 10
+          Margins.Right = 20
+          Margins.Bottom = 10
+          Align = alClient
+          Color = clHotLight
+          ParentBackground = False
+          TabOrder = 2
+          ExplicitLeft = 22
+          ExplicitTop = 19
+          ExplicitWidth = 884
+          ExplicitHeight = 437
+          object Grid: TDBGrid
+            AlignWithMargins = True
+            Left = 6
+            Top = 6
+            Width = 874
+            Height = 463
+            Margins.Left = 5
+            Margins.Top = 5
+            Margins.Right = 5
+            Margins.Bottom = 5
+            Align = alClient
+            BorderStyle = bsNone
+            TabOrder = 0
+            TitleFont.Charset = DEFAULT_CHARSET
+            TitleFont.Color = clWindowText
+            TitleFont.Height = -19
+            TitleFont.Name = 'Segoe UI'
+            TitleFont.Style = []
+          end
+        end
+      end
+    end
   end
 end
