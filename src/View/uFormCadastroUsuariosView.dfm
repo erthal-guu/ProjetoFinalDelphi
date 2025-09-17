@@ -16,7 +16,7 @@ object FormCadastroUsuarios: TFormCadastroUsuarios
     Top = 0
     Width = 1118
     Height = 664
-    ActivePage = Usuarios
+    ActivePage = Grupos
     Align = alClient
     Font.Charset = DEFAULT_CHARSET
     Font.Color = clWindowText
@@ -34,10 +34,6 @@ object FormCadastroUsuarios: TFormCadastroUsuarios
         Height = 624
         Align = alClient
         TabOrder = 0
-        ExplicitLeft = 464
-        ExplicitTop = 296
-        ExplicitWidth = 185
-        ExplicitHeight = 41
         object Panel1: TPanel
           Left = 1
           Top = 1
@@ -45,10 +41,6 @@ object FormCadastroUsuarios: TFormCadastroUsuarios
           Height = 622
           Align = alClient
           TabOrder = 0
-          ExplicitLeft = 464
-          ExplicitTop = 296
-          ExplicitWidth = 185
-          ExplicitHeight = 41
           object Panel3: TPanel
             Left = 925
             Top = 1
@@ -59,8 +51,6 @@ object FormCadastroUsuarios: TFormCadastroUsuarios
             Color = 14145495
             ParentBackground = False
             TabOrder = 0
-            ExplicitLeft = 909
-            ExplicitTop = 41
             object PnlSair: TPanel
               AlignWithMargins = True
               Left = 5
@@ -80,7 +70,6 @@ object FormCadastroUsuarios: TFormCadastroUsuarios
               Font.Style = []
               ParentFont = False
               TabOrder = 0
-              ExplicitTop = 162
             end
             object Panel5: TPanel
               AlignWithMargins = True
@@ -141,7 +130,6 @@ object FormCadastroUsuarios: TFormCadastroUsuarios
               Font.Style = []
               ParentFont = False
               TabOrder = 3
-              ExplicitTop = 162
             end
             object PnlPesquisar: TPanel
               AlignWithMargins = True
@@ -162,7 +150,6 @@ object FormCadastroUsuarios: TFormCadastroUsuarios
               Font.Style = []
               ParentFont = False
               TabOrder = 4
-              ExplicitTop = 162
             end
             object Panel10: TPanel
               AlignWithMargins = True
@@ -227,10 +214,6 @@ object FormCadastroUsuarios: TFormCadastroUsuarios
         Height = 624
         Align = alClient
         TabOrder = 0
-        ExplicitLeft = 464
-        ExplicitTop = 296
-        ExplicitWidth = 185
-        ExplicitHeight = 41
         object PnlButton: TPanel
           Left = 927
           Top = 1
@@ -241,9 +224,6 @@ object FormCadastroUsuarios: TFormCadastroUsuarios
           Color = 15329769
           ParentBackground = False
           TabOrder = 0
-          ExplicitLeft = 930
-          ExplicitTop = -4
-          ExplicitHeight = 479
           object PnlExcluir: TPanel
             AlignWithMargins = True
             Left = 10
@@ -257,7 +237,7 @@ object FormCadastroUsuarios: TFormCadastroUsuarios
             Align = alTop
             BevelOuter = bvNone
             Caption = 'Excluir'
-            Color = clHotLight
+            Color = 6172416
             Font.Charset = DEFAULT_CHARSET
             Font.Color = clWhite
             Font.Height = -15
@@ -266,9 +246,6 @@ object FormCadastroUsuarios: TFormCadastroUsuarios
             ParentBackground = False
             ParentFont = False
             TabOrder = 0
-            ExplicitLeft = 6
-            ExplicitTop = 163
-            ExplicitWidth = 170
           end
           object PnlEditar: TPanel
             AlignWithMargins = True
@@ -283,7 +260,7 @@ object FormCadastroUsuarios: TFormCadastroUsuarios
             Align = alTop
             BevelOuter = bvNone
             Caption = 'Editar'
-            Color = clHotLight
+            Color = 6172416
             Font.Charset = DEFAULT_CHARSET
             Font.Color = clWhite
             Font.Height = -15
@@ -292,9 +269,6 @@ object FormCadastroUsuarios: TFormCadastroUsuarios
             ParentBackground = False
             ParentFont = False
             TabOrder = 1
-            ExplicitLeft = 6
-            ExplicitTop = 92
-            ExplicitWidth = 170
           end
           object PnlAdicionar: TPanel
             AlignWithMargins = True
@@ -309,7 +283,7 @@ object FormCadastroUsuarios: TFormCadastroUsuarios
             Align = alTop
             BevelOuter = bvNone
             Caption = 'Adicionar'
-            Color = clHighlight
+            Color = 6172416
             Font.Charset = DEFAULT_CHARSET
             Font.Color = clWhite
             Font.Height = -15
@@ -318,9 +292,6 @@ object FormCadastroUsuarios: TFormCadastroUsuarios
             ParentBackground = False
             ParentFont = False
             TabOrder = 2
-            ExplicitLeft = 6
-            ExplicitTop = 21
-            ExplicitWidth = 170
           end
         end
         object PnlEdt: TPanel
@@ -337,6 +308,7 @@ object FormCadastroUsuarios: TFormCadastroUsuarios
           Color = 15329769
           ParentBackground = False
           TabOrder = 1
+          ExplicitLeft = 11
         end
         object PnlGrid: TPanel
           AlignWithMargins = True
@@ -349,13 +321,10 @@ object FormCadastroUsuarios: TFormCadastroUsuarios
           Margins.Right = 20
           Margins.Bottom = 10
           Align = alClient
-          Color = clHotLight
+          Color = clInfoText
           ParentBackground = False
           TabOrder = 2
-          ExplicitLeft = 22
-          ExplicitTop = 19
-          ExplicitWidth = 884
-          ExplicitHeight = 437
+          ExplicitLeft = 18
           object Grid: TDBGrid
             AlignWithMargins = True
             Left = 6

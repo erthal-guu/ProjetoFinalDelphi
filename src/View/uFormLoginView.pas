@@ -26,10 +26,10 @@ type
     LblLogin: TLabel;
     LblCadastro: TLabel;
     PnlButton: TPanel;
-    Image1: TImage;
     EdtSenha: TEdit;
     PnlCheckBox: TPanel;
     CheckBox1: TCheckBox;
+    Image1: TImage;
     function ValidarCampos: Boolean;
     procedure LimparCampos;
     procedure PnlButtonClick(Sender: TObject);
