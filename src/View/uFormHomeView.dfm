@@ -23,9 +23,6 @@
     Height = 696
     Align = alClient
     TabOrder = 0
-    ExplicitLeft = 384
-    ExplicitWidth = 185
-    ExplicitHeight = 41
     object Image1: TImage
       Left = 1
       Top = 1

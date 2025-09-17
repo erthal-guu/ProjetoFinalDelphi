@@ -1,7 +1,7 @@
 unit UsuarioCadastroController;
 
 interface
-uses uUsuarioDTO,UsuarioCadastrorepository,uDMConexao;
+uses uUsuarioDTO,UsuarioCadastrorepository,uDMConexao,Vcl.Dialogs,uMainController;
 
 type TUsuarioController = class
   public
@@ -27,9 +27,20 @@ end;
 procedure TUsuarioController.SalvarUsuario(UsuarioDTO: TUsuarioDTO);
 var Repository : TCadastroRepository;
 begin
+
   if ValidarUsuario(UsuarioDTO) then begin
     Repository := TCadastroRepository.Create(DataModule1.FDQuery);
-    Repository.inserirUsuario(UsuarioDTO)
+    try
+    if not Repository.ExisteCPF(UsuarioDTO) then begin
+      Repository.inserirUsuario(UsuarioDTO);
+      ShowMessage('Usuário salvo com sucesso!');
+      MainController.showHome;
+    end else begin
+      ShowMessage('Já existe um Usuário com esse CPF');
+    end;
+    finally
+      Repository.Free;
+    end;
   end;
 end;
 

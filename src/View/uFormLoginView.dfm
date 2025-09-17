@@ -4524,7 +4524,7 @@ object FormLogin: TFormLogin
             31663216D9C618638C31C64CE6FF0354967C0B2894C5A90000000049454E44AE
             426082}
           ExplicitLeft = -1
-          ExplicitTop = 0
+          ExplicitTop = -1
         end
         object PnlContainer: TPanel
           AlignWithMargins = True
@@ -4541,6 +4541,8 @@ object FormLogin: TFormLogin
           Color = 15329769
           ParentBackground = False
           TabOrder = 0
+          ExplicitLeft = 19
+          ExplicitTop = 99
           object LblTitulo: TLabel
             AlignWithMargins = True
             Left = 3
@@ -4562,7 +4564,7 @@ object FormLogin: TFormLogin
           object PnlEdit: TPanel
             AlignWithMargins = True
             Left = 20
-            Top = 223
+            Top = 240
             Width = 465
             Height = 273
             Margins.Bottom = 0
@@ -4579,7 +4581,6 @@ object FormLogin: TFormLogin
               Caption = 'Senha:'
               Color = clSilver
               ParentColor = False
-              ExplicitWidth = 46
             end
             object LblNome: TLabel
               AlignWithMargins = True
@@ -4590,16 +4591,17 @@ object FormLogin: TFormLogin
               Margins.Left = 10
               Align = alTop
               Caption = 'CPF:'
-              ExplicitWidth = 30
+              ExplicitLeft = -14
+              ExplicitTop = -8
             end
             object EdtSenha: TEdit
               AlignWithMargins = True
-              Left = 5
+              Left = 10
               Top = 115
-              Width = 455
+              Width = 450
               Height = 40
               Cursor = crHandPoint
-              Margins.Left = 5
+              Margins.Left = 10
               Margins.Top = 6
               Margins.Right = 5
               Margins.Bottom = 0
@@ -4612,7 +4614,9 @@ object FormLogin: TFormLogin
               Font.Style = [fsItalic]
               ParentFont = False
               PasswordChar = '*'
-              TabOrder = 0
+              TabOrder = 2
+              ExplicitTop = 88
+              ExplicitWidth = 455
             end
             object EdtCPF: TMaskEdit
               AlignWithMargins = True
@@ -4631,14 +4635,15 @@ object FormLogin: TFormLogin
               BevelOuter = bvNone
               EditMask = '999.999.999-99'
               MaxLength = 14
-              TabOrder = 1
+              TabOrder = 0
               Text = '   .   .   -  '
+              ExplicitLeft = 0
             end
             object PnlButton: TPanel
               AlignWithMargins = True
-              Left = 5
+              Left = 10
               Top = 200
-              Width = 465
+              Width = 460
               Height = 50
               Cursor = crHandPoint
               Margins.Left = 0
@@ -4655,10 +4660,36 @@ object FormLogin: TFormLogin
               Font.Style = [fsBold]
               ParentBackground = False
               ParentFont = False
-              TabOrder = 2
+              TabOrder = 1
               OnClick = PnlButtonClick
               OnMouseEnter = PnlButtonMouseEnter
               OnMouseLeave = PnlButtonMouseLeave
+            end
+            object PnlCheckBox: TPanel
+              Left = 409
+              Top = 120
+              Width = 41
+              Height = 25
+              BevelOuter = bvNone
+              Color = clWindow
+              ParentBackground = False
+              TabOrder = 3
+              object CheckBox1: TCheckBox
+                AlignWithMargins = True
+                Left = 16
+                Top = 3
+                Width = 17
+                Height = 25
+                Margins.Bottom = 10
+                Font.Charset = DEFAULT_CHARSET
+                Font.Color = clWindowText
+                Font.Height = -16
+                Font.Name = 'Segoe UI'
+                Font.Style = [fsItalic]
+                ParentFont = False
+                TabOrder = 0
+                OnClick = CheckBox1Click
+              end
             end
           end
           object PnlLabel: TPanel

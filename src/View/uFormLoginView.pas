@@ -20,7 +20,6 @@ type
     PnlEdit: TPanel;
     LblSenha: TLabel;
     LblNome: TLabel;
-    EdtSenha: TEdit;
     EdtCPF: TMaskEdit;
     PnlLabel: TPanel;
     PnlCadastrar: TPanel;
@@ -28,12 +27,17 @@ type
     LblCadastro: TLabel;
     PnlButton: TPanel;
     Image1: TImage;
+    EdtSenha: TEdit;
+    PnlCheckBox: TPanel;
+    CheckBox1: TCheckBox;
     function ValidarCampos: Boolean;
     procedure LimparCampos;
     procedure PnlButtonClick(Sender: TObject);
     procedure PnlButtonMouseEnter(Sender: TObject);
     procedure PnlButtonMouseLeave(Sender: TObject);
     procedure LblCadastroClick(Sender: TObject);
+    procedure RadioButton1Click(Sender: TObject);
+    procedure CheckBox1Click(Sender: TObject);
   private
     { Private declarations }
   public
@@ -49,11 +53,20 @@ implementation
 
 
 
+procedure TFormLogin.CheckBox1Click(Sender: TObject);
+begin
+  if EdtSenha.PasswordChar = #0 then begin
+    EdtSenha.PasswordChar := '*'
+   end else begin
+    EdtSenha.PasswordChar := #0;
+end;
+end;
+
 procedure TFormLogin.LblCadastroClick(Sender: TObject);
 begin
   MainController.showCadastro;
   Application.ProcessMessages;
-  Self.Close;
+  Self.hide
 end;
 
 procedure TFormLogin.LimparCampos;
@@ -95,6 +108,14 @@ begin
 end;
 
 
+
+procedure TFormLogin.RadioButton1Click(Sender: TObject);
+begin
+  if EdtSenha.PasswordChar = #0 then
+    EdtSenha.PasswordChar := '*'
+  else
+    EdtSenha.PasswordChar := #0;
+end;
 
 function TFormLogin.ValidarCampos: Boolean;
 begin

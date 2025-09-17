@@ -29,12 +29,15 @@ type
     LblCadastro: TLabel;
     Image2: TImage;
     Image1: TImage;
+    PnlCheckBox: TPanel;
+    CheckBox1: TCheckBox;
     procedure PnlButtonMouseEnter(Sender: TObject);
     procedure PnlButtonMouseLeave(Sender: TObject);
     procedure PnlButtonClick(Sender: TObject);
     function ValidarCampos: Boolean;
     procedure LimparCampos;
     procedure LblCadastroClick(Sender: TObject);
+    procedure CheckBox1Click(Sender: TObject);
   private
     { Private declarations }
   public
@@ -48,11 +51,20 @@ implementation
 
 {$R *.dfm}
 
+procedure TFormCadastro.CheckBox1Click(Sender: TObject);
+begin
+    if EdtSenha.PasswordChar = #0 then begin
+    EdtSenha.PasswordChar := '*'
+   end else begin
+    EdtSenha.PasswordChar := #0;
+end;
+end;
+
 procedure TFormCadastro.LblCadastroClick(Sender: TObject);
 begin
   MainController.showLogin;
   Application.ProcessMessages;
-  Self.Close;
+  Self.hide
 end;
 
 procedure TFormCadastro.LimparCampos;
@@ -74,18 +86,12 @@ begin
         EdtSenha.Text);
       Controller.SalvarUsuario(UsuarioDTO);
       LimparCampos;
-      ShowMessage('Usuário salvo com sucesso!');
-      MainController.showHome;
-
-
     finally
       Controller.Free;
     end;
-
   end else begin
     exit;
   end;
-  Self.Close;
 end;
 
 procedure TFormCadastro.PnlButtonMouseEnter(Sender: TObject);

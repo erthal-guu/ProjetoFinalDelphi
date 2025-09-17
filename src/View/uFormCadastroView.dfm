@@ -22,8 +22,6 @@ object FormCadastro: TFormCadastro
     Color = clHighlightText
     ParentBackground = False
     TabOrder = 0
-    ExplicitWidth = 1138
-    ExplicitHeight = 889
     object PnlBackground: TPanel
       Left = 1
       Top = 1
@@ -39,8 +37,6 @@ object FormCadastro: TFormCadastro
       ParentBackground = False
       ParentFont = False
       TabOrder = 0
-      ExplicitWidth = 1136
-      ExplicitHeight = 887
       object Image1: TImage
         Left = 1
         Top = 1
@@ -2507,8 +2503,6 @@ object FormCadastro: TFormCadastro
         ParentBackground = False
         ParentFont = False
         TabOrder = 0
-        ExplicitLeft = 583
-        ExplicitHeight = 885
         object Image2: TImage
           AlignWithMargins = True
           Left = 1
@@ -4547,7 +4541,7 @@ object FormCadastro: TFormCadastro
           Color = 15395562
           ParentBackground = False
           TabOrder = 0
-          ExplicitHeight = 723
+          ExplicitLeft = 23
           object LblTitulo: TLabel
             AlignWithMargins = True
             Left = 3
@@ -4651,6 +4645,32 @@ object FormCadastro: TFormCadastro
               Font.Style = [fsItalic]
               ParentFont = False
               TabOrder = 2
+            end
+            object PnlCheckBox: TPanel
+              Left = 417
+              Top = 176
+              Width = 41
+              Height = 25
+              BevelOuter = bvNone
+              Color = clWindow
+              ParentBackground = False
+              TabOrder = 3
+              object CheckBox1: TCheckBox
+                AlignWithMargins = True
+                Left = 16
+                Top = 0
+                Width = 17
+                Height = 36
+                Margins.Bottom = 10
+                Font.Charset = DEFAULT_CHARSET
+                Font.Color = clWindowText
+                Font.Height = -16
+                Font.Name = 'Segoe UI'
+                Font.Style = [fsItalic]
+                ParentFont = False
+                TabOrder = 0
+                OnClick = CheckBox1Click
+              end
             end
           end
           object PnlButton: TPanel
