@@ -16,21 +16,32 @@ type
     Panel1: TPanel;
     PnlMainButton: TPanel;
     PnlMainEdit: TPanel;
-    PnlGrid: TPanel;
-    DBGrid1: TDBGrid;
-    PnlHeader: TPanel;
-    Panel4: TPanel;
-    SearchBox1: TSearchBox;
+    PnlBackgrounEdit: TPanel;
+    PnlDesignEdit: TPanel;
+    Image1: TImage;
     Panel2: TPanel;
     Panel3: TPanel;
     PnlButton: TPanel;
-    SpeedButton1: TSpeedButton;
-    SpeedButton2: TSpeedButton;
-    SpeedButton3: TSpeedButton;
-    SpeedButton4: TSpeedButton;
-    SpeedButton5: TSpeedButton;
-    SpeedButton6: TSpeedButton;
-    SpeedButton7: TSpeedButton;
+    BtnExcluir: TSpeedButton;
+    BtnAdicionar: TSpeedButton;
+    BtnEditar: TSpeedButton;
+    BtnPesquisar: TSpeedButton;
+    BtnListar: TSpeedButton;
+    BtnRestaurar: TSpeedButton;
+    BtnSair: TSpeedButton;
+    PnlGrid: TPanel;
+    DBGrid1: TDBGrid;
+    PnlHeader: TPanel;
+    EdtPesquisar: TSearchBox;
+    PnlEdit: TPanel;
+    EdtNome: TEdit;
+    EdtSenha: TEdit;
+    EdtCPF: TEdit;
+    PnlEnviar: TPanel;
+    LblEnviar: TLabel;
+    CmbGrupo: TComboBox;
+    procedure BtnAdicionarClick(Sender: TObject);
+    procedure FormCreate(Sender: TObject);
   private
     { Private declarations }
   public
@@ -43,5 +54,19 @@ var
 implementation
 
 {$R *.dfm}
+
+procedure TFormCadastroUsuarios.BtnAdicionarClick(Sender: TObject);
+begin
+  PnlBackgrounEdit.Visible := True;
+  PnlDesignEdit.Visible := True;
+end;
+
+procedure TFormCadastroUsuarios.FormCreate(Sender: TObject);
+begin
+  EdtSenha.Height := 31;
+  EdtNome.Height := 31;
+  EdtCPF.Height := 31;
+  CmbGrupo.Height:= 31;
+end;
 
 end.
