@@ -131,11 +131,11 @@
             <FormType>dfm</FormType>
         </DCCReference>
         <DCCReference Include="src\repository\UsuarioCadastrorepository.pas"/>
-        <DCCReference Include="src\Services\uFormCadastro.services.pas"/>
+        <DCCReference Include="src\Services\CadastroUsuarioServices.pas"/>
         <DCCReference Include="src\controller\UsuarioCadastroController.pas"/>
         <DCCReference Include="src\controller\UsuarioLoginController.pas"/>
         <DCCReference Include="src\repository\UsuarioLoginRepository.pas"/>
-        <DCCReference Include="src\Services\uFormLogin.services.pas"/>
+        <DCCReference Include="src\Services\LoginUsuarioServices.pas"/>
         <DCCReference Include="src\View\uFormLoginView.pas">
             <Form>FormLogin</Form>
             <FormType>dfm</FormType>

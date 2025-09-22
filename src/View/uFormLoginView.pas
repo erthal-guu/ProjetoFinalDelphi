@@ -98,13 +98,13 @@ end;
 
 procedure TFormLogin.PnlButtonMouseEnter(Sender: TObject);
 begin
-    PnlButton.Color := $00D76B00;
+    PnlButton.Color := $003E1F00;
 end;
 
 
 procedure TFormLogin.PnlButtonMouseLeave(Sender: TObject);
 begin
-  PnlButton.Color := clHighlight;
+  PnlButton.Color := $005E2F00;
 end;
 
 

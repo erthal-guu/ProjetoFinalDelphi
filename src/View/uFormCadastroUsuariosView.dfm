@@ -1,6 +1,7 @@
 object FormCadastroUsuarios: TFormCadastroUsuarios
   Left = 0
   Top = 0
+  BorderStyle = bsDialog
   Caption = 'FormCadastroUsuarios'
   ClientHeight = 664
   ClientWidth = 1118
@@ -26,6 +27,8 @@ object FormCadastroUsuarios: TFormCadastroUsuarios
     Font.Style = []
     ParentFont = False
     TabOrder = 0
+    ExplicitLeft = -24
+    ExplicitTop = 8
     object Usuarios: TTabSheet
       Caption = 'Usuarios'
       object PnlMain: TPanel
@@ -35,7 +38,7 @@ object FormCadastroUsuarios: TFormCadastroUsuarios
         Height = 567
         Align = alClient
         TabOrder = 0
-        object Panel1: TPanel
+        object PnlContainer: TPanel
           AlignWithMargins = True
           Left = 0
           Top = 0
@@ -75,6 +78,8 @@ object FormCadastroUsuarios: TFormCadastroUsuarios
             Color = 6172416
             ParentBackground = False
             TabOrder = 1
+            ExplicitLeft = -24
+            ExplicitTop = 431
             object PnlBackgrounEdit: TPanel
               AlignWithMargins = True
               Left = 0
@@ -107,7 +112,7 @@ object FormCadastroUsuarios: TFormCadastroUsuarios
               ParentBackground = False
               TabOrder = 0
               Visible = False
-              ExplicitLeft = 26
+              ExplicitLeft = 19
               object Image1: TImage
                 AlignWithMargins = True
                 Left = 952
@@ -406,6 +411,7 @@ object FormCadastroUsuarios: TFormCadastroUsuarios
                 Align = alLeft
                 BevelOuter = bvNone
                 TabOrder = 0
+                ExplicitLeft = 0
                 object EdtNome: TEdit
                   AlignWithMargins = True
                   Left = 20
@@ -425,38 +431,127 @@ object FormCadastroUsuarios: TFormCadastroUsuarios
                   ParentFont = False
                   TabOrder = 0
                   TextHint = 'Nome'
-                  ExplicitLeft = -54
-                  ExplicitTop = 4
-                  ExplicitHeight = 83
                 end
-                object EdtSenha: TEdit
+                object CmbGrupo: TComboBox
                   AlignWithMargins = True
-                  Left = 354
+                  Left = 538
                   Top = 30
-                  Width = 161
-                  Height = 31
+                  Width = 97
+                  Height = 29
                   Margins.Top = 30
-                  Margins.Bottom = 30
+                  Margins.Right = 10
+                  Margins.Bottom = 9
                   Align = alLeft
-                  AutoSize = False
+                  BevelOuter = bvNone
+                  Style = csDropDownList
                   Font.Charset = DEFAULT_CHARSET
                   Font.Color = clWindowText
-                  Font.Height = -15
+                  Font.Height = -16
                   Font.Name = 'Segoe UI'
                   Font.Style = []
                   ParentFont = False
                   TabOrder = 1
-                  TextHint = 'Senha'
-                  ExplicitLeft = 12
-                  ExplicitTop = 29
-                  ExplicitHeight = 1
+                  TextHint = 'Grupo'
+                  Items.Strings = (
+                    'Mec'#226'nico'
+                    'Gerente'
+                    'Atendente'
+                    'Administrador')
+                  ExplicitLeft = 354
                 end
-                object EdtCPF: TEdit
+                object PnlButtonEnviar: TPanel
+                  AlignWithMargins = True
+                  Left = 755
+                  Top = 30
+                  Width = 123
+                  Height = 31
+                  Margins.Left = 0
+                  Margins.Top = 30
+                  Margins.Right = 0
+                  Margins.Bottom = 30
+                  Align = alLeft
+                  BevelOuter = bvLowered
+                  Color = 9521152
+                  ParentBackground = False
+                  TabOrder = 2
+                  ExplicitLeft = 598
+                  object LblEnviar: TLabel
+                    AlignWithMargins = True
+                    Left = 4
+                    Top = 4
+                    Width = 115
+                    Height = 23
+                    Align = alClient
+                    Alignment = taCenter
+                    Caption = 'Enviar'
+                    Color = clWhite
+                    Font.Charset = DEFAULT_CHARSET
+                    Font.Color = clWhite
+                    Font.Height = -15
+                    Font.Name = 'Segoe UI'
+                    Font.Style = []
+                    ParentColor = False
+                    ParentFont = False
+                    OnClick = LblEnviarClick
+                    ExplicitLeft = 0
+                    ExplicitTop = 0
+                    ExplicitWidth = 40
+                    ExplicitHeight = 20
+                  end
+                end
+                object CmbStatus: TComboBox
+                  AlignWithMargins = True
+                  Left = 648
+                  Top = 30
+                  Width = 97
+                  Height = 29
+                  Margins.Top = 30
+                  Margins.Right = 10
+                  Margins.Bottom = 9
+                  Align = alLeft
+                  BevelOuter = bvNone
+                  Style = csDropDownList
+                  Font.Charset = DEFAULT_CHARSET
+                  Font.Color = clWindowText
+                  Font.Height = -16
+                  Font.Name = 'Segoe UI'
+                  Font.Style = []
+                  ParentFont = False
+                  TabOrder = 3
+                  TextHint = 'Status'
+                  Items.Strings = (
+                    'Ativo'
+                    'Inativo')
+                  ExplicitLeft = 521
+                  ExplicitHeight = 33
+                end
+                object EdtCPF: TMaskEdit
                   AlignWithMargins = True
                   Left = 187
                   Top = 30
                   Width = 161
                   Height = 31
+                  Cursor = crHandPoint
+                  Margins.Top = 30
+                  Margins.Bottom = 30
+                  Align = alLeft
+                  AutoSize = False
+                  BevelInner = bvNone
+                  BevelOuter = bvNone
+                  EditMask = '999.999.999-99'
+                  MaxLength = 14
+                  TabOrder = 4
+                  Text = '   .   .   -  '
+                  ExplicitLeft = 145
+                  ExplicitTop = 38
+                end
+                object EdtSenha: TEdit
+                  AlignWithMargins = True
+                  Left = 371
+                  Top = 30
+                  Width = 161
+                  Height = 31
+                  Margins.Left = 20
                   Margins.Top = 30
                   Margins.Bottom = 30
                   Align = alLeft
@@ -467,83 +562,27 @@ object FormCadastroUsuarios: TFormCadastroUsuarios
                   Font.Name = 'Segoe UI'
                   Font.Style = []
                   ParentFont = False
-                  TabOrder = 2
-                  TextHint = 'CPF'
-                  ExplicitLeft = 12
-                  ExplicitTop = 29
-                  ExplicitHeight = 1
-                end
-                object PnlEnviar: TPanel
-                  AlignWithMargins = True
-                  Left = 608
-                  Top = 30
-                  Width = 164
-                  Height = 31
-                  Margins.Left = 90
-                  Margins.Top = 30
-                  Margins.Right = 100
-                  Margins.Bottom = 30
-                  Align = alClient
-                  BevelOuter = bvNone
-                  Color = 9521152
-                  Font.Charset = DEFAULT_CHARSET
-                  Font.Color = clWhite
-                  Font.Height = -15
-                  Font.Name = 'Segoe UI'
-                  Font.Style = []
-                  ParentBackground = False
-                  ParentFont = False
-                  TabOrder = 3
-                  ExplicitLeft = 521
-                  ExplicitWidth = 348
-                  object LblEnviar: TLabel
-                    AlignWithMargins = True
-                    Left = 0
-                    Top = 5
-                    Width = 164
-                    Height = 23
-                    Margins.Left = 0
-                    Margins.Top = 5
-                    Margins.Right = 0
-                    Align = alClient
-                    Alignment = taCenter
-                    Caption = 'Enviar'
-                    ExplicitHeight = 20
-                  end
-                end
-                object CmbGrupo: TComboBox
-                  AlignWithMargins = True
-                  Left = 521
-                  Top = 28
-                  Width = 81
-                  Height = 33
-                  Margins.Top = 28
-                  Margins.Right = 270
-                  Margins.Bottom = 9
-                  Align = alClient
-                  BevelOuter = bvNone
-                  Style = csDropDownList
-                  TabOrder = 4
-                  TextHint = 'Grupo'
-                  ExplicitTop = 24
+                  TabOrder = 5
+                  TextHint = 'Senha'
+                  ExplicitLeft = 468
                 end
               end
             end
           end
-          object Panel2: TPanel
-            Left = 929
+          object PnlButtonCrud: TPanel
+            Left = 936
             Top = 0
-            Width = 185
+            Width = 178
             Height = 428
             BevelOuter = bvNone
             Color = 9521152
             ParentBackground = False
             TabOrder = 2
-            object Panel3: TPanel
+            object PnlBackgroundButton: TPanel
               AlignWithMargins = True
               Left = 19
               Top = 19
-              Width = 147
+              Width = 140
               Height = 390
               Margins.Left = 19
               Margins.Top = 19
@@ -554,11 +593,12 @@ object FormCadastroUsuarios: TFormCadastroUsuarios
               Color = clBackground
               ParentBackground = False
               TabOrder = 0
+              ExplicitWidth = 147
               object PnlButton: TPanel
                 AlignWithMargins = True
                 Left = 1
                 Top = 1
-                Width = 145
+                Width = 138
                 Height = 388
                 Margins.Left = 1
                 Margins.Top = 1
@@ -569,17 +609,18 @@ object FormCadastroUsuarios: TFormCadastroUsuarios
                 Color = 15790320
                 ParentBackground = False
                 TabOrder = 0
+                ExplicitHeight = 382
                 object BtnExcluir: TSpeedButton
                   AlignWithMargins = True
                   Left = 5
                   Top = 111
-                  Width = 135
+                  Width = 128
                   Height = 40
                   Margins.Left = 5
                   Margins.Right = 5
                   Margins.Bottom = 10
                   Align = alTop
-                  Caption = ' Excluir'
+                  Caption = '  Excluir     '
                   Font.Charset = DEFAULT_CHARSET
                   Font.Color = clWindowText
                   Font.Height = -15
@@ -643,15 +684,14 @@ object FormCadastroUsuarios: TFormCadastroUsuarios
                     FFFFFFFFFFFFFFFBFBFB8484843D3D3D33333333333333333333333333333359
                     5959D5D5D5FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF}
                   ParentFont = False
-                  ExplicitLeft = -5
-                  ExplicitTop = 75
-                  ExplicitWidth = 152
+                  ExplicitTop = 84
+                  ExplicitWidth = 135
                 end
                 object BtnAdicionar: TSpeedButton
                   AlignWithMargins = True
                   Left = 5
                   Top = 10
-                  Width = 135
+                  Width = 128
                   Height = 40
                   Margins.Left = 5
                   Margins.Top = 10
@@ -731,13 +771,13 @@ object FormCadastroUsuarios: TFormCadastroUsuarios
                   AlignWithMargins = True
                   Left = 5
                   Top = 58
-                  Width = 135
+                  Width = 128
                   Height = 40
                   Margins.Left = 5
                   Margins.Right = 5
                   Margins.Bottom = 10
                   Align = alTop
-                  Caption = '  Editar'
+                  Caption = '  Editar     '
                   Font.Charset = DEFAULT_CHARSET
                   Font.Color = clWindowText
                   Font.Height = -15
@@ -801,6 +841,7 @@ object FormCadastroUsuarios: TFormCadastroUsuarios
                     FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
                     FFFFFFFFFFFFFFFFE2E2E24B4B4B0404041D1D1D959595FFFFFF}
                   ParentFont = False
+                  OnClick = BtnEditarClick
                   ExplicitLeft = 9
                   ExplicitTop = 74
                   ExplicitWidth = 152
@@ -808,14 +849,14 @@ object FormCadastroUsuarios: TFormCadastroUsuarios
                 object BtnPesquisar: TSpeedButton
                   AlignWithMargins = True
                   Left = 5
-                  Top = 164
-                  Width = 135
+                  Top = 217
+                  Width = 128
                   Height = 40
                   Margins.Left = 5
                   Margins.Right = 5
                   Margins.Bottom = 10
                   Align = alTop
-                  Caption = ' Pesquisar'
+                  Caption = 'Pesquisar'
                   Font.Charset = DEFAULT_CHARSET
                   Font.Color = clWindowText
                   Font.Height = -15
@@ -879,21 +920,22 @@ object FormCadastroUsuarios: TFormCadastroUsuarios
                     FFE7E7E79090904545451E1E1E0B0B0B1A1A1A3838387E7E7ED4D4D4FFFFFFFF
                     FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF}
                   ParentFont = False
+                  OnClick = BtnPesquisarClick
                   ExplicitLeft = 9
                   ExplicitTop = 74
                   ExplicitWidth = 152
                 end
-                object BtnListar: TSpeedButton
+                object BtnCancelar: TSpeedButton
                   AlignWithMargins = True
                   Left = 5
-                  Top = 217
-                  Width = 135
+                  Top = 270
+                  Width = 128
                   Height = 40
                   Margins.Left = 5
                   Margins.Right = 5
                   Margins.Bottom = 10
                   Align = alTop
-                  Caption = ' Listar'
+                  Caption = 'Cancelar'
                   Font.Charset = DEFAULT_CHARSET
                   Font.Color = clWindowText
                   Font.Height = -15
@@ -999,21 +1041,21 @@ object FormCadastroUsuarios: TFormCadastroUsuarios
                     FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
                     FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF}
                   ParentFont = False
-                  ExplicitLeft = 9
-                  ExplicitTop = 74
-                  ExplicitWidth = 152
+                  ExplicitLeft = 24
+                  ExplicitTop = 217
+                  ExplicitWidth = 116
                 end
                 object BtnRestaurar: TSpeedButton
                   AlignWithMargins = True
                   Left = 5
-                  Top = 270
-                  Width = 135
+                  Top = 164
+                  Width = 128
                   Height = 40
                   Margins.Left = 5
                   Margins.Right = 5
                   Margins.Bottom = 10
                   Align = alTop
-                  Caption = ' Restaurar'
+                  Caption = 'Restaurar'
                   Font.Charset = DEFAULT_CHARSET
                   Font.Color = clWindowText
                   Font.Height = -15
@@ -1077,22 +1119,22 @@ object FormCadastroUsuarios: TFormCadastroUsuarios
                     EFDDDDDDFDFDFDFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
                     FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF}
                   ParentFont = False
-                  ExplicitLeft = -5
-                  ExplicitTop = 295
-                  ExplicitWidth = 152
+                  ExplicitLeft = 13
+                  ExplicitTop = 111
+                  ExplicitWidth = 135
                 end
                 object BtnSair: TSpeedButton
                   AlignWithMargins = True
                   Left = 5
                   Top = 330
-                  Width = 135
+                  Width = 128
                   Height = 40
                   Margins.Left = 5
                   Margins.Top = 10
                   Margins.Right = 5
                   Margins.Bottom = 10
                   Align = alTop
-                  Caption = ' Sair'
+                  Caption = '   Sair    '
                   Font.Charset = DEFAULT_CHARSET
                   Font.Color = clWindowText
                   Font.Height = -15
@@ -1156,9 +1198,8 @@ object FormCadastroUsuarios: TFormCadastroUsuarios
                     0000000000000000000000000000000000000000000000000000000000000003
                     0303343434CDCDCDFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF}
                   ParentFont = False
-                  ExplicitLeft = 9
-                  ExplicitTop = 74
-                  ExplicitWidth = 152
+                  Spacing = 0
+                  ExplicitTop = 322
                 end
               end
             end
@@ -1179,6 +1220,7 @@ object FormCadastroUsuarios: TFormCadastroUsuarios
             Color = clBackground
             ParentBackground = False
             TabOrder = 3
+            ExplicitTop = 71
             object DBGrid1: TDBGrid
               AlignWithMargins = True
               Left = 1
@@ -1214,6 +1256,7 @@ object FormCadastroUsuarios: TFormCadastroUsuarios
         Color = 6172416
         ParentBackground = False
         TabOrder = 1
+        ExplicitTop = 8
         object EdtPesquisar: TSearchBox
           AlignWithMargins = True
           Left = 20

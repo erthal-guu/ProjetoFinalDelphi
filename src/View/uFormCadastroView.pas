@@ -96,12 +96,12 @@ end;
 
 procedure TFormCadastro.PnlButtonMouseEnter(Sender: TObject);
 begin
-  PnlButton.Color := $00D76B00;
+  PnlButton.Color := $003E1F00;
 end;
 
 procedure TFormCadastro.PnlButtonMouseLeave(Sender: TObject);
 begin
-  PnlButton.Color := clHighlight;
+  PnlButton.Color := $005E2F00;
 end;
 
 function TFormCadastro.ValidarCampos: Boolean;

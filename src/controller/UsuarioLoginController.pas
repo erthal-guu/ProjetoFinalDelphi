@@ -9,7 +9,7 @@
     public
       Function ValidarLogin(UsuarioDTO : TUsuarioDTO): Boolean;
       function CriarObjeto( aCPF, aSenha: String) : TUsuarioDTO;
-       function ValidarUsuarioDTO(UsuarioValido: TUsuarioDTO): Boolean;
+      function ValidarUsuarioDTO(UsuarioValido: TUsuarioDTO): Boolean;
     end;
 
   implementation

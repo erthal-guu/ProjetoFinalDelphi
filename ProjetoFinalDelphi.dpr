@@ -6,11 +6,11 @@ uses
   Vcl.Forms,
   uFormCadastroView in 'src\View\uFormCadastroView.pas' {FormCadastro},
   UsuarioCadastrorepository in 'src\repository\UsuarioCadastrorepository.pas',
-  uFormCadastro.services in 'src\Services\uFormCadastro.services.pas',
+  CadastroUsuarioServices in 'src\Services\CadastroUsuarioServices.pas',
   UsuarioCadastroController in 'src\controller\UsuarioCadastroController.pas',
   UsuarioLoginController in 'src\controller\UsuarioLoginController.pas',
   UsuarioLoginRepository in 'src\repository\UsuarioLoginRepository.pas',
-  uFormLogin.services in 'src\Services\uFormLogin.services.pas',
+  LoginUsuarioServices in 'src\Services\LoginUsuarioServices.pas',
   uFormLoginView in 'src\View\uFormLoginView.pas' {FormLogin},
   uUsuarioModel in 'src\Model\uUsuarioModel.pas',
   uDMConexao in 'src\repository\uDMConexao.pas' {DataModule1: TDataModule},
@@ -33,8 +33,8 @@ uses
 begin
   Application.Initialize;
   Application.MainFormOnTaskbar := True;
-  Application.CreateForm(TFormHome, FormHome);
   Application.CreateForm(TFormLogin, FormLogin);
+  Application.CreateForm(TFormHome, FormHome);
   Application.CreateForm(TFormCadastro, FormCadastro);
   Application.CreateForm(TFormMain, FormMain);
   Application.CreateForm(TFormCadastroPeças, FormCadastroPeças);
