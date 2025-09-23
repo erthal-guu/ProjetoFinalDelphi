@@ -27,8 +27,6 @@ object FormCadastroUsuarios: TFormCadastroUsuarios
     Font.Style = []
     ParentFont = False
     TabOrder = 0
-    ExplicitLeft = -24
-    ExplicitTop = 8
     object Usuarios: TTabSheet
       Caption = 'Usuarios'
       object PnlMain: TPanel
@@ -78,8 +76,6 @@ object FormCadastroUsuarios: TFormCadastroUsuarios
             Color = 6172416
             ParentBackground = False
             TabOrder = 1
-            ExplicitLeft = -24
-            ExplicitTop = 431
             object PnlBackgrounEdit: TPanel
               AlignWithMargins = True
               Left = 0
@@ -112,7 +108,6 @@ object FormCadastroUsuarios: TFormCadastroUsuarios
               ParentBackground = False
               TabOrder = 0
               Visible = False
-              ExplicitLeft = 19
               object Image1: TImage
                 AlignWithMargins = True
                 Left = 952
@@ -411,7 +406,6 @@ object FormCadastroUsuarios: TFormCadastroUsuarios
                 Align = alLeft
                 BevelOuter = bvNone
                 TabOrder = 0
-                ExplicitLeft = 0
                 object EdtNome: TEdit
                   AlignWithMargins = True
                   Left = 20
@@ -434,7 +428,7 @@ object FormCadastroUsuarios: TFormCadastroUsuarios
                 end
                 object CmbGrupo: TComboBox
                   AlignWithMargins = True
-                  Left = 538
+                  Left = 523
                   Top = 30
                   Width = 97
                   Height = 29
@@ -457,11 +451,11 @@ object FormCadastroUsuarios: TFormCadastroUsuarios
                     'Gerente'
                     'Atendente'
                     'Administrador')
-                  ExplicitLeft = 354
+                  ExplicitLeft = 538
                 end
                 object PnlButtonEnviar: TPanel
                   AlignWithMargins = True
-                  Left = 755
+                  Left = 740
                   Top = 30
                   Width = 123
                   Height = 31
@@ -474,7 +468,7 @@ object FormCadastroUsuarios: TFormCadastroUsuarios
                   Color = 9521152
                   ParentBackground = False
                   TabOrder = 2
-                  ExplicitLeft = 598
+                  ExplicitLeft = 755
                   object LblEnviar: TLabel
                     AlignWithMargins = True
                     Left = 4
@@ -493,15 +487,13 @@ object FormCadastroUsuarios: TFormCadastroUsuarios
                     ParentColor = False
                     ParentFont = False
                     OnClick = LblEnviarClick
-                    ExplicitLeft = 0
-                    ExplicitTop = 0
                     ExplicitWidth = 40
                     ExplicitHeight = 20
                   end
                 end
                 object CmbStatus: TComboBox
                   AlignWithMargins = True
-                  Left = 648
+                  Left = 633
                   Top = 30
                   Width = 97
                   Height = 29
@@ -522,8 +514,7 @@ object FormCadastroUsuarios: TFormCadastroUsuarios
                   Items.Strings = (
                     'Ativo'
                     'Inativo')
-                  ExplicitLeft = 521
-                  ExplicitHeight = 33
+                  ExplicitLeft = 648
                 end
                 object EdtCPF: TMaskEdit
                   AlignWithMargins = True
@@ -542,16 +533,14 @@ object FormCadastroUsuarios: TFormCadastroUsuarios
                   MaxLength = 14
                   TabOrder = 4
                   Text = '   .   .   -  '
-                  ExplicitLeft = 145
-                  ExplicitTop = 38
                 end
                 object EdtSenha: TEdit
                   AlignWithMargins = True
-                  Left = 371
+                  Left = 356
                   Top = 30
                   Width = 161
                   Height = 31
-                  Margins.Left = 20
+                  Margins.Left = 5
                   Margins.Top = 30
                   Margins.Bottom = 30
                   Align = alLeft
@@ -564,7 +553,7 @@ object FormCadastroUsuarios: TFormCadastroUsuarios
                   ParentFont = False
                   TabOrder = 5
                   TextHint = 'Senha'
-                  ExplicitLeft = 468
+                  ExplicitLeft = 363
                 end
               end
             end
@@ -593,7 +582,6 @@ object FormCadastroUsuarios: TFormCadastroUsuarios
               Color = clBackground
               ParentBackground = False
               TabOrder = 0
-              ExplicitWidth = 147
               object PnlButton: TPanel
                 AlignWithMargins = True
                 Left = 1
@@ -609,7 +597,6 @@ object FormCadastroUsuarios: TFormCadastroUsuarios
                 Color = 15790320
                 ParentBackground = False
                 TabOrder = 0
-                ExplicitHeight = 382
                 object BtnExcluir: TSpeedButton
                   AlignWithMargins = True
                   Left = 5
@@ -1220,7 +1207,6 @@ object FormCadastroUsuarios: TFormCadastroUsuarios
             Color = clBackground
             ParentBackground = False
             TabOrder = 3
-            ExplicitTop = 71
             object DBGrid1: TDBGrid
               AlignWithMargins = True
               Left = 1
@@ -1243,20 +1229,21 @@ object FormCadastroUsuarios: TFormCadastroUsuarios
         end
       end
       object PnlHeader: TPanel
+        AlignWithMargins = True
         Left = 0
         Top = 0
-        Width = 1110
+        Width = 1109
         Height = 57
         Margins.Left = 0
         Margins.Top = 0
-        Margins.Right = 0
+        Margins.Right = 1
         Margins.Bottom = 0
         Align = alTop
         BevelOuter = bvNone
         Color = 6172416
         ParentBackground = False
         TabOrder = 1
-        ExplicitTop = 8
+        ExplicitWidth = 1110
         object EdtPesquisar: TSearchBox
           AlignWithMargins = True
           Left = 20
@@ -1281,5 +1268,10 @@ object FormCadastroUsuarios: TFormCadastroUsuarios
         end
       end
     end
+  end
+  object DataSource1: TDataSource
+    DataSet = DataModule1.FDQuery
+    Left = 824
+    Top = 56
   end
 end

@@ -1,105 +1,63 @@
 unit UsuarioCadastroController;
 
 interface
-uses uUsuarioDTO,UsuarioCadastrorepository,uDMConexao,Vcl.Dialogs,uMainController;
+uses uUsuarioDTO, CadastroUsuarioService, FireDAC.Comp.Client, Vcl.Dialogs;
 
 type TUsuarioController = class
-  public
-    procedure SalvarUsuario(UsuarioDTO : TUsuarioDTO);
-    procedure SalvarUsuarioCRUD(UsuarioDTO : TUsuarioDTO);
-    function CriarObjeto(aNome, aCPF, aSenha: String) : TUsuarioDTO;
-    function CriarObjetoCRUD(aNome, aCPF, aSenha,aGrupo,aStatus: String) : TUsuarioDTO;
-    procedure EditarUsuario (UsuarioDTO : TUsuarioDTO);
-    function ValidarUsuario(UsuarioValido: TUsuarioDTO) : Boolean;
-end;
-
+  Service : TUsuarioService;
+    constructor Create;
+      function SalvarUsuario(UsuarioDTO: TUsuarioDTO): Boolean;
+      procedure EditarUsuario(UsuarioDTO: TUsuarioDTO);
+      function ListarUsuarios: TFDQuery;
+      function CriarObjeto(aNome, aCPF, aSenha: String): TUsuarioDTO;
+      function CriarObjetoCRUD(aNome, aCPF, aSenha, aGrupo, aStatus: String): TUsuarioDTO;
+      procedure SalvarUsuarioCRUD(UsuarioDTO: TUsuarioDTO);
+  end;
 implementation
 { TUsuarioController }
 
-function TUsuarioController.CriarObjeto;
-var UsuarioDTO : TUsuarioDTO;
+constructor TUsuarioController.Create;
 begin
-    UsuarioDTO := TUsuarioDTO.Create;
-    UsuarioDTO.setNome(aNome);
-    UsuarioDTO.setCPF(aCPF);
-    UsuarioDTO.setSenha(aSenha);
-    Result := UsuarioDTO;
+  Self.Service := TUsuarioService.create;
+end;
+
+function TUsuarioController.CriarObjeto;
+begin
+  Result := TUsuarioDTO.Create;
+  Result.setNome(aNome);
+  Result.setCPF(aCPF);
+  Result.setSenha(aSenha);;
 end;
 
 function TUsuarioController.CriarObjetoCRUD(aNome, aCPF, aSenha,
   aGrupo,aStatus: String): TUsuarioDTO;
-var UsuarioDTO : TUsuarioDTO;
 begin
-    UsuarioDTO := TUsuarioDTO.Create;
-    UsuarioDTO.setNome(aNome);
-    UsuarioDTO.setCPF(aCPF);
-    UsuarioDTO.setSenha(aSenha);
-    UsuarioDTO.setGrupo(aGrupo);
-    UsuarioDTO.setStatus(aStatus);
-    Result := UsuarioDTO;
+  Result := TUsuarioDTO.Create;
+  Result.setNome(aNome);
+  Result.setCPF(aCPF);
+  Result.setSenha(aSenha);
+  Result.setGrupo(aGrupo);
+  Result.setStatus(aStatus);
 end;
 
 procedure TUsuarioController.EditarUsuario(UsuarioDTO: TUsuarioDTO);
-var
-  Repository : TCadastroRepository;
 begin
-if ValidarUsuario(UsuarioDTO) then begin
-
-    Repository := TCadastroRepository.Create(DataModule1.FDQuery);
-    try
-    Repository.EditarUsuario(UsuarioDTO);
-      ShowMessage('Usuário Editado com sucesso!');
-    finally
-    Repository.Free;
-    end;
-end;
+  Service.EditarUsuario(UsuarioDTO);
 end;
 
-procedure TUsuarioController.SalvarUsuario(UsuarioDTO: TUsuarioDTO);
-var
-  Repository : TCadastroRepository;
+function TUsuarioController.ListarUsuarios: TFDQuery;
 begin
-if ValidarUsuario(UsuarioDTO) then begin
+//  Result := Service.ListarUsuarios;
+end;
 
-    Repository := TCadastroRepository.Create(DataModule1.FDQuery);
-    try
-    if not Repository.ExisteCPF(UsuarioDTO) then begin
-      Repository.inserirUsuario(UsuarioDTO);
-      ShowMessage('Usuário salvo com sucesso!');
-      MainController.showHome;
-    end else begin
-      ShowMessage('Já existe um Usuário com esse CPF');
-    end;
-    finally
-      Repository.Free;
-    end;
-  end;
+function TUsuarioController.SalvarUsuario(UsuarioDTO: TUsuarioDTO):Boolean;
+begin
+  Result := Service.SalvarUsuario(UsuarioDTO);
 end;
 
 procedure TUsuarioController.SalvarUsuarioCRUD(UsuarioDTO: TUsuarioDTO);
-var
-  Repository : TCadastroRepository;
 begin
-if ValidarUsuario(UsuarioDTO) then begin
-
-    Repository := TCadastroRepository.Create(DataModule1.FDQuery);
-    try
-    if not Repository.ExisteCPF(UsuarioDTO) then begin
-      Repository.inserirUsuario(UsuarioDTO);
-      ShowMessage('Usuário salvo com sucesso!');
-    end else begin
-      ShowMessage('Já existe um Usuário com esse CPF');
-    end;
-    finally
-      Repository.Free;
-    end;
-  end;
-end;
-
-function TUsuarioController.ValidarUsuario(UsuarioValido: TUsuarioDTO): Boolean;
-begin
- Result := ((UsuarioValido.getNome)<>'')and((UsuarioValido.getCPF)<>'')
-            and((UsuarioValido.getSenha)<>'')
+  Service.SalvarUsuarioCRUD(UsuarioDTO);
 end;
 
 end.

@@ -84,8 +84,12 @@ begin
     try
       UsuarioDTO := Controller.CriarObjeto(EdtNome.Text, EdtCPF.Text,
         EdtSenha.Text);
-      Controller.SalvarUsuario(UsuarioDTO);
-      LimparCampos;
+        if Controller.SalvarUsuario(UsuarioDTO) then begin
+          LimparCampos;
+        end else begin
+          ShowMessage('Já existe um Usuário com esse CPF');
+        end;
+
     finally
       Controller.Free;
     end;

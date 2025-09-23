@@ -6,11 +6,11 @@ uses
   Vcl.Forms,
   uFormCadastroView in 'src\View\uFormCadastroView.pas' {FormCadastro},
   UsuarioCadastrorepository in 'src\repository\UsuarioCadastrorepository.pas',
-  CadastroUsuarioServices in 'src\Services\CadastroUsuarioServices.pas',
+  CadastroUsuarioService in 'src\Services\CadastroUsuarioService.pas',
   UsuarioCadastroController in 'src\controller\UsuarioCadastroController.pas',
   UsuarioLoginController in 'src\controller\UsuarioLoginController.pas',
   UsuarioLoginRepository in 'src\repository\UsuarioLoginRepository.pas',
-  LoginUsuarioServices in 'src\Services\LoginUsuarioServices.pas',
+  LoginUsuarioService in 'src\Services\LoginUsuarioService.pas',
   uFormLoginView in 'src\View\uFormLoginView.pas' {FormLogin},
   uUsuarioModel in 'src\Model\uUsuarioModel.pas',
   uDMConexao in 'src\repository\uDMConexao.pas' {DataModule1: TDataModule},
@@ -33,13 +33,13 @@ uses
 begin
   Application.Initialize;
   Application.MainFormOnTaskbar := True;
-  Application.CreateForm(TFormLogin, FormLogin);
-  Application.CreateForm(TFormHome, FormHome);
   Application.CreateForm(TFormCadastro, FormCadastro);
-  Application.CreateForm(TFormMain, FormMain);
-  Application.CreateForm(TFormCadastroPeças, FormCadastroPeças);
-  Application.CreateForm(TDataModule1, DataModule1);
+  Application.CreateForm(TFormHome, FormHome);
   Application.CreateForm(TFormCadastroUsuarios, FormCadastroUsuarios);
+  Application.CreateForm(TFormLogin, FormLogin);
+  Application.CreateForm(TFormMain, FormMain);
+  Application.CreateForm(TDataModule1, DataModule1);
+  Application.CreateForm(TFormCadastroPeças, FormCadastroPeças);
   Application.CreateForm(TFormCadastroClientes, FormCadastroClientes);
   Application.CreateForm(TFormCadastroFuncionarios, FormCadastroFuncionarios);
   Application.CreateForm(TFormCadastroServiços, FormCadastroServiços);

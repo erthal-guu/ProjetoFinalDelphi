@@ -6,7 +6,10 @@ uses
   Winapi.Windows, Winapi.Messages, System.SysUtils, System.Variants, System.Classes, Vcl.Graphics,
   Vcl.Controls, Vcl.Forms, Vcl.Dialogs, Vcl.ExtCtrls, Data.DB, Vcl.Grids,
   Vcl.DBGrids, Vcl.ComCtrls, Vcl.Imaging.pngimage, Vcl.StdCtrls, Vcl.Buttons,
-  Vcl.WinXCtrls,UsuarioCadastroController,uUsuarioDTO, Vcl.Mask;
+  Vcl.WinXCtrls, UsuarioCadastroController, uUsuarioDTO, Vcl.Mask, uDMConexao,
+  FireDAC.Comp.Client, FireDAC.Stan.Def, FireDAC.Stan.Async, FireDAC.DApt,
+  FireDAC.Stan.Param, FireDAC.DatS, FireDAC.DApt.Intf, FireDAC.Phys.PG,
+  FireDAC.Phys.PGDef, FireDAC.UI.Intf, FireDAC.VCLUI.Wait;
 
 type
   TFormCadastroUsuarios = class(TForm)
@@ -41,6 +44,7 @@ type
     CmbStatus: TComboBox;
     EdtCPF: TMaskEdit;
     EdtSenha: TEdit;
+    DataSource1: TDataSource;
     procedure BtnAdicionarClick(Sender: TObject);
     procedure FormCreate(Sender: TObject);
     procedure BtnPesquisarClick(Sender: TObject);
@@ -96,7 +100,9 @@ begin
   CmbGrupo.Font.Size := 13;
   CmbStatus.Font.Size := 13;
   CmbStatus.Height:= 31;
+
 end;
+
 
 procedure TFormCadastroUsuarios.LblEnviarClick(Sender: TObject);
 var

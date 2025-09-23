@@ -1,12 +1,13 @@
   unit UsuarioLoginController;
 
   interface
-  uses  uUsuarioDTO,UsuarioLoginRepository,uDMConexao,
+  uses  uUsuarioDTO,UsuarioLoginRepository,uDMConexao,LoginUsuarioService,
   Vcl.Dialogs;
 
 
   type TUsuarioController = class
     public
+      Service : TUsuarioLoginService;
       Function ValidarLogin(UsuarioDTO : TUsuarioDTO): Boolean;
       function CriarObjeto( aCPF, aSenha: String) : TUsuarioDTO;
       function ValidarUsuarioDTO(UsuarioValido: TUsuarioDTO): Boolean;
@@ -16,31 +17,19 @@
 
   { TUsuarioController }
 
-  function TUsuarioController.CriarObjeto(aCPF, aSenha: String): TUsuarioDTO;
-  var UsuarioDTO : TUsuarioDTO;
+function TUsuarioController.CriarObjeto(aCPF, aSenha: String): TUsuarioDTO;
   begin
-    UsuarioDTO := TUsuarioDTO.Create;
-    UsuarioDTO.setCPF(aCPF);
-    UsuarioDTO.setSenha(aSenha);
-    Result := UsuarioDTO;
+     Result := Service.CriarObjeto(aCPF,aSenha);
   end;
 
-  Function TUsuarioController.ValidarLogin(UsuarioDTO: TUsuarioDTO):Boolean;
-  var Repository :TLoginRepository;
+function TUsuarioController.ValidarLogin(UsuarioDTO: TUsuarioDTO):Boolean;
   begin
-    Repository := TLoginRepository.Create(DataModule1.FDQuery);
-    if Repository.SelectUsuario(UsuarioDTO) <> nil then begin
-      Result := true;
-    end else begin
-      Result := false;
-    end;
+  Result := Service.ValidarLogin(UsuarioDTO);
   end;
 
 function TUsuarioController.ValidarUsuarioDTO(UsuarioValido: TUsuarioDTO): Boolean;
 begin
-  Result := (UsuarioValido.getNome <> '') and
-            (UsuarioValido.getCPF <> '') and
-            (UsuarioValido.getSenha <> '');
+  Service.ValidarUsuarioDTO(UsuarioValido);
 end;
   end.
 

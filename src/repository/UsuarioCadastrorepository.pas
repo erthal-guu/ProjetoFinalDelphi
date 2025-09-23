@@ -1,7 +1,7 @@
 unit UsuarioCadastrorepository;
 
 interface
-uses uDMConexao,FireDAC.Comp.Client, System.SysUtils,uUsuarioDTO;
+uses uDMConexao, FireDAC.Comp.Client, System.SysUtils, uUsuarioDTO, Data.DB;
 
 type TCadastroRepository = class
 private
@@ -11,6 +11,7 @@ procedure inserirUsuario(aUsuario : TUsuarioDTO);
 constructor Create(Query : TFDQuery);
 function ExisteCPF(aUsuario : TUsuarioDTO): Boolean;
 function EditarUsuario(aUsuario : TUsuarioDTO):Boolean;
+function ListarUsuarios : TFDQuery;
 end;
 implementation
 
@@ -34,11 +35,22 @@ begin
   Self.FQuery.ParamByName('senha').AsString := aUsuario.getSenha;
   Self.FQuery.ParamByName('grupo').AsString := aUsuario.getGrupo;
   Self.FQuery.ParamByName('status').AsString := aUsuario.getStatus;
-
-
   Self.FQuery.ExecSQL;
 end;
 
+function TCadastroRepository.ListarUsuarios: TFDQuery;
+begin
+  try
+    FQuery.Close;
+    FQuery.SQL.Clear;
+    FQuery.SQL.Add('SELECT nome, cpf, grupo, status FROM usuarios ORDER BY nome');
+    FQuery.Open;
+    Result := FQuery;
+  except
+    on E: Exception do
+      raise Exception.Create('Erro ao listar usuários: ' + E.Message);
+  end;
+end;
 function TCadastroRepository.EditarUsuario(aUsuario: TUsuarioDTO): Boolean;
 begin
 Result := False;

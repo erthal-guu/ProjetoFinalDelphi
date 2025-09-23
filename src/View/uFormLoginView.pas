@@ -85,11 +85,10 @@ begin
     Controller := TUsuarioController.Create;
     UsuarioDTO := Controller.CriarObjeto(EdtCPF.Text, EdtSenha.Text);
     if ValidarCampos and Controller.ValidarLogin(UsuarioDTO) then begin
-      ShowMessage('Login Bem Sucedido !');
       MainController.showHome;
+      LimparCampos;
     end else begin
       ShowMessage('CPF ou Senha inválidos!');
-      LimparCampos;
     end;
   finally
     Controller.Free;
