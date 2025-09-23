@@ -451,7 +451,6 @@ object FormCadastroUsuarios: TFormCadastroUsuarios
                     'Gerente'
                     'Atendente'
                     'Administrador')
-                  ExplicitLeft = 538
                 end
                 object PnlButtonEnviar: TPanel
                   AlignWithMargins = True
@@ -468,7 +467,6 @@ object FormCadastroUsuarios: TFormCadastroUsuarios
                   Color = 9521152
                   ParentBackground = False
                   TabOrder = 2
-                  ExplicitLeft = 755
                   object LblEnviar: TLabel
                     AlignWithMargins = True
                     Left = 4
@@ -514,7 +512,6 @@ object FormCadastroUsuarios: TFormCadastroUsuarios
                   Items.Strings = (
                     'Ativo'
                     'Inativo')
-                  ExplicitLeft = 648
                 end
                 object EdtCPF: TMaskEdit
                   AlignWithMargins = True
@@ -553,7 +550,6 @@ object FormCadastroUsuarios: TFormCadastroUsuarios
                   ParentFont = False
                   TabOrder = 5
                   TextHint = 'Senha'
-                  ExplicitLeft = 363
                 end
               end
             end
@@ -1243,7 +1239,6 @@ object FormCadastroUsuarios: TFormCadastroUsuarios
         Color = 6172416
         ParentBackground = False
         TabOrder = 1
-        ExplicitWidth = 1110
         object EdtPesquisar: TSearchBox
           AlignWithMargins = True
           Left = 20
@@ -1271,7 +1266,7 @@ object FormCadastroUsuarios: TFormCadastroUsuarios
   end
   object DataSource1: TDataSource
     DataSet = DataModule1.FDQuery
-    Left = 824
-    Top = 56
+    Left = 848
+    Top = 48
   end
 end

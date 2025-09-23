@@ -55,7 +55,7 @@ type
   private
     { Private declarations }
   public
-    { Public declarations }
+
   end;
 
 var
@@ -72,17 +72,6 @@ begin
   EdtPesquisar.Visible := False;
 end;
 
-procedure TFormCadastroUsuarios.BtnEditarClick(Sender: TObject);
-var
-  Controller: TUsuarioController;
-  UsuarioDTO: TUsuarioDTO;
-begin
- if ValidarCampos then begin
-   UsuarioDTO := Controller.CriarObjeto(EdtNome.Text,EdtCPF.Text,EdtSenha.Text);
-   Controller.EditarUsuario(UsuarioDTO);
-   LimparCampos;
- end;
-end;
 
 procedure TFormCadastroUsuarios.BtnPesquisarClick(Sender: TObject);
 begin
@@ -90,6 +79,7 @@ begin
   PnlDesignEdit.Visible := false;
   PnlBackgrounEdit.Visible := false;
 end;
+
 
 procedure TFormCadastroUsuarios.FormCreate(Sender: TObject);
 begin
@@ -100,7 +90,6 @@ begin
   CmbGrupo.Font.Size := 13;
   CmbStatus.Font.Size := 13;
   CmbStatus.Height:= 31;
-
 end;
 
 

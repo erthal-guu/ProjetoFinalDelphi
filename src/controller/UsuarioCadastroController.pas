@@ -47,7 +47,7 @@ end;
 
 function TUsuarioController.ListarUsuarios: TFDQuery;
 begin
-//  Result := Service.ListarUsuarios;
+  Result := Service.ListarUsuarios;
 end;
 
 function TUsuarioController.SalvarUsuario(UsuarioDTO: TUsuarioDTO):Boolean;

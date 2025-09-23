@@ -3,7 +3,7 @@ unit CadastroUsuarioService;
 interface
 
 uses
-  uUsuarioDTO, UsuarioCadastroRepository, uDMConexao, System.SysUtils,uMainController;
+  uUsuarioDTO, UsuarioCadastroRepository, uDMConexao, System.SysUtils,uMainController, FireDAC.Comp.Client;
  type
   TUsuarioService = class
   private
@@ -16,11 +16,18 @@ uses
     function CriarObjetoCRUD(aNome, aCPF, aSenha,aGrupo,aStatus: String) : TUsuarioDTO;
     procedure EditarUsuario (UsuarioDTO : TUsuarioDTO);
     function ValidarUsuario(UsuarioValido: TUsuarioDTO) : Boolean;
+    function ListarUsuarios : TFDQuery;
   end;
 
 implementation
 
 { TUsuarioService }
+
+function TUsuarioService.ListarUsuarios:TFDQuery;
+begin
+  Result := Repository.ListarUsuarios;
+
+end;
 
 constructor TUsuarioService.create;
 begin

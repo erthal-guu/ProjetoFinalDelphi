@@ -4,9 +4,9 @@ interface
 
 type TUsuario = class
   private
-  Nome : String;
-  CPF : String;
-  Senha : String;
+    Nome : String;
+    CPF : String;
+    Senha : String;
   public
     function getNome :String;
     procedure setNome(aNome:String);
