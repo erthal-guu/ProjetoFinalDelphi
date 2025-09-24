@@ -1,14 +1,14 @@
 unit UsuarioCadastroController;
 
 interface
-uses uUsuarioDTO, CadastroUsuarioService, FireDAC.Comp.Client, Vcl.Dialogs;
+uses uUsuarioDTO, CadastroUsuarioService, FireDAC.Comp.Client, Vcl.Dialogs,Data.DB;
 
 type TUsuarioController = class
   Service : TUsuarioService;
     constructor Create;
       function SalvarUsuario(UsuarioDTO: TUsuarioDTO): Boolean;
       procedure EditarUsuario(UsuarioDTO: TUsuarioDTO);
-      function ListarUsuarios: TFDQuery;
+      function ListarUsuarios: TDataSet;
       function CriarObjeto(aNome, aCPF, aSenha: String): TUsuarioDTO;
       function CriarObjetoCRUD(aNome, aCPF, aSenha, aGrupo, aStatus: String): TUsuarioDTO;
       procedure SalvarUsuarioCRUD(UsuarioDTO: TUsuarioDTO);
@@ -45,7 +45,7 @@ begin
   Service.EditarUsuario(UsuarioDTO);
 end;
 
-function TUsuarioController.ListarUsuarios: TFDQuery;
+function TUsuarioController.ListarUsuarios: TDataSet;
 begin
   Result := Service.ListarUsuarios;
 end;

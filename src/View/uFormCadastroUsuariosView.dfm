@@ -12,6 +12,7 @@ object FormCadastroUsuarios: TFormCadastroUsuarios
   Font.Name = 'Segoe UI'
   Font.Style = []
   OnCreate = FormCreate
+  OnShow = FormShow
   TextHeight = 15
   object PageControl1: TPageControl
     Left = 0
@@ -108,6 +109,7 @@ object FormCadastroUsuarios: TFormCadastroUsuarios
               ParentBackground = False
               TabOrder = 0
               Visible = False
+              ExplicitLeft = 21
               object Image1: TImage
                 AlignWithMargins = True
                 Left = 952
@@ -430,7 +432,7 @@ object FormCadastroUsuarios: TFormCadastroUsuarios
                   AlignWithMargins = True
                   Left = 523
                   Top = 30
-                  Width = 97
+                  Width = 110
                   Height = 29
                   Margins.Top = 30
                   Margins.Right = 10
@@ -454,7 +456,7 @@ object FormCadastroUsuarios: TFormCadastroUsuarios
                 end
                 object PnlButtonEnviar: TPanel
                   AlignWithMargins = True
-                  Left = 740
+                  Left = 766
                   Top = 30
                   Width = 123
                   Height = 31
@@ -467,12 +469,14 @@ object FormCadastroUsuarios: TFormCadastroUsuarios
                   Color = 9521152
                   ParentBackground = False
                   TabOrder = 2
+                  ExplicitLeft = 740
                   object LblEnviar: TLabel
                     AlignWithMargins = True
                     Left = 4
                     Top = 4
-                    Width = 115
+                    Width = 103
                     Height = 23
+                    Margins.Right = 15
                     Align = alClient
                     Alignment = taCenter
                     Caption = 'Enviar'
@@ -485,15 +489,15 @@ object FormCadastroUsuarios: TFormCadastroUsuarios
                     ParentColor = False
                     ParentFont = False
                     OnClick = LblEnviarClick
-                    ExplicitWidth = 40
-                    ExplicitHeight = 20
+                    ExplicitLeft = 24
+                    ExplicitWidth = 95
                   end
                 end
                 object CmbStatus: TComboBox
                   AlignWithMargins = True
-                  Left = 633
+                  Left = 646
                   Top = 30
-                  Width = 97
+                  Width = 110
                   Height = 29
                   Margins.Top = 30
                   Margins.Right = 10
@@ -824,7 +828,6 @@ object FormCadastroUsuarios: TFormCadastroUsuarios
                     FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
                     FFFFFFFFFFFFFFFFE2E2E24B4B4B0404041D1D1D959595FFFFFF}
                   ParentFont = False
-                  OnClick = BtnEditarClick
                   ExplicitLeft = 9
                   ExplicitTop = 74
                   ExplicitWidth = 152
@@ -1266,7 +1269,6 @@ object FormCadastroUsuarios: TFormCadastroUsuarios
   end
   object DataSource1: TDataSource
     DataSet = DataModule1.FDQuery
-    Left = 848
-    Top = 48
+    Left = 864
   end
 end

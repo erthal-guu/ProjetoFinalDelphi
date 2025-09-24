@@ -11,7 +11,7 @@ procedure inserirUsuario(aUsuario : TUsuarioDTO);
 constructor Create(Query : TFDQuery);
 function ExisteCPF(aUsuario : TUsuarioDTO): Boolean;
 function EditarUsuario(aUsuario : TUsuarioDTO):Boolean;
-function ListarUsuarios : TFDQuery;
+function ListarUsuarios : TDataSet;
 end;
 implementation
 
@@ -38,12 +38,12 @@ begin
   Self.FQuery.ExecSQL;
 end;
 
-function TCadastroRepository.ListarUsuarios: TFDQuery;
+function TCadastroRepository.ListarUsuarios: TDataSet;
 begin
   try
     FQuery.Close;
     FQuery.SQL.Clear;
-    FQuery.SQL.Add('SELECT nome, cpf, grupo, status FROM usuarios ORDER BY nome');
+    FQuery.SQL.Add('SELECT nome, cpf, grupo, status FROM usuarios');
     FQuery.Open;
     Result := FQuery;
   except

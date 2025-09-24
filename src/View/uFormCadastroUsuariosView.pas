@@ -9,7 +9,7 @@ uses
   Vcl.WinXCtrls, UsuarioCadastroController, uUsuarioDTO, Vcl.Mask, uDMConexao,
   FireDAC.Comp.Client, FireDAC.Stan.Def, FireDAC.Stan.Async, FireDAC.DApt,
   FireDAC.Stan.Param, FireDAC.DatS, FireDAC.DApt.Intf, FireDAC.Phys.PG,
-  FireDAC.Phys.PGDef, FireDAC.UI.Intf, FireDAC.VCLUI.Wait;
+  FireDAC.Phys.PGDef, FireDAC.UI.Intf, FireDAC.VCLUI.Wait,CadastroUsuarioService;
 
 type
   TFormCadastroUsuarios = class(TForm)
@@ -33,7 +33,6 @@ type
     BtnRestaurar: TSpeedButton;
     BtnSair: TSpeedButton;
     PnlGrid: TPanel;
-    DBGrid1: TDBGrid;
     PnlEdit: TPanel;
     EdtNome: TEdit;
     CmbGrupo: TComboBox;
@@ -45,13 +44,15 @@ type
     EdtCPF: TMaskEdit;
     EdtSenha: TEdit;
     DataSource1: TDataSource;
+    DBGrid1: TDBGrid;
     procedure BtnAdicionarClick(Sender: TObject);
     procedure FormCreate(Sender: TObject);
     procedure BtnPesquisarClick(Sender: TObject);
     procedure LblEnviarClick(Sender: TObject);
     function ValidarCampos : Boolean;
+    procedure CarregarGrid;
     procedure LimparCampos;
-    procedure BtnEditarClick(Sender: TObject);
+    procedure FormShow(Sender: TObject);
   private
     { Private declarations }
   public
@@ -81,6 +82,26 @@ begin
 end;
 
 
+procedure TFormCadastroUsuarios.CarregarGrid;
+var
+  UsuarioService : TUsuarioService;
+begin
+UsuarioService := TUsuarioService.create;
+DataSource1.DataSet :=  UsuarioService.ListarUsuarios;
+DbGrid1.DataSource := DataSource1;
+
+DBGrid1.Columns[0].Title.Caption := 'Nome';
+DBGrid1.Columns[1].Title.Caption := 'CPF';
+DBGrid1.Columns[2].Title.Caption := 'Grupo';
+DBGrid1.Columns[3].Title.Caption := 'Status';
+
+DBGrid1.Columns[0].Width := 220;
+DBGrid1.Columns[1].Width := 220;
+DBGrid1.Columns[2].Width := 220;
+DBGrid1.Columns[3].Width := 220;
+
+end;
+
 procedure TFormCadastroUsuarios.FormCreate(Sender: TObject);
 begin
   EdtSenha.Height := 31;
@@ -92,6 +113,11 @@ begin
   CmbStatus.Height:= 31;
 end;
 
+
+procedure TFormCadastroUsuarios.FormShow(Sender: TObject);
+begin
+  CarregarGrid;
+end;
 
 procedure TFormCadastroUsuarios.LblEnviarClick(Sender: TObject);
 var

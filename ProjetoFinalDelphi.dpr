@@ -33,8 +33,8 @@ uses
 begin
   Application.Initialize;
   Application.MainFormOnTaskbar := True;
-  Application.CreateForm(TFormCadastro, FormCadastro);
   Application.CreateForm(TFormHome, FormHome);
+  Application.CreateForm(TFormCadastro, FormCadastro);
   Application.CreateForm(TFormCadastroUsuarios, FormCadastroUsuarios);
   Application.CreateForm(TFormLogin, FormLogin);
   Application.CreateForm(TFormMain, FormMain);
