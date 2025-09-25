@@ -4,7 +4,7 @@ object FormCadastroUsuarios: TFormCadastroUsuarios
   BorderStyle = bsDialog
   Caption = 'FormCadastroUsuarios'
   ClientHeight = 664
-  ClientWidth = 1118
+  ClientWidth = 1116
   Color = clWhite
   Font.Charset = DEFAULT_CHARSET
   Font.Color = clWindowText
@@ -20,7 +20,6 @@ object FormCadastroUsuarios: TFormCadastroUsuarios
     Width = 1118
     Height = 664
     ActivePage = Usuarios
-    Align = alClient
     Font.Charset = DEFAULT_CHARSET
     Font.Color = clWindowText
     Font.Height = -19
@@ -36,6 +35,8 @@ object FormCadastroUsuarios: TFormCadastroUsuarios
         Width = 1110
         Height = 567
         Align = alClient
+        BevelOuter = bvNone
+        BorderStyle = bsSingle
         TabOrder = 0
         object PnlContainer: TPanel
           AlignWithMargins = True
@@ -109,7 +110,6 @@ object FormCadastroUsuarios: TFormCadastroUsuarios
               ParentBackground = False
               TabOrder = 0
               Visible = False
-              ExplicitLeft = 21
               object Image1: TImage
                 AlignWithMargins = True
                 Left = 952
@@ -408,6 +408,71 @@ object FormCadastroUsuarios: TFormCadastroUsuarios
                 Align = alLeft
                 BevelOuter = bvNone
                 TabOrder = 0
+                object Label1: TLabel
+                  Left = 20
+                  Top = 8
+                  Width = 43
+                  Height = 17
+                  Caption = 'Nome :'
+                  Font.Charset = DEFAULT_CHARSET
+                  Font.Color = clWindowText
+                  Font.Height = -13
+                  Font.Name = 'Segoe UI'
+                  Font.Style = []
+                  ParentFont = False
+                end
+                object Label2: TLabel
+                  Left = 187
+                  Top = 8
+                  Width = 28
+                  Height = 17
+                  Caption = 'CPF :'
+                  Font.Charset = DEFAULT_CHARSET
+                  Font.Color = clWindowText
+                  Font.Height = -13
+                  Font.Name = 'Segoe UI'
+                  Font.Style = []
+                  ParentFont = False
+                end
+                object Label3: TLabel
+                  Left = 354
+                  Top = 8
+                  Width = 42
+                  Height = 17
+                  Caption = 'Senha :'
+                  Font.Charset = DEFAULT_CHARSET
+                  Font.Color = clWindowText
+                  Font.Height = -13
+                  Font.Name = 'Segoe UI'
+                  Font.Style = []
+                  ParentFont = False
+                end
+                object Label4: TLabel
+                  Left = 523
+                  Top = 8
+                  Width = 44
+                  Height = 17
+                  Caption = 'Grupo :'
+                  Font.Charset = DEFAULT_CHARSET
+                  Font.Color = clWindowText
+                  Font.Height = -13
+                  Font.Name = 'Segoe UI'
+                  Font.Style = []
+                  ParentFont = False
+                end
+                object Label5: TLabel
+                  Left = 646
+                  Top = 8
+                  Width = 42
+                  Height = 17
+                  Caption = 'Status :'
+                  Font.Charset = DEFAULT_CHARSET
+                  Font.Color = clWindowText
+                  Font.Height = -13
+                  Font.Name = 'Segoe UI'
+                  Font.Style = []
+                  ParentFont = False
+                end
                 object EdtNome: TEdit
                   AlignWithMargins = True
                   Left = 20
@@ -426,7 +491,6 @@ object FormCadastroUsuarios: TFormCadastroUsuarios
                   Font.Style = []
                   ParentFont = False
                   TabOrder = 0
-                  TextHint = 'Nome'
                 end
                 object CmbGrupo: TComboBox
                   AlignWithMargins = True
@@ -447,7 +511,6 @@ object FormCadastroUsuarios: TFormCadastroUsuarios
                   Font.Style = []
                   ParentFont = False
                   TabOrder = 1
-                  TextHint = 'Grupo'
                   Items.Strings = (
                     'Mec'#226'nico'
                     'Gerente'
@@ -469,7 +532,6 @@ object FormCadastroUsuarios: TFormCadastroUsuarios
                   Color = 9521152
                   ParentBackground = False
                   TabOrder = 2
-                  ExplicitLeft = 740
                   object LblEnviar: TLabel
                     AlignWithMargins = True
                     Left = 4
@@ -489,8 +551,8 @@ object FormCadastroUsuarios: TFormCadastroUsuarios
                     ParentColor = False
                     ParentFont = False
                     OnClick = LblEnviarClick
-                    ExplicitLeft = 24
-                    ExplicitWidth = 95
+                    ExplicitWidth = 40
+                    ExplicitHeight = 20
                   end
                 end
                 object CmbStatus: TComboBox
@@ -512,7 +574,6 @@ object FormCadastroUsuarios: TFormCadastroUsuarios
                   Font.Style = []
                   ParentFont = False
                   TabOrder = 3
-                  TextHint = 'Status'
                   Items.Strings = (
                     'Ativo'
                     'Inativo')
@@ -553,7 +614,6 @@ object FormCadastroUsuarios: TFormCadastroUsuarios
                   Font.Style = []
                   ParentFont = False
                   TabOrder = 5
-                  TextHint = 'Senha'
                 end
               end
             end

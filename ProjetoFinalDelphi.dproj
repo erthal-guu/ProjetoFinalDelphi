@@ -152,10 +152,6 @@
             <Form>FormCadastroUsuarios</Form>
             <FormType>dfm</FormType>
         </DCCReference>
-        <DCCReference Include="src\View\uFormCadastroClientesView.pas">
-            <Form>FormCadastroClientes</Form>
-            <FormType>dfm</FormType>
-        </DCCReference>
         <DCCReference Include="src\View\uFormCadastroFuncionariosView.pas">
             <Form>FormCadastroFuncionarios</Form>
             <FormType>dfm</FormType>
@@ -188,6 +184,10 @@
         </DCCReference>
         <DCCReference Include="src\View\uFormMainView.pas">
             <Form>FormMain</Form>
+            <FormType>dfm</FormType>
+        </DCCReference>
+        <DCCReference Include="src\View\uFormCadastroClientesView.pas">
+            <Form>FormCadastroClientes</Form>
             <FormType>dfm</FormType>
         </DCCReference>
         <BuildConfiguration Include="Base">

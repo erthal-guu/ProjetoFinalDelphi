@@ -45,6 +45,11 @@ type
     EdtSenha: TEdit;
     DataSource1: TDataSource;
     DBGrid1: TDBGrid;
+    Label1: TLabel;
+    Label2: TLabel;
+    Label3: TLabel;
+    Label4: TLabel;
+    Label5: TLabel;
     procedure BtnAdicionarClick(Sender: TObject);
     procedure FormCreate(Sender: TObject);
     procedure BtnPesquisarClick(Sender: TObject);
@@ -130,6 +135,7 @@ begin
     UsuarioDTO := Controller.CriarObjetoCRUD(EdtNome.Text,EdtCPF.Text,EdtSenha.Text,CmbGrupo.text,CmbStatus.Text);
   Controller.SalvarUsuarioCRUD(UsuarioDTO);
   LimparCampos;
+  CarregarGrid;
   finally
     Controller.Free;
   end;
