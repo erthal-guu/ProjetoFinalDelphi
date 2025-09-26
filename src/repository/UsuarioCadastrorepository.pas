@@ -12,6 +12,7 @@ constructor Create(Query : TFDQuery);
 function ExisteCPF(aUsuario : TUsuarioDTO): Boolean;
 function EditarUsuario(aUsuario : TUsuarioDTO):Boolean;
 function ListarUsuarios : TDataSet;
+function ListarUsuariosRestaurar : TDataSet;
 procedure DeletarUsuarios(const aID:Integer);
 end;
 implementation
@@ -52,6 +53,20 @@ begin
       raise Exception.Create('Erro ao listar usuários: ' + E.Message);
   end;
 end;
+function TCadastroRepository.ListarUsuariosRestaurar: TDataSet;
+begin
+    try
+    FQuery.Close;
+    FQuery.SQL.Clear;
+    FQuery.SQL.Add('SELECT id, nome, cpf, grupo, status FROM usuarios WHERE status = ''Inativo''');
+    FQuery.Open;
+    Result := FQuery;
+  except
+    on E: Exception do
+      raise Exception.Create('Erro ao listar usuários: ' + E.Message);
+  end;
+end;
+
 procedure TCadastroRepository.DeletarUsuarios(const aID:Integer);
 begin
   Self.FQuery.Close;

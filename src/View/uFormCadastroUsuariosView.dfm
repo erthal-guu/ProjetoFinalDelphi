@@ -1166,6 +1166,7 @@ object FormCadastroUsuarios: TFormCadastroUsuarios
                     EFDDDDDDFDFDFDFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
                     FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF}
                   ParentFont = False
+                  OnClick = BtnRestaurarClick
                   ExplicitLeft = 13
                   ExplicitTop = 111
                   ExplicitWidth = 135
@@ -1286,30 +1287,108 @@ object FormCadastroUsuarios: TFormCadastroUsuarios
               TitleFont.Name = 'Segoe UI'
               TitleFont.Style = []
             end
-            object Panel1: TPanel
+            object PnlRestaurar: TPanel
               AlignWithMargins = True
-              Left = 200
+              Left = 20
               Top = 20
-              Width = 488
+              Width = 848
               Height = 350
-              Margins.Left = 200
+              Margins.Left = 20
               Margins.Top = 20
-              Margins.Right = 200
+              Margins.Right = 20
               Margins.Bottom = 20
               Align = alClient
               Color = 6172416
               ParentBackground = False
               TabOrder = 1
-              ExplicitTop = 11
-              ExplicitHeight = 339
-              object Panel2: TPanel
+              Visible = False
+              ExplicitLeft = 22
+              ExplicitTop = 65
+              object Label6: TLabel
+                AlignWithMargins = True
+                Left = 4
+                Top = 11
+                Width = 840
+                Height = 32
+                Margins.Top = 10
+                Align = alTop
+                Alignment = taCenter
+                Caption = 'Restaurar'
+                Font.Charset = DEFAULT_CHARSET
+                Font.Color = clWhite
+                Font.Height = -24
+                Font.Name = 'Segoe UI'
+                Font.Style = [fsBold]
+                ParentFont = False
+                ExplicitLeft = 2
+                ExplicitTop = 14
+                ExplicitWidth = 880
+              end
+              object Image2: TImage
+                Left = 800
+                Top = 18
+                Width = 25
+                Height = 25
+                Picture.Data = {
+                  0954506E67496D61676589504E470D0A1A0A0000000D49484452000000180000
+                  00180806000000E0773DF8000000097048597300000EC300000EC301C76FA864
+                  0000001974455874536F667477617265007777772E696E6B73636170652E6F72
+                  679BEE3C1A0000010F4944415478DAC5964D0AC2301085675C783A050F20F80B
+                  820BC55308228A4871E10F75E752F05EAE7551F5854688A549A6A962E0D13493
+                  BCAF69324DF9493423A231B485464CF4A012057E155CD6501F5A301AEEA85475
+                  FC08754321DAFC00B574D34D0122548646BF20488EB92A115B0227A8094852C2
+                  FCEDE1ED9094304F58DA31C45CDD706680BADF40031FC4621E433D73FD3E0052
+                  88D43C17E083A46199B915603CE51E6A1BCD173DA6263177021C33318BD3DC0B
+                  30667286EA99909A4DC39790FF0558768B59BCC918B2C894994D4C4517D9B5CF
+                  D3B02C19730192242A92F15CD4DCE82B82F83E76CEF72B8170A8B914C265CC45
+                  901F1F99CB5F1FFA570598A2328176F4BDDF9615D481E62FF3919E24F9015515
+                  0000000049454E44AE426082}
+                OnClick = Image2Click
+              end
+              object Image3: TImage
+                Left = 20
+                Top = 18
+                Width = 25
+                Height = 25
+                Picture.Data = {
+                  0954506E67496D61676589504E470D0A1A0A0000000D49484452000000180000
+                  00180806000000E0773DF8000000097048597300000EC300000EC301C76FA864
+                  0000001974455874536F667477617265007777772E696E6B73636170652E6F72
+                  679BEE3C1A000003164944415478DAAD554B681351143D6F26C66452AD2E2C48
+                  F7A26D45DB854AC145ADE06721D4CF4AA4E0A75D884D5251942A564B8B28344D
+                  2BE207B10B5D89281514A576A32EBAA9FD2F5C8B8BBA31DA997CCCCC78664CED
+                  74D24952F0C13093F7EE3DE7DE7BEEBB11286105DBB10B068604D0ACF5E14D29
+                  3E0B4B9462A48471C61478C0CF341D9A5642E24DD009BF92C049C3C4591AD538
+                  4EFE910423382704D29A8AC7A4FF5D328112411D5F4F4C608B077D5AD751E7F7
+                  41E826A649322B4C1C57FB305E942014C57E46FDDCE22990F91C3DAD202A6162
+                  34B7A74A268EA871BCF52450DA516B1AF8580C5C16D833AFE28BA2E035B3DCEB
+                  38538584DD5A2F3EE713B4609512C2B869A26A19D05F7CD6D8E0061AE7FB311D
+                  8CE216A3BFE03624E14C6A1DB3EB4466098112450BC1EFBBEDE9D0E11318D20D
+                  0CC826DA2C70FBE418E440252E11A0CB5D096AD2AAC5ECAE5B3CB03A82A98FE8
+                  948182755BA9B3353B5231F414281702615C2160976B7B22D987ED791AF8CFA1
+                  4AF621915431170CA13BF91597F10C7A2182B236D418123E31A0B5AE529D62A0
+                  338B258AE000375FF033618B18C30C4A58C130461866835743D804A130F619C0
+                  4B1A067207DF2581463586A96204FEF3D82CEB240136BA8E322CDD51B10C38FE
+                  03890D4EA15F098A3BC78D0D1EBE2314ABB19452954551CD5B6D91943BE79560
+                  0D77B25BAAB9F9C8E9C0DF3F99417D512D3AE10B26D0C3C6E8606354E8599467
+                  0630EBC0C98915C1245F5B9DBE25B5690457097283CFB0652FF336F3CE3424E3
+                  B8B3848023B99506F75CFE066FDAB5D47ADC64A459BB146C4B5DA0DFBA745909
+                  4D04B80E57BBD3E7742AFEB7228B071CCF811F18E346755E9802B793315CB4C1
+                  25BCE74E059F798BCF6DCA569FE6A8A85D0868B961F7819F21470D87350D07CB
+                  42D89413B1A240C5AC895ACF893A99A7C1C2B2DB56D8E3DA26E16DDC614AF8C6
+                  D0C68A81D3EF703A8677AE66C95FA1766CA3504FAD72F156D764B23065D92658
+                  ED013E254938A1F66222BFBA5ECB1ADF0A9A2958C0EA08C72871928C33C3BB5A
+                  12832BFACBF45A4E1202B768713C2CE6B3220207C9203539C4CC468BD9FF014B
+                  7620018FA76C950000000049454E44AE426082}
+              end
+              object PnlMainRestaurar: TPanel
                 AlignWithMargins = True
                 Left = 21
-                Top = 21
-                Width = 446
-                Height = 308
+                Top = 56
+                Width = 806
+                Height = 273
                 Margins.Left = 20
-                Margins.Top = 20
+                Margins.Top = 10
                 Margins.Right = 20
                 Margins.Bottom = 20
                 Align = alClient
@@ -1317,19 +1396,17 @@ object FormCadastroUsuarios: TFormCadastroUsuarios
                 Color = 9521152
                 ParentBackground = False
                 TabOrder = 0
-                ExplicitLeft = 152
-                ExplicitTop = 152
-                ExplicitWidth = 185
-                ExplicitHeight = 41
-                object Panel3: TPanel
+                ExplicitLeft = 4
+                ExplicitTop = 148
+                object PnlContainerRestaurar: TPanel
                   AlignWithMargins = True
-                  Left = 10
+                  Left = 12
                   Top = 10
-                  Width = 426
-                  Height = 288
-                  Margins.Left = 10
+                  Width = 782
+                  Height = 253
+                  Margins.Left = 12
                   Margins.Top = 10
-                  Margins.Right = 10
+                  Margins.Right = 12
                   Margins.Bottom = 10
                   Align = alClient
                   BevelOuter = bvNone
@@ -1337,16 +1414,14 @@ object FormCadastroUsuarios: TFormCadastroUsuarios
                   Color = clBackground
                   ParentBackground = False
                   TabOrder = 0
-                  ExplicitLeft = 27
-                  ExplicitTop = 27
-                  ExplicitWidth = 408
-                  ExplicitHeight = 270
+                  ExplicitLeft = 10
+                  ExplicitWidth = 786
                   object DBGridRestaurar: TDBGrid
                     AlignWithMargins = True
                     Left = 1
                     Top = 1
-                    Width = 424
-                    Height = 286
+                    Width = 780
+                    Height = 251
                     Margins.Left = 1
                     Margins.Top = 1
                     Margins.Right = 1

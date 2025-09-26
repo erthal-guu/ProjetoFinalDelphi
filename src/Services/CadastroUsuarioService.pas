@@ -17,6 +17,7 @@ uses
     procedure EditarUsuario (UsuarioDTO : TUsuarioDTO);
     function ValidarUsuario(UsuarioValido: TUsuarioDTO) : Boolean;
     function ListarUsuarios : TDataSet;
+    function ListarUsuariosRestaurar : TDataSet;
     procedure DeletarUsuarios(const aId :Integer);
   end;
 
@@ -28,6 +29,11 @@ function TUsuarioService.ListarUsuarios:TDataSet;
 begin
   Result := Repository.ListarUsuarios;
 
+end;
+
+function TUsuarioService.ListarUsuariosRestaurar: TDataSet;
+begin
+  result := Repository.ListarUsuariosRestaurar;
 end;
 
 constructor TUsuarioService.create;

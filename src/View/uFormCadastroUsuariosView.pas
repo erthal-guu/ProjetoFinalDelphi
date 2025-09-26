@@ -21,7 +21,6 @@ type
     PnlMainEdit: TPanel;
     PnlBackgrounEdit: TPanel;
     PnlDesignEdit: TPanel;
-    Image1: TImage;
     PnlButtonCrud: TPanel;
     PnlBackgroundButton: TPanel;
     PnlButton: TPanel;
@@ -50,19 +49,26 @@ type
     Label3: TLabel;
     Label4: TLabel;
     Label5: TLabel;
-    Panel1: TPanel;
-    Panel2: TPanel;
-    Panel3: TPanel;
+    PnlRestaurar: TPanel;
+    Image1: TImage;
+    Label6: TLabel;
+    Image2: TImage;
+    PnlMainRestaurar: TPanel;
+    PnlContainerRestaurar: TPanel;
     DBGridRestaurar: TDBGrid;
+    Image3: TImage;
     procedure BtnAdicionarClick(Sender: TObject);
     procedure FormCreate(Sender: TObject);
     procedure BtnPesquisarClick(Sender: TObject);
     procedure LblEnviarClick(Sender: TObject);
     function ValidarCampos : Boolean;
     procedure CarregarGrid;
+    procedure CarregarGridRestaurar;
     procedure LimparCampos;
     procedure FormShow(Sender: TObject);
     procedure BtnExcluirClick(Sender: TObject);
+    procedure BtnRestaurarClick(Sender: TObject);
+    procedure Image2Click(Sender: TObject);
   private
     { Private declarations }
   public
@@ -116,6 +122,12 @@ begin
 end;
 
 
+procedure TFormCadastroUsuarios.BtnRestaurarClick(Sender: TObject);
+begin
+PnlRestaurar.Visible := True;
+CarregarGridRestaurar;
+end;
+
 procedure TFormCadastroUsuarios.CarregarGrid;
 var
   UsuarioService : TUsuarioService;
@@ -132,12 +144,21 @@ DBGridMain.DataSource := DataSource1;
       DBGridMain.Columns[3].Title.Caption := 'Grupo';
       DBGridMain.Columns[4].Title.Caption := 'Status';
 
-      DBGridMain.Columns[0].Width := 170;
-      DBGridMain.Columns[1].Width := 170;
-      DBGridMain.Columns[2].Width := 170;
-      DBGridMain.Columns[3].Width := 170;
-      DBGridMain.Columns[4].Width := 170;
+      DBGridMain.Columns[0].Width := 172;
+      DBGridMain.Columns[1].Width := 172;
+      DBGridMain.Columns[2].Width := 172;
+      DBGridMain.Columns[3].Width := 172;
+      DBGridMain.Columns[4].Width := 172;
     end;
+end;
+
+procedure TFormCadastroUsuarios.CarregarGridRestaurar;
+var
+  UsuarioService : TUsuarioService;
+begin
+UsuarioService := TUsuarioService.create;
+DataSource1.DataSet :=  UsuarioService.ListarUsuariosRestaurar;
+DBGridRestaurar.DataSource := DataSource1;
 
     if DBGridRestaurar.Columns.Count >= 5 then
     begin
@@ -147,11 +168,11 @@ DBGridMain.DataSource := DataSource1;
       DBGridRestaurar.Columns[3].Title.Caption := 'Grupo';
       DBGridRestaurar.Columns[4].Title.Caption := 'Status';
 
-      DBGridRestaurar.Columns[0].Width := 40;
-      DBGridRestaurar.Columns[1].Width := 40;
-      DBGridRestaurar.Columns[2].Width := 40;
-      DBGridRestaurar.Columns[3].Width := 40;
-      DBGridRestaurar.Columns[4].Width := 40;
+      DBGridRestaurar.Columns[0].Width := 148;
+      DBGridRestaurar.Columns[1].Width := 148;
+      DBGridRestaurar.Columns[2].Width := 148;
+      DBGridRestaurar.Columns[3].Width := 148;
+      DBGridRestaurar.Columns[4].Width := 148;
     end;
 
 end;
@@ -171,6 +192,14 @@ end;
 procedure TFormCadastroUsuarios.FormShow(Sender: TObject);
 begin
   CarregarGrid;
+  if PnlRestaurar.Visible = True then begin
+  CarregarGridRestaurar;
+end;
+end;
+
+procedure TFormCadastroUsuarios.Image2Click(Sender: TObject);
+begin
+  PnlRestaurar.Visible := False;
 end;
 
 procedure TFormCadastroUsuarios.LblEnviarClick(Sender: TObject);
