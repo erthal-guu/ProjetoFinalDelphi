@@ -12,6 +12,7 @@ constructor Create(Query : TFDQuery);
 function ExisteCPF(aUsuario : TUsuarioDTO): Boolean;
 function EditarUsuario(aUsuario : TUsuarioDTO):Boolean;
 function ListarUsuarios : TDataSet;
+procedure DeletarUsuarios(const aID:Integer);
 end;
 implementation
 
@@ -43,7 +44,7 @@ begin
   try
     FQuery.Close;
     FQuery.SQL.Clear;
-    FQuery.SQL.Add('SELECT nome, cpf, grupo, status FROM usuarios');
+    FQuery.SQL.Add('SELECT id, nome, cpf, grupo, status FROM usuarios WHERE status = ''Ativo''');
     FQuery.Open;
     Result := FQuery;
   except
@@ -51,6 +52,15 @@ begin
       raise Exception.Create('Erro ao listar usuários: ' + E.Message);
   end;
 end;
+procedure TCadastroRepository.DeletarUsuarios(const aID:Integer);
+begin
+  Self.FQuery.Close;
+  Self.FQuery.SQL.Clear;
+  Self.FQuery.SQL.Add('UPDATE usuarios SET status = ''Inativo'' WHERE id = :id');
+  FQuery.ParamByName('id').AsInteger := aID;
+  FQuery.ExecSQL;
+end;
+
 function TCadastroRepository.EditarUsuario(aUsuario: TUsuarioDTO): Boolean;
 begin
 Result := False;

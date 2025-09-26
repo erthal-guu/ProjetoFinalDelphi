@@ -46,6 +46,8 @@ type
     Label4: TLabel;
     CmbCategoria: TComboBox;
     Label5: TLabel;
+    ComboBox1: TComboBox;
+    Label6: TLabel;
     procedure FormCreate(Sender: TObject);
     procedure BtnAdicionarClick(Sender: TObject);
     procedure BtnPesquisarClick(Sender: TObject);

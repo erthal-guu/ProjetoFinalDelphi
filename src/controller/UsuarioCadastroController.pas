@@ -12,6 +12,7 @@ type TUsuarioController = class
       function CriarObjeto(aNome, aCPF, aSenha: String): TUsuarioDTO;
       function CriarObjetoCRUD(aNome, aCPF, aSenha, aGrupo, aStatus: String): TUsuarioDTO;
       procedure SalvarUsuarioCRUD(UsuarioDTO: TUsuarioDTO);
+      procedure DeletarUsuarios(const aId :Integer);
   end;
 implementation
 { TUsuarioController }
@@ -38,6 +39,11 @@ begin
   Result.setSenha(aSenha);
   Result.setGrupo(aGrupo);
   Result.setStatus(aStatus);
+end;
+
+procedure TUsuarioController.DeletarUsuarios(const aId :Integer);
+begin
+  Service.DeletarUsuarios(aId);
 end;
 
 procedure TUsuarioController.EditarUsuario(UsuarioDTO: TUsuarioDTO);

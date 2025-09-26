@@ -26,10 +26,6 @@ object FormCadastroClientes: TFormCadastroClientes
     Font.Style = []
     ParentFont = False
     TabOrder = 0
-    ExplicitLeft = 8
-    ExplicitTop = 8
-    ExplicitWidth = 1116
-    ExplicitHeight = 658
     object Clientes: TTabSheet
       Caption = 'Clientes'
       object PnlMain: TPanel
@@ -39,8 +35,6 @@ object FormCadastroClientes: TFormCadastroClientes
         Height = 559
         Align = alClient
         TabOrder = 0
-        ExplicitWidth = 1108
-        ExplicitHeight = 561
         object PnlContainer: TPanel
           AlignWithMargins = True
           Left = 0
@@ -497,7 +491,7 @@ object FormCadastroClientes: TFormCadastroClientes
                 end
                 object PnlButtonEnviar: TPanel
                   AlignWithMargins = True
-                  Left = 801
+                  Left = 734
                   Top = 30
                   Width = 123
                   Height = 31
@@ -510,6 +504,7 @@ object FormCadastroClientes: TFormCadastroClientes
                   Color = 9521152
                   ParentBackground = False
                   TabOrder = 1
+                  ExplicitLeft = 801
                   object LblEnviar: TLabel
                     AlignWithMargins = True
                     Left = 4
@@ -571,7 +566,7 @@ object FormCadastroClientes: TFormCadastroClientes
                   AlignWithMargins = True
                   Left = 650
                   Top = 30
-                  Width = 143
+                  Width = 76
                   Height = 31
                   Cursor = crHandPoint
                   Margins.Top = 30
@@ -1290,7 +1285,6 @@ object FormCadastroClientes: TFormCadastroClientes
         Color = 6172416
         ParentBackground = False
         TabOrder = 1
-        ExplicitWidth = 1108
         object EdtPesquisar: TSearchBox
           AlignWithMargins = True
           Left = 20

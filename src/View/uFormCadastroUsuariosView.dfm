@@ -731,6 +731,7 @@ object FormCadastroUsuarios: TFormCadastroUsuarios
                     FFFFFFFFFFFFFFFBFBFB8484843D3D3D33333333333333333333333333333359
                     5959D5D5D5FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF}
                   ParentFont = False
+                  OnClick = BtnExcluirClick
                   ExplicitTop = 84
                   ExplicitWidth = 135
                 end
@@ -1266,7 +1267,7 @@ object FormCadastroUsuarios: TFormCadastroUsuarios
             Color = clBackground
             ParentBackground = False
             TabOrder = 3
-            object DBGrid1: TDBGrid
+            object DBGridMain: TDBGrid
               AlignWithMargins = True
               Left = 1
               Top = 1
@@ -1277,12 +1278,90 @@ object FormCadastroUsuarios: TFormCadastroUsuarios
               Margins.Right = 1
               Margins.Bottom = 1
               Align = alClient
+              ReadOnly = True
               TabOrder = 0
               TitleFont.Charset = DEFAULT_CHARSET
               TitleFont.Color = clWindowText
               TitleFont.Height = -19
               TitleFont.Name = 'Segoe UI'
               TitleFont.Style = []
+            end
+            object Panel1: TPanel
+              AlignWithMargins = True
+              Left = 200
+              Top = 20
+              Width = 488
+              Height = 350
+              Margins.Left = 200
+              Margins.Top = 20
+              Margins.Right = 200
+              Margins.Bottom = 20
+              Align = alClient
+              Color = 6172416
+              ParentBackground = False
+              TabOrder = 1
+              ExplicitTop = 11
+              ExplicitHeight = 339
+              object Panel2: TPanel
+                AlignWithMargins = True
+                Left = 21
+                Top = 21
+                Width = 446
+                Height = 308
+                Margins.Left = 20
+                Margins.Top = 20
+                Margins.Right = 20
+                Margins.Bottom = 20
+                Align = alClient
+                BevelOuter = bvNone
+                Color = 9521152
+                ParentBackground = False
+                TabOrder = 0
+                ExplicitLeft = 152
+                ExplicitTop = 152
+                ExplicitWidth = 185
+                ExplicitHeight = 41
+                object Panel3: TPanel
+                  AlignWithMargins = True
+                  Left = 10
+                  Top = 10
+                  Width = 426
+                  Height = 288
+                  Margins.Left = 10
+                  Margins.Top = 10
+                  Margins.Right = 10
+                  Margins.Bottom = 10
+                  Align = alClient
+                  BevelOuter = bvNone
+                  Caption = 'PnlGrid'
+                  Color = clBackground
+                  ParentBackground = False
+                  TabOrder = 0
+                  ExplicitLeft = 27
+                  ExplicitTop = 27
+                  ExplicitWidth = 408
+                  ExplicitHeight = 270
+                  object DBGridRestaurar: TDBGrid
+                    AlignWithMargins = True
+                    Left = 1
+                    Top = 1
+                    Width = 424
+                    Height = 286
+                    Margins.Left = 1
+                    Margins.Top = 1
+                    Margins.Right = 1
+                    Margins.Bottom = 1
+                    Align = alClient
+                    ReadOnly = True
+                    TabOrder = 0
+                    TitleFont.Charset = DEFAULT_CHARSET
+                    TitleFont.Color = clWindowText
+                    TitleFont.Height = -19
+                    TitleFont.Name = 'Segoe UI'
+                    TitleFont.Style = []
+                  end
+                end
+              end
             end
           end
         end

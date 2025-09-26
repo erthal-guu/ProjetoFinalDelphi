@@ -44,12 +44,16 @@ type
     EdtCPF: TMaskEdit;
     EdtSenha: TEdit;
     DataSource1: TDataSource;
-    DBGrid1: TDBGrid;
+    DBGridMain: TDBGrid;
     Label1: TLabel;
     Label2: TLabel;
     Label3: TLabel;
     Label4: TLabel;
     Label5: TLabel;
+    Panel1: TPanel;
+    Panel2: TPanel;
+    Panel3: TPanel;
+    DBGridRestaurar: TDBGrid;
     procedure BtnAdicionarClick(Sender: TObject);
     procedure FormCreate(Sender: TObject);
     procedure BtnPesquisarClick(Sender: TObject);
@@ -58,6 +62,7 @@ type
     procedure CarregarGrid;
     procedure LimparCampos;
     procedure FormShow(Sender: TObject);
+    procedure BtnExcluirClick(Sender: TObject);
   private
     { Private declarations }
   public
@@ -79,6 +84,30 @@ begin
 end;
 
 
+procedure TFormCadastroUsuarios.BtnExcluirClick(Sender: TObject);
+var
+  Controller : TUsuarioController;
+  IdUsuario: Integer;
+begin
+  if DataSource1.DataSet.IsEmpty then
+  begin
+    ShowMessage('Nenhum usuário selecionado!');
+    Exit;
+  end;
+  IdUsuario := DBGridMain.DataSource.DataSet.FieldByName('id').AsInteger;
+
+  if MessageDlg('Deseja realmente deletar este usuário?', mtConfirmation, [mbYes, mbNo], 0) = mrYes then
+  begin
+    Controller := TUsuarioController.Create;
+    try
+      Controller.DeletarUsuarios(IdUsuario);
+      CarregarGrid;
+    finally
+      Controller.Free;
+    end;
+  end;
+end;
+
 procedure TFormCadastroUsuarios.BtnPesquisarClick(Sender: TObject);
 begin
   EdtPesquisar.Visible := True;
@@ -93,17 +122,37 @@ var
 begin
 UsuarioService := TUsuarioService.create;
 DataSource1.DataSet :=  UsuarioService.ListarUsuarios;
-DbGrid1.DataSource := DataSource1;
+DBGridMain.DataSource := DataSource1;
 
-DBGrid1.Columns[0].Title.Caption := 'Nome';
-DBGrid1.Columns[1].Title.Caption := 'CPF';
-DBGrid1.Columns[2].Title.Caption := 'Grupo';
-DBGrid1.Columns[3].Title.Caption := 'Status';
+    if DBGridMain.Columns.Count >= 5 then
+    begin
+      DBGridMain.Columns[0].Title.Caption := 'Id';
+      DBGridMain.Columns[1].Title.Caption := 'Nome';
+      DBGridMain.Columns[2].Title.Caption := 'CPF';
+      DBGridMain.Columns[3].Title.Caption := 'Grupo';
+      DBGridMain.Columns[4].Title.Caption := 'Status';
 
-DBGrid1.Columns[0].Width := 220;
-DBGrid1.Columns[1].Width := 220;
-DBGrid1.Columns[2].Width := 220;
-DBGrid1.Columns[3].Width := 220;
+      DBGridMain.Columns[0].Width := 170;
+      DBGridMain.Columns[1].Width := 170;
+      DBGridMain.Columns[2].Width := 170;
+      DBGridMain.Columns[3].Width := 170;
+      DBGridMain.Columns[4].Width := 170;
+    end;
+
+    if DBGridRestaurar.Columns.Count >= 5 then
+    begin
+      DBGridRestaurar.Columns[0].Title.Caption := 'Id';
+      DBGridRestaurar.Columns[1].Title.Caption := 'Nome';
+      DBGridRestaurar.Columns[2].Title.Caption := 'CPF';
+      DBGridRestaurar.Columns[3].Title.Caption := 'Grupo';
+      DBGridRestaurar.Columns[4].Title.Caption := 'Status';
+
+      DBGridRestaurar.Columns[0].Width := 40;
+      DBGridRestaurar.Columns[1].Width := 40;
+      DBGridRestaurar.Columns[2].Width := 40;
+      DBGridRestaurar.Columns[3].Width := 40;
+      DBGridRestaurar.Columns[4].Width := 40;
+    end;
 
 end;
 

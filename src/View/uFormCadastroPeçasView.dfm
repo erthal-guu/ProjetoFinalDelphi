@@ -37,8 +37,6 @@
         BevelOuter = bvNone
         BorderStyle = bsSingle
         TabOrder = 0
-        ExplicitWidth = 1108
-        ExplicitHeight = 567
         object PnlContainer: TPanel
           AlignWithMargins = True
           Left = 0
@@ -473,9 +471,22 @@
                     Font.Style = []
                     ParentFont = False
                   end
+                  object Label6: TLabel
+                    Left = 649
+                    Top = 8
+                    Width = 40
+                    Height = 17
+                    Caption = 'Carro :'
+                    Font.Charset = DEFAULT_CHARSET
+                    Font.Color = clWindowText
+                    Font.Height = -13
+                    Font.Name = 'Segoe UI'
+                    Font.Style = []
+                    ParentFont = False
+                  end
                   object EdtCodigoInt: TEdit
                     AlignWithMargins = True
-                    Left = 298
+                    Left = 302
                     Top = 30
                     Width = 117
                     Height = 31
@@ -492,11 +503,11 @@
                     Font.Style = []
                     ParentFont = False
                     TabOrder = 0
-                    ExplicitLeft = 301
+                    ExplicitLeft = 298
                   end
                   object PnlButtonEnviar: TPanel
                     AlignWithMargins = True
-                    Left = 651
+                    Left = 751
                     Top = 30
                     Width = 123
                     Height = 31
@@ -509,7 +520,7 @@
                     Color = 9521152
                     ParentBackground = False
                     TabOrder = 1
-                    ExplicitLeft = 808
+                    ExplicitLeft = 651
                     object LblEnviar: TLabel
                       AlignWithMargins = True
                       Left = 4
@@ -533,11 +544,12 @@
                   end
                   object EdtDescrição: TEdit
                     AlignWithMargins = True
-                    Left = 143
+                    Left = 145
                     Top = 30
                     Width = 147
                     Height = 31
                     Margins.Top = 30
+                    Margins.Right = 5
                     Margins.Bottom = 30
                     Align = alLeft
                     AutoSize = False
@@ -548,7 +560,7 @@
                     Font.Style = []
                     ParentFont = False
                     TabOrder = 2
-                    ExplicitLeft = 120
+                    ExplicitLeft = 143
                   end
                   object EdtNome: TEdit
                     AlignWithMargins = True
@@ -558,6 +570,7 @@
                     Height = 31
                     Margins.Left = 20
                     Margins.Top = 30
+                    Margins.Right = 5
                     Margins.Bottom = 30
                     Align = alLeft
                     AutoSize = False
@@ -571,9 +584,9 @@
                   end
                   object CmbUnidade: TComboBox
                     AlignWithMargins = True
-                    Left = 571
+                    Left = 570
                     Top = 30
-                    Width = 70
+                    Width = 71
                     Height = 29
                     Margins.Left = 0
                     Margins.Top = 30
@@ -599,12 +612,12 @@
                   end
                   object CmbCategoria: TComboBox
                     AlignWithMargins = True
-                    Left = 423
+                    Left = 427
                     Top = 30
                     Width = 138
                     Height = 29
                     Margins.Top = 30
-                    Margins.Right = 10
+                    Margins.Right = 5
                     Margins.Bottom = 5
                     Align = alLeft
                     BevelOuter = bvNone
@@ -627,6 +640,33 @@
                       'Escapamento'
                       'Carroceria e acabamento'
                       'Pneus e rodas')
+                    ExplicitLeft = 423
+                  end
+                  object ComboBox1: TComboBox
+                    AlignWithMargins = True
+                    Left = 649
+                    Top = 30
+                    Width = 87
+                    Height = 29
+                    Margins.Top = 30
+                    Margins.Right = 10
+                    Margins.Bottom = 5
+                    Align = alLeft
+                    BevelOuter = bvNone
+                    Style = csDropDownList
+                    Font.Charset = DEFAULT_CHARSET
+                    Font.Color = clWindowText
+                    Font.Height = -16
+                    Font.Name = 'Segoe UI'
+                    Font.Style = []
+                    ParentFont = False
+                    TabOrder = 6
+                    Items.Strings = (
+                      'Carro'
+                      'Moto'
+                      'Caminh'#227'o'
+                      #212'nibus'
+                      'Utilit'#225'rio')
                   end
                 end
               end
@@ -1316,7 +1356,6 @@
         Color = 6172416
         ParentBackground = False
         TabOrder = 1
-        ExplicitWidth = 1107
         object EdtPesquisar: TSearchBox
           AlignWithMargins = True
           Left = 20

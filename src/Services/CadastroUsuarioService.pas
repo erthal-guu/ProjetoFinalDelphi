@@ -17,6 +17,7 @@ uses
     procedure EditarUsuario (UsuarioDTO : TUsuarioDTO);
     function ValidarUsuario(UsuarioValido: TUsuarioDTO) : Boolean;
     function ListarUsuarios : TDataSet;
+    procedure DeletarUsuarios(const aId :Integer);
   end;
 
 implementation
@@ -55,6 +56,11 @@ begin
     UsuarioDTO.setGrupo(aGrupo);
     UsuarioDTO.setStatus(aStatus);
     Result := UsuarioDTO;
+end;
+
+procedure TUsuarioService.DeletarUsuarios(const aId :Integer);
+begin
+Repository.DeletarUsuarios(aID);
 end;
 
 procedure TUsuarioService.EditarUsuario(UsuarioDTO: TUsuarioDTO);
