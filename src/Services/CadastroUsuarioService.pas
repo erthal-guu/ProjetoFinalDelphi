@@ -19,6 +19,7 @@ uses
     function ListarUsuarios : TDataSet;
     function ListarUsuariosRestaurar : TDataSet;
     procedure DeletarUsuarios(const aId :Integer);
+    procedure RestaurarUsuarios(const aId :Integer);
   end;
 
 implementation
@@ -70,18 +71,8 @@ Repository.DeletarUsuarios(aID);
 end;
 
 procedure TUsuarioService.EditarUsuario(UsuarioDTO: TUsuarioDTO);
-var
-  Repository : TCadastroRepository;
 begin
-if ValidarUsuario(UsuarioDTO) then begin
-
-    Repository := TCadastroRepository.Create(DataModule1.FDQuery);
-    try
-    Repository.EditarUsuario(UsuarioDTO);
-    finally
-    Repository.Free;
-    end;
-end;
+  Repository.EditarUsuario(UsuarioDTO);
 end;
 
 function TUsuarioService.SalvarUsuario(UsuarioDTO: TUsuarioDTO):Boolean;
@@ -125,6 +116,10 @@ function TUsuarioService.ValidarUsuario(UsuarioValido: TUsuarioDTO): Boolean;
 begin
  Result := ((UsuarioValido.getNome)<>'')and((UsuarioValido.getCPF)<>'')
             and((UsuarioValido.getSenha)<>'')
+end;
+procedure TUsuarioService.RestaurarUsuarios(const aId :Integer);
+begin
+  Repository.RestaurarUsuarios(aId);
 end;
 
 end.

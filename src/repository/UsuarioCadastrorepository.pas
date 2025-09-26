@@ -14,6 +14,7 @@ function EditarUsuario(aUsuario : TUsuarioDTO):Boolean;
 function ListarUsuarios : TDataSet;
 function ListarUsuariosRestaurar : TDataSet;
 procedure DeletarUsuarios(const aID:Integer);
+procedure RestaurarUsuarios(const aID:Integer);
 end;
 implementation
 
@@ -45,7 +46,7 @@ begin
   try
     FQuery.Close;
     FQuery.SQL.Clear;
-    FQuery.SQL.Add('SELECT id, nome, cpf, grupo, status FROM usuarios WHERE status = ''Ativo''');
+    FQuery.SQL.Add('SELECT id, nome, cpf,senha, grupo, status FROM usuarios WHERE status = ''Ativo''');
     FQuery.Open;
     Result := FQuery;
   except
@@ -58,7 +59,7 @@ begin
     try
     FQuery.Close;
     FQuery.SQL.Clear;
-    FQuery.SQL.Add('SELECT id, nome, cpf, grupo, status FROM usuarios WHERE status = ''Inativo''');
+    FQuery.SQL.Add('SELECT id, nome, cpf,senha, grupo, status FROM usuarios WHERE status = ''Inativo''');
     FQuery.Open;
     Result := FQuery;
   except
@@ -107,6 +108,14 @@ begin
   Self.FQuery.ParamByName('cpf').AsString := aUsuario.getCPF ;
   Self.FQuery.Open;
   Result := Self.FQuery.FieldByName('Total').AsInteger > 0;
+end;
+procedure TCadastroRepository.RestaurarUsuarios(const aID: Integer);
+begin
+  Self.FQuery.close;
+  Self.FQuery.SQL.Clear;
+  Self.FQuery.SQL.Add ('UPDATE usuarios SET status = ''Ativo'' WHERE id = :id');
+  FQuery.ParamByName('id').AsInteger := aId;
+  FQuery.ExecSQL;
 end;
 
 end.

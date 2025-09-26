@@ -78,7 +78,7 @@ object FormCadastroUsuarios: TFormCadastroUsuarios
             Color = 6172416
             ParentBackground = False
             TabOrder = 1
-            object PnlBackgrounEdit: TPanel
+            object PnlBackgroundEdit: TPanel
               AlignWithMargins = True
               Left = 0
               Top = 10
@@ -889,6 +889,7 @@ object FormCadastroUsuarios: TFormCadastroUsuarios
                     FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
                     FFFFFFFFFFFFFFFFE2E2E24B4B4B0404041D1D1D959595FFFFFF}
                   ParentFont = False
+                  OnClick = BtnEditarClick
                   ExplicitLeft = 9
                   ExplicitTop = 74
                   ExplicitWidth = 152
@@ -1302,8 +1303,6 @@ object FormCadastroUsuarios: TFormCadastroUsuarios
               ParentBackground = False
               TabOrder = 1
               Visible = False
-              ExplicitLeft = 22
-              ExplicitTop = 65
               object Label6: TLabel
                 AlignWithMargins = True
                 Left = 4
@@ -1320,9 +1319,7 @@ object FormCadastroUsuarios: TFormCadastroUsuarios
                 Font.Name = 'Segoe UI'
                 Font.Style = [fsBold]
                 ParentFont = False
-                ExplicitLeft = 2
-                ExplicitTop = 14
-                ExplicitWidth = 880
+                ExplicitWidth = 109
               end
               object Image2: TImage
                 Left = 800
@@ -1380,6 +1377,7 @@ object FormCadastroUsuarios: TFormCadastroUsuarios
                   ED013E254938A1F66222BFBA5ECB1ADF0A9A2958C0EA08C72871928C33C3BB5A
                   12832BFACBF45A4E1202B768713C2CE6B3220207C9203539C4CC468BD9FF014B
                   7620018FA76C950000000049454E44AE426082}
+                OnClick = Image3Click
               end
               object PnlMainRestaurar: TPanel
                 AlignWithMargins = True
@@ -1396,8 +1394,6 @@ object FormCadastroUsuarios: TFormCadastroUsuarios
                 Color = 9521152
                 ParentBackground = False
                 TabOrder = 0
-                ExplicitLeft = 4
-                ExplicitTop = 148
                 object PnlContainerRestaurar: TPanel
                   AlignWithMargins = True
                   Left = 12
@@ -1414,8 +1410,6 @@ object FormCadastroUsuarios: TFormCadastroUsuarios
                   Color = clBackground
                   ParentBackground = False
                   TabOrder = 0
-                  ExplicitLeft = 10
-                  ExplicitWidth = 786
                   object DBGridRestaurar: TDBGrid
                     AlignWithMargins = True
                     Left = 1
@@ -1481,8 +1475,12 @@ object FormCadastroUsuarios: TFormCadastroUsuarios
       end
     end
   end
-  object DataSource1: TDataSource
+  object DataSourceMain: TDataSource
     DataSet = DataModule1.FDQuery
     Left = 864
+  end
+  object DataSourceRestaurar: TDataSource
+    Left = 552
+    Top = 336
   end
 end
