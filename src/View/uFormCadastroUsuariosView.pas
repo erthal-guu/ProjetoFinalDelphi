@@ -58,6 +58,8 @@ type
     DBGridRestaurar: TDBGrid;
     Image3: TImage;
     DataSourceRestaurar: TDataSource;
+    PnlButtonAtualizar: TPanel;
+    LblAtualizar: TLabel;
     procedure BtnAdicionarClick(Sender: TObject);
     procedure FormCreate(Sender: TObject);
     procedure BtnPesquisarClick(Sender: TObject);
@@ -73,8 +75,10 @@ type
     procedure RestaurarUsuarios;
     procedure DeletarUsuarios;
     procedure Image3Click(Sender: TObject);
-    procedure EditarUsuario;
+    procedure PegarCamposGridUsuarios;
     procedure BtnEditarClick(Sender: TObject);
+    procedure LblAtualizarClick(Sender: TObject);
+    procedure EditarUsuarios;
   private
     { Private declarations }
   public
@@ -93,14 +97,18 @@ begin
   PnlBackgroundEdit.Visible := True;
   PnlDesignEdit.Visible := True;
   EdtPesquisar.Visible := False;
+  PnlButtonEnviar.Visible := True;
+  PnlButtonAtualizar.Visible := False;
 end;
 
 
 procedure TFormCadastroUsuarios.BtnEditarClick(Sender: TObject);
 begin
-  EditarUsuario;
   PnlBackgroundEdit.Visible := true;
   PnlDesignEdit.Visible := True;
+  PnlButtonAtualizar.Visible := True;
+  PnlButtonEnviar.Visible := False;
+  PegarCamposGridUsuarios;
 end;
 
 procedure TFormCadastroUsuarios.BtnExcluirClick(Sender: TObject);
@@ -118,9 +126,11 @@ end;
 
 procedure TFormCadastroUsuarios.BtnRestaurarClick(Sender: TObject);
 begin
-PnlRestaurar.Visible := True;
-CarregarGridRestaurar;
+  PnlRestaurar.Visible := True;
+  CarregarGridRestaurar;
 end;
+
+//
 
 procedure TFormCadastroUsuarios.CarregarGrid;
 var
@@ -129,8 +139,8 @@ begin
 UsuarioService := TUsuarioService.create;
 DataSourceMain.DataSet :=  UsuarioService.ListarUsuarios;
 DBGridMain.DataSource := DataSourceMain;
-
-    if DBGridMain.Columns.Count >= 6 then
+   try
+      if DBGridMain.Columns.Count >= 6 then
     begin
       DBGridMain.Columns[0].Title.Caption := 'Id';
       DBGridMain.Columns[1].Title.Caption := 'Nome';
@@ -139,14 +149,18 @@ DBGridMain.DataSource := DataSourceMain;
       DBGridMain.Columns[4].Title.Caption := 'Grupo';
       DBGridMain.Columns[5].Title.Caption := 'Status';
 
-      DBGridMain.Columns[0].Width := 122;
-      DBGridMain.Columns[1].Width := 122;
-      DBGridMain.Columns[2].Width := 122;
-      DBGridMain.Columns[3].Width := 122;
-      DBGridMain.Columns[4].Width := 122;
-      DBGridMain.Columns[5].Width := 122;
+      DBGridMain.Columns[0].Width := 140;
+      DBGridMain.Columns[1].Width := 140;
+      DBGridMain.Columns[2].Width := 140;
+      DBGridMain.Columns[3].Width := 140;
+      DBGridMain.Columns[4].Width := 140;
+      DBGridMain.Columns[5].Width := 140;
     end;
+   finally
+    UsuarioService.Free;
+   end;
 end;
+
  procedure TFormCadastroUsuarios.RestaurarUsuarios;
   var
   Controller : TUsuarioController;
@@ -157,21 +171,19 @@ begin
     ShowMessage('Nenhum usuário selecionado!');
     Exit;
   end;
-  IdUsuario := DBGridMain.DataSource.DataSet.FieldByName('id').AsInteger;
+  IdUsuario := DBGridRestaurar.DataSource.DataSet.FieldByName('id').AsInteger;
 
   if MessageDlg('Deseja realmente Restaurar este usuário?', mtConfirmation, [mbYes, mbNo], 0) = mrYes then
   begin
     Controller := TUsuarioController.Create;
       Controller.RestaurarUsuarios(IdUsuario);
-      CarregarGrid;
     end;
   end;
-procedure TFormCadastroUsuarios.EditarUsuario ;
-var
-  UsuarioController :TUsuarioController;
+procedure TFormCadastroUsuarios.PegarCamposGridUsuarios ;
 begin
   EdtNome.Text := DBGridMain.DataSource.DataSet.FieldByName('nome').AsString;
   EdtCPF.Text := DBGridMain.DataSource.DataSet.FieldByName('CPF').AsString;
+  EdtSenha.Text :=  DBGridMain.DataSource.DataSet.FieldByName('Senha').AsString;
   CmbGrupo.Text := DBGridMain.DataSource.DataSet.FieldByName('Grupo').AsString;
   CmbStatus.Text := DBGridMain.DataSource.DataSet.FieldByName('Status').AsString;
 end;
@@ -183,7 +195,7 @@ begin
 UsuarioService := TUsuarioService.create;
 DataSourceRestaurar.DataSet :=  UsuarioService.ListarUsuariosRestaurar;
 DBGridRestaurar.DataSource := DataSourceRestaurar;
-
+  try
     if DBGridRestaurar.Columns.Count >= 6 then
     begin
       DBGridRestaurar.Columns[0].Title.Caption := 'Id';
@@ -200,6 +212,9 @@ DBGridRestaurar.DataSource := DataSourceRestaurar;
       DBGridRestaurar.Columns[4].Width := 112;
       DBGridRestaurar.Columns[5].Width := 112;
     end;
+  finally
+    UsuarioService.Free;
+  end;
 
 end;
 
@@ -223,11 +238,17 @@ end;
 procedure TFormCadastroUsuarios.Image2Click(Sender: TObject);
 begin
   PnlRestaurar.Visible := False;
+  CarregarGrid;
 end;
 
 procedure TFormCadastroUsuarios.Image3Click(Sender: TObject);
 begin
   RestaurarUsuarios;
+end;
+
+procedure TFormCadastroUsuarios.LblAtualizarClick(Sender: TObject);
+begin
+  EditarUsuarios;
 end;
 
 procedure TFormCadastroUsuarios.LblEnviarClick(Sender: TObject);
@@ -297,6 +318,41 @@ begin
       CarregarGrid;
 end;
 end;
+procedure TFormCadastroUsuarios.EditarUsuarios;
+var
+  Controller : TUsuarioController;
+  UsuarioDTO : TUsuarioDTO;
+  IdUsuario  : Integer;
+begin
+  if DataSourceMain.DataSet.IsEmpty then
+  begin
+    ShowMessage('Nenhum usuário selecionado!');
+    Exit;
+  end;
 
+  IdUsuario := DBGridMain.DataSource.DataSet.FieldByName('id').AsInteger;
+
+  Controller := TUsuarioController.Create;
+  try
+    UsuarioDTO := TUsuarioDTO.Create;
+    try
+      UsuarioDTO.SetId(IdUsuario);
+      UsuarioDTO.SetNome(EdtNome.Text);
+      UsuarioDTO.SetCPF(EdtCPF.Text);
+      UsuarioDTO.SetSenha(EdtSenha.Text);
+      UsuarioDTO.SetGrupo(CmbGrupo.Text);
+      UsuarioDTO.SetStatus(CmbStatus.Text);
+
+      Controller.EditarUsuario(UsuarioDTO);
+
+      CarregarGrid;
+      LimparCampos;
+    finally
+      UsuarioDTO.Free;
+    end;
+  finally
+    Controller.Free;
+  end;
+end;
 
 end.

@@ -83,13 +83,13 @@ Result := False;
 try
 Self.FQuery.Close;
 Self.FQuery.SQL.Clear;
-Self.FQuery.SQL.Add('UPDATE usuarios ' +  'SET nome = :nome, senha = :senha ' +'WHERE cpf = :cpf');
+Self.FQuery.SQL.Add('UPDATE usuarios SET nome = :nome, senha = :senha, cpf = :cpf, grupo = :grupo, status= :status WHERE id = :id');
 Self.FQuery.ParamByName('nome').AsString  := aUsuario.getNome;
 Self.FQuery.ParamByName('senha').AsString := aUsuario.getSenha;
 Self.FQuery.ParamByName('cpf').AsString   := aUsuario.getCPF;
 Self.FQuery.ParamByName('grupo').AsString  := aUsuario.getGrupo;
 Self.FQuery.ParamByName('status').AsString  := aUsuario.getStatus;
-
+Self.FQuery.ParamByName('id').AsInteger  := aUsuario.getID;
 Self.FQuery.ExecSQL;
 Result := Self.FQuery.RowsAffected > 0;
 except

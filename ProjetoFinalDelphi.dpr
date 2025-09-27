@@ -33,9 +33,9 @@ uses
 begin
   Application.Initialize;
   Application.MainFormOnTaskbar := True;
+  Application.CreateForm(TFormHome, FormHome);
   Application.CreateForm(TFormCadastroUsuarios, FormCadastroUsuarios);
   Application.CreateForm(TFormLogin, FormLogin);
-  Application.CreateForm(TFormHome, FormHome);
   Application.CreateForm(TFormCadastro, FormCadastro);
   Application.CreateForm(TFormMain, FormMain);
   Application.CreateForm(TDataModule1, DataModule1);

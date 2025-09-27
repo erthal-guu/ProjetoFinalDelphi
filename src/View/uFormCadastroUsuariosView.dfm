@@ -110,6 +110,7 @@ object FormCadastroUsuarios: TFormCadastroUsuarios
               ParentBackground = False
               TabOrder = 0
               Visible = False
+              ExplicitLeft = 19
               object Image1: TImage
                 AlignWithMargins = True
                 Left = 952
@@ -516,44 +517,7 @@ object FormCadastroUsuarios: TFormCadastroUsuarios
                     'Gerente'
                     'Atendente'
                     'Administrador')
-                end
-                object PnlButtonEnviar: TPanel
-                  AlignWithMargins = True
-                  Left = 766
-                  Top = 30
-                  Width = 123
-                  Height = 31
-                  Margins.Left = 0
-                  Margins.Top = 30
-                  Margins.Right = 0
-                  Margins.Bottom = 30
-                  Align = alLeft
-                  BevelOuter = bvLowered
-                  Color = 9521152
-                  ParentBackground = False
-                  TabOrder = 2
-                  object LblEnviar: TLabel
-                    AlignWithMargins = True
-                    Left = 4
-                    Top = 4
-                    Width = 103
-                    Height = 23
-                    Margins.Right = 15
-                    Align = alClient
-                    Alignment = taCenter
-                    Caption = 'Enviar'
-                    Color = clWhite
-                    Font.Charset = DEFAULT_CHARSET
-                    Font.Color = clWhite
-                    Font.Height = -15
-                    Font.Name = 'Segoe UI'
-                    Font.Style = []
-                    ParentColor = False
-                    ParentFont = False
-                    OnClick = LblEnviarClick
-                    ExplicitWidth = 40
-                    ExplicitHeight = 20
-                  end
+                  ExplicitTop = 38
                 end
                 object CmbStatus: TComboBox
                   AlignWithMargins = True
@@ -614,6 +578,82 @@ object FormCadastroUsuarios: TFormCadastroUsuarios
                   Font.Style = []
                   ParentFont = False
                   TabOrder = 5
+                end
+                object PnlButtonEnviar: TPanel
+                  AlignWithMargins = True
+                  Left = 766
+                  Top = 30
+                  Width = 123
+                  Height = 31
+                  Margins.Left = 0
+                  Margins.Top = 30
+                  Margins.Right = 0
+                  Margins.Bottom = 30
+                  Align = alLeft
+                  BevelOuter = bvLowered
+                  Color = 9521152
+                  ParentBackground = False
+                  TabOrder = 2
+                  Visible = False
+                  object LblEnviar: TLabel
+                    AlignWithMargins = True
+                    Left = 4
+                    Top = 4
+                    Width = 103
+                    Height = 23
+                    Margins.Right = 15
+                    Align = alClient
+                    Alignment = taCenter
+                    Caption = 'Enviar'
+                    Color = clWhite
+                    Font.Charset = DEFAULT_CHARSET
+                    Font.Color = clWhite
+                    Font.Height = -15
+                    Font.Name = 'Segoe UI'
+                    Font.Style = []
+                    ParentColor = False
+                    ParentFont = False
+                    OnClick = LblEnviarClick
+                    ExplicitWidth = 40
+                    ExplicitHeight = 20
+                  end
+                end
+              end
+              object PnlButtonAtualizar: TPanel
+                AlignWithMargins = True
+                Left = 767
+                Top = 31
+                Width = 107
+                Height = 31
+                Margins.Left = 0
+                Margins.Top = 30
+                Margins.Right = 0
+                Margins.Bottom = 30
+                BevelOuter = bvNone
+                Color = 9521152
+                ParentBackground = False
+                TabOrder = 1
+                Visible = False
+                object LblAtualizar: TLabel
+                  AlignWithMargins = True
+                  Left = 3
+                  Top = 3
+                  Width = 101
+                  Height = 25
+                  Align = alClient
+                  Alignment = taCenter
+                  Caption = 'Atualizar'
+                  Color = clWhite
+                  Font.Charset = DEFAULT_CHARSET
+                  Font.Color = clWhite
+                  Font.Height = -15
+                  Font.Name = 'Segoe UI'
+                  Font.Style = []
+                  ParentColor = False
+                  ParentFont = False
+                  OnClick = LblAtualizarClick
+                  ExplicitLeft = 19
+                  ExplicitWidth = 89
                 end
               end
             end
@@ -811,9 +851,7 @@ object FormCadastroUsuarios: TFormCadastroUsuarios
                     FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF}
                   ParentFont = False
                   OnClick = BtnAdicionarClick
-                  ExplicitLeft = 9
-                  ExplicitTop = 74
-                  ExplicitWidth = 152
+                  ExplicitLeft = 13
                 end
                 object BtnEditar: TSpeedButton
                   AlignWithMargins = True
@@ -1480,7 +1518,6 @@ object FormCadastroUsuarios: TFormCadastroUsuarios
     Left = 864
   end
   object DataSourceRestaurar: TDataSource
-    Left = 552
-    Top = 336
+    Left = 776
   end
 end

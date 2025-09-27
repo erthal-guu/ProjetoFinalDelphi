@@ -5,12 +5,14 @@ interface
 type
   TUsuarioDTO = class
   private
+    id : Integer;
     Nome: String;
     CPF: String;
     Senha: String;
     grupo : String;
     status : String;
   public
+    Function getID : Integer;
     function getNome: String;
     function getCPF: String;
     function getSenha: String;
@@ -21,6 +23,7 @@ type
     procedure setSenha(aSenha: String);
     procedure setGrupo(aGrupo : String);
     procedure setStatus(aStatus : String);
+    procedure setId(aId : Integer);
   end;
 
 implementation
@@ -30,6 +33,10 @@ implementation
 function TUsuarioDTO.getGrupo: String;
 begin
   Result := Self.Grupo;
+end;
+function TUsuarioDTO.getID: Integer;
+begin
+  Result := Self.ID;
 end;
 
 function TUsuarioDTO.getNome: String;
@@ -55,6 +62,10 @@ end;
 procedure TUsuarioDTO.setNome(aNome: String);
 begin
   Nome := aNome;
+end;
+procedure TUsuarioDTO.setID(aId: Integer);
+begin
+  Id := aId;
 end;
 
 procedure TUsuarioDTO.setCPF(aCPF: String);
