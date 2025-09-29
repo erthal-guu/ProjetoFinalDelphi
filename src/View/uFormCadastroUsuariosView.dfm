@@ -110,8 +110,7 @@ object FormCadastroUsuarios: TFormCadastroUsuarios
               ParentBackground = False
               TabOrder = 0
               Visible = False
-              ExplicitLeft = 19
-              object Image1: TImage
+              object imgLogo: TImage
                 AlignWithMargins = True
                 Left = 952
                 Top = 4
@@ -517,7 +516,6 @@ object FormCadastroUsuarios: TFormCadastroUsuarios
                     'Gerente'
                     'Atendente'
                     'Administrador')
-                  ExplicitTop = 38
                 end
                 object CmbStatus: TComboBox
                   AlignWithMargins = True
@@ -652,8 +650,8 @@ object FormCadastroUsuarios: TFormCadastroUsuarios
                   ParentColor = False
                   ParentFont = False
                   OnClick = LblAtualizarClick
-                  ExplicitLeft = 19
-                  ExplicitWidth = 89
+                  ExplicitLeft = 11
+                  ExplicitTop = 11
                 end
               end
             end
@@ -1127,6 +1125,7 @@ object FormCadastroUsuarios: TFormCadastroUsuarios
                     FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
                     FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF}
                   ParentFont = False
+                  OnClick = BtnCancelarClick
                   ExplicitLeft = 24
                   ExplicitTop = 217
                   ExplicitWidth = 116
@@ -1286,6 +1285,7 @@ object FormCadastroUsuarios: TFormCadastroUsuarios
                     0303343434CDCDCDFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF}
                   ParentFont = False
                   Spacing = 0
+                  OnClick = BtnSairClick
                   ExplicitTop = 322
                 end
               end
@@ -1341,7 +1341,7 @@ object FormCadastroUsuarios: TFormCadastroUsuarios
               ParentBackground = False
               TabOrder = 1
               Visible = False
-              object Label6: TLabel
+              object LblRestaurar: TLabel
                 AlignWithMargins = True
                 Left = 4
                 Top = 11
@@ -1359,7 +1359,7 @@ object FormCadastroUsuarios: TFormCadastroUsuarios
                 ParentFont = False
                 ExplicitWidth = 109
               end
-              object Image2: TImage
+              object ImgFechar: TImage
                 Left = 800
                 Top = 18
                 Width = 25
@@ -1378,10 +1378,10 @@ object FormCadastroUsuarios: TFormCadastroUsuarios
                   D3B02C19730192242A92F15CD4DCE82B82F83E76CEF72B8170A8B914C265CC45
                   901F1F99CB5F1FFA570598A2328176F4BDDF9615D481E62FF3919E24F9015515
                   0000000049454E44AE426082}
-                OnClick = Image2Click
+                OnClick = ImgFecharClick
               end
-              object Image3: TImage
-                Left = 20
+              object ImgRestaurar: TImage
+                Left = 21
                 Top = 18
                 Width = 25
                 Height = 25
@@ -1415,7 +1415,7 @@ object FormCadastroUsuarios: TFormCadastroUsuarios
                   ED013E254938A1F66222BFBA5ECB1ADF0A9A2958C0EA08C72871928C33C3BB5A
                   12832BFACBF45A4E1202B768713C2CE6B3220207C9203539C4CC468BD9FF014B
                   7620018FA76C950000000049454E44AE426082}
-                OnClick = Image3Click
+                OnClick = ImgRestaurarClick
               end
               object PnlMainRestaurar: TPanel
                 AlignWithMargins = True
@@ -1508,6 +1508,7 @@ object FormCadastroUsuarios: TFormCadastroUsuarios
           TabOrder = 0
           TextHint = 'Pesquisar'
           Visible = False
+          OnChange = EdtPesquisarChange
           ExplicitHeight = 28
         end
       end

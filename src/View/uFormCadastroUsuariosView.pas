@@ -50,13 +50,13 @@ type
     Label4: TLabel;
     Label5: TLabel;
     PnlRestaurar: TPanel;
-    Image1: TImage;
-    Label6: TLabel;
-    Image2: TImage;
+    imgLogo: TImage;
+    LblRestaurar: TLabel;
+    ImgFechar: TImage;
     PnlMainRestaurar: TPanel;
     PnlContainerRestaurar: TPanel;
     DBGridRestaurar: TDBGrid;
-    Image3: TImage;
+    ImgRestaurar: TImage;
     DataSourceRestaurar: TDataSource;
     PnlButtonAtualizar: TPanel;
     LblAtualizar: TLabel;
@@ -71,14 +71,17 @@ type
     procedure FormShow(Sender: TObject);
     procedure BtnExcluirClick(Sender: TObject);
     procedure BtnRestaurarClick(Sender: TObject);
-    procedure Image2Click(Sender: TObject);
+    procedure ImgFecharClick(Sender: TObject);
     procedure RestaurarUsuarios;
     procedure DeletarUsuarios;
-    procedure Image3Click(Sender: TObject);
+    procedure ImgRestaurarClick(Sender: TObject);
     procedure PegarCamposGridUsuarios;
     procedure BtnEditarClick(Sender: TObject);
     procedure LblAtualizarClick(Sender: TObject);
     procedure EditarUsuarios;
+    procedure BtnCancelarClick(Sender: TObject);
+    procedure BtnSairClick(Sender: TObject);
+    procedure EdtPesquisarChange(Sender: TObject);
   private
     { Private declarations }
   public
@@ -101,6 +104,13 @@ begin
   PnlButtonAtualizar.Visible := False;
 end;
 
+
+procedure TFormCadastroUsuarios.BtnCancelarClick(Sender: TObject);
+begin
+  PnlBackgroundEdit.Visible := False;
+  PnlDesignEdit.Visible := False;
+  EdtPesquisar.Visible := False;
+end;
 
 procedure TFormCadastroUsuarios.BtnEditarClick(Sender: TObject);
 begin
@@ -128,6 +138,14 @@ procedure TFormCadastroUsuarios.BtnRestaurarClick(Sender: TObject);
 begin
   PnlRestaurar.Visible := True;
   CarregarGridRestaurar;
+end;
+
+procedure TFormCadastroUsuarios.BtnSairClick(Sender: TObject);
+begin
+  if MessageDlg('Deseja realmente fechar este Formulário?', mtConfirmation, [mbYes, mbNo], 0) = mrYes then
+  begin
+    FormCadastroUsuarios.close;
+  end;
 end;
 
 //
@@ -235,13 +253,13 @@ begin
   CarregarGrid;
 end;
 
-procedure TFormCadastroUsuarios.Image2Click(Sender: TObject);
+procedure TFormCadastroUsuarios.ImgFecharClick(Sender: TObject);
 begin
   PnlRestaurar.Visible := False;
   CarregarGrid;
 end;
 
-procedure TFormCadastroUsuarios.Image3Click(Sender: TObject);
+procedure TFormCadastroUsuarios.ImgRestaurarClick(Sender: TObject);
 begin
   RestaurarUsuarios;
 end;
@@ -274,8 +292,8 @@ begin
   EdtNome.Clear;
   EdtCPF.Clear;
   EdtSenha.Clear;
-  CmbGrupo.Clear;
-  CmbStatus.Clear;
+  CmbGrupo.ItemIndex := -1;
+  CmbStatus.ItemIndex := -1;
 end;
 
 function TFormCadastroUsuarios.ValidarCampos: Boolean;
@@ -353,6 +371,21 @@ begin
   finally
     Controller.Free;
   end;
+end;
+
+procedure TFormCadastroUsuarios.EdtPesquisarChange(Sender: TObject);
+var
+  Controller : TUsuarioController;
+begin
+  Controller := TUsuarioController.Create;
+  Controller.PesquisarUsuarios(EdtPesquisar.Text);
+
+      DBGridMain.Columns[0].Width := 140;
+      DBGridMain.Columns[1].Width := 140;
+      DBGridMain.Columns[2].Width := 140;
+      DBGridMain.Columns[3].Width := 140;
+      DBGridMain.Columns[4].Width := 140;
+      DBGridMain.Columns[5].Width := 140;
 end;
 
 end.

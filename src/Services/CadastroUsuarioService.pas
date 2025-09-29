@@ -20,6 +20,7 @@ uses
     function ListarUsuariosRestaurar : TDataSet;
     procedure DeletarUsuarios(const aId :Integer);
     procedure RestaurarUsuarios(const aId :Integer);
+    function PesquisarUsuarios(const aFiltro: String):TDataSet;
   end;
 
 implementation
@@ -35,6 +36,12 @@ end;
 function TUsuarioService.ListarUsuariosRestaurar: TDataSet;
 begin
   result := Repository.ListarUsuariosRestaurar;
+end;
+
+
+function TUsuarioService.PesquisarUsuarios(const aFiltro: String): TDataSet;
+begin
+  Result := Repository.PesquisarUsuarios(aFiltro);
 end;
 
 constructor TUsuarioService.create;

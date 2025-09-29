@@ -15,9 +15,30 @@ function ListarUsuarios : TDataSet;
 function ListarUsuariosRestaurar : TDataSet;
 procedure DeletarUsuarios(const aID:Integer);
 procedure RestaurarUsuarios(const aID:Integer);
+Function PesquisarUsuarios (const aFiltro : String): TDataSet;
 end;
 implementation
 
+function TCadastroRepository.PesquisarUsuarios(const aFiltro: String): TDataSet;
+begin
+  try
+    FQuery.Close;
+    FQuery.SQL.Clear;
+    FQuery.SQL.Add('SELECT id, nome, cpf, senha, grupo, status');
+    FQuery.SQL.Add('FROM usuarios');
+    FQuery.SQL.Add('WHERE nome ILIKE UPPER (:nome) OR cpf LIKE (:cpf) OR grupo ILIKE (:grupo) AND status = ''Ativo''');
+    FQuery.SQL.Add('ORDER BY id');
+    FQuery.ParamByName('nome').AsString := '%' + Trim(aFiltro) + '%';
+    FQuery.ParamByName('cpf').AsString  := '%' + Trim(aFiltro) + '%';
+    FQuery.ParamByName('grupo').AsString:= '%' + Trim(aFiltro) + '%';
+    FQuery.Open;
+    Result := FQuery;
+
+  except
+    on E: Exception do
+      raise Exception.Create('Erro ao buscar usuário por nome: ' + E.Message);
+  end;
+end;
 
 { TCadastrRepository }
 
@@ -47,6 +68,7 @@ begin
     FQuery.Close;
     FQuery.SQL.Clear;
     FQuery.SQL.Add('SELECT id, nome, cpf,senha, grupo, status FROM usuarios WHERE status = ''Ativo''');
+    FQuery.SQL.Add('ORDER BY id');
     FQuery.Open;
     Result := FQuery;
   except

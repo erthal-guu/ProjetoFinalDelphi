@@ -14,6 +14,7 @@ type TUsuarioController = class
       procedure SalvarUsuarioCRUD(UsuarioDTO: TUsuarioDTO);
       procedure DeletarUsuarios(const aId :Integer);
       procedure RestaurarUsuarios(const aId :Integer);
+      Function PesquisarUsuarios(const aFiltro:String):TDataset;
   end;
 implementation
 { TUsuarioController }
@@ -55,6 +56,13 @@ end;
 function TUsuarioController.ListarUsuarios: TDataSet;
 begin
   Result := Service.ListarUsuarios;
+end;
+
+
+
+function TUsuarioController.PesquisarUsuarios(const aFiltro: String): TDataset;
+begin
+  Result := Service.PesquisarUsuarios(aFiltro);
 end;
 
 function TUsuarioController.SalvarUsuario(UsuarioDTO: TUsuarioDTO):Boolean;
