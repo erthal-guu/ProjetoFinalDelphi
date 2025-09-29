@@ -12,22 +12,23 @@
   Font.Height = -12
   Font.Name = 'Segoe UI'
   Font.Style = []
-  Menu = MainMenu1
+  Menu = MainMenu
   Position = poDesigned
   WindowState = wsMaximized
   TextHeight = 15
-  object Panel1: TPanel
+  object PnlMain: TPanel
     Left = 0
     Top = 0
     Width = 1132
-    Height = 696
+    Height = 629
     Align = alClient
     TabOrder = 0
-    object Image1: TImage
+    ExplicitHeight = 696
+    object PnlLogo: TImage
       Left = 1
       Top = 1
       Width = 1130
-      Height = 694
+      Height = 627
       Align = alClient
       Center = True
       Picture.Data = {
@@ -1397,13 +1398,67 @@
         303030080943100606060606216108C2C0C0C0C020240C411818181818848421
         0803030303839030046160606060101286200C0C0C0C0C42C210848181818141
         48FC1F183E060B081BAEE00000000049454E44AE426082}
-      ExplicitLeft = 2
-      ExplicitTop = 2
+      ExplicitLeft = 0
+      ExplicitTop = 0
+      ExplicitHeight = 622
     end
   end
-  object MainMenu1: TMainMenu
+  object PnlFooter: TPanel
+    Left = 0
+    Top = 629
+    Width = 1132
+    Height = 67
+    Align = alBottom
+    Color = 15724527
+    ParentBackground = False
+    TabOrder = 1
+    object PnlDataTime: TPanel
+      AlignWithMargins = True
+      Left = 936
+      Top = 16
+      Width = 185
+      Height = 35
+      Margins.Left = 10
+      Margins.Top = 15
+      Margins.Right = 10
+      Margins.Bottom = 15
+      Align = alRight
+      BevelOuter = bvNone
+      Color = 15724527
+      ParentBackground = False
+      TabOrder = 0
+      ExplicitLeft = 935
+      ExplicitHeight = 40
+      object ShapeFooter: TShape
+        Left = 4
+        Top = 0
+        Width = 181
+        Height = 35
+        Align = alRight
+        Pen.Color = clGray
+        Shape = stRoundRect
+        ExplicitTop = -1
+      end
+      object LblDataTime: TLabel
+        AlignWithMargins = True
+        Left = 11
+        Top = 5
+        Width = 105
+        Height = 25
+        Alignment = taCenter
+        Caption = 'LblDataTime'
+        Font.Charset = DEFAULT_CHARSET
+        Font.Color = clWindowText
+        Font.Height = -19
+        Font.Name = 'Segoe UI'
+        Font.Style = []
+        ParentFont = False
+      end
+    end
+  end
+  object MainMenu: TMainMenu
     Left = 960
-    object Cadastros1: TMenuItem
+    object Cadastros: TMenuItem
       Caption = 'Cadastros'
       object Usuarios: TMenuItem
         Caption = 'Usuarios'
@@ -1448,5 +1503,10 @@
       Caption = 'Sair'
       OnClick = SairClick
     end
+  end
+  object Timer: TTimer
+    OnTimer = TimerTimer
+    Left = 896
+    Top = 16
   end
 end

@@ -650,8 +650,8 @@ object FormCadastroUsuarios: TFormCadastroUsuarios
                   ParentColor = False
                   ParentFont = False
                   OnClick = LblAtualizarClick
-                  ExplicitLeft = 11
-                  ExplicitTop = 11
+                  ExplicitWidth = 59
+                  ExplicitHeight = 20
                 end
               end
             end
@@ -1318,6 +1318,12 @@ object FormCadastroUsuarios: TFormCadastroUsuarios
               Margins.Right = 1
               Margins.Bottom = 1
               Align = alClient
+              Font.Charset = DEFAULT_CHARSET
+              Font.Color = clWindowText
+              Font.Height = -16
+              Font.Name = 'Segoe UI'
+              Font.Style = []
+              ParentFont = False
               ReadOnly = True
               TabOrder = 0
               TitleFont.Charset = DEFAULT_CHARSET
@@ -1341,6 +1347,7 @@ object FormCadastroUsuarios: TFormCadastroUsuarios
               ParentBackground = False
               TabOrder = 1
               Visible = False
+              ExplicitLeft = 22
               object LblRestaurar: TLabel
                 AlignWithMargins = True
                 Left = 4
@@ -1357,7 +1364,7 @@ object FormCadastroUsuarios: TFormCadastroUsuarios
                 Font.Name = 'Segoe UI'
                 Font.Style = [fsBold]
                 ParentFont = False
-                ExplicitWidth = 109
+                ExplicitLeft = 2
               end
               object ImgFechar: TImage
                 Left = 800
@@ -1381,8 +1388,8 @@ object FormCadastroUsuarios: TFormCadastroUsuarios
                 OnClick = ImgFecharClick
               end
               object ImgRestaurar: TImage
-                Left = 21
-                Top = 18
+                Left = 20
+                Top = 16
                 Width = 25
                 Height = 25
                 Picture.Data = {
@@ -1420,11 +1427,10 @@ object FormCadastroUsuarios: TFormCadastroUsuarios
               object PnlMainRestaurar: TPanel
                 AlignWithMargins = True
                 Left = 21
-                Top = 56
+                Top = 49
                 Width = 806
-                Height = 273
+                Height = 280
                 Margins.Left = 20
-                Margins.Top = 10
                 Margins.Right = 20
                 Margins.Bottom = 20
                 Align = alClient
@@ -1432,12 +1438,13 @@ object FormCadastroUsuarios: TFormCadastroUsuarios
                 Color = 9521152
                 ParentBackground = False
                 TabOrder = 0
+                ExplicitHeight = 250
                 object PnlContainerRestaurar: TPanel
                   AlignWithMargins = True
                   Left = 12
                   Top = 10
                   Width = 782
-                  Height = 253
+                  Height = 260
                   Margins.Left = 12
                   Margins.Top = 10
                   Margins.Right = 12
@@ -1448,17 +1455,24 @@ object FormCadastroUsuarios: TFormCadastroUsuarios
                   Color = clBackground
                   ParentBackground = False
                   TabOrder = 0
+                  ExplicitHeight = 253
                   object DBGridRestaurar: TDBGrid
                     AlignWithMargins = True
                     Left = 1
                     Top = 1
                     Width = 780
-                    Height = 251
+                    Height = 258
                     Margins.Left = 1
                     Margins.Top = 1
                     Margins.Right = 1
                     Margins.Bottom = 1
                     Align = alClient
+                    Font.Charset = DEFAULT_CHARSET
+                    Font.Color = clWindowText
+                    Font.Height = -16
+                    Font.Name = 'Segoe UI'
+                    Font.Style = []
+                    ParentFont = False
                     ReadOnly = True
                     TabOrder = 0
                     TitleFont.Charset = DEFAULT_CHARSET

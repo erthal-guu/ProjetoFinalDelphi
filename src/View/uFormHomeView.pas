@@ -18,8 +18,8 @@ uses
 
 type
   TFormHome = class(TForm)
-    MainMenu1: TMainMenu;
-    Cadastros1: TMenuItem;
+    MainMenu: TMainMenu;
+    Cadastros: TMenuItem;
     Usuarios: TMenuItem;
     Clientes: TMenuItem;
     Funcionarios: TMenuItem;
@@ -31,8 +31,13 @@ type
     Relatorios: TMenuItem;
     Financeiro: TMenuItem;
     Sair: TMenuItem;
-    Panel1: TPanel;
-    Image1: TImage;
+    PnlMain: TPanel;
+    PnlLogo: TImage;
+    PnlFooter: TPanel;
+    Timer: TTimer;
+    PnlDataTime: TPanel;
+    ShapeFooter: TShape;
+    LblDataTime: TLabel;
     procedure SairClick(Sender: TObject);
     procedure FuncionariosClick(Sender: TObject);
     procedure FornecedoresClick(Sender: TObject);
@@ -43,6 +48,7 @@ type
     procedure AgendamentosClick(Sender: TObject);
     procedure UsuariosClick(Sender: TObject);
     procedure ClientesClick(Sender: TObject);
+    procedure TimerTimer(Sender: TObject);
   private
     { Private declarations }
   public
@@ -75,6 +81,11 @@ procedure TFormHome.ServiçosClick(Sender: TObject);
 begin
   FormCadastroServiços.Position := poScreenCenter;
   FormCadastroServiços.Show;
+end;
+
+procedure TFormHome.TimerTimer(Sender: TObject);
+begin
+  LblDataTime.Caption := FormatDateTime('dd/mm/yyyy hh:nn:ss', Now);
 end;
 
 procedure TFormHome.UsuariosClick(Sender: TObject);
