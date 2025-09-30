@@ -3,7 +3,7 @@ unit CadastroUsuarioService;
 interface
 
 uses
-  uUsuarioDTO, UsuarioCadastroRepository, uDMConexao, System.SysUtils,uMainController, FireDAC.Comp.Client,Data.DB;
+  uUsuarioDTO, UsuarioCadastroRepository, uDMConexao, System.SysUtils,uMainController, FireDAC.Comp.Client,Data.DB,BCrypt,Vcl.Dialogs;
  type
   TUsuarioService = class
   private
@@ -66,7 +66,7 @@ begin
     UsuarioDTO := TUsuarioDTO.Create;
     UsuarioDTO.setNome(aNome);
     UsuarioDTO.setCPF(aCPF);
-    UsuarioDTO.setSenha(aSenha);
+    UsuarioDTO.setSenha(TBCrypt.HashPassword(aSenha));
     UsuarioDTO.setGrupo(aGrupo);
     UsuarioDTO.setStatus(aStatus);
     Result := UsuarioDTO;
@@ -82,10 +82,14 @@ begin
   Repository.EditarUsuario(UsuarioDTO);
 end;
 
+
 function TUsuarioService.SalvarUsuario(UsuarioDTO: TUsuarioDTO):Boolean;
 var
   Repository : TCadastroRepository;
 begin
+ if UsuarioDTO.getSenha <> '' then
+    UsuarioDTO.setSenha(TBCrypt.HashPassword(UsuarioDTO.getSenha));
+
 if ValidarUsuario(UsuarioDTO) then begin
 
     Repository := TCadastroRepository.Create(DataModule1.FDQuery);
@@ -106,6 +110,10 @@ function TUsuarioService.SalvarUsuarioCRUD(UsuarioDTO: TUsuarioDTO):Boolean;
 var
   Repository : TCadastroRepository;
 begin
+
+if UsuarioDTO.getSenha <> '' then
+  UsuarioDTO.setSenha(TBCrypt.HashPassword(UsuarioDTO.getSenha));
+
 if ValidarUsuario(UsuarioDTO) then begin
 
     Repository := TCadastroRepository.Create(DataModule1.FDQuery);

@@ -22,19 +22,21 @@ begin
 end;
 
 
-function TLoginRepository.SelectUsuario(aUsuario : TUsuarioDTO):TUsuario;
+function TLoginRepository.SelectUsuario(aUsuario: TUsuarioDTO): TUsuario;
 begin
   Self.FQuery.SQL.Clear;
-  Self.FQuery.SQL.Add('SELECT * FROM usuarios WHERE CPF = :cpf AND senha = :senha');
+  Self.FQuery.SQL.Add('SELECT * FROM usuarios WHERE CPF = :cpf');
   Self.FQuery.ParamByName('cpf').AsString := aUsuario.getCPF;
-  Self.FQuery.ParamByName('senha').AsString := aUsuario.getSenha;
-
   try
     Self.FQuery.Open;
-    if Self.FQuery.IsEmpty then begin
+
+    if Self.FQuery.IsEmpty then
+    begin
       Result := nil;
-    end else begin;
-      Result := TUsuario.Create('','','');
+    end
+    else
+    begin
+      Result := TUsuario.Create('', '', '');
       Result.setNome(Self.FQuery.FieldByName('nome').AsString);
       Result.setCPF(Self.FQuery.FieldByName('cpf').AsString);
       Result.setSenha(Self.FQuery.FieldByName('senha').AsString);

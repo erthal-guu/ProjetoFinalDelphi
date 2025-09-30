@@ -3,7 +3,7 @@ unit LoginUsuarioService;
 interface
 
 uses
-  uUsuarioDTO,UsuarioLoginRepository,uDMConexao,Vcl.Dialogs,uUsuarioModel;
+  uUsuarioDTO,UsuarioLoginRepository,uDMConexao,Vcl.Dialogs,uUsuarioModel,BCrypt;
 
 type TUsuarioLoginService = class
 public
@@ -25,16 +25,28 @@ begin
   Result := UsuarioDTO;
 end;
 
+
 function TUsuarioLoginService.ValidarLogin(UsuarioDTO: TUsuarioDTO): Boolean;
-var Repository :TLoginRepository;
+var
+  Repository: TLoginRepository;
+  Repo: TUsuario;
+  PasswordRehashNeeded: Boolean;
 begin
-var teste : TUsuario;
-  Repository := TLoginRepository.Create(DataModule1.FDQuery);
-  teste := Repository.SelectUsuario(UsuarioDTO);
-if teste <> nil then begin
-  Result := true;
-  end else begin
-    Result := false;
+  Result := False;
+
+  if UsuarioDTO.getSenha <> '' then
+  begin
+    Repository := TLoginRepository.Create(DataModule1.FDQuery);
+    try
+      Repo := Repository.SelectUsuario(UsuarioDTO);
+
+      if Repo <> nil then
+      begin
+        Result := TBCrypt.CheckPassword(UsuarioDTO.getSenha(),repo.getSenha(),PasswordRehashNeeded);
+      end;
+    finally
+      Repository.Free;
+    end;
   end;
 end;
 

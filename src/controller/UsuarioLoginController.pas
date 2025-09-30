@@ -24,7 +24,7 @@ function TUsuarioController.CriarObjeto(aCPF, aSenha: String): TUsuarioDTO;
 
 function TUsuarioController.ValidarLogin(UsuarioDTO: TUsuarioDTO):Boolean;
   begin
-  Result := Service.ValidarLogin(UsuarioDTO);
+    Result := Service.ValidarLogin(UsuarioDTO);
   end;
 
 function TUsuarioController.ValidarUsuarioDTO(UsuarioValido: TUsuarioDTO): Boolean;
