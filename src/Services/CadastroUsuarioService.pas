@@ -30,7 +30,6 @@ implementation
 function TUsuarioService.ListarUsuarios:TDataSet;
 begin
   Result := Repository.ListarUsuarios;
-
 end;
 
 function TUsuarioService.ListarUsuariosRestaurar: TDataSet;
@@ -79,7 +78,9 @@ end;
 
 procedure TUsuarioService.EditarUsuario(UsuarioDTO: TUsuarioDTO);
 begin
-  Repository.EditarUsuario(UsuarioDTO);
+ if UsuarioDTO.getSenha <> '' then
+    UsuarioDTO.setSenha(TBCrypt.HashPassword(UsuarioDTO.getSenha));
+    Repository.EditarUsuario(UsuarioDTO);
 end;
 
 

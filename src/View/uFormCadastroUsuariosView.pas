@@ -33,8 +33,6 @@ type
     BtnSair: TSpeedButton;
     PnlGrid: TPanel;
     PnlEdit: TPanel;
-    PnlButtonEnviar: TPanel;
-    LblEnviar: TLabel;
     PnlHeader: TPanel;
     EdtPesquisar: TSearchBox;
     DataSourceMain: TDataSource;
@@ -48,8 +46,6 @@ type
     DBGridRestaurar: TDBGrid;
     ImgRestaurar: TImage;
     DataSourceRestaurar: TDataSource;
-    PnlButtonAtualizar: TPanel;
-    LblAtualizar: TLabel;
     PnlCmbStatus: TPanel;
     PnlEdtNome: TPanel;
     LblNome: TLabel;
@@ -68,6 +64,10 @@ type
     CmbGrupo: TComboBox;
     LblStatus: TLabel;
     CmbStatus: TComboBox;
+    PnlButtonEnviar: TPanel;
+    PnlButtonAtualizar: TPanel;
+    LblAtualizar: TLabel;
+    LblEnviar: TLabel;
     procedure BtnAdicionarClick(Sender: TObject);
     procedure FormCreate(Sender: TObject);
     procedure BtnPesquisarClick(Sender: TObject);
@@ -90,6 +90,7 @@ type
     procedure BtnCancelarClick(Sender: TObject);
     procedure BtnSairClick(Sender: TObject);
     procedure EdtPesquisarChange(Sender: TObject);
+    function ValidarCamposCRUD : Boolean;
   private
     { Private declarations }
   public
@@ -105,6 +106,7 @@ implementation
 
 procedure TFormCadastroUsuarios.BtnAdicionarClick(Sender: TObject);
 begin
+  LimparCampos;
   PnlBackgroundEdit.Visible := True;
   PnlDesignEdit.Visible := True;
   EdtPesquisar.Visible := False;
@@ -127,8 +129,6 @@ begin
   PnlButtonAtualizar.Visible := True;
   PnlButtonEnviar.Visible := False;
   PegarCamposGridUsuarios;
-  EdtConfirmarSenha.Visible := True;
-  LblConfirmarSenha.Visible := True;
 end;
 
 procedure TFormCadastroUsuarios.BtnExcluirClick(Sender: TObject);
@@ -168,21 +168,19 @@ UsuarioService := TUsuarioService.create;
 DataSourceMain.DataSet :=  UsuarioService.ListarUsuarios;
 DBGridMain.DataSource := DataSourceMain;
    try
-      if DBGridMain.Columns.Count >= 6 then
+      if DBGridMain.Columns.Count >= 5 then
     begin
       DBGridMain.Columns[0].Title.Caption := 'Id';
       DBGridMain.Columns[1].Title.Caption := 'Nome';
       DBGridMain.Columns[2].Title.Caption := 'CPF';
-      DBGridMain.Columns[3].Title.Caption := 'Senha';
-      DBGridMain.Columns[4].Title.Caption := 'Grupo';
-      DBGridMain.Columns[5].Title.Caption := 'Status';
+      DBGridMain.Columns[3].Title.Caption := 'Grupo';
+      DBGridMain.Columns[4].Title.Caption := 'Status';
 
-      DBGridMain.Columns[0].Width := 140;
-      DBGridMain.Columns[1].Width := 140;
-      DBGridMain.Columns[2].Width := 140;
-      DBGridMain.Columns[3].Width := 140;
-      DBGridMain.Columns[4].Width := 140;
-      DBGridMain.Columns[5].Width := 140;
+      DBGridMain.Columns[0].Width := 168;
+      DBGridMain.Columns[1].Width := 170;
+      DBGridMain.Columns[2].Width := 170;
+      DBGridMain.Columns[3].Width := 170;
+      DBGridMain.Columns[4].Width := 170;
     end;
    finally
     UsuarioService.Free;
@@ -211,7 +209,6 @@ procedure TFormCadastroUsuarios.PegarCamposGridUsuarios ;
 begin
   EdtNome.Text := DBGridMain.DataSource.DataSet.FieldByName('nome').AsString;
   EdtCPF.Text := DBGridMain.DataSource.DataSet.FieldByName('CPF').AsString;
-  EdtSenha.Text :=  DBGridMain.DataSource.DataSet.FieldByName('Senha').AsString;
   CmbGrupo.Text := DBGridMain.DataSource.DataSet.FieldByName('Grupo').AsString;
   CmbStatus.Text := DBGridMain.DataSource.DataSet.FieldByName('Status').AsString;
 end;
@@ -224,21 +221,19 @@ UsuarioService := TUsuarioService.create;
 DataSourceRestaurar.DataSet :=  UsuarioService.ListarUsuariosRestaurar;
 DBGridRestaurar.DataSource := DataSourceRestaurar;
   try
-    if DBGridRestaurar.Columns.Count >= 6 then
+    if DBGridRestaurar.Columns.Count >= 5 then
     begin
       DBGridRestaurar.Columns[0].Title.Caption := 'Id';
       DBGridRestaurar.Columns[1].Title.Caption := 'Nome';
       DBGridRestaurar.Columns[2].Title.Caption := 'CPF';
-      DBGridRestaurar.Columns[3].Title.Caption := 'Senha';
-      DBGridRestaurar.Columns[4].Title.Caption := 'Grupo';
-      DBGridRestaurar.Columns[5].Title.Caption := 'Status';
+      DBGridRestaurar.Columns[3].Title.Caption := 'Grupo';
+      DBGridRestaurar.Columns[4].Title.Caption := 'Status';
 
-      DBGridRestaurar.Columns[0].Width := 112;
-      DBGridRestaurar.Columns[1].Width := 112;
-      DBGridRestaurar.Columns[2].Width := 112;
-      DBGridRestaurar.Columns[3].Width := 112;
-      DBGridRestaurar.Columns[4].Width := 112;
-      DBGridRestaurar.Columns[5].Width := 112;
+      DBGridRestaurar.Columns[0].Width := 147;
+      DBGridRestaurar.Columns[1].Width := 147;
+      DBGridRestaurar.Columns[2].Width := 150;
+      DBGridRestaurar.Columns[3].Width := 147;
+      DBGridRestaurar.Columns[4].Width := 147;
     end;
   finally
     UsuarioService.Free;
@@ -276,7 +271,9 @@ end;
 
 procedure TFormCadastroUsuarios.LblAtualizarClick(Sender: TObject);
 begin
+if ValidarCamposCRUD then begin
   EditarUsuarios;
+end;
 end;
 
 procedure TFormCadastroUsuarios.LblEnviarClick(Sender: TObject);
@@ -302,6 +299,7 @@ begin
   EdtNome.Clear;
   EdtCPF.Clear;
   EdtSenha.Clear;
+  EdtConfirmarSenha.Clear;
   CmbGrupo.ItemIndex := -1;
   CmbStatus.ItemIndex := -1;
 end;
@@ -325,9 +323,31 @@ begin
     ShowMessage('A senha deve Conter Pelo menos "5" Caracteres');
     exit;
   end;
+  if EdtSenha.Text <> EdtConfirmarSenha.Text then begin
+    ShowMessage('As Senhas não coincidem');
+    exit;
+  end;
   Result := True;
 end;
 
+
+function TFormCadastroUsuarios.ValidarCamposCRUD: Boolean;
+begin
+   if EdtNome.Text = '' then begin
+    ShowMessage('O Campo de NOME não pode ficar Vazio');
+    exit;
+  end;
+
+  if EdtCPF.Text = '' then begin
+    ShowMessage('O Campo de CPF não pode ficar Vazio');
+    exit;
+  end;
+  if EdtSenha.Text <> EdtConfirmarSenha.Text then begin
+    ShowMessage('As Senhas não coincidem');
+    exit;
+  end;
+  Result := True;
+end;
 
 procedure TFormCadastroUsuarios.DeletarUsuarios;
   var
@@ -348,6 +368,7 @@ begin
       CarregarGrid;
 end;
 end;
+
 procedure TFormCadastroUsuarios.EditarUsuarios;
 var
   Controller : TUsuarioController;
@@ -369,12 +390,10 @@ begin
       UsuarioDTO.SetId(IdUsuario);
       UsuarioDTO.SetNome(EdtNome.Text);
       UsuarioDTO.SetCPF(EdtCPF.Text);
-      UsuarioDTO.SetSenha(EdtSenha.Text);
+      UsuarioDTO.setSenha(EdtSenha.text);
       UsuarioDTO.SetGrupo(CmbGrupo.Text);
       UsuarioDTO.SetStatus(CmbStatus.Text);
-
       Controller.EditarUsuario(UsuarioDTO);
-
       CarregarGrid;
       LimparCampos;
     finally
@@ -397,7 +416,6 @@ begin
       DBGridMain.Columns[2].Width := 140;
       DBGridMain.Columns[3].Width := 140;
       DBGridMain.Columns[4].Width := 140;
-      DBGridMain.Columns[5].Width := 140;
 end;
 
 end.

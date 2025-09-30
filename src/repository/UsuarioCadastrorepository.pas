@@ -67,7 +67,7 @@ begin
   try
     FQuery.Close;
     FQuery.SQL.Clear;
-    FQuery.SQL.Add('SELECT id, nome, cpf,senha, grupo, status FROM usuarios WHERE status = ''Ativo''');
+    FQuery.SQL.Add('SELECT id, nome, cpf, grupo, status FROM usuarios WHERE status = ''Ativo''');
     FQuery.SQL.Add('ORDER BY id');
     FQuery.Open;
     Result := FQuery;
@@ -81,7 +81,7 @@ begin
     try
     FQuery.Close;
     FQuery.SQL.Clear;
-    FQuery.SQL.Add('SELECT id, nome, cpf,senha, grupo, status FROM usuarios WHERE status = ''Inativo''');
+    FQuery.SQL.Add('SELECT id, nome, cpf, grupo, status FROM usuarios WHERE status = ''Inativo''');
     FQuery.Open;
     Result := FQuery;
   except
