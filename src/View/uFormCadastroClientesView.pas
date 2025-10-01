@@ -46,6 +46,13 @@ type
     DBGrid1: TDBGrid;
     PnlHeader: TPanel;
     EdtPesquisar: TSearchBox;
+    PnlRestaurar: TPanel;
+    LblRestaurar: TLabel;
+    ImgFechar: TImage;
+    ImgRestaurar: TImage;
+    PnlMainRestaurar: TPanel;
+    PnlContainerRestaurar: TPanel;
+    DBGridRestaurar: TDBGrid;
     procedure BtnAdicionarClick(Sender: TObject);
     procedure BtnPesquisarClick(Sender: TObject);
     procedure FormCreate(Sender: TObject);

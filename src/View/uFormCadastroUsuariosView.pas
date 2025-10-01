@@ -158,8 +158,6 @@ begin
   end;
 end;
 
-//
-
 procedure TFormCadastroUsuarios.CarregarGrid;
 var
   UsuarioService : TUsuarioService;
@@ -176,11 +174,22 @@ DBGridMain.DataSource := DataSourceMain;
       DBGridMain.Columns[3].Title.Caption := 'Grupo';
       DBGridMain.Columns[4].Title.Caption := 'Ativo';
 
-      DBGridMain.Columns[0].Width := 168;
-      DBGridMain.Columns[1].Width := 170;
-      DBGridMain.Columns[2].Width := 170;
-      DBGridMain.Columns[3].Width := 170;
-      DBGridMain.Columns[4].Width := 170;
+      DBGridMain.Columns[0].Title.Alignment := taCenter;
+      DBGridMain.Columns[0].Alignment := taCenter;
+      DBGridMain.Columns[1].Title.Alignment := taCenter;
+      DBGridMain.Columns[1].Alignment := taCenter;
+      DBGridMain.Columns[2].Title.Alignment := taCenter;
+      DBGridMain.Columns[2].Alignment := taCenter;
+      DBGridMain.Columns[3].Title.Alignment := taCenter;
+      DBGridMain.Columns[3].Alignment := taCenter;
+      DBGridMain.Columns[4].Title.Alignment := taCenter;
+      DBGridMain.Columns[4].Alignment := taCenter;
+
+      DBGridMain.Columns[0].Width := 100;
+      DBGridMain.Columns[1].Width := 185;
+      DBGridMain.Columns[2].Width := 185;
+      DBGridMain.Columns[3].Width := 185;
+      DBGridMain.Columns[4].Width := 185;
     end;
    finally
     UsuarioService.Free;
@@ -212,8 +221,10 @@ begin
   CmbGrupo.Text := DBGridMain.DataSource.DataSet.FieldByName('Grupo').AsString;
   if DBGridMain.DataSource.DataSet.FieldByName('ativo').AsBoolean then begin
   CmbStatus.ItemIndex := 0;
+  CmbGrupo.ItemIndex := 0;
  end else begin
   CmbStatus.ItemIndex := 1;
+  CmbGrupo.ItemIndex := 1;
 end;
 end;
 
@@ -232,6 +243,17 @@ DBGridRestaurar.DataSource := DataSourceRestaurar;
       DBGridRestaurar.Columns[2].Title.Caption := 'CPF';
       DBGridRestaurar.Columns[3].Title.Caption := 'Grupo';
       DBGridRestaurar.Columns[4].Title.Caption := 'Ativo';
+
+      DBGridRestaurar.Columns[0].Title.Alignment := taCenter;
+      DBGridRestaurar.Columns[0].Alignment := taCenter;
+      DBGridRestaurar.Columns[1].Title.Alignment := taCenter;
+      DBGridRestaurar.Columns[1].Alignment := taCenter;
+      DBGridRestaurar.Columns[2].Title.Alignment := taCenter;
+      DBGridRestaurar.Columns[2].Alignment := taCenter;
+      DBGridRestaurar.Columns[3].Title.Alignment := taCenter;
+      DBGridRestaurar.Columns[3].Alignment := taCenter;
+      DBGridRestaurar.Columns[4].Title.Alignment := taCenter;
+      DBGridRestaurar.Columns[4].Alignment := taCenter;
 
       DBGridRestaurar.Columns[0].Width := 147;
       DBGridRestaurar.Columns[1].Width := 147;
