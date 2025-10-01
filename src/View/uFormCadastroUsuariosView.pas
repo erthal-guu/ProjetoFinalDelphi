@@ -277,6 +277,7 @@ procedure TFormCadastroUsuarios.LblAtualizarClick(Sender: TObject);
 begin
 if ValidarCamposCRUD then begin
   EditarUsuarios;
+  CarregarGrid;
 end;
 end;
 
@@ -331,11 +332,16 @@ begin
     ShowMessage('As Senhas não coincidem');
     exit;
   end;
+  if (EdtSenha.Text ='') and (EdtConfirmarSenha.Text = '') then begin
+  end;
   Result := True;
 end;
 
 
 function TFormCadastroUsuarios.ValidarCamposCRUD: Boolean;
+var
+  Controller : TUsuarioController;
+  UsuarioDTO : TUsuarioDTO;
 begin
    if EdtNome.Text = '' then begin
     ShowMessage('O Campo de NOME não pode ficar Vazio');
@@ -345,6 +351,18 @@ begin
   if EdtCPF.Text = '' then begin
     ShowMessage('O Campo de CPF não pode ficar Vazio');
     exit;
+  end;
+    if (EdtSenha.Text ='')  and (EdtConfirmarSenha.Text='') then begin
+      try
+        Controller := TUsuarioController.Create;
+        UsuarioDTO := TUsuarioDTO.Create;
+        Controller.EditarUsuarioComSenha(UsuarioDTO);
+         CarregarGrid;
+         LimparCampos;
+         exit;
+      finally
+      Controller.free;
+      end;
   end;
   if EdtSenha.Text <> EdtConfirmarSenha.Text then begin
     ShowMessage('As Senhas não coincidem');
@@ -391,6 +409,7 @@ begin
   try
     UsuarioDTO := TUsuarioDTO.Create;
     try
+      ValidarCampos;
       UsuarioDTO.SetId(IdUsuario);
       UsuarioDTO.SetNome(EdtNome.Text);
       UsuarioDTO.SetCPF(EdtCPF.Text);
@@ -400,6 +419,7 @@ begin
       Controller.EditarUsuario(UsuarioDTO);
       CarregarGrid;
       LimparCampos;
+
     finally
       UsuarioDTO.Free;
     end;

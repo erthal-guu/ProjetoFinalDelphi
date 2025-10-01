@@ -19,6 +19,7 @@ type
     procedure DeletarUsuarios(const aID: Integer);
     procedure RestaurarUsuarios(const aID: Integer);
     function PesquisarUsuarios(const aFiltro : String): TDataSet;
+    function EditarUsuarioComSenha(aUsuario : TUsuarioDTO):Boolean;
   end;
 
 implementation
@@ -28,7 +29,7 @@ begin
   try
     FQuery.Close;
     FQuery.SQL.Clear;
-    FQuery.SQL.Add('SELECT id, nome, cpf, senha, grupo, ativo');
+    FQuery.SQL.Add('SELECT id, nome, cpf, grupo, ativo');
     FQuery.SQL.Add('FROM usuarios');
     FQuery.SQL.Add('WHERE (nome ILIKE UPPER(:nome) OR cpf LIKE :cpf OR grupo ILIKE :grupo)');
     FQuery.SQL.Add('  AND ativo = TRUE');
@@ -113,6 +114,27 @@ begin
     FQuery.SQL.Add('WHERE id = :id');
     FQuery.ParamByName('nome').AsString   := aUsuario.getNome;
     FQuery.ParamByName('senha').AsString  := aUsuario.getSenha;
+    FQuery.ParamByName('cpf').AsString    := aUsuario.getCPF;
+    FQuery.ParamByName('grupo').AsString  := aUsuario.getGrupo;
+    FQuery.ParamByName('ativo').AsBoolean := aUsuario.getAtivo;
+    FQuery.ParamByName('id').AsInteger    := aUsuario.getID;
+    FQuery.ExecSQL;
+    Result := FQuery.RowsAffected > 0;
+  except
+    on E: Exception do
+      raise Exception.Create('Erro ao editar usuário: ' + E.Message);
+  end;
+end;
+function TCadastroRepository.EditarUsuarioComSenha(aUsuario: TUsuarioDTO): Boolean;
+begin
+  Result := False;
+  try
+    FQuery.Close;
+    FQuery.SQL.Clear;
+    FQuery.SQL.Add('UPDATE usuarios');
+    FQuery.SQL.Add('SET nome = :nome, cpf = :cpf, grupo = :grupo, ativo = :ativo');
+    FQuery.SQL.Add('WHERE id = :id');
+    FQuery.ParamByName('nome').AsString   := aUsuario.getNome;
     FQuery.ParamByName('cpf').AsString    := aUsuario.getCPF;
     FQuery.ParamByName('grupo').AsString  := aUsuario.getGrupo;
     FQuery.ParamByName('ativo').AsBoolean := aUsuario.getAtivo;

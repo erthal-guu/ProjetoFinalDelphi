@@ -8,6 +8,7 @@ type TUsuarioController = class
     constructor Create;
       function SalvarUsuario(UsuarioDTO: TUsuarioDTO): Boolean;
       procedure EditarUsuario(UsuarioDTO: TUsuarioDTO);
+      procedure EditarUsuarioComSenha(UsuarioDTO: TUsuarioDTO);
       function ListarUsuarios: TDataSet;
       function CriarObjeto(aNome, aCPF, aSenha: String): TUsuarioDTO;
       function CriarObjetoCRUD(aNome, aCPF, aSenha,aGrupo: String ; aAtivo:Boolean): TUsuarioDTO;
@@ -50,6 +51,11 @@ end;
 procedure TUsuarioController.EditarUsuario(UsuarioDTO: TUsuarioDTO);
 begin
   Service.EditarUsuario(UsuarioDTO);
+end;
+
+procedure TUsuarioController.EditarUsuarioComSenha(UsuarioDTO: TUsuarioDTO);
+begin
+  Service.EditarUsuarioComSenha(UsuarioDTO);
 end;
 
 function TUsuarioController.ListarUsuarios: TDataSet;

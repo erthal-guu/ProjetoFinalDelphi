@@ -15,8 +15,8 @@ object FormCadastroUsuarios: TFormCadastroUsuarios
   OnShow = FormShow
   TextHeight = 15
   object PageControl1: TPageControl
-    Left = -10
-    Top = -1
+    Left = 6
+    Top = 8
     Width = 1118
     Height = 664
     ActivePage = Usuarios

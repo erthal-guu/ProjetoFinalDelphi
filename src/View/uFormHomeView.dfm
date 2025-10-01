@@ -20,15 +20,15 @@
     Left = 0
     Top = 0
     Width = 1132
-    Height = 629
+    Height = 632
     Align = alClient
     TabOrder = 0
-    ExplicitHeight = 696
+    ExplicitHeight = 629
     object PnlLogo: TImage
       Left = 1
       Top = 1
       Width = 1130
-      Height = 627
+      Height = 630
       Align = alClient
       Center = True
       Picture.Data = {
@@ -1405,9 +1405,9 @@
   end
   object PnlFooter: TPanel
     Left = 0
-    Top = 629
+    Top = 632
     Width = 1132
-    Height = 67
+    Height = 64
     Align = alBottom
     Color = 15724527
     ParentBackground = False
@@ -1417,7 +1417,7 @@
       Left = 936
       Top = 16
       Width = 185
-      Height = 35
+      Height = 32
       Margins.Left = 10
       Margins.Top = 15
       Margins.Right = 10
@@ -1427,17 +1427,17 @@
       Color = 15724527
       ParentBackground = False
       TabOrder = 0
-      ExplicitLeft = 935
-      ExplicitHeight = 40
+      ExplicitHeight = 35
       object ShapeFooter: TShape
         Left = 4
         Top = 0
         Width = 181
-        Height = 35
+        Height = 32
         Align = alRight
         Pen.Color = clGray
         Shape = stRoundRect
         ExplicitTop = -1
+        ExplicitHeight = 35
       end
       object LblDataTime: TLabel
         AlignWithMargins = True

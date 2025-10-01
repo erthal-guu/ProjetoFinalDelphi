@@ -21,6 +21,7 @@ uses
     procedure DeletarUsuarios(const aId :Integer);
     procedure RestaurarUsuarios(const aId :Integer);
     function PesquisarUsuarios(const aFiltro: String):TDataSet;
+    procedure EditarUsuarioComSenha (UsuarioDTO : TUsuarioDTO);
   end;
 
 implementation
@@ -82,6 +83,11 @@ begin
     Repository.EditarUsuario(UsuarioDTO);
 end;
 
+
+procedure TUsuarioService.EditarUsuarioComSenha(UsuarioDTO: TUsuarioDTO);
+begin
+  Repository.EditarUsuarioComSenha(UsuarioDTO);
+end;
 
 function TUsuarioService.SalvarUsuario(UsuarioDTO: TUsuarioDTO):Boolean;
 var
