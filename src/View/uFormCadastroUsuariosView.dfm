@@ -78,8 +78,6 @@ object FormCadastroUsuarios: TFormCadastroUsuarios
             Color = 6172416
             ParentBackground = False
             TabOrder = 1
-            ExplicitLeft = 4
-            ExplicitTop = 434
             object PnlBackgroundEdit: TPanel
               AlignWithMargins = True
               Left = 0
@@ -112,7 +110,6 @@ object FormCadastroUsuarios: TFormCadastroUsuarios
               ParentBackground = False
               TabOrder = 0
               Visible = False
-              ExplicitLeft = 18
               object imgLogo: TImage
                 AlignWithMargins = True
                 Left = 952
@@ -411,8 +408,6 @@ object FormCadastroUsuarios: TFormCadastroUsuarios
                 Align = alLeft
                 BevelOuter = bvNone
                 TabOrder = 0
-                ExplicitLeft = 0
-                ExplicitTop = 9
                 object PnlCmbStatus: TPanel
                   Left = 695
                   Top = 0
@@ -421,7 +416,6 @@ object FormCadastroUsuarios: TFormCadastroUsuarios
                   Align = alLeft
                   BevelOuter = bvNone
                   TabOrder = 0
-                  ExplicitLeft = 726
                   object LblStatus: TLabel
                     Left = 6
                     Top = 8
@@ -510,7 +504,6 @@ object FormCadastroUsuarios: TFormCadastroUsuarios
                   Align = alLeft
                   BevelOuter = bvNone
                   TabOrder = 2
-                  ExplicitLeft = 188
                   object LblCPF: TLabel
                     Left = 6
                     Top = 8
@@ -541,9 +534,6 @@ object FormCadastroUsuarios: TFormCadastroUsuarios
                     MaxLength = 14
                     TabOrder = 0
                     Text = '   .   .   -  '
-                    ExplicitLeft = 4
-                    ExplicitTop = 31
-                    ExplicitHeight = 29
                   end
                 end
                 object PnlEdtSenha: TPanel
@@ -554,7 +544,6 @@ object FormCadastroUsuarios: TFormCadastroUsuarios
                   Align = alLeft
                   BevelOuter = bvNone
                   TabOrder = 3
-                  ExplicitLeft = 352
                   object LblSenha: TLabel
                     Left = 6
                     Top = 10
@@ -586,7 +575,6 @@ object FormCadastroUsuarios: TFormCadastroUsuarios
                     Font.Style = []
                     ParentFont = False
                     TabOrder = 0
-                    ExplicitLeft = 4
                   end
                 end
                 object Panel5: TPanel
@@ -597,7 +585,6 @@ object FormCadastroUsuarios: TFormCadastroUsuarios
                   Align = alLeft
                   BevelOuter = bvNone
                   TabOrder = 4
-                  ExplicitLeft = 480
                   object LblConfrimarSenha: TLabel
                     Left = 6
                     Top = 8
@@ -629,7 +616,6 @@ object FormCadastroUsuarios: TFormCadastroUsuarios
                     Font.Style = []
                     ParentFont = False
                     TabOrder = 0
-                    ExplicitLeft = 8
                   end
                 end
                 object PnlCmbGrupo: TPanel
@@ -640,7 +626,6 @@ object FormCadastroUsuarios: TFormCadastroUsuarios
                   Align = alLeft
                   BevelOuter = bvNone
                   TabOrder = 5
-                  ExplicitLeft = 606
                   object LblGrupo: TLabel
                     AlignWithMargins = True
                     Left = 6
@@ -678,8 +663,6 @@ object FormCadastroUsuarios: TFormCadastroUsuarios
                       'Gerente'
                       'Atendente'
                       'Administrador')
-                    ExplicitLeft = 12
-                    ExplicitTop = 39
                   end
                 end
                 object PnlButtonEnviar: TPanel
@@ -698,7 +681,6 @@ object FormCadastroUsuarios: TFormCadastroUsuarios
                   ParentBackground = False
                   TabOrder = 6
                   Visible = False
-                  ExplicitLeft = 698
                   object LblEnviar: TLabel
                     AlignWithMargins = True
                     Left = 4
@@ -755,7 +737,8 @@ object FormCadastroUsuarios: TFormCadastroUsuarios
                     ParentColor = False
                     ParentFont = False
                     OnClick = LblAtualizarClick
-                    ExplicitTop = -5
+                    ExplicitWidth = 59
+                    ExplicitHeight = 20
                   end
                 end
               end

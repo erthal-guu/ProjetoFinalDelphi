@@ -13,7 +13,7 @@ uses
     function SalvarUsuario(UsuarioDTO : TUsuarioDTO): Boolean;
     function SalvarUsuarioCRUD(UsuarioDTO : TUsuarioDTO):Boolean;
     function CriarObjeto(aNome, aCPF, aSenha: String) : TUsuarioDTO;
-    function CriarObjetoCRUD(aNome, aCPF, aSenha,aGrupo,aStatus: String) : TUsuarioDTO;
+    function CriarObjetoCRUD(aNome, aCPF, aSenha,aGrupo: String; aAtivo:Boolean) : TUsuarioDTO;
     procedure EditarUsuario (UsuarioDTO : TUsuarioDTO);
     function ValidarUsuario(UsuarioValido: TUsuarioDTO) : Boolean;
     function ListarUsuarios : TDataSet;
@@ -58,8 +58,7 @@ begin
     Result := UsuarioDTO;
 end;
 
-function TUsuarioService.CriarObjetoCRUD(aNome, aCPF, aSenha, aGrupo,
-  aStatus: String): TUsuarioDTO;
+function TUsuarioService.CriarObjetoCRUD(aNome, aCPF, aSenha,aGrupo: String; aAtivo:Boolean): TUsuarioDTO;
 var UsuarioDTO : TUsuarioDTO;
 begin
     UsuarioDTO := TUsuarioDTO.Create;
@@ -67,7 +66,7 @@ begin
     UsuarioDTO.setCPF(aCPF);
     UsuarioDTO.setSenha(TBCrypt.HashPassword(aSenha));
     UsuarioDTO.setGrupo(aGrupo);
-    UsuarioDTO.setStatus(aStatus);
+    UsuarioDTO.setAtivo(aAtivo);
     Result := UsuarioDTO;
 end;
 

@@ -10,19 +10,19 @@ type
     CPF: String;
     Senha: String;
     grupo : String;
-    status : String;
+    Ativo : Boolean;
   public
     Function getID : Integer;
     function getNome: String;
     function getCPF: String;
     function getSenha: String;
     function getGrupo: String;
-    function getStatus : String;
+    function getAtivo : Boolean;
     procedure setNome(aNome: String);
     procedure setCPF(aCPF: String);
     procedure setSenha(aSenha: String);
     procedure setGrupo(aGrupo : String);
-    procedure setStatus(aStatus : String);
+    procedure setAtivo(aAtivo : Boolean);
     procedure setId(aId : Integer);
   end;
 
@@ -54,9 +54,9 @@ begin
   Result := Self.Senha;
 end;
 
-function TUsuarioDTO.getStatus: String;
+function TUsuarioDTO.getAtivo: Boolean;
 begin
-  Result := Self.status;
+  Result := Self.Ativo;
 end;
 
 procedure TUsuarioDTO.setNome(aNome: String);
@@ -83,9 +83,9 @@ begin
   Senha := aSenha;
 end;
 
-procedure TUsuarioDTO.setStatus(aStatus: String);
+procedure TUsuarioDTO.setAtivo(aAtivo: Boolean);
 begin
-  Status := aStatus;
+  Ativo := aAtivo;
 end;
 
 end.

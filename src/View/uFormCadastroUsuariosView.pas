@@ -174,7 +174,7 @@ DBGridMain.DataSource := DataSourceMain;
       DBGridMain.Columns[1].Title.Caption := 'Nome';
       DBGridMain.Columns[2].Title.Caption := 'CPF';
       DBGridMain.Columns[3].Title.Caption := 'Grupo';
-      DBGridMain.Columns[4].Title.Caption := 'Status';
+      DBGridMain.Columns[4].Title.Caption := 'Ativo';
 
       DBGridMain.Columns[0].Width := 168;
       DBGridMain.Columns[1].Width := 170;
@@ -210,7 +210,11 @@ begin
   EdtNome.Text := DBGridMain.DataSource.DataSet.FieldByName('nome').AsString;
   EdtCPF.Text := DBGridMain.DataSource.DataSet.FieldByName('CPF').AsString;
   CmbGrupo.Text := DBGridMain.DataSource.DataSet.FieldByName('Grupo').AsString;
-  CmbStatus.Text := DBGridMain.DataSource.DataSet.FieldByName('Status').AsString;
+  if DBGridMain.DataSource.DataSet.FieldByName('ativo').AsBoolean then begin
+  CmbStatus.ItemIndex := 0;
+ end else begin
+  CmbStatus.ItemIndex := 1;
+end;
 end;
 
 procedure TFormCadastroUsuarios.CarregarGridRestaurar;
@@ -227,7 +231,7 @@ DBGridRestaurar.DataSource := DataSourceRestaurar;
       DBGridRestaurar.Columns[1].Title.Caption := 'Nome';
       DBGridRestaurar.Columns[2].Title.Caption := 'CPF';
       DBGridRestaurar.Columns[3].Title.Caption := 'Grupo';
-      DBGridRestaurar.Columns[4].Title.Caption := 'Status';
+      DBGridRestaurar.Columns[4].Title.Caption := 'Ativo';
 
       DBGridRestaurar.Columns[0].Width := 147;
       DBGridRestaurar.Columns[1].Width := 147;
@@ -284,7 +288,7 @@ begin
   if ValidarCampos then begin
   Controller := TUsuarioController.Create;
   try
-    UsuarioDTO := Controller.CriarObjetoCRUD(EdtNome.Text,EdtCPF.Text,EdtSenha.Text,CmbGrupo.text,CmbStatus.Text);
+    UsuarioDTO := Controller.CriarObjetoCRUD(EdtNome.Text,EdtCPF.Text,EdtSenha.Text,CmbGrupo.text,CmbStatus.ItemIndex = 0);
   Controller.SalvarUsuarioCRUD(UsuarioDTO);
   LimparCampos;
   CarregarGrid;
@@ -392,7 +396,7 @@ begin
       UsuarioDTO.SetCPF(EdtCPF.Text);
       UsuarioDTO.setSenha(EdtSenha.text);
       UsuarioDTO.SetGrupo(CmbGrupo.Text);
-      UsuarioDTO.SetStatus(CmbStatus.Text);
+      UsuarioDTO.setAtivo(CmbStatus.ItemIndex = 0);
       Controller.EditarUsuario(UsuarioDTO);
       CarregarGrid;
       LimparCampos;
