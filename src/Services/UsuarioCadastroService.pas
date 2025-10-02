@@ -1,4 +1,4 @@
-unit CadastroUsuarioService;
+unit UsuarioCadastroService;
 
 interface
 

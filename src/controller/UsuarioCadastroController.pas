@@ -1,7 +1,7 @@
 unit UsuarioCadastroController;
 
 interface
-uses uUsuarioDTO, CadastroUsuarioService, FireDAC.Comp.Client, Vcl.Dialogs,Data.DB;
+uses uUsuarioDTO, UsuarioCadastroService, FireDAC.Comp.Client, Vcl.Dialogs,Data.DB;
 
 type TUsuarioController = class
   Service : TUsuarioService;

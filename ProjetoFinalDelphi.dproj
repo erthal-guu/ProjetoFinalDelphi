@@ -106,7 +106,7 @@
         <AppDPIAwarenessMode>PerMonitorV2</AppDPIAwarenessMode>
         <VerInfo_IncludeVerInfo>true</VerInfo_IncludeVerInfo>
         <VerInfo_Locale>1033</VerInfo_Locale>
-        <DCC_UnitSearchPath>C:\Users\Auditorio\Desktop\ProjetoFinalDelphi\src\DTO\bcrypt-for-delphi-master;$(DCC_UnitSearchPath)</DCC_UnitSearchPath>
+        <DCC_UnitSearchPath>C:\Users\Auditorio\Desktop\ProjetoFinalDelphi\src\DTO\bcrypt-for-delphi-master;C:\Users\siqueira.6989\Desktop\ProjetoFinalDelphi\src\DTO\bcrypt-for-delphi-master;$(DCC_UnitSearchPath)</DCC_UnitSearchPath>
     </PropertyGroup>
     <PropertyGroup Condition="'$(Cfg_1_Win64)'!=''">
         <AppDPIAwarenessMode>PerMonitorV2</AppDPIAwarenessMode>
@@ -132,7 +132,7 @@
             <FormType>dfm</FormType>
         </DCCReference>
         <DCCReference Include="src\repository\UsuarioCadastrorepository.pas"/>
-        <DCCReference Include="src\Services\CadastroUsuarioService.pas"/>
+        <DCCReference Include="src\Services\UsuarioCadastroService.pas"/>
         <DCCReference Include="src\controller\UsuarioCadastroController.pas"/>
         <DCCReference Include="src\controller\UsuarioLoginController.pas"/>
         <DCCReference Include="src\repository\UsuarioLoginRepository.pas"/>
@@ -191,6 +191,11 @@
             <Form>FormCadastroClientes</Form>
             <FormType>dfm</FormType>
         </DCCReference>
+        <DCCReference Include="src\repository\ClienteCadastroRepository.pas"/>
+        <DCCReference Include="src\Services\ClienteCadastroService.pas"/>
+        <DCCReference Include="src\controller\ClienteCadastroController.pas"/>
+        <DCCReference Include="src\Model\uClienteModel.pas"/>
+        <DCCReference Include="src\DTO\uClienteDTO.pas"/>
         <BuildConfiguration Include="Base">
             <Key>Base</Key>
         </BuildConfiguration>

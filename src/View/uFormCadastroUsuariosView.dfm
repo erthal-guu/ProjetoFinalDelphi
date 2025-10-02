@@ -534,6 +534,7 @@ object FormCadastroUsuarios: TFormCadastroUsuarios
                     MaxLength = 14
                     TabOrder = 0
                     Text = '   .   .   -  '
+                    OnClick = EdtCPFClick
                   end
                 end
                 object PnlEdtSenha: TPanel

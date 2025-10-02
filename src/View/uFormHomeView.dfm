@@ -23,7 +23,6 @@
     Height = 632
     Align = alClient
     TabOrder = 0
-    ExplicitHeight = 629
     object PnlLogo: TImage
       Left = 1
       Top = 1
@@ -1398,9 +1397,8 @@
         303030080943100606060606216108C2C0C0C0C020240C411818181818848421
         0803030303839030046160606060101286200C0C0C0C0C42C210848181818141
         48FC1F183E060B081BAEE00000000049454E44AE426082}
-      ExplicitLeft = 0
-      ExplicitTop = 0
-      ExplicitHeight = 622
+      ExplicitLeft = 65
+      ExplicitTop = 129
     end
   end
   object PnlFooter: TPanel
@@ -1427,7 +1425,6 @@
       Color = 15724527
       ParentBackground = False
       TabOrder = 0
-      ExplicitHeight = 35
       object ShapeFooter: TShape
         Left = 4
         Top = 0

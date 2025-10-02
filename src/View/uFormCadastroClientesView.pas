@@ -20,11 +20,11 @@ type
     PnlDesignEdit: TPanel;
     Image1: TImage;
     PnlEdit: TPanel;
-    Label1: TLabel;
-    Label2: TLabel;
-    Label3: TLabel;
-    Label4: TLabel;
-    Label5: TLabel;
+    LblNome: TLabel;
+    LblEmail: TLabel;
+    LblCPF: TLabel;
+    LblTelefone: TLabel;
+    LblNascimento: TLabel;
     EdtNome: TEdit;
     PnlButtonEnviar: TPanel;
     LblEnviar: TLabel;
@@ -53,6 +53,10 @@ type
     PnlMainRestaurar: TPanel;
     PnlContainerRestaurar: TPanel;
     DBGridRestaurar: TDBGrid;
+    Edit1: TEdit;
+    LblEndereço: TLabel;
+    CmbStatus: TComboBox;
+    LblStatus: TLabel;
     procedure BtnAdicionarClick(Sender: TObject);
     procedure BtnPesquisarClick(Sender: TObject);
     procedure FormCreate(Sender: TObject);

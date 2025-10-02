@@ -1,4 +1,4 @@
-object FormCadastroClientes: TFormCadastroClientes
+﻿object FormCadastroClientes: TFormCadastroClientes
   Left = 0
   Top = 0
   Caption = 'FormCadastroClientes'
@@ -109,9 +109,9 @@ object FormCadastroClientes: TFormCadastroClientes
               Visible = False
               object Image1: TImage
                 AlignWithMargins = True
-                Left = 952
+                Left = 960
                 Top = 4
-                Width = 105
+                Width = 97
                 Height = 85
                 Margins.Right = 10
                 Align = alRight
@@ -394,8 +394,7 @@ object FormCadastroClientes: TFormCadastroClientes
                   CA2F0F0D6D7D5FB727191F0B1DE3360EE018B77100C7B88D0338C66D1CC0316E
                   E3008E711B07708CDB388063DCC6011CE3360EE018B77100C7B88D0338C6EDFF
                   0346549848A99E47470000000049454E44AE426082}
-                ExplicitLeft = 962
-                ExplicitHeight = 95
+                ExplicitLeft = 968
               end
               object PnlEdit: TPanel
                 Left = 1
@@ -405,7 +404,8 @@ object FormCadastroClientes: TFormCadastroClientes
                 Align = alLeft
                 BevelOuter = bvNone
                 TabOrder = 0
-                object Label1: TLabel
+                ExplicitLeft = 9
+                object LblNome: TLabel
                   Left = 20
                   Top = 8
                   Width = 43
@@ -418,8 +418,8 @@ object FormCadastroClientes: TFormCadastroClientes
                   Font.Style = []
                   ParentFont = False
                 end
-                object Label2: TLabel
-                  Left = 187
+                object LblEmail: TLabel
+                  Left = 135
                   Top = 8
                   Width = 38
                   Height = 17
@@ -431,8 +431,8 @@ object FormCadastroClientes: TFormCadastroClientes
                   Font.Style = []
                   ParentFont = False
                 end
-                object Label3: TLabel
-                  Left = 354
+                object LblCPF: TLabel
+                  Left = 239
                   Top = 8
                   Width = 28
                   Height = 17
@@ -444,8 +444,8 @@ object FormCadastroClientes: TFormCadastroClientes
                   Font.Style = []
                   ParentFont = False
                 end
-                object Label4: TLabel
-                  Left = 504
+                object LblTelefone: TLabel
+                  Left = 363
                   Top = 8
                   Width = 56
                   Height = 17
@@ -457,8 +457,8 @@ object FormCadastroClientes: TFormCadastroClientes
                   Font.Style = []
                   ParentFont = False
                 end
-                object Label5: TLabel
-                  Left = 650
+                object LblNascimento: TLabel
+                  Left = 477
                   Top = 8
                   Width = 76
                   Height = 17
@@ -470,11 +470,37 @@ object FormCadastroClientes: TFormCadastroClientes
                   Font.Style = []
                   ParentFont = False
                 end
+                object LblEndereço: TLabel
+                  Left = 581
+                  Top = 8
+                  Width = 58
+                  Height = 17
+                  Caption = 'Endere'#231'o:'
+                  Font.Charset = DEFAULT_CHARSET
+                  Font.Color = clWindowText
+                  Font.Height = -13
+                  Font.Name = 'Segoe UI'
+                  Font.Style = []
+                  ParentFont = False
+                end
+                object LblStatus: TLabel
+                  Left = 703
+                  Top = 8
+                  Width = 42
+                  Height = 17
+                  Caption = 'Status :'
+                  Font.Charset = DEFAULT_CHARSET
+                  Font.Color = clWindowText
+                  Font.Height = -13
+                  Font.Name = 'Segoe UI'
+                  Font.Style = []
+                  ParentFont = False
+                end
                 object EdtNome: TEdit
                   AlignWithMargins = True
                   Left = 20
                   Top = 30
-                  Width = 161
+                  Width = 109
                   Height = 31
                   Margins.Left = 20
                   Margins.Top = 30
@@ -491,7 +517,7 @@ object FormCadastroClientes: TFormCadastroClientes
                 end
                 object PnlButtonEnviar: TPanel
                   AlignWithMargins = True
-                  Left = 753
+                  Left = 813
                   Top = 30
                   Width = 123
                   Height = 31
@@ -504,7 +530,7 @@ object FormCadastroClientes: TFormCadastroClientes
                   Color = 9521152
                   ParentBackground = False
                   TabOrder = 1
-                  ExplicitLeft = 734
+                  ExplicitLeft = 753
                   object LblEnviar: TLabel
                     AlignWithMargins = True
                     Left = 4
@@ -528,9 +554,9 @@ object FormCadastroClientes: TFormCadastroClientes
                 end
                 object EdtCPF: TMaskEdit
                   AlignWithMargins = True
-                  Left = 354
+                  Left = 239
                   Top = 30
-                  Width = 144
+                  Width = 118
                   Height = 31
                   Cursor = crHandPoint
                   Margins.Top = 30
@@ -543,12 +569,13 @@ object FormCadastroClientes: TFormCadastroClientes
                   MaxLength = 14
                   TabOrder = 2
                   Text = '   .   .   -  '
+                  ExplicitLeft = 283
                 end
                 object EdtEmail: TEdit
                   AlignWithMargins = True
-                  Left = 187
+                  Left = 581
                   Top = 30
-                  Width = 161
+                  Width = 116
                   Height = 31
                   Margins.Top = 30
                   Margins.Bottom = 30
@@ -564,9 +591,9 @@ object FormCadastroClientes: TFormCadastroClientes
                 end
                 object EdtDataNascimento: TMaskEdit
                   AlignWithMargins = True
-                  Left = 650
+                  Left = 477
                   Top = 30
-                  Width = 95
+                  Width = 98
                   Height = 31
                   Cursor = crHandPoint
                   Margins.Top = 30
@@ -579,12 +606,13 @@ object FormCadastroClientes: TFormCadastroClientes
                   MaxLength = 8
                   TabOrder = 4
                   Text = '  /  /  '
+                  ExplicitLeft = 583
                 end
                 object EdtTelefone: TMaskEdit
                   AlignWithMargins = True
-                  Left = 504
+                  Left = 363
                   Top = 30
-                  Width = 140
+                  Width = 108
                   Height = 31
                   Cursor = crHandPoint
                   Margins.Top = 30
@@ -597,6 +625,50 @@ object FormCadastroClientes: TFormCadastroClientes
                   MaxLength = 13
                   TabOrder = 5
                   Text = '(   )   -    '
+                  ExplicitLeft = 477
+                end
+                object Edit1: TEdit
+                  AlignWithMargins = True
+                  Left = 135
+                  Top = 30
+                  Width = 98
+                  Height = 31
+                  Margins.Top = 30
+                  Margins.Bottom = 30
+                  Align = alLeft
+                  AutoSize = False
+                  Font.Charset = DEFAULT_CHARSET
+                  Font.Color = clWindowText
+                  Font.Height = -15
+                  Font.Name = 'Segoe UI'
+                  Font.Style = []
+                  ParentFont = False
+                  TabOrder = 6
+                  ExplicitLeft = 151
+                end
+                object CmbStatus: TComboBox
+                  AlignWithMargins = True
+                  Left = 703
+                  Top = 30
+                  Width = 102
+                  Height = 29
+                  Margins.Top = 30
+                  Margins.Bottom = 9
+                  Align = alLeft
+                  BevelOuter = bvNone
+                  Style = csDropDownList
+                  Font.Charset = DEFAULT_CHARSET
+                  Font.Color = clWindowText
+                  Font.Height = -16
+                  Font.Name = 'Segoe UI'
+                  Font.Style = []
+                  ParentFont = False
+                  TabOrder = 7
+                  Items.Strings = (
+                    'Ativo'
+                    'Inativo')
+                  ExplicitLeft = 818
+                  ExplicitTop = 38
                 end
               end
             end
@@ -1282,8 +1354,6 @@ object FormCadastroClientes: TFormCadastroClientes
               ParentBackground = False
               TabOrder = 1
               Visible = False
-              ExplicitLeft = 28
-              ExplicitTop = 28
               object LblRestaurar: TLabel
                 AlignWithMargins = True
                 Left = 4

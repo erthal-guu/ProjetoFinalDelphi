@@ -9,7 +9,7 @@ uses
   Vcl.WinXCtrls, UsuarioCadastroController, uUsuarioDTO, Vcl.Mask, uDMConexao,
   FireDAC.Comp.Client, FireDAC.Stan.Def, FireDAC.Stan.Async, FireDAC.DApt,
   FireDAC.Stan.Param, FireDAC.DatS, FireDAC.DApt.Intf, FireDAC.Phys.PG,
-  FireDAC.Phys.PGDef, FireDAC.UI.Intf, FireDAC.VCLUI.Wait,CadastroUsuarioService;
+  FireDAC.Phys.PGDef, FireDAC.UI.Intf, FireDAC.VCLUI.Wait,UsuarioCadastroService;
 
 type
   TFormCadastroUsuarios = class(TForm)
@@ -91,6 +91,7 @@ type
     procedure BtnSairClick(Sender: TObject);
     procedure EdtPesquisarChange(Sender: TObject);
     function ValidarCamposCRUD : Boolean;
+    procedure EdtCPFClick(Sender: TObject);
   private
     { Private declarations }
   public
@@ -186,10 +187,10 @@ DBGridMain.DataSource := DataSourceMain;
       DBGridMain.Columns[4].Alignment := taCenter;
 
       DBGridMain.Columns[0].Width := 100;
-      DBGridMain.Columns[1].Width := 185;
-      DBGridMain.Columns[2].Width := 185;
-      DBGridMain.Columns[3].Width := 185;
-      DBGridMain.Columns[4].Width := 185;
+      DBGridMain.Columns[1].Width := 191;
+      DBGridMain.Columns[2].Width := 191;
+      DBGridMain.Columns[3].Width := 191;
+      DBGridMain.Columns[4].Width := 191;
     end;
    finally
     UsuarioService.Free;
@@ -448,6 +449,11 @@ begin
   finally
     Controller.Free;
   end;
+end;
+
+procedure TFormCadastroUsuarios.EdtCPFClick(Sender: TObject);
+begin
+  EdtCPF.SelStart := 0;
 end;
 
 procedure TFormCadastroUsuarios.EdtPesquisarChange(Sender: TObject);

@@ -6,7 +6,7 @@ uses
   Vcl.Forms,
   uFormCadastroView in 'src\View\uFormCadastroView.pas' {FormCadastro},
   UsuarioCadastrorepository in 'src\repository\UsuarioCadastrorepository.pas',
-  CadastroUsuarioService in 'src\Services\CadastroUsuarioService.pas',
+  UsuarioCadastroService in 'src\Services\UsuarioCadastroService.pas',
   UsuarioCadastroController in 'src\controller\UsuarioCadastroController.pas',
   UsuarioLoginController in 'src\controller\UsuarioLoginController.pas',
   UsuarioLoginRepository in 'src\repository\UsuarioLoginRepository.pas',
@@ -26,7 +26,12 @@ uses
   uFormCadastroOrdensServiçoView in 'src\View\uFormCadastroOrdensServiçoView.pas' {FormOrdensServiço},
   uFormHomeView in 'src\View\uFormHomeView.pas' {FormHome},
   uFormMainView in 'src\View\uFormMainView.pas' {FormMain},
-  uFormCadastroClientesView in 'src\View\uFormCadastroClientesView.pas' {FormCadastroClientes};
+  uFormCadastroClientesView in 'src\View\uFormCadastroClientesView.pas' {FormCadastroClientes},
+  ClienteCadastroRepository in 'src\repository\ClienteCadastroRepository.pas',
+  ClienteCadastroService in 'src\Services\ClienteCadastroService.pas',
+  ClienteCadastroController in 'src\controller\ClienteCadastroController.pas',
+  uClienteModel in 'src\Model\uClienteModel.pas',
+  uClienteDTO in 'src\DTO\uClienteDTO.pas';
 
 {$R *.res}
 
