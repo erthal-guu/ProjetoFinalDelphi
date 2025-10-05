@@ -73,7 +73,7 @@ end;
 
 procedure TUsuarioService.DeletarUsuarios(const aId :Integer);
 begin
-Repository.DeletarUsuarios(aID);
+  Repository.DeletarUsuarios(aID);
 end;
 
 procedure TUsuarioService.EditarUsuario(UsuarioDTO: TUsuarioDTO);

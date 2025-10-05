@@ -10,7 +10,7 @@ uses
   public
     constructor create;
     function SalvarClientes(ClienteDTO :  TClienteDTO): Boolean;
-    function CriarObjeto(aNome, aCPF, aSenha: String) : TClienteDTO;
+    function CriarObjeto(aNome, aCPF, aEmail, aTelefone, aEndereco: String; aNascimento: TDateTime; aAtivo: Boolean): TClienteDTO;
     procedure EditarClientes(ClienteDTO : TClienteDTO);
     function ValidarClientes(ClienteValido: TClienteDTO) : Boolean;
     function ListarClientes: TDataSet;
@@ -26,22 +26,40 @@ implementation
 
 constructor TClienteService.create;
 begin
-
+  Repository := TClienteRepository.Create(DataModule1.FDQuery);
 end;
 
-function TClienteService.CriarObjeto(aNome, aCPF, aSenha: String): TClienteDTO;
+function TClienteService.CriarObjeto(aNome, aCPF, aEmail, aTelefone, aEndereco: String;aNascimento: TDateTime;aAtivo: Boolean): TClienteDTO;
+var
+  ClienteDTO: TClienteDTO;
 begin
+  ClienteDTO := TClienteDTO.Create;
+  try
+    ClienteDTO.setNome(aNome);
+    ClienteDTO.setCPF(aCPF);
+    ClienteDTO.setEmail(aEmail);
+    ClienteDTO.setTelefone(aTelefone);
+    ClienteDTO.setEndereco(aEndereco);
+    ClienteDTO.setNascimento(aNascimento);
+    ClienteDTO.setAtivo(aAtivo);
 
+    Result := ClienteDTO;
+  except
+    ClienteDTO.Free;
+    raise;
+  end;
 end;
+
+
 
 procedure TClienteService.DeletarClientes(const aId: Integer);
 begin
-
+  Repository.DeletarClientes(aID);
 end;
 
 procedure TClienteService.EditarClientes(ClienteDTO: TClienteDTO);
 begin
-
+  Repository.EditarClientes(ClienteDTO);
 end;
 
 function TClienteService.ListarClientes: TDataSet;
@@ -85,9 +103,12 @@ end;
 
 function TClienteService.ValidarClientes(ClienteValido: TClienteDTO): Boolean;
 begin
-   Result := ((ClienteValido.getNome)<>'')and((ClienteValido.getCPF)<>'')
-            and((ClienteValido.getEmail<>''))and((ClienteValido.getTelefone<>'')
-            and((ClienteValido.getEndereco<>''));
+Result := (ClienteValido.getNome <> '') and
+           (ClienteValido.getCPF <> '') and
+           (ClienteValido.getEmail <> '') and
+           (ClienteValido.getTelefone <> '') and
+           (ClienteValido.getEndereco <> '') and
+           (ClienteValido.getNascimento <> 0);
 end;
 
 end.
