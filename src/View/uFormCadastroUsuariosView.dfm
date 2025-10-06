@@ -408,6 +408,7 @@ object FormCadastroUsuarios: TFormCadastroUsuarios
                 Align = alLeft
                 BevelOuter = bvNone
                 TabOrder = 0
+                ExplicitLeft = 0
                 object PnlCmbStatus: TPanel
                   Left = 695
                   Top = 0

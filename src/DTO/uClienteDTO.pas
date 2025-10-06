@@ -10,7 +10,7 @@ type
     Email : String;
     CPF : String;
     Telefone : String;
-    Nascimento : TDate;
+    Nascimento : String;
     Endereco : String;
     Ativo : Boolean;
   public
@@ -30,34 +30,19 @@ type
     function getTelefone : String;
     procedure setTelefone(aTelefone: String);
 
-    function getNascimento : TDate;
-    procedure setNascimento(aNascimento: TDate);
+    function getNascimento : String;
+    procedure setNascimento(aNascimento: String);
 
     function getEndereco : String;
     procedure setEndereco(aEndereco: String);
 
     function getAtivo : Boolean;
     procedure setAtivo(aAtivo: Boolean);
-
-    // Construtor
-    constructor Create(aId: Integer; aNome, aEmail, aCPF, aTelefone, aEndereco: String; aNascimento: TDate; aAtivo: Boolean);
-  end;
+    end;
 
 implementation
 
 { TCliente }
-
-constructor TClienteDTO.Create(aId: Integer; aNome, aEmail, aCPF, aTelefone, aEndereco: String; aNascimento: TDate; aAtivo: Boolean);
-begin
-  IdCliente  := aId;
-  Nome       := aNome;
-  Email      := aEmail;
-  CPF        := aCPF;
-  Telefone   := aTelefone;
-  Endereco   := aEndereco;
-  Nascimento := aNascimento;
-  Ativo      := aAtivo;
-end;
 
 function TClienteDTO.getIdCliente: Integer;
 begin
@@ -109,12 +94,12 @@ begin
   Telefone := aTelefone;
 end;
 
-function TClienteDTO.getNascimento: TDate;
+function TClienteDTO.getNascimento: String;
 begin
   Result := Nascimento;
 end;
 
-procedure TClienteDTO.setNascimento(aNascimento: TDate);
+procedure TClienteDTO.setNascimento(aNascimento: String);
 begin
   Nascimento := aNascimento;
 end;

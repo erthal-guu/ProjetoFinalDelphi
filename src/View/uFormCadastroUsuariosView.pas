@@ -294,6 +294,7 @@ end;
 procedure TFormCadastroUsuarios.ImgRestaurarClick(Sender: TObject);
 begin
   RestaurarUsuarios;
+  CarregarGridRestaurar;
 end;
 
 procedure TFormCadastroUsuarios.LblAtualizarClick(Sender: TObject);

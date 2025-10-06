@@ -11,6 +11,7 @@
   Font.Name = 'Segoe UI'
   Font.Style = []
   OnCreate = FormCreate
+  OnShow = FormShow
   TextHeight = 15
   object PageControl1: TPageControl
     Left = 0
@@ -54,7 +55,7 @@
             Left = 926
             Top = 0
             Width = 182
-            Height = 428
+            Height = 411
             Margins.Left = 0
             Margins.Top = 0
             Margins.Right = 0
@@ -64,12 +65,13 @@
             Color = 6172416
             ParentBackground = False
             TabOrder = 0
+            ExplicitHeight = 428
           end
           object PnlMainEdit: TPanel
             Left = 0
-            Top = 428
+            Top = 411
             Width = 1108
-            Height = 133
+            Height = 150
             Align = alBottom
             BevelOuter = bvNone
             Color = 6172416
@@ -80,7 +82,7 @@
               Left = 0
               Top = 10
               Width = 1108
-              Height = 113
+              Height = 130
               Margins.Left = 0
               Margins.Top = 10
               Margins.Right = 0
@@ -91,13 +93,15 @@
               ParentBackground = False
               TabOrder = 1
               Visible = False
+              ExplicitTop = 7
+              ExplicitHeight = 132
             end
             object PnlDesignEdit: TPanel
               AlignWithMargins = True
               Left = 20
               Top = 20
               Width = 1068
-              Height = 93
+              Height = 110
               Margins.Left = 20
               Margins.Top = 20
               Margins.Right = 20
@@ -107,12 +111,15 @@
               ParentBackground = False
               TabOrder = 0
               Visible = False
+              ExplicitLeft = 39
+              ExplicitTop = 1
+              ExplicitHeight = 93
               object Image1: TImage
                 AlignWithMargins = True
                 Left = 960
                 Top = 4
                 Width = 97
-                Height = 85
+                Height = 102
                 Margins.Right = 10
                 Align = alRight
                 Picture.Data = {
@@ -395,12 +402,13 @@
                   E3008E711B07708CDB388063DCC6011CE3360EE018B77100C7B88D0338C6EDFF
                   0346549848A99E47470000000049454E44AE426082}
                 ExplicitLeft = 968
+                ExplicitHeight = 85
               end
               object PnlEdit: TPanel
                 Left = 1
                 Top = 1
                 Width = 945
-                Height = 91
+                Height = 108
                 Align = alLeft
                 BevelOuter = bvNone
                 TabOrder = 0
@@ -419,7 +427,7 @@
                   ParentFont = False
                 end
                 object LblEmail: TLabel
-                  Left = 135
+                  Left = 259
                   Top = 8
                   Width = 38
                   Height = 17
@@ -432,7 +440,7 @@
                   ParentFont = False
                 end
                 object LblCPF: TLabel
-                  Left = 239
+                  Left = 135
                   Top = 8
                   Width = 28
                   Height = 17
@@ -445,7 +453,7 @@
                   ParentFont = False
                 end
                 object LblTelefone: TLabel
-                  Left = 363
+                  Left = 375
                   Top = 8
                   Width = 56
                   Height = 17
@@ -458,11 +466,11 @@
                   ParentFont = False
                 end
                 object LblNascimento: TLabel
-                  Left = 477
+                  Left = 489
                   Top = 8
-                  Width = 76
+                  Width = 69
                   Height = 17
-                  Caption = 'Nascimento :'
+                  Caption = 'Nascimento'
                   Font.Charset = DEFAULT_CHARSET
                   Font.Color = clWindowText
                   Font.Height = -13
@@ -471,11 +479,11 @@
                   ParentFont = False
                 end
                 object LblEndereço: TLabel
-                  Left = 581
+                  Left = 587
                   Top = 8
-                  Width = 58
+                  Width = 55
                   Height = 17
-                  Caption = 'Endere'#231'o:'
+                  Caption = 'Endere'#231'o'
                   Font.Charset = DEFAULT_CHARSET
                   Font.Color = clWindowText
                   Font.Height = -13
@@ -484,7 +492,7 @@
                   ParentFont = False
                 end
                 object LblStatus: TLabel
-                  Left = 703
+                  Left = 711
                   Top = 8
                   Width = 42
                   Height = 17
@@ -501,156 +509,132 @@
                   Left = 20
                   Top = 30
                   Width = 109
-                  Height = 31
+                  Height = 28
                   Margins.Left = 20
                   Margins.Top = 30
-                  Margins.Bottom = 30
+                  Margins.Bottom = 50
                   Align = alLeft
                   AutoSize = False
                   Font.Charset = DEFAULT_CHARSET
                   Font.Color = clWindowText
-                  Font.Height = -15
+                  Font.Height = -12
                   Font.Name = 'Segoe UI'
                   Font.Style = []
                   ParentFont = False
                   TabOrder = 0
-                end
-                object PnlButtonEnviar: TPanel
-                  AlignWithMargins = True
-                  Left = 813
-                  Top = 30
-                  Width = 123
-                  Height = 31
-                  Margins.Left = 5
-                  Margins.Top = 30
-                  Margins.Right = 0
-                  Margins.Bottom = 30
-                  Align = alLeft
-                  BevelOuter = bvLowered
-                  Color = 9521152
-                  ParentBackground = False
-                  TabOrder = 1
-                  ExplicitLeft = 753
-                  object LblEnviar: TLabel
-                    AlignWithMargins = True
-                    Left = 4
-                    Top = 4
-                    Width = 115
-                    Height = 23
-                    Align = alClient
-                    Alignment = taCenter
-                    Caption = 'Enviar'
-                    Color = clWhite
-                    Font.Charset = DEFAULT_CHARSET
-                    Font.Color = clWhite
-                    Font.Height = -15
-                    Font.Name = 'Segoe UI'
-                    Font.Style = []
-                    ParentColor = False
-                    ParentFont = False
-                    ExplicitWidth = 40
-                    ExplicitHeight = 20
-                  end
+                  ExplicitHeight = 35
                 end
                 object EdtCPF: TMaskEdit
                   AlignWithMargins = True
-                  Left = 239
+                  Left = 263
                   Top = 30
                   Width = 118
-                  Height = 31
+                  Height = 28
                   Cursor = crHandPoint
                   Margins.Top = 30
-                  Margins.Bottom = 30
+                  Margins.Bottom = 50
                   Align = alLeft
                   AutoSize = False
                   BevelInner = bvNone
                   BevelOuter = bvNone
                   EditMask = '999.999.999-99'
-                  MaxLength = 14
-                  TabOrder = 2
-                  Text = '   .   .   -  '
-                  ExplicitLeft = 283
-                end
-                object EdtEmail: TEdit
-                  AlignWithMargins = True
-                  Left = 581
-                  Top = 30
-                  Width = 116
-                  Height = 31
-                  Margins.Top = 30
-                  Margins.Bottom = 30
-                  Align = alLeft
-                  AutoSize = False
                   Font.Charset = DEFAULT_CHARSET
                   Font.Color = clWindowText
                   Font.Height = -15
                   Font.Name = 'Segoe UI'
                   Font.Style = []
+                  MaxLength = 14
                   ParentFont = False
-                  TabOrder = 3
+                  TabOrder = 1
+                  Text = '   .   .   -  '
+                  ExplicitLeft = 135
+                  ExplicitHeight = 31
+                end
+                object EdtEmail: TEdit
+                  AlignWithMargins = True
+                  Left = 587
+                  Top = 30
+                  Width = 118
+                  Height = 28
+                  Margins.Top = 30
+                  Margins.Bottom = 50
+                  Align = alLeft
+                  AutoSize = False
+                  Font.Charset = DEFAULT_CHARSET
+                  Font.Color = clWindowText
+                  Font.Height = -12
+                  Font.Name = 'Segoe UI'
+                  Font.Style = []
+                  ParentFont = False
+                  TabOrder = 2
+                  ExplicitTop = 31
+                  ExplicitHeight = 12
                 end
                 object EdtDataNascimento: TMaskEdit
                   AlignWithMargins = True
-                  Left = 477
+                  Left = 501
                   Top = 30
-                  Width = 98
-                  Height = 31
+                  Width = 80
+                  Height = 28
                   Cursor = crHandPoint
                   Margins.Top = 30
-                  Margins.Bottom = 30
+                  Margins.Bottom = 50
                   Align = alLeft
                   AutoSize = False
                   BevelInner = bvNone
                   BevelOuter = bvNone
                   EditMask = '!99/99/00;1;_'
                   MaxLength = 8
-                  TabOrder = 4
+                  TabOrder = 3
                   Text = '  /  /  '
-                  ExplicitLeft = 583
+                  ExplicitTop = 38
                 end
                 object EdtTelefone: TMaskEdit
                   AlignWithMargins = True
-                  Left = 363
+                  Left = 387
                   Top = 30
                   Width = 108
-                  Height = 31
+                  Height = 28
                   Cursor = crHandPoint
                   Margins.Top = 30
-                  Margins.Bottom = 30
+                  Margins.Bottom = 50
                   Align = alLeft
                   AutoSize = False
                   BevelInner = bvNone
                   BevelOuter = bvNone
                   EditMask = '!\(999\)000-0000;1;_'
                   MaxLength = 13
-                  TabOrder = 5
+                  TabOrder = 4
                   Text = '(   )   -    '
-                  ExplicitLeft = 477
+                  ExplicitLeft = 363
+                  ExplicitHeight = 31
                 end
-                object Edit1: TEdit
+                object EdtEndereço: TEdit
                   AlignWithMargins = True
                   Left = 135
                   Top = 30
-                  Width = 98
-                  Height = 31
+                  Width = 122
+                  Height = 28
                   Margins.Top = 30
-                  Margins.Bottom = 30
+                  Margins.Bottom = 50
                   Align = alLeft
                   AutoSize = False
                   Font.Charset = DEFAULT_CHARSET
                   Font.Color = clWindowText
-                  Font.Height = -15
+                  Font.Height = -12
                   Font.Name = 'Segoe UI'
                   Font.Style = []
                   ParentFont = False
-                  TabOrder = 6
-                  ExplicitLeft = 151
+                  TabOrder = 5
+                  ExplicitLeft = 20
+                  ExplicitTop = 70
+                  ExplicitHeight = 31
                 end
                 object CmbStatus: TComboBox
                   AlignWithMargins = True
-                  Left = 703
+                  Left = 711
                   Top = 30
-                  Width = 102
+                  Width = 82
                   Height = 29
                   Margins.Top = 30
                   Margins.Bottom = 9
@@ -663,21 +647,95 @@
                   Font.Name = 'Segoe UI'
                   Font.Style = []
                   ParentFont = False
-                  TabOrder = 7
+                  TabOrder = 6
                   Items.Strings = (
                     'Ativo'
                     'Inativo')
-                  ExplicitLeft = 818
-                  ExplicitTop = 38
+                  ExplicitLeft = 735
+                end
+                object PnlButtonEnviar: TPanel
+                  AlignWithMargins = True
+                  Left = 799
+                  Top = 30
+                  Width = 146
+                  Height = 28
+                  Margins.Top = 30
+                  Margins.Right = 0
+                  Margins.Bottom = 50
+                  Align = alClient
+                  BevelOuter = bvLowered
+                  Color = 9521152
+                  ParentBackground = False
+                  TabOrder = 7
+                  ExplicitHeight = 30
+                  object LblEnviar: TLabel
+                    AlignWithMargins = True
+                    Left = 4
+                    Top = 4
+                    Width = 138
+                    Height = 20
+                    Align = alClient
+                    Alignment = taCenter
+                    Caption = 'Enviar'
+                    Color = clWhite
+                    Font.Charset = DEFAULT_CHARSET
+                    Font.Color = clWhite
+                    Font.Height = -15
+                    Font.Name = 'Segoe UI'
+                    Font.Style = []
+                    ParentColor = False
+                    ParentFont = False
+                    OnClick = LblEnviarClick
+                    ExplicitWidth = 125
+                    ExplicitHeight = 22
+                  end
+                end
+                object PnlButtonAtualizar: TPanel
+                  AlignWithMargins = True
+                  Left = 798
+                  Top = 29
+                  Width = 149
+                  Height = 30
+                  Margins.Left = 0
+                  Margins.Top = 30
+                  Margins.Right = 0
+                  Margins.Bottom = 30
+                  BevelOuter = bvNone
+                  Color = 9521152
+                  ParentBackground = False
+                  TabOrder = 8
+                  Visible = False
+                  object LblAtualizar: TLabel
+                    AlignWithMargins = True
+                    Left = 3
+                    Top = 3
+                    Width = 143
+                    Height = 24
+                    Align = alClient
+                    Alignment = taCenter
+                    Caption = 'Atualizar'
+                    Color = clWhite
+                    Font.Charset = DEFAULT_CHARSET
+                    Font.Color = clWhite
+                    Font.Height = -15
+                    Font.Name = 'Segoe UI'
+                    Font.Style = []
+                    ParentColor = False
+                    ParentFont = False
+                    OnClick = LblAtualizarClick
+                    ExplicitLeft = -4
+                    ExplicitTop = 11
+                    ExplicitWidth = 136
+                  end
                 end
               end
             end
           end
           object PnlButtonCrud: TPanel
-            Left = 937
-            Top = 0
+            Left = 929
+            Top = -3
             Width = 178
-            Height = 425
+            Height = 411
             BevelOuter = bvNone
             Color = 9521152
             ParentBackground = False
@@ -687,7 +745,7 @@
               Left = 19
               Top = 19
               Width = 140
-              Height = 387
+              Height = 373
               Margins.Left = 19
               Margins.Top = 19
               Margins.Right = 19
@@ -702,7 +760,7 @@
                 Left = 1
                 Top = 1
                 Width = 138
-                Height = 385
+                Height = 371
                 Margins.Left = 1
                 Margins.Top = 1
                 Margins.Right = 1
@@ -786,8 +844,8 @@
                     FFFFFFFFFFFFFFFBFBFB8484843D3D3D33333333333333333333333333333359
                     5959D5D5D5FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF}
                   ParentFont = False
-                  ExplicitTop = 84
-                  ExplicitWidth = 135
+                  OnClick = BtnExcluirClick
+                  ExplicitTop = 110
                 end
                 object BtnAdicionar: TSpeedButton
                   AlignWithMargins = True
@@ -865,9 +923,7 @@
                     FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF}
                   ParentFont = False
                   OnClick = BtnAdicionarClick
-                  ExplicitLeft = 9
-                  ExplicitTop = 74
-                  ExplicitWidth = 152
+                  ExplicitTop = 9
                 end
                 object BtnEditar: TSpeedButton
                   AlignWithMargins = True
@@ -943,9 +999,8 @@
                     FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
                     FFFFFFFFFFFFFFFFE2E2E24B4B4B0404041D1D1D959595FFFFFF}
                   ParentFont = False
-                  ExplicitLeft = 9
-                  ExplicitTop = 74
-                  ExplicitWidth = 152
+                  OnClick = BtnEditarClick
+                  ExplicitTop = 57
                 end
                 object BtnPesquisar: TSpeedButton
                   AlignWithMargins = True
@@ -1022,9 +1077,7 @@
                     FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF}
                   ParentFont = False
                   OnClick = BtnPesquisarClick
-                  ExplicitLeft = 9
-                  ExplicitTop = 74
-                  ExplicitWidth = 152
+                  ExplicitTop = 216
                 end
                 object BtnCancelar: TSpeedButton
                   AlignWithMargins = True
@@ -1142,9 +1195,7 @@
                     FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
                     FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF}
                   ParentFont = False
-                  ExplicitLeft = 24
-                  ExplicitTop = 217
-                  ExplicitWidth = 116
+                  ExplicitTop = 269
                 end
                 object BtnRestaurar: TSpeedButton
                   AlignWithMargins = True
@@ -1220,18 +1271,17 @@
                     EFDDDDDDFDFDFDFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
                     FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF}
                   ParentFont = False
-                  ExplicitLeft = 13
-                  ExplicitTop = 111
-                  ExplicitWidth = 135
+                  OnClick = BtnRestaurarClick
+                  ExplicitTop = 163
                 end
                 object BtnSair: TSpeedButton
                   AlignWithMargins = True
                   Left = 5
-                  Top = 330
+                  Top = 325
                   Width = 128
-                  Height = 40
+                  Height = 41
                   Margins.Left = 5
-                  Margins.Top = 10
+                  Margins.Top = 5
                   Margins.Right = 5
                   Margins.Bottom = 10
                   Align = alTop
@@ -1300,7 +1350,7 @@
                     0303343434CDCDCDFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF}
                   ParentFont = False
                   Spacing = 0
-                  ExplicitTop = 322
+                  ExplicitTop = 314
                 end
               end
             end
@@ -1310,7 +1360,7 @@
             Left = 19
             Top = 19
             Width = 888
-            Height = 390
+            Height = 373
             Margins.Left = 19
             Margins.Top = 19
             Margins.Right = 19
@@ -1321,17 +1371,24 @@
             Color = clBackground
             ParentBackground = False
             TabOrder = 3
-            object DBGrid1: TDBGrid
+            ExplicitHeight = 371
+            object DBGridMain: TDBGrid
               AlignWithMargins = True
               Left = 1
               Top = 1
               Width = 886
-              Height = 388
+              Height = 371
               Margins.Left = 1
               Margins.Top = 1
               Margins.Right = 1
               Margins.Bottom = 1
               Align = alClient
+              Font.Charset = DEFAULT_CHARSET
+              Font.Color = clWindowText
+              Font.Height = -15
+              Font.Name = 'Segoe UI'
+              Font.Style = []
+              ParentFont = False
               TabOrder = 0
               TitleFont.Charset = DEFAULT_CHARSET
               TitleFont.Color = clWindowText
@@ -1344,7 +1401,7 @@
               Left = 20
               Top = 20
               Width = 848
-              Height = 350
+              Height = 333
               Margins.Left = 20
               Margins.Top = 20
               Margins.Right = 20
@@ -1354,6 +1411,7 @@
               ParentBackground = False
               TabOrder = 1
               Visible = False
+              ExplicitLeft = 22
               object LblRestaurar: TLabel
                 AlignWithMargins = True
                 Left = 4
@@ -1391,6 +1449,7 @@
                   D3B02C19730192242A92F15CD4DCE82B82F83E76CEF72B8170A8B914C265CC45
                   901F1F99CB5F1FFA570598A2328176F4BDDF9615D481E62FF3919E24F9015515
                   0000000049454E44AE426082}
+                OnClick = ImgFecharClick
               end
               object ImgRestaurar: TImage
                 Left = 20
@@ -1427,13 +1486,14 @@
                   ED013E254938A1F66222BFBA5ECB1ADF0A9A2958C0EA08C72871928C33C3BB5A
                   12832BFACBF45A4E1202B768713C2CE6B3220207C9203539C4CC468BD9FF014B
                   7620018FA76C950000000049454E44AE426082}
+                OnClick = ImgRestaurarClick
               end
               object PnlMainRestaurar: TPanel
                 AlignWithMargins = True
                 Left = 21
                 Top = 49
                 Width = 806
-                Height = 280
+                Height = 263
                 Margins.Left = 20
                 Margins.Right = 20
                 Margins.Bottom = 20
@@ -1442,12 +1502,13 @@
                 Color = 9521152
                 ParentBackground = False
                 TabOrder = 0
+                ExplicitHeight = 280
                 object PnlContainerRestaurar: TPanel
                   AlignWithMargins = True
                   Left = 12
                   Top = 10
                   Width = 782
-                  Height = 260
+                  Height = 243
                   Margins.Left = 12
                   Margins.Top = 10
                   Margins.Right = 12
@@ -1458,12 +1519,13 @@
                   Color = clBackground
                   ParentBackground = False
                   TabOrder = 0
+                  ExplicitHeight = 260
                   object DBGridRestaurar: TDBGrid
                     AlignWithMargins = True
                     Left = 1
                     Top = 1
                     Width = 780
-                    Height = 258
+                    Height = 241
                     Margins.Left = 1
                     Margins.Top = 1
                     Margins.Right = 1
@@ -1524,9 +1586,17 @@
           TabOrder = 0
           TextHint = 'Pesquisar'
           Visible = False
+          OnChange = EdtPesquisarChange
           ExplicitHeight = 28
         end
       end
     end
+  end
+  object DataSourceRestaurar: TDataSource
+    Left = 776
+  end
+  object DataSourceClientes: TDataSource
+    DataSet = DataModule1.FDQuery
+    Left = 864
   end
 end

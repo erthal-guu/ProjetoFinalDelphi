@@ -10,7 +10,8 @@ uses
   public
     constructor create;
     function SalvarClientes(ClienteDTO :  TClienteDTO): Boolean;
-    function CriarObjeto(aNome, aCPF, aEmail, aTelefone, aEndereco: String; aNascimento: TDateTime; aAtivo: Boolean): TClienteDTO;
+    function CriarObjeto(aNome,aCPF, aEmail,aTelefone,
+    aNascimento,aEndereco : String; aAtivo: Boolean): TClienteDTO;
     procedure EditarClientes(ClienteDTO : TClienteDTO);
     function ValidarClientes(ClienteValido: TClienteDTO) : Boolean;
     function ListarClientes: TDataSet;
@@ -29,7 +30,8 @@ begin
   Repository := TClienteRepository.Create(DataModule1.FDQuery);
 end;
 
-function TClienteService.CriarObjeto(aNome, aCPF, aEmail, aTelefone, aEndereco: String;aNascimento: TDateTime;aAtivo: Boolean): TClienteDTO;
+function TClienteService.CriarObjeto(aNome,aCPF, aEmail,aTelefone,
+    aNascimento,aEndereco : String; aAtivo: Boolean): TClienteDTO;
 var
   ClienteDTO: TClienteDTO;
 begin
@@ -49,8 +51,6 @@ begin
     raise;
   end;
 end;
-
-
 
 procedure TClienteService.DeletarClientes(const aId: Integer);
 begin
@@ -83,22 +83,18 @@ begin
 end;
 
 function TClienteService.SalvarClientes(ClienteDTO: TClienteDTO): Boolean;
-var
-  Repository : TClienteRepository;
 begin
 if ValidarClientes(ClienteDTO) then begin
-
-    Repository := TClienteRepository.Create(DataModule1.FDQuery);
     Result := False;
     try
-    if not Repository.ExisteCPF(ClienteDTO) then begin
-      Repository.inserirCliente(ClienteDTO);
+    if not Self.Repository.ExisteCPF(ClienteDTO) then begin
+      Self.Repository.inserirCliente(ClienteDTO);
       Result := True;
     end;
     finally
-      Repository.Free;
+    Repository.Free;
     end;
-  end;
+end;
 end;
 
 function TClienteService.ValidarClientes(ClienteValido: TClienteDTO): Boolean;
@@ -108,7 +104,7 @@ Result := (ClienteValido.getNome <> '') and
            (ClienteValido.getEmail <> '') and
            (ClienteValido.getTelefone <> '') and
            (ClienteValido.getEndereco <> '') and
-           (ClienteValido.getNascimento <> 0);
+           (ClienteValido.getNascimento <> '');
 end;
 
 end.
