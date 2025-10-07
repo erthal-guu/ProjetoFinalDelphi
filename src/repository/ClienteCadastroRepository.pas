@@ -127,10 +127,10 @@ begin
     FQuery.SQL.Clear;
     FQuery.SQL.Add('SELECT id, nome, cpf, email,telefone,nascimento,endereco,ativo');
     FQuery.SQL.Add('FROM clientes');
-    FQuery.SQL.Add('WHERE (nome ILIKE UPPER:nome OR cpf LIKE :cpf OR telefone ILIKE :telefone)');
+    FQuery.SQL.Add('WHERE(nome ILIKE :nome) OR (cpf LIKE :cpf) OR (telefone ILIKE :telefone)');
     FQuery.SQL.Add('AND ativo = TRUE');
     FQuery.SQL.Add('ORDER BY id');
-    FQuery.ParamByName('nome').AsString  := '%' + Trim(aFiltro) + '%';
+    FQuery.ParamByName('nome').AsString   := '%' + Trim(aFiltro) + '%';
     FQuery.ParamByName('cpf').AsString   := '%' + Trim(aFiltro) + '%';
     FQuery.ParamByName('telefone').AsString := '%' + Trim(aFiltro) + '%';
     FQuery.Open;

@@ -80,6 +80,8 @@
       procedure ImgRestaurarClick(Sender: TObject);
       procedure ImgFecharClick(Sender: TObject);
       procedure EdtPesquisarChange(Sender: TObject);
+    procedure BtnCancelarClick(Sender: TObject);
+    procedure BtnSairClick(Sender: TObject);
     private
       { Private declarations }
     public
@@ -100,7 +102,13 @@
     EdtPesquisar.Visible := False;
   end;
 
-  procedure TFormCadastroClientes.BtnEditarClick(Sender: TObject);
+  procedure TFormCadastroClientes.BtnCancelarClick(Sender: TObject);
+begin
+  PnlDesignEdit.Visible := False;
+  EdtPesquisar.Visible := False;
+end;
+
+procedure TFormCadastroClientes.BtnEditarClick(Sender: TObject);
   begin
     PnlDesignEdit.Visible := True;
     PnlButtonAtualizar.Visible := True;
@@ -141,7 +149,15 @@
     CarregarGridRestaurar;
   end;
 
-  procedure TFormCadastroClientes.CarregarGrid;
+  procedure TFormCadastroClientes.BtnSairClick(Sender: TObject);
+  begin
+  if MessageDlg('Deseja realmente fechar este Formulário?', mtConfirmation, [mbYes, mbNo], 0) = mrYes then
+  begin
+    FormCadastroClientes.close;
+  end;
+end;
+
+procedure TFormCadastroClientes.CarregarGrid;
   var
     ClienteService : TClienteService;
   begin
