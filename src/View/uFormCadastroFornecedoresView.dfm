@@ -27,10 +27,6 @@ object FormCadastroFornecedores: TFormCadastroFornecedores
     Font.Style = []
     ParentFont = False
     TabOrder = 0
-    ExplicitLeft = -6
-    ExplicitTop = 2
-    ExplicitWidth = 1119
-    ExplicitHeight = 659
     object Fornecedores: TTabSheet
       Caption = 'Fornecedores'
       object PnlMain: TPanel
@@ -40,8 +36,6 @@ object FormCadastroFornecedores: TFormCadastroFornecedores
         Height = 564
         Align = alClient
         TabOrder = 0
-        ExplicitWidth = 1111
-        ExplicitHeight = 545
         object PnlContainer: TPanel
           AlignWithMargins = True
           Left = 1
@@ -72,8 +66,6 @@ object FormCadastroFornecedores: TFormCadastroFornecedores
             Color = 6172416
             ParentBackground = False
             TabOrder = 0
-            ExplicitLeft = 927
-            ExplicitHeight = 431
           end
           object PnlMainEdit: TPanel
             Left = 0
@@ -101,7 +93,6 @@ object FormCadastroFornecedores: TFormCadastroFornecedores
               ParentBackground = False
               TabOrder = 1
               Visible = False
-              ExplicitTop = 13
             end
             object PnlDesignEdit: TPanel
               AlignWithMargins = True
@@ -118,8 +109,6 @@ object FormCadastroFornecedores: TFormCadastroFornecedores
               ParentBackground = False
               TabOrder = 0
               Visible = False
-              ExplicitWidth = 1068
-              ExplicitHeight = 93
               object Image1: TImage
                 AlignWithMargins = True
                 Left = 952
@@ -419,7 +408,6 @@ object FormCadastroFornecedores: TFormCadastroFornecedores
                 Align = alLeft
                 BevelOuter = bvNone
                 TabOrder = 0
-                ExplicitHeight = 156
                 object Label1: TLabel
                   Left = 20
                   Top = 8
@@ -581,9 +569,6 @@ object FormCadastroFornecedores: TFormCadastroFornecedores
                   Font.Style = []
                   ParentFont = False
                   TabOrder = 0
-                  ExplicitLeft = 170
-                  ExplicitTop = 40
-                  ExplicitHeight = 36
                 end
                 object PnlButtonEnviar: TPanel
                   AlignWithMargins = True
@@ -616,7 +601,8 @@ object FormCadastroFornecedores: TFormCadastroFornecedores
                     Font.Style = []
                     ParentColor = False
                     ParentFont = False
-                    ExplicitWidth = 117
+                    ExplicitWidth = 40
+                    ExplicitHeight = 20
                   end
                 end
                 object EdtCNPJ: TMaskEdit
@@ -636,8 +622,6 @@ object FormCadastroFornecedores: TFormCadastroFornecedores
                   MaxLength = 18
                   TabOrder = 2
                   Text = '  .   .   /    -  '
-                  ExplicitLeft = 276
-                  ExplicitHeight = 27
                 end
                 object EdtRazaoSocial: TEdit
                   AlignWithMargins = True
@@ -657,8 +641,6 @@ object FormCadastroFornecedores: TFormCadastroFornecedores
                   Font.Style = []
                   ParentFont = False
                   TabOrder = 3
-                  ExplicitTop = 38
-                  ExplicitHeight = 36
                 end
                 object EdtTelefone: TMaskEdit
                   AlignWithMargins = True
@@ -677,8 +659,6 @@ object FormCadastroFornecedores: TFormCadastroFornecedores
                   MaxLength = 13
                   TabOrder = 4
                   Text = '(   )   -    '
-                  ExplicitLeft = 408
-                  ExplicitTop = 40
                 end
                 object EdtCEP: TMaskEdit
                   AlignWithMargins = True
@@ -697,8 +677,6 @@ object FormCadastroFornecedores: TFormCadastroFornecedores
                   MaxLength = 9
                   TabOrder = 5
                   Text = '     -   '
-                  ExplicitLeft = 556
-                  ExplicitHeight = 27
                 end
                 object CmbStatus: TComboBox
                   AlignWithMargins = True
@@ -740,7 +718,6 @@ object FormCadastroFornecedores: TFormCadastroFornecedores
                   Font.Style = []
                   ParentFont = False
                   TabOrder = 7
-                  ExplicitHeight = 36
                 end
                 object Edit2: TEdit
                   AlignWithMargins = True
@@ -841,8 +818,6 @@ object FormCadastroFornecedores: TFormCadastroFornecedores
               Color = clBackground
               ParentBackground = False
               TabOrder = 0
-              ExplicitWidth = 140
-              ExplicitHeight = 391
               object PnlButton: TPanel
                 AlignWithMargins = True
                 Left = 1
@@ -858,8 +833,6 @@ object FormCadastroFornecedores: TFormCadastroFornecedores
                 Color = 15790320
                 ParentBackground = False
                 TabOrder = 0
-                ExplicitWidth = 138
-                ExplicitHeight = 389
                 object BtnExcluir: TSpeedButton
                   AlignWithMargins = True
                   Left = 5
@@ -1350,8 +1323,6 @@ object FormCadastroFornecedores: TFormCadastroFornecedores
             Color = clBackground
             ParentBackground = False
             TabOrder = 3
-            ExplicitWidth = 889
-            ExplicitHeight = 393
             object DBGrid1: TDBGrid
               AlignWithMargins = True
               Left = 1

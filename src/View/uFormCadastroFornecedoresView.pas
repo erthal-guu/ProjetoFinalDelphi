@@ -18,7 +18,6 @@ type
     PnlMainEdit: TPanel;
     PnlBackgrounEdit: TPanel;
     PnlDesignEdit: TPanel;
-    Image1: TImage;
     PnlEdit: TPanel;
     Label1: TLabel;
     Label2: TLabel;
@@ -57,6 +56,7 @@ type
     Label9: TLabel;
     Label10: TLabel;
     Label11: TLabel;
+    Image1: TImage;
     procedure BtnAdicionarClick(Sender: TObject);
     procedure BtnPesquisarClick(Sender: TObject);
     procedure FormCreate(Sender: TObject);

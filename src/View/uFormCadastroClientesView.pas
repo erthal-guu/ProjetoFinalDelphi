@@ -10,57 +10,55 @@
 
   type
     TFormCadastroClientes = class(TForm)
-      PageControl1: TPageControl;
-      Clientes: TTabSheet;
-      PnlMain: TPanel;
-      PnlContainer: TPanel;
-      PnlMainButton: TPanel;
-      PnlMainEdit: TPanel;
-      PnlBackgrounEdit: TPanel;
-      PnlDesignEdit: TPanel;
-      Image1: TImage;
-      PnlEdit: TPanel;
-      LblNome: TLabel;
-      LblEmail: TLabel;
-      LblCPF: TLabel;
-      LblTelefone: TLabel;
-      LblNascimento: TLabel;
-      EdtNome: TEdit;
-      EdtCPF: TMaskEdit;
-      EdtEmail: TEdit;
-      EdtDataNascimento: TMaskEdit;
-      EdtTelefone: TMaskEdit;
-      PnlButtonCrud: TPanel;
-      PnlBackgroundButton: TPanel;
-      PnlButton: TPanel;
-      BtnExcluir: TSpeedButton;
-      BtnAdicionar: TSpeedButton;
-      BtnEditar: TSpeedButton;
-      BtnPesquisar: TSpeedButton;
-      BtnCancelar: TSpeedButton;
-      BtnRestaurar: TSpeedButton;
-      BtnSair: TSpeedButton;
-      PnlGrid: TPanel;
-      DBGridMain: TDBGrid;
-      PnlHeader: TPanel;
-      EdtPesquisar: TSearchBox;
-      PnlRestaurar: TPanel;
-      LblRestaurar: TLabel;
-      ImgFechar: TImage;
-      ImgRestaurar: TImage;
-      PnlMainRestaurar: TPanel;
-      PnlContainerRestaurar: TPanel;
-      DBGridRestaurar: TDBGrid;
-      EdtEndereço: TEdit;
-      LblEndereço: TLabel;
-      CmbStatus: TComboBox;
-      LblStatus: TLabel;
       DataSourceRestaurar: TDataSource;
       DataSourceClientes: TDataSource;
-      PnlButtonEnviar: TPanel;
-      LblEnviar: TLabel;
-      PnlButtonAtualizar: TPanel;
-      LblAtualizar: TLabel;
+    PnlMain: TPanel;
+    PnlContainer: TPanel;
+    PnlMainButton: TPanel;
+    PnlMainEdit: TPanel;
+    PnlBackgrounEdit: TPanel;
+    PnlDesignEdit: TPanel;
+    Image1: TImage;
+    PnlEdit: TPanel;
+    LblNome: TLabel;
+    LblEmail: TLabel;
+    LblCPF: TLabel;
+    LblTelefone: TLabel;
+    LblNascimento: TLabel;
+    LblEndereço: TLabel;
+    LblStatus: TLabel;
+    EdtNome: TEdit;
+    EdtCPF: TMaskEdit;
+    EdtEmail: TEdit;
+    EdtDataNascimento: TMaskEdit;
+    EdtTelefone: TMaskEdit;
+    EdtEndereço: TEdit;
+    CmbStatus: TComboBox;
+    PnlButtonEnviar: TPanel;
+    LblEnviar: TLabel;
+    PnlButtonAtualizar: TPanel;
+    LblAtualizar: TLabel;
+    PnlGrid: TPanel;
+    DBGridMain: TDBGrid;
+    PnlRestaurar: TPanel;
+    LblRestaurar: TLabel;
+    ImgFechar: TImage;
+    ImgRestaurar: TImage;
+    PnlMainRestaurar: TPanel;
+    PnlContainerRestaurar: TPanel;
+    DBGridRestaurar: TDBGrid;
+    PnlHeader: TPanel;
+    EdtPesquisar: TSearchBox;
+    PnlButtonCrud: TPanel;
+    PnlBackgroundButton: TPanel;
+    PnlButton: TPanel;
+    BtnExcluir: TSpeedButton;
+    BtnAdicionar: TSpeedButton;
+    BtnEditar: TSpeedButton;
+    BtnPesquisar: TSpeedButton;
+    BtnCancelar: TSpeedButton;
+    BtnRestaurar: TSpeedButton;
+    BtnSair: TSpeedButton;
       procedure BtnAdicionarClick(Sender: TObject);
       procedure BtnPesquisarClick(Sender: TObject);
       procedure FormCreate(Sender: TObject);
@@ -82,6 +80,9 @@
       procedure EdtPesquisarChange(Sender: TObject);
     procedure BtnCancelarClick(Sender: TObject);
     procedure BtnSairClick(Sender: TObject);
+    procedure EdtCPFClick(Sender: TObject);
+    procedure EdtTelefoneClick(Sender: TObject);
+    procedure EdtDataNascimentoClick(Sender: TObject);
     private
       { Private declarations }
     public
@@ -106,6 +107,7 @@
 begin
   PnlDesignEdit.Visible := False;
   EdtPesquisar.Visible := False;
+  PnlBackgrounEdit.Visible := False;
 end;
 
 procedure TFormCadastroClientes.BtnEditarClick(Sender: TObject);
@@ -198,7 +200,7 @@ procedure TFormCadastroClientes.CarregarGrid;
         DBGridMain.Columns[2].Width := 160;
         DBGridMain.Columns[3].Width := 160;
         DBGridMain.Columns[4].Width := 160;
-        DBGridMain.Columns[5].Width := 160;
+        DBGridMain.Columns[5].Width := 180;
         DBGridMain.Columns[6].Width := 160;
         DBGridMain.Columns[7].Width := 50;
       end;
@@ -294,7 +296,18 @@ procedure TFormCadastroClientes.CarregarGrid;
       ClienteController.Free;
     end;
   end;
-  procedure TFormCadastroClientes.EdtPesquisarChange(Sender: TObject);
+
+procedure TFormCadastroClientes.EdtCPFClick(Sender: TObject);
+begin
+  EdtCPF.SelStart := 0;
+end;
+
+procedure TFormCadastroClientes.EdtDataNascimentoClick(Sender: TObject);
+begin
+  EdtDataNascimento.SelStart := 0;
+end;
+
+procedure TFormCadastroClientes.EdtPesquisarChange(Sender: TObject);
 var
   ClienteService : TClienteService;
 begin
@@ -314,13 +327,19 @@ begin
   end;
 end;
 
-  procedure TFormCadastroClientes.FormCreate(Sender: TObject);
+  procedure TFormCadastroClientes.EdtTelefoneClick(Sender: TObject);
+begin
+  EdtTelefone.SelStart := 0;
+end;
+
+procedure TFormCadastroClientes.FormCreate(Sender: TObject);
   begin
     EdtNome.Height := 31;
     EdtEmail.Height := 31;
     EdtCPF.Height := 31;
     EdtTelefone.Height := 31;
     EdtDataNascimento.Height := 31;
+    CmbStatus.Font.Size := 12;
   end;
 
   procedure TFormCadastroClientes.FormShow(Sender: TObject);

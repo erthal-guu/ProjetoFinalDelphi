@@ -494,7 +494,6 @@ object FormCadastroUsuarios: TFormCadastroUsuarios
                     Font.Style = []
                     ParentFont = False
                     TabOrder = 0
-                    ExplicitLeft = 22
                   end
                 end
                 object PnlEdtCPF: TPanel
@@ -536,7 +535,6 @@ object FormCadastroUsuarios: TFormCadastroUsuarios
                     TabOrder = 0
                     Text = '   .   .   -  '
                     OnClick = EdtCPFClick
-                    ExplicitLeft = 4
                   end
                 end
                 object PnlEdtSenha: TPanel
@@ -743,8 +741,8 @@ object FormCadastroUsuarios: TFormCadastroUsuarios
             end
           end
           object PnlButtonCrud: TPanel
-            Left = 936
-            Top = 0
+            Left = 929
+            Top = 1
             Width = 178
             Height = 428
             BevelOuter = bvNone
