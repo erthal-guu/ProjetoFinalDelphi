@@ -408,7 +408,6 @@ object FormCadastroUsuarios: TFormCadastroUsuarios
                 Align = alLeft
                 BevelOuter = bvNone
                 TabOrder = 0
-                ExplicitLeft = 0
                 object PnlCmbStatus: TPanel
                   Left = 695
                   Top = 0
@@ -495,6 +494,7 @@ object FormCadastroUsuarios: TFormCadastroUsuarios
                     Font.Style = []
                     ParentFont = False
                     TabOrder = 0
+                    ExplicitLeft = 22
                   end
                 end
                 object PnlEdtCPF: TPanel
@@ -536,6 +536,7 @@ object FormCadastroUsuarios: TFormCadastroUsuarios
                     TabOrder = 0
                     Text = '   .   .   -  '
                     OnClick = EdtCPFClick
+                    ExplicitLeft = 4
                   end
                 end
                 object PnlEdtSenha: TPanel
@@ -646,7 +647,7 @@ object FormCadastroUsuarios: TFormCadastroUsuarios
                     AlignWithMargins = True
                     Left = 3
                     Top = 30
-                    Width = 110
+                    Width = 114
                     Height = 29
                     Margins.Top = 30
                     Margins.Bottom = 9
@@ -660,11 +661,6 @@ object FormCadastroUsuarios: TFormCadastroUsuarios
                     Font.Style = []
                     ParentFont = False
                     TabOrder = 0
-                    Items.Strings = (
-                      'Mec'#226'nico'
-                      'Gerente'
-                      'Atendente'
-                      'Administrador')
                   end
                 end
                 object PnlButtonEnviar: TPanel
@@ -1408,6 +1404,7 @@ object FormCadastroUsuarios: TFormCadastroUsuarios
               Margins.Right = 1
               Margins.Bottom = 1
               Align = alClient
+              DataSource = DataSourceMain
               Font.Charset = DEFAULT_CHARSET
               Font.Color = clWindowText
               Font.Height = -16

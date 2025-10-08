@@ -1,7 +1,7 @@
 unit UsuarioCadastroController;
 
 interface
-uses uUsuarioDTO, UsuarioCadastroService, FireDAC.Comp.Client, Vcl.Dialogs,Data.DB;
+uses uUsuarioDTO, UsuarioCadastroService, FireDAC.Comp.Client, Vcl.Dialogs,Data.DB,System.Classes;
 
 type TUsuarioController = class
   Service : TUsuarioService;
@@ -16,9 +16,15 @@ type TUsuarioController = class
       procedure DeletarUsuarios(const aId :Integer);
       procedure RestaurarUsuarios(const aId :Integer);
       Function PesquisarUsuarios(const aFiltro:String):TDataset;
+      function CarregarGrupos : TStringList;
   end;
 implementation
 { TUsuarioController }
+
+function TUsuarioController.CarregarGrupos: TStringList;
+begin
+  Result := Service.CarregarGrupos;
+end;
 
 constructor TUsuarioController.Create;
 begin

@@ -3,7 +3,7 @@ unit UsuarioCadastroService;
 interface
 
 uses
-  uUsuarioDTO, UsuarioCadastroRepository, uDMConexao, System.SysUtils,uMainController, FireDAC.Comp.Client,Data.DB,BCrypt,Vcl.Dialogs;
+  uUsuarioDTO, UsuarioCadastroRepository, uDMConexao, System.SysUtils,uMainController, FireDAC.Comp.Client,Data.DB,BCrypt,Vcl.Dialogs,System.Classes;
  type
   TUsuarioService = class
   private
@@ -22,6 +22,7 @@ uses
     procedure RestaurarUsuarios(const aId :Integer);
     function PesquisarUsuarios(const aFiltro: String):TDataSet;
     procedure EditarUsuarioComSenha (UsuarioDTO : TUsuarioDTO);
+    function CarregarGrupos : TStringList;
   end;
 
 implementation
@@ -42,6 +43,11 @@ end;
 function TUsuarioService.PesquisarUsuarios(const aFiltro: String): TDataSet;
 begin
   Result := Repository.PesquisarUsuarios(aFiltro);
+end;
+
+function TUsuarioService.CarregarGrupos: TStringList;
+begin
+Result := Repository.CarregarGrupos;
 end;
 
 constructor TUsuarioService.create;

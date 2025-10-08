@@ -3,7 +3,7 @@ unit UsuarioCadastrorepository;
 interface
 
 uses
-  uDMConexao, FireDAC.Comp.Client, System.SysUtils, uUsuarioDTO, Data.DB;
+  uDMConexao, FireDAC.Comp.Client, System.SysUtils, uUsuarioDTO, Data.DB,Generics.Collections,System.Classes;
 
 type
   TCadastroRepository = class
@@ -20,6 +20,7 @@ type
     procedure RestaurarUsuarios(const aID: Integer);
     function PesquisarUsuarios(const aFiltro : String): TDataSet;
     function EditarUsuarioComSenha(aUsuario : TUsuarioDTO):Boolean;
+    function CarregarGrupos :TStringList;
   end;
 
 implementation
@@ -43,6 +44,33 @@ begin
     on E: Exception do
       raise Exception.Create('Erro ao buscar usuário por nome: ' + E.Message);
   end;
+end;
+
+function TCadastroRepository.CarregarGrupos: TStringList;
+var
+  Lista: TStringList;
+  Qry: TFDQuery;
+begin
+  Lista := TStringList.Create;
+  Qry := TFDQuery.Create(nil);
+  try
+    Qry.Connection := FQuery.Connection;
+    Qry.SQL.add('SELECT id, nome FROM grupo ORDER BY nome');
+    Qry.Open;
+    while not Qry.Eof do
+    begin
+      Lista.AddObject(Qry.FieldByName('nome').AsString, TObject(Qry.FieldByName('id').AsInteger));
+      Qry.Next;
+    end;
+    Result := Lista;
+  except
+    on E: Exception do
+    begin
+      Lista.Free;
+      raise Exception.Create('Erro ao listar grupos: ' + E.Message);
+    end;
+  end;
+  Qry.Free;
 end;
 
 constructor TCadastroRepository.Create(Query : TFDQuery);

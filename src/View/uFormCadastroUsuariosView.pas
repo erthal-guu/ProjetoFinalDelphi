@@ -92,6 +92,7 @@ type
     procedure EdtPesquisarChange(Sender: TObject);
     function ValidarCamposCRUD : Boolean;
     procedure EdtCPFClick(Sender: TObject);
+    procedure CarregarGrupos;
   private
     { Private declarations }
   public
@@ -268,6 +269,28 @@ DBGridRestaurar.DataSource := DataSourceRestaurar;
 
 end;
 
+procedure TFormCadastroUsuarios.CarregarGrupos;
+var
+  UsuarioController: TUsuarioController;
+  ListaGrupos: TStringList;
+  i: Integer;
+begin
+  CmbGrupo.Items.Clear;
+  UsuarioController := TUsuarioController.Create;
+  try
+    ListaGrupos := UsuarioController.CarregarGrupos;
+    try
+      for i := 0 to ListaGrupos.Count - 1 do
+        CmbGrupo.Items.AddObject(ListaGrupos[i], ListaGrupos.Objects[i]);
+      CmbGrupo.ItemIndex := -1;
+    finally
+      ListaGrupos.Free;
+    end;
+  finally
+    UsuarioController.Free;
+  end;
+end;
+
 procedure TFormCadastroUsuarios.FormCreate(Sender: TObject);
 begin
   EdtSenha.Height := 31;
@@ -283,6 +306,7 @@ end;
 procedure TFormCadastroUsuarios.FormShow(Sender: TObject);
 begin
   CarregarGrid;
+  CarregarGrupos;
 end;
 
 procedure TFormCadastroUsuarios.ImgFecharClick(Sender: TObject);
