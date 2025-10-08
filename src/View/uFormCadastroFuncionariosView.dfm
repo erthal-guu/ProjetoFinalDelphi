@@ -21,8 +21,6 @@ object FormCadastroFuncionarios: TFormCadastroFuncionarios
     Height = 696
     Align = alClient
     TabOrder = 0
-    ExplicitLeft = -48
-    ExplicitTop = 16
     object PnlMain: TPanel
       Left = 1
       Top = 1
@@ -1372,6 +1370,7 @@ object FormCadastroFuncionarios: TFormCadastroFuncionarios
                 Font.Style = []
                 ParentFont = False
                 TabOrder = 8
+                OnChange = EdtCEPChange
               end
               object EdtRG: TMaskEdit
                 AlignWithMargins = True
@@ -1539,6 +1538,7 @@ object FormCadastroFuncionarios: TFormCadastroFuncionarios
             Margins.Right = 1
             Margins.Bottom = 1
             Align = alClient
+            ReadOnly = True
             TabOrder = 0
             TitleFont.Charset = DEFAULT_CHARSET
             TitleFont.Color = clWindowText

@@ -1122,7 +1122,7 @@
               Left = 20
               Top = 30
               Width = 133
-              Height = 33
+              Height = 29
               Margins.Left = 20
               Margins.Top = 30
               Margins.Bottom = 45
@@ -1135,13 +1135,14 @@
               Font.Style = []
               ParentFont = False
               TabOrder = 0
+              ExplicitHeight = 33
             end
             object EdtCPF: TMaskEdit
               AlignWithMargins = True
               Left = 159
               Top = 30
               Width = 118
-              Height = 33
+              Height = 29
               Cursor = crHandPoint
               Margins.Top = 30
               Margins.Bottom = 45
@@ -1160,13 +1161,14 @@
               TabOrder = 1
               Text = '   .   .   -  '
               OnClick = EdtCPFClick
+              ExplicitHeight = 33
             end
             object EdtEmail: TEdit
               AlignWithMargins = True
               Left = 627
               Top = 30
               Width = 150
-              Height = 33
+              Height = 29
               Margins.Top = 30
               Margins.Bottom = 45
               Align = alLeft
@@ -1178,13 +1180,14 @@
               Font.Style = []
               ParentFont = False
               TabOrder = 2
+              ExplicitHeight = 33
             end
             object EdtDataNascimento: TMaskEdit
               AlignWithMargins = True
               Left = 541
               Top = 30
               Width = 80
-              Height = 33
+              Height = 29
               Cursor = crHandPoint
               Margins.Top = 30
               Margins.Bottom = 45
@@ -1203,13 +1206,14 @@
               TabOrder = 3
               Text = '  /  /  '
               OnClick = EdtDataNascimentoClick
+              ExplicitHeight = 33
             end
             object EdtTelefone: TMaskEdit
               AlignWithMargins = True
               Left = 439
               Top = 30
               Width = 96
-              Height = 33
+              Height = 29
               Cursor = crHandPoint
               Margins.Top = 30
               Margins.Bottom = 45
@@ -1228,13 +1232,14 @@
               TabOrder = 4
               Text = '(  )     -    '
               OnClick = EdtTelefoneClick
+              ExplicitHeight = 33
             end
             object EdtEndereço: TEdit
               AlignWithMargins = True
               Left = 283
               Top = 30
               Width = 150
-              Height = 33
+              Height = 29
               Margins.Top = 30
               Margins.Bottom = 45
               Align = alLeft
@@ -1246,6 +1251,7 @@
               Font.Style = []
               ParentFont = False
               TabOrder = 5
+              ExplicitHeight = 33
             end
             object CmbStatus: TComboBox
               AlignWithMargins = True
@@ -1274,7 +1280,7 @@
               Left = 871
               Top = 30
               Width = 105
-              Height = 28
+              Height = 24
               Margins.Top = 30
               Margins.Right = 0
               Margins.Bottom = 50
@@ -1283,12 +1289,13 @@
               Color = 9521152
               ParentBackground = False
               TabOrder = 7
+              ExplicitHeight = 28
               object LblEnviar: TLabel
                 AlignWithMargins = True
                 Left = 4
                 Top = 4
                 Width = 97
-                Height = 20
+                Height = 16
                 Align = alClient
                 Alignment = taCenter
                 Caption = 'Enviar'
@@ -1302,6 +1309,7 @@
                 ParentFont = False
                 OnClick = LblEnviarClick
                 ExplicitWidth = 40
+                ExplicitHeight = 20
               end
             end
             object PnlButtonAtualizar: TPanel
@@ -1373,7 +1381,7 @@
           Align = alClient
           Font.Charset = DEFAULT_CHARSET
           Font.Color = clWindowText
-          Font.Height = -15
+          Font.Height = -12
           Font.Name = 'Segoe UI'
           Font.Style = []
           ParentFont = False

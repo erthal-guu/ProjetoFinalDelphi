@@ -96,6 +96,8 @@ type
     procedure ImgRestaurarClick(Sender: TObject);
     procedure EdtPesquisarChange(Sender: TObject);
     procedure FormShow(Sender: TObject);
+    procedure BuscaCEP;
+    procedure EdtCEPChange(Sender: TObject);
 
   private
     { Private declarations }
@@ -144,6 +146,11 @@ procedure TFormCadastroFuncionarios.BtnSairClick(Sender: TObject);
 begin
   if MessageDlg('Deseja realmente fechar este Formulário?', mtConfirmation, [mbYes, mbNo], 0) = mrYes then
     Close;
+end;
+
+procedure TFormCadastroFuncionarios.EdtCEPChange(Sender: TObject);
+begin
+  BuscaCEP;
 end;
 
 procedure TFormCadastroFuncionarios.EdtCPFClick(Sender: TObject);
@@ -238,6 +245,7 @@ begin
         DBGridMain.Columns[i].Title.Alignment := taCenter;
         DBGridMain.Columns[i].Alignment := taCenter;
         DBGridMain.Columns[i].Width := 120;
+        DBGridMain.Columns[i].Title.Font.Size :=15;
       end;
     end;
   finally
@@ -434,6 +442,28 @@ procedure TFormCadastroFuncionarios.ImgRestaurarClick(Sender: TObject);
 begin
   RestaurarFuncionarios;
   CarregarGridRestaurar;
+end;
+
+procedure TFormCadastroFuncionarios.BuscaCEP;
+var
+  Rua, Bairro, Cidade, Estado: string;
+  FuncionarioService: TFuncionarioService;
+begin
+  FuncionarioService := TFuncionarioService.Create;
+  try
+    try
+      FuncionarioService.BuscarCep(EdtCEP.Text, Rua, Bairro, Cidade, Estado);
+      EdtRua.Text    := Rua;
+      EdtBairro.Text := Bairro;
+      EdtCidade.Text := Cidade;
+      EdtEstado.Text := Estado;
+    except
+      on E: Exception do
+        ShowMessage(E.Message);
+    end;
+  finally
+    FuncionarioService.Free;
+  end;
 end;
 
 end.

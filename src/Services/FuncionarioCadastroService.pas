@@ -4,7 +4,8 @@ interface
 
 uses
   uFuncionarioDTO, FuncionarioCadastroRepository, uDMConexao, System.SysUtils,
-  uMainController, FireDAC.Comp.Client, Data.DB, Vcl.Dialogs;
+  uMainController, FireDAC.Comp.Client, Data.DB, Vcl.Dialogs,IdHTTP, System.JSON,
+    IdSSL, IdSSLOpenSSL, IdSSLOpenSSLHeaders;
 
 type
   TFuncionarioService = class
@@ -22,6 +23,7 @@ type
     procedure DeletarFuncionario(const aId: Integer);
     procedure RestaurarFuncionario(const aId: Integer);
     function PesquisarFuncionarios(const aFiltro: String): TDataSet;
+    procedure BuscarCep(const ACep: string; out aRua, aBairro, aCidade, aEstado: string);
   end;
 
 implementation
@@ -117,6 +119,49 @@ begin
     (FuncionarioValido.getBairro <> '') and
     (FuncionarioValido.getCidade <> '') and
     (FuncionarioValido.getEstado <> '');
+end;
+
+procedure TFuncionarioService.BuscarCep(const ACep: string; out aRua, aBairro, aCidade, aEstado: string);
+var
+  IdHTTP: TIdHTTP;
+  IdSSL: TIdSSLIOHandlerSocketOpenSSL;
+  JsonStr: string;
+  JsonObj: TJSONObject;
+  CepLimpo: string;
+  dummyInt: Integer;
+begin
+  aRua := ''; aBairro := ''; aCidade := ''; aEstado := '';
+  CepLimpo := StringReplace(ACep, '-', '', [rfReplaceAll]);
+  CepLimpo := StringReplace(CepLimpo, '.', '', [rfReplaceAll]);
+  CepLimpo := Trim(CepLimpo);
+
+  // VALIDAÇÃO do CEP ANTES de conectar!
+  if (Length(CepLimpo) <> 8) or (not TryStrToInt(CepLimpo, dummyInt)) then
+  begin
+    Exit;
+  end;
+
+  IdHTTP := TIdHTTP.Create(nil);
+  IdSSL := TIdSSLIOHandlerSocketOpenSSL.Create(nil);
+  try
+    IdSSL.SSLOptions.Method := sslvTLSv1_2;
+    IdHTTP.IOHandler := IdSSL;
+    JsonStr := IdHTTP.Get('https://viacep.com.br/ws/' + CepLimpo + '/json/');
+    JsonObj := TJSONObject.ParseJSONValue(JsonStr) as TJSONObject;
+    try
+      if Assigned(JsonObj.Values['erro']) then
+        raise Exception.Create('CEP não encontrado.');
+      aRua    := JsonObj.Values['logradouro'].Value;
+      aBairro := JsonObj.Values['bairro'].Value;
+      aCidade := JsonObj.Values['localidade'].Value;
+      aEstado := JsonObj.Values['uf'].Value;
+    finally
+      JsonObj.Free;
+    end;
+  finally
+    IdSSL.Free;
+    IdHTTP.Free;
+  end;
 end;
 
 end.
