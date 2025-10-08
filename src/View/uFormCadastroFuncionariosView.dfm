@@ -12,6 +12,7 @@ object FormCadastroFuncionarios: TFormCadastroFuncionarios
   Font.Name = 'Segoe UI'
   Font.Style = []
   OnCreate = FormCreate
+  OnShow = FormShow
   TextHeight = 15
   object Panel1: TPanel
     Left = 0
@@ -20,6 +21,8 @@ object FormCadastroFuncionarios: TFormCadastroFuncionarios
     Height = 696
     Align = alClient
     TabOrder = 0
+    ExplicitLeft = -48
+    ExplicitTop = 16
     object PnlMain: TPanel
       Left = 1
       Top = 1
@@ -171,6 +174,7 @@ object FormCadastroFuncionarios: TFormCadastroFuncionarios
                     FFFFFFFFFFFFFFFBFBFB8484843D3D3D33333333333333333333333333333359
                     5959D5D5D5FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF}
                   ParentFont = False
+                  OnClick = BtnExcluirClick
                   ExplicitTop = 84
                   ExplicitWidth = 135
                 end
@@ -326,6 +330,7 @@ object FormCadastroFuncionarios: TFormCadastroFuncionarios
                     FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
                     FFFFFFFFFFFFFFFFE2E2E24B4B4B0404041D1D1D959595FFFFFF}
                   ParentFont = False
+                  OnClick = BtnEditarClick
                   ExplicitLeft = 9
                   ExplicitTop = 74
                   ExplicitWidth = 152
@@ -734,7 +739,6 @@ object FormCadastroFuncionarios: TFormCadastroFuncionarios
               ParentBackground = False
               TabOrder = 0
               Visible = False
-              ExplicitTop = 3
               object Label3: TLabel
                 Left = 156
                 Top = 8
@@ -1392,6 +1396,7 @@ object FormCadastroFuncionarios: TFormCadastroFuncionarios
                 ParentFont = False
                 TabOrder = 9
                 Text = '  .   .   - '
+                OnClick = EdtRGClick
               end
               object EdtCPF: TMaskEdit
                 AlignWithMargins = True
@@ -1416,6 +1421,7 @@ object FormCadastroFuncionarios: TFormCadastroFuncionarios
                 ParentFont = False
                 TabOrder = 10
                 Text = '   .   .   -  '
+                OnClick = EdtCPFClick
               end
               object EdtDataNascimento: TMaskEdit
                 AlignWithMargins = True
@@ -1440,6 +1446,7 @@ object FormCadastroFuncionarios: TFormCadastroFuncionarios
                 ParentFont = False
                 TabOrder = 11
                 Text = '  /  /  '
+                OnClick = EdtDataNascimentoClick
               end
               object EdtTelefone: TMaskEdit
                 AlignWithMargins = True
@@ -1464,6 +1471,7 @@ object FormCadastroFuncionarios: TFormCadastroFuncionarios
                 ParentFont = False
                 TabOrder = 12
                 Text = '(  )     -    '
+                OnClick = EdtTelefoneClick
               end
               object PnlButtonAtualizar: TPanel
                 AlignWithMargins = True
@@ -1479,7 +1487,7 @@ object FormCadastroFuncionarios: TFormCadastroFuncionarios
                 Color = 9521152
                 ParentBackground = False
                 TabOrder = 13
-                object Label13: TLabel
+                object LblAtualizar: TLabel
                   AlignWithMargins = True
                   Left = 4
                   Top = 4
@@ -1496,6 +1504,7 @@ object FormCadastroFuncionarios: TFormCadastroFuncionarios
                   Font.Style = []
                   ParentColor = False
                   ParentFont = False
+                  OnClick = LblAtualizarClick
                   ExplicitWidth = 59
                   ExplicitHeight = 20
                 end
@@ -1626,6 +1635,7 @@ object FormCadastroFuncionarios: TFormCadastroFuncionarios
                 ED013E254938A1F66222BFBA5ECB1ADF0A9A2958C0EA08C72871928C33C3BB5A
                 12832BFACBF45A4E1202B768713C2CE6B3220207C9203539C4CC468BD9FF014B
                 7620018FA76C950000000049454E44AE426082}
+              OnClick = ImgRestaurarClick
             end
             object PnlMainRestaurar: TPanel
               AlignWithMargins = True
@@ -1726,5 +1736,12 @@ object FormCadastroFuncionarios: TFormCadastroFuncionarios
         end
       end
     end
+  end
+  object DataSourceRestaurar: TDataSource
+    Left = 776
+  end
+  object DataSourceMain: TDataSource
+    DataSet = DataModule1.FDQuery
+    Left = 864
   end
 end

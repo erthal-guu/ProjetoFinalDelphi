@@ -26,7 +26,7 @@ implementation
 constructor TFuncionarioController.Create;
 begin
   inherited Create;
-  FService := TFuncionarioService.Create;
+  Service := TFuncionarioService.Create;
 end;
 
 destructor TFuncionarioController.Destroy;
