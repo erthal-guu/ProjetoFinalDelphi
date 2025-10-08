@@ -20,8 +20,6 @@ object FormCadastroFuncionarios: TFormCadastroFuncionarios
     Height = 696
     Align = alClient
     TabOrder = 0
-    ExplicitWidth = 1121
-    ExplicitHeight = 657
     object PnlMain: TPanel
       Left = 1
       Top = 1
@@ -31,7 +29,6 @@ object FormCadastroFuncionarios: TFormCadastroFuncionarios
       BevelOuter = bvNone
       BorderStyle = bsSingle
       TabOrder = 0
-      ExplicitHeight = 695
       object PnlContainer: TPanel
         AlignWithMargins = True
         Left = 0
@@ -61,9 +58,6 @@ object FormCadastroFuncionarios: TFormCadastroFuncionarios
           Color = 6172416
           ParentBackground = False
           TabOrder = 0
-          ExplicitLeft = 926
-          ExplicitTop = 58
-          ExplicitHeight = 402
           object PnlButtonCrud: TPanel
             Left = 4
             Top = -23
@@ -88,8 +82,6 @@ object FormCadastroFuncionarios: TFormCadastroFuncionarios
               Color = clBackground
               ParentBackground = False
               TabOrder = 0
-              ExplicitTop = 19
-              ExplicitHeight = 390
               object PnlButton: TPanel
                 AlignWithMargins = True
                 Left = 1
@@ -105,11 +97,10 @@ object FormCadastroFuncionarios: TFormCadastroFuncionarios
                 Color = 15790320
                 ParentBackground = False
                 TabOrder = 0
-                ExplicitHeight = 388
                 object BtnExcluir: TSpeedButton
                   AlignWithMargins = True
                   Left = 5
-                  Top = 111
+                  Top = 116
                   Width = 128
                   Height = 40
                   Margins.Left = 5
@@ -192,7 +183,7 @@ object FormCadastroFuncionarios: TFormCadastroFuncionarios
                   Margins.Left = 5
                   Margins.Top = 10
                   Margins.Right = 5
-                  Margins.Bottom = 5
+                  Margins.Bottom = 10
                   Align = alTop
                   Caption = ' Adicionar'
                   Font.Charset = DEFAULT_CHARSET
@@ -264,7 +255,7 @@ object FormCadastroFuncionarios: TFormCadastroFuncionarios
                 object BtnEditar: TSpeedButton
                   AlignWithMargins = True
                   Left = 5
-                  Top = 58
+                  Top = 63
                   Width = 128
                   Height = 40
                   Margins.Left = 5
@@ -342,12 +333,12 @@ object FormCadastroFuncionarios: TFormCadastroFuncionarios
                 object BtnPesquisar: TSpeedButton
                   AlignWithMargins = True
                   Left = 5
-                  Top = 217
+                  Top = 222
                   Width = 128
                   Height = 40
                   Margins.Left = 5
                   Margins.Right = 5
-                  Margins.Bottom = 10
+                  Margins.Bottom = 15
                   Align = alTop
                   Caption = 'Pesquisar'
                   Font.Charset = DEFAULT_CHARSET
@@ -421,12 +412,12 @@ object FormCadastroFuncionarios: TFormCadastroFuncionarios
                 object BtnCancelar: TSpeedButton
                   AlignWithMargins = True
                   Left = 5
-                  Top = 270
+                  Top = 280
                   Width = 128
                   Height = 40
                   Margins.Left = 5
                   Margins.Right = 5
-                  Margins.Bottom = 5
+                  Margins.Bottom = 10
                   Align = alTop
                   Caption = 'Cancelar'
                   Font.Charset = DEFAULT_CHARSET
@@ -542,7 +533,7 @@ object FormCadastroFuncionarios: TFormCadastroFuncionarios
                 object BtnRestaurar: TSpeedButton
                   AlignWithMargins = True
                   Left = 5
-                  Top = 164
+                  Top = 169
                   Width = 128
                   Height = 40
                   Margins.Left = 5
@@ -621,7 +612,7 @@ object FormCadastroFuncionarios: TFormCadastroFuncionarios
                 object BtnSair: TSpeedButton
                   AlignWithMargins = True
                   Left = 5
-                  Top = 325
+                  Top = 340
                   Width = 128
                   Height = 40
                   Margins.Left = 5
@@ -694,6 +685,7 @@ object FormCadastroFuncionarios: TFormCadastroFuncionarios
                     0303343434CDCDCDFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF}
                   ParentFont = False
                   Spacing = 0
+                  OnClick = BtnSairClick
                   ExplicitTop = 322
                 end
               end
@@ -710,8 +702,6 @@ object FormCadastroFuncionarios: TFormCadastroFuncionarios
           Color = 6172416
           ParentBackground = False
           TabOrder = 1
-          ExplicitTop = 452
-          ExplicitWidth = 1108
           object PnlBackgroundEdit: TPanel
             AlignWithMargins = True
             Left = 0
@@ -728,8 +718,6 @@ object FormCadastroFuncionarios: TFormCadastroFuncionarios
             ParentBackground = False
             TabOrder = 0
             Visible = False
-            ExplicitWidth = 1117
-            ExplicitHeight = 175
             object PnlEdit: TPanel
               AlignWithMargins = True
               Left = 10
@@ -746,6 +734,7 @@ object FormCadastroFuncionarios: TFormCadastroFuncionarios
               ParentBackground = False
               TabOrder = 0
               Visible = False
+              ExplicitTop = 3
               object Label3: TLabel
                 Left = 156
                 Top = 8
@@ -1233,8 +1222,6 @@ object FormCadastroFuncionarios: TFormCadastroFuncionarios
                 Font.Style = []
                 ParentFont = False
                 TabOrder = 1
-                ExplicitLeft = 398
-                ExplicitHeight = 30
               end
               object EdtNumero: TEdit
                 AlignWithMargins = True
@@ -1326,15 +1313,12 @@ object FormCadastroFuncionarios: TFormCadastroFuncionarios
                 Font.Style = []
                 ParentFont = False
                 TabOrder = 6
-                ExplicitLeft = 688
-                ExplicitTop = 94
-                ExplicitHeight = 30
               end
               object PnlButtonEnviar: TPanel
                 AlignWithMargins = True
                 Left = 644
                 Top = 96
-                Width = 215
+                Width = 220
                 Height = 33
                 Margins.Left = 0
                 Margins.Top = 0
@@ -1348,7 +1332,7 @@ object FormCadastroFuncionarios: TFormCadastroFuncionarios
                   AlignWithMargins = True
                   Left = 4
                   Top = 4
-                  Width = 207
+                  Width = 212
                   Height = 25
                   Align = alClient
                   Alignment = taCenter
@@ -1361,7 +1345,9 @@ object FormCadastroFuncionarios: TFormCadastroFuncionarios
                   Font.Style = []
                   ParentColor = False
                   ParentFont = False
-                  ExplicitWidth = 229
+                  OnClick = LblEnviarClick
+                  ExplicitWidth = 40
+                  ExplicitHeight = 20
                 end
               end
               object EdtCEP: TEdit
@@ -1382,7 +1368,6 @@ object FormCadastroFuncionarios: TFormCadastroFuncionarios
                 Font.Style = []
                 ParentFont = False
                 TabOrder = 8
-                ExplicitHeight = 27
               end
               object EdtRG: TMaskEdit
                 AlignWithMargins = True
@@ -1407,8 +1392,6 @@ object FormCadastroFuncionarios: TFormCadastroFuncionarios
                 ParentFont = False
                 TabOrder = 9
                 Text = '  .   .   - '
-                ExplicitLeft = 275
-                ExplicitHeight = 30
               end
               object EdtCPF: TMaskEdit
                 AlignWithMargins = True
@@ -1433,8 +1416,6 @@ object FormCadastroFuncionarios: TFormCadastroFuncionarios
                 ParentFont = False
                 TabOrder = 10
                 Text = '   .   .   -  '
-                ExplicitTop = 38
-                ExplicitHeight = 37
               end
               object EdtDataNascimento: TMaskEdit
                 AlignWithMargins = True
@@ -1459,8 +1440,6 @@ object FormCadastroFuncionarios: TFormCadastroFuncionarios
                 ParentFont = False
                 TabOrder = 11
                 Text = '  /  /  '
-                ExplicitLeft = 383
-                ExplicitHeight = 30
               end
               object EdtTelefone: TMaskEdit
                 AlignWithMargins = True
@@ -1485,8 +1464,41 @@ object FormCadastroFuncionarios: TFormCadastroFuncionarios
                 ParentFont = False
                 TabOrder = 12
                 Text = '(  )     -    '
-                ExplicitLeft = 479
-                ExplicitHeight = 35
+              end
+              object PnlButtonAtualizar: TPanel
+                AlignWithMargins = True
+                Left = 644
+                Top = 96
+                Width = 220
+                Height = 33
+                Margins.Left = 0
+                Margins.Top = 0
+                Margins.Right = 0
+                Margins.Bottom = 0
+                BevelOuter = bvLowered
+                Color = 9521152
+                ParentBackground = False
+                TabOrder = 13
+                object Label13: TLabel
+                  AlignWithMargins = True
+                  Left = 4
+                  Top = 4
+                  Width = 212
+                  Height = 25
+                  Align = alClient
+                  Alignment = taCenter
+                  Caption = 'Atualizar'
+                  Color = clWhite
+                  Font.Charset = DEFAULT_CHARSET
+                  Font.Color = clWhite
+                  Font.Height = -15
+                  Font.Name = 'Segoe UI'
+                  Font.Style = []
+                  ParentColor = False
+                  ParentFont = False
+                  ExplicitWidth = 59
+                  ExplicitHeight = 20
+                end
               end
             end
           end
@@ -1507,8 +1519,6 @@ object FormCadastroFuncionarios: TFormCadastroFuncionarios
           Color = clBackground
           ParentBackground = False
           TabOrder = 2
-          ExplicitWidth = 888
-          ExplicitHeight = 333
           object DBGridMain: TDBGrid
             AlignWithMargins = True
             Left = 1
@@ -1542,8 +1552,6 @@ object FormCadastroFuncionarios: TFormCadastroFuncionarios
             ParentBackground = False
             TabOrder = 1
             Visible = False
-            ExplicitWidth = 848
-            ExplicitHeight = 276
             object LblRestaurar: TLabel
               AlignWithMargins = True
               Left = 4
@@ -1633,8 +1641,6 @@ object FormCadastroFuncionarios: TFormCadastroFuncionarios
               Color = 9521152
               ParentBackground = False
               TabOrder = 0
-              ExplicitWidth = 806
-              ExplicitHeight = 247
               object PnlContainerRestaurar: TPanel
                 AlignWithMargins = True
                 Left = 12
@@ -1651,8 +1657,6 @@ object FormCadastroFuncionarios: TFormCadastroFuncionarios
                 Color = clBackground
                 ParentBackground = False
                 TabOrder = 0
-                ExplicitWidth = 782
-                ExplicitHeight = 227
                 object DBGridRestaurar: TDBGrid
                   AlignWithMargins = True
                   Left = 1
@@ -1697,9 +1701,6 @@ object FormCadastroFuncionarios: TFormCadastroFuncionarios
           Color = 6172416
           ParentBackground = False
           TabOrder = 3
-          ExplicitLeft = 1
-          ExplicitTop = 8
-          ExplicitWidth = 1107
           object EdtPesquisar: TSearchBox
             AlignWithMargins = True
             Left = 20

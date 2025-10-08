@@ -133,7 +133,7 @@ procedure TFormCadastroClientes.BtnEditarClick(Sender: TObject);
     if MessageDlg('Deseja realmente deletar este usuário?', mtConfirmation, [mbYes, mbNo], 0) = mrYes then
     begin
       ClienteController := TClienteController.Create;
-        ClienteController.DeletarUsuarios(IdUsuario);
+        ClienteController.DeletarClientes(IdUsuario);
         CarregarGrid;
   end;
   end;
@@ -286,7 +286,7 @@ procedure TFormCadastroClientes.CarregarGrid;
         ClienteDTO.SetNascimento(EdtDataNascimento.Text);
         ClienteDTO.SetEndereco(EdtEndereço.Text);
         ClienteDTO.setAtivo(CmbStatus.ItemIndex = 0);
-        ClienteController.EditarUsuario(ClienteDTO);
+        ClienteController.EditarClientes(ClienteDTO);
         CarregarGrid;
         LimparCampos;
       finally
@@ -339,7 +339,7 @@ procedure TFormCadastroClientes.FormCreate(Sender: TObject);
     EdtCPF.Height := 31;
     EdtTelefone.Height := 31;
     EdtDataNascimento.Height := 31;
-    CmbStatus.Font.Size := 12;
+    CmbStatus.Font.Size := 13;
   end;
 
   procedure TFormCadastroClientes.FormShow(Sender: TObject);
@@ -376,7 +376,7 @@ procedure TFormCadastroClientes.FormCreate(Sender: TObject);
     ClienteController := TClienteController.Create;
     try
       ClienteDTO := ClienteController.CriarObjeto(EdtNome.Text,EdtCPF.Text,EdtEmail.Text,EdtTelefone.Text,EdtDataNascimento.Text,EdtEndereço.Text,CmbStatus.ItemIndex = 0);
-    ClienteController.SalvarUsuario(ClienteDTO);
+    ClienteController.SalvarClientes(ClienteDTO);
     LimparCampos;
     CarregarGrid;
     finally
@@ -428,7 +428,7 @@ procedure TFormCadastroClientes.FormCreate(Sender: TObject);
     if MessageDlg('Deseja realmente Restaurar este usuário?', mtConfirmation, [mbYes, mbNo], 0) = mrYes then
     begin
       ClienteController := TClienteController.Create;
-        ClienteController.RestaurarUsuarios(IdUsuario);
+        ClienteController.RestaurarClientes(IdUsuario);
       end;
 
   end;
@@ -459,6 +459,10 @@ procedure TFormCadastroClientes.FormCreate(Sender: TObject);
       if EdtEndereço.Text = '' then begin
       ShowMessage('O Campo de ENDEREÇO não pode ficar Vazio');
       exit;
+    end;
+      if CmbStatus.ItemIndex = -1 then begin
+    ShowMessage('Selecione o STATUS');
+    Exit;
     end;
     Result := True;
   end;

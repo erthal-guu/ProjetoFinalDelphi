@@ -380,6 +380,10 @@ begin
     ShowMessage('As Senhas não coincidem');
     exit;
   end;
+  if CmbStatus.ItemIndex = -1 then begin
+    ShowMessage('Selecione o STATUS');
+    Exit;
+  end;
   if (EdtSenha.Text ='') and (EdtConfirmarSenha.Text = '') then begin
   end;
   Result := True;

@@ -31,7 +31,11 @@ uses
   ClienteCadastroService in 'src\Services\ClienteCadastroService.pas',
   ClienteCadastroController in 'src\controller\ClienteCadastroController.pas',
   uClienteModel in 'src\Model\uClienteModel.pas',
-  uClienteDTO in 'src\DTO\uClienteDTO.pas';
+  uClienteDTO in 'src\DTO\uClienteDTO.pas',
+  FuncionarioCadastroRepository in 'src\repository\FuncionarioCadastroRepository.pas',
+  FuncionarioCadastroService in 'src\Services\FuncionarioCadastroService.pas',
+  FuncionarioCadastroController in 'src\controller\FuncionarioCadastroController.pas',
+  uFuncionarioDTO in 'src\DTO\uFuncionarioDTO.pas';
 
 {$R *.res}
 

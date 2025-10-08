@@ -6,14 +6,14 @@ uses uClienteDTO, ClienteCadastroService, FireDAC.Comp.Client, Vcl.Dialogs,Data.
 type TClienteController = class
   Service : TClienteService;
     constructor Create;
-      function SalvarUsuario(ClienteDTO: TClienteDTO): Boolean;
-      procedure EditarUsuario(ClienteDTO: TClienteDTO);
-      function ListarUsuarios: TDataSet;
+      function SalvarClientes(ClienteDTO: TClienteDTO): Boolean;
+      procedure EditarClientes(ClienteDTO: TClienteDTO);
+      function ListarClientes: TDataSet;
       function CriarObjeto(aNome,aCPF, aEmail,aTelefone,
   aNascimento,aEndereco : String; aAtivo: Boolean): TClienteDTO;
-      procedure DeletarUsuarios(const aId :Integer);
-      procedure RestaurarUsuarios(const aId :Integer);
-      Function PesquisarUsuarios(const aFiltro:String):TDataset;
+      procedure DeletarClientes(const aId :Integer);
+      procedure RestaurarClientes(const aId :Integer);
+      Function PesquisarClientes(const aFiltro:String):TDataset;
   end;
 implementation
 
@@ -37,32 +37,32 @@ begin
   Result.setAtivo(aAtivo);
 end;
 
-procedure TClienteController.DeletarUsuarios(const aId: Integer);
+procedure TClienteController.DeletarClientes(const aId: Integer);
 begin
   Service.DeletarClientes(aId);
 end;
 
-procedure TClienteController.EditarUsuario(ClienteDTO: TClienteDTO);
+procedure TClienteController.EditarClientes(ClienteDTO: TClienteDTO);
 begin
   Service.EditarClientes(ClienteDTO);
 end;
 
-function TClienteController.ListarUsuarios: TDataSet;
+function TClienteController.ListarClientes: TDataSet;
 begin
   Service.ListarClientes;
 end;
 
-function TClienteController.PesquisarUsuarios(const aFiltro: String): TDataset;
+function TClienteController.PesquisarClientes(const aFiltro: String): TDataset;
 begin
   Service.PesquisarClientes(aFiltro);
 end;
 
-procedure TClienteController.RestaurarUsuarios(const aId: Integer);
+procedure TClienteController.RestaurarClientes(const aId: Integer);
 begin
   Service.RestaurarClientes(aId);
 end;
 
-function TClienteController.SalvarUsuario(ClienteDTO: TClienteDTO): Boolean;
+function TClienteController.SalvarClientes(ClienteDTO: TClienteDTO): Boolean;
 begin
   Service.SalvarClientes(ClienteDTO);
 end;

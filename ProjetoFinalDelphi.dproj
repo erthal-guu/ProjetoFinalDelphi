@@ -196,6 +196,10 @@
         <DCCReference Include="src\controller\ClienteCadastroController.pas"/>
         <DCCReference Include="src\Model\uClienteModel.pas"/>
         <DCCReference Include="src\DTO\uClienteDTO.pas"/>
+        <DCCReference Include="src\repository\FuncionarioCadastroRepository.pas"/>
+        <DCCReference Include="src\Services\FuncionarioCadastroService.pas"/>
+        <DCCReference Include="src\controller\FuncionarioCadastroController.pas"/>
+        <DCCReference Include="src\DTO\uFuncionarioDTO.pas"/>
         <BuildConfiguration Include="Base">
             <Key>Base</Key>
         </BuildConfiguration>

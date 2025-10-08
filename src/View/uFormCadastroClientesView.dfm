@@ -21,8 +21,6 @@
     Height = 695
     Align = alClient
     TabOrder = 0
-    ExplicitWidth = 1115
-    ExplicitHeight = 585
     object PnlContainer: TPanel
       AlignWithMargins = True
       Left = 0
@@ -52,8 +50,6 @@
         Color = 6172416
         ParentBackground = False
         TabOrder = 0
-        ExplicitLeft = 926
-        ExplicitHeight = 354
         object PnlButtonCrud: TPanel
           Left = 3
           Top = 3
@@ -78,7 +74,6 @@
             Color = clBackground
             ParentBackground = False
             TabOrder = 0
-            ExplicitHeight = 390
             object PnlButton: TPanel
               AlignWithMargins = True
               Left = 1
@@ -94,7 +89,6 @@
               Color = 15790320
               ParentBackground = False
               TabOrder = 0
-              ExplicitHeight = 388
               object BtnExcluir: TSpeedButton
                 AlignWithMargins = True
                 Left = 5
@@ -702,8 +696,6 @@
         Color = 6172416
         ParentBackground = False
         TabOrder = 1
-        ExplicitTop = 501
-        ExplicitWidth = 1108
         object PnlBackgrounEdit: TPanel
           AlignWithMargins = True
           Left = 0
@@ -720,8 +712,6 @@
           ParentBackground = False
           TabOrder = 1
           Visible = False
-          ExplicitWidth = 1108
-          ExplicitHeight = 135
         end
         object PnlDesignEdit: TPanel
           AlignWithMargins = True
@@ -738,7 +728,6 @@
           ParentBackground = False
           TabOrder = 0
           Visible = False
-          ExplicitLeft = 19
           object Image1: TImage
             AlignWithMargins = True
             Left = 983
@@ -1037,7 +1026,6 @@
             Align = alLeft
             BevelOuter = bvNone
             TabOrder = 0
-            ExplicitTop = 9
             object LblNome: TLabel
               Left = 20
               Top = 8
@@ -1134,10 +1122,10 @@
               Left = 20
               Top = 30
               Width = 133
-              Height = 28
+              Height = 33
               Margins.Left = 20
               Margins.Top = 30
-              Margins.Bottom = 50
+              Margins.Bottom = 45
               Align = alLeft
               AutoSize = False
               Font.Charset = DEFAULT_CHARSET
@@ -1147,17 +1135,16 @@
               Font.Style = []
               ParentFont = False
               TabOrder = 0
-              ExplicitHeight = 35
             end
             object EdtCPF: TMaskEdit
               AlignWithMargins = True
               Left = 159
               Top = 30
               Width = 118
-              Height = 28
+              Height = 33
               Cursor = crHandPoint
               Margins.Top = 30
-              Margins.Bottom = 50
+              Margins.Bottom = 45
               Align = alLeft
               AutoSize = False
               BevelInner = bvNone
@@ -1173,16 +1160,15 @@
               TabOrder = 1
               Text = '   .   .   -  '
               OnClick = EdtCPFClick
-              ExplicitLeft = 135
             end
             object EdtEmail: TEdit
               AlignWithMargins = True
               Left = 627
               Top = 30
               Width = 150
-              Height = 28
+              Height = 33
               Margins.Top = 30
-              Margins.Bottom = 50
+              Margins.Bottom = 45
               Align = alLeft
               AutoSize = False
               Font.Charset = DEFAULT_CHARSET
@@ -1198,10 +1184,10 @@
               Left = 541
               Top = 30
               Width = 80
-              Height = 28
+              Height = 33
               Cursor = crHandPoint
               Margins.Top = 30
-              Margins.Bottom = 50
+              Margins.Bottom = 45
               Align = alLeft
               AutoSize = False
               BevelInner = bvNone
@@ -1217,19 +1203,16 @@
               TabOrder = 3
               Text = '  /  /  '
               OnClick = EdtDataNascimentoClick
-              ExplicitLeft = 497
-              ExplicitTop = 22
-              ExplicitHeight = 32
             end
             object EdtTelefone: TMaskEdit
               AlignWithMargins = True
               Left = 439
               Top = 30
               Width = 96
-              Height = 28
+              Height = 33
               Cursor = crHandPoint
               Margins.Top = 30
-              Margins.Bottom = 50
+              Margins.Bottom = 45
               Align = alLeft
               AutoSize = False
               BevelInner = bvNone
@@ -1245,16 +1228,15 @@
               TabOrder = 4
               Text = '(  )     -    '
               OnClick = EdtTelefoneClick
-              ExplicitLeft = 387
             end
             object EdtEndereço: TEdit
               AlignWithMargins = True
               Left = 283
               Top = 30
               Width = 150
-              Height = 28
+              Height = 33
               Margins.Top = 30
-              Margins.Bottom = 50
+              Margins.Bottom = 45
               Align = alLeft
               AutoSize = False
               Font.Charset = DEFAULT_CHARSET
@@ -1272,7 +1254,7 @@
               Width = 82
               Height = 29
               Margins.Top = 30
-              Margins.Bottom = 9
+              Margins.Bottom = 45
               Align = alLeft
               BevelOuter = bvNone
               Style = csDropDownList
@@ -1286,7 +1268,6 @@
               Items.Strings = (
                 'Ativo'
                 'Inativo')
-              ExplicitLeft = 707
             end
             object PnlButtonEnviar: TPanel
               AlignWithMargins = True
@@ -1302,8 +1283,6 @@
               Color = 9521152
               ParentBackground = False
               TabOrder = 7
-              ExplicitLeft = 787
-              ExplicitWidth = 158
               object LblEnviar: TLabel
                 AlignWithMargins = True
                 Left = 4
@@ -1322,8 +1301,7 @@
                 ParentColor = False
                 ParentFont = False
                 OnClick = LblEnviarClick
-                ExplicitLeft = 0
-                ExplicitWidth = 137
+                ExplicitWidth = 40
               end
             end
             object PnlButtonAtualizar: TPanel
@@ -1359,7 +1337,8 @@
                 ParentColor = False
                 ParentFont = False
                 OnClick = LblAtualizarClick
-                ExplicitLeft = 23
+                ExplicitWidth = 59
+                ExplicitHeight = 20
               end
             end
           end
@@ -1381,8 +1360,6 @@
         Color = clBackground
         ParentBackground = False
         TabOrder = 2
-        ExplicitWidth = 888
-        ExplicitHeight = 316
         object DBGridMain: TDBGrid
           AlignWithMargins = True
           Left = 1
@@ -1423,8 +1400,6 @@
           ParentBackground = False
           TabOrder = 1
           Visible = False
-          ExplicitWidth = 848
-          ExplicitHeight = 276
           object LblRestaurar: TLabel
             AlignWithMargins = True
             Left = 4
@@ -1515,8 +1490,6 @@
             Color = 9521152
             ParentBackground = False
             TabOrder = 0
-            ExplicitWidth = 806
-            ExplicitHeight = 206
             object PnlContainerRestaurar: TPanel
               AlignWithMargins = True
               Left = 12
@@ -1533,8 +1506,6 @@
               Color = clBackground
               ParentBackground = False
               TabOrder = 0
-              ExplicitWidth = 782
-              ExplicitHeight = 186
               object DBGridRestaurar: TDBGrid
                 AlignWithMargins = True
                 Left = 1
@@ -1579,8 +1550,6 @@
         Color = 6172416
         ParentBackground = False
         TabOrder = 3
-        ExplicitTop = 8
-        ExplicitWidth = 1108
         object EdtPesquisar: TSearchBox
           AlignWithMargins = True
           Left = 20
