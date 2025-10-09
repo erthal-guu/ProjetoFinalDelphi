@@ -8,12 +8,12 @@ object FormCadastroUsuarios: TFormCadastroUsuarios
   Color = clWhite
   Font.Charset = DEFAULT_CHARSET
   Font.Color = clWindowText
-  Font.Height = -12
+  Font.Height = -11
   Font.Name = 'Segoe UI'
   Font.Style = []
   OnCreate = FormCreate
   OnShow = FormShow
-  TextHeight = 15
+  TextHeight = 13
   object PageControl1: TPageControl
     Left = 6
     Top = 8

@@ -246,7 +246,7 @@ DBGridRestaurar.DataSource := DataSourceRestaurar;
       DBGridRestaurar.Columns[3].Title.Caption := 'Grupo';
       DBGridRestaurar.Columns[4].Title.Caption := 'Ativo';
 
-      DBGridRestaurar.Columns[0].Title.Alignment := taCenter;
+
       DBGridRestaurar.Columns[0].Alignment := taCenter;
       DBGridRestaurar.Columns[1].Title.Alignment := taCenter;
       DBGridRestaurar.Columns[1].Alignment := taCenter;

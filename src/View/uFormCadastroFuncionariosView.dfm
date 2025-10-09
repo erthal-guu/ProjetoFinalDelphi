@@ -1731,6 +1731,7 @@ object FormCadastroFuncionarios: TFormCadastroFuncionarios
             TabOrder = 0
             TextHint = 'Pesquisar'
             Visible = False
+            OnChange = EdtPesquisarChange
             ExplicitHeight = 28
           end
         end

@@ -267,6 +267,7 @@ begin
         DBGridRestaurar.Columns[i].Title.Alignment := taCenter;
         DBGridRestaurar.Columns[i].Alignment := taCenter;
         DBGridRestaurar.Columns[i].Width := 120;
+        DBGridMain.Columns[i].Title.Font.Size :=15;
       end;
     end;
   finally
@@ -284,6 +285,7 @@ begin
     for var i := 0 to DBGridMain.Columns.Count-1 do
     begin
       DBGridMain.Columns[i].Width := 120;
+      DBGridMain.Columns[i].Title.Font.Size :=15;
     end;
   finally
     FuncionarioService.Free;
