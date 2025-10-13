@@ -35,7 +35,11 @@ uses
   FuncionarioCadastroRepository in 'src\repository\FuncionarioCadastroRepository.pas',
   FuncionarioCadastroService in 'src\Services\FuncionarioCadastroService.pas',
   FuncionarioCadastroController in 'src\controller\FuncionarioCadastroController.pas',
-  uFuncionarioDTO in 'src\DTO\uFuncionarioDTO.pas';
+  uFuncionarioDTO in 'src\DTO\uFuncionarioDTO.pas',
+  FornecedorCadastroRepository in 'src\repository\FornecedorCadastroRepository.pas',
+  uFornecedorDTO in 'src\DTO\uFornecedorDTO.pas',
+  FornecedorCadastroController in 'src\controller\FornecedorCadastroController.pas',
+  FornecedorCadastroService in 'src\Services\FornecedorCadastroService.pas';
 
 {$R *.res}
 

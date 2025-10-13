@@ -135,7 +135,6 @@ begin
   CepLimpo := StringReplace(CepLimpo, '.', '', [rfReplaceAll]);
   CepLimpo := Trim(CepLimpo);
 
-  // VALIDAÇÃO do CEP ANTES de conectar!
   if (Length(CepLimpo) <> 8) or (not TryStrToInt(CepLimpo, dummyInt)) then
   begin
     Exit;

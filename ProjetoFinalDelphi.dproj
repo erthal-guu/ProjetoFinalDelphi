@@ -200,6 +200,10 @@
         <DCCReference Include="src\Services\FuncionarioCadastroService.pas"/>
         <DCCReference Include="src\controller\FuncionarioCadastroController.pas"/>
         <DCCReference Include="src\DTO\uFuncionarioDTO.pas"/>
+        <DCCReference Include="src\repository\FornecedorCadastroRepository.pas"/>
+        <DCCReference Include="src\DTO\uFornecedorDTO.pas"/>
+        <DCCReference Include="src\controller\FornecedorCadastroController.pas"/>
+        <DCCReference Include="src\Services\FornecedorCadastroService.pas"/>
         <BuildConfiguration Include="Base">
             <Key>Base</Key>
         </BuildConfiguration>

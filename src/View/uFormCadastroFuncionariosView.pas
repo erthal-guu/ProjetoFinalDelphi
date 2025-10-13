@@ -141,7 +141,6 @@ begin
   PnlRestaurar.Visible := True;
   CarregarGridRestaurar;
 end;
-
 procedure TFormCadastroFuncionarios.BtnSairClick(Sender: TObject);
 begin
   if MessageDlg('Deseja realmente fechar este Formulário?', mtConfirmation, [mbYes, mbNo], 0) = mrYes then
