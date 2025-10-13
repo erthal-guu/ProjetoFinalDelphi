@@ -1,4 +1,4 @@
-object FormCadastroFornecedores: TFormCadastroFornecedores
+﻿object FormCadastroFornecedores: TFormCadastroFornecedores
   Left = 0
   Top = 0
   BorderStyle = bsDialog
@@ -8,12 +8,12 @@ object FormCadastroFornecedores: TFormCadastroFornecedores
   Color = clBtnFace
   Font.Charset = DEFAULT_CHARSET
   Font.Color = clWindowText
-  Font.Height = -12
+  Font.Height = -15
   Font.Name = 'Segoe UI'
   Font.Style = []
   OnCreate = FormCreate
   OnShow = FormShow
-  TextHeight = 15
+  TextHeight = 20
   object PnlMain: TPanel
     Left = 0
     Top = 0
@@ -93,8 +93,6 @@ object FormCadastroFornecedores: TFormCadastroFornecedores
             ParentBackground = False
             TabOrder = 0
             Visible = False
-            ExplicitLeft = 28
-            ExplicitTop = 28
             object Image1: TImage
               AlignWithMargins = True
               Left = 960
@@ -395,7 +393,6 @@ object FormCadastroFornecedores: TFormCadastroFornecedores
               Align = alLeft
               BevelOuter = bvNone
               TabOrder = 0
-              ExplicitLeft = 0
               object Label1: TLabel
                 Left = 20
                 Top = 8
@@ -557,7 +554,6 @@ object FormCadastroFornecedores: TFormCadastroFornecedores
                 Font.Style = []
                 ParentFont = False
                 TabOrder = 0
-                ExplicitLeft = -40
               end
               object PnlButtonEnviar: TPanel
                 AlignWithMargins = True
@@ -638,7 +634,6 @@ object FormCadastroFornecedores: TFormCadastroFornecedores
                 Font.Style = []
                 ParentFont = False
                 TabOrder = 3
-                ExplicitLeft = -5
               end
               object EdtTelefone: TMaskEdit
                 AlignWithMargins = True
@@ -664,7 +659,6 @@ object FormCadastroFornecedores: TFormCadastroFornecedores
                 TabOrder = 4
                 Text = '(   )   -    '
                 OnClick = EdtTelefoneClick
-                ExplicitLeft = 425
               end
               object EdtCEP: TMaskEdit
                 AlignWithMargins = True
@@ -691,7 +685,6 @@ object FormCadastroFornecedores: TFormCadastroFornecedores
                 Text = '     -   '
                 OnChange = EdtCEPChange
                 OnClick = EdtCEPClick
-                ExplicitLeft = 551
               end
               object CmbStatus: TComboBox
                 AlignWithMargins = True
@@ -748,8 +741,8 @@ object FormCadastroFornecedores: TFormCadastroFornecedores
                   ParentColor = False
                   ParentFont = False
                   OnClick = LblAtualizarClick
-                  ExplicitLeft = 3
-                  ExplicitTop = 12
+                  ExplicitWidth = 59
+                  ExplicitHeight = 20
                 end
               end
               object EdtRua: TEdit
@@ -889,7 +882,7 @@ object FormCadastroFornecedores: TFormCadastroFornecedores
             object BtnExcluir: TSpeedButton
               AlignWithMargins = True
               Left = 5
-              Top = 121
+              Top = 106
               Width = 126
               Height = 40
               Margins.Left = 5
@@ -967,11 +960,11 @@ object FormCadastroFornecedores: TFormCadastroFornecedores
             object BtnAdicionar: TSpeedButton
               AlignWithMargins = True
               Left = 5
-              Top = 20
+              Top = 5
               Width = 126
               Height = 40
               Margins.Left = 5
-              Margins.Top = 20
+              Margins.Top = 5
               Margins.Right = 5
               Margins.Bottom = 5
               Align = alTop
@@ -1047,7 +1040,7 @@ object FormCadastroFornecedores: TFormCadastroFornecedores
             object BtnEditar: TSpeedButton
               AlignWithMargins = True
               Left = 5
-              Top = 68
+              Top = 53
               Width = 126
               Height = 40
               Margins.Left = 5
@@ -1126,7 +1119,7 @@ object FormCadastroFornecedores: TFormCadastroFornecedores
             object BtnPesquisar: TSpeedButton
               AlignWithMargins = True
               Left = 5
-              Top = 227
+              Top = 212
               Width = 126
               Height = 40
               Margins.Left = 5
@@ -1205,7 +1198,7 @@ object FormCadastroFornecedores: TFormCadastroFornecedores
             object BtnRestaurar: TSpeedButton
               AlignWithMargins = True
               Left = 5
-              Top = 174
+              Top = 159
               Width = 126
               Height = 40
               Margins.Left = 5
@@ -1284,7 +1277,7 @@ object FormCadastroFornecedores: TFormCadastroFornecedores
             object BtnSair: TSpeedButton
               AlignWithMargins = True
               Left = 5
-              Top = 282
+              Top = 322
               Width = 126
               Height = 40
               Margins.Left = 5
@@ -1358,6 +1351,85 @@ object FormCadastroFornecedores: TFormCadastroFornecedores
               ParentFont = False
               Spacing = 0
               OnClick = BtnSairClick
+              ExplicitWidth = 128
+            end
+            object BtnVincularPeças: TSpeedButton
+              AlignWithMargins = True
+              Left = 5
+              Top = 267
+              Width = 126
+              Height = 40
+              Margins.Left = 5
+              Margins.Top = 5
+              Margins.Right = 5
+              Margins.Bottom = 10
+              Align = alTop
+              Caption = '  Vincular  '
+              Font.Charset = DEFAULT_CHARSET
+              Font.Color = clWindowText
+              Font.Height = -15
+              Font.Name = 'Segoe UI'
+              Font.Style = []
+              Glyph.Data = {
+                F6060000424DF606000000000000360000002800000018000000180000000100
+                180000000000C0060000C20E0000C20E00000000000000000000FFFFFFFFFFFF
+                E5E5E56E6E6E3232323434343030305C5C5CD3D3D3FFFFFFFFFFFFFFFFFFFFFF
+                FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+                FFFFFFFFFFC3C3C3323232B2B2B2FCFCFCFFFFFFFFFFFFC6C6C63C3C3C9B9B9B
+                FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+                FFFFFFFFFFFFFFFFFFFFE5E5E5333333E9E9E9FDFDFDA6A6A6737373959595F5
+                F5F5F8F8F8505050949494FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+                FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF6F6F6FB2B2B2FDFDFD4D4D4D7878
+                78BFBFBF909090343434DCDCDCF9F9F9505050949494FFFFFFFFFFFFFFFFFFFF
+                FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF333333FCFCFC
+                A7A7A7787878FFFFFFFFFFFFFFFFFFD0D0D0303030DCDCDCF9F9F95050509494
+                94FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+                FFFF363636FFFFFF747474BFBFBFFFFFFFFFFFFFFFFFFFFFFFFFCFCFCF313131
+                DCDCDCF2F2F22F2F2F979797FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+                FFFFFFFFFFFFFFFFFFFF323232FFFFFF959595929292FFFFFFFFFFFFFFFFFFFF
+                FFFFFFFFFFCFCFCF2626263A3A3A6666669B9B9BFFFFFFFFFFFFFFFFFFFFFFFF
+                FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF5B5B5BCBCBCBF4F4F4353535D1D1
+                D1FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF5F5F5C4C4C4BBBBBBD1D1D1FF
+                FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFD1D1D13F3F3F
+                F9F9F9DCDCDC313131D1D1D1FFFFFFFFFFFFFFFFFFF7F7F77878782A2A2A6565
+                657777774F4F4F313131B6B6B6FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+                FFFFFFFFFF9A9A9A535353FAFAFADCDCDC313131D2D2D2FFFFFFFEFEFE464646
+                787878F9F9F9FFFFFFFFFFFFFFFFFFE4E4E4414141898989FFFFFFFFFFFFFFFF
+                FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF999999535353FAFAFAE0E0E0353535D2
+                D2D2EAEAEA323232FFFFFFC1C1C1494949393939676767EAEAEAF9F9F9505050
+                898989FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF9494945252
+                52FAFAFADCDCDC313131D2D2D2595959303030585858E7E7E7FCFCFCB8B8B831
+                3131DCDCDCFAFAFA5151518C8C8CFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+                FFFFFFFFFFFF949494515151FAFAFADCDCDC313131BBBBBBFBFBFBE8E8E85858
+                582D2D2D5A5A5AD1D1D1323232DEDEDEFAFAFA5151518E8E8EFFFFFFFFFFFFFF
+                FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF949494515151F9F9F9E9E9E9656565
+                393939474747BEBEBEFFFFFF353535EBEBEBD0D0D0313131DDDDDDFAFAFA5151
+                51898989FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF96969646
+                4646E7E7E7FFFFFFFFFFFFFFFFFFF9F9F9898989484848FEFEFEFFFFFFD0D0D0
+                323232DEDEDEFAFAFA5353539B9B9BFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+                FFFFFFFFFFFFFFBCBCBC3B3B3B5050507373736060602E2E2E7E7E7EF9F9F9FF
+                FFFFFFFFFFFFFFFFD0D0D0333333DEDEDEF9F9F93F3F3FD3D3D3FFFFFFFFFFFF
+                FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFDCDCDCBDBDBDCECECEF7F7
+                F7FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFD1D1D1363636F6F6F6C9C9C95C
+                5C5CFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+                9C9C9C6868683B3B3B262626D0D0D0FFFFFFFFFFFFFFFFFFFFFFFFFFFFFF9191
+                91999999FFFFFF333333FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+                FFFFFFFFFFFFFFFF9797972F2F2FF1F1F1DCDCDC303030D0D0D0FFFFFFFFFFFF
+                FFFFFFFFFFFFBFBFBF767676FFFFFF363636FFFFFFFFFFFFFFFFFFFFFFFFFFFF
+                FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF949494505050F9F9F9DCDCDC30
+                3030D0D0D0FFFFFFFFFFFFFFFFFF797979A8A8A8FCFCFC343434FFFFFFFFFFFF
+                FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF9494
+                94505050F9F9F9DCDCDC333333909090BFBFBF7878784E4E4EFDFDFDB3B3B36F
+                6F6FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+                FFFFFFFFFFFFFFFFFF949494505050F8F8F8F4F4F4949494727272A6A6A6FDFD
+                FDE8E8E8333333E5E5E5FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+                FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF9B9B9B3D3D3DC8C8C8FFFFFF
+                FFFFFFFCFCFCB1B1B1323232C3C3C3FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+                FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFD1
+                D1D15B5B5B2F2F2F3434343131316F6F6FE5E5E5FFFFFFFFFFFF}
+              ParentFont = False
+              Spacing = 0
+              OnClick = BtnVincularPeçasClick
               ExplicitTop = 322
               ExplicitWidth = 128
             end
@@ -1391,10 +1463,16 @@ object FormCadastroFornecedores: TFormCadastroFornecedores
           Margins.Right = 1
           Margins.Bottom = 1
           Align = alClient
+          Font.Charset = DEFAULT_CHARSET
+          Font.Color = clWindowText
+          Font.Height = -13
+          Font.Name = 'Segoe UI'
+          Font.Style = []
+          ParentFont = False
           TabOrder = 1
           TitleFont.Charset = DEFAULT_CHARSET
           TitleFont.Color = clWindowText
-          TitleFont.Height = -12
+          TitleFont.Height = -15
           TitleFont.Name = 'Segoe UI'
           TitleFont.Style = []
         end

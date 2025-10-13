@@ -8,12 +8,12 @@
   Color = clBtnFace
   Font.Charset = DEFAULT_CHARSET
   Font.Color = clWindowText
-  Font.Height = -12
+  Font.Height = -15
   Font.Name = 'Segoe UI'
   Font.Style = []
   OnCreate = FormCreate
   OnShow = FormShow
-  TextHeight = 15
+  TextHeight = 20
   object PnlMain: TPanel
     Left = 0
     Top = 0
@@ -52,9 +52,9 @@
         TabOrder = 0
         object PnlButtonCrud: TPanel
           Left = 3
-          Top = 3
+          Top = -3
           Width = 178
-          Height = 485
+          Height = 488
           BevelOuter = bvNone
           Color = 9521152
           ParentBackground = False
@@ -64,7 +64,7 @@
             Left = 19
             Top = 19
             Width = 140
-            Height = 447
+            Height = 450
             Margins.Left = 19
             Margins.Top = 19
             Margins.Right = 19
@@ -79,7 +79,7 @@
               Left = 1
               Top = 1
               Width = 138
-              Height = 445
+              Height = 448
               Margins.Left = 1
               Margins.Top = 1
               Margins.Right = 1
@@ -1025,6 +1025,12 @@
             Height = 108
             Align = alLeft
             BevelOuter = bvNone
+            Font.Charset = DEFAULT_CHARSET
+            Font.Color = clWindowText
+            Font.Height = -13
+            Font.Name = 'Segoe UI'
+            Font.Style = []
+            ParentFont = False
             TabOrder = 0
             object LblNome: TLabel
               Left = 20

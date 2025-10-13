@@ -120,8 +120,8 @@ end;
 
 procedure TFormHome.PeçasClick(Sender: TObject);
 begin
-  FormCadastroPeças.Position := poScreenCenter;
-  FormCadastroPeças.Show;
+  FormCadastroPecas.Position := poScreenCenter;
+  FormCadastroPecas.Show;
 end;
 
 procedure TFormHome.AgendamentosClick(Sender: TObject);

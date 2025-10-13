@@ -160,9 +160,6 @@
         <DCCReference Include="src\View\uFormCadastroServiçosView.pas">
             <Form>FormCadastroServiços</Form>
         </DCCReference>
-        <DCCReference Include="src\View\uFormCadastroPeçasView.pas">
-            <Form>FormCadastroPeças</Form>
-        </DCCReference>
         <DCCReference Include="src\View\uFormCadastroFornecedoresView.pas">
             <Form>FormCadastroFornecedores</Form>
             <FormType>dfm</FormType>
@@ -204,6 +201,14 @@
         <DCCReference Include="src\DTO\uFornecedorDTO.pas"/>
         <DCCReference Include="src\controller\FornecedorCadastroController.pas"/>
         <DCCReference Include="src\Services\FornecedorCadastroService.pas"/>
+        <DCCReference Include="src\DTO\uPeçasDTO.pas"/>
+        <DCCReference Include="src\repository\PeçasCadastroRepository.pas"/>
+        <DCCReference Include="src\Services\PeçasCadastroService.pas"/>
+        <DCCReference Include="src\controller\PeçasCadastroController.pas"/>
+        <DCCReference Include="src\View\uFormCadastroPeçasView.pas">
+            <Form>FormCadastroPecas</Form>
+            <FormType>dfm</FormType>
+        </DCCReference>
         <BuildConfiguration Include="Base">
             <Key>Base</Key>
         </BuildConfiguration>

@@ -65,6 +65,7 @@ type
     EdtBairro: TEdit;
     EdtCidade: TEdit;
     EdtEstado: TEdit;
+    BtnVincularPeças: TSpeedButton;
 
     procedure BtnAdicionarClick(Sender: TObject);
     procedure BtnPesquisarClick(Sender: TObject);
@@ -93,6 +94,7 @@ type
     procedure EdtTelefoneClick(Sender: TObject);
     procedure EdtCNPJClick(Sender: TObject);
     procedure EdtCEPClick(Sender: TObject);
+    procedure BtnVincularPeçasClick(Sender: TObject);
 
   private
     { Private declarations }
@@ -157,7 +159,7 @@ begin
       for var i := 0 to 11 do begin
         DBGridMain.Columns[i].Title.Alignment := taCenter;
         DBGridMain.Columns[i].Alignment := taCenter;
-        DBGridMain.Columns[i].Width := 120;
+        DBGridMain.Columns[i].Width := 140;
         DBGridMain.Columns[i].Title.Font.Size := 15;
       end;
     end;
@@ -214,7 +216,7 @@ begin
     DataSourceMain.DataSet := FornecedorService.PesquisarFornecedores(EdtPesquisar.Text);
     for var i := 0 to DBGridMain.Columns.Count-1 do
     begin
-      DBGridMain.Columns[i].Width := 120;
+      DBGridMain.Columns[i].Width := 140;
       DBGridMain.Columns[i].Title.Font.Size :=15;
     end;
   finally
@@ -395,6 +397,11 @@ procedure TFormCadastroFornecedores.BtnSairClick(Sender: TObject);
 begin
   if MessageDlg('Deseja realmente fechar este formulário?', mtConfirmation, [mbYes, mbNo], 0) = mrYes then
     Close;
+end;
+
+procedure TFormCadastroFornecedores.BtnVincularPeçasClick(Sender: TObject);
+begin
+ShowMessage('Em desenvolvimento');
 end;
 
 procedure TFormCadastroFornecedores.BuscarCEP;

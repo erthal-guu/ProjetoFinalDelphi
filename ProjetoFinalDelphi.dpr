@@ -19,7 +19,6 @@ uses
   uFormCadastroUsuariosView in 'src\View\uFormCadastroUsuariosView.pas' {FormCadastroUsuarios},
   uFormCadastroFuncionariosView in 'src\View\uFormCadastroFuncionariosView.pas' {FormCadastroFuncionarios},
   uFormCadastroServiçosView in 'src\View\uFormCadastroServiçosView.pas' {FormCadastroServiços},
-  uFormCadastroPeçasView in 'src\View\uFormCadastroPeçasView.pas' {FormCadastroPeças},
   uFormCadastroFornecedoresView in 'src\View\uFormCadastroFornecedoresView.pas' {FormCadastroFornecedores},
   uFormCadastroVeiculosView in 'src\View\uFormCadastroVeiculosView.pas' {FormCadastroVeiculos},
   uFormCadastroAgendamentosView in 'src\View\uFormCadastroAgendamentosView.pas' {FormAgendamentos},
@@ -39,7 +38,12 @@ uses
   FornecedorCadastroRepository in 'src\repository\FornecedorCadastroRepository.pas',
   uFornecedorDTO in 'src\DTO\uFornecedorDTO.pas',
   FornecedorCadastroController in 'src\controller\FornecedorCadastroController.pas',
-  FornecedorCadastroService in 'src\Services\FornecedorCadastroService.pas';
+  FornecedorCadastroService in 'src\Services\FornecedorCadastroService.pas',
+  uPeçasDTO in 'src\DTO\uPeçasDTO.pas',
+  PeçasCadastroRepository in 'src\repository\PeçasCadastroRepository.pas',
+  PeçasCadastroService in 'src\Services\PeçasCadastroService.pas',
+  PeçasCadastroController in 'src\controller\PeçasCadastroController.pas',
+  uFormCadastroPeçasView in 'src\View\uFormCadastroPeçasView.pas' {FormCadastroPecas};
 
 {$R *.res}
 
@@ -52,7 +56,6 @@ begin
   Application.CreateForm(TFormCadastroUsuarios, FormCadastroUsuarios);
   Application.CreateForm(TFormMain, FormMain);
   Application.CreateForm(TDataModule1, DataModule1);
-  Application.CreateForm(TFormCadastroPeças, FormCadastroPeças);
   Application.CreateForm(TFormCadastroFuncionarios, FormCadastroFuncionarios);
   Application.CreateForm(TFormCadastroServiços, FormCadastroServiços);
   Application.CreateForm(TFormCadastroFornecedores, FormCadastroFornecedores);
@@ -64,5 +67,6 @@ begin
   Application.CreateForm(TFormHome, FormHome);
   Application.CreateForm(TFormMain, FormMain);
   Application.CreateForm(TFormCadastroClientes, FormCadastroClientes);
+  Application.CreateForm(TFormCadastroPecas, FormCadastroPecas);
   Application.Run;
 end.
