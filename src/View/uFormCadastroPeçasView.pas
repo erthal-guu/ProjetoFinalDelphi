@@ -24,7 +24,6 @@ type
     BtnCancelar: TSpeedButton;
     BtnRestaurar: TSpeedButton;
     BtnSair: TSpeedButton;
-    PnlMainEdit: TPanel;
     PnlGrid: TPanel;
     DBGridMain: TDBGrid;
     PnlRestaurar: TPanel;
@@ -34,11 +33,12 @@ type
     PnlMainRestaurar: TPanel;
     PnlContainerRestaurar: TPanel;
     DBGridRestaurar: TDBGrid;
-    PnlBackgrounEdit: TPanel;
     DataSourceRestaurar: TDataSource;
     DataSourceMain: TDataSource;
     PnlHeader: TPanel;
     EdtPesquisar: TSearchBox;
+    PnlMainEdit: TPanel;
+    PnlBackgrounEdit: TPanel;
     PnlDesignEdit: TPanel;
     Image1: TImage;
     PnlEdit: TPanel;
@@ -102,7 +102,6 @@ begin
   PnlBackgrounEdit.Visible := True;
   PnlEdit.Visible := True;
   EdtPesquisar.Visible := False;
-  EdtNome.SetFocus;
   LimparCampos;
   PnlButtonEnviar.Visible := True;
   PnlButtonAtualizar.Visible := False;
@@ -250,7 +249,7 @@ begin
     try
       PecaDTO := PecaController.CriarObjeto(
         EdtNome.Text, EdtDescrição.Text, EdtCodigoInt.Text,
-        CmbCategoria.Text, CmbUnidade.Text, CmbModelo.Text, CmbStatus.Text);
+        CmbCategoria.Text, CmbUnidade.Text, CmbModelo.Text,CmbStatus.Text);
       PecaController.SalvarPeca(PecaDTO);
       LimparCampos;
       CarregarGrid;
@@ -285,7 +284,11 @@ begin
       PecaDTO.setCategoria(CmbCategoria.Text);
       PecaDTO.setUnidade(CmbUnidade.Text);
       PecaDTO.setModelo(CmbModelo.Text);
-      PecaDTO.setStatus(CmbStatus.Text);
+      if DBGridMain.DataSource.DataSet.FieldByName('ativo').AsBoolean then begin
+      CmbStatus.ItemIndex := 0;
+      end else begin
+      CmbStatus.ItemIndex := 1;
+    end;
       PecaController.EditarPeca(PecaDTO);
       CarregarGrid;
       LimparCampos;

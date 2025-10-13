@@ -42,7 +42,7 @@ begin
   FQuery.ParamByName('categoria').AsString       := aPeca.getCategoria;
   FQuery.ParamByName('unidade').AsString         := aPeca.getUnidade;
   FQuery.ParamByName('modelo').AsString          := aPeca.getModelo;
-  FQuery.ParamByName('ativo').AsString          := aPeca.getStatus;
+  FQuery.ParamByName('ativo').AsString         := aPeca.getAtivo;
   FQuery.ExecSQL;
 end;
 
@@ -72,7 +72,7 @@ begin
     FQuery.ParamByName('categoria').AsString      := aPeca.getCategoria;
     FQuery.ParamByName('unidade').AsString        := aPeca.getUnidade;
     FQuery.ParamByName('modelo').AsString         := aPeca.getModelo;
-    FQuery.ParamByName('ativo').AsString         := aPeca.getStatus;
+    FQuery.ParamByName('ativo').AsString        := aPeca.getAtivo;
     FQuery.ParamByName('id').AsInteger            := aPeca.getIdPeca;
     FQuery.ExecSQL;
     Result := FQuery.RowsAffected > 0;
@@ -88,7 +88,7 @@ begin
     FQuery.Close;
     FQuery.SQL.Clear;
     FQuery.SQL.Add('SELECT id, nome, descricao, codigo_interno, categoria, unidade, modelo, ativo');
-    FQuery.SQL.Add('FROM pecas WHERE ativo = ''Ativo'' ORDER BY id');
+    FQuery.SQL.Add('FROM pecas WHERE ativo = TRUE ORDER BY id');
     FQuery.Open;
     Result := FQuery;
   except
@@ -103,7 +103,7 @@ begin
     FQuery.Close;
     FQuery.SQL.Clear;
     FQuery.SQL.Add('SELECT id, nome, descricao, codigo_interno, categoria, unidade, modelo, ativo');
-    FQuery.SQL.Add('FROM pecas WHERE ativo = ''Inativo''');
+    FQuery.SQL.Add('FROM pecas WHERE ativo = FALSE');
     FQuery.Open;
     Result := FQuery;
   except
@@ -116,7 +116,7 @@ procedure TPecaRepository.DeletarPeca(const aID: Integer);
 begin
   FQuery.Close;
   FQuery.SQL.Clear;
-  FQuery.SQL.Add('UPDATE pecas SET ativo = ''Inativo'' WHERE id = :id');
+  FQuery.SQL.Add('UPDATE pecas SET ativo = FALSE WHERE id = :id');
   FQuery.ParamByName('id').AsInteger := aID;
   FQuery.ExecSQL;
 end;
@@ -125,7 +125,7 @@ procedure TPecaRepository.RestaurarPeca(const aID: Integer);
 begin
   FQuery.Close;
   FQuery.SQL.Clear;
-  FQuery.SQL.Add('UPDATE pecas SET ativo = ''Ativo'' WHERE id = :id');
+  FQuery.SQL.Add('UPDATE pecas SET ativo = TRUE WHERE id = :id');
   FQuery.ParamByName('id').AsInteger := aID;
   FQuery.ExecSQL;
 end;
@@ -138,7 +138,7 @@ begin
     FQuery.SQL.Add('SELECT id, nome, descricao, codigo_interno, categoria, unidade, modelo, ativo');
     FQuery.SQL.Add('FROM pecas');
     FQuery.SQL.Add('WHERE (nome ILIKE :nome) OR (codigo_interno ILIKE :codigo_interno) OR (modelo ILIKE :modelo)');
-    FQuery.SQL.Add('AND ativo = ''Ativo''');
+    FQuery.SQL.Add('AND ativo = TRUE');
     FQuery.SQL.Add('ORDER BY id');
     FQuery.ParamByName('nome').AsString           := '%' + Trim(aFiltro) + '%';
     FQuery.ParamByName('codigo_interno').AsString := '%' + Trim(aFiltro) + '%';

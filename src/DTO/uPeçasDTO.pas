@@ -12,7 +12,7 @@ type
     Categoria: String;
     Unidade: String;
     Modelo: String;
-    Status: String;
+    ativo: String;
   public
     function getIdPeca: Integer;
     procedure setIdPeca(aId: Integer);
@@ -35,8 +35,8 @@ type
     function getModelo: String;
     procedure setModelo(aModelo: String);
 
-    function getStatus: String;
-    procedure setStatus(aStatus: String);
+    function getAtivo: String;
+    procedure setAtivo(aAtivo: String);
   end;
 
 implementation
@@ -111,14 +111,14 @@ begin
   Modelo := aModelo;
 end;
 
-function TPecaDTO.getStatus: String;
+function TPecaDTO.getAtivo: String;
 begin
-  Result := Status;
+  Result := Ativo;
 end;
 
-procedure TPecaDTO.setStatus(aStatus: String);
+procedure TPecaDTO.setAtivo(aAtivo: String);
 begin
-  Status := aStatus;
+  Ativo := aAtivo;
 end;
 
 end.

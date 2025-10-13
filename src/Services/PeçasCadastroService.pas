@@ -13,7 +13,7 @@ type
   public
     constructor Create;
     function SalvarPeca(PecaDTO: TPecaDTO): Boolean;
-    function CriarObjeto(aNome, aDescricao, aCodigoInterno, aCategoria, aUnidade, aModelo, aStatus: String): TPecaDTO;
+    function CriarObjeto(aNome, aDescricao, aCodigoInterno, aCategoria, aUnidade, aModelo,aAtivo :String): TPecaDTO;
     procedure EditarPeca(PecaDTO: TPecaDTO);
     function ValidarPeca(PecaValida: TPecaDTO): Boolean;
     function ListarPecas: TDataSet;
@@ -31,8 +31,7 @@ begin
 end;
 
 function TPecaService.CriarObjeto(
-  aNome, aDescricao, aCodigoInterno, aCategoria, aUnidade, aModelo, aStatus: String
-): TPecaDTO;
+  aNome, aDescricao, aCodigoInterno, aCategoria, aUnidade, aModelo,aAtivo:String): TPecaDTO;
 var
   PecaDTO: TPecaDTO;
 begin
@@ -44,7 +43,7 @@ begin
     PecaDTO.setCategoria(aCategoria);
     PecaDTO.setUnidade(aUnidade);
     PecaDTO.setModelo(aModelo);
-    PecaDTO.setStatus(aStatus);
+    PecaDTO.setAtivo(aAtivo);
     Result := PecaDTO;
   except
     PecaDTO.Free;
@@ -104,7 +103,7 @@ begin
     (PecaValida.getCategoria <> '') and
     (PecaValida.getUnidade <> '') and
     (PecaValida.getModelo <> '') and
-    (PecaValida.getStatus <> '');
+    (PecaValida.getAtivo <> '');
 end;
 
 end.
