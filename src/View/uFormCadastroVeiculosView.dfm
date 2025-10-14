@@ -1318,7 +1318,6 @@
           ParentBackground = False
           TabOrder = 1
           Visible = False
-          ExplicitHeight = 413
           object LblRestaurar: TLabel
             AlignWithMargins = True
             Left = 4
