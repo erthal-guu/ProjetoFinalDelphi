@@ -1290,7 +1290,7 @@
                 ParentFont = False
               end
               object Label4: TLabel
-                Left = 421
+                Left = 409
                 Top = 8
                 Width = 64
                 Height = 17

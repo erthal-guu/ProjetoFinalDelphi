@@ -107,6 +107,9 @@
         <VerInfo_IncludeVerInfo>true</VerInfo_IncludeVerInfo>
         <VerInfo_Locale>1033</VerInfo_Locale>
         <DCC_UnitSearchPath>C:\Users\Auditorio\Desktop\ProjetoFinalDelphi\src\DTO\bcrypt-for-delphi-master;C:\Users\siqueira.6989\Desktop\ProjetoFinalDelphi\src\DTO\bcrypt-for-delphi-master;C:\Users\vplgu\Desktop\ProjetoFinalDelphi\src\DTO\bcrypt-for-delphi-master;$(DCC_UnitSearchPath)</DCC_UnitSearchPath>
+        <UWP_DelphiLogo44>..\..\Downloads\Captura_de_tela_2025-10-14_164540-removebg-preview.png</UWP_DelphiLogo44>
+        <UWP_DelphiLogo150>..\..\Downloads\Captura_de_tela_2025-10-14_164540-removebg-preview.png</UWP_DelphiLogo150>
+        <Icon_MainIcon>ProjetoFinalDelphi_Icon5.ico</Icon_MainIcon>
     </PropertyGroup>
     <PropertyGroup Condition="'$(Cfg_1_Win64)'!=''">
         <AppDPIAwarenessMode>PerMonitorV2</AppDPIAwarenessMode>
@@ -235,6 +238,13 @@
                 </Excluded_Packages>
             </Delphi.Personality>
             <Deployment Version="4">
+                <DeployFile LocalName="..\..\Downloads\Captura_de_tela_2025-10-14_164540-removebg-preview.png" Configuration="Debug" Class="UWP_DelphiLogo44">
+                    <Platform Name="Win32">
+                        <RemoteDir>Assets\</RemoteDir>
+                        <RemoteName>Logo44x44.png</RemoteName>
+                        <Overwrite>true</Overwrite>
+                    </Platform>
+                </DeployFile>
                 <DeployFile LocalName="Win32\Debug\ProjetoFinalDelphi.exe" Configuration="Debug" Class="ProjectOutput">
                     <Platform Name="Win32">
                         <RemoteName>ProjetoFinalDelphi.exe</RemoteName>

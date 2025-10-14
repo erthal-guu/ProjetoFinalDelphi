@@ -10,8 +10,6 @@ uses
 
 type
   TFormCadastroVeiculos = class(TForm)
-    PageControl1: TPageControl;
-    Veículos: TTabSheet;
     PnlMain: TPanel;
     PnlContainer: TPanel;
     PnlMainButton: TPanel;
@@ -25,9 +23,19 @@ type
     Label3: TLabel;
     Label4: TLabel;
     Label5: TLabel;
+    Label6: TLabel;
     PnlButtonEnviar: TPanel;
     LblEnviar: TLabel;
     EdtModelo: TEdit;
+    EdtFabricação: TEdit;
+    EdtCor: TEdit;
+    CmbCliente: TComboBox;
+    CmbCategoria: TComboBox;
+    EdtPlaca: TMaskEdit;
+    PnlGrid: TPanel;
+    DBGrid1: TDBGrid;
+    PnlHeader: TPanel;
+    EdtPesquisar: TSearchBox;
     PnlButtonCrud: TPanel;
     PnlBackgroundButton: TPanel;
     PnlButton: TPanel;
@@ -38,16 +46,13 @@ type
     BtnCancelar: TSpeedButton;
     BtnRestaurar: TSpeedButton;
     BtnSair: TSpeedButton;
-    PnlGrid: TPanel;
-    DBGrid1: TDBGrid;
-    PnlHeader: TPanel;
-    EdtPesquisar: TSearchBox;
-    EdtFabricação: TEdit;
-    EdtCor: TEdit;
-    CmbCliente: TComboBox;
-    CmbCategoria: TComboBox;
-    Label6: TLabel;
-    EdtPlaca: TMaskEdit;
+    PnlRestaurar: TPanel;
+    LblRestaurar: TLabel;
+    ImgFechar: TImage;
+    ImgRestaurar: TImage;
+    PnlMainRestaurar: TPanel;
+    PnlContainerRestaurar: TPanel;
+    DBGridRestaurar: TDBGrid;
     procedure BtnAdicionarClick(Sender: TObject);
     procedure BtnPesquisarClick(Sender: TObject);
     procedure FormCreate(Sender: TObject);

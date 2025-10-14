@@ -14,7 +14,7 @@ object FormCadastroFuncionarios: TFormCadastroFuncionarios
   OnCreate = FormCreate
   OnShow = FormShow
   TextHeight = 15
-  object Panel1: TPanel
+  object PnlFundo: TPanel
     Left = 0
     Top = 0
     Width = 1137

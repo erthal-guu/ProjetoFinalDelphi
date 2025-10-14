@@ -10,7 +10,7 @@ uses
 
 type
   TFormCadastroFuncionarios = class(TForm)
-    Panel1: TPanel;
+    PnlFundo: TPanel;
     PnlMain: TPanel;
     PnlContainer: TPanel;
     PnlMainButton: TPanel;
