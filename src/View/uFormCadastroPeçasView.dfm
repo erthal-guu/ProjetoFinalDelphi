@@ -22,9 +22,6 @@
     BevelOuter = bvNone
     BorderStyle = bsSingle
     TabOrder = 0
-    ExplicitTop = -22
-    ExplicitWidth = 1120
-    ExplicitHeight = 663
     object PnlContainer: TPanel
       AlignWithMargins = True
       Left = -2
@@ -54,7 +51,6 @@
         Color = 6172416
         ParentBackground = False
         TabOrder = 0
-        ExplicitHeight = 459
       end
       object PnlButtonCrud: TPanel
         Left = 929
@@ -80,7 +76,6 @@
           Color = clBackground
           ParentBackground = False
           TabOrder = 0
-          ExplicitHeight = 421
           object PnlButton: TPanel
             AlignWithMargins = True
             Left = 1
@@ -96,7 +91,6 @@
             Color = 15790320
             ParentBackground = False
             TabOrder = 0
-            ExplicitHeight = 419
             object BtnExcluir: TSpeedButton
               AlignWithMargins = True
               Left = 5
@@ -711,7 +705,6 @@
         Color = clBackground
         ParentBackground = False
         TabOrder = 2
-        ExplicitHeight = 421
         object DBGridMain: TDBGrid
           AlignWithMargins = True
           Left = 1
@@ -745,7 +738,6 @@
           ParentBackground = False
           TabOrder = 1
           Visible = False
-          ExplicitHeight = 381
           object LblRestaurar: TLabel
             AlignWithMargins = True
             Left = 4
@@ -783,10 +775,11 @@
               D3B02C19730192242A92F15CD4DCE82B82F83E76CEF72B8170A8B914C265CC45
               901F1F99CB5F1FFA570598A2328176F4BDDF9615D481E62FF3919E24F9015515
               0000000049454E44AE426082}
+            OnClick = ImgFecharClick
           end
           object ImgRestaurar: TImage
             Left = 20
-            Top = 16
+            Top = 18
             Width = 25
             Height = 25
             Picture.Data = {
@@ -819,6 +812,7 @@
               ED013E254938A1F66222BFBA5ECB1ADF0A9A2958C0EA08C72871928C33C3BB5A
               12832BFACBF45A4E1202B768713C2CE6B3220207C9203539C4CC468BD9FF014B
               7620018FA76C950000000049454E44AE426082}
+            OnClick = ImgRestaurarClick
           end
           object PnlMainRestaurar: TPanel
             AlignWithMargins = True
@@ -834,7 +828,6 @@
             Color = 9521152
             ParentBackground = False
             TabOrder = 0
-            ExplicitHeight = 311
             object PnlContainerRestaurar: TPanel
               AlignWithMargins = True
               Left = 12
@@ -851,7 +844,6 @@
               Color = clBackground
               ParentBackground = False
               TabOrder = 0
-              ExplicitHeight = 291
               object DBGridRestaurar: TDBGrid
                 AlignWithMargins = True
                 Left = 1
@@ -930,7 +922,6 @@
         Color = 6172416
         ParentBackground = False
         TabOrder = 4
-        ExplicitTop = 519
         object PnlBackgrounEdit: TPanel
           AlignWithMargins = True
           Left = 0
@@ -1259,8 +1250,6 @@
               Align = alLeft
               BevelOuter = bvNone
               TabOrder = 0
-              ExplicitLeft = 9
-              ExplicitTop = 2
               object Label1: TLabel
                 Left = 20
                 Top = 8

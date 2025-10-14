@@ -42,7 +42,7 @@ begin
   FQuery.ParamByName('categoria').AsString       := aPeca.getCategoria;
   FQuery.ParamByName('unidade').AsString         := aPeca.getUnidade;
   FQuery.ParamByName('modelo').AsString          := aPeca.getModelo;
-  FQuery.ParamByName('ativo').AsString         := aPeca.getAtivo;
+  FQuery.ParamByName('ativo').AsBoolean         := aPeca.getAtivo;
   FQuery.ExecSQL;
 end;
 
@@ -72,7 +72,7 @@ begin
     FQuery.ParamByName('categoria').AsString      := aPeca.getCategoria;
     FQuery.ParamByName('unidade').AsString        := aPeca.getUnidade;
     FQuery.ParamByName('modelo').AsString         := aPeca.getModelo;
-    FQuery.ParamByName('ativo').AsString        := aPeca.getAtivo;
+    FQuery.ParamByName('ativo').AsBoolean       := aPeca.getAtivo;
     FQuery.ParamByName('id').AsInteger            := aPeca.getIdPeca;
     FQuery.ExecSQL;
     Result := FQuery.RowsAffected > 0;

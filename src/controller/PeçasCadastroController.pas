@@ -16,7 +16,7 @@ type
     procedure EditarPeca(PecaDTO: TPecaDTO);
     function ListarPecas: TDataSet;
     function CriarObjeto(
-      aNome, aDescricao, aCodigoInterno, aCategoria, aUnidade, aModelo,aAtivo: String): TPecaDTO;
+      aNome, aDescricao, aCodigoInterno, aCategoria, aUnidade, aModelo: String;aAtivo:Boolean): TPecaDTO;
     procedure DeletarPeca(const aId: Integer);
     procedure RestaurarPeca(const aId: Integer);
     function PesquisarPecas(const aFiltro: String): TDataSet;
@@ -37,7 +37,7 @@ begin
 end;
 
 function TPecaController.CriarObjeto(
-  aNome, aDescricao, aCodigoInterno, aCategoria, aUnidade, aModelo,aAtivo: String): TPecaDTO;
+  aNome, aDescricao, aCodigoInterno, aCategoria, aUnidade, aModelo: String;aAtivo:Boolean): TPecaDTO;
 begin
   Result := TPecaDTO.Create;
   Result.setNome(aNome);

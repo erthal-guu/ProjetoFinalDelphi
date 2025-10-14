@@ -12,7 +12,7 @@ type
     Categoria: String;
     Unidade: String;
     Modelo: String;
-    ativo: String;
+    ativo: Boolean;
   public
     function getIdPeca: Integer;
     procedure setIdPeca(aId: Integer);
@@ -35,8 +35,8 @@ type
     function getModelo: String;
     procedure setModelo(aModelo: String);
 
-    function getAtivo: String;
-    procedure setAtivo(aAtivo: String);
+    function getAtivo: Boolean;
+    procedure setAtivo(aAtivo: Boolean);
   end;
 
 implementation
@@ -111,12 +111,12 @@ begin
   Modelo := aModelo;
 end;
 
-function TPecaDTO.getAtivo: String;
+function TPecaDTO.getAtivo: Boolean;
 begin
   Result := Ativo;
 end;
 
-procedure TPecaDTO.setAtivo(aAtivo: String);
+procedure TPecaDTO.setAtivo(aAtivo: Boolean);
 begin
   Ativo := aAtivo;
 end;

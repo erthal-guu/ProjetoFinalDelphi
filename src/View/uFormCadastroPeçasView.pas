@@ -142,7 +142,7 @@ begin
       begin
         DBGridMain.Columns[i].Title.Alignment := taCenter;
         DBGridMain.Columns[i].Alignment := taCenter;
-        DBGridMain.Columns[i].Width := 120;
+        DBGridMain.Columns[i].Width := 140;
         DBGridMain.Columns[i].Title.Font.Size := 15;
       end;
     end;
@@ -159,14 +159,14 @@ begin
   DataSourceRestaurar.DataSet := PecaService.ListarPecasRestaurar;
   DBGridRestaurar.DataSource := DataSourceRestaurar;
   try
-    // Ajuste conforme necessário
-    for var i := 0 to DBGridRestaurar.Columns.Count-1 do
+    for var i := 0 to 7 do
     begin
       DBGridRestaurar.Columns[i].Title.Alignment := taCenter;
       DBGridRestaurar.Columns[i].Alignment := taCenter;
-      DBGridRestaurar.Columns[i].Width := 120;
+      DBGridRestaurar.Columns[i].Width := 140;
       DBGridRestaurar.Columns[i].Title.Font.Size := 15;
     end;
+    DBGridRestaurar.Columns[0].Width := 40;
   finally
     PecaService.Free;
   end;
@@ -179,11 +179,12 @@ begin
   PecaService := TPecaService.Create;
   try
     DataSourceMain.DataSet := PecaService.PesquisarPecas(EdtPesquisar.Text);
-    for var i := 0 to DBGridMain.Columns.Count-1 do
+    for var i := 0 to 7 do
     begin
-      DBGridMain.Columns[i].Width := 120;
+      DBGridMain.Columns[i].Width := 140;
       DBGridMain.Columns[i].Title.Font.Size := 15;
     end;
+    DBGridRestaurar.Columns[0].Width := 40;
   finally
     PecaService.Free;
   end;
@@ -191,13 +192,13 @@ end;
 
 procedure TFormCadastroPecas.PegarCamposGridPecas;
 begin
-  EdtNome.Text         := DBGridMain.DataSource.DataSet.FieldByName('nome').AsString;
-  EdtDescrição.Text    := DBGridMain.DataSource.DataSet.FieldByName('descricao').AsString;
-  EdtCodigoInt.Text:= DBGridMain.DataSource.DataSet.FieldByName('codigo_interno').AsString;
-  CmbCategoria.Text    := DBGridMain.DataSource.DataSet.FieldByName('categoria').AsString;
-  CmbUnidade.Text      := DBGridMain.DataSource.DataSet.FieldByName('unidade').AsString;
-  CmbModelo.Text       := DBGridMain.DataSource.DataSet.FieldByName('modelo').AsString;
-  CmbStatus.Text       := DBGridMain.DataSource.DataSet.FieldByName('status').AsString;
+  EdtNome.Text:= DBGridMain.DataSource.DataSet.FieldByName('Nome').AsString;
+  EdtDescrição.Text:= DBGridMain.DataSource.DataSet.FieldByName('Descrição').AsString;
+  EdtCodigoInt.Text:= DBGridMain.DataSource.DataSet.FieldByName('Código interno').AsString;
+  CmbCategoria.Text:= DBGridMain.DataSource.DataSet.FieldByName('Categoria').AsString;
+  CmbUnidade.Text:= DBGridMain.DataSource.DataSet.FieldByName('Unidade').AsString;
+  CmbModelo.Text:= DBGridMain.DataSource.DataSet.FieldByName('Modelo').AsString;
+  CmbStatus.Text:= DBGridMain.DataSource.DataSet.FieldByName('Ativo').AsString;
 end;
 
 procedure TFormCadastroPecas.BtnEditarClick(Sender: TObject);
@@ -242,14 +243,16 @@ procedure TFormCadastroPecas.LblEnviarClick(Sender: TObject);
 var
   PecaController: TPecaController;
   PecaDTO: TPecaDTO;
+  Ativo : Boolean;
 begin
   if ValidarCampos then
   begin
     PecaController := TPecaController.Create;
     try
+    Ativo := (CmbStatus.Text = 'Ativo');
       PecaDTO := PecaController.CriarObjeto(
         EdtNome.Text, EdtDescrição.Text, EdtCodigoInt.Text,
-        CmbCategoria.Text, CmbUnidade.Text, CmbModelo.Text,CmbStatus.Text);
+        CmbCategoria.Text, CmbUnidade.Text, CmbModelo.Text,Ativo);
       PecaController.SalvarPeca(PecaDTO);
       LimparCampos;
       CarregarGrid;
