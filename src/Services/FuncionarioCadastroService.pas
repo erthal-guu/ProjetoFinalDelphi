@@ -3,7 +3,7 @@ unit FuncionarioCadastroService;
 interface
 
 uses
-  uFuncionarioDTO, FuncionarioCadastroRepository, uDMConexao, System.SysUtils,
+  uFuncionario, FuncionarioCadastroRepository, uDMConexao, System.SysUtils,
   uMainController, FireDAC.Comp.Client, Data.DB, Vcl.Dialogs,IdHTTP, System.JSON,
     IdSSL, IdSSLOpenSSL, IdSSLOpenSSLHeaders;
 
@@ -13,11 +13,11 @@ type
     Repository: TFuncionarioRepository;
   public
     constructor Create;
-    function SalvarFuncionario(FuncionarioDTO: TFuncionarioDTO): Boolean;
+    function SalvarFuncionario(Funcionario: TFuncionario): Boolean;
     function CriarObjeto(aNome, aCPF, aRG, aNascimento, aTelefone, aCEP, aRua, aNumero,
-      aBairro, aCidade, aEstado: String; aAtivo: Boolean): TFuncionarioDTO;
-    procedure EditarFuncionario(FuncionarioDTO: TFuncionarioDTO);
-    function ValidarFuncionario(FuncionarioValido: TFuncionarioDTO): Boolean;
+      aBairro, aCidade, aEstado: String; aAtivo: Boolean): TFuncionario;
+    procedure EditarFuncionario(Funcionario: TFuncionario);
+    function ValidarFuncionario(FuncionarioValido: TFuncionario): Boolean;
     function ListarFuncionarios: TDataSet;
     function ListarFuncionariosRestaurar: TDataSet;
     procedure DeletarFuncionario(const aId: Integer);
@@ -37,27 +37,27 @@ end;
 
 function TFuncionarioService.CriarObjeto(
   aNome, aCPF, aRG, aNascimento, aTelefone, aCEP, aRua, aNumero,
-  aBairro, aCidade, aEstado: String; aAtivo: Boolean): TFuncionarioDTO;
+  aBairro, aCidade, aEstado: String; aAtivo: Boolean): TFuncionario;
 var
-  FuncionarioDTO: TFuncionarioDTO;
+  Funcionario: TFuncionario;
 begin
-  FuncionarioDTO := TFuncionarioDTO.Create;
+  Funcionario := TFuncionario.Create;
   try
-    FuncionarioDTO.setNome(aNome);
-    FuncionarioDTO.setCPF(aCPF);
-    FuncionarioDTO.setRG(aRG);
-    FuncionarioDTO.setNascimento(aNascimento);
-    FuncionarioDTO.setTelefone(aTelefone);
-    FuncionarioDTO.setCEP(aCEP);
-    FuncionarioDTO.setRua(aRua);
-    FuncionarioDTO.setNumero(aNumero);
-    FuncionarioDTO.setBairro(aBairro);
-    FuncionarioDTO.setCidade(aCidade);
-    FuncionarioDTO.setEstado(aEstado);
-    FuncionarioDTO.setAtivo(aAtivo);
-    Result := FuncionarioDTO;
+    Funcionario.setNome(aNome);
+    Funcionario.setCPF(aCPF);
+    Funcionario.setRG(aRG);
+    Funcionario.setNascimento(aNascimento);
+    Funcionario.setTelefone(aTelefone);
+    Funcionario.setCEP(aCEP);
+    Funcionario.setRua(aRua);
+    Funcionario.setNumero(aNumero);
+    Funcionario.setBairro(aBairro);
+    Funcionario.setCidade(aCidade);
+    Funcionario.setEstado(aEstado);
+    Funcionario.setAtivo(aAtivo);
+    Result := Funcionario;
   except
-    FuncionarioDTO.Free;
+    Funcionario.Free;
     raise;
   end;
 end;
@@ -67,9 +67,9 @@ begin
   Repository.DeletarFuncionario(aId);
 end;
 
-procedure TFuncionarioService.EditarFuncionario(FuncionarioDTO: TFuncionarioDTO);
+procedure TFuncionarioService.EditarFuncionario(Funcionario: TFuncionario);
 begin
-  Repository.EditarFuncionario(FuncionarioDTO);
+  Repository.EditarFuncionario(Funcionario);
 end;
 
 function TFuncionarioService.ListarFuncionarios: TDataSet;
@@ -92,20 +92,20 @@ begin
   Repository.RestaurarFuncionario(aId);
 end;
 
-function TFuncionarioService.SalvarFuncionario(FuncionarioDTO: TFuncionarioDTO): Boolean;
+function TFuncionarioService.SalvarFuncionario(Funcionario: TFuncionario): Boolean;
 begin
   Result := False;
-  if ValidarFuncionario(FuncionarioDTO) then
+  if ValidarFuncionario(Funcionario) then
   begin
-    if not Self.Repository.ExisteCPF(FuncionarioDTO) then
+    if not Self.Repository.ExisteCPF(Funcionario) then
     begin
-      Self.Repository.InserirFuncionario(FuncionarioDTO);
+      Self.Repository.InserirFuncionario(Funcionario);
       Result := True;
     end;
   end;
 end;
 
-function TFuncionarioService.ValidarFuncionario(FuncionarioValido: TFuncionarioDTO): Boolean;
+function TFuncionarioService.ValidarFuncionario(FuncionarioValido: TFuncionario): Boolean;
 begin
   Result :=
     (FuncionarioValido.getNome <> '') and
@@ -134,12 +134,10 @@ begin
   CepLimpo := StringReplace(ACep, '-', '', [rfReplaceAll]);
   CepLimpo := StringReplace(CepLimpo, '.', '', [rfReplaceAll]);
   CepLimpo := Trim(CepLimpo);
-
   if (Length(CepLimpo) <> 8) or (not TryStrToInt(CepLimpo, dummyInt)) then
   begin
     Exit;
   end;
-
   IdHTTP := TIdHTTP.Create(nil);
   IdSSL := TIdSSLIOHandlerSocketOpenSSL.Create(nil);
   try

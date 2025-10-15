@@ -1,9 +1,9 @@
-unit uUsuarioDTO;
+unit uUsuario;
 
 interface
 
 type
-  TUsuarioDTO = class
+  TUsuario = class
   private
     id : Integer;
     Nome: String;
@@ -30,60 +30,60 @@ implementation
 
 { TUsuarioDTO }
 
-function TUsuarioDTO.getGrupo: String;
+function TUsuario.getGrupo: String;
 begin
   Result := Self.Grupo;
 end;
-function TUsuarioDTO.getID: Integer;
+function TUsuario.getID: Integer;
 begin
   Result := Self.ID;
 end;
 
-function TUsuarioDTO.getNome: String;
+function TUsuario.getNome: String;
 begin
   Result := Self.Nome;
 end;
 
-function TUsuarioDTO.getCPF: String;
+function TUsuario.getCPF: String;
 begin
   Result := Self.CPF;
 end;
 
-function TUsuarioDTO.getSenha: String;
+function TUsuario.getSenha: String;
 begin
   Result := Self.Senha;
 end;
 
-function TUsuarioDTO.getAtivo: Boolean;
+function TUsuario.getAtivo: Boolean;
 begin
   Result := Self.Ativo;
 end;
 
-procedure TUsuarioDTO.setNome(aNome: String);
+procedure TUsuario.setNome(aNome: String);
 begin
   Nome := aNome;
 end;
-procedure TUsuarioDTO.setID(aId: Integer);
+procedure TUsuario.setID(aId: Integer);
 begin
   Id := aId;
 end;
 
-procedure TUsuarioDTO.setCPF(aCPF: String);
+procedure TUsuario.setCPF(aCPF: String);
 begin
   CPF := aCPF;
 end;
 
-procedure TUsuarioDTO.setGrupo(aGrupo: String);
+procedure TUsuario.setGrupo(aGrupo: String);
 begin
   Grupo := aGrupo
 end;
 
-procedure TUsuarioDTO.setSenha(aSenha: String);
+procedure TUsuario.setSenha(aSenha: String);
 begin
   Senha := aSenha;
 end;
 
-procedure TUsuarioDTO.setAtivo(aAtivo: Boolean);
+procedure TUsuario.setAtivo(aAtivo: Boolean);
 begin
   Ativo := aAtivo;
 end;

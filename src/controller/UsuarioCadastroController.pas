@@ -1,18 +1,18 @@
 unit UsuarioCadastroController;
 
 interface
-uses uUsuarioDTO, UsuarioCadastroService, FireDAC.Comp.Client, Vcl.Dialogs,Data.DB,System.Classes;
+uses uUsuario, UsuarioCadastroService, FireDAC.Comp.Client, Vcl.Dialogs,Data.DB,System.Classes;
 
 type TUsuarioController = class
   Service : TUsuarioService;
     constructor Create;
-      function SalvarUsuario(UsuarioDTO: TUsuarioDTO): Boolean;
-      procedure EditarUsuario(UsuarioDTO: TUsuarioDTO);
-      procedure EditarUsuarioComSenha(UsuarioDTO: TUsuarioDTO);
+      function SalvarUsuario(Usuario: TUsuario): Boolean;
+      procedure EditarUsuario(Usuario: TUsuario);
+      procedure EditarUsuarioComSenha(Usuario: TUsuario);
       function ListarUsuarios: TDataSet;
-      function CriarObjeto(aNome, aCPF, aSenha: String): TUsuarioDTO;
-      function CriarObjetoCRUD(aNome, aCPF, aSenha,aGrupo: String ; aAtivo:Boolean): TUsuarioDTO;
-      procedure SalvarUsuarioCRUD(UsuarioDTO: TUsuarioDTO);
+      function CriarObjeto(aNome, aCPF, aSenha: String): TUsuario;
+      function CriarObjetoCRUD(aNome, aCPF, aSenha,aGrupo: String ; aAtivo:Boolean): TUsuario;
+      procedure SalvarUsuarioCRUD(UsuarioDTO: TUsuario);
       procedure DeletarUsuarios(const aId :Integer);
       procedure RestaurarUsuarios(const aId :Integer);
       Function PesquisarUsuarios(const aFiltro:String):TDataset;
@@ -33,15 +33,15 @@ end;
 
 function TUsuarioController.CriarObjeto;
 begin
-  Result := TUsuarioDTO.Create;
+  Result := TUsuario.Create;
   Result.setNome(aNome);
   Result.setCPF(aCPF);
   Result.setSenha(aSenha);;
 end;
 
-function TUsuarioController.CriarObjetoCRUD(aNome, aCPF, aSenha,aGrupo: String ; aAtivo:Boolean): TUsuarioDTO;
+function TUsuarioController.CriarObjetoCRUD(aNome, aCPF, aSenha,aGrupo: String ; aAtivo:Boolean): TUsuario;
 begin
-  Result := TUsuarioDTO.Create;
+  Result := TUsuario.Create;
   Result.setNome(aNome);
   Result.setCPF(aCPF);
   Result.setSenha(aSenha);
@@ -54,14 +54,14 @@ begin
   Service.DeletarUsuarios(aId);
 end;
 
-procedure TUsuarioController.EditarUsuario(UsuarioDTO: TUsuarioDTO);
+procedure TUsuarioController.EditarUsuario(Usuario: TUsuario);
 begin
-  Service.EditarUsuario(UsuarioDTO);
+  Service.EditarUsuario(Usuario);
 end;
 
-procedure TUsuarioController.EditarUsuarioComSenha(UsuarioDTO: TUsuarioDTO);
+procedure TUsuarioController.EditarUsuarioComSenha(Usuario: TUsuario);
 begin
-  Service.EditarUsuarioComSenha(UsuarioDTO);
+  Service.EditarUsuarioComSenha(Usuario);
 end;
 
 function TUsuarioController.ListarUsuarios: TDataSet;
@@ -76,12 +76,12 @@ begin
   Result := Service.PesquisarUsuarios(aFiltro);
 end;
 
-function TUsuarioController.SalvarUsuario(UsuarioDTO: TUsuarioDTO):Boolean;
+function TUsuarioController.SalvarUsuario(Usuario: TUsuario):Boolean;
 begin
-  Result := Service.SalvarUsuario(UsuarioDTO);
+  Result := Service.SalvarUsuario(Usuario);
 end;
 
-procedure TUsuarioController.SalvarUsuarioCRUD(UsuarioDTO: TUsuarioDTO);
+procedure TUsuarioController.SalvarUsuarioCRUD(UsuarioDTO: TUsuario);
 begin
   Service.SalvarUsuarioCRUD(UsuarioDTO);
 end;

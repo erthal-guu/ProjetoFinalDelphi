@@ -1,9 +1,9 @@
-unit uFuncionarioDTO;
+unit uFuncionario;
 
 interface
 
 type
-  TFuncionarioDTO = class
+  TFuncionario = class
   private
     IdFuncionario : Integer;
     Nome: String;
@@ -64,132 +64,132 @@ implementation
 
 { TFuncionarioDTO }
 
-function TFuncionarioDTO.getIdFuncionario: Integer;
+function TFuncionario.getIdFuncionario: Integer;
 begin
   Result := IdFuncionario;
 end;
 
-procedure TFuncionarioDTO.setIdFuncionario(aId: Integer);
+procedure TFuncionario.setIdFuncionario(aId: Integer);
 begin
   IdFuncionario := aId;
 end;
 
-function TFuncionarioDTO.getNome: String;
+function TFuncionario.getNome: String;
 begin
   Result := Nome;
 end;
 
-procedure TFuncionarioDTO.setNome(aNome: String);
+procedure TFuncionario.setNome(aNome: String);
 begin
   Nome := aNome;
 end;
 
-function TFuncionarioDTO.getCPF: String;
+function TFuncionario.getCPF: String;
 begin
   Result := CPF;
 end;
 
-procedure TFuncionarioDTO.setCPF(aCPF: String);
+procedure TFuncionario.setCPF(aCPF: String);
 begin
   CPF := aCPF;
 end;
 
-function TFuncionarioDTO.getRG: String;
+function TFuncionario.getRG: String;
 begin
   Result := RG;
 end;
 
-procedure TFuncionarioDTO.setRG(aRG: String);
+procedure TFuncionario.setRG(aRG: String);
 begin
   RG := aRG;
 end;
 
-function TFuncionarioDTO.getNascimento: String;
+function TFuncionario.getNascimento: String;
 begin
   Result := Nascimento;
 end;
 
-procedure TFuncionarioDTO.setNascimento(aNascimento: String);
+procedure TFuncionario.setNascimento(aNascimento: String);
 begin
   Nascimento := aNascimento;
 end;
 
-function TFuncionarioDTO.getTelefone: String;
+function TFuncionario.getTelefone: String;
 begin
   Result := Telefone;
 end;
 
-procedure TFuncionarioDTO.setTelefone(aTelefone: String);
+procedure TFuncionario.setTelefone(aTelefone: String);
 begin
   Telefone := aTelefone;
 end;
 
-function TFuncionarioDTO.getCEP: String;
+function TFuncionario.getCEP: String;
 begin
   Result := CEP;
 end;
 
-procedure TFuncionarioDTO.setCEP(aCEP: String);
+procedure TFuncionario.setCEP(aCEP: String);
 begin
   CEP := aCEP;
 end;
 
-function TFuncionarioDTO.getRua: String;
+function TFuncionario.getRua: String;
 begin
   Result := Rua;
 end;
 
-procedure TFuncionarioDTO.setRua(aRua: String);
+procedure TFuncionario.setRua(aRua: String);
 begin
   Rua := aRua;
 end;
 
-function TFuncionarioDTO.getNumero: String;
+function TFuncionario.getNumero: String;
 begin
   Result := Numero;
 end;
 
-procedure TFuncionarioDTO.setNumero(aNumero: String);
+procedure TFuncionario.setNumero(aNumero: String);
 begin
   Numero := aNumero;
 end;
 
-function TFuncionarioDTO.getBairro: String;
+function TFuncionario.getBairro: String;
 begin
   Result := Bairro;
 end;
 
-procedure TFuncionarioDTO.setBairro(aBairro: String);
+procedure TFuncionario.setBairro(aBairro: String);
 begin
   Bairro := aBairro;
 end;
 
-function TFuncionarioDTO.getCidade: String;
+function TFuncionario.getCidade: String;
 begin
   Result := Cidade;
 end;
 
-procedure TFuncionarioDTO.setCidade(aCidade: String);
+procedure TFuncionario.setCidade(aCidade: String);
 begin
   Cidade := aCidade;
 end;
 
-function TFuncionarioDTO.getEstado: String;
+function TFuncionario.getEstado: String;
 begin
   Result := Estado;
 end;
 
-procedure TFuncionarioDTO.setEstado(aEstado: String);
+procedure TFuncionario.setEstado(aEstado: String);
 begin
   Estado := aEstado;
 end;
 
-function TFuncionarioDTO.getAtivo: Boolean;
+function TFuncionario.getAtivo: Boolean;
 begin
   Result := Ativo;
 end;
 
-procedure TFuncionarioDTO.setAtivo(aAtivo: Boolean);
+procedure TFuncionario.setAtivo(aAtivo: Boolean);
 begin
   Ativo := aAtivo;
 end;

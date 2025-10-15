@@ -2,18 +2,18 @@ unit ClienteCadastroService;
 
 interface
 uses
-  uClienteDTO, ClienteCadastroRepository, uDMConexao, System.SysUtils,uMainController, FireDAC.Comp.Client,Data.DB,BCrypt,Vcl.Dialogs;
+  uCliente, ClienteCadastroRepository, uDMConexao, System.SysUtils,uMainController, FireDAC.Comp.Client,Data.DB,BCrypt,Vcl.Dialogs;
  type
   TClienteService = class
   private
     Repository: TClienteRepository;
   public
     constructor create;
-    function SalvarClientes(ClienteDTO :  TClienteDTO): Boolean;
+    function SalvarClientes(Cliente :  TCliente): Boolean;
     function CriarObjeto(aNome,aCPF, aEmail,aTelefone,
-    aNascimento,aEndereco : String; aAtivo: Boolean): TClienteDTO;
-    procedure EditarClientes(ClienteDTO : TClienteDTO);
-    function ValidarClientes(ClienteValido: TClienteDTO) : Boolean;
+    aNascimento,aEndereco : String; aAtivo: Boolean): TCliente;
+    procedure EditarClientes(Cliente : TCliente);
+    function ValidarClientes(ClienteValido: TCliente) : Boolean;
     function ListarClientes: TDataSet;
     function ListarClientesRestaurar : TDataSet;
     procedure DeletarClientes(const aId :Integer);
@@ -31,11 +31,11 @@ begin
 end;
 
 function TClienteService.CriarObjeto(aNome,aCPF, aEmail,aTelefone,
-    aNascimento,aEndereco : String; aAtivo: Boolean): TClienteDTO;
+    aNascimento,aEndereco : String; aAtivo: Boolean): TCliente;
 var
-  ClienteDTO: TClienteDTO;
+  ClienteDTO: TCliente;
 begin
-  ClienteDTO := TClienteDTO.Create;
+  ClienteDTO := TCliente.Create;
   try
     ClienteDTO.setNome(aNome);
     ClienteDTO.setCPF(aCPF);
@@ -57,9 +57,9 @@ begin
   Repository.DeletarClientes(aID);
 end;
 
-procedure TClienteService.EditarClientes(ClienteDTO: TClienteDTO);
+procedure TClienteService.EditarClientes(Cliente: TCliente);
 begin
-  Repository.EditarClientes(ClienteDTO);
+  Repository.EditarClientes(Cliente);
 end;
 
 function TClienteService.ListarClientes: TDataSet;
@@ -82,13 +82,13 @@ begin
   Repository.RestaurarClientes(aId);
 end;
 
-function TClienteService.SalvarClientes(ClienteDTO: TClienteDTO): Boolean;
+function TClienteService.SalvarClientes(Cliente: TCliente): Boolean;
 begin
-if ValidarClientes(ClienteDTO) then begin
+if ValidarClientes(Cliente) then begin
     Result := False;
     try
-    if not Self.Repository.ExisteCPF(ClienteDTO) then begin
-      Self.Repository.inserirCliente(ClienteDTO);
+    if not Self.Repository.ExisteCPF(Cliente) then begin
+      Self.Repository.inserirCliente(Cliente);
       Result := True;
     end;
     finally
@@ -97,7 +97,7 @@ if ValidarClientes(ClienteDTO) then begin
 end;
 end;
 
-function TClienteService.ValidarClientes(ClienteValido: TClienteDTO): Boolean;
+function TClienteService.ValidarClientes(ClienteValido: TCliente): Boolean;
 begin
 Result := (ClienteValido.getNome <> '') and
            (ClienteValido.getCPF <> '') and

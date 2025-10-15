@@ -6,7 +6,7 @@ uses
   Winapi.Windows, Winapi.Messages, System.SysUtils, System.Variants, System.Classes,
   Vcl.Graphics, Vcl.Controls, Vcl.Forms, Vcl.Dialogs, Data.DB, Vcl.WinXCtrls,
   Vcl.Grids, Vcl.DBGrids, Vcl.Buttons, Vcl.StdCtrls, Vcl.Mask, Vcl.ExtCtrls,
-  PeçasCadastroController, PeçasCadastroService, uPeçasDTO,
+  PeçasCadastroController, PeçasCadastroService, uPeças,
   Vcl.Imaging.pngimage;
 
 type
@@ -242,7 +242,7 @@ end;
 procedure TFormCadastroPecas.LblEnviarClick(Sender: TObject);
 var
   PecaController: TPecaController;
-  PecaDTO: TPecaDTO;
+  PecaDTO: TPeca;
   Ativo : Boolean;
 begin
   if ValidarCampos then
@@ -266,7 +266,7 @@ end;
 procedure TFormCadastroPecas.EditarPecas;
 var
   PecaController: TPecaController;
-  PecaDTO: TPecaDTO;
+  Peca: TPeca;
   IdPeca: Integer;
 begin
   if DataSourceMain.DataSet.IsEmpty then
@@ -277,26 +277,26 @@ begin
   IdPeca := DBGridMain.DataSource.DataSet.FieldByName('id').AsInteger;
   PecaController := TPecaController.Create;
   try
-    PecaDTO := TPecaDTO.Create;
+    Peca := TPeca.Create;
     try
       ValidarCampos;
-      PecaDTO.setIdPeca(IdPeca);
-      PecaDTO.setNome(EdtNome.Text);
-      PecaDTO.setDescricao(EdtDescrição.Text);
-      PecaDTO.setCodigoInterno(EdtCodigoInt.Text);
-      PecaDTO.setCategoria(CmbCategoria.Text);
-      PecaDTO.setUnidade(CmbUnidade.Text);
-      PecaDTO.setModelo(CmbModelo.Text);
+      Peca.setIdPeca(IdPeca);
+      Peca.setNome(EdtNome.Text);
+      Peca.setDescricao(EdtDescrição.Text);
+      Peca.setCodigoInterno(EdtCodigoInt.Text);
+      Peca.setCategoria(CmbCategoria.Text);
+      Peca.setUnidade(CmbUnidade.Text);
+      Peca.setModelo(CmbModelo.Text);
       if DBGridMain.DataSource.DataSet.FieldByName('ativo').AsBoolean then begin
       CmbStatus.ItemIndex := 0;
       end else begin
       CmbStatus.ItemIndex := 1;
     end;
-      PecaController.EditarPeca(PecaDTO);
+      PecaController.EditarPeca(Peca);
       CarregarGrid;
       LimparCampos;
     finally
-      PecaDTO.Free;
+      Peca.Free;
     end;
   finally
     PecaController.Free;

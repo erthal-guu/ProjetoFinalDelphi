@@ -3,7 +3,7 @@ unit PeçasCadastroController;
 interface
 
 uses
-  uPeçasDTO, PeçasCadastroService, FireDAC.Comp.Client, Data.DB;
+  uPeças, PeçasCadastroService, FireDAC.Comp.Client, Data.DB;
 
 type
   TPecaController = class
@@ -12,11 +12,11 @@ type
   public
     constructor Create;
     destructor Destroy; override;
-    function SalvarPeca(PecaDTO: TPecaDTO): Boolean;
-    procedure EditarPeca(PecaDTO: TPecaDTO);
+    function SalvarPeca(Peca: TPeca): Boolean;
+    procedure EditarPeca(Peca: TPeca);
     function ListarPecas: TDataSet;
     function CriarObjeto(
-      aNome, aDescricao, aCodigoInterno, aCategoria, aUnidade, aModelo: String;aAtivo:Boolean): TPecaDTO;
+      aNome, aDescricao, aCodigoInterno, aCategoria, aUnidade, aModelo: String;aAtivo:Boolean): TPeca;
     procedure DeletarPeca(const aId: Integer);
     procedure RestaurarPeca(const aId: Integer);
     function PesquisarPecas(const aFiltro: String): TDataSet;
@@ -37,9 +37,9 @@ begin
 end;
 
 function TPecaController.CriarObjeto(
-  aNome, aDescricao, aCodigoInterno, aCategoria, aUnidade, aModelo: String;aAtivo:Boolean): TPecaDTO;
+  aNome, aDescricao, aCodigoInterno, aCategoria, aUnidade, aModelo: String;aAtivo:Boolean): TPeca;
 begin
-  Result := TPecaDTO.Create;
+  Result := TPeca.Create;
   Result.setNome(aNome);
   Result.setDescricao(aDescricao);
   Result.setCodigoInterno(aCodigoInterno);
@@ -54,9 +54,9 @@ begin
   Service.DeletarPeca(aId);
 end;
 
-procedure TPecaController.EditarPeca(PecaDTO: TPecaDTO);
+procedure TPecaController.EditarPeca(Peca: TPeca);
 begin
-  Service.EditarPeca(PecaDTO);
+  Service.EditarPeca(Peca);
 end;
 
 function TPecaController.ListarPecas: TDataSet;
@@ -74,9 +74,9 @@ begin
   Service.RestaurarPeca(aId);
 end;
 
-function TPecaController.SalvarPeca(PecaDTO: TPecaDTO): Boolean;
+function TPecaController.SalvarPeca(Peca: TPeca): Boolean;
 begin
-  Result := Service.SalvarPeca(PecaDTO);
+  Result := Service.SalvarPeca(Peca);
 end;
 
 end.

@@ -679,8 +679,8 @@ object FormCadastroUsuarios: TFormCadastroUsuarios
                 AlignWithMargins = True
                 Left = 4
                 Top = 4
-                Width = 102
-                Height = 23
+                Width = 40
+                Height = 20
                 Margins.Right = 130
                 Align = alClient
                 Alignment = taCenter
@@ -694,8 +694,6 @@ object FormCadastroUsuarios: TFormCadastroUsuarios
                 ParentColor = False
                 ParentFont = False
                 OnClick = LblEnviarClick
-                ExplicitWidth = 40
-                ExplicitHeight = 20
               end
             end
             object PnlButtonAtualizar: TPanel
@@ -717,8 +715,8 @@ object FormCadastroUsuarios: TFormCadastroUsuarios
                 AlignWithMargins = True
                 Left = 3
                 Top = 3
-                Width = 101
-                Height = 25
+                Width = 59
+                Height = 20
                 Align = alClient
                 Alignment = taCenter
                 Caption = 'Atualizar'
@@ -731,8 +729,6 @@ object FormCadastroUsuarios: TFormCadastroUsuarios
                 ParentColor = False
                 ParentFont = False
                 OnClick = LblAtualizarClick
-                ExplicitWidth = 59
-                ExplicitHeight = 20
               end
             end
           end
@@ -1436,7 +1432,7 @@ object FormCadastroUsuarios: TFormCadastroUsuarios
             AlignWithMargins = True
             Left = 4
             Top = 11
-            Width = 840
+            Width = 109
             Height = 32
             Margins.Top = 10
             Align = alTop
@@ -1448,7 +1444,6 @@ object FormCadastroUsuarios: TFormCadastroUsuarios
             Font.Name = 'Segoe UI'
             Font.Style = [fsBold]
             ParentFont = False
-            ExplicitWidth = 109
           end
           object ImgFechar: TImage
             Left = 800

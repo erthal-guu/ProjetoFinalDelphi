@@ -3,23 +3,23 @@ unit UsuarioCadastrorepository;
 interface
 
 uses
-  uDMConexao, FireDAC.Comp.Client, System.SysUtils, uUsuarioDTO, Data.DB,Generics.Collections,System.Classes;
+  uDMConexao, FireDAC.Comp.Client, System.SysUtils, uUsuario, Data.DB,Generics.Collections,System.Classes;
 
 type
   TCadastroRepository = class
   private
     FQuery: TFDQuery;
   public
-    procedure inserirUsuario(aUsuario : TUsuarioDTO);
+    procedure inserirUsuario(aUsuario : TUsuario);
     constructor Create(Query : TFDQuery);
-    function ExisteCPF(aUsuario : TUsuarioDTO): Boolean;
-    function EditarUsuario(aUsuario : TUsuarioDTO): Boolean;
+    function ExisteCPF(aUsuario : TUsuario): Boolean;
+    function EditarUsuario(aUsuario : TUsuario): Boolean;
     function ListarUsuarios : TDataSet;
     function ListarUsuariosRestaurar : TDataSet;
     procedure DeletarUsuarios(const aID: Integer);
     procedure RestaurarUsuarios(const aID: Integer);
     function PesquisarUsuarios(const aFiltro : String): TDataSet;
-    function EditarUsuarioComSenha(aUsuario : TUsuarioDTO):Boolean;
+    function EditarUsuarioComSenha(aUsuario : TUsuario):Boolean;
     function CarregarGrupos :TStringList;
   end;
 
@@ -79,7 +79,7 @@ begin
   FQuery := Query;
 end;
 
-procedure TCadastroRepository.inserirUsuario(aUsuario : TUsuarioDTO);
+procedure TCadastroRepository.inserirUsuario(aUsuario : TUsuario);
 begin
   FQuery.Close;
   FQuery.SQL.Clear;
@@ -131,7 +131,7 @@ begin
   FQuery.ExecSQL;
 end;
 
-function TCadastroRepository.EditarUsuario(aUsuario: TUsuarioDTO): Boolean;
+function TCadastroRepository.EditarUsuario(aUsuario: TUsuario): Boolean;
 begin
   Result := False;
   try
@@ -153,7 +153,7 @@ begin
       raise Exception.Create('Erro ao editar usuário: ' + E.Message);
   end;
 end;
-function TCadastroRepository.EditarUsuarioComSenha(aUsuario: TUsuarioDTO): Boolean;
+function TCadastroRepository.EditarUsuarioComSenha(aUsuario: TUsuario): Boolean;
 begin
   Result := False;
   try
@@ -175,7 +175,7 @@ begin
   end;
 end;
 
-function TCadastroRepository.ExisteCPF(aUsuario : TUsuarioDTO): Boolean;
+function TCadastroRepository.ExisteCPF(aUsuario : TUsuario): Boolean;
 begin
   FQuery.Close;
   FQuery.SQL.Clear;

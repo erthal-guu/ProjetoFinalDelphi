@@ -6,7 +6,7 @@ uses
   Winapi.Windows, Winapi.Messages, System.SysUtils, System.Variants, System.Classes,
   Vcl.Graphics, Vcl.Controls, Vcl.Forms, Vcl.Dialogs, Data.DB, Vcl.WinXCtrls, Vcl.Grids,
   Vcl.DBGrids, Vcl.Buttons, Vcl.Mask, Vcl.StdCtrls, Vcl.Imaging.pngimage, Vcl.ExtCtrls,
-  Vcl.ComCtrls, FuncionarioCadastroService, FuncionarioCadastroController, uFuncionarioDTO;
+  Vcl.ComCtrls, FuncionarioCadastroService, FuncionarioCadastroController, uFuncionario;
 
 type
   TFormCadastroFuncionarios = class(TForm)
@@ -352,20 +352,20 @@ end;
 procedure TFormCadastroFuncionarios.LblEnviarClick(Sender: TObject);
 var
   FuncionarioController: TFuncionarioController;
-  FuncionarioDTO: TFuncionarioDTO;
+  Funcionario: TFuncionario;
 begin
   if ValidarCampos then
   begin
     FuncionarioController := TFuncionarioController.Create;
     try
-      FuncionarioDTO := FuncionarioController.CriarObjeto(
+      Funcionario := FuncionarioController.CriarObjeto(
         EdtNome.Text, EdtCPF.Text, EdtRG.Text, EdtDataNascimento.Text,
         EdtTelefone.Text, EdtCEP.Text, EdtRua.Text, EdtNumero.Text,
         EdtBairro.Text, EdtCidade.Text, EdtEstado.Text, CmbStatus.ItemIndex = 0);
-      FuncionarioController.SalvarFuncionario(FuncionarioDTO);
+      FuncionarioController.SalvarFuncionario(Funcionario);
       LimparCampos;
       CarregarGrid;
-      FuncionarioDTO.Free;
+      Funcionario.Free;
     finally
       FuncionarioController.Free;
     end;
@@ -375,7 +375,7 @@ end;
 procedure TFormCadastroFuncionarios.EditarFuncionarios;
 var
   FuncionarioController: TFuncionarioController;
-  FuncionarioDTO: TFuncionarioDTO;
+  Funcionario: TFuncionario;
   IdFuncionario: Integer;
 begin
   if DataSourceMain.DataSet.IsEmpty then
@@ -386,27 +386,27 @@ begin
   IdFuncionario := DBGridMain.DataSource.DataSet.FieldByName('id').AsInteger;
   FuncionarioController := TFuncionarioController.Create;
   try
-    FuncionarioDTO := TFuncionarioDTO.Create;
+    Funcionario := TFuncionario.Create;
     try
       ValidarCampos;
-      FuncionarioDTO.setIdFuncionario(IdFuncionario);
-      FuncionarioDTO.setNome(EdtNome.Text);
-      FuncionarioDTO.setCPF(EdtCPF.Text);
-      FuncionarioDTO.setRG(EdtRG.Text);
-      FuncionarioDTO.setNascimento(EdtDataNascimento.Text);
-      FuncionarioDTO.setTelefone(EdtTelefone.Text);
-      FuncionarioDTO.setCEP(EdtCEP.Text);
-      FuncionarioDTO.setRua(EdtRua.Text);
-      FuncionarioDTO.setNumero(EdtNumero.Text);
-      FuncionarioDTO.setBairro(EdtBairro.Text);
-      FuncionarioDTO.setCidade(EdtCidade.Text);
-      FuncionarioDTO.setEstado(EdtEstado.Text);
-      FuncionarioDTO.setAtivo(CmbStatus.ItemIndex = 0);
-      FuncionarioController.EditarFuncionario(FuncionarioDTO);
+      Funcionario.setIdFuncionario(IdFuncionario);
+      Funcionario.setNome(EdtNome.Text);
+      Funcionario.setCPF(EdtCPF.Text);
+      Funcionario.setRG(EdtRG.Text);
+      Funcionario.setNascimento(EdtDataNascimento.Text);
+      Funcionario.setTelefone(EdtTelefone.Text);
+      Funcionario.setCEP(EdtCEP.Text);
+      Funcionario.setRua(EdtRua.Text);
+      Funcionario.setNumero(EdtNumero.Text);
+      Funcionario.setBairro(EdtBairro.Text);
+      Funcionario.setCidade(EdtCidade.Text);
+      Funcionario.setEstado(EdtEstado.Text);
+      Funcionario.setAtivo(CmbStatus.ItemIndex = 0);
+      FuncionarioController.EditarFuncionario(Funcionario);
       CarregarGrid;
       LimparCampos;
     finally
-      FuncionarioDTO.Free;
+      Funcionario.Free;
     end;
   finally
     FuncionarioController.Free;

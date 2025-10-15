@@ -6,7 +6,7 @@ uses
   Winapi.Windows, Winapi.Messages, System.SysUtils, System.Variants,
   System.Classes, Vcl.Graphics,
   Vcl.Controls, Vcl.Forms, Vcl.Dialogs, Vcl.StdCtrls, Vcl.ExtCtrls,
-  Vcl.Imaging.pngimage, Vcl.Mask, Vcl.Imaging.jpeg, uUsuarioDTO,
+  Vcl.Imaging.pngimage, Vcl.Mask, Vcl.Imaging.jpeg, uUsuario,
   UsuarioLoginController, uMainController;
 
 type
@@ -79,12 +79,12 @@ end;
 procedure TFormLogin.PnlButtonClick(Sender: TObject);
 var
   Controller: TUsuarioController;
-  UsuarioDTO: TUsuarioDTO;
+  Usuario: TUsuario;
 begin
   try
     Controller := TUsuarioController.Create;
-    UsuarioDTO := Controller.CriarObjeto(EdtCPF.Text, EdtSenha.Text);
-    if ValidarCampos and Controller.ValidarLogin(UsuarioDTO) then begin
+    Usuario := Controller.CriarObjeto(EdtCPF.Text, EdtSenha.Text);
+    if ValidarCampos and Controller.ValidarLogin(Usuario) then begin
       MainController.showHome;
       LimparCampos;
     end else begin

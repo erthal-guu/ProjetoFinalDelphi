@@ -3,7 +3,7 @@ unit FuncionarioCadastroController;
 interface
 
 uses
-  uFuncionarioDTO, FuncionarioCadastroService, FireDAC.Comp.Client, Vcl.Dialogs, Data.DB;
+  uFuncionario, FuncionarioCadastroService, FireDAC.Comp.Client, Vcl.Dialogs, Data.DB;
 
 type
   TFuncionarioController = class
@@ -12,10 +12,10 @@ type
   public
     constructor Create;
     destructor Destroy; override;
-    function SalvarFuncionario(FuncionarioDTO: TFuncionarioDTO): Boolean;
-    procedure EditarFuncionario(FuncionarioDTO: TFuncionarioDTO);
+    function SalvarFuncionario(Funcionario: TFuncionario): Boolean;
+    procedure EditarFuncionario(Funcionario: TFuncionario);
     function ListarFuncionarios: TDataSet;
-    function CriarObjeto(aNome, aCPF, aRG, aNascimento, aTelefone, aCEP, aRua, aNumero,aBairro, aCidade, aEstado: String; aAtivo: Boolean): TFuncionarioDTO;
+    function CriarObjeto(aNome, aCPF, aRG, aNascimento, aTelefone, aCEP, aRua, aNumero,aBairro, aCidade, aEstado: String; aAtivo: Boolean): TFuncionario;
     procedure DeletarFuncionario(const aId: Integer);
     procedure RestaurarFuncionario(const aId: Integer);
     function PesquisarFuncionarios(const aFiltro: String): TDataSet;
@@ -37,9 +37,9 @@ end;
 
 function TFuncionarioController.CriarObjeto(
   aNome, aCPF, aRG, aNascimento, aTelefone, aCEP, aRua, aNumero,
-  aBairro, aCidade, aEstado: String; aAtivo: Boolean): TFuncionarioDTO;
+  aBairro, aCidade, aEstado: String; aAtivo: Boolean): TFuncionario;
 begin
-  Result := TFuncionarioDTO.Create;
+  Result := TFuncionario.Create;
   Result.setNome(aNome);
   Result.setCPF(aCPF);
   Result.setRG(aRG);
@@ -59,9 +59,9 @@ begin
   Service.DeletarFuncionario(aId);
 end;
 
-procedure TFuncionarioController.EditarFuncionario(FuncionarioDTO: TFuncionarioDTO);
+procedure TFuncionarioController.EditarFuncionario(Funcionario: TFuncionario);
 begin
-  Service.EditarFuncionario(FuncionarioDTO);
+  Service.EditarFuncionario(Funcionario);
 end;
 
 function TFuncionarioController.ListarFuncionarios: TDataSet;
@@ -79,9 +79,9 @@ begin
   Service.RestaurarFuncionario(aId);
 end;
 
-function TFuncionarioController.SalvarFuncionario(FuncionarioDTO: TFuncionarioDTO): Boolean;
+function TFuncionarioController.SalvarFuncionario(Funcionario: TFuncionario): Boolean;
 begin
-  Result := Service.SalvarFuncionario(FuncionarioDTO);
+  Result := Service.SalvarFuncionario(Funcionario);
 end;
 
 end.

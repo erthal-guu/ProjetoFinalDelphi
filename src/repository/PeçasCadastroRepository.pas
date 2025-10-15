@@ -3,7 +3,7 @@ unit PeçasCadastroRepository;
 interface
 
 uses
-  uDMConexao, FireDAC.Comp.Client, System.SysUtils, uPeçasDTO, Data.DB;
+  uDMConexao, FireDAC.Comp.Client, System.SysUtils, uPeças, Data.DB;
 
 type
   TPecaRepository = class
@@ -11,9 +11,9 @@ type
     FQuery: TFDQuery;
   public
     constructor Create(Query: TFDQuery);
-    procedure InserirPeca(aPeca: TPecaDTO);
-    function ExisteCodigoInterno(aPeca: TPecaDTO): Boolean;
-    function EditarPeca(aPeca: TPecaDTO): Boolean;
+    procedure InserirPeca(aPeca: TPeca);
+    function ExisteCodigoInterno(aPeca: TPeca): Boolean;
+    function EditarPeca(aPeca: TPeca): Boolean;
     function ListarPecas: TDataSet;
     function ListarPecasRestaurar: TDataSet;
     procedure DeletarPeca(const aID: Integer);
@@ -29,7 +29,7 @@ begin
   FQuery := Query;
 end;
 
-procedure TPecaRepository.InserirPeca(aPeca: TPecaDTO);
+procedure TPecaRepository.InserirPeca(aPeca: TPeca);
 begin
   FQuery.Close;
   FQuery.SQL.Clear;
@@ -46,7 +46,7 @@ begin
   FQuery.ExecSQL;
 end;
 
-function TPecaRepository.ExisteCodigoInterno(aPeca: TPecaDTO): Boolean;
+function TPecaRepository.ExisteCodigoInterno(aPeca: TPeca): Boolean;
 begin
   FQuery.Close;
   FQuery.SQL.Clear;
@@ -56,7 +56,7 @@ begin
   Result := FQuery.FieldByName('Total').AsInteger > 0;
 end;
 
-function TPecaRepository.EditarPeca(aPeca: TPecaDTO): Boolean;
+function TPecaRepository.EditarPeca(aPeca: TPeca): Boolean;
 begin
   Result := False;
   try

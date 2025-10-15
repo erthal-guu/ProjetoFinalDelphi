@@ -3,30 +3,30 @@ unit LoginUsuarioService;
 interface
 
 uses
-  uUsuarioDTO,UsuarioLoginRepository,uDMConexao,Vcl.Dialogs,uUsuarioModel,BCrypt;
+  uUsuario,UsuarioLoginRepository,uDMConexao,Vcl.Dialogs,BCrypt;
 
 type TUsuarioLoginService = class
 public
-  function ValidarLogin(UsuarioDTO : TUsuarioDTO): Boolean;
-  function CriarObjeto( aCPF, aSenha: String) : TUsuarioDTO;
-  function ValidarUsuarioDTO(UsuarioValido: TUsuarioDTO): Boolean;
+  function ValidarLogin(Usuario : TUsuario): Boolean;
+  function CriarObjeto( aCPF, aSenha: String) : TUsuario;
+  function ValidarUsuario(UsuarioValido: TUsuario): Boolean;
 end;
 
 implementation
 
 { TUsuarioLoginController }
 
-function TUsuarioLoginService.CriarObjeto(aCPF, aSenha: String): TUsuarioDTO;
-var UsuarioDTO : TUsuarioDTO;
+function TUsuarioLoginService.CriarObjeto(aCPF, aSenha: String): TUsuario;
+var Usuario : TUsuario;
 begin
-  UsuarioDTO := TUsuarioDTO.Create;
-  UsuarioDTO.setCPF(aCPF);
-  UsuarioDTO.setSenha(aSenha);
-  Result := UsuarioDTO;
+  Usuario := TUsuario.Create;
+  Usuario.setCPF(aCPF);
+  Usuario.setSenha(aSenha);
+  Result := Usuario;
 end;
 
 
-function TUsuarioLoginService.ValidarLogin(UsuarioDTO: TUsuarioDTO): Boolean;
+function TUsuarioLoginService.ValidarLogin(Usuario: TUsuario): Boolean;
 var
   Repository: TLoginRepository;
   Repo: TUsuario;
@@ -34,15 +34,15 @@ var
 begin
   Result := False;
 
-  if UsuarioDTO.getSenha <> '' then
+  if Usuario.getSenha <> '' then
   begin
     Repository := TLoginRepository.Create(DataModule1.FDQuery);
     try
-      Repo := Repository.SelectUsuario(UsuarioDTO);
+      Repo := Repository.SelectUsuario(Usuario);
 
       if Repo <> nil then
       begin
-        Result := TBCrypt.CheckPassword(UsuarioDTO.getSenha(),repo.getSenha(),PasswordRehashNeeded);
+        Result := TBCrypt.CheckPassword(Usuario.getSenha(),repo.getSenha(),PasswordRehashNeeded);
       end;
     finally
       Repository.Free;
@@ -50,7 +50,7 @@ begin
   end;
 end;
 
-function TUsuarioLoginService.ValidarUsuarioDTO(UsuarioValido: TUsuarioDTO): Boolean;
+function TUsuarioLoginService.ValidarUsuario(UsuarioValido: TUsuario): Boolean;
 begin
 Result := (UsuarioValido.getNome <> '') and
             (UsuarioValido.getCPF <> '') and

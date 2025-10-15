@@ -3,7 +3,7 @@ unit FornecedorCadastroRepository;
 interface
 
 uses
-  uDMConexao, FireDAC.Comp.Client, System.SysUtils, uFornecedorDTO, Data.DB;
+  uDMConexao, FireDAC.Comp.Client, System.SysUtils, uFornecedor, Data.DB;
 
 type
   TFornecedorRepository = class
@@ -11,9 +11,9 @@ type
     FQuery: TFDQuery;
   public
     constructor Create(Query: TFDQuery);
-    procedure InserirFornecedor(aFornecedor: TFornecedorDTO);
-    function ExisteCNPJ(aFornecedor: TFornecedorDTO): Boolean;
-    function EditarFornecedor(aFornecedor: TFornecedorDTO): Boolean;
+    procedure InserirFornecedor(aFornecedor: TFornecedor);
+    function ExisteCNPJ(aFornecedor: TFornecedor): Boolean;
+    function EditarFornecedor(aFornecedor: TFornecedor): Boolean;
     function ListarFornecedores: TDataSet;
     function ListarFornecedoresRestaurar: TDataSet;
     procedure DeletarFornecedor(const aID: Integer);
@@ -29,7 +29,7 @@ begin
   FQuery := Query;
 end;
 
-procedure TFornecedorRepository.InserirFornecedor(aFornecedor: TFornecedorDTO);
+procedure TFornecedorRepository.InserirFornecedor(aFornecedor: TFornecedor);
 begin
   FQuery.Close;
   FQuery.SQL.Clear;
@@ -50,7 +50,7 @@ begin
   FQuery.ExecSQL;
 end;
 
-function TFornecedorRepository.ExisteCNPJ(aFornecedor: TFornecedorDTO): Boolean;
+function TFornecedorRepository.ExisteCNPJ(aFornecedor: TFornecedor): Boolean;
 begin
   FQuery.Close;
   FQuery.SQL.Clear;
@@ -60,7 +60,7 @@ begin
   Result := FQuery.FieldByName('Total').AsInteger > 0;
 end;
 
-function TFornecedorRepository.EditarFornecedor(aFornecedor: TFornecedorDTO): Boolean;
+function TFornecedorRepository.EditarFornecedor(aFornecedor: TFornecedor): Boolean;
 begin
   Result := False;
   try

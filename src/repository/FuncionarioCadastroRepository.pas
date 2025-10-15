@@ -3,7 +3,7 @@ unit FuncionarioCadastroRepository;
 interface
 
 uses
-  uDMConexao, FireDAC.Comp.Client, System.SysUtils, uFuncionarioDTO, Data.DB;
+  uDMConexao, FireDAC.Comp.Client, System.SysUtils, uFuncionario, Data.DB;
 
 type
   TFuncionarioRepository = class
@@ -11,9 +11,9 @@ type
     FQuery: TFDQuery;
   public
     constructor Create(Query: TFDQuery);
-    procedure InserirFuncionario(aFuncionario: TFuncionarioDTO);
-    function ExisteCPF(aFuncionario: TFuncionarioDTO): Boolean;
-    function EditarFuncionario(aFuncionario: TFuncionarioDTO): Boolean;
+    procedure InserirFuncionario(aFuncionario: TFuncionario);
+    function ExisteCPF(aFuncionario: TFuncionario): Boolean;
+    function EditarFuncionario(aFuncionario: TFuncionario): Boolean;
     function ListarFuncionarios: TDataSet;
     function ListarFuncionariosRestaurar: TDataSet;
     procedure DeletarFuncionario(const aID: Integer);
@@ -47,7 +47,7 @@ begin
   FQuery.ExecSQL;
 end;
 
-function TFuncionarioRepository.EditarFuncionario(aFuncionario: TFuncionarioDTO): Boolean;
+function TFuncionarioRepository.EditarFuncionario(aFuncionario: TFuncionario): Boolean;
 begin
   Result := False;
   try
@@ -79,7 +79,7 @@ begin
   end;
 end;
 
-procedure TFuncionarioRepository.InserirFuncionario(aFuncionario: TFuncionarioDTO);
+procedure TFuncionarioRepository.InserirFuncionario(aFuncionario: TFuncionario);
 begin
   FQuery.Close;
   FQuery.SQL.Clear;
@@ -101,7 +101,7 @@ begin
   FQuery.ExecSQL;
 end;
 
-function TFuncionarioRepository.ExisteCPF(aFuncionario: TFuncionarioDTO): Boolean;
+function TFuncionarioRepository.ExisteCPF(aFuncionario: TFuncionario): Boolean;
 begin
   FQuery.Close;
   FQuery.SQL.Clear;

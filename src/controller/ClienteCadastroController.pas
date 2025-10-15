@@ -1,16 +1,16 @@
 unit ClienteCadastroController;
 
 interface
-uses uClienteDTO, ClienteCadastroService, FireDAC.Comp.Client, Vcl.Dialogs,Data.DB;
+uses uCliente, ClienteCadastroService, FireDAC.Comp.Client, Vcl.Dialogs,Data.DB;
 
 type TClienteController = class
   Service : TClienteService;
     constructor Create;
-      function SalvarClientes(ClienteDTO: TClienteDTO): Boolean;
-      procedure EditarClientes(ClienteDTO: TClienteDTO);
+      function SalvarClientes(Cliente: TCliente): Boolean;
+      procedure EditarClientes(Cliente: TCliente);
       function ListarClientes: TDataSet;
       function CriarObjeto(aNome,aCPF, aEmail,aTelefone,
-  aNascimento,aEndereco : String; aAtivo: Boolean): TClienteDTO;
+  aNascimento,aEndereco : String; aAtivo: Boolean): TCliente;
       procedure DeletarClientes(const aId :Integer);
       procedure RestaurarClientes(const aId :Integer);
       Function PesquisarClientes(const aFiltro:String):TDataset;
@@ -25,9 +25,9 @@ Self.Service := TClienteService.create;
 end;
 
 function TClienteController.CriarObjeto(aNome,aCPF, aEmail,aTelefone,
-  aNascimento,aEndereco : String; aAtivo: Boolean): TClienteDTO;
+  aNascimento,aEndereco : String; aAtivo: Boolean): TCliente;
 begin
-  Result := TClienteDTO.Create;
+  Result := TCliente.Create;
   Result.setNome(aNome);
   Result.setCPF(aCPF);
   Result.setEmail(aEmail);
@@ -42,9 +42,9 @@ begin
   Service.DeletarClientes(aId);
 end;
 
-procedure TClienteController.EditarClientes(ClienteDTO: TClienteDTO);
+procedure TClienteController.EditarClientes(Cliente: TCliente);
 begin
-  Service.EditarClientes(ClienteDTO);
+  Service.EditarClientes(Cliente);
 end;
 
 function TClienteController.ListarClientes: TDataSet;
@@ -62,8 +62,8 @@ begin
   Service.RestaurarClientes(aId);
 end;
 
-function TClienteController.SalvarClientes(ClienteDTO: TClienteDTO): Boolean;
+function TClienteController.SalvarClientes(Cliente: TCliente): Boolean;
 begin
-  Service.SalvarClientes(ClienteDTO);
+  Service.SalvarClientes(Cliente);
 end;
 end.

@@ -6,7 +6,7 @@ uses
   Winapi.Windows, Winapi.Messages, System.SysUtils, System.Variants, System.Classes,
   Vcl.Graphics, Vcl.Controls, Vcl.Forms, Vcl.Dialogs, Data.DB, Vcl.WinXCtrls,
   Vcl.Grids, Vcl.DBGrids, Vcl.Buttons, Vcl.Mask, Vcl.StdCtrls, Vcl.Imaging.pngimage,
-  Vcl.ExtCtrls, Vcl.ComCtrls, FornecedorCadastroService, FornecedorCadastroController, uFornecedorDTO;
+  Vcl.ExtCtrls, Vcl.ComCtrls, FornecedorCadastroService, FornecedorCadastroController, uFornecedor;
 
 type
   TFormCadastroFornecedores = class(TForm)
@@ -289,7 +289,7 @@ end;
 procedure TFormCadastroFornecedores.LblEnviarClick(Sender: TObject);
 var
   FornecedorController: TFornecedorController;
-  FornecedorDTO: TFornecedorDTO;
+  FornecedorDTO: TFornecedor;
 begin
   if ValidarCampos then
   begin
@@ -312,7 +312,7 @@ end;
 procedure TFormCadastroFornecedores.EditarFornecedores;
 var
   FornecedorController: TFornecedorController;
-  FornecedorDTO: TFornecedorDTO;
+  Fornecedor: TFornecedor;
   IdFornecedor: Integer;
 begin
   if DataSourceMain.DataSet.IsEmpty then
@@ -323,26 +323,26 @@ begin
   IdFornecedor := DBGridMain.DataSource.DataSet.FieldByName('id').AsInteger;
   FornecedorController := TFornecedorController.Create;
   try
-    FornecedorDTO := TFornecedorDTO.Create;
+    Fornecedor := TFornecedor.Create;
     try
       ValidarCampos;
-      FornecedorDTO.setIdFornecedor(IdFornecedor);
-      FornecedorDTO.setNome(EdtNome.Text);
-      FornecedorDTO.setRazaoSocial(EdtRazaoSocial.Text);
-      FornecedorDTO.setCNPJ(EdtCNPJ.Text);
-      FornecedorDTO.setTelefone(EdtTelefone.Text);
-      FornecedorDTO.setCEP(EdtCEP.Text);
-      FornecedorDTO.setRua(EdtRua.Text);
-      FornecedorDTO.setNumero(EdtNumero.Text);
-      FornecedorDTO.setBairro(EdtBairro.Text);
-      FornecedorDTO.setCidade(EdtCidade.Text);
-      FornecedorDTO.setEstado(EdtEstado.Text);
-      FornecedorDTO.setAtivo(CmbStatus.ItemIndex = 0);
-      FornecedorController.EditarFornecedor(FornecedorDTO);
+      Fornecedor.setIdFornecedor(IdFornecedor);
+      Fornecedor.setNome(EdtNome.Text);
+      Fornecedor.setRazaoSocial(EdtRazaoSocial.Text);
+      Fornecedor.setCNPJ(EdtCNPJ.Text);
+      Fornecedor.setTelefone(EdtTelefone.Text);
+      Fornecedor.setCEP(EdtCEP.Text);
+      Fornecedor.setRua(EdtRua.Text);
+      Fornecedor.setNumero(EdtNumero.Text);
+      Fornecedor.setBairro(EdtBairro.Text);
+      Fornecedor.setCidade(EdtCidade.Text);
+      Fornecedor.setEstado(EdtEstado.Text);
+      Fornecedor.setAtivo(CmbStatus.ItemIndex = 0);
+      FornecedorController.EditarFornecedor(Fornecedor);
       CarregarGrid;
       LimparCampos;
     finally
-      FornecedorDTO.Free;
+      Fornecedor.Free;
     end;
   finally
     FornecedorController.Free;

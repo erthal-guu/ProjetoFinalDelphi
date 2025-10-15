@@ -6,7 +6,7 @@
     Winapi.Windows, Winapi.Messages, System.SysUtils, System.Variants, System.Classes, Vcl.Graphics,
     Vcl.Controls, Vcl.Forms, Vcl.Dialogs, Data.DB, Vcl.WinXCtrls, Vcl.Grids,
     Vcl.DBGrids, Vcl.Buttons, Vcl.Mask, Vcl.StdCtrls, Vcl.Imaging.pngimage,
-    Vcl.ExtCtrls, Vcl.ComCtrls,ClienteCadastroService,ClienteCadastroController,uClienteDTO;
+    Vcl.ExtCtrls, Vcl.ComCtrls,ClienteCadastroService,ClienteCadastroController,uCliente;
 
   type
     TFormCadastroClientes = class(TForm)
@@ -262,7 +262,7 @@ procedure TFormCadastroClientes.CarregarGrid;
   procedure TFormCadastroClientes.EditarClientes;
   var
     ClienteController : TClienteController;
-    ClienteDTO : TClienteDTO;
+    Cliente : TCliente;
     IdCliente  : Integer;
   begin
     if DataSourceClientes.DataSet.IsEmpty then
@@ -275,22 +275,22 @@ procedure TFormCadastroClientes.CarregarGrid;
 
     ClienteController := TClienteController.Create;
     try
-      ClienteDTO := TClienteDTO.Create;
+      Cliente := TCliente.Create;
       try
         ValidarCampos;
-        ClienteDTO.setIdCliente(IdCliente);
-        ClienteDTO.SetNome(EdtNome.Text);
-        ClienteDTO.SetCPF(EdtCPF.Text);
-        ClienteDTO.SetEmail(EdtEmail.Text);
-        ClienteDTO.SetTelefone(EdtTelefone.Text);
-        ClienteDTO.SetNascimento(EdtDataNascimento.Text);
-        ClienteDTO.SetEndereco(EdtEndereço.Text);
-        ClienteDTO.setAtivo(CmbStatus.ItemIndex = 0);
-        ClienteController.EditarClientes(ClienteDTO);
+        Cliente.setIdCliente(IdCliente);
+        Cliente.SetNome(EdtNome.Text);
+        Cliente.SetCPF(EdtCPF.Text);
+        Cliente.SetEmail(EdtEmail.Text);
+        Cliente.SetTelefone(EdtTelefone.Text);
+        Cliente.SetNascimento(EdtDataNascimento.Text);
+        Cliente.SetEndereco(EdtEndereço.Text);
+        Cliente.setAtivo(CmbStatus.ItemIndex = 0);
+        ClienteController.EditarClientes(Cliente);
         CarregarGrid;
         LimparCampos;
       finally
-        ClienteDTO.Free;
+        Cliente.Free;
       end;
     finally
       ClienteController.Free;
@@ -370,13 +370,13 @@ procedure TFormCadastroClientes.FormCreate(Sender: TObject);
   procedure TFormCadastroClientes.LblEnviarClick(Sender: TObject);
   var
     ClienteController: TClienteController;
-    ClienteDTO: TClienteDTO;
+    Cliente: TCliente;
   begin
     if ValidarCampos then begin
     ClienteController := TClienteController.Create;
     try
-      ClienteDTO := ClienteController.CriarObjeto(EdtNome.Text,EdtCPF.Text,EdtEmail.Text,EdtTelefone.Text,EdtDataNascimento.Text,EdtEndereço.Text,CmbStatus.ItemIndex = 0);
-    ClienteController.SalvarClientes(ClienteDTO);
+      Cliente := ClienteController.CriarObjeto(EdtNome.Text,EdtCPF.Text,EdtEmail.Text,EdtTelefone.Text,EdtDataNascimento.Text,EdtEndereço.Text,CmbStatus.ItemIndex = 0);
+    ClienteController.SalvarClientes(Cliente);
     LimparCampos;
     CarregarGrid;
     finally

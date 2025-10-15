@@ -1,35 +1,35 @@
   unit UsuarioLoginController;
 
   interface
-  uses  uUsuarioDTO,UsuarioLoginRepository,uDMConexao,LoginUsuarioService,
+  uses  uUsuario,UsuarioLoginRepository,uDMConexao,LoginUsuarioService,
   Vcl.Dialogs;
 
 
   type TUsuarioController = class
     public
       Service : TUsuarioLoginService;
-      Function ValidarLogin(UsuarioDTO : TUsuarioDTO): Boolean;
-      function CriarObjeto( aCPF, aSenha: String) : TUsuarioDTO;
-      function ValidarUsuarioDTO(UsuarioValido: TUsuarioDTO): Boolean;
+      Function ValidarLogin(Usuario : TUsuario): Boolean;
+      function CriarObjeto( aCPF, aSenha: String) : TUsuario;
+      function ValidarUsuario(UsuarioValido: TUsuario): Boolean;
     end;
 
   implementation
 
   { TUsuarioController }
 
-function TUsuarioController.CriarObjeto(aCPF, aSenha: String): TUsuarioDTO;
+function TUsuarioController.CriarObjeto(aCPF, aSenha: String): TUsuario;
   begin
      Result := Service.CriarObjeto(aCPF,aSenha);
   end;
 
-function TUsuarioController.ValidarLogin(UsuarioDTO: TUsuarioDTO):Boolean;
+function TUsuarioController.ValidarLogin(Usuario: TUsuario):Boolean;
   begin
-    Result := Service.ValidarLogin(UsuarioDTO);
+    Result := Service.ValidarLogin(Usuario);
   end;
 
-function TUsuarioController.ValidarUsuarioDTO(UsuarioValido: TUsuarioDTO): Boolean;
+function TUsuarioController.ValidarUsuario(UsuarioValido: TUsuario): Boolean;
 begin
-  Service.ValidarUsuarioDTO(UsuarioValido);
+  Service.ValidarUsuario(UsuarioValido);
 end;
   end.
 

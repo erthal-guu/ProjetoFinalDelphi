@@ -3,7 +3,7 @@ unit FornecedorCadastroController;
 interface
 
 uses
-  uFornecedorDTO, FornecedorCadastroService, FireDAC.Comp.Client, Data.DB;
+  uFornecedor, FornecedorCadastroService, FireDAC.Comp.Client, Data.DB;
 
 type
   TFornecedorController = class
@@ -12,13 +12,13 @@ type
   public
     constructor Create;
     destructor Destroy; override;
-    function SalvarFornecedor(FornecedorDTO: TFornecedorDTO): Boolean;
-    procedure EditarFornecedor(FornecedorDTO: TFornecedorDTO);
+    function SalvarFornecedor(Fornecedor: TFornecedor): Boolean;
+    procedure EditarFornecedor(Fornecedor: TFornecedor);
     function ListarFornecedores: TDataSet;
     function CriarObjeto(
       aNome, aRazaoSocial, aCNPJ, aTelefone, aCEP, aRua, aNumero,
       aBairro, aCidade, aEstado: String; aAtivo: Boolean
-    ): TFornecedorDTO;
+    ): TFornecedor;
     procedure DeletarFornecedor(const aId: Integer);
     procedure RestaurarFornecedor(const aId: Integer);
     function PesquisarFornecedores(const aFiltro: String): TDataSet;
@@ -41,9 +41,9 @@ end;
 function TFornecedorController.CriarObjeto(
   aNome, aRazaoSocial, aCNPJ, aTelefone, aCEP, aRua, aNumero,
   aBairro, aCidade, aEstado: String; aAtivo: Boolean
-): TFornecedorDTO;
+): TFornecedor;
 begin
-  Result := TFornecedorDTO.Create;
+  Result := TFornecedor.Create;
   Result.setNome(aNome);
   Result.setRazaoSocial(aRazaoSocial);
   Result.setCNPJ(aCNPJ);
@@ -62,9 +62,9 @@ begin
   Service.DeletarFornecedor(aId);
 end;
 
-procedure TFornecedorController.EditarFornecedor(FornecedorDTO: TFornecedorDTO);
+procedure TFornecedorController.EditarFornecedor(Fornecedor: TFornecedor);
 begin
-  Service.EditarFornecedor(FornecedorDTO);
+  Service.EditarFornecedor(Fornecedor);
 end;
 
 function TFornecedorController.ListarFornecedores: TDataSet;
@@ -82,9 +82,9 @@ begin
   Service.RestaurarFornecedor(aId);
 end;
 
-function TFornecedorController.SalvarFornecedor(FornecedorDTO: TFornecedorDTO): Boolean;
+function TFornecedorController.SalvarFornecedor(Fornecedor: TFornecedor): Boolean;
 begin
-  Result := Service.SalvarFornecedor(FornecedorDTO);
+  Result := Service.SalvarFornecedor(Fornecedor);
 end;
 
 end.

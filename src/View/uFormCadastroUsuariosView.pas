@@ -6,7 +6,7 @@ uses
   Winapi.Windows, Winapi.Messages, System.SysUtils, System.Variants, System.Classes, Vcl.Graphics,
   Vcl.Controls, Vcl.Forms, Vcl.Dialogs, Vcl.ExtCtrls, Data.DB, Vcl.Grids,
   Vcl.DBGrids, Vcl.ComCtrls, Vcl.Imaging.pngimage, Vcl.StdCtrls, Vcl.Buttons,
-  Vcl.WinXCtrls, UsuarioCadastroController, uUsuarioDTO, Vcl.Mask, uDMConexao,
+  Vcl.WinXCtrls, UsuarioCadastroController, uUsuario, Vcl.Mask, uDMConexao,
   FireDAC.Comp.Client, FireDAC.Stan.Def, FireDAC.Stan.Async, FireDAC.DApt,
   FireDAC.Stan.Param, FireDAC.DatS, FireDAC.DApt.Intf, FireDAC.Phys.PG,
   FireDAC.Phys.PGDef, FireDAC.UI.Intf, FireDAC.VCLUI.Wait,UsuarioCadastroService;
@@ -331,13 +331,13 @@ end;
 procedure TFormCadastroUsuarios.LblEnviarClick(Sender: TObject);
 var
   Controller: TUsuarioController;
-  UsuarioDTO: TUsuarioDTO;
+  Usuario: TUsuario;
 begin
   if ValidarCampos then begin
   Controller := TUsuarioController.Create;
   try
-    UsuarioDTO := Controller.CriarObjetoCRUD(EdtNome.Text,EdtCPF.Text,EdtSenha.Text,CmbGrupo.text,CmbStatus.ItemIndex = 0);
-  Controller.SalvarUsuarioCRUD(UsuarioDTO);
+    Usuario := Controller.CriarObjetoCRUD(EdtNome.Text,EdtCPF.Text,EdtSenha.Text,CmbGrupo.text,CmbStatus.ItemIndex = 0);
+  Controller.SalvarUsuarioCRUD(Usuario);
   LimparCampos;
   CarregarGrid;
   finally
@@ -392,7 +392,7 @@ end;
 function TFormCadastroUsuarios.ValidarCamposCRUD: Boolean;
 var
   Controller : TUsuarioController;
-  UsuarioDTO : TUsuarioDTO;
+  Usuario : TUsuario;
 begin
    if EdtNome.Text = '' then begin
     ShowMessage('O Campo de NOME não pode ficar Vazio');
@@ -406,8 +406,8 @@ begin
     if (EdtSenha.Text ='')  and (EdtConfirmarSenha.Text='') then begin
       try
         Controller := TUsuarioController.Create;
-        UsuarioDTO := TUsuarioDTO.Create;
-        Controller.EditarUsuarioComSenha(UsuarioDTO);
+        Usuario := TUsuario.Create;
+        Controller.EditarUsuarioComSenha(Usuario);
          CarregarGrid;
          LimparCampos;
          exit;
@@ -445,7 +445,7 @@ end;
 procedure TFormCadastroUsuarios.EditarUsuarios;
 var
   Controller : TUsuarioController;
-  UsuarioDTO : TUsuarioDTO;
+  Usuario : TUsuario;
   IdUsuario  : Integer;
 begin
   if DataSourceMain.DataSet.IsEmpty then
@@ -458,21 +458,21 @@ begin
 
   Controller := TUsuarioController.Create;
   try
-    UsuarioDTO := TUsuarioDTO.Create;
+    Usuario := TUsuario.Create;
     try
       ValidarCampos;
-      UsuarioDTO.SetId(IdUsuario);
-      UsuarioDTO.SetNome(EdtNome.Text);
-      UsuarioDTO.SetCPF(EdtCPF.Text);
-      UsuarioDTO.setSenha(EdtSenha.text);
-      UsuarioDTO.SetGrupo(CmbGrupo.Text);
-      UsuarioDTO.setAtivo(CmbStatus.ItemIndex = 0);
-      Controller.EditarUsuario(UsuarioDTO);
+      Usuario.SetId(IdUsuario);
+      Usuario.SetNome(EdtNome.Text);
+      Usuario.SetCPF(EdtCPF.Text);
+      Usuario.setSenha(EdtSenha.text);
+      Usuario.SetGrupo(CmbGrupo.Text);
+      Usuario.setAtivo(CmbStatus.ItemIndex = 0);
+      Controller.EditarUsuario(Usuario);
       CarregarGrid;
       LimparCampos;
 
     finally
-      UsuarioDTO.Free;
+      Usuario.Free;
     end;
   finally
     Controller.Free;

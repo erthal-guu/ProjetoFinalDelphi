@@ -1334,8 +1334,8 @@ object FormCadastroFuncionarios: TFormCadastroFuncionarios
                   AlignWithMargins = True
                   Left = 4
                   Top = 4
-                  Width = 212
-                  Height = 25
+                  Width = 40
+                  Height = 20
                   Align = alClient
                   Alignment = taCenter
                   Caption = 'Enviar'
@@ -1348,8 +1348,6 @@ object FormCadastroFuncionarios: TFormCadastroFuncionarios
                   ParentColor = False
                   ParentFont = False
                   OnClick = LblEnviarClick
-                  ExplicitWidth = 40
-                  ExplicitHeight = 20
                 end
               end
               object EdtCEP: TEdit
@@ -1490,8 +1488,8 @@ object FormCadastroFuncionarios: TFormCadastroFuncionarios
                   AlignWithMargins = True
                   Left = 4
                   Top = 4
-                  Width = 212
-                  Height = 25
+                  Width = 59
+                  Height = 20
                   Align = alClient
                   Alignment = taCenter
                   Caption = 'Atualizar'
@@ -1504,8 +1502,6 @@ object FormCadastroFuncionarios: TFormCadastroFuncionarios
                   ParentColor = False
                   ParentFont = False
                   OnClick = LblAtualizarClick
-                  ExplicitWidth = 59
-                  ExplicitHeight = 20
                 end
               end
             end
@@ -1571,7 +1567,7 @@ object FormCadastroFuncionarios: TFormCadastroFuncionarios
               AlignWithMargins = True
               Left = 4
               Top = 11
-              Width = 858
+              Width = 109
               Height = 32
               Margins.Top = 10
               Align = alTop
@@ -1583,7 +1579,6 @@ object FormCadastroFuncionarios: TFormCadastroFuncionarios
               Font.Name = 'Segoe UI'
               Font.Style = [fsBold]
               ParentFont = False
-              ExplicitWidth = 109
             end
             object ImgFechar: TImage
               Left = 800

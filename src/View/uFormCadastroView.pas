@@ -6,7 +6,7 @@ uses
   Winapi.Windows, Winapi.Messages, System.SysUtils, System.Variants,
   System.Classes, Vcl.Graphics,
   Vcl.Controls, Vcl.Forms, Vcl.Dialogs, Vcl.Mask, Vcl.StdCtrls,
-  Vcl.Imaging.pngimage, Vcl.ExtCtrls, uUsuarioDTO, UsuarioCadastroController,
+  Vcl.Imaging.pngimage, Vcl.ExtCtrls, uUsuario, UsuarioCadastroController,
   uMainController,uFormLoginView;
 
 type
@@ -77,14 +77,14 @@ end;
 procedure TFormCadastro.PnlButtonClick(Sender: TObject);
 var
   Controller: TUsuarioController;
-  UsuarioDTO: TUsuarioDTO;
+  Usuario: TUsuario;
 begin
   if ValidarCampos = True then begin
     Controller := TUsuarioController.Create;
     try
-      UsuarioDTO := Controller.CriarObjeto(EdtNome.Text, EdtCPF.Text,
+      Usuario := Controller.CriarObjeto(EdtNome.Text, EdtCPF.Text,
         EdtSenha.Text);
-        if Controller.SalvarUsuario(UsuarioDTO) then begin
+        if Controller.SalvarUsuario(Usuario) then begin
           LimparCampos;
         end else begin
           ShowMessage('Já existe um Usuário com esse CPF');

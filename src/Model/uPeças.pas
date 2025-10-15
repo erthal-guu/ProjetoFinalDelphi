@@ -1,9 +1,9 @@
-unit uPeçasDTO;
+unit uPeças;
 
 interface
 
 type
-  TPecaDTO = class
+  TPeca = class
   private
     IdPeca : Integer;
     Nome: String;
@@ -41,82 +41,82 @@ type
 
 implementation
 
-function TPecaDTO.getIdPeca: Integer;
+function TPeca.getIdPeca: Integer;
 begin
   Result := IdPeca;
 end;
 
-procedure TPecaDTO.setIdPeca(aId: Integer);
+procedure TPeca.setIdPeca(aId: Integer);
 begin
   IdPeca := aId;
 end;
 
-function TPecaDTO.getNome: String;
+function TPeca.getNome: String;
 begin
   Result := Nome;
 end;
 
-procedure TPecaDTO.setNome(aNome: String);
+procedure TPeca.setNome(aNome: String);
 begin
   Nome := aNome;
 end;
 
-function TPecaDTO.getDescricao: String;
+function TPeca.getDescricao: String;
 begin
   Result := Descricao;
 end;
 
-procedure TPecaDTO.setDescricao(aDescricao: String);
+procedure TPeca.setDescricao(aDescricao: String);
 begin
   Descricao := aDescricao;
 end;
 
-function TPecaDTO.getCodigoInterno: String;
+function TPeca.getCodigoInterno: String;
 begin
   Result := CodigoInterno;
 end;
 
-procedure TPecaDTO.setCodigoInterno(aCodigoInterno: String);
+procedure TPeca.setCodigoInterno(aCodigoInterno: String);
 begin
   CodigoInterno := aCodigoInterno;
 end;
 
-function TPecaDTO.getCategoria: String;
+function TPeca.getCategoria: String;
 begin
   Result := Categoria;
 end;
 
-procedure TPecaDTO.setCategoria(aCategoria: String);
+procedure TPeca.setCategoria(aCategoria: String);
 begin
   Categoria := aCategoria;
 end;
 
-function TPecaDTO.getUnidade: String;
+function TPeca.getUnidade: String;
 begin
   Result := Unidade;
 end;
 
-procedure TPecaDTO.setUnidade(aUnidade: String);
+procedure TPeca.setUnidade(aUnidade: String);
 begin
   Unidade := aUnidade;
 end;
 
-function TPecaDTO.getModelo: String;
+function TPeca.getModelo: String;
 begin
   Result := Modelo;
 end;
 
-procedure TPecaDTO.setModelo(aModelo: String);
+procedure TPeca.setModelo(aModelo: String);
 begin
   Modelo := aModelo;
 end;
 
-function TPecaDTO.getAtivo: Boolean;
+function TPeca.getAtivo: Boolean;
 begin
   Result := Ativo;
 end;
 
-procedure TPecaDTO.setAtivo(aAtivo: Boolean);
+procedure TPeca.setAtivo(aAtivo: Boolean);
 begin
   Ativo := aAtivo;
 end;

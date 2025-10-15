@@ -3,25 +3,25 @@ unit UsuarioCadastroService;
 interface
 
 uses
-  uUsuarioDTO, UsuarioCadastroRepository, uDMConexao, System.SysUtils,uMainController, FireDAC.Comp.Client,Data.DB,BCrypt,Vcl.Dialogs,System.Classes;
+  uUsuario, UsuarioCadastroRepository, uDMConexao, System.SysUtils,uMainController, FireDAC.Comp.Client,Data.DB,BCrypt,Vcl.Dialogs,System.Classes;
  type
   TUsuarioService = class
   private
     Repository: TCadastroRepository;
   public
     constructor create;
-    function SalvarUsuario(UsuarioDTO : TUsuarioDTO): Boolean;
-    function SalvarUsuarioCRUD(UsuarioDTO : TUsuarioDTO):Boolean;
-    function CriarObjeto(aNome, aCPF, aSenha: String) : TUsuarioDTO;
-    function CriarObjetoCRUD(aNome, aCPF, aSenha,aGrupo: String; aAtivo:Boolean) : TUsuarioDTO;
-    procedure EditarUsuario (UsuarioDTO : TUsuarioDTO);
-    function ValidarUsuario(UsuarioValido: TUsuarioDTO) : Boolean;
+    function SalvarUsuario(Usuario : TUsuario): Boolean;
+    function SalvarUsuarioCRUD(Usuario : TUsuario):Boolean;
+    function CriarObjeto(aNome, aCPF, aSenha: String) : TUsuario;
+    function CriarObjetoCRUD(aNome, aCPF, aSenha,aGrupo: String; aAtivo:Boolean) : TUsuario;
+    procedure EditarUsuario (Usuario : TUsuario);
+    function ValidarUsuario(UsuarioValido: TUsuario) : Boolean;
     function ListarUsuarios : TDataSet;
     function ListarUsuariosRestaurar : TDataSet;
     procedure DeletarUsuarios(const aId :Integer);
     procedure RestaurarUsuarios(const aId :Integer);
     function PesquisarUsuarios(const aFiltro: String):TDataSet;
-    procedure EditarUsuarioComSenha (UsuarioDTO : TUsuarioDTO);
+    procedure EditarUsuarioComSenha (Usuario : TUsuario);
     function CarregarGrupos : TStringList;
   end;
 
@@ -55,26 +55,26 @@ begin
   Repository := TCadastroRepository.Create(DataModule1.FDQuery);
 end;
 
-function TUsuarioService.CriarObjeto(aNome, aCPF, aSenha: String): TUsuarioDTO;
-var UsuarioDTO : TUsuarioDTO;
+function TUsuarioService.CriarObjeto(aNome, aCPF, aSenha: String): TUsuario;
+var Usuario : TUsuario;
 begin
-    UsuarioDTO := TUsuarioDTO.Create;
-    UsuarioDTO.setNome(aNome);
-    UsuarioDTO.setCPF(aCPF);
-    UsuarioDTO.setSenha(aSenha);
-    Result := UsuarioDTO;
+    Usuario := TUsuario.Create;
+    Usuario.setNome(aNome);
+    Usuario.setCPF(aCPF);
+    Usuario.setSenha(aSenha);
+    Result := Usuario;
 end;
 
-function TUsuarioService.CriarObjetoCRUD(aNome, aCPF, aSenha,aGrupo: String; aAtivo:Boolean): TUsuarioDTO;
-var UsuarioDTO : TUsuarioDTO;
+function TUsuarioService.CriarObjetoCRUD(aNome, aCPF, aSenha,aGrupo: String; aAtivo:Boolean): TUsuario;
+var Usuario : TUsuario;
 begin
-    UsuarioDTO := TUsuarioDTO.Create;
-    UsuarioDTO.setNome(aNome);
-    UsuarioDTO.setCPF(aCPF);
-    UsuarioDTO.setSenha(TBCrypt.HashPassword(aSenha));
-    UsuarioDTO.setGrupo(aGrupo);
-    UsuarioDTO.setAtivo(aAtivo);
-    Result := UsuarioDTO;
+    Usuario := TUsuario.Create;
+    Usuario.setNome(aNome);
+    Usuario.setCPF(aCPF);
+    Usuario.setSenha(TBCrypt.HashPassword(aSenha));
+    Usuario.setGrupo(aGrupo);
+    Usuario.setAtivo(aAtivo);
+    Result := Usuario;
 end;
 
 procedure TUsuarioService.DeletarUsuarios(const aId :Integer);
@@ -82,33 +82,33 @@ begin
   Repository.DeletarUsuarios(aID);
 end;
 
-procedure TUsuarioService.EditarUsuario(UsuarioDTO: TUsuarioDTO);
+procedure TUsuarioService.EditarUsuario(Usuario: TUsuario);
 begin
- if UsuarioDTO.getSenha <> '' then
-    UsuarioDTO.setSenha(TBCrypt.HashPassword(UsuarioDTO.getSenha));
-    Repository.EditarUsuario(UsuarioDTO);
+ if Usuario.getSenha <> '' then
+    Usuario.setSenha(TBCrypt.HashPassword(Usuario.getSenha));
+    Repository.EditarUsuario(Usuario);
 end;
 
 
-procedure TUsuarioService.EditarUsuarioComSenha(UsuarioDTO: TUsuarioDTO);
+procedure TUsuarioService.EditarUsuarioComSenha(Usuario: TUsuario);
 begin
-  Repository.EditarUsuarioComSenha(UsuarioDTO);
+  Repository.EditarUsuarioComSenha(Usuario);
 end;
 
-function TUsuarioService.SalvarUsuario(UsuarioDTO: TUsuarioDTO):Boolean;
+function TUsuarioService.SalvarUsuario(Usuario: TUsuario):Boolean;
 var
   Repository : TCadastroRepository;
 begin
- if UsuarioDTO.getSenha <> '' then
-    UsuarioDTO.setSenha(TBCrypt.HashPassword(UsuarioDTO.getSenha));
+ if Usuario.getSenha <> '' then
+    Usuario.setSenha(TBCrypt.HashPassword(Usuario.getSenha));
 
-if ValidarUsuario(UsuarioDTO) then begin
+if ValidarUsuario(Usuario) then begin
 
     Repository := TCadastroRepository.Create(DataModule1.FDQuery);
     Result := False;
     try
-    if not Repository.ExisteCPF(UsuarioDTO) then begin
-      Repository.inserirUsuario(UsuarioDTO);
+    if not Repository.ExisteCPF(Usuario) then begin
+      Repository.inserirUsuario(Usuario);
       MainController.showHome;
       Result := True;
     end;
@@ -118,20 +118,20 @@ if ValidarUsuario(UsuarioDTO) then begin
   end;
 end;
 
-function TUsuarioService.SalvarUsuarioCRUD(UsuarioDTO: TUsuarioDTO):Boolean;
+function TUsuarioService.SalvarUsuarioCRUD(Usuario: TUsuario):Boolean;
 var
   Repository : TCadastroRepository;
 begin
 
-if UsuarioDTO.getSenha <> '' then
-  UsuarioDTO.setSenha(TBCrypt.HashPassword(UsuarioDTO.getSenha));
+if Usuario.getSenha <> '' then
+  Usuario.setSenha(TBCrypt.HashPassword(Usuario.getSenha));
 
-if ValidarUsuario(UsuarioDTO) then begin
+if ValidarUsuario(Usuario) then begin
 
     Repository := TCadastroRepository.Create(DataModule1.FDQuery);
     try
-    if not Repository.ExisteCPF(UsuarioDTO) then begin
-      Repository.inserirUsuario(UsuarioDTO);
+    if not Repository.ExisteCPF(Usuario) then begin
+      Repository.inserirUsuario(Usuario);
     end;
     finally
       Repository.Free;
@@ -139,7 +139,7 @@ if ValidarUsuario(UsuarioDTO) then begin
   end;
 end;
 
-function TUsuarioService.ValidarUsuario(UsuarioValido: TUsuarioDTO): Boolean;
+function TUsuarioService.ValidarUsuario(UsuarioValido: TUsuario): Boolean;
 begin
  Result := ((UsuarioValido.getNome)<>'')and((UsuarioValido.getCPF)<>'')
             and((UsuarioValido.getSenha)<>'')

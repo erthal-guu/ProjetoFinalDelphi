@@ -742,7 +742,7 @@
             AlignWithMargins = True
             Left = 4
             Top = 11
-            Width = 840
+            Width = 109
             Height = 32
             Margins.Top = 10
             Align = alTop
@@ -754,7 +754,6 @@
             Font.Name = 'Segoe UI'
             Font.Style = [fsBold]
             ParentFont = False
-            ExplicitWidth = 109
           end
           object ImgFechar: TImage
             Left = 800
@@ -1415,7 +1414,7 @@
                 Left = 409
                 Top = 30
                 Width = 138
-                Height = 29
+                Height = 56
                 Margins.Top = 30
                 Margins.Right = 5
                 Margins.Bottom = 5
@@ -1446,7 +1445,7 @@
                 Left = 631
                 Top = 30
                 Width = 87
-                Height = 29
+                Height = 56
                 Margins.Top = 30
                 Margins.Right = 5
                 Margins.Bottom = 5
@@ -1472,7 +1471,7 @@
                 Left = 726
                 Top = 30
                 Width = 82
-                Height = 29
+                Height = 16
                 Margins.Top = 30
                 Margins.Bottom = 45
                 Align = alLeft
@@ -1507,8 +1506,8 @@
                   AlignWithMargins = True
                   Left = 4
                   Top = 4
-                  Width = 115
-                  Height = 23
+                  Width = 40
+                  Height = 20
                   Align = alClient
                   Alignment = taCenter
                   Caption = 'Enviar'
@@ -1521,8 +1520,6 @@
                   ParentColor = False
                   ParentFont = False
                   OnClick = LblEnviarClick
-                  ExplicitWidth = 40
-                  ExplicitHeight = 20
                 end
               end
               object PnlButtonAtualizar: TPanel
@@ -1543,8 +1540,8 @@
                   AlignWithMargins = True
                   Left = 4
                   Top = 4
-                  Width = 115
-                  Height = 23
+                  Width = 59
+                  Height = 20
                   Align = alClient
                   Alignment = taCenter
                   Caption = 'Atualizar'
@@ -1557,8 +1554,6 @@
                   ParentColor = False
                   ParentFont = False
                   OnClick = LblAtualizarClick
-                  ExplicitWidth = 59
-                  ExplicitHeight = 20
                 end
               end
               object EdtDescrição: TEdit

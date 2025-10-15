@@ -1,9 +1,9 @@
-unit uFornecedorDTO;
+unit uFornecedor;
 
 interface
 
 type
-  TFornecedorDTO = class
+  TFornecedor = class
   private
     IdFornecedor : Integer;
     Nome: String;
@@ -58,124 +58,124 @@ type
 
 implementation
 
-{ TFornecedorDTO }
+{ TFornecedor }
 
-function TFornecedorDTO.getIdFornecedor: Integer;
+function TFornecedor.getIdFornecedor: Integer;
 begin
   Result := IdFornecedor;
 end;
 
-procedure TFornecedorDTO.setIdFornecedor(aId: Integer);
+procedure TFornecedor.setIdFornecedor(aId: Integer);
 begin
   IdFornecedor := aId;
 end;
 
-function TFornecedorDTO.getNome: String;
+function TFornecedor.getNome: String;
 begin
   Result := Nome;
 end;
 
-procedure TFornecedorDTO.setNome(aNome: String);
+procedure TFornecedor.setNome(aNome: String);
 begin
   Nome := aNome;
 end;
 
-function TFornecedorDTO.getRazaoSocial: String;
+function TFornecedor.getRazaoSocial: String;
 begin
   Result := RazaoSocial;
 end;
 
-procedure TFornecedorDTO.setRazaoSocial(aRazaoSocial: String);
+procedure TFornecedor.setRazaoSocial(aRazaoSocial: String);
 begin
   RazaoSocial := aRazaoSocial;
 end;
 
-function TFornecedorDTO.getCNPJ: String;
+function TFornecedor.getCNPJ: String;
 begin
   Result := CNPJ;
 end;
 
-procedure TFornecedorDTO.setCNPJ(aCNPJ: String);
+procedure TFornecedor.setCNPJ(aCNPJ: String);
 begin
   CNPJ := aCNPJ;
 end;
 
-function TFornecedorDTO.getTelefone: String;
+function TFornecedor.getTelefone: String;
 begin
   Result := Telefone;
 end;
 
-procedure TFornecedorDTO.setTelefone(aTelefone: String);
+procedure TFornecedor.setTelefone(aTelefone: String);
 begin
   Telefone := aTelefone;
 end;
 
-function TFornecedorDTO.getCEP: String;
+function TFornecedor.getCEP: String;
 begin
   Result := CEP;
 end;
 
-procedure TFornecedorDTO.setCEP(aCEP: String);
+procedure TFornecedor.setCEP(aCEP: String);
 begin
   CEP := aCEP;
 end;
 
-function TFornecedorDTO.getRua: String;
+function TFornecedor.getRua: String;
 begin
   Result := Rua;
 end;
 
-procedure TFornecedorDTO.setRua(aRua: String);
+procedure TFornecedor.setRua(aRua: String);
 begin
   Rua := aRua;
 end;
 
-function TFornecedorDTO.getNumero: String;
+function TFornecedor.getNumero: String;
 begin
   Result := Numero;
 end;
 
-procedure TFornecedorDTO.setNumero(aNumero: String);
+procedure TFornecedor.setNumero(aNumero: String);
 begin
   Numero := aNumero;
 end;
 
-function TFornecedorDTO.getBairro: String;
+function TFornecedor.getBairro: String;
 begin
   Result := Bairro;
 end;
 
-procedure TFornecedorDTO.setBairro(aBairro: String);
+procedure TFornecedor.setBairro(aBairro: String);
 begin
   Bairro := aBairro;
 end;
 
-function TFornecedorDTO.getCidade: String;
+function TFornecedor.getCidade: String;
 begin
   Result := Cidade;
 end;
 
-procedure TFornecedorDTO.setCidade(aCidade: String);
+procedure TFornecedor.setCidade(aCidade: String);
 begin
   Cidade := aCidade;
 end;
 
-function TFornecedorDTO.getEstado: String;
+function TFornecedor.getEstado: String;
 begin
   Result := Estado;
 end;
 
-procedure TFornecedorDTO.setEstado(aEstado: String);
+procedure TFornecedor.setEstado(aEstado: String);
 begin
   Estado := aEstado;
 end;
 
-function TFornecedorDTO.getAtivo: Boolean;
+function TFornecedor.getAtivo: Boolean;
 begin
   Result := Ativo;
 end;
 
-procedure TFornecedorDTO.setAtivo(aAtivo: Boolean);
+procedure TFornecedor.setAtivo(aAtivo: Boolean);
 begin
   Ativo := aAtivo;
 end;

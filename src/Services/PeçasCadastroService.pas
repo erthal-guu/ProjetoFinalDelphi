@@ -3,7 +3,7 @@ unit PeçasCadastroService;
 interface
 
 uses
-  uPeçasDTO, PeçasCadastroRepository, uDMConexao, System.SysUtils,
+  uPeças, PeçasCadastroRepository, uDMConexao, System.SysUtils,
   FireDAC.Comp.Client, Data.DB;
 
 type
@@ -12,10 +12,10 @@ type
     Repository: TPecaRepository;
   public
     constructor Create;
-    function SalvarPeca(PecaDTO: TPecaDTO): Boolean;
-    function CriarObjeto(aNome, aDescricao, aCodigoInterno, aCategoria, aUnidade, aModelo:String;aAtivo : Boolean): TPecaDTO;
-    procedure EditarPeca(PecaDTO: TPecaDTO);
-    function ValidarPeca(PecaValida: TPecaDTO): Boolean;
+    function SalvarPeca(Peca: TPeca): Boolean;
+    function CriarObjeto(aNome, aDescricao, aCodigoInterno, aCategoria, aUnidade, aModelo:String;aAtivo : Boolean): TPeca;
+    procedure EditarPeca(Peca: TPeca);
+    function ValidarPeca(PecaValida: TPeca): Boolean;
     function ListarPecas: TDataSet;
     function ListarPecasRestaurar: TDataSet;
     procedure DeletarPeca(const aId: Integer);
@@ -31,11 +31,11 @@ begin
 end;
 
 function TPecaService.CriarObjeto(
-  aNome, aDescricao, aCodigoInterno, aCategoria, aUnidade, aModelo:String;aAtivo : Boolean): TPecaDTO;
+  aNome, aDescricao, aCodigoInterno, aCategoria, aUnidade, aModelo:String;aAtivo : Boolean): TPeca;
 var
-  PecaDTO: TPecaDTO;
+  PecaDTO: TPeca;
 begin
-  PecaDTO := TPecaDTO.Create;
+  PecaDTO := TPeca.Create;
   try
     PecaDTO.setNome(aNome);
     PecaDTO.setDescricao(aDescricao);
@@ -56,9 +56,9 @@ begin
   Repository.DeletarPeca(aId);
 end;
 
-procedure TPecaService.EditarPeca(PecaDTO: TPecaDTO);
+procedure TPecaService.EditarPeca(Peca: TPeca);
 begin
-  Repository.EditarPeca(PecaDTO);
+  Repository.EditarPeca(Peca);
 end;
 
 function TPecaService.ListarPecas: TDataSet;
@@ -81,20 +81,20 @@ begin
   Repository.RestaurarPeca(aId);
 end;
 
-function TPecaService.SalvarPeca(PecaDTO: TPecaDTO): Boolean;
+function TPecaService.SalvarPeca(Peca: TPeca): Boolean;
 begin
   Result := False;
-  if ValidarPeca(PecaDTO) then
+  if ValidarPeca(Peca) then
   begin
-    if not Repository.ExisteCodigoInterno(PecaDTO) then
+    if not Repository.ExisteCodigoInterno(Peca) then
     begin
-      Repository.InserirPeca(PecaDTO);
+      Repository.InserirPeca(Peca);
       Result := True;
     end;
   end;
 end;
 
-function TPecaService.ValidarPeca(PecaValida: TPecaDTO): Boolean;
+function TPecaService.ValidarPeca(PecaValida: TPeca): Boolean;
 begin
   Result :=
     (PecaValida.getNome <> '') and

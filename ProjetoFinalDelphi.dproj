@@ -106,7 +106,7 @@
         <AppDPIAwarenessMode>PerMonitorV2</AppDPIAwarenessMode>
         <VerInfo_IncludeVerInfo>true</VerInfo_IncludeVerInfo>
         <VerInfo_Locale>1033</VerInfo_Locale>
-        <DCC_UnitSearchPath>C:\Users\Auditorio\Desktop\ProjetoFinalDelphi\src\DTO\bcrypt-for-delphi-master;C:\Users\siqueira.6989\Desktop\ProjetoFinalDelphi\src\DTO\bcrypt-for-delphi-master;C:\Users\vplgu\Desktop\ProjetoFinalDelphi\src\DTO\bcrypt-for-delphi-master;$(DCC_UnitSearchPath)</DCC_UnitSearchPath>
+        <DCC_UnitSearchPath>C:\Users\Auditorio\Desktop\ProjetoFinalDelphi\src\DTO\bcrypt-for-delphi-master;C:\Users\siqueira.6989\Desktop\ProjetoFinalDelphi\src\DTO\bcrypt-for-delphi-master;C:\Users\vplgu\Desktop\ProjetoFinalDelphi\src\DTO\bcrypt-for-delphi-master;C:\Users\vplgu\Desktop\ProjetoFinalDelphi\src\Model;C:\Users\vplgu\Desktop\ProjetoFinalDelphi\src\bcrypt-for-delphi-master;$(DCC_UnitSearchPath)</DCC_UnitSearchPath>
         <UWP_DelphiLogo44>..\..\Downloads\Captura_de_tela_2025-10-14_164540-removebg-preview.png</UWP_DelphiLogo44>
         <UWP_DelphiLogo150>..\..\Downloads\Captura_de_tela_2025-10-14_164540-removebg-preview.png</UWP_DelphiLogo150>
         <Icon_MainIcon>ProjetoFinalDelphi_Icon6.ico</Icon_MainIcon>
@@ -144,13 +144,12 @@
             <Form>FormLogin</Form>
             <FormType>dfm</FormType>
         </DCCReference>
-        <DCCReference Include="src\Model\uUsuarioModel.pas"/>
         <DCCReference Include="src\repository\uDMConexao.pas">
             <Form>DataModule1</Form>
             <FormType>dfm</FormType>
             <DesignClass>TDataModule</DesignClass>
         </DCCReference>
-        <DCCReference Include="src\DTO\uUsuarioDTO.pas"/>
+        <DCCReference Include="src\DTO\uUsuario.pas"/>
         <DCCReference Include="src\controller\uMainController.pas"/>
         <DCCReference Include="src\View\uFormCadastroUsuariosView.pas">
             <Form>FormCadastroUsuarios</Form>
@@ -194,17 +193,16 @@
         <DCCReference Include="src\repository\ClienteCadastroRepository.pas"/>
         <DCCReference Include="src\Services\ClienteCadastroService.pas"/>
         <DCCReference Include="src\controller\ClienteCadastroController.pas"/>
-        <DCCReference Include="src\Model\uClienteModel.pas"/>
-        <DCCReference Include="src\DTO\uClienteDTO.pas"/>
+        <DCCReference Include="src\DTO\uCliente.pas"/>
         <DCCReference Include="src\repository\FuncionarioCadastroRepository.pas"/>
         <DCCReference Include="src\Services\FuncionarioCadastroService.pas"/>
         <DCCReference Include="src\controller\FuncionarioCadastroController.pas"/>
-        <DCCReference Include="src\DTO\uFuncionarioDTO.pas"/>
+        <DCCReference Include="src\DTO\uFuncionario.pas"/>
         <DCCReference Include="src\repository\FornecedorCadastroRepository.pas"/>
-        <DCCReference Include="src\DTO\uFornecedorDTO.pas"/>
+        <DCCReference Include="src\DTO\uFornecedor.pas"/>
         <DCCReference Include="src\controller\FornecedorCadastroController.pas"/>
         <DCCReference Include="src\Services\FornecedorCadastroService.pas"/>
-        <DCCReference Include="src\DTO\uPeçasDTO.pas"/>
+        <DCCReference Include="src\DTO\uPeças.pas"/>
         <DCCReference Include="src\repository\PeçasCadastroRepository.pas"/>
         <DCCReference Include="src\Services\PeçasCadastroService.pas"/>
         <DCCReference Include="src\controller\PeçasCadastroController.pas"/>
@@ -1206,6 +1204,7 @@
                 <Platform value="Win32">True</Platform>
                 <Platform value="Win64">True</Platform>
             </Platforms>
+            <ModelSupport>False</ModelSupport>
         </BorlandProject>
         <ProjectFileVersion>12</ProjectFileVersion>
     </ProjectExtensions>

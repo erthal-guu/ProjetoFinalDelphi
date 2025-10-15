@@ -3,7 +3,7 @@ unit FornecedorCadastroService;
 interface
 
 uses
-  uFornecedorDTO, FornecedorCadastroRepository, uDMConexao, System.SysUtils,
+  uFornecedor, FornecedorCadastroRepository, uDMConexao, System.SysUtils,
   FireDAC.Comp.Client, Data.DB,IdHTTP, System.JSON,
     IdSSL, IdSSLOpenSSL, IdSSLOpenSSLHeaders;
 
@@ -13,11 +13,11 @@ type
     Repository: TFornecedorRepository;
   public
     constructor Create;
-    function SalvarFornecedor(FornecedorDTO: TFornecedorDTO): Boolean;
+    function SalvarFornecedor(Fornecedor: TFornecedor): Boolean;
     function CriarObjeto(aNome, aRazaoSocial, aCNPJ, aTelefone, aCEP, aRua, aNumero,
-      aBairro, aCidade, aEstado: String; aAtivo: Boolean): TFornecedorDTO;
-    procedure EditarFornecedor(FornecedorDTO: TFornecedorDTO);
-    function ValidarFornecedor(FornecedorValido: TFornecedorDTO): Boolean;
+      aBairro, aCidade, aEstado: String; aAtivo: Boolean): TFornecedor;
+    procedure EditarFornecedor(Fornecedor: TFornecedor);
+    function ValidarFornecedor(FornecedorValido: TFornecedor): Boolean;
     function ListarFornecedores: TDataSet;
     function ListarFornecedoresRestaurar: TDataSet;
     procedure DeletarFornecedor(const aId: Integer);
@@ -78,11 +78,11 @@ end;
 
 function TFornecedorService.CriarObjeto(
   aNome, aRazaoSocial, aCNPJ, aTelefone, aCEP, aRua, aNumero,
-  aBairro, aCidade, aEstado: String; aAtivo: Boolean): TFornecedorDTO;
+  aBairro, aCidade, aEstado: String; aAtivo: Boolean): TFornecedor;
 var
-  FornecedorDTO: TFornecedorDTO;
+  FornecedorDTO: TFornecedor;
 begin
-  FornecedorDTO := TFornecedorDTO.Create;
+  FornecedorDTO := TFornecedor.Create;
   try
     FornecedorDTO.setNome(aNome);
     FornecedorDTO.setRazaoSocial(aRazaoSocial);
@@ -107,9 +107,9 @@ begin
   Repository.DeletarFornecedor(aId);
 end;
 
-procedure TFornecedorService.EditarFornecedor(FornecedorDTO: TFornecedorDTO);
+procedure TFornecedorService.EditarFornecedor(Fornecedor: TFornecedor);
 begin
-  Repository.EditarFornecedor(FornecedorDTO);
+  Repository.EditarFornecedor(Fornecedor);
 end;
 
 function TFornecedorService.ListarFornecedores: TDataSet;
@@ -132,20 +132,20 @@ begin
   Repository.RestaurarFornecedor(aId);
 end;
 
-function TFornecedorService.SalvarFornecedor(FornecedorDTO: TFornecedorDTO): Boolean;
+function TFornecedorService.SalvarFornecedor(Fornecedor: TFornecedor): Boolean;
 begin
   Result := False;
-  if ValidarFornecedor(FornecedorDTO) then
+  if ValidarFornecedor(Fornecedor) then
   begin
-    if not Repository.ExisteCNPJ(FornecedorDTO) then
+    if not Repository.ExisteCNPJ(Fornecedor) then
     begin
-      Repository.InserirFornecedor(FornecedorDTO);
+      Repository.InserirFornecedor(Fornecedor);
       Result := True;
     end;
   end;
 end;
 
-function TFornecedorService.ValidarFornecedor(FornecedorValido: TFornecedorDTO): Boolean;
+function TFornecedorService.ValidarFornecedor(FornecedorValido: TFornecedor): Boolean;
 begin
   Result :=
     (FornecedorValido.getNome <> '') and

@@ -1,9 +1,9 @@
-unit uClienteDTO;
+unit uCliente;
 
 interface
 
 type
-  TClienteDTO = class
+  TCliente = class
   private
     IdCliente : Integer;
     Nome : String;
@@ -44,82 +44,82 @@ implementation
 
 { TCliente }
 
-function TClienteDTO.getIdCliente: Integer;
+function TCliente.getIdCliente: Integer;
 begin
   Result := IdCliente;
 end;
 
-procedure TClienteDTO.setIdCliente(aId: Integer);
+procedure TCliente.setIdCliente(aId: Integer);
 begin
   IdCliente := aId;
 end;
 
-function TClienteDTO.getNome: String;
+function TCliente.getNome: String;
 begin
   Result := Nome;
 end;
 
-procedure TClienteDTO.setNome(aNome: String);
+procedure TCliente.setNome(aNome: String);
 begin
   Nome := aNome;
 end;
 
-function TClienteDTO.getEmail: String;
+function TCliente.getEmail: String;
 begin
   Result := Email;
 end;
 
-procedure TClienteDTO.setEmail(aEmail: String);
+procedure TCliente.setEmail(aEmail: String);
 begin
   Email := aEmail;
 end;
 
-function TClienteDTO.getCPF: String;
+function TCliente.getCPF: String;
 begin
   Result := CPF;
 end;
 
-procedure TClienteDTO.setCPF(aCPF: String);
+procedure TCliente.setCPF(aCPF: String);
 begin
   CPF := aCPF;
 end;
 
-function TClienteDTO.getTelefone: String;
+function TCliente.getTelefone: String;
 begin
   Result := Telefone;
 end;
 
-procedure TClienteDTO.setTelefone(aTelefone: String);
+procedure TCliente.setTelefone(aTelefone: String);
 begin
   Telefone := aTelefone;
 end;
 
-function TClienteDTO.getNascimento: String;
+function TCliente.getNascimento: String;
 begin
   Result := Nascimento;
 end;
 
-procedure TClienteDTO.setNascimento(aNascimento: String);
+procedure TCliente.setNascimento(aNascimento: String);
 begin
   Nascimento := aNascimento;
 end;
 
-function TClienteDTO.getEndereco: String;
+function TCliente.getEndereco: String;
 begin
   Result := Endereco;
 end;
 
-procedure TClienteDTO.setEndereco(aEndereco: String);
+procedure TCliente.setEndereco(aEndereco: String);
 begin
   Endereco := aEndereco;
 end;
 
-function TClienteDTO.getAtivo: Boolean;
+function TCliente.getAtivo: Boolean;
 begin
   Result := Ativo;
 end;
 
-procedure TClienteDTO.setAtivo(aAtivo: Boolean);
+procedure TCliente.setAtivo(aAtivo: Boolean);
 begin
   Ativo := aAtivo;
 end;

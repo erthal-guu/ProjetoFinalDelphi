@@ -1128,7 +1128,7 @@
               Left = 20
               Top = 30
               Width = 133
-              Height = 29
+              Height = 33
               Margins.Left = 20
               Margins.Top = 30
               Margins.Bottom = 45
@@ -1141,14 +1141,13 @@
               Font.Style = []
               ParentFont = False
               TabOrder = 0
-              ExplicitHeight = 33
             end
             object EdtCPF: TMaskEdit
               AlignWithMargins = True
               Left = 159
               Top = 30
               Width = 118
-              Height = 29
+              Height = 33
               Cursor = crHandPoint
               Margins.Top = 30
               Margins.Bottom = 45
@@ -1167,14 +1166,13 @@
               TabOrder = 1
               Text = '   .   .   -  '
               OnClick = EdtCPFClick
-              ExplicitHeight = 33
             end
             object EdtEmail: TEdit
               AlignWithMargins = True
               Left = 627
               Top = 30
               Width = 150
-              Height = 29
+              Height = 33
               Margins.Top = 30
               Margins.Bottom = 45
               Align = alLeft
@@ -1186,14 +1184,13 @@
               Font.Style = []
               ParentFont = False
               TabOrder = 2
-              ExplicitHeight = 33
             end
             object EdtDataNascimento: TMaskEdit
               AlignWithMargins = True
               Left = 541
               Top = 30
               Width = 80
-              Height = 29
+              Height = 33
               Cursor = crHandPoint
               Margins.Top = 30
               Margins.Bottom = 45
@@ -1212,14 +1209,13 @@
               TabOrder = 3
               Text = '  /  /  '
               OnClick = EdtDataNascimentoClick
-              ExplicitHeight = 33
             end
             object EdtTelefone: TMaskEdit
               AlignWithMargins = True
               Left = 439
               Top = 30
               Width = 96
-              Height = 29
+              Height = 33
               Cursor = crHandPoint
               Margins.Top = 30
               Margins.Bottom = 45
@@ -1238,14 +1234,13 @@
               TabOrder = 4
               Text = '(  )     -    '
               OnClick = EdtTelefoneClick
-              ExplicitHeight = 33
             end
             object EdtEndereço: TEdit
               AlignWithMargins = True
               Left = 283
               Top = 30
               Width = 150
-              Height = 29
+              Height = 33
               Margins.Top = 30
               Margins.Bottom = 45
               Align = alLeft
@@ -1257,7 +1252,6 @@
               Font.Style = []
               ParentFont = False
               TabOrder = 5
-              ExplicitHeight = 33
             end
             object CmbStatus: TComboBox
               AlignWithMargins = True
@@ -1286,7 +1280,7 @@
               Left = 871
               Top = 30
               Width = 105
-              Height = 24
+              Height = 28
               Margins.Top = 30
               Margins.Right = 0
               Margins.Bottom = 50
@@ -1295,13 +1289,12 @@
               Color = 9521152
               ParentBackground = False
               TabOrder = 7
-              ExplicitHeight = 28
               object LblEnviar: TLabel
                 AlignWithMargins = True
                 Left = 4
                 Top = 4
-                Width = 97
-                Height = 16
+                Width = 40
+                Height = 20
                 Align = alClient
                 Alignment = taCenter
                 Caption = 'Enviar'
@@ -1314,8 +1307,6 @@
                 ParentColor = False
                 ParentFont = False
                 OnClick = LblEnviarClick
-                ExplicitWidth = 40
-                ExplicitHeight = 20
               end
             end
             object PnlButtonAtualizar: TPanel
@@ -1337,8 +1328,8 @@
                 AlignWithMargins = True
                 Left = 3
                 Top = 3
-                Width = 98
-                Height = 24
+                Width = 59
+                Height = 20
                 Align = alClient
                 Alignment = taCenter
                 Caption = 'Atualizar'
@@ -1351,8 +1342,6 @@
                 ParentColor = False
                 ParentFont = False
                 OnClick = LblAtualizarClick
-                ExplicitWidth = 59
-                ExplicitHeight = 20
               end
             end
           end
@@ -1418,7 +1407,7 @@
             AlignWithMargins = True
             Left = 4
             Top = 11
-            Width = 863
+            Width = 109
             Height = 32
             Margins.Top = 10
             Align = alTop
@@ -1430,7 +1419,6 @@
             Font.Name = 'Segoe UI'
             Font.Style = [fsBold]
             ParentFont = False
-            ExplicitWidth = 109
           end
           object ImgFechar: TImage
             Left = 800

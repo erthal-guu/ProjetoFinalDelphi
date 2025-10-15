@@ -2,7 +2,7 @@ unit ClienteCadastroRepository;
 
 interface
 uses
-  uDMConexao, FireDAC.Comp.Client, System.SysUtils, uClienteDTO, Data.DB;
+  uDMConexao, FireDAC.Comp.Client, System.SysUtils, uCliente, Data.DB;
 
  type
   TClienteRepository = class
@@ -10,9 +10,9 @@ uses
     FQuery: TFDQuery;
   public
     constructor Create(Query : TFDQuery);
-    procedure inserirCliente(aCliente: TClienteDTO);
-    function ExisteCPF(aCliente : TClienteDTO): Boolean;
-    function EditarClientes(aCliente : TClienteDTO): Boolean;
+    procedure inserirCliente(aCliente: TCliente);
+    function ExisteCPF(aCliente : TCliente): Boolean;
+    function EditarClientes(aCliente : TCliente): Boolean;
     function ListarClientes : TDataSet;
     function ListarClientesRestaurar : TDataSet;
     procedure DeletarClientes(const aID: Integer);
@@ -37,7 +37,7 @@ begin
   FQuery.ExecSQL;
 end;
 
-function TClienteRepository.EditarClientes(aCliente: TClienteDTO): Boolean;
+function TClienteRepository.EditarClientes(aCliente: TCliente): Boolean;
 begin
    Result := False;
   try
@@ -65,7 +65,7 @@ begin
   end;
 end;
 
-function TClienteRepository.ExisteCPF(aCliente: TClienteDTO): Boolean;
+function TClienteRepository.ExisteCPF(aCliente: TCliente): Boolean;
 begin
   FQuery.Close;
   FQuery.SQL.Clear;
@@ -75,7 +75,7 @@ begin
   Result := FQuery.FieldByName('Total').AsInteger > 0;
 end;
 
-procedure TClienteRepository.inserirCliente(aCliente: TClienteDTO);
+procedure TClienteRepository.inserirCliente(aCliente: TCliente);
 begin
   FQuery.Close;
   FQuery.SQL.Clear;

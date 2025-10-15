@@ -4788,7 +4788,7 @@ object FormCadastro: TFormCadastro
             AlignWithMargins = True
             Left = 3
             Top = 100
-            Width = 504
+            Width = 200
             Height = 65
             Margins.Top = 100
             Align = alTop
@@ -4802,7 +4802,6 @@ object FormCadastro: TFormCadastro
             Font.Style = [fsBold, fsItalic]
             ParentColor = False
             ParentFont = False
-            ExplicitWidth = 200
           end
           object PnlEdit: TPanel
             Left = 17
@@ -4815,31 +4814,28 @@ object FormCadastro: TFormCadastro
               AlignWithMargins = True
               Left = 3
               Top = 149
-              Width = 459
+              Width = 46
               Height = 21
               Align = alTop
               Caption = 'Senha:'
-              ExplicitWidth = 46
             end
             object LblNome: TLabel
               AlignWithMargins = True
               Left = 3
               Top = 76
-              Width = 459
+              Width = 30
               Height = 21
               Align = alTop
               Caption = 'CPF:'
-              ExplicitWidth = 30
             end
             object LblCPF: TLabel
               AlignWithMargins = True
               Left = 3
               Top = 3
-              Width = 459
+              Width = 46
               Height = 21
               Align = alTop
               Caption = 'Nome:'
-              ExplicitWidth = 46
             end
             object EdtCPF: TMaskEdit
               AlignWithMargins = True
@@ -4950,18 +4946,17 @@ object FormCadastro: TFormCadastro
               Left = 0
               Top = 0
               Width = 136
-              Height = 65
+              Height = 21
               Margins.Right = 0
               Align = alLeft
               Caption = 'Ja tem uma conta ?'
-              ExplicitHeight = 21
             end
             object LblCadastro: TLabel
               AlignWithMargins = True
               Left = 140
               Top = 0
               Width = 70
-              Height = 65
+              Height = 21
               Margins.Left = 4
               Margins.Top = 0
               Margins.Right = 0
@@ -4977,7 +4972,6 @@ object FormCadastro: TFormCadastro
               ParentColor = False
               ParentFont = False
               OnClick = LblCadastroClick
-              ExplicitHeight = 21
             end
           end
         end
