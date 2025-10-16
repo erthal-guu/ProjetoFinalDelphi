@@ -11,11 +11,18 @@
       Function ValidarLogin(Usuario : TUsuario): Boolean;
       function CriarObjeto( aCPF, aSenha: String) : TUsuario;
       function ValidarUsuario(UsuarioValido: TUsuario): Boolean;
+      constructor Create;
     end;
 
   implementation
 
   { TUsuarioController }
+
+constructor TUsuarioController.Create;
+begin
+  inherited Create;
+  Service := TUsuarioLoginService.Create;
+end;
 
 function TUsuarioController.CriarObjeto(aCPF, aSenha: String): TUsuario;
   begin

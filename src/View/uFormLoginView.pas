@@ -63,7 +63,10 @@ end;
 end;
 
 procedure TFormLogin.LblCadastroClick(Sender: TObject);
+  var
+  MainController : TMainController;
 begin
+  MainController := TMainController.Create;
   MainController.showCadastro;
   Application.ProcessMessages;
   Self.hide
@@ -80,11 +83,12 @@ procedure TFormLogin.PnlButtonClick(Sender: TObject);
 var
   Controller: TUsuarioController;
   Usuario: TUsuario;
+
 begin
   try
     Controller := TUsuarioController.Create;
     Usuario := Controller.CriarObjeto(EdtCPF.Text, EdtSenha.Text);
-    if ValidarCampos and Controller.ValidarLogin(Usuario) then begin
+    if Controller.ValidarLogin(Usuario) then begin
       MainController.showHome;
       LimparCampos;
     end else begin

@@ -40,10 +40,10 @@ begin
     try
       Repo := Repository.SelectUsuario(Usuario);
 
-      if Repo <> nil then
-      begin
-        Result := TBCrypt.CheckPassword(Usuario.getSenha(),repo.getSenha(),PasswordRehashNeeded);
-      end;
+    if (Repo <> nil) and (Repo.getSenha <> '') then
+    begin
+      Result := TBCrypt.CheckPassword(Usuario.getSenha(), Repo.getSenha(), PasswordRehashNeeded);
+    end;
     finally
       Repository.Free;
     end;

@@ -13,7 +13,6 @@ uses
   LoginUsuarioService in 'src\Services\LoginUsuarioService.pas',
   uFormLoginView in 'src\View\uFormLoginView.pas' {FormLogin},
   uDMConexao in 'src\repository\uDMConexao.pas' {DataModule1: TDataModule},
-  uUsuario in 'src\DTO\uUsuario.pas',
   uMainController in 'src\controller\uMainController.pas',
   uFormCadastroUsuariosView in 'src\View\uFormCadastroUsuariosView.pas' {FormCadastroUsuarios},
   uFormCadastroFuncionariosView in 'src\View\uFormCadastroFuncionariosView.pas' {FormCadastroFuncionarios},
@@ -28,20 +27,21 @@ uses
   ClienteCadastroRepository in 'src\repository\ClienteCadastroRepository.pas',
   ClienteCadastroService in 'src\Services\ClienteCadastroService.pas',
   ClienteCadastroController in 'src\controller\ClienteCadastroController.pas',
-  uCliente in 'src\DTO\uCliente.pas',
   FuncionarioCadastroRepository in 'src\repository\FuncionarioCadastroRepository.pas',
   FuncionarioCadastroService in 'src\Services\FuncionarioCadastroService.pas',
   FuncionarioCadastroController in 'src\controller\FuncionarioCadastroController.pas',
-  uFuncionario in 'src\DTO\uFuncionario.pas',
   FornecedorCadastroRepository in 'src\repository\FornecedorCadastroRepository.pas',
-  uFornecedor in 'src\DTO\uFornecedor.pas',
   FornecedorCadastroController in 'src\controller\FornecedorCadastroController.pas',
   FornecedorCadastroService in 'src\Services\FornecedorCadastroService.pas',
-  uPeças in 'src\DTO\uPeças.pas',
   PeçasCadastroRepository in 'src\repository\PeçasCadastroRepository.pas',
   PeçasCadastroService in 'src\Services\PeçasCadastroService.pas',
   PeçasCadastroController in 'src\controller\PeçasCadastroController.pas',
-  uFormCadastroPeçasView in 'src\View\uFormCadastroPeçasView.pas' {FormCadastroPecas};
+  uFormCadastroPeçasView in 'src\View\uFormCadastroPeçasView.pas' {FormCadastroPecas},
+  uCliente in 'src\Model\uCliente.pas',
+  uFornecedor in 'src\Model\uFornecedor.pas',
+  uFuncionario in 'src\Model\uFuncionario.pas',
+  uPeças in 'src\Model\uPeças.pas',
+  uUsuario in 'src\Model\uUsuario.pas';
 
 {$R *.res}
 

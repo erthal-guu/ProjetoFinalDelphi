@@ -28,6 +28,8 @@ begin
 end;
 
 function TLoginRepository.SelectUsuario(aUsuario: TUsuario): TUsuario;
+var
+  Usuario: TUsuario;
 begin
   Self.FQuery.SQL.Clear;
   Self.FQuery.SQL.Add('SELECT * FROM usuarios WHERE CPF = :cpf');
@@ -36,7 +38,12 @@ begin
     Self.FQuery.Open;
     if Self.FQuery.IsEmpty then
     begin
-      Result := nil;
+      Result := nil
+    end else begin
+      Usuario := TUsuario.Create;
+      Usuario.setCPF(Self.FQuery.FieldByName('cpf').AsString);
+      Usuario.setSenha(Self.FQuery.FieldByName('senha').AsString);
+      Result := Usuario;
     end;
   finally
     Self.FQuery.Close;
