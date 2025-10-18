@@ -4,7 +4,7 @@ interface
 
 uses
   uPeças, PeçasCadastroRepository, uDMConexao, System.SysUtils,
-  FireDAC.Comp.Client, Data.DB;
+  FireDAC.Comp.Client, Data.DB,System.Classes;
 
 type
   TPecaService = class
@@ -21,6 +21,7 @@ type
     procedure DeletarPeca(const aId: Integer);
     procedure RestaurarPeca(const aId: Integer);
     function PesquisarPecas(const aFiltro: String): TDataSet;
+    function CarregarCategorias : TStringList;
   end;
 
 implementation
@@ -64,6 +65,11 @@ end;
 function TPecaService.ListarPecas: TDataSet;
 begin
   Result := Repository.ListarPecas;
+end;
+
+function TPecaService.CarregarCategorias: TStringList;
+begin
+  Result := Repository.CarregarCategorias;
 end;
 
 function TPecaService.ListarPecasRestaurar: TDataSet;

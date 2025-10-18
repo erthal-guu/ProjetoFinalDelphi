@@ -83,6 +83,7 @@ type
     procedure ImgRestaurarClick(Sender: TObject);
     procedure EdtPesquisarChange(Sender: TObject);
     procedure FormShow(Sender: TObject);
+    procedure CarregarCategorias;
 
   private
     { Private declarations }
@@ -169,6 +170,27 @@ begin
     DBGridRestaurar.Columns[0].Width := 40;
   finally
     PecaService.Free;
+  end;
+end;
+procedure TFormCadastroPecas.CarregarCategorias;
+var
+  PeçaController: TPecaController;
+  ListaCategorias: TStringList;
+  i: Integer;
+begin
+  CmbCategoria.Items.Clear;
+  PeçaController := TPecaController.Create;
+  try
+    ListaCategorias := PeçaController.CarregarCategorias;
+    try
+      for i := 0 to ListaCategorias.Count - 1 do
+        CmbCategoria.Items.AddObject(ListaCategorias[i], ListaCategorias.Objects[i]);
+      CmbCategoria.ItemIndex := -1;
+    finally
+      ListaCategorias.Free;
+    end;
+  finally
+    PeçaController.Free;
   end;
 end;
 
@@ -367,6 +389,7 @@ end;
 procedure TFormCadastroPecas.FormShow(Sender: TObject);
 begin
   CarregarGrid;
+  CarregarCategorias;
 end;
 
 function TFormCadastroPecas.ValidarCampos: Boolean;

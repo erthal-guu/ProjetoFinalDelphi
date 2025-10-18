@@ -716,6 +716,7 @@
           Margins.Right = 1
           Margins.Bottom = 1
           Align = alClient
+          ReadOnly = True
           TabOrder = 0
           TitleFont.Charset = DEFAULT_CHARSET
           TitleFont.Color = clWindowText
@@ -742,7 +743,7 @@
             AlignWithMargins = True
             Left = 4
             Top = 11
-            Width = 109
+            Width = 840
             Height = 32
             Margins.Top = 10
             Align = alTop
@@ -754,6 +755,7 @@
             Font.Name = 'Segoe UI'
             Font.Style = [fsBold]
             ParentFont = False
+            ExplicitWidth = 109
           end
           object ImgFechar: TImage
             Left = 800
@@ -1343,7 +1345,7 @@
               end
               object EdtCodigoInt: TEdit
                 AlignWithMargins = True
-                Left = 302
+                Left = 300
                 Top = 30
                 Width = 99
                 Height = 31
@@ -1360,6 +1362,7 @@
                 Font.Style = []
                 ParentFont = False
                 TabOrder = 0
+                ExplicitLeft = 302
               end
               object EdtNome: TEdit
                 AlignWithMargins = True
@@ -1383,7 +1386,7 @@
               end
               object CmbUnidade: TComboBox
                 AlignWithMargins = True
-                Left = 552
+                Left = 550
                 Top = 30
                 Width = 71
                 Height = 29
@@ -1408,13 +1411,14 @@
                   'MT'
                   'LT'
                   'PCT')
+                ExplicitLeft = 552
               end
               object CmbCategoria: TComboBox
                 AlignWithMargins = True
-                Left = 409
+                Left = 407
                 Top = 30
                 Width = 138
-                Height = 56
+                Height = 29
                 Margins.Top = 30
                 Margins.Right = 5
                 Margins.Bottom = 5
@@ -1428,24 +1432,14 @@
                 Font.Style = []
                 ParentFont = False
                 TabOrder = 3
-                Items.Strings = (
-                  'Motor'
-                  'Transmiss'#227'o'
-                  'Freios'
-                  'Suspens'#227'o e dire'#231#227'o'
-                  'Sistema el'#233'trico'
-                  'Sistema de arrefecimento'
-                  'Sistema de combust'#237'vel'
-                  'Escapamento'
-                  'Carroceria e acabamento'
-                  'Pneus e rodas')
+                ExplicitLeft = 409
               end
               object CmbModelo: TComboBox
                 AlignWithMargins = True
-                Left = 631
+                Left = 629
                 Top = 30
                 Width = 87
-                Height = 56
+                Height = 29
                 Margins.Top = 30
                 Margins.Right = 5
                 Margins.Bottom = 5
@@ -1465,13 +1459,14 @@
                   'Caminh'#227'o'
                   #212'nibus'
                   'Utilit'#225'rio')
+                ExplicitLeft = 631
               end
               object CmbStatus: TComboBox
                 AlignWithMargins = True
-                Left = 726
+                Left = 724
                 Top = 30
                 Width = 82
-                Height = 16
+                Height = 29
                 Margins.Top = 30
                 Margins.Bottom = 45
                 Align = alLeft
@@ -1487,6 +1482,7 @@
                 Items.Strings = (
                   'Ativo'
                   'Inativo')
+                ExplicitLeft = 726
               end
               object PnlButtonEnviar: TPanel
                 AlignWithMargins = True
@@ -1506,8 +1502,8 @@
                   AlignWithMargins = True
                   Left = 4
                   Top = 4
-                  Width = 40
-                  Height = 20
+                  Width = 115
+                  Height = 23
                   Align = alClient
                   Alignment = taCenter
                   Caption = 'Enviar'
@@ -1520,6 +1516,8 @@
                   ParentColor = False
                   ParentFont = False
                   OnClick = LblEnviarClick
+                  ExplicitWidth = 40
+                  ExplicitHeight = 20
                 end
               end
               object PnlButtonAtualizar: TPanel
@@ -1540,8 +1538,8 @@
                   AlignWithMargins = True
                   Left = 4
                   Top = 4
-                  Width = 59
-                  Height = 20
+                  Width = 115
+                  Height = 23
                   Align = alClient
                   Alignment = taCenter
                   Caption = 'Atualizar'
@@ -1554,13 +1552,15 @@
                   ParentColor = False
                   ParentFont = False
                   OnClick = LblAtualizarClick
+                  ExplicitWidth = 59
+                  ExplicitHeight = 20
                 end
               end
               object EdtDescrição: TEdit
                 AlignWithMargins = True
                 Left = 145
                 Top = 30
-                Width = 147
+                Width = 145
                 Height = 31
                 Margins.Top = 30
                 Margins.Right = 5

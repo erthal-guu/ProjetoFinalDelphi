@@ -3,7 +3,7 @@ unit PeçasCadastroController;
 interface
 
 uses
-  uPeças, PeçasCadastroService, FireDAC.Comp.Client, Data.DB;
+  uPeças, PeçasCadastroService, FireDAC.Comp.Client, Data.DB,System.Classes;
 
 type
   TPecaController = class
@@ -20,6 +20,7 @@ type
     procedure DeletarPeca(const aId: Integer);
     procedure RestaurarPeca(const aId: Integer);
     function PesquisarPecas(const aFiltro: String): TDataSet;
+    function CarregarCategorias : TStringList;
   end;
 
 implementation
@@ -34,6 +35,10 @@ destructor TPecaController.Destroy;
 begin
   Service.Free;
   inherited;
+end;
+function TPecaController.CarregarCategorias: TStringList;
+begin
+  Result := Service.CarregarCategorias;
 end;
 
 function TPecaController.CriarObjeto(
