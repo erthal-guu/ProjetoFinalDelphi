@@ -4,7 +4,7 @@ interface
 
 uses
   uPeças, PeçasCadastroRepository, uDMConexao, System.SysUtils,
-  FireDAC.Comp.Client, Data.DB,System.Classes;
+  FireDAC.Comp.Client, Data.DB, System.Classes;
 
 type
   TPecaService = class
@@ -13,7 +13,8 @@ type
   public
     constructor Create;
     function SalvarPeca(Peca: TPeca): Boolean;
-    function CriarObjeto(aNome, aDescricao, aCodigoInterno, aCategoria, aUnidade, aModelo:String;aAtivo : Boolean): TPeca;
+    function CriarObjeto(aNome, aDescricao, aCodigoInterno, aCategoria,
+      aUnidade, aModelo: String; aPreco: Currency; aAtivo: Boolean): TPeca;
     procedure EditarPeca(Peca: TPeca);
     function ValidarPeca(PecaValida: TPeca): Boolean;
     function ListarPecas: TDataSet;
@@ -21,7 +22,7 @@ type
     procedure DeletarPeca(const aId: Integer);
     procedure RestaurarPeca(const aId: Integer);
     function PesquisarPecas(const aFiltro: String): TDataSet;
-    function CarregarCategorias : TStringList;
+    function CarregarCategorias: TStringList;
   end;
 
 implementation
@@ -32,7 +33,8 @@ begin
 end;
 
 function TPecaService.CriarObjeto(
-  aNome, aDescricao, aCodigoInterno, aCategoria, aUnidade, aModelo:String;aAtivo : Boolean): TPeca;
+  aNome, aDescricao, aCodigoInterno, aCategoria,
+  aUnidade, aModelo: String; aPreco: Currency; aAtivo: Boolean): TPeca;
 var
   PecaDTO: TPeca;
 begin
@@ -45,6 +47,7 @@ begin
     PecaDTO.setUnidade(aUnidade);
     PecaDTO.setModelo(aModelo);
     PecaDTO.setAtivo(aAtivo);
+    PecaDTO.setPreço(aPreco);
     Result := PecaDTO;
   except
     PecaDTO.Free;
@@ -109,7 +112,9 @@ begin
     (PecaValida.getCategoria <> '') and
     (PecaValida.getUnidade <> '') and
     (PecaValida.getModelo <> '') and
-    (PecaValida.getAtivo = True) or (PecaValida.getAtivo = False);
+    ((PecaValida.getAtivo = True) or (PecaValida.getAtivo = False)) and
+    (PecaValida.getPreço > 0);
 end;
 
 end.
+

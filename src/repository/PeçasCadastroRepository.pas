@@ -3,7 +3,7 @@ unit PeçasCadastroRepository;
 interface
 
 uses
-  uDMConexao, FireDAC.Comp.Client, System.SysUtils, uPeças, Data.DB,System.Classes;
+  uDMConexao, FireDAC.Comp.Client, System.SysUtils, uPeças, Data.DB, System.Classes;
 
 type
   TPecaRepository = class
@@ -19,7 +19,7 @@ type
     procedure DeletarPeca(const aID: Integer);
     procedure RestaurarPeca(const aID: Integer);
     function PesquisarPecas(const aFiltro: String): TDataSet;
-    function CarregarCategorias : TStringList;
+    function CarregarCategorias: TStringList;
   end;
 
 implementation
@@ -34,43 +34,19 @@ procedure TPecaRepository.InserirPeca(aPeca: TPeca);
 begin
   FQuery.Close;
   FQuery.SQL.Clear;
-  FQuery.SQL.Add('INSERT INTO pecas');
-  FQuery.SQL.Add('(nome, descricao, codigo_interno, categoria, unidade, modelo, ativo)');
-  FQuery.SQL.Add('VALUES (:nome, :descricao, :codigo_interno, :categoria, :unidade, :modelo, :ativo)');
-  FQuery.ParamByName('nome').AsString            := aPeca.getNome;
-  FQuery.ParamByName('descricao').AsString       := aPeca.getDescricao;
-  FQuery.ParamByName('codigo_interno').AsString  := aPeca.getCodigoInterno;
-  FQuery.ParamByName('categoria').AsString       := aPeca.getCategoria;
-  FQuery.ParamByName('unidade').AsString         := aPeca.getUnidade;
-  FQuery.ParamByName('modelo').AsString          := aPeca.getModelo;
+  FQuery.SQL.Add('INSERT INTO pecas (nome, descricao, codigo_interno, id_categoria, id_unidade, id_modelo, ativo, preco_compra)');
+  FQuery.SQL.Add('VALUES (:nome, :descricao, :codigo_interno, :categoria, :unidade, :modelo, :ativo, :preco_compra)');
+
+  FQuery.ParamByName('nome').AsString           := aPeca.getNome;
+  FQuery.ParamByName('descricao').AsString      := aPeca.getDescricao;
+  FQuery.ParamByName('codigo_interno').AsString := aPeca.getCodigoInterno;
+  FQuery.ParamByName('categoria').AsString     := aPeca.getCategoria;
+  FQuery.ParamByName('unidade').AsString       := aPeca.getUnidade;
+  FQuery.ParamByName('modelo').AsString        := aPeca.getModelo;
   FQuery.ParamByName('ativo').AsBoolean         := aPeca.getAtivo;
+  FQuery.ParamByName('preco_compra').AsCurrency := aPeca.getPreço;
+
   FQuery.ExecSQL;
-end;
-function TPecaRepository.CarregarCategorias: TStringList;
-var
-  Lista: TStringList;
-  Qry: TFDQuery;
-begin
-  Lista := TStringList.Create;
-  Qry := TFDQuery.Create(nil);
-  try
-    Qry.Connection := FQuery.Connection;
-    Qry.SQL.add('SELECT id, nome FROM categorias ORDER BY nome');
-    Qry.Open;
-    while not Qry.Eof do
-    begin
-      Lista.AddObject(Qry.FieldByName('nome').AsString, TObject(Qry.FieldByName('id').AsInteger));
-      Qry.Next;
-    end;
-    Result := Lista;
-  except
-    on E: Exception do
-    begin
-      Lista.Free;
-      raise Exception.Create('Erro ao listar Categorias: ' + E.Message);
-    end;
-  end;
-  Qry.Free;
 end;
 
 function TPecaRepository.ExisteCodigoInterno(aPeca: TPeca): Boolean;
@@ -91,16 +67,19 @@ begin
     FQuery.SQL.Clear;
     FQuery.SQL.Add('UPDATE pecas SET');
     FQuery.SQL.Add('nome = :nome, descricao = :descricao, codigo_interno = :codigo_interno,');
-    FQuery.SQL.Add('categoria = :categoria, unidade = :unidade, modelo = :modelo, ativo = :ativo');
+    FQuery.SQL.Add('id_categoria = :categoria, id_unidade = :unidade, id_modelo = :modelo, ativo = :ativo, preco_compra = :preco_compra');
     FQuery.SQL.Add('WHERE id = :id');
+
     FQuery.ParamByName('nome').AsString           := aPeca.getNome;
     FQuery.ParamByName('descricao').AsString      := aPeca.getDescricao;
     FQuery.ParamByName('codigo_interno').AsString := aPeca.getCodigoInterno;
-    FQuery.ParamByName('categoria').AsString      := aPeca.getCategoria;
-    FQuery.ParamByName('unidade').AsString        := aPeca.getUnidade;
-    FQuery.ParamByName('modelo').AsString         := aPeca.getModelo;
-    FQuery.ParamByName('ativo').AsBoolean       := aPeca.getAtivo;
+    FQuery.ParamByName('categoria').AsString     := aPeca.getCategoria;
+    FQuery.ParamByName('unidade').AsString       := aPeca.getUnidade;
+    FQuery.ParamByName('modelo').AsString        := aPeca.getModelo;
+    FQuery.ParamByName('ativo').AsBoolean         := aPeca.getAtivo;
+    FQuery.ParamByName('preco_compra').AsCurrency := aPeca.getPreço;
     FQuery.ParamByName('id').AsInteger            := aPeca.getIdPeca;
+
     FQuery.ExecSQL;
     Result := FQuery.RowsAffected > 0;
   except
@@ -114,7 +93,7 @@ begin
   try
     FQuery.Close;
     FQuery.SQL.Clear;
-    FQuery.SQL.Add('SELECT id, nome, descricao, codigo_interno, id_categoria, unidade, modelo, ativo');
+    FQuery.SQL.Add('SELECT id, nome, descricao, codigo_interno, id_categoria, id_unidade, id_modelo, ativo, preco_compra');
     FQuery.SQL.Add('FROM pecas WHERE ativo = TRUE ORDER BY id');
     FQuery.Open;
     Result := FQuery;
@@ -129,7 +108,7 @@ begin
   try
     FQuery.Close;
     FQuery.SQL.Clear;
-    FQuery.SQL.Add('SELECT id, nome, descricao, codigo_interno, categoria, unidade, modelo, ativo');
+    FQuery.SQL.Add('SELECT id, nome, descricao, codigo_interno, id_categoria, id_unidade, id_modelo, ativo, preco_compra');
     FQuery.SQL.Add('FROM pecas WHERE ativo = FALSE');
     FQuery.Open;
     Result := FQuery;
@@ -162,11 +141,12 @@ begin
   try
     FQuery.Close;
     FQuery.SQL.Clear;
-    FQuery.SQL.Add('SELECT id, nome, descricao, codigo_interno, categoria, unidade, modelo, ativo');
+    FQuery.SQL.Add('SELECT id, nome, descricao, codigo_interno, id_categoria, id_unidade, id_modelo, ativo, preco_compra');
     FQuery.SQL.Add('FROM pecas');
-    FQuery.SQL.Add('WHERE (nome ILIKE :nome) OR (codigo_interno ILIKE :codigo_interno) OR (modelo ILIKE :modelo)');
+    FQuery.SQL.Add('WHERE (nome ILIKE :nome OR codigo_interno ILIKE :codigo_interno OR id_modelo::text ILIKE :modelo)');
     FQuery.SQL.Add('AND ativo = TRUE');
     FQuery.SQL.Add('ORDER BY id');
+
     FQuery.ParamByName('nome').AsString           := '%' + Trim(aFiltro) + '%';
     FQuery.ParamByName('codigo_interno').AsString := '%' + Trim(aFiltro) + '%';
     FQuery.ParamByName('modelo').AsString         := '%' + Trim(aFiltro) + '%';
@@ -178,4 +158,32 @@ begin
   end;
 end;
 
+function TPecaRepository.CarregarCategorias: TStringList;
+var
+  Lista: TStringList;
+  Qry: TFDQuery;
+begin
+  Lista := TStringList.Create;
+  Qry := TFDQuery.Create(nil);
+  try
+    Qry.Connection := FQuery.Connection;
+    Qry.SQL.Add('SELECT id, nome FROM categorias ORDER BY nome');
+    Qry.Open;
+    while not Qry.Eof do
+    begin
+      Lista.AddObject(Qry.FieldByName('nome').AsString, TObject(Qry.FieldByName('id').AsInteger));
+      Qry.Next;
+    end;
+    Result := Lista;
+  except
+    on E: Exception do
+    begin
+      Lista.Free;
+      raise Exception.Create('Erro ao listar Categorias: ' + E.Message);
+    end;
+  end;
+  Qry.Free;
+end;
+
 end.
+

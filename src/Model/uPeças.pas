@@ -5,14 +5,15 @@ interface
 type
   TPeca = class
   private
-    IdPeca : Integer;
+    IdPeca: Integer;
     Nome: String;
     Descricao: String;
     CodigoInterno: String;
     Categoria: String;
     Unidade: String;
     Modelo: String;
-    ativo: Boolean;
+    Ativo: Boolean;
+    Preço: Currency;
   public
     function getIdPeca: Integer;
     procedure setIdPeca(aId: Integer);
@@ -37,6 +38,9 @@ type
 
     function getAtivo: Boolean;
     procedure setAtivo(aAtivo: Boolean);
+
+    function getPreço: Currency;
+    procedure setPreço(aPreço: Currency);
   end;
 
 implementation
@@ -121,4 +125,15 @@ begin
   Ativo := aAtivo;
 end;
 
+function TPeca.getPreço: Currency;
+begin
+  Result := Preço;
+end;
+
+procedure TPeca.setPreço(aPreço: Currency);
+begin
+  Preço := aPreço;
+end;
+
 end.
+

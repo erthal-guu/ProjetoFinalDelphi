@@ -46,7 +46,6 @@ type
     CmbUnidade: TComboBox;
     CmbCategoria: TComboBox;
     CmbModelo: TComboBox;
-    CmbStatus: TComboBox;
     PnlButtonEnviar: TPanel;
     LblEnviar: TLabel;
     PnlButtonAtualizar: TPanel;
@@ -60,6 +59,9 @@ type
     BtnCancelar: TSpeedButton;
     BtnRestaurar: TSpeedButton;
     BtnSair: TSpeedButton;
+    CmbStatus: TComboBox;
+    EdtPreço: TEdit;
+    Label7: TLabel;
 
     procedure BtnAdicionarClick(Sender: TObject);
     procedure BtnPesquisarClick(Sender: TObject);
@@ -129,17 +131,18 @@ begin
   DataSourceMain.DataSet := PecaService.ListarPecas;
   DBGridMain.DataSource := DataSourceMain;
   try
-    if DBGridMain.Columns.Count >= 7 then
+    if DBGridMain.Columns.Count >= 8 then
     begin
       DBGridMain.Columns[0].Title.Caption := 'Id';
       DBGridMain.Columns[1].Title.Caption := 'Nome';
       DBGridMain.Columns[2].Title.Caption := 'Descrição';
       DBGridMain.Columns[3].Title.Caption := 'Código Interno';
       DBGridMain.Columns[4].Title.Caption := 'Categoria';
-      DBGridMain.Columns[5].Title.Caption := 'Unidade';
-      DBGridMain.Columns[6].Title.Caption := 'Modelo';
-      DBGridMain.Columns[7].Title.Caption := 'Status';
-      for var i := 0 to 7 do
+      DBGridMain.Columns[5].Title.Caption := 'Preço';
+      DBGridMain.Columns[6].Title.Caption := 'Unidade';
+      DBGridMain.Columns[7].Title.Caption := 'Modelo';
+      DBGridMain.Columns[8].Title.Caption := 'Status';
+      for var i := 0 to 8 do
       begin
         DBGridMain.Columns[i].Title.Alignment := taCenter;
         DBGridMain.Columns[i].Alignment := taCenter;
@@ -213,14 +216,21 @@ begin
 end;
 
 procedure TFormCadastroPecas.PegarCamposGridPecas;
+var
+  preço : Currency;
 begin
+try
+  preço := StrToCurr(EdtPreço.Text);
+finally
   EdtNome.Text:= DBGridMain.DataSource.DataSet.FieldByName('Nome').AsString;
   EdtDescrição.Text:= DBGridMain.DataSource.DataSet.FieldByName('Descrição').AsString;
   EdtCodigoInt.Text:= DBGridMain.DataSource.DataSet.FieldByName('Código interno').AsString;
   CmbCategoria.Text:= DBGridMain.DataSource.DataSet.FieldByName('Categoria').AsString;
+  EdtPreço.Text := CurrToStr(DBGridMain.DataSource.DataSet.FieldByName('Preço').AsCurrency);
   CmbUnidade.Text:= DBGridMain.DataSource.DataSet.FieldByName('Unidade').AsString;
   CmbModelo.Text:= DBGridMain.DataSource.DataSet.FieldByName('Modelo').AsString;
   CmbStatus.Text:= DBGridMain.DataSource.DataSet.FieldByName('Ativo').AsString;
+end;
 end;
 
 procedure TFormCadastroPecas.BtnEditarClick(Sender: TObject);
@@ -266,15 +276,17 @@ var
   PecaController: TPecaController;
   PecaDTO: TPeca;
   Ativo : Boolean;
+  preço : Currency;
 begin
   if ValidarCampos then
   begin
     PecaController := TPecaController.Create;
     try
     Ativo := (CmbStatus.Text = 'Ativo');
+    preço := StrToCurr(EdtPreço.Text);
       PecaDTO := PecaController.CriarObjeto(
         EdtNome.Text, EdtDescrição.Text, EdtCodigoInt.Text,
-        CmbCategoria.Text, CmbUnidade.Text, CmbModelo.Text,Ativo);
+        CmbCategoria.Text, CmbUnidade.Text, CmbModelo.Text,Ativo,preço);
       PecaController.SalvarPeca(PecaDTO);
       LimparCampos;
       CarregarGrid;
@@ -395,6 +407,7 @@ end;
 function TFormCadastroPecas.ValidarCampos: Boolean;
 begin
   if EdtNome.Text = '' then begin ShowMessage('O campo Nome não pode ficar vazio'); Exit; end;
+  if EdtPreço.Text = '' then begin ShowMessage('O campo Preço não pode ficar vazio'); Exit; end;
   if EdtDescrição.Text = '' then begin ShowMessage('O campo Descrição não pode ficar vazio'); Exit; end;
   if EdtCodigoInt.Text = '' then begin ShowMessage('O campo Código Interno não pode ficar vazio'); Exit; end;
   if CmbCategoria.Text = '' then begin ShowMessage('O campo Categoria não pode ficar vazio'); Exit; end;
@@ -409,6 +422,7 @@ begin
   EdtNome.Clear;
   EdtDescrição.Clear;
   EdtCodigoInt.Clear;
+  EdtPreço.Clear;
   CmbCategoria.ItemIndex := -1;
   CmbUnidade.ItemIndex := -1;
   CmbModelo.ItemIndex := -1;
