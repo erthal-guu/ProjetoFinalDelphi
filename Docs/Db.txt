@@ -1,0 +1,97 @@
+-- Criação do banco
+CREATE DATABASE erp_oficina;
+\c erp_oficina;
+
+-- ========================
+-- TABELA: CATEGORIAS
+-- ========================
+CREATE TABLE categorias (
+    id SERIAL PRIMARY KEY,
+    nome VARCHAR(100) NOT NULL
+);
+
+-- ========================
+-- TABELA: CLIENTES
+-- ========================
+CREATE TABLE clientes (
+    id SERIAL PRIMARY KEY,
+    nome VARCHAR(100) NOT NULL,
+    cpf VARCHAR(14) UNIQUE,
+    email VARCHAR(100),
+    telefone VARCHAR(20),
+    nascimento DATE,
+    endereco VARCHAR(200),
+    ativo BOOLEAN DEFAULT TRUE
+);
+
+-- ========================
+-- TABELA: FORNECEDORES
+-- ========================
+CREATE TABLE fornecedores (
+    id SERIAL PRIMARY KEY,
+    nome VARCHAR(100) NOT NULL,
+    razao_social VARCHAR(150),
+    cnpj VARCHAR(18) UNIQUE,
+    telefone VARCHAR(20),
+    cep VARCHAR(9),
+    rua VARCHAR(120),
+    numero VARCHAR(10),
+    bairro VARCHAR(80),
+    cidade VARCHAR(80),
+    estado VARCHAR(2),
+    ativo BOOLEAN DEFAULT TRUE
+);
+
+-- ========================
+-- TABELA: FUNCIONARIOS
+-- ========================
+CREATE TABLE funcionarios (
+    id SERIAL PRIMARY KEY,
+    nome VARCHAR(100) NOT NULL,
+    cpf VARCHAR(14) UNIQUE,
+    rg VARCHAR(20),
+    nascimento DATE,
+    telefone VARCHAR(20),
+    cep VARCHAR(9),
+    rua VARCHAR(120),
+    numero VARCHAR(10),
+    bairro VARCHAR(80),
+    cidade VARCHAR(80),
+    estado VARCHAR(2),
+    ativo BOOLEAN DEFAULT TRUE,
+    id_grupo INT REFERENCES grupo(id)
+);
+
+-- ========================
+-- TABELA: GRUPO
+-- ========================
+CREATE TABLE grupo (
+    id SERIAL PRIMARY KEY,
+    nome VARCHAR(50) NOT NULL
+);
+
+-- ========================
+-- TABELA: PECAS
+-- ========================
+CREATE TABLE pecas (
+    id SERIAL PRIMARY KEY,
+    nome VARCHAR(100) NOT NULL,
+    descricao TEXT,
+    codigo_interno VARCHAR(50) UNIQUE,
+    id_categoria INT REFERENCES categorias(id) ON DELETE SET NULL,
+    unidade VARCHAR(20),
+    modelo VARCHAR(50),
+    ativo BOOLEAN DEFAULT TRUE
+);
+
+-- ========================
+-- TABELA: USUARIOS
+-- ========================
+CREATE TABLE usuarios (
+    id SERIAL PRIMARY KEY,
+    nome VARCHAR(100) NOT NULL,
+    cpf VARCHAR(14) UNIQUE,
+    senha VARCHAR(255) NOT NULL,
+    grupo INT REFERENCES grupo(id) ON DELETE SET NULL,
+    ativo BOOLEAN DEFAULT TRUE
+);

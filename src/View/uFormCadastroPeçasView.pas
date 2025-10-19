@@ -16,14 +16,6 @@ type
     PnlMainButton: TPanel;
     PnlButtonCrud: TPanel;
     PnlBackgroundButton: TPanel;
-    PnlButton: TPanel;
-    BtnExcluir: TSpeedButton;
-    BtnAdicionar: TSpeedButton;
-    BtnEditar: TSpeedButton;
-    BtnPesquisar: TSpeedButton;
-    BtnCancelar: TSpeedButton;
-    BtnRestaurar: TSpeedButton;
-    BtnSair: TSpeedButton;
     PnlGrid: TPanel;
     DBGridMain: TDBGrid;
     PnlRestaurar: TPanel;
@@ -60,6 +52,14 @@ type
     PnlButtonAtualizar: TPanel;
     LblAtualizar: TLabel;
     EdtDescrição: TEdit;
+    PnlButton: TPanel;
+    BtnExcluir: TSpeedButton;
+    BtnAdicionar: TSpeedButton;
+    BtnEditar: TSpeedButton;
+    BtnPesquisar: TSpeedButton;
+    BtnCancelar: TSpeedButton;
+    BtnRestaurar: TSpeedButton;
+    BtnSair: TSpeedButton;
 
     procedure BtnAdicionarClick(Sender: TObject);
     procedure BtnPesquisarClick(Sender: TObject);

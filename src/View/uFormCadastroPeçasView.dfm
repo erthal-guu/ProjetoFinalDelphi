@@ -76,6 +76,8 @@
           Color = clBackground
           ParentBackground = False
           TabOrder = 0
+          ExplicitLeft = 16
+          ExplicitTop = 20
           object PnlButton: TPanel
             AlignWithMargins = True
             Left = 1
@@ -91,15 +93,17 @@
             Color = 15790320
             ParentBackground = False
             TabOrder = 0
+            ExplicitLeft = 2
+            ExplicitTop = 2
             object BtnExcluir: TSpeedButton
               AlignWithMargins = True
               Left = 5
-              Top = 111
+              Top = 141
               Width = 128
               Height = 40
               Margins.Left = 5
               Margins.Right = 5
-              Margins.Bottom = 10
+              Margins.Bottom = 15
               Align = alTop
               Caption = '  Excluir     '
               Font.Charset = DEFAULT_CHARSET
@@ -172,13 +176,13 @@
             object BtnAdicionar: TSpeedButton
               AlignWithMargins = True
               Left = 5
-              Top = 10
+              Top = 25
               Width = 128
               Height = 40
               Margins.Left = 5
-              Margins.Top = 10
+              Margins.Top = 25
               Margins.Right = 5
-              Margins.Bottom = 5
+              Margins.Bottom = 15
               Align = alTop
               Caption = ' Adicionar'
               Font.Charset = DEFAULT_CHARSET
@@ -245,19 +249,18 @@
                 FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF}
               ParentFont = False
               OnClick = BtnAdicionarClick
-              ExplicitLeft = 9
-              ExplicitTop = 74
-              ExplicitWidth = 152
+              ExplicitLeft = 13
+              ExplicitTop = 10
             end
             object BtnEditar: TSpeedButton
               AlignWithMargins = True
               Left = 5
-              Top = 58
+              Top = 83
               Width = 128
               Height = 40
               Margins.Left = 5
               Margins.Right = 5
-              Margins.Bottom = 10
+              Margins.Bottom = 15
               Align = alTop
               Caption = '  Editar     '
               Font.Charset = DEFAULT_CHARSET
@@ -331,12 +334,12 @@
             object BtnPesquisar: TSpeedButton
               AlignWithMargins = True
               Left = 5
-              Top = 217
+              Top = 257
               Width = 128
               Height = 40
               Margins.Left = 5
               Margins.Right = 5
-              Margins.Bottom = 10
+              Margins.Bottom = 15
               Align = alTop
               Caption = 'Pesquisar'
               Font.Charset = DEFAULT_CHARSET
@@ -410,12 +413,12 @@
             object BtnCancelar: TSpeedButton
               AlignWithMargins = True
               Left = 5
-              Top = 270
+              Top = 315
               Width = 128
               Height = 40
               Margins.Left = 5
               Margins.Right = 5
-              Margins.Bottom = 10
+              Margins.Bottom = 15
               Align = alTop
               Caption = 'Cancelar'
               Font.Charset = DEFAULT_CHARSET
@@ -531,12 +534,12 @@
             object BtnRestaurar: TSpeedButton
               AlignWithMargins = True
               Left = 5
-              Top = 164
+              Top = 199
               Width = 128
               Height = 40
               Margins.Left = 5
               Margins.Right = 5
-              Margins.Bottom = 10
+              Margins.Bottom = 15
               Align = alTop
               Caption = 'Restaurar'
               Font.Charset = DEFAULT_CHARSET
@@ -610,13 +613,13 @@
             object BtnSair: TSpeedButton
               AlignWithMargins = True
               Left = 5
-              Top = 330
+              Top = 380
               Width = 128
               Height = 40
               Margins.Left = 5
               Margins.Top = 10
               Margins.Right = 5
-              Margins.Bottom = 10
+              Margins.Bottom = 15
               Align = alTop
               Caption = '   Sair    '
               Font.Charset = DEFAULT_CHARSET
@@ -684,7 +687,8 @@
               ParentFont = False
               Spacing = 0
               OnClick = BtnSairClick
-              ExplicitTop = 322
+              ExplicitLeft = 13
+              ExplicitTop = 365
             end
           end
         end
@@ -1411,7 +1415,6 @@
                   'MT'
                   'LT'
                   'PCT')
-                ExplicitLeft = 552
               end
               object CmbCategoria: TComboBox
                 AlignWithMargins = True
@@ -1432,7 +1435,6 @@
                 Font.Style = []
                 ParentFont = False
                 TabOrder = 3
-                ExplicitLeft = 409
               end
               object CmbModelo: TComboBox
                 AlignWithMargins = True
@@ -1459,7 +1461,6 @@
                   'Caminh'#227'o'
                   #212'nibus'
                   'Utilit'#225'rio')
-                ExplicitLeft = 631
               end
               object CmbStatus: TComboBox
                 AlignWithMargins = True
@@ -1482,7 +1483,6 @@
                 Items.Strings = (
                   'Ativo'
                   'Inativo')
-                ExplicitLeft = 726
               end
               object PnlButtonEnviar: TPanel
                 AlignWithMargins = True
