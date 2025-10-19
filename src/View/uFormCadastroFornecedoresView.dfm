@@ -1491,6 +1491,7 @@
           ParentBackground = False
           TabOrder = 0
           Visible = False
+          ExplicitLeft = 22
           object LblRestaurar: TLabel
             AlignWithMargins = True
             Left = 4
@@ -1623,6 +1624,84 @@
                 TitleFont.Style = []
               end
             end
+          end
+        end
+        object PnlVincularPeça: TPanel
+          Left = 184
+          Top = 90
+          Width = 529
+          Height = 217
+          BevelOuter = bvNone
+          Caption = 'Vincular'
+          Color = 9521152
+          ParentBackground = False
+          TabOrder = 2
+          Visible = False
+          object ListBoxVincular: TListBox
+            AlignWithMargins = True
+            Left = 20
+            Top = 46
+            Width = 489
+            Height = 110
+            Margins.Left = 20
+            Margins.Top = 5
+            Margins.Right = 20
+            Margins.Bottom = 5
+            Align = alClient
+            ItemHeight = 20
+            TabOrder = 0
+          end
+          object Vincular: TPanel
+            AlignWithMargins = True
+            Left = 20
+            Top = 166
+            Width = 489
+            Height = 41
+            Margins.Left = 20
+            Margins.Top = 5
+            Margins.Right = 20
+            Margins.Bottom = 10
+            Align = alBottom
+            BevelOuter = bvNone
+            Color = 6172416
+            Font.Charset = DEFAULT_CHARSET
+            Font.Color = clWhite
+            Font.Height = -15
+            Font.Name = 'Segoe UI'
+            Font.Style = []
+            ParentBackground = False
+            ParentFont = False
+            TabOrder = 1
+            object LblVincular: TLabel
+              AlignWithMargins = True
+              Left = 3
+              Top = 10
+              Width = 483
+              Height = 28
+              Margins.Top = 10
+              Align = alClient
+              Alignment = taCenter
+              Caption = 'Vincular'
+              Font.Charset = DEFAULT_CHARSET
+              Font.Color = clWhite
+              Font.Height = -15
+              Font.Name = 'Segoe UI'
+              Font.Style = []
+              ParentFont = False
+              ExplicitWidth = 53
+              ExplicitHeight = 20
+            end
+          end
+          object PnlHeaderVincular: TPanel
+            Left = 0
+            Top = 0
+            Width = 529
+            Height = 41
+            Align = alTop
+            BevelOuter = bvNone
+            Color = 6172416
+            ParentBackground = False
+            TabOrder = 2
           end
         end
       end

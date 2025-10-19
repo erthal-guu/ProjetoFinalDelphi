@@ -22,7 +22,6 @@
     BevelOuter = bvNone
     BorderStyle = bsSingle
     TabOrder = 0
-    ExplicitHeight = 713
     object PnlContainer: TPanel
       AlignWithMargins = True
       Left = -2
@@ -52,7 +51,6 @@
         Color = 6172416
         ParentBackground = False
         TabOrder = 0
-        ExplicitHeight = 483
       end
       object PnlButtonCrud: TPanel
         Left = 929
@@ -707,7 +705,6 @@
         Color = clBackground
         ParentBackground = False
         TabOrder = 2
-        ExplicitHeight = 445
         object DBGridMain: TDBGrid
           AlignWithMargins = True
           Left = 1
@@ -742,7 +739,6 @@
           ParentBackground = False
           TabOrder = 1
           Visible = False
-          ExplicitHeight = 405
           object LblRestaurar: TLabel
             AlignWithMargins = True
             Left = 4
@@ -833,7 +829,6 @@
             Color = 9521152
             ParentBackground = False
             TabOrder = 0
-            ExplicitHeight = 335
             object PnlContainerRestaurar: TPanel
               AlignWithMargins = True
               Left = 12
@@ -850,7 +845,6 @@
               Color = clBackground
               ParentBackground = False
               TabOrder = 0
-              ExplicitHeight = 315
               object DBGridRestaurar: TDBGrid
                 AlignWithMargins = True
                 Left = 1
@@ -929,7 +923,6 @@
         Color = 6172416
         ParentBackground = False
         TabOrder = 4
-        ExplicitTop = 540
         object PnlBackgrounEdit: TPanel
           AlignWithMargins = True
           Left = 0
@@ -1256,7 +1249,6 @@
               Align = alLeft
               BevelOuter = bvNone
               TabOrder = 0
-              ExplicitLeft = 0
               object Label1: TLabel
                 Left = 20
                 Top = 8
@@ -1381,7 +1373,6 @@
                 Font.Style = []
                 ParentFont = False
                 TabOrder = 0
-                ExplicitLeft = 300
               end
               object EdtNome: TEdit
                 AlignWithMargins = True
@@ -1430,7 +1421,6 @@
                   'MT'
                   'LT'
                   'PCT')
-                ExplicitLeft = 550
               end
               object CmbCategoria: TComboBox
                 AlignWithMargins = True
@@ -1451,7 +1441,6 @@
                 Font.Style = []
                 ParentFont = False
                 TabOrder = 3
-                ExplicitLeft = 407
               end
               object CmbModelo: TComboBox
                 AlignWithMargins = True
@@ -1478,7 +1467,6 @@
                   'Caminh'#227'o'
                   #212'nibus'
                   'Utilit'#225'rio')
-                ExplicitLeft = 629
               end
               object PnlButtonEnviar: TPanel
                 AlignWithMargins = True
@@ -1512,7 +1500,8 @@
                   ParentColor = False
                   ParentFont = False
                   OnClick = LblEnviarClick
-                  ExplicitLeft = 20
+                  ExplicitWidth = 40
+                  ExplicitHeight = 20
                 end
               end
               object PnlButtonAtualizar: TPanel
@@ -1547,8 +1536,8 @@
                   ParentColor = False
                   ParentFont = False
                   OnClick = LblAtualizarClick
-                  ExplicitLeft = -1
-                  ExplicitTop = 12
+                  ExplicitWidth = 59
+                  ExplicitHeight = 20
                 end
               end
               object EdtDescrição: TEdit
@@ -1591,7 +1580,6 @@
                 Items.Strings = (
                   'Ativo'
                   'Inativo')
-                ExplicitLeft = 716
               end
               object EdtPreço: TEdit
                 AlignWithMargins = True
@@ -1612,7 +1600,6 @@
                 Font.Style = []
                 ParentFont = False
                 TabOrder = 9
-                ExplicitLeft = 507
               end
             end
           end

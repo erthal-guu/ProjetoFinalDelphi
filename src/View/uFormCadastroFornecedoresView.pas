@@ -66,6 +66,11 @@ type
     EdtCidade: TEdit;
     EdtEstado: TEdit;
     BtnVincularPeças: TSpeedButton;
+    PnlVincularPeça: TPanel;
+    ListBoxVincular: TListBox;
+    Vincular: TPanel;
+    LblVincular: TLabel;
+    PnlHeaderVincular: TPanel;
 
     procedure BtnAdicionarClick(Sender: TObject);
     procedure BtnPesquisarClick(Sender: TObject);
@@ -401,7 +406,7 @@ end;
 
 procedure TFormCadastroFornecedores.BtnVincularPeçasClick(Sender: TObject);
 begin
-ShowMessage('Em desenvolvimento');
+  PnlVincularPeça.Visible := True;
 end;
 
 procedure TFormCadastroFornecedores.BuscarCEP;

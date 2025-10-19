@@ -34,13 +34,13 @@ procedure TPecaRepository.InserirPeca(aPeca: TPeca);
 begin
   FQuery.Close;
   FQuery.SQL.Clear;
-  FQuery.SQL.Add('INSERT INTO pecas (nome, descricao, codigo_interno, id_categoria, id_unidade, id_modelo, ativo, preco_compra)');
+  FQuery.SQL.Add('INSERT INTO pecas (nome, descricao, codigo_interno, id_categoria, unidade, modelo, ativo, preco_compra)');
   FQuery.SQL.Add('VALUES (:nome, :descricao, :codigo_interno, :categoria, :unidade, :modelo, :ativo, :preco_compra)');
 
   FQuery.ParamByName('nome').AsString           := aPeca.getNome;
   FQuery.ParamByName('descricao').AsString      := aPeca.getDescricao;
   FQuery.ParamByName('codigo_interno').AsString := aPeca.getCodigoInterno;
-  FQuery.ParamByName('categoria').AsString     := aPeca.getCategoria;
+  FQuery.ParamByName('id_categoria').AsString     := aPeca.getCategoria;
   FQuery.ParamByName('unidade').AsString       := aPeca.getUnidade;
   FQuery.ParamByName('modelo').AsString        := aPeca.getModelo;
   FQuery.ParamByName('ativo').AsBoolean         := aPeca.getAtivo;
@@ -67,13 +67,12 @@ begin
     FQuery.SQL.Clear;
     FQuery.SQL.Add('UPDATE pecas SET');
     FQuery.SQL.Add('nome = :nome, descricao = :descricao, codigo_interno = :codigo_interno,');
-    FQuery.SQL.Add('id_categoria = :categoria, id_unidade = :unidade, id_modelo = :modelo, ativo = :ativo, preco_compra = :preco_compra');
+    FQuery.SQL.Add('id_categoria = :categoria, unidade = :unidade, modelo = :modelo, ativo = :ativo, preco_compra = :preco_compra');
     FQuery.SQL.Add('WHERE id = :id');
-
     FQuery.ParamByName('nome').AsString           := aPeca.getNome;
     FQuery.ParamByName('descricao').AsString      := aPeca.getDescricao;
     FQuery.ParamByName('codigo_interno').AsString := aPeca.getCodigoInterno;
-    FQuery.ParamByName('categoria').AsString     := aPeca.getCategoria;
+    FQuery.ParamByName('categoria').AsString   := aPeca.getCategoria;
     FQuery.ParamByName('unidade').AsString       := aPeca.getUnidade;
     FQuery.ParamByName('modelo').AsString        := aPeca.getModelo;
     FQuery.ParamByName('ativo').AsBoolean         := aPeca.getAtivo;
@@ -93,8 +92,20 @@ begin
   try
     FQuery.Close;
     FQuery.SQL.Clear;
-    FQuery.SQL.Add('SELECT id, nome, descricao, codigo_interno, id_categoria, id_unidade, id_modelo, ativo, preco_compra');
-    FQuery.SQL.Add('FROM pecas WHERE ativo = TRUE ORDER BY id');
+    FQuery.SQL.Add('SELECT ');
+    FQuery.SQL.Add('  p.id, ');
+    FQuery.SQL.Add('  p.nome, ');
+    FQuery.SQL.Add('  p.descricao AS "Descrição", ');
+    FQuery.SQL.Add('  p.codigo_interno AS "Código interno", ');
+    FQuery.SQL.Add('  c.nome AS "Categoria", ');
+    FQuery.SQL.Add('  p.preco_compra AS "Preço", ');
+    FQuery.SQL.Add('  p.unidade AS "Unidade", ');
+    FQuery.SQL.Add('  p.modelo AS "Modelo", ');
+    FQuery.SQL.Add('  p.ativo ');
+    FQuery.SQL.Add('FROM pecas p ');
+    FQuery.SQL.Add('INNER JOIN categorias c ON p.id_categoria = c.id ');
+    FQuery.SQL.Add('WHERE p.ativo = TRUE ');
+    FQuery.SQL.Add('ORDER BY p.id');
     FQuery.Open;
     Result := FQuery;
   except
@@ -108,7 +119,7 @@ begin
   try
     FQuery.Close;
     FQuery.SQL.Clear;
-    FQuery.SQL.Add('SELECT id, nome, descricao, codigo_interno, id_categoria, id_unidade, id_modelo, ativo, preco_compra');
+    FQuery.SQL.Add('SELECT id, nome, descricao, codigo_interno, id_categoria, unidade, modelo, ativo, preco_compra');
     FQuery.SQL.Add('FROM pecas WHERE ativo = FALSE');
     FQuery.Open;
     Result := FQuery;
@@ -141,7 +152,7 @@ begin
   try
     FQuery.Close;
     FQuery.SQL.Clear;
-    FQuery.SQL.Add('SELECT id, nome, descricao, codigo_interno, id_categoria, id_unidade, id_modelo, ativo, preco_compra');
+    FQuery.SQL.Add('SELECT id, nome, descricao, codigo_interno, id_categoria, unidade, modelo, ativo, preco_compra');
     FQuery.SQL.Add('FROM pecas');
     FQuery.SQL.Add('WHERE (nome ILIKE :nome OR codigo_interno ILIKE :codigo_interno OR id_modelo::text ILIKE :modelo)');
     FQuery.SQL.Add('AND ativo = TRUE');

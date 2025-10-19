@@ -274,23 +274,45 @@ end;
 procedure TFormCadastroPecas.LblEnviarClick(Sender: TObject);
 var
   PecaController: TPecaController;
-  PecaDTO: TPeca;
-  Ativo : Boolean;
-  preço : Currency;
+  Peca: TPeca;
+  Ativo: Boolean;
+  preco: Currency;
+  IdCategoria: string;
 begin
   if ValidarCampos then
   begin
     PecaController := TPecaController.Create;
     try
-    Ativo := (CmbStatus.Text = 'Ativo');
-    preço := StrToCurr(EdtPreço.Text);
-      PecaDTO := PecaController.CriarObjeto(
-        EdtNome.Text, EdtDescrição.Text, EdtCodigoInt.Text,
-        CmbCategoria.Text, CmbUnidade.Text, CmbModelo.Text,Ativo,preço);
-      PecaController.SalvarPeca(PecaDTO);
-      LimparCampos;
-      CarregarGrid;
-      PecaDTO.Free;
+      Ativo := (CmbStatus.Text = 'Ativo');
+      preco := StrToCurr(EdtPreço.Text);
+      if CmbCategoria.ItemIndex >= 0 then
+        IdCategoria := IntToStr(Integer(CmbCategoria.Items.Objects[CmbCategoria.ItemIndex]))
+      else
+      begin
+        ShowMessage('Selecione uma categoria válida!');
+        Exit;
+      end;
+
+      Peca := PecaController.CriarObjeto(
+        EdtNome.Text,
+        EdtDescrição.Text,
+        EdtCodigoInt.Text,
+        IdCategoria,
+        CmbUnidade.Text,
+        CmbModelo.Text,
+        Ativo,
+        preco
+      );
+
+      try
+        PecaController.SalvarPeca(Peca);
+        ShowMessage('Peça cadastrada com sucesso!');
+        LimparCampos;
+        CarregarGrid;
+      finally
+        Peca.Free;
+      end;
+
     finally
       PecaController.Free;
     end;
