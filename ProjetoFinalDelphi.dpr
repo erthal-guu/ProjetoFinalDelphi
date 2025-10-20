@@ -45,7 +45,11 @@ uses
   VeiculoCadastroRepository in 'src\repository\VeiculoCadastroRepository.pas',
   VeiculoCadastroService in 'src\Services\VeiculoCadastroService.pas',
   VeiculoCadastroController in 'src\controller\VeiculoCadastroController.pas',
-  uVeiculo in 'src\Model\uVeiculo.pas';
+  uVeiculo in 'src\Model\uVeiculo.pas',
+  uServiço in 'src\Model\uServiço.pas',
+  ServiçoCadastroRepository in 'src\repository\ServiçoCadastroRepository.pas',
+  ServiçoCadastroService in 'src\Services\ServiçoCadastroService.pas',
+  ServiçoCadastroController in 'src\controller\ServiçoCadastroController.pas';
 
 {$R *.res}
 

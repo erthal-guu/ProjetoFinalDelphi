@@ -19,14 +19,11 @@
     Height = 649
     Align = alClient
     TabOrder = 0
-    ExplicitWidth = 624
-    ExplicitHeight = 441
     object PageControl1: TPageControl
       Left = 1
       Top = 1
       Width = 1115
       Height = 647
-      ActivePage = Veículos
       Align = alClient
       Font.Charset = DEFAULT_CHARSET
       Font.Color = clWindowText
@@ -35,1315 +32,1459 @@
       Font.Style = []
       ParentFont = False
       TabOrder = 0
-      object Veículos: TTabSheet
-        Caption = 'Servi'#231'os'
-        object PnlMain: TPanel
-          Left = 0
+    end
+    object PnlMain: TPanel
+      Left = 1
+      Top = 1
+      Width = 1115
+      Height = 647
+      Align = alClient
+      BevelOuter = bvNone
+      BorderStyle = bsSingle
+      TabOrder = 1
+      ExplicitLeft = 2
+      ExplicitTop = 2
+      object PnlContainer: TPanel
+        AlignWithMargins = True
+        Left = 0
+        Top = 0
+        Width = 1108
+        Height = 641
+        Margins.Left = 0
+        Margins.Top = 0
+        Margins.Right = 0
+        Margins.Bottom = 0
+        BevelOuter = bvNone
+        Color = 9521152
+        ParentBackground = False
+        TabOrder = 0
+        object PnlMainButton: TPanel
+          AlignWithMargins = True
+          Left = 926
           Top = 57
-          Width = 1107
-          Height = 551
-          Align = alClient
+          Width = 182
+          Height = 451
+          Margins.Left = 0
+          Margins.Top = 0
+          Margins.Right = 0
+          Margins.Bottom = 0
+          Align = alRight
           BevelOuter = bvNone
-          BorderStyle = bsSingle
+          Color = 6172416
+          ParentBackground = False
           TabOrder = 0
-          ExplicitWidth = 1112
-          ExplicitHeight = 566
-          object PnlContainer: TPanel
-            AlignWithMargins = True
-            Left = 0
+          ExplicitHeight = 371
+          object PnlButtonCrud: TPanel
+            Left = 3
             Top = 0
-            Width = 1108
-            Height = 561
-            Margins.Left = 0
-            Margins.Top = 0
-            Margins.Right = 0
-            Margins.Bottom = 0
+            Width = 178
+            Height = 458
             BevelOuter = bvNone
             Color = 9521152
             ParentBackground = False
             TabOrder = 0
-            object PnlMainButton: TPanel
-              AlignWithMargins = True
-              Left = 926
-              Top = 0
-              Width = 182
-              Height = 428
-              Margins.Left = 0
-              Margins.Top = 0
-              Margins.Right = 0
-              Margins.Bottom = 0
-              Align = alRight
-              BevelOuter = bvNone
-              Color = 6172416
-              ParentBackground = False
-              TabOrder = 0
-            end
-            object PnlMainEdit: TPanel
-              Left = 0
-              Top = 428
-              Width = 1108
-              Height = 133
-              Align = alBottom
-              BevelOuter = bvNone
-              Color = 6172416
-              ParentBackground = False
-              TabOrder = 1
-              object PnlBackgrounEdit: TPanel
-                AlignWithMargins = True
-                Left = 0
-                Top = 10
-                Width = 1108
-                Height = 113
-                Margins.Left = 0
-                Margins.Top = 10
-                Margins.Right = 0
-                Margins.Bottom = 10
-                Align = alClient
-                BevelOuter = bvNone
-                Color = 9521152
-                ParentBackground = False
-                TabOrder = 0
-                Visible = False
-                object PnlDesignEdit: TPanel
-                  AlignWithMargins = True
-                  Left = 20
-                  Top = 10
-                  Width = 1068
-                  Height = 93
-                  Margins.Left = 20
-                  Margins.Top = 10
-                  Margins.Right = 20
-                  Margins.Bottom = 10
-                  Align = alClient
-                  Color = 15790320
-                  ParentBackground = False
-                  TabOrder = 0
-                  Visible = False
-                  object Image1: TImage
-                    AlignWithMargins = True
-                    Left = 952
-                    Top = 4
-                    Width = 105
-                    Height = 85
-                    Margins.Right = 10
-                    Align = alRight
-                    Picture.Data = {
-                      0954506E67496D61676589504E470D0A1A0A0000000D49484452000000700000
-                      00570806000000DC49C1C5000022724944415478DAED7D079C5D55B5FE3EBD9F
-                      DBEFF4CC4C423A3184484968093CE0C913119112459A020F0B8A88FCE5D10CE2
-                      8B0DC5A7185430511EA1A848330408420021105A8014322993E9B797734F2FFF
-                      B5CFCD84C0236A94C7CDF866F91B2673EE29FBAE6FAFB5BE6FEF7DB6041AB731
-                      6D44A31B306EFF988D0338C66D1CC0316EE3008E711B07708CDB388063DCC601
-                      1CE3360EE018B77100C7B88D0338C66D1CC0316EE300BE87CD98713A4BABDE81
-                      3C2FCD09109A6E5A1A6F1BDA168E0BD6AE5FFBF8F38D6EDF9E360EE0BBEC88E3
-                      3FF3614650164B6AE258DBF13922F090E7DB1E4B0546B538BCF29947579C09A7
-                      058D6EE7A88D03B887CD3FEEF479A9D6498F91B42495351B110C873CD741224F
-                      1B03BD5B567234BAE885D5BFCE37BA9D7BDA7E0DA02C37A754559A4251440221
-                      5264189A22491651144950140A0882F41DC73548D22DB92E95755D27BF63C786
-                      E1BFE759C7FCEB998734B71DB02A5FB663042D211FE1070488A60254CC0DDD45
-                      9AD52BD63EF9DFFD8DF6C9BB6DBF04B0AD6DCA398820BF48B1EC21AE03AE6419
-                      14B838953988E338843398E7B88865D9F0180A48E47928FC9D4E37A362B1F827
-                      C733EEE568FDF69E9E1EEBAF3D6FEEDC8B98CE1989E7352B38D8724944D21CA2
-                      499C252D64EBB97B069CFE737A56AEFCABF76984ED5700B6B7772DA028E17A2F
-                      208E41048D1045A32008102F0888A1E16F880B92C48749441324721CC7A7E1B8
-                      65D924CFC9F0B7878A851212250159868E0491ABBA9EB1CCF19D5B77F66C7873
-                      6FCF9D77E2A70E6D699EBCB6627888155464DB36726C0DA902B1BE37B3E9F8F5
-                      8FDE97D9DBB533E79D1827293A78FD99878B8DF0D97E0360476BD7224E106EB7
-                      6C97723D72B9E93A2F476389C5BAAE274551ACE40BF90F93929F25483290C0C3
-                      FDFDFD26DA452666CC98C10EEABA28DAA20AE9B6C90D82299E679FD4DCD4BC48
-                      AB550896A53DD772AEE8E979FD87EFF5ECC38FFBD4A7DB3B27DF51ADB9C8F668
-                      84F333816C646985DB9E79F896CFEDADCD471CF131A5A97BFABAB7366FF8E91B
-                      2F3EF8E346F86DBF0070F2E4699F80AA769BEB070543372F1E1CDCF6383EDEDC
-                      31F390543AFD42B19847B665DD9019D87CEDBEDCB7BD7D669CE1C82FB02CFF79
-                      DB349B216257280A7FDDC68DAF6ED9F3BC134EFEEC6588536FA25909006490EF
-                      0708B2364461F5D5D5BFFDC19CF7BAF761C72D6A6249EE3B8964EBB9D9ECC0F7
-                      9F7D7CF9158DF05DC3019C3973CE698E6DAD304D73A76E307372B9CDD53D3F6F
-                      EA987623495257A9AA5ACB970A53727D9B07F7F5195D5D07450302FDC4B2AC4F
-                      3735A5B2AE6D9EF5E69B2F3C31FAF9C293CEBF545613371B3681183E8A2CC706
-                      F242204920D1C8C096A63F3FFA9B77A4D0F9277C269D8C353D64BBC15C28C144
-                      A994BBF58535CB2F6984FF1A0A607BFBC45924413CC28B42B35ED34FEEEFDFF6
-                      C7779FA324BBA7B6B536BF649886E4D8F605833B36FCEAEF7D5E67E79CAFB23C
-                      B3441058CA302B676FD9B4FE6E38ECCF5DF0C9CF754D98F68B62C5402444A1E7
-                      23C43014C22486A7D1D3B9D2E0E51977643D2632479F707E8718892C43247FAC
-                      C88BC8312D34D2DFFBED179EBDE33F1AE1C3860178C081074EF2757F1530C949
-                      F972F19AEC50EFB7F0F1D609D34E1665756EA95424A1180DE40636FDA2B5FBC0
-                      3F32247962A150F853B5D87FEC3FF2DC49530F5B4893C432D7B7270404B364DB
-                      A6B5DF38FCF873AE9295D88D1C1018000619A60D0C9746AE6782833CC4B3A4AB
-                      D7AA0F57CAE58DB21C3936164F1F5AAE9A08135501B8552137F0D9671E5F767B
-                      23FCD81000274F9E7190E7050FD95ED04620CAA9D66A273804DAA4D24C4C4924
-                      36E47239A4AA51608326D421FB28C3328E4944E3DFE238166533D97B10E9FF98
-                      F2E92C345F71023722F094E0383647D32CFC100C480F8EE779D6765C9A2028C6
-                      0F288A6138DAB24C16244994619879407F0EE1057949424E2DF624F1896453EB
-                      E150F9003C17083013B25DDF77E13F2E127806335E44100400CBA1720518AEA4
-                      20C2739144BB68B0B767C6F36BEEDEF87F02C0CECEC9A7C96AFC76ADA6A958B7
-                      D92E70468232C1392E4992E07042A89F091E04D950ABEA77FBC823144539034B
-                      0A86A42032A04691940DE7B27E282D4864EA66A80B81B0A05AAD06629F0AA328
-                      AC672035A0A320C7F7405EC2391C8F188AB9CAF5D97B3845FD7A229DFEACACC6
-                      28C7F5910BB2920290F03D5DD70E81C4C369183CDF074D4A3108640ED2E17971
-                      5540B55CEF57FFF4C7DB7EF80F3965AC00D8D5D5155563ADDBB3993C8E020C1E
-                      A2985D7805D853FEDBBFF121000C3B6EF4DF1EA8750218A22449E05C3704188E
-                      868E1539058033E03C8420FA20626C14C07D3088A66386D733001C4170F008F6
-                      329948DD42C5E91F3737B79F4B711C4F02302E0068C3CF9ECF44BB3A08EE10F8
-                      F9F859B843F050FFCA85E1DF3DFD871F7EB251E07DE000B6B6769F1089A55761
-                      9A5EA9D690A8A8C8329D5DCEC23F7ED8A4FAEFB70DA72FD0822168D899D891A0
-                      0F9102823DD8151D8E1320458E8620E2BF390ED29E6B869FE3FF31907E395E74
-                      099ABB1C11FC6302A75EA9441327299168D2F683D00F18247CFF3A70F5BF7114
-                      D2E120026E87357ADCA956AA3F439675E39F1F5D9AF95BBFFF9807B0AD6DF245
-                      BCA8DC5A83F48347593CC89E0CC312A30E1BFD8DF5F96814ECD9FB3190914814
-                      552A1524CB32D4480B059E857034E331520BD72F820ACFC7F5CB018EEFF93612
-                      007C9617B0EAFF981DC8CFC422B1DB22D1C4110C2BA671BDF3E1B99099E13A22
-                      1CA2B36C4387CE82D33A342920789E63CAA512443E5F300CFD71CF7696BEF2E4
-                      6FD63512B88600D8DC3CE91A926617EB86F55312721BC708178F360147DD2880
-                      18BCF007681E1ED6C2112088B25B2C16DEB421EF46A3D1598EEDB182C8A16AB9
-                      F8285C7883EBFB094916A75896378B67D9B950336780B60CAF6538AE6AFBD4E7
-                      5CD37F8995E56FA79BDA0F532389CE0050C3C147D3407821559A96866A954A9F
-                      6E68AF05AE7F2749116B291ABA821D50C08A9066150D10A389FE4DC7BE89D0F5
-                      FE3FE28B310960FB8419D79104F5C9C181EC972019BAF144143499301FF7F23D
-                      A39020DF06123E0F23CEB29DFFAAE8F6B725A01424CF5CAA28D12BA1FE515AB5
-                      FC4235DF73D89EDFA9A3634E0BC1A3190C2D7C9361F8A98E179C6218549FA8C8
-                      374513A9D9D158EA001AEA21D67BB8A641A001DB3551A5947B0B7ED6B8A4792D
-                      E3D1679224F1EFD081CAD01E07A487148FA81348C28FEBB5F259AFBDB8FAEE46
-                      83F78103184F767E8D654595A4D85923D9AC4073DC1BC958FC724C5A30706FA7
-                      507F3780F813CF739FCAF66D5C28C63A4F6259898124F79C6DF8F73735A70F25
-                      029F2C97F2DF2867B72D79AF67CE386441B3E9C88AC82AB74663C9C9A21A691F
-                      4D9BD83071B14C3DD02A859E4AB9F884676A8B3DDFF824190437E3CF2DCB08D9
-                      6D00293980940C9C084922BF6CC3EB6BCF6F186A7BD8074C62262FAA19EE4C41
-                      94BE083A4ACAE4B2CB555939173EA24741ACD7BEB701046D878AE5CA799EE7D0
-                      9D133A7F99CFE791A6E9174BA254F003F75E3CBD046514488DB61C6AE2AF95A4
-                      FC6AFF9B6F16469F396BFE278E1638E53B929C9CC14B2A56EA21FBC52A1CD7CA
-                      5C7624A855CB9BAB95C2FD8E61FC8865890B80BADCE8BB4E3855556F4F1002C8
-                      50F01B6A7132A93CF9CA4BCF2F6C34781F38808A929E4F33C2C725257605644D
-                      AF58A9DC2F4AD2F1E04805FB0933463204ADCEFA42E2627B7D0C4D5F200AC263
-                      966B850E2D950AAB2BB9D847DA277A65AC1B313BC5C7B17C2069602301B38E8A
-                      468F95097146B2B5E341D3F6128A1A27B1C6330CA35E5381A58E0CF7077AADB4
-                      09A2EF61333F7C7D204867C3F1A5A65E0BCFF13D074F1E83B8AF2189E7A046EA
-                      C086054453E4CB3D9B5F99DB68F03E700021A1B1F178ED6C251ABFCDB67DAB58
-                      2EBF2ACAF20C9A6114704AC81CBD5D605024134648E0076FD88E7D0748B52538
-                      126A7A153A8262E6CBB96E811356B00CBF003AC32EB60A811C50CF023B3A2F12
-                      6B9AA6269A7E252BD1A469439D23F1DC227C5D9030A2C4A3A19DFD4EA99CD95C
-                      2D8FFCDEF7CC5B3CDBBE10C0B9C1B51D901B0CD22A55A4AA4A085E284BA063D8
-                      4E9D1441103FD3BBE5B5A31A0D5E0300C41639B86DC28417298A23F3C5E200CB
-                      F34DE014C0900E008390CC84A90B51E1A887E3B81B6DCB5ECFB2FC99580B62BA
-                      8FD925207B86ED79473034F36512C0C13F80FA5631A00FA323F18313A9A607D4
-                      5882C7E061B28241C0200B10A5D9EC88572B9776542AD97B76AC7FE8AA58CB87
-                      BE2170FCB73170C5623194281441C2738CF079F85A0F244B5D6A40BB68EA37BD
-                      3DAF9DD368F01A04206223A9C95B055E6AC7BD19D723A85DBD903EB780B2F810
-                      CBB1E9B0EE0420A8C189866ED618865BC7F3E231B942698D24894F903499058A
-                      BF5A60B8844F50C7C1691249322551E06EA779F5DF1459BD951764866270DAF3
-                      429D88476C707461C6A96BD5A1C1BEDEDBABC5CCD2C0AB5D2A08DC15A35A1377
-                      200CB451D3D19E1D060FE1E161354C68F45AF5E2A1814D3F6F34781F34804C34
-                      D1B9D4B25C5590E4A325494D5B20CC19709CA6696FD935ED388E63344A6017D2
-                      3C771E4DB1FF86BB3A05025D51A3B94A45FFA242C4EFDB206C0BDA6BF1F9A222
-                      36E3454DBCC80F414C0C930CD5C4B0D25992205F0CD1CAF898AC385EF8601CD1
-                      AA2C8560E43243B5623E77E386E7EEF94FB979D68FA312FF2592A8EB4D0C201E
-                      A6F3BDD15118B73E7CB78BF084E3A204B1C309EC23CB85F235B2C04F2720F7EA
-                      9AB6BE54C95CFECF0E20D5D2316D8813E414B0482CCC717AC439138FB0D8E0E4
-                      3EF8E345C06C35CB711B41EC1568869E07007ED4F1C8EF921493E545F92C5950
-                      CEE0042E019E049C390A982847D2B4086C15B21E3819E168C3F5B44E82588602
-                      7243A352210B51ED54B56AE9FBC37D3DB7132C730DE57B17D986069FB3C88628
-                      93D5288E40CF30AC2AD46027994CB91CC79AD0C172C092DFAC69DA6B044D3D60
-                      E8DA713445FFDCB58D704602B07D70C78ECD1FFB670710C5D35DABD568FC58C3
-                      70C2BA14AE2A73DC300A099AC0DDBB4EDBC1E904C93CE933FCA7FB5E796C70F6
-                      C24F9DC850D20D0CCF77796E104FA79B29706AB842CD0FEC5DA336341E7606D4
-                      EA63A561CD83C822C371551BF11C656FEBD9F4A5D79FFBFDCF5BBBE72C8E2622
-                      27411EDD4A7AFE0844D6886FA3BE9A55ED95B8F8482C9674D2E934E2231C8AC8
-                      9116AD6AB4142A8509B55A758A6559B302DF9B879FE13978C29786483597EFDC
-                      F9D679FFF4002AD1B6E59178E21C3F1CB3869AE3F875F042C10EBE07676319C0
-                      006507B9F18041098B229C385196A3CB45499D280852D4B49C3AF05E10024481
-                      36C3D34BE17834A45B4C11C33A063A1DAFE9E4B0AA700D676868E795EB9EBA6B
-                      AFD33ED1687A36C54AB3813C4D745C7F6A24169F23CBEA544C6AF068101E87C5
-                      06111FA6520C2005CF67A0EDB65DFB5E7FFFD6AFFFF30318EBF8763C99FC866D
-                      BB8866991040C287E8C14E27C1750C8D74D069244416C18AB346363EF9C68C23
-                      17DD964CB59C4C126C0AC84C7DA0DAABD73516A4072460E487EA004B0F202D78
-                      BD28C809BCA6257030F9F0FC7271E8FC35AB96FFFA2FB52D1E6FBD20964CDD0A
-                      199176A173E071D290484167C0B3273474AC70A4C8AF0388091816F704743AD3
-                      AC5E3634B4E347FFF4000A5272D1D4E933EFB4DD3ADB835A83F0BA5CDFAB0F6B
-                      991ED66022320004498D5D42D1CCF36D6D131F57A389041EF2E26806410AC3A1
-                      60093C2BE3A91E1FC43F4EBDBAE984F37DA00B4342C2C037A30817558A996B9F
-                      5EF5CB1BFEA6F609F1764E9417BA0ED1954AA73F5233AC797870008BFF51268B
-                      E54422190B090E0B20E229AD9ECD9B3F9A2B0E3CFCC1C3F7C1CB08321A6DE900
-                      9618CD144A6A22969C9388A76FD60D334C51722C1232470DC0801AF8AD544BDB
-                      6022DE740DD0F916BCC4229719D17DC7FBEF9AA5DF23B2741B908F539448EC54
-                      070A2ACB89A80AF7C1CEC63A8E849E41931E2AEDDC9A7EFAE97BB3FBDAD05872
-                      CA138AA22EC4E1069D264CF578A1534495D1E0D0C0E52449BCC2335451D3AA99
-                      5CAE6F9F57CABD5FD6D05569B1D8C48828CB0FD3347F0409E9B366E821196145
-                      05598E77B620C87363F1D4856D6DED72AD522DD7B4CAAF5E7C72D9657BDE63C1
-                      8917FE8B144B3D66E06927160FA581F8B74C202D5057ADDAE0CA7B6F6EDBE776
-                      25272E02997327C709A85CAD864374AE5D9F1C565569CD964DEB8E69A4DFF6B4
-                      86AF0B4DA4265D2D88911BEABC860AD96940B17882F693C03A8F3C68F6415FC9
-                      E5724320B6EEE6BCDAB5CF3EFB40F5DDF738FE63972D6325E95C0F8F9E408AC3
-                      13B334A44FD23336ACBCF7A733F7A53DA2986CED9A3875B36E587205E40ED685
-                      B8EED6AA65203A2A1A18EC3D49AF0CAF6CB4DF46ADE100CA7253BA7DE2D4112C
-                      0B7C024FACD22111A129EE7304CB26DADBDA3F5F2D976FDBFCD2C137EE6D12F5
-                      E0A3CEBBA2A3ABEBBB15DD402C3058BC948285F49919DC7EDFCB4FFDFE13FBD2
-                      9EA6D629F7F1BCF47110A610C5221E64400C0BE993C4A343DEB3BDDBD71FD968
-                      9FED690D07101BAFB67C2B996CFA0F0FAF87F1418AF312AA54F5A53CC32F1315
-                      E104DBF16F19D8B47AAFEFE51DBAE0B317C79AD24B1DE04238150740F56B955C
-                      592B65AE7DE399FBFFE677169A9BBBAE8CC4D24B0AC532E24409E137A3F0842F
-                      1E23C532B554CE9D54CCF6EE37D187ADF1004622B19658C75A8EE527E3B532A0
-                      F7303BC5DC72D0B7887F1522C130E9324B58967862DBA6E7EE7CF7E573E79D3E
-                      8B56D2BF8E46E3B30332203C008F838829E507B70E6CEF39AA77E3D3437F4B33
-                      D478DB35B1487CB1079A8464D870B11549D617399138FA4032988676637664CB
-                      D58D76D99ED6700023C9AE9FB1ACF2EF582C874B0577AD3A03C705C0FE76C2BF
-                      8745493A4C1478FC82CBF97D5B5F5C367AED9C234F9D2DC8136E2768695A24A2
-                      889EA3C3752E32F4623633B0F5671B5E7AECBABFA50D72B4FDDA9696966F9AA0
-                      4F1D3B40AE5F4F9F987DD224130E14E0F940D7B39056CE7DA254EABFAFD17E1B
-                      B586022828D15363D1F6BB284660716F77C245B8F8ED202F14CA78168013F8FA
-                      AAE87A34780C2FFEC7B6D79FF8CEF4B91F3D38926CBA99175B66B39CAC586615
-                      093C814A85A11186B077EAB9CC292FBDB4EA2F461FE8BEF904C343DA4C7C0C4F
-                      4785CB1629266C8369D8A1F6C3830D78C8CEA89591AC08F8B5B3E182569E571A
-                      DEB1A391BE1BB58602C8F3F282AE89331F2C577409AF2DC26B39F1B240C3A821
-                      82A6C22133AC0BC9701A80C40E3520460F160549E8ECEABECBB0FC56514EC934
-                      2BA24A256FEAD562BF65545F3632C57377EC78D2DCDB73E3F1D68E2020AF9414
-                      F50B921C4135D30AC53F960B3674163CC080D9A7E7E1D1552A9C8262F0A84FE0
-                      405DB4B6D6AA8513CAE5916D8DF4DDA8353C854202BBA4FB80A9B7E088C3ABCF
-                      B013479703E295639805F2828468A84BC542F1A14A76E3C9DD338FB926164F7E
-                      1AE294E47885F503C22D94B22F03D57F8426C8FBDF4D7892C98E5638752A44D3
-                      745E108E6468F6248AA2237829BDE57A6184E185C2914804697A351CFBC413CA
-                      F8D93885D20C190EDB39B6992F15464ED3B4DC538DF6DAA8ED07002224296D5F
-                      5514F907D871E1A42A515F1E5FAED64066A86114D6F470759843D2EC37870EEE
-                      58B2209B25FA2A5C172F8A92E598DB7BD6AEACB64E3D6A7EB198591C8F282D8E
-                      699609C2E7399A9AA0284ADC84280B3B06684C9C92F1803A270A2159C191EEB8
-                      5638D2122EEB189DCDC00406D5973A3214656DDBD1730272B5358DF6D79EB65F
-                      00884D89357F271E4B7C1DEA50215F28FDD6D4F4E5AC247689BC74552C999A89
-                      5FF90AF0CB5EE05CD068DB1525B24E37CC8C4FFA44449593A0150FA44862862A
-                      8920BA35ACD9EA6B6B10B16BB93C110E7AE3EB3141C160BA107D58A4F33C17CE
-                      32E0A5F37EE0ACA916CB8B4DD7245555FD6C3216FF78005A223332FC855A35FB
-                      77BF9BF8BF65FB0D8060B42C27AFF63C7BA56154D68E1E8CC727755881FBDD74
-                      53CB59A54A15291091F8EDA16AB516AEA8C611C3F16CA8D77CFC420B440B5ECF
-                      E2E3C95CB61E6D183486E6C2DFD8F068004ED1E1846F38406E86623D9FCF2C31
-                      CA683142FDC6E8F3294EFC0881A76DADDAA38D76D07BD9FE04E05F3429DEF595
-                      54AAE987F8B52E178F92F062081EDEB1022FBEA5EA24A73E1311EE5C6185B5CD
-                      7383102C3CFB8FA30DBFE452281490A2AA75D619E0E58EB23E34DC7FAE56D8FE
-                      DB467FCF7DB531036034DD3D5B10E45719964796E38640E14547B6595F2B8A07
-                      E170C461506832DC822404D4F1EA9204038A0124808C8420736C785F1AAE04F1
-                      BF6E70FBC831080DEA8DFE9EFB6A63064029D63E2B194FACAFD60C24AB0A5EF0
-                      1B82A5486A983E4767CCD5F0AD2533FC0C0308752F0080895094EF02D2AD0F14
-                      84D7C920170AD9CCF3E502B500A1BFBE29D0FE6663064025D93625118D6F1645
-                      19E50A4584A77AEAF50D72A0876B65DC28E60AA76AA64632342552A0234DC374
-                      1996AD06BE3B3D168FFE04D73C43B790A8C8BBDFC3C02914B0FCF38EADAFE2A5
-                      F276A3BFE7BEDA9801105B24D6F244BAA979217E3105D742BC121BCFC06386A9
-                      9BE63746FA5F5FB2B76BE3E9CED500F2B138241DCF0D5FC30EDF31342D20B0E5
-                      5FD4AA430D5916F88FDA9802105B73F3849950D73E2C48CA7C40EE508A640FE2
-                      387EFB60A9789836DCB3D7997741891DD1DAD2BA12A235C8158BCF5124BDD6B4
-                      EDE7491FADD3B4E17D9EB1DF5F6CCC01F86E6B9B386D8A5B0B9C9191CDDBFFDA
-                      B9B21C9FA969A80FA142A5D1ED7EBF6CCC03F87FDDC6011CE3F6BF08A07A00CD
-                      D1DD140A38D05F430CE36C03B2F08E2D19239148CCF6B9E9B6E5B6889260598E
-                      BEC3D68A6FEC794E3ADD3189A64955D7EB3B55ECD6774E794B369BD512AD53A6
-                      813420F02EA25610844B7B03062F2A0C88E2C836BCC5E4EE65181C979C42D34C
-                      374B32ACE95A59B8CF5B954A7FF8322807ED0D589AADEF7302E4149811C84ABC
-                      7DCDA0A669EFD889829562B3E840A03DCFAD585666EB9E9F0942BCC325A904DE
-                      5D06F40C0937F06C32A820B3B463CC002829CD5FA348EE82682CDAE638160B6C
-                      CF762DBB375F282C1875184BC5CE4EA4525F26697E32886BDEF75D4A8948DAC8
-                      D0E0030C697E018383CF6B6D9FB60A9C7E0868B600741C19783E4D51045DAD56
-                      7E6407DEEF5439FE47CBF5B0AC036EE311A6697A3CCF73122F30A552FEBC52BE
-                      F73E566E9E29B2FC6296E10E03D9A14247A0480A79D56AF9D5426EFBD1F01431
-                      1E631F0172DBC9D05CE0B8162D081C45903E55332BB796F223D78C7E378A554E
-                      49C45B961204C7B30CFD7ADFCE578EDEF3BB2752DD7815F96978970B8EC72B69
-                      284AD7F58C5EB3EFAF96B77E6DFF0790910E4AC59BFFE838BE00CE7C1E28FBB6
-                      58549DC232EC0C531F995E28142A91C884E312F1D81D103952CDB2873CCF79DE
-                      0FBC2651E4E74992A4566BE5C7F3433B8FC7B78B25BBFEC4B1DC3104416D82A8
-                      18C48B78059E63754DFB9DEB3AAB7859FABE6DDB44A9589E944E374D753D3B63
-                      DBD63A887ADEB19D2536F2362ABCF408A031CD769C3E60AEAFB88E5364587E32
-                      2FF011C7CCCC87CE415044640D41D2334BA5CA3A88CC122772C8766A4440780F
-                      57F2C33F1DFD7AC9A6CE7B58463C4D5612A456A9FA7A39B3B0A40DED9EA188C5
-                      BB562891E85900DA9BB667F7806211058E3D5C1254A5A6E52FCAE5B6FF62BF06
-                      5052D327AA4AECF78EEDF7D4B4C24986911FC0C7A3A9CE39A56CEF2BF8DFCDE9
-                      031EF17CFF28D3B5FFE452E86223DF1F9E134F779C4051E49D922C27B223D973
-                      6A95CC6F9A5AA7AC167869DE40DFE0971D6764AF5F5E8E4EB836A246AED2F5EA
-                      23C5DC8E8FEF6E4FA4F54A5956AE0330DFAA96CA173A4EFEC5D1CF122D93A7E7
-                      87B66C840E15130471B5695ACDAE1B2CD2B41DEF3DDF278A2DAD89F64DAE8332
-                      BAEE3DAC2AF2A581ABAF181AD9F2E9D15322C90977A972E2CC6AAD726929BBF5
-                      BFF0319A6BBEBCA5A9F5FB23237DBFB7ADEC69FB35806AA2FDD04434B19AA639
-                      766870E8CF0CCF7CAF98DDF608DA558B92C9CE164E507A201D52C552EE139562
-                      FF3BB6988CA6DA962593C9734746B2CBAB85C1F394C88427589A9BEF05E8CA52
-                      41BD05A197F0100AFEF1DE715DA2FB6AC88B3720C2F9433ED37BEA6E87C626AC
-                      8AC793C767F3D9EBB452DFE8127B2AFCEF0107D0A8A7C7C29BAB0BB2BA8A08A8
-                      0EDB726ED4347D9D92104A8165254AA5FEDD60269B3BBF2608CAF7B4AAB1C2B3
-                      F92FAA517E1BC71191FECCCE03AC72BD1636B54CBF8717C4D34B95E225E5DCB6
-                      A5F81823B45CD69C6AB949372A8FE6B33D27EED700E2F646E313AE8A46135F87
-                      C2249AF55981ED5AADFA8BECD05B4BA2D1EE0F7102F732CF8941B190990E35F1
-                      1DBBE7C6D3EDD70B827C9D693A0FE447B69E924C1FB09AA1F905866194555535
-                      69861450E06EDBB6F5B5C3E17467F43ABC405812D51BAAB5DC03C55CDF296F1F
-                      9FF8BA22C7A60F0E0F2CB28DE17BE36D6DED3135FE82A105403028B754CD7F84
-                      74FDA180A01E21097A36CF8B6E3C1EE5F1BBF1500751A9904F0F0FF764BBBABA
-                      F86CD1FC037CAF7F191ECA9E0799FA0E51EE7EA4A9297662B1943DBF94EF5B86
-                      9F174B4EBA5B929433F2E51C4468F4CF464D4FC5A2B18B7D371072F991CB8DDA
-                      C04DFB3B80A145229DDD88A62E1279E12C8EE73AFCC0A52AD5CA05A54AEDE9C9
-                      DD1337D66A8657CA678FD0F5A197F6BC2EDD3EE9BB3CCB5F91CF16EEAD5587CE
-                      88443B1F83B2785CE0FBEB4BE5629F240B3ECD0485E1816DEFD8A745963BAF6E
-                      6D69BE6124B3F30FE5F2D0EE086C699BB6DE75C8E901E15E921B79EB976232D9
-                      CA53CC7D3419EBA62846286BA5A329CFDDC9F1E24AF0C674CBB09F66792EE3B9
-                      0E5E47E55084F0956C76832645DB664723CAC3502E39D370BF6CDA6E8F22CB9F
-                      6719EA5CC7357E3532B0F902FCBC64EBB41524499F15049ECE710C0B79026F79
-                      892AC5EA9272B9076F0AFBBEEEF0F401E8C0B98CA80CAF48A612A76633999F1A
-                      DAF0A59178F746A839936DC7FC5121F33633C3B588E28835AA1A3DB0542A7DAD
-                      94EBFD4134DEFD2844DE71C57CE1C26AB56FAF9BAA261293AFE659E106CB29DD
-                      9FCBEDDC5D0393E9C93FE358E922DDA83E54CC73A723B4211CB05663DDCB4982
-                      FD28F2ADE38044F50504B90A884F33007896690E3EF33F3A64BCFD4240F48714
-                      458B1C2B98407869C8300ECBD2A2562B6F728CCC11954AA5A0C627AE88251267
-                      6573C357FBBEBD42E4A4DFD0147BA8A55B8BCAE5F77FBEF17D07100F57353777
-                      2CA9D4F4070D4B7F1DF9641A18E635A9540AEFC27B7D29B7F39B6AA2F30B8AA4
-                      7E1F11BE53AB69BF24C8E077C8F3BB598EFF7FB2A4CC0416592EE4F469B5DA8E
-                      E1647AD263200B16E6F2F90BCDDAF05E973444E5EE6BD44864B161971ECC6677
-                      EC7EDD39959A72144D72BF15152152AD157E57A9647F45D174C03389FF54D5D8
-                      EC6261F8700C202F4AAB41D7751288B8D576803D3A1E02264A80A4D8A49586D6
-                      44E26D77412938D536DD9534436F05B2830CC34691A87236B45FA96885738C72
-                      F6B791F8C43BE3F1D8A291ECE0257A7968A920375D9A4CA46ED64AFACA6279DB
-                      C9E85DB57BBF033012497E38916879B2A2D524881C6458667DEB47C7DD3830D4
-                      7706B23510EA5D7C2419FC24A2AAA77B9EAFB2F8654FCF09E7EA6449DE5A2815
-                      CE2D66763E1B02909EF814C3B2F374BD7271A930B8570065BEE39A4432BED8F1
-                      6B0F0D0EF69CFC8E36C9132F89A6D4EB3DDF4C8B12152EC7A050046F4D521DCE
-                      F7CF07F59E8925928F419D9D06FACDC53A5251250A4FFC160B859B1C8ABA49E5
-                      F8F5144D32854CF640D32CEEDC7DEFD884EFAA51F57220284FE587771E2BC7DA
-                      EE8AA8D133CB95D2255A7160A924A59A13A9A6977D2768C9E5873F639AF93BF6
-                      6B00C1D8A6A6094781BE9B0F2AB6157497E1F92EFE024F1A4661CFFFEB1A221A
-                      ED380AEACDB1006E37CB10651F05AF544BA5274CB3D43B7A522CD67236C3B0CD
-                      36321E2B6532AFEDEDA1ADA92947BA9E77B86557FACA5AF67F6C44978E76CFB6
-                      91B3009A338DA4A980F4C55E8AA0D7640A3DCFC1C7B4126939CF278288C03201
-                      D467D2477EC0E2BD6B02E2355DB7722C4B1E8FB732A956477EF98E1BF3D1AEA4
-                      1A39CD431655CCF03F8EA7FC8F1ABAD3E1DAFA1AC729EFAAEFF2C2E674CB8709
-                      CA2F0F0D6D7D5FB727191F0B1DE3360EE018B77100C7B88D0338C66D1CC0316E
-                      E3008E711B07708CDB388063DCC6011CE3360EE018B77100C7B88D0338C6EDFF
-                      0346549848A99E47470000000049454E44AE426082}
-                    ExplicitLeft = 962
-                    ExplicitHeight = 95
-                  end
-                  object PnlEdit: TPanel
-                    Left = 1
-                    Top = 1
-                    Width = 945
-                    Height = 91
-                    Align = alLeft
-                    BevelOuter = bvNone
-                    TabOrder = 0
-                    object Label1: TLabel
-                      Left = 20
-                      Top = 8
-                      Width = 43
-                      Height = 17
-                      Caption = 'Nome :'
-                      Font.Charset = DEFAULT_CHARSET
-                      Font.Color = clWindowText
-                      Font.Height = -13
-                      Font.Name = 'Segoe UI'
-                      Font.Style = []
-                      ParentFont = False
-                    end
-                    object Label3: TLabel
-                      Left = 276
-                      Top = 8
-                      Width = 40
-                      Height = 17
-                      Caption = 'Pre'#231'o :'
-                      Font.Charset = DEFAULT_CHARSET
-                      Font.Color = clWindowText
-                      Font.Height = -13
-                      Font.Name = 'Segoe UI'
-                      Font.Style = []
-                      ParentFont = False
-                    end
-                    object Label4: TLabel
-                      Left = 143
-                      Top = 8
-                      Width = 64
-                      Height = 17
-                      Caption = 'Categoria :'
-                      Font.Charset = DEFAULT_CHARSET
-                      Font.Color = clWindowText
-                      Font.Height = -13
-                      Font.Name = 'Segoe UI'
-                      Font.Style = []
-                      ParentFont = False
-                    end
-                    object Label5: TLabel
-                      Left = 379
-                      Top = 8
-                      Width = 77
-                      Height = 17
-                      Caption = 'Observa'#231#227'o :'
-                      Font.Charset = DEFAULT_CHARSET
-                      Font.Color = clWindowText
-                      Font.Height = -13
-                      Font.Name = 'Segoe UI'
-                      Font.Style = []
-                      ParentFont = False
-                    end
-                    object Label2: TLabel
-                      Left = 505
-                      Top = 8
-                      Width = 40
-                      Height = 17
-                      Caption = 'Pe'#231'as :'
-                      Font.Charset = DEFAULT_CHARSET
-                      Font.Color = clWindowText
-                      Font.Height = -13
-                      Font.Name = 'Segoe UI'
-                      Font.Style = []
-                      ParentFont = False
-                    end
-                    object Label6: TLabel
-                      Left = 610
-                      Top = 8
-                      Width = 74
-                      Height = 17
-                      Caption = 'Profissional :'
-                      Font.Charset = DEFAULT_CHARSET
-                      Font.Color = clWindowText
-                      Font.Height = -13
-                      Font.Name = 'Segoe UI'
-                      Font.Style = []
-                      ParentFont = False
-                    end
-                    object PnlButtonEnviar: TPanel
-                      AlignWithMargins = True
-                      Left = 717
-                      Top = 30
-                      Width = 123
-                      Height = 28
-                      Margins.Left = 5
-                      Margins.Top = 30
-                      Margins.Right = 0
-                      Margins.Bottom = 30
-                      Align = alLeft
-                      BevelOuter = bvLowered
-                      Color = 9521152
-                      ParentBackground = False
-                      TabOrder = 0
-                      ExplicitLeft = 699
-                      ExplicitHeight = 31
-                      object LblEnviar: TLabel
-                        AlignWithMargins = True
-                        Left = 4
-                        Top = 4
-                        Width = 115
-                        Height = 20
-                        Align = alClient
-                        Alignment = taCenter
-                        Caption = 'Enviar'
-                        Color = clWhite
-                        Font.Charset = DEFAULT_CHARSET
-                        Font.Color = clWhite
-                        Font.Height = -15
-                        Font.Name = 'Segoe UI'
-                        Font.Style = []
-                        ParentColor = False
-                        ParentFont = False
-                        ExplicitWidth = 40
-                      end
-                    end
-                    object EdtNome: TEdit
-                      AlignWithMargins = True
-                      Left = 20
-                      Top = 30
-                      Width = 117
-                      Height = 28
-                      Margins.Left = 20
-                      Margins.Top = 30
-                      Margins.Bottom = 30
-                      Align = alLeft
-                      AutoSize = False
-                      Font.Charset = DEFAULT_CHARSET
-                      Font.Color = clWindowText
-                      Font.Height = -15
-                      Font.Name = 'Segoe UI'
-                      Font.Style = []
-                      ParentFont = False
-                      TabOrder = 1
-                      ExplicitHeight = 31
-                    end
-                    object EdtObs: TEdit
-                      AlignWithMargins = True
-                      Left = 379
-                      Top = 30
-                      Width = 118
-                      Height = 28
-                      Margins.Left = 5
-                      Margins.Top = 30
-                      Margins.Right = 5
-                      Margins.Bottom = 30
-                      Align = alLeft
-                      AutoSize = False
-                      Font.Charset = DEFAULT_CHARSET
-                      Font.Color = clWindowText
-                      Font.Height = -15
-                      Font.Name = 'Segoe UI'
-                      Font.Style = []
-                      ParentFont = False
-                      TabOrder = 2
-                      ExplicitHeight = 31
-                    end
-                    object CmbProfissional: TComboBox
-                      AlignWithMargins = True
-                      Left = 610
-                      Top = 30
-                      Width = 97
-                      Height = 29
-                      Margins.Top = 30
-                      Margins.Right = 5
-                      Margins.Bottom = 5
-                      Align = alLeft
-                      BevelOuter = bvNone
-                      Style = csDropDownList
-                      Font.Charset = DEFAULT_CHARSET
-                      Font.Color = clWindowText
-                      Font.Height = -16
-                      Font.Name = 'Segoe UI'
-                      Font.Style = []
-                      ParentFont = False
-                      TabOrder = 3
-                      Items.Strings = (
-                        'Carro'
-                        'Moto'
-                        'Caminh'#227'o'
-                        #212'nibus'
-                        'Utilit'#225'rio')
-                      ExplicitLeft = 505
-                    end
-                    object EdtPreço: TEdit
-                      AlignWithMargins = True
-                      Left = 276
-                      Top = 30
-                      Width = 93
-                      Height = 28
-                      Margins.Left = 5
-                      Margins.Top = 30
-                      Margins.Right = 5
-                      Margins.Bottom = 30
-                      Align = alLeft
-                      AutoSize = False
-                      Font.Charset = DEFAULT_CHARSET
-                      Font.Color = clWindowText
-                      Font.Height = -15
-                      Font.Name = 'Segoe UI'
-                      Font.Style = []
-                      ParentFont = False
-                      TabOrder = 4
-                      ExplicitHeight = 31
-                    end
-                    object CmbCategoria: TComboBox
-                      AlignWithMargins = True
-                      Left = 143
-                      Top = 30
-                      Width = 123
-                      Height = 29
-                      Margins.Top = 30
-                      Margins.Right = 5
-                      Margins.Bottom = 5
-                      Align = alLeft
-                      BevelOuter = bvNone
-                      Style = csDropDownList
-                      Font.Charset = DEFAULT_CHARSET
-                      Font.Color = clWindowText
-                      Font.Height = -16
-                      Font.Name = 'Segoe UI'
-                      Font.Style = []
-                      ParentFont = False
-                      TabOrder = 5
-                      Items.Strings = (
-                        'Carro'
-                        'Moto'
-                        'Caminh'#227'o'
-                        #212'nibus'
-                        'Utilit'#225'rio')
-                      ExplicitHeight = 33
-                    end
-                    object CmbPeças: TComboBox
-                      AlignWithMargins = True
-                      Left = 505
-                      Top = 30
-                      Width = 97
-                      Height = 29
-                      Margins.Top = 30
-                      Margins.Right = 5
-                      Margins.Bottom = 5
-                      Align = alLeft
-                      BevelOuter = bvNone
-                      Style = csDropDownList
-                      Font.Charset = DEFAULT_CHARSET
-                      Font.Color = clWindowText
-                      Font.Height = -16
-                      Font.Name = 'Segoe UI'
-                      Font.Style = []
-                      ParentFont = False
-                      TabOrder = 6
-                      Items.Strings = (
-                        'Carro'
-                        'Moto'
-                        'Caminh'#227'o'
-                        #212'nibus'
-                        'Utilit'#225'rio')
-                      ExplicitHeight = 33
-                    end
-                  end
-                end
-              end
-            end
-            object PnlButtonCrud: TPanel
-              Left = 936
-              Top = 0
-              Width = 178
-              Height = 428
-              BevelOuter = bvNone
-              Color = 9521152
-              ParentBackground = False
-              TabOrder = 2
-              object PnlBackgroundButton: TPanel
-                AlignWithMargins = True
-                Left = 19
-                Top = 19
-                Width = 140
-                Height = 390
-                Margins.Left = 19
-                Margins.Top = 19
-                Margins.Right = 19
-                Margins.Bottom = 19
-                Align = alClient
-                BevelOuter = bvNone
-                Color = clBackground
-                ParentBackground = False
-                TabOrder = 0
-                object PnlButton: TPanel
-                  AlignWithMargins = True
-                  Left = 1
-                  Top = 1
-                  Width = 138
-                  Height = 388
-                  Margins.Left = 1
-                  Margins.Top = 1
-                  Margins.Right = 1
-                  Margins.Bottom = 1
-                  Align = alClient
-                  BevelOuter = bvNone
-                  Color = 15790320
-                  ParentBackground = False
-                  TabOrder = 0
-                  object BtnExcluir: TSpeedButton
-                    AlignWithMargins = True
-                    Left = 5
-                    Top = 111
-                    Width = 128
-                    Height = 40
-                    Margins.Left = 5
-                    Margins.Right = 5
-                    Margins.Bottom = 10
-                    Align = alTop
-                    Caption = '  Excluir     '
-                    Font.Charset = DEFAULT_CHARSET
-                    Font.Color = clWindowText
-                    Font.Height = -15
-                    Font.Name = 'Segoe UI'
-                    Font.Style = []
-                    Glyph.Data = {
-                      F6060000424DF606000000000000360000002800000018000000180000000100
-                      180000000000C0060000C20E0000C20E00000000000000000000FFFFFFFFFFFF
-                      FFFFFFCCCCCC5454543333333333333333333333333333333333333333333333
-                      333333333333333333333333333333333333333E3E3E898989FCFCFCFFFFFFFF
-                      FFFFFFFFFFFFFFFFEFEFEF222222B8B8B8DDDDDDDDDDDDDDDDDDDDDDDDDDDDDD
-                      DDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDD6D6D65656
-                      568E8E8EFFFFFFFFFFFFFFFFFFFFFFFFBDBDBD5B5B5BFFFFFFFFFFFFFFFFFFFF
-                      FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
-                      FFFFFFFFFFFFCECECE4A4A4AFFFFFFFFFFFFFFFFFFFFFFFFB7B7B7616161FFFF
-                      FFFFFFFFFEFEFEDFDFDFF3F3F3FFFFFFFFFFFFF0F0F0E1E1E1FFFFFFFFFFFFFF
-                      FFFFE0E0E0F1F1F1FFFFFFFFFFFFD4D4D4444444FFFFFFFFFFFFFFFFFFFFFFFF
-                      B7B7B7616161FFFFFFFFFFFF787878333333222222FBFBFBF1F1F11C1C1C2E2E
-                      2E8B8B8BFFFFFF8686863030301D1D1DF4F4F4FFFFFFD4D4D4444444FFFFFFFF
-                      FFFFFFFFFFFFFFFFB7B7B7616161FFFFFFFFFFFF575757C0C0C0272727F1F1F1
-                      DDDDDD3A3A3AADADAD6A6A6AFFFFFF656565B2B2B2353535E2E2E2FFFFFFD4D4
-                      D4444444FFFFFFFFFFFFFFFFFFFFFFFFB7B7B7616161FFFFFFFFFFFF575757C0
-                      C0C0272727F1F1F1DDDDDD3A3A3AADADAD6A6A6AFFFFFF656565B2B2B2353535
-                      E2E2E2FFFFFFD4D4D4444444FFFFFFFFFFFFFFFFFFFFFFFFB7B7B7616161FFFF
-                      FFFFFFFF575757C0C0C0272727F1F1F1DDDDDD3A3A3AADADAD6A6A6AFFFFFF65
-                      6565B2B2B2353535E2E2E2FFFFFFD4D4D4444444FFFFFFFFFFFFFFFFFFFFFFFF
-                      B7B7B7616161FFFFFFFFFFFF575757C0C0C0272727F1F1F1DDDDDD3A3A3AADAD
-                      AD6A6A6AFFFFFF656565B2B2B2353535E2E2E2FFFFFFD4D4D4444444FFFFFFFF
-                      FFFFFFFFFFFFFFFFB7B7B7616161FFFFFFFFFFFF575757C0C0C0272727F1F1F1
-                      DDDDDD3A3A3AADADAD6A6A6AFFFFFF656565B2B2B2353535E2E2E2FFFFFFD4D4
-                      D4444444FFFFFFFFFFFFFFFFFFFFFFFFB7B7B7616161FFFFFFFFFFFF575757C0
-                      C0C0272727F1F1F1DDDDDD3A3A3AADADAD6A6A6AFFFFFF656565B2B2B2353535
-                      E2E2E2FFFFFFD4D4D4444444FFFFFFFFFFFFFFFFFFFFFFFFB7B7B7616161FFFF
-                      FFFFFFFF575757C0C0C0272727F1F1F1DDDDDD3A3A3AADADAD6A6A6AFFFFFF65
-                      6565B2B2B2353535E2E2E2FFFFFFD4D4D4444444FFFFFFFFFFFFFFFFFFFFFFFF
-                      B7B7B7616161FFFFFFFFFFFF575757C0C0C0272727F1F1F1DDDDDD3A3A3AADAD
-                      AD6A6A6AFFFFFF656565B2B2B2353535E2E2E2FFFFFFD4D4D4444444FFFFFFFF
-                      FFFFFFFFFFFFFFFFB7B7B7616161FFFFFFFFFFFF575757C0C0C0272727F1F1F1
-                      DDDDDD3A3A3AADADAD6A6A6AFFFFFF656565B2B2B2353535E2E2E2FFFFFFD4D4
-                      D4444444FFFFFFFFFFFFFFFFFFFFFFFFB7B7B7616161FFFFFFFFFFFF5B5B5B8D
-                      8D8D1E1E1EF4F4F4E1E1E12A2A2A7F7F7F6E6E6EFFFFFF696969838383272727
-                      E6E6E6FFFFFFD4D4D4444444FFFFFFFFFFFFFFFFFFFFFFFFB7B7B7616161FFFF
-                      FFFFFFFFCCCCCC686868919191FFFFFFFFFFFF8585856A6A6AD5D5D5FFFFFFD3
-                      D3D3696969888888FFFFFFFFFFFFD4D4D4444444FFFFFFFFFFFFFFFFFFFFFFFF
-                      B7B7B7616161FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
-                      FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFD4D4D4444444FFFFFFFF
-                      FFFFFFFFFFFFFFFFB7B7B7616161FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
-                      FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFD4D4
-                      D4444444FFFFFFFFFFFF9191915555553E3E3E0B0B0B1C1C1C1C1C1C1C1C1C1C
-                      1C1C1C1C1C1C1C1C1C1C1C1C1C1C1C1C1C1C1C1C1C1C1C1C1C1C1C1C1C1C1C1C
-                      1C1C1C1C1C1C181818171717555555919191151515BBBBBBB7B7B78B8B8B8989
-                      8989898989898989898989898989898989898989898989898989898989898989
-                      8989898989898989898989898989898989A2A2A2BBBBBB151515343434222222
-                      2222222222222222222222222222220E0E0E0505050505050505050505050505
-                      050505050505050505050505051E1E1E22222222222222222222222222222234
-                      3434FDFDFDEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEE404040B7B7B7DEDEDE
-                      DEDEDEDEDEDEDEDEDEDEDEDEDEDEDEDEDEDE3D3D3DC3C3C3EEEEEEEEEEEEEEEE
-                      EEEEEEEEEEEEEEFDFDFDFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF87
-                      87875B5B5BD7D7D7DDDDDDDDDDDDDDDDDDDDDDDDDDDDDDB0B0B0252525F8F8F8
-                      FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
-                      FFFFFFFFFFFFFFFBFBFB8484843D3D3D33333333333333333333333333333359
-                      5959D5D5D5FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF}
-                    ParentFont = False
-                    ExplicitTop = 84
-                    ExplicitWidth = 135
-                  end
-                  object BtnAdicionar: TSpeedButton
-                    AlignWithMargins = True
-                    Left = 5
-                    Top = 10
-                    Width = 128
-                    Height = 40
-                    Margins.Left = 5
-                    Margins.Top = 10
-                    Margins.Right = 5
-                    Margins.Bottom = 5
-                    Align = alTop
-                    Caption = ' Adicionar'
-                    Font.Charset = DEFAULT_CHARSET
-                    Font.Color = clWindowText
-                    Font.Height = -15
-                    Font.Name = 'Segoe UI'
-                    Font.Style = []
-                    Glyph.Data = {
-                      F6060000424DF606000000000000360000002800000018000000180000000100
-                      180000000000C0060000C20E0000C20E00000000000000000000FFFFFFFFFFFF
-                      FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
-                      FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
-                      FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFD5D5D5
-                      A2A2A2898989888888A3A3A3D3D3D3FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
-                      FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF5F5F58B
-                      8B8B2121210000000000000000000000000000000000002222228B8B8BF5F5F5
-                      FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
-                      FFC2C2C22121210101014444449F9F9FDADADAF5F5F5F3F3F3D6D6D699999942
-                      4242000000202020C4C4C4FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
-                      FFFFFFFFFFFFA9A9A9060606262626C3C3C3FFFFFFFFFFFFFFFFFFFFFFFFFFFF
-                      FFFFFFFFFFFFFFFFFFFFBEBEBE242424060606AEAEAEFFFFFFFFFFFFFFFFFFFF
-                      FFFFFFFFFFFFFFFFFFFFFFC2C2C20606063E3E3EF1F1F1FFFFFFFFFFFFFFFFFF
-                      FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFEDEDED3D3D3D060606C6C6
-                      C6FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF5F5F5212121262626F2F2F2FFFFFFFF
-                      FFFFFFFFFFFFFFFFFFFFFFEAEAEAEAEAEAFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
-                      EDEDED2424241F1F1FF6F6F6FFFFFFFFFFFFFFFFFFFFFFFF898989000000C5C5
-                      C5FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF4D4D4D4D4D4DFFFFFFFFFFFFFF
-                      FFFFFFFFFFFFFFFFFFFFFFBEBEBE0000008B8B8BFFFFFFFFFFFFFFFFFFFEFEFE
-                      1F1F1F454545FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF4040404040
-                      40FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF424242232323FEFEFEFF
-                      FFFFFFFFFFD2D2D2000000A0A0A0FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
-                      FFFFFF404040404040FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF9999
-                      99000000D5D5D5FFFFFFFFFFFFA1A1A1000000DADADAFFFFFFFFFFFFFFFFFFFF
-                      FFFFFFFFFFFFFFFFFFFFFF404040404040FFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
-                      FFFFFFFFFFFFD6D6D6000000A1A1A1FFFFFFFFFFFF868686000000F7F7F7FFFF
-                      FFFFFFFFEAEAEA4F4F4F44444444444444444411111111111144444444444444
-                      44444F4F4FECECECFFFFFFFFFFFFF2F2F2000000898989FFFFFFFFFFFF878787
-                      000000F8F8F8FFFFFFFFFFFFEAEAEA4F4F4F4444444444444444441111111111
-                      114444444444444444444F4F4FECECECFFFFFFFFFFFFF5F5F50000008C8C8CFF
-                      FFFFFFFFFFA0A0A0000000DADADAFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
-                      FFFFFF404040404040FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFD9D9
-                      D9000000A6A6A6FFFFFFFFFFFFD1D1D1000000A0A0A0FFFFFFFFFFFFFFFFFFFF
-                      FFFFFFFFFFFFFFFFFFFFFF404040404040FFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
-                      FFFFFFFFFFFF9F9F9F000000D5D5D5FFFFFFFFFFFFFEFEFE212121464646FFFF
-                      FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF404040404040FFFFFFFFFFFFFF
-                      FFFFFFFFFFFFFFFFFFFFFFFFFFFF444444252525FFFFFFFFFFFFFFFFFFFFFFFF
-                      8A8A8A010101C5C5C5FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF4D4D4D4D4D
-                      4DFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFC3C3C30101018C8C8CFFFFFFFF
-                      FFFFFFFFFFFFFFFFF4F4F41E1E1E282828F0F0F0FFFFFFFFFFFFFFFFFFFFFFFF
-                      FFFFFFEAEAEAEAEAEAFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF1F1F12626262020
-                      20F8F8F8FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFC1C1C10505053F3F3FF0F0F0FF
-                      FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF2F2F2
-                      3E3E3E080808C7C7C7FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFA9A9
-                      A9050505282828C5C5C5FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
-                      FFFFC5C5C5262626080808ABABABFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
-                      FFFFFFFFFFFFFFFFFFC3C3C31D1D1D010101464646A0A0A0DBDBDBF9F9F9FBFB
-                      FBDBDBDB9F9F9F4646460000001F1F1FC7C7C7FFFFFFFFFFFFFFFFFFFFFFFFFF
-                      FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF5F5F58686861F1F1F000000
-                      0000000000000000000000000000002323238C8C8CF7F7F7FFFFFFFFFFFFFFFF
-                      FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
-                      FFFFFDFDFDD2D2D29F9F9F8989898D8D8DA4A4A4D4D4D4FFFFFFFFFFFFFFFFFF
-                      FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
-                      FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
-                      FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF}
-                    ParentFont = False
-                    OnClick = BtnAdicionarClick
-                    ExplicitLeft = 9
-                    ExplicitTop = 74
-                    ExplicitWidth = 152
-                  end
-                  object BtnEditar: TSpeedButton
-                    AlignWithMargins = True
-                    Left = 5
-                    Top = 58
-                    Width = 128
-                    Height = 40
-                    Margins.Left = 5
-                    Margins.Right = 5
-                    Margins.Bottom = 10
-                    Align = alTop
-                    Caption = '  Editar     '
-                    Font.Charset = DEFAULT_CHARSET
-                    Font.Color = clWindowText
-                    Font.Height = -15
-                    Font.Name = 'Segoe UI'
-                    Font.Style = []
-                    Glyph.Data = {
-                      F6060000424DF606000000000000360000002800000018000000180000000100
-                      180000000000C0060000C20E0000C20E00000000000000000000555555000000
-                      0000000000000000000000000000000000000000000000000000000000000000
-                      00000000000000000000151515F4F4F4FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
-                      FFFFBBBBBB888888888888888888888888888888888888888888888888888888
-                      888888888888888888888888888888888888999999FFFFFFFFFFFFFFFFFFFFFF
-                      FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFCFCFCC2C2C2F1F1F1FFFFFFFFFFFFFF
-                      FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
-                      FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFC7C7C70000000606
-                      06474747979797E5E5E5FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
-                      FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
-                      F3F3F30505052727272525250000000101015C5C5CFAFAFAFFFFFFFFFFFFFFFF
-                      FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
-                      FFFFFFFFFFFFFFFFFFFFFF3A3A3A3A3A3AFFFFFFD5D5D5757575010101535353
-                      FAFAFAFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
-                      FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF7A7A7A040404F2F2F2FFFFFFFF
-                      FFFF989898010101535353FAFAFAFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
-                      FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFBCBCBC0000
-                      00B0B0B0FFFFFFFFFFFFFFFFFF919191010101535353FAFAFAFFFFFFFFFFFFFF
-                      FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
-                      FFFFFFF7F7F71F1F1F141414D1D1D1FFFFFFFFFFFFFFFFFF9191910101015353
-                      53FAFAFAFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
-                      FFFFFFFFFFFFFFFFFFFFFFFFFFFFE0E0E0202020151515D1D1D1FFFFFFFFFFFF
-                      FFFFFF989898010101535353FAFAFAFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
-                      FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFE0E0E020202015
-                      1515D1D1D1FFFFFFFFFFFFFFFFFF989898010101535353FAFAFAFFFFFFFFFFFF
-                      FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
-                      FFFFFFFFE0E0E0202020151515D1D1D1FFFFFFFFFFFFFFFFFF98989801010153
-                      5353FAFAFAFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
-                      FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFE0E0E0202020151515D1D1D1FFFFFFFFFF
-                      FFFFFFFF989898010101525252FAFAFAFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
-                      FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFE0E0E0202020
-                      151515D1D1D1FFFFFFFFFFFFFFFFFF989898010101525252FAFAFAFFFFFFFFFF
-                      FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
-                      FFFFFFFFFFE0E0E0202020151515D2D2D2FFFFFFFFFFFFFFFFFF989898010101
-                      525252FAFAFAFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
-                      FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFE0E0E0202020151515D2D2D2FFFFFFFF
-                      FFFFFFFFFF989898010101525252FAFAFAFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
-                      FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFE0E0E02020
-                      20151515D2D2D2FFFFFFFFFFFFFFFFFF989898010101525252FAFAFAFFFFFFFF
-                      FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
-                      FFFFFFFFFFFFE0E0E0202020151515D2D2D2FFFFFFFFFFFFFFFFFF9898980101
-                      01525252FAFAFAFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
-                      FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFDCDCDC1D1D1D151515D1D1D1FFFFFF
-                      FFFFFFCCCCCC0B0B0B000000535353FDFDFDFFFFFFFFFFFFFFFFFFFFFFFFFFFF
-                      FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFDCDCDC1D
-                      1D1D151515D2D2D2CCCCCC1111112222227D7D7D000000939393FFFFFFFFFFFF
-                      FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
-                      FFFFFFFFFFFFFFDCDCDC1D1D1D141414111111222222E1E1E1FFFFFF3E3E3E40
-                      4040FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
-                      FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFDCDCDC1D1D1D000000B4B4B4FFFF
-                      FFFDFDFD323232414141FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
-                      FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFDCDCDC
-                      1D1D1D0F0F0F777777464646000000A2A2A2FFFFFFFFFFFFFFFFFFFFFFFFFFFF
-                      FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
-                      FFFFFFFFFFFFFFFFE2E2E24B4B4B0404041D1D1D959595FFFFFF}
-                    ParentFont = False
-                    ExplicitLeft = 9
-                    ExplicitTop = 74
-                    ExplicitWidth = 152
-                  end
-                  object BtnPesquisar: TSpeedButton
-                    AlignWithMargins = True
-                    Left = 5
-                    Top = 217
-                    Width = 128
-                    Height = 40
-                    Margins.Left = 5
-                    Margins.Right = 5
-                    Margins.Bottom = 10
-                    Align = alTop
-                    Caption = 'Pesquisar'
-                    Font.Charset = DEFAULT_CHARSET
-                    Font.Color = clWindowText
-                    Font.Height = -15
-                    Font.Name = 'Segoe UI'
-                    Font.Style = []
-                    Glyph.Data = {
-                      F6060000424DF606000000000000360000002800000018000000180000000100
-                      180000000000C0060000C20E0000C20E00000000000000000000FFFFFFFFFFFF
-                      FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
-                      FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFDFDFD8484841A1A1A222222999999FF
-                      FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
-                      FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFDFDFD6868680000001515
-                      150F0F0F000000A2A2A2FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
-                      FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFDFDFD686868
-                      0000002E2E2EE7E7E7D6D6D6060606393939FFFFFFFFFFFFFFFFFFFFFFFFFFFF
-                      FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFD
-                      FDFD6868680000002E2E2EE6E6E6FFFFFFC3C3C30303033F3F3FFFFFFFFFFFFF
-                      FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
-                      FFFFFFFFFDFDFD6868680000002E2E2EE6E6E6FFFFFFC6C6C6111111040404B5
-                      B5B5FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFEBEBEB9595954B4B4B272727111111
-                      1F1F1F3E3E3E848484D6D6D66868680000002E2E2EE6E6E6FFFFFFC6C6C61111
-                      11040404A1A1A1FFFFFFFFFFFFFFFFFFFFFFFFFDFDFD8C8C8C13131300000001
-                      01011A1A1A3030301F1F1F0404040000000101010000002E2E2EE6E6E6FFFFFF
-                      C6C6C6111111040404A1A1A1FFFFFFFFFFFFFFFFFFFFFFFFF3F3F35353530000
-                      00131313848484DBDBDBFFFFFFFFFFFFFFFFFFE8E8E89B9B9B23232300000029
-                      2929DCDCDCC6C6C6111111040404A1A1A1FFFFFFFFFFFFFFFFFFFFFFFFFDFDFD
-                      565656000000424242E7E7E7FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
-                      FFF6F6F6646464000000232323111111040404A2A2A2FFFFFFFFFFFFFFFFFFFF
-                      FFFFFFFFFF9696960000003E3E3EF7F7F7FFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
-                      FFFFFFFFFFFFFFFFFFFFFFFFFDFDFD6B6B6B000000030303A2A2A2FFFFFFFFFF
-                      FFFFFFFFFFFFFFFFFFFFF2F2F21A1A1A0E0E0EE3E3E3FFFFFFFFFFFFFFFFFFFF
-                      FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF8F8F82C2C2C010101
-                      CACACAFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFA6A6A6000000777777FFFFFFFFFF
-                      FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
-                      FFFFABABAB0000006F6F6FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF5E5E5E000000
-                      CBCBCBFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
-                      FFFFFFFFFFFFFFFFFFFFF6F6F6111111272727FFFFFFFFFFFFFFFFFFFFFFFFFF
-                      FFFF3C3C3C060606FBFBFBFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
-                      FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF383838060606FBFBFBFFFF
-                      FFFFFFFFFFFFFFFFFFFF292929181818FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
-                      FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF4F4F4F
-                      000000E7E7E7FFFFFFFFFFFFFFFFFFFFFFFF3A3A3A070707FCFCFCFFFFFFFFFF
-                      FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
-                      FFFFFFFFFF3D3D3D050505F9F9F9FFFFFFFFFFFFFFFFFFFFFFFF5C5C5C000000
-                      CDCDCDFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
-                      FFFFFFFFFFFFFFFFFFFFF8F8F8121212252525FFFFFFFFFFFFFFFFFFFFFFFFFF
-                      FFFFA5A5A50000007A7A7AFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
-                      FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFAFAFAF0000006E6E6EFFFFFFFFFF
-                      FFFFFFFFFFFFFFFFFFFFF1F1F1181818101010E6E6E6FFFFFFFFFFFFFFFFFFFF
-                      FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFBFBFB343434020202
-                      CBCBCBFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF919191000000434343F9F9
-                      F9FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF74
-                      74740000005B5B5BFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFDFDFD
-                      525252000000484848EBEBEBFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
-                      FFF9F9F96F6F6F000000292929ECECECFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
-                      FFFFFFFFFFFFFFFFF1F1F14D4D4D0000001717178B8B8BE2E2E2FFFFFFFFFFFF
-                      FFFFFFEEEEEEA1A1A12A2A2A0000002B2B2BD9D9D9FFFFFFFFFFFFFFFFFFFFFF
-                      FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFCFCFC85858511111100000002
-                      0202222222353535282828080808000000050505656565EDEDEDFFFFFFFFFFFF
-                      FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
-                      FFE7E7E79090904545451E1E1E0B0B0B1A1A1A3838387E7E7ED4D4D4FFFFFFFF
-                      FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF}
-                    ParentFont = False
-                    OnClick = BtnPesquisarClick
-                    ExplicitLeft = 9
-                    ExplicitTop = 74
-                    ExplicitWidth = 152
-                  end
-                  object BtnCancelar: TSpeedButton
-                    AlignWithMargins = True
-                    Left = 5
-                    Top = 270
-                    Width = 128
-                    Height = 40
-                    Margins.Left = 5
-                    Margins.Right = 5
-                    Margins.Bottom = 10
-                    Align = alTop
-                    Caption = 'Cancelar'
-                    Font.Charset = DEFAULT_CHARSET
-                    Font.Color = clWindowText
-                    Font.Height = -15
-                    Font.Name = 'Segoe UI'
-                    Font.Style = []
-                    Glyph.Data = {
-                      360C0000424D360C000000000000360000002800000020000000200000000100
-                      180000000000000C0000C20E0000C20E00000000000000000000FFFFFFFFFFFF
-                      FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
-                      FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
-                      FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
-                      FFFFFFFFFFFFF7F7F75F5F5F2424242222222222222222222222222222222222
-                      2222222222222222222222222222222222222222222222222222222222222222
-                      22222222222424245F5F5FF8F8F8FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
-                      FFFFFFFFFFFFA0A0A0626262FBFBFBFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
-                      FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
-                      FFFFFFFFFFFBFBFB616161A1A1A1FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
-                      FFFFFFFFFFFF8C8C8C929292FFFFFFF1F1F1DDDDDDDDDDDDDDDDDDDDDDDDDDDD
-                      DDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDD
-                      DDDDF1F1F1FFFFFF9292928C8C8CFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
-                      FFFFFFFFFFFF8C8C8C929292FFFFFF4E4E4E3939394444444444444444444444
-                      4444444444444444444444444444444444444444444444444444444444444439
-                      39394E4E4EFFFFFF9292928C8C8CFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
-                      FFFFFFFFFFFF8C8C8C929292FFFFFF494949D6D6D6FFFFFFFFFFFFFFFFFFFFFF
-                      FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFD6
-                      D6D6494949FFFFFF9292928C8C8CFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
-                      FFFFFFFFFFFF8C8C8C929292FFFFFF494949D6D6D6FFFFFFFFFFFFCDCDCDFBFB
-                      FBFFFFFFFFFFFFF4F4F4ACACACAAAAAAABABABF4F4F4FFFFFFFFFFFFFFFFFFD6
-                      D6D6494949FFFFFF9292928C8C8CFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
-                      FFFFFFFFFFFF8C8C8C929292FFFFFF494949D6D6D6FFFFFFA3A3A31717175555
-                      55FBFBFBFFFFFFE7E7E7787878777777787878E7E7E7FFFFFFFFFFFFFFFFFFD6
-                      D6D6494949FFFFFF9292928C8C8CFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
-                      FFFFFFFFFFFF8C8C8C929292FFFFFF494949D6D6D6FFFFFF7B7B7BECECEC7272
-                      72555555FBFBFBFCFCFCCECECECCCCCCCCCCCCCCCCCCCCCCCCDCDCDCFFFFFFD6
-                      D6D6494949FFFFFF9292928C8C8CFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
-                      FFFFFFFFFFFF8C8C8C929292FFFFFF494949D6D6D6FFFFFFFFFFFFFFFFFFFFFF
-                      FF878787E3E3E3E0E0E0565656555555555555555555555555717171FFFFFFD6
-                      D6D6494949FFFFFF9292928C8C8CFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
-                      FFFFFFFFFFFF8C8C8C929292FFFFFF494949D6D6D6FFFFFFFFFFFFFFFFFFFFFF
-                      FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFD6
-                      D6D6494949FFFFFF9292928C8C8CFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
-                      FFFFFFFFFFFF8C8C8C929292FFFFFF494949D6D6D6FFFFFFFFFFFFBABABAF6F6
-                      F6FFFFFFFFFFFFEFEFEF9A9A9A9999999A9A9AEFEFEFFFFFFFFFFFFFFFFFFFD6
-                      D6D6494949FFFFFF9292928C8C8CFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
-                      FFFFFFFFFFFF8C8C8C929292FFFFFF494949D6D6D6FFFFFF9090902222224545
-                      45F6F6F6FFFFFFECECEC8A8A8A8888888A8A8AECECECFFFFFFFFFFFFFFFFFFD6
-                      D6D6494949FFFFFF9292928C8C8CFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
-                      FFFFFFFFFFFF8C8C8C929292FFFFFF494949D6D6D6FFFFFF8C8C8CF4F4F48686
-                      86454545F8F8F8F7F7F7BCBCBCBBBBBBBBBBBBBBBBBBBBBBBBCCCCCCFFFFFFD6
-                      D6D6494949FFFFFF9292928C8C8CFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
-                      FFFFFFFFFFFF8C8C8C929292FFFFFF494949D6D6D6FFFFFFFFFFFFFFFFFFFFFF
-                      FF9B9B9BE6E6E6E4E4E4686868666666666666666666666666818181FFFFFFD6
-                      D6D6494949FFFFFF9292928C8C8CFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
-                      FFFFFFFFFFFF8C8C8C929292FFFFFF494949D6D6D6FFFFFFFFFFFFFFFFFFFFFF
-                      FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFD6
-                      D6D6494949FFFFFF9292928C8C8CFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
-                      FFFFFFFFFFFF8C8C8C929292FFFFFF494949D6D6D6FFFFFFFFFFFFA6A6A6F0F0
-                      F0FFFFFFFFFFFFE9E9E97A7A7A7777777A7A7AE9E9E9FFFFFFFFFFFFFFFFFFD6
-                      D6D6494949FFFFFF9292928C8C8CFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
-                      FFFFFFFFFFFF8C8C8C929292FFFFFF494949D6D6D6FFFFFF7E7E7E3131313838
-                      38F0F0F0FFFFFFF2F2F29C9C9C9999999C9C9CF2F2F2FFFFFFFFFFFFFFFFFFD6
-                      D6D6494949FFFFFF9292928C8C8CFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
-                      FFFFFFFFFFFF8C8C8C929292FFFFFF494949D6D6D6FFFFFF9F9F9FF9F9F99A9A
-                      9A383838F4F4F4F3F3F3ABABABAAAAAAAAAAAAAAAAAAAAAAAABCBCBCFFFFFFD6
-                      D6D6494949FFFFFF9292928C8C8CFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
-                      FFFFFFFFFFFF8C8C8C929292FFFFFF494949D6D6D6FFFFFFFFFFFFFFFFFFFFFF
-                      FFB0B0B0EAEAEAE9E9E9797979777777777777777777777777919191FFFFFFD6
-                      D6D6494949FFFFFF9292928C8C8CFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
-                      FFFFFFFFFFFF8C8C8C929292FFFFFF494949D6D6D6FFFFFFFFFFFFFFFFFFFFFF
-                      FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFD6
-                      D6D6494949FFFFFF9292928C8C8CFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
-                      FFFFFFFFFFFF8C8C8C929292FFFFFF494949D6D6D6FFFFFFFEFEFE909090E8E8
-                      E8FFFFFFFFFFFFE5E5E5686868666666686868E5E5E5FFFFFFFFFFFFFFFFFFD6
-                      D6D6494949FFFFFF9292928C8C8CFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
-                      FFFFFFFFFFFF8C8C8C929292FFFFFF494949D6D6D6FFFFFF6C6C6C4343432E2E
-                      2EE8E8E8FFFFFFF7F7F7BCBCBCBBBBBBBCBCBCF7F7F7FFFFFFFFFFFFFFFFFFD6
-                      D6D6494949FFFFFF9292928C8C8CFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
-                      FFFFFFFFFFFF8C8C8C929292FFFFFF494949D6D6D6FFFFFFB2B2B2FDFDFDACAC
-                      AC2E2E2EEFEFEFEEEEEE8B8B8B888888888888888888888888A2A2A2FFFFFFD6
-                      D6D6494949FFFFFF9292928C8C8CFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
-                      FFFFFFFFFFFF8C8C8C929292FFFFFF494949D6D6D6FFFFFFFFFFFFFFFFFFFFFF
-                      FFC1C1C1EFEFEFEEEEEE8B8B8B888888888888888888888888A2A2A2FFFFFFD6
-                      D6D6494949FFFFFF9292928C8C8CFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
-                      FFFFFFFFFFFF8C8C8C929292FFFFFF494949D6D6D6FFFFFFFFFFFFFFFFFFFFFF
-                      FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFD6
-                      D6D6494949FFFFFF9292928C8C8CFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
-                      FFFFFFFFFFFF8C8C8C929292FFFFFF4B4B4B4747475555555555555555555555
-                      5555555555555555555555555555555555555555555555555555555555555547
-                      47474B4B4BFFFFFF9292928C8C8CFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
-                      FFFFFFFFFFFF8C8C8C929292FFFFFFE3E3E3CCCCCCCCCCCCCCCCCC8181816464
-                      64CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC646464818181CCCCCCCCCCCCCC
-                      CCCCE3E3E3FFFFFF9292928C8C8CFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
-                      FFFFFFFFFFFF9A9A9A717171FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFA1A1A17E7E
-                      7EAFAFAF333333333333333333333333B1B1B17E7E7EA1A1A1FFFFFFFFFFFFFF
-                      FFFFFFFFFFFFFFFF7171719B9B9BFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
-                      FFFFFFFFFFFFF1F1F14343432020202222222222222222222222221616167E7E
-                      7EFEFEFEEEEEEEEEEEEEEEEEEEEEEEEEFEFEFE7E7E7E16161622222222222222
-                      2222222222202020444444F1F1F1FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
-                      FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFBDBDBD2222
-                      22222222222222222222222222222222222222222222BDBDBDFFFFFFFFFFFFFF
-                      FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
-                      FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
-                      FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
-                      FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF}
-                    ParentFont = False
-                    ExplicitLeft = 24
-                    ExplicitTop = 217
-                    ExplicitWidth = 116
-                  end
-                  object BtnRestaurar: TSpeedButton
-                    AlignWithMargins = True
-                    Left = 5
-                    Top = 164
-                    Width = 128
-                    Height = 40
-                    Margins.Left = 5
-                    Margins.Right = 5
-                    Margins.Bottom = 10
-                    Align = alTop
-                    Caption = 'Restaurar'
-                    Font.Charset = DEFAULT_CHARSET
-                    Font.Color = clWindowText
-                    Font.Height = -15
-                    Font.Name = 'Segoe UI'
-                    Font.Style = []
-                    Glyph.Data = {
-                      F6060000424DF606000000000000360000002800000018000000180000000100
-                      180000000000C0060000C20E0000C20E00000000000000000000FFFFFFFFFFFF
-                      FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF7F7F7EEEEEEFFFF
-                      FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
-                      FFFFFFFFFFFDFDFDEEEEEEEEEEEEEEEEEEEEEEEEF8F8F8FFFFFFFFFFFFFFFFFF
-                      C2C2C20000000A0A0A454545929292F2F2F2FFFFFFFFFFFFFFFFFFFFFFFFFFFF
-                      FFFFFFFFFFFFFFFFFFFFFFFFFFE4E4E4000000000000000000000000909090FF
-                      FFFFFFFFFFFFFFFFE7E7E78F8F8F6D6D6D2A2A2A000000141414939393FEFEFE
-                      FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF2F2F28888884141410000
-                      00000000909090FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFC9C9C945
-                      4545000000505050F3F3F3FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
-                      B4B4B4060606252525000000909090FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
-                      FFFFFFFFFFFFFFFEFEFE909090030303494949FAFAFAFFFFFFFFFFFFFFFFFFFF
-                      FFFFFFFFFFE3E3E3101010303030DADADA000000909090FFFFFFFFFFFFFFFFFF
-                      FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF9C9C9C010101767676FFFF
-                      FFFFFFFFFFFFFFFFFFFFFFFFFF5151510B0B0BD9D9D9F6F6F6888888CBCBCBFF
-                      FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
-                      636363050505D3D3D3FFFFFFFFFFFFFFFFFFD7D7D70202027B7B7BFFFFFFFFFF
-                      FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
-                      FFFFFFFFFFFFFFFFEEEEEE0D0D0D5F5F5FFFFFFFFFFFFFFFFFFF7C7C7C030303
-                      E9E9E9FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
-                      FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF6767670B0B0BF4F4F4FFFFFFFF
-                      FFFF3B3B3B363636FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
-                      FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF9E9E9EA7A7A70000
-                      00C3C3C3BEBEBED4D4D4171717636363FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
-                      FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFD1D1D1
-                      0303032828280000005959590A0A0A414141040404787878FFFFFFFFFFFFFFFF
-                      FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
-                      FFFFFFFFFFFFFFFFA5A5A50303030000000000002B2B2BE9E9E91111116C6C6C
-                      FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
-                      FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFA9A9A9040404282828E6E6E6FF
-                      FFFF2F2F2F454545FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
-                      FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFB1B1
-                      B1E9E9E9FFFFFFFFFFFF6E6E6E0A0A0AF6F6F6FFFFFFFFFFFFFFFFFFFFFFFFFF
-                      FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
-                      FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFC0C0C0000000969696FFFFFFFFFF
-                      FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
-                      FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF535353
-                      B2B2B2FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
-                      FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFA1A1A1B3B3B3FFFFFFFFFFFFFFFFFFFF
-                      FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
-                      FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFCDCDCD0808084E4E4EFEFE
-                      FEFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFD0D0D099999999999999
-                      9999999999F7F7F7FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFC9C9C9121212
-                      1D1D1DEBEBEBFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF8A8A
-                      8A000000000000000000000000EAEAEAFFFFFFFFFFFFFFFFFFFFFFFFF3F3F381
-                      8181060606232323DEDEDEFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
-                      FFFFFFFFFFFF8A8A8A0000000000001A1A1A6A6A6AB8B8B8D2D2D2CBCBCBA6A6
-                      A66868681010100000005A5A5AEBEBEBFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
-                      FFFFFFFFFFFFFFFFFFFFFFFFFFFF8A8A8A0000008282822C2C2C000000000000
-                      0000000000000000000A0A0A5A5A5AC4C4C4FFFFFFFFFFFFFFFFFFFFFFFFFFFF
-                      FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF8A8A8A000000F1F1F1FF
-                      FFFFE6E6E6BBBBBBAAAAAAABABABD0D0D0FBFBFBFFFFFFFFFFFFFFFFFFFFFFFF
-                      FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFEFEF
-                      EFDDDDDDFDFDFDFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
-                      FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF}
-                    ParentFont = False
-                    ExplicitLeft = 13
-                    ExplicitTop = 111
-                    ExplicitWidth = 135
-                  end
-                  object BtnSair: TSpeedButton
-                    AlignWithMargins = True
-                    Left = 5
-                    Top = 330
-                    Width = 128
-                    Height = 40
-                    Margins.Left = 5
-                    Margins.Top = 10
-                    Margins.Right = 5
-                    Margins.Bottom = 10
-                    Align = alTop
-                    Caption = '   Sair    '
-                    Font.Charset = DEFAULT_CHARSET
-                    Font.Color = clWindowText
-                    Font.Height = -15
-                    Font.Name = 'Segoe UI'
-                    Font.Style = []
-                    Glyph.Data = {
-                      F6060000424DF606000000000000360000002800000018000000180000000100
-                      180000000000C0060000C20E0000C20E00000000000000000000FFFFFFFFFFFF
-                      FFFFFFFFFFFFFFFFFFFFFFFFFCFCFC9696962222220C0C0C6C6C6CFBFBFBFFFF
-                      FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
-                      FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFBDBDBD2D2D2D0000003D3D3D5D5D5D
-                      0000008C8C8CFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
-                      FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFDDDDDD525252000000222222AD
-                      ADADFFFFFFFFFFFF2B2B2B505050FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
-                      FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFDFDFD8080800808080C0C
-                      0C868686F7F7F7FFFFFFFFFFFFFFFFFF353535414141DDDDDDDDDDDDDDDDDDE0
-                      E0E0FCFCFCFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF959595
-                      0000005A5A5AE5E5E5FFFFFFFFFFFFFFFFFFFFFFFFFFFFFF3535350000000000
-                      00000000000000000000151515B7B7B7FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
-                      FFFFFFFFFF4F4F4F292929FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
-                      353535323232AAAAAAAAAAAAAAAAAAA4A4A4343434131313FAFAFAFFFFFFFFFF
-                      FFFFFFFFFFFFFFFFFFFFFFFFFF494949373737FFFFFFFFFFFFFFFFFFFFFFFFFF
-                      FFFFFFFFFFFFFFFF3535354B4B4BFFFFFFFFFFFFFFFFFFFFFFFFA6A6A6000000
-                      D8D8D8FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF494949373737FFFFFFFFFF
-                      FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF3535354B4B4BFFFFFFFFFFFFFFFFFFFF
-                      FFFFAAAAAA000000D4D4D4FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF494949
-                      373737FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF3535354B4B4BFFFF
-                      FFFFFFFFFFFFFFFFFFFFAAAAAA000000D4D4D4FFFFFFFFFFFFFFFFFFFFFFFFFF
-                      FFFFFFFFFF494949373737FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
-                      3535354B4B4BFFFFFFFFFFFFFFFFFFFFFFFFC6C6C60E0E0EE9E9E9FFFFFFFFFF
-                      FFFFFFFFFFFFFFFFFFFFFFFFFF494949373737FFFFFFFFFFFFFFFFFFFFFFFFFF
-                      FFFFFFFFFFFFFFFF3535354B4B4BFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFDFDFD
-                      FFFFFFD8D8D8FEFEFEFFFFFFFFFFFFFFFFFFFFFFFF494949373737FFFFFFFFFF
-                      FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF3535354B4B4BFFFFFFFFFFFFFFFFFFFF
-                      FFFFFFFFFFFFFFFFE0E0E0000000696969FEFEFEFFFFFFFFFFFFFFFFFF494949
-                      373737FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF3535354B4B4BFFFF
-                      FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF7C7C7C000000656565FDFDFDFF
-                      FFFFFFFFFF494949373737FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
-                      3535354B4B4BC0C0C03535353333333333333333333333333333333333330404
-                      04000000838383FFFFFFFFFFFF494949373737FFFFFFFFFFFFFFFFFFFFFFFFFF
-                      FFFFFFFFFFFFFFFF3535354B4B4BD1D1D1585858555555555555555555555555
-                      5555555252520303030000009B9B9BFFFFFFFFFFFF494949373737FFFFFFFFFF
-                      FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF3535354B4B4BFFFFFFFFFFFFFFFFFFFF
-                      FFFFFFFFFFFFFFFFFDFDFD5858580000008C8C8CFFFFFFFFFFFFFFFFFF494949
-                      373737FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF3535354B4B4BFFFF
-                      FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFE1E1E10505058C8C8CFFFFFFFFFFFFFF
-                      FFFFFFFFFF494949373737FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF0F0F0
-                      1717175C5C5CFFFFFFFFFFFFFFFFFFFFFFFFEBEBEB7F7F7FFBFBFBF7F7F7FFFF
-                      FFFFFFFFFFFFFFFFFFFFFFFFFF494949373737FFFFFFFFFFFFFFFFFFFFFFFFFE
-                      FEFEA6A6A61D1D1D040404C1C1C1FFFFFFFFFFFFFFFFFFFFFFFFABABAB000000
-                      D5D5D5FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF494949373737FFFFFFFFFF
-                      FFFFFFFFCCCCCC3B3B3B000000333333C7C7C7FFFFFFFFFFFFFFFFFFFFFFFFFF
-                      FFFFAAAAAA000000D4D4D4FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF494949
-                      373737FFFFFFECECEC6E6E6E030303131313909090FCFCFCFFFFFFFFFFFFFFFF
-                      FFFFFFFFFFFFFFFFFFFFAAAAAA000000D4D4D4FFFFFFFFFFFFFFFFFFFFFFFFFF
-                      FFFFFFFFFF5050502B2B2B8989890E0E0E060606767676F1F1F1FFFFFFFFFFFF
-                      FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFA2A2A2000000DBDBDBFFFFFFFFFF
-                      FFFFFFFFFFFFFFFFFFFFFFFFFF8E8E8E00000000000001010153535377777777
-                      77777777777777777777777777777777777777777777777777772121211F1F1F
-                      FDFDFDFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFBFBFB6C6C6C1010100000
-                      0000000000000000000000000000000000000000000000000000000000000003
-                      0303343434CDCDCDFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF}
-                    ParentFont = False
-                    Spacing = 0
-                    ExplicitTop = 322
-                  end
-                end
-              end
-            end
-            object PnlGrid: TPanel
+            object PnlBackgroundButton: TPanel
               AlignWithMargins = True
               Left = 19
               Top = 19
-              Width = 888
-              Height = 390
+              Width = 140
+              Height = 420
               Margins.Left = 19
               Margins.Top = 19
               Margins.Right = 19
               Margins.Bottom = 19
               Align = alClient
               BevelOuter = bvNone
-              Caption = 'PnlGrid'
               Color = clBackground
               ParentBackground = False
-              TabOrder = 3
-              object DBGrid1: TDBGrid
+              TabOrder = 0
+              ExplicitHeight = 450
+              object PnlButton: TPanel
                 AlignWithMargins = True
                 Left = 1
                 Top = 1
-                Width = 886
-                Height = 388
+                Width = 138
+                Height = 418
                 Margins.Left = 1
                 Margins.Top = 1
                 Margins.Right = 1
                 Margins.Bottom = 1
                 Align = alClient
+                BevelOuter = bvNone
+                Color = 15790320
+                ParentBackground = False
                 TabOrder = 0
-                TitleFont.Charset = DEFAULT_CHARSET
-                TitleFont.Color = clWindowText
-                TitleFont.Height = -19
-                TitleFont.Name = 'Segoe UI'
-                TitleFont.Style = []
+                ExplicitHeight = 448
+                object BtnExcluir: TSpeedButton
+                  AlignWithMargins = True
+                  Left = 5
+                  Top = 131
+                  Width = 128
+                  Height = 40
+                  Margins.Left = 5
+                  Margins.Right = 5
+                  Margins.Bottom = 10
+                  Align = alTop
+                  Caption = '  Excluir     '
+                  Font.Charset = DEFAULT_CHARSET
+                  Font.Color = clWindowText
+                  Font.Height = -15
+                  Font.Name = 'Segoe UI'
+                  Font.Style = []
+                  Glyph.Data = {
+                    F6060000424DF606000000000000360000002800000018000000180000000100
+                    180000000000C0060000C20E0000C20E00000000000000000000FFFFFFFFFFFF
+                    FFFFFFCCCCCC5454543333333333333333333333333333333333333333333333
+                    333333333333333333333333333333333333333E3E3E898989FCFCFCFFFFFFFF
+                    FFFFFFFFFFFFFFFFEFEFEF222222B8B8B8DDDDDDDDDDDDDDDDDDDDDDDDDDDDDD
+                    DDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDD6D6D65656
+                    568E8E8EFFFFFFFFFFFFFFFFFFFFFFFFBDBDBD5B5B5BFFFFFFFFFFFFFFFFFFFF
+                    FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+                    FFFFFFFFFFFFCECECE4A4A4AFFFFFFFFFFFFFFFFFFFFFFFFB7B7B7616161FFFF
+                    FFFFFFFFFEFEFEDFDFDFF3F3F3FFFFFFFFFFFFF0F0F0E1E1E1FFFFFFFFFFFFFF
+                    FFFFE0E0E0F1F1F1FFFFFFFFFFFFD4D4D4444444FFFFFFFFFFFFFFFFFFFFFFFF
+                    B7B7B7616161FFFFFFFFFFFF787878333333222222FBFBFBF1F1F11C1C1C2E2E
+                    2E8B8B8BFFFFFF8686863030301D1D1DF4F4F4FFFFFFD4D4D4444444FFFFFFFF
+                    FFFFFFFFFFFFFFFFB7B7B7616161FFFFFFFFFFFF575757C0C0C0272727F1F1F1
+                    DDDDDD3A3A3AADADAD6A6A6AFFFFFF656565B2B2B2353535E2E2E2FFFFFFD4D4
+                    D4444444FFFFFFFFFFFFFFFFFFFFFFFFB7B7B7616161FFFFFFFFFFFF575757C0
+                    C0C0272727F1F1F1DDDDDD3A3A3AADADAD6A6A6AFFFFFF656565B2B2B2353535
+                    E2E2E2FFFFFFD4D4D4444444FFFFFFFFFFFFFFFFFFFFFFFFB7B7B7616161FFFF
+                    FFFFFFFF575757C0C0C0272727F1F1F1DDDDDD3A3A3AADADAD6A6A6AFFFFFF65
+                    6565B2B2B2353535E2E2E2FFFFFFD4D4D4444444FFFFFFFFFFFFFFFFFFFFFFFF
+                    B7B7B7616161FFFFFFFFFFFF575757C0C0C0272727F1F1F1DDDDDD3A3A3AADAD
+                    AD6A6A6AFFFFFF656565B2B2B2353535E2E2E2FFFFFFD4D4D4444444FFFFFFFF
+                    FFFFFFFFFFFFFFFFB7B7B7616161FFFFFFFFFFFF575757C0C0C0272727F1F1F1
+                    DDDDDD3A3A3AADADAD6A6A6AFFFFFF656565B2B2B2353535E2E2E2FFFFFFD4D4
+                    D4444444FFFFFFFFFFFFFFFFFFFFFFFFB7B7B7616161FFFFFFFFFFFF575757C0
+                    C0C0272727F1F1F1DDDDDD3A3A3AADADAD6A6A6AFFFFFF656565B2B2B2353535
+                    E2E2E2FFFFFFD4D4D4444444FFFFFFFFFFFFFFFFFFFFFFFFB7B7B7616161FFFF
+                    FFFFFFFF575757C0C0C0272727F1F1F1DDDDDD3A3A3AADADAD6A6A6AFFFFFF65
+                    6565B2B2B2353535E2E2E2FFFFFFD4D4D4444444FFFFFFFFFFFFFFFFFFFFFFFF
+                    B7B7B7616161FFFFFFFFFFFF575757C0C0C0272727F1F1F1DDDDDD3A3A3AADAD
+                    AD6A6A6AFFFFFF656565B2B2B2353535E2E2E2FFFFFFD4D4D4444444FFFFFFFF
+                    FFFFFFFFFFFFFFFFB7B7B7616161FFFFFFFFFFFF575757C0C0C0272727F1F1F1
+                    DDDDDD3A3A3AADADAD6A6A6AFFFFFF656565B2B2B2353535E2E2E2FFFFFFD4D4
+                    D4444444FFFFFFFFFFFFFFFFFFFFFFFFB7B7B7616161FFFFFFFFFFFF5B5B5B8D
+                    8D8D1E1E1EF4F4F4E1E1E12A2A2A7F7F7F6E6E6EFFFFFF696969838383272727
+                    E6E6E6FFFFFFD4D4D4444444FFFFFFFFFFFFFFFFFFFFFFFFB7B7B7616161FFFF
+                    FFFFFFFFCCCCCC686868919191FFFFFFFFFFFF8585856A6A6AD5D5D5FFFFFFD3
+                    D3D3696969888888FFFFFFFFFFFFD4D4D4444444FFFFFFFFFFFFFFFFFFFFFFFF
+                    B7B7B7616161FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+                    FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFD4D4D4444444FFFFFFFF
+                    FFFFFFFFFFFFFFFFB7B7B7616161FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+                    FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFD4D4
+                    D4444444FFFFFFFFFFFF9191915555553E3E3E0B0B0B1C1C1C1C1C1C1C1C1C1C
+                    1C1C1C1C1C1C1C1C1C1C1C1C1C1C1C1C1C1C1C1C1C1C1C1C1C1C1C1C1C1C1C1C
+                    1C1C1C1C1C1C181818171717555555919191151515BBBBBBB7B7B78B8B8B8989
+                    8989898989898989898989898989898989898989898989898989898989898989
+                    8989898989898989898989898989898989A2A2A2BBBBBB151515343434222222
+                    2222222222222222222222222222220E0E0E0505050505050505050505050505
+                    050505050505050505050505051E1E1E22222222222222222222222222222234
+                    3434FDFDFDEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEE404040B7B7B7DEDEDE
+                    DEDEDEDEDEDEDEDEDEDEDEDEDEDEDEDEDEDE3D3D3DC3C3C3EEEEEEEEEEEEEEEE
+                    EEEEEEEEEEEEEEFDFDFDFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF87
+                    87875B5B5BD7D7D7DDDDDDDDDDDDDDDDDDDDDDDDDDDDDDB0B0B0252525F8F8F8
+                    FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+                    FFFFFFFFFFFFFFFBFBFB8484843D3D3D33333333333333333333333333333359
+                    5959D5D5D5FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF}
+                  ParentFont = False
+                  ExplicitTop = 84
+                  ExplicitWidth = 135
+                end
+                object BtnAdicionar: TSpeedButton
+                  AlignWithMargins = True
+                  Left = 5
+                  Top = 25
+                  Width = 128
+                  Height = 40
+                  Margins.Left = 5
+                  Margins.Top = 25
+                  Margins.Right = 5
+                  Margins.Bottom = 10
+                  Align = alTop
+                  Caption = ' Adicionar'
+                  Font.Charset = DEFAULT_CHARSET
+                  Font.Color = clWindowText
+                  Font.Height = -15
+                  Font.Name = 'Segoe UI'
+                  Font.Style = []
+                  Glyph.Data = {
+                    F6060000424DF606000000000000360000002800000018000000180000000100
+                    180000000000C0060000C20E0000C20E00000000000000000000FFFFFFFFFFFF
+                    FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+                    FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+                    FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFD5D5D5
+                    A2A2A2898989888888A3A3A3D3D3D3FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+                    FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF5F5F58B
+                    8B8B2121210000000000000000000000000000000000002222228B8B8BF5F5F5
+                    FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+                    FFC2C2C22121210101014444449F9F9FDADADAF5F5F5F3F3F3D6D6D699999942
+                    4242000000202020C4C4C4FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+                    FFFFFFFFFFFFA9A9A9060606262626C3C3C3FFFFFFFFFFFFFFFFFFFFFFFFFFFF
+                    FFFFFFFFFFFFFFFFFFFFBEBEBE242424060606AEAEAEFFFFFFFFFFFFFFFFFFFF
+                    FFFFFFFFFFFFFFFFFFFFFFC2C2C20606063E3E3EF1F1F1FFFFFFFFFFFFFFFFFF
+                    FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFEDEDED3D3D3D060606C6C6
+                    C6FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF5F5F5212121262626F2F2F2FFFFFFFF
+                    FFFFFFFFFFFFFFFFFFFFFFEAEAEAEAEAEAFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+                    EDEDED2424241F1F1FF6F6F6FFFFFFFFFFFFFFFFFFFFFFFF898989000000C5C5
+                    C5FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF4D4D4D4D4D4DFFFFFFFFFFFFFF
+                    FFFFFFFFFFFFFFFFFFFFFFBEBEBE0000008B8B8BFFFFFFFFFFFFFFFFFFFEFEFE
+                    1F1F1F454545FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF4040404040
+                    40FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF424242232323FEFEFEFF
+                    FFFFFFFFFFD2D2D2000000A0A0A0FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+                    FFFFFF404040404040FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF9999
+                    99000000D5D5D5FFFFFFFFFFFFA1A1A1000000DADADAFFFFFFFFFFFFFFFFFFFF
+                    FFFFFFFFFFFFFFFFFFFFFF404040404040FFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+                    FFFFFFFFFFFFD6D6D6000000A1A1A1FFFFFFFFFFFF868686000000F7F7F7FFFF
+                    FFFFFFFFEAEAEA4F4F4F44444444444444444411111111111144444444444444
+                    44444F4F4FECECECFFFFFFFFFFFFF2F2F2000000898989FFFFFFFFFFFF878787
+                    000000F8F8F8FFFFFFFFFFFFEAEAEA4F4F4F4444444444444444441111111111
+                    114444444444444444444F4F4FECECECFFFFFFFFFFFFF5F5F50000008C8C8CFF
+                    FFFFFFFFFFA0A0A0000000DADADAFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+                    FFFFFF404040404040FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFD9D9
+                    D9000000A6A6A6FFFFFFFFFFFFD1D1D1000000A0A0A0FFFFFFFFFFFFFFFFFFFF
+                    FFFFFFFFFFFFFFFFFFFFFF404040404040FFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+                    FFFFFFFFFFFF9F9F9F000000D5D5D5FFFFFFFFFFFFFEFEFE212121464646FFFF
+                    FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF404040404040FFFFFFFFFFFFFF
+                    FFFFFFFFFFFFFFFFFFFFFFFFFFFF444444252525FFFFFFFFFFFFFFFFFFFFFFFF
+                    8A8A8A010101C5C5C5FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF4D4D4D4D4D
+                    4DFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFC3C3C30101018C8C8CFFFFFFFF
+                    FFFFFFFFFFFFFFFFF4F4F41E1E1E282828F0F0F0FFFFFFFFFFFFFFFFFFFFFFFF
+                    FFFFFFEAEAEAEAEAEAFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF1F1F12626262020
+                    20F8F8F8FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFC1C1C10505053F3F3FF0F0F0FF
+                    FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF2F2F2
+                    3E3E3E080808C7C7C7FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFA9A9
+                    A9050505282828C5C5C5FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+                    FFFFC5C5C5262626080808ABABABFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+                    FFFFFFFFFFFFFFFFFFC3C3C31D1D1D010101464646A0A0A0DBDBDBF9F9F9FBFB
+                    FBDBDBDB9F9F9F4646460000001F1F1FC7C7C7FFFFFFFFFFFFFFFFFFFFFFFFFF
+                    FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF5F5F58686861F1F1F000000
+                    0000000000000000000000000000002323238C8C8CF7F7F7FFFFFFFFFFFFFFFF
+                    FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+                    FFFFFDFDFDD2D2D29F9F9F8989898D8D8DA4A4A4D4D4D4FFFFFFFFFFFFFFFFFF
+                    FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+                    FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+                    FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF}
+                  ParentFont = False
+                  OnClick = BtnAdicionarClick
+                  ExplicitLeft = 13
+                  ExplicitTop = 10
+                end
+                object BtnEditar: TSpeedButton
+                  AlignWithMargins = True
+                  Left = 5
+                  Top = 78
+                  Width = 128
+                  Height = 40
+                  Margins.Left = 5
+                  Margins.Right = 5
+                  Margins.Bottom = 10
+                  Align = alTop
+                  Caption = '  Editar     '
+                  Font.Charset = DEFAULT_CHARSET
+                  Font.Color = clWindowText
+                  Font.Height = -15
+                  Font.Name = 'Segoe UI'
+                  Font.Style = []
+                  Glyph.Data = {
+                    F6060000424DF606000000000000360000002800000018000000180000000100
+                    180000000000C0060000C20E0000C20E00000000000000000000555555000000
+                    0000000000000000000000000000000000000000000000000000000000000000
+                    00000000000000000000151515F4F4F4FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+                    FFFFBBBBBB888888888888888888888888888888888888888888888888888888
+                    888888888888888888888888888888888888999999FFFFFFFFFFFFFFFFFFFFFF
+                    FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFCFCFCC2C2C2F1F1F1FFFFFFFFFFFFFF
+                    FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+                    FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFC7C7C70000000606
+                    06474747979797E5E5E5FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+                    FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+                    F3F3F30505052727272525250000000101015C5C5CFAFAFAFFFFFFFFFFFFFFFF
+                    FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+                    FFFFFFFFFFFFFFFFFFFFFF3A3A3A3A3A3AFFFFFFD5D5D5757575010101535353
+                    FAFAFAFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+                    FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF7A7A7A040404F2F2F2FFFFFFFF
+                    FFFF989898010101535353FAFAFAFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+                    FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFBCBCBC0000
+                    00B0B0B0FFFFFFFFFFFFFFFFFF919191010101535353FAFAFAFFFFFFFFFFFFFF
+                    FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+                    FFFFFFF7F7F71F1F1F141414D1D1D1FFFFFFFFFFFFFFFFFF9191910101015353
+                    53FAFAFAFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+                    FFFFFFFFFFFFFFFFFFFFFFFFFFFFE0E0E0202020151515D1D1D1FFFFFFFFFFFF
+                    FFFFFF989898010101535353FAFAFAFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+                    FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFE0E0E020202015
+                    1515D1D1D1FFFFFFFFFFFFFFFFFF989898010101535353FAFAFAFFFFFFFFFFFF
+                    FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+                    FFFFFFFFE0E0E0202020151515D1D1D1FFFFFFFFFFFFFFFFFF98989801010153
+                    5353FAFAFAFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+                    FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFE0E0E0202020151515D1D1D1FFFFFFFFFF
+                    FFFFFFFF989898010101525252FAFAFAFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+                    FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFE0E0E0202020
+                    151515D1D1D1FFFFFFFFFFFFFFFFFF989898010101525252FAFAFAFFFFFFFFFF
+                    FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+                    FFFFFFFFFFE0E0E0202020151515D2D2D2FFFFFFFFFFFFFFFFFF989898010101
+                    525252FAFAFAFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+                    FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFE0E0E0202020151515D2D2D2FFFFFFFF
+                    FFFFFFFFFF989898010101525252FAFAFAFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+                    FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFE0E0E02020
+                    20151515D2D2D2FFFFFFFFFFFFFFFFFF989898010101525252FAFAFAFFFFFFFF
+                    FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+                    FFFFFFFFFFFFE0E0E0202020151515D2D2D2FFFFFFFFFFFFFFFFFF9898980101
+                    01525252FAFAFAFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+                    FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFDCDCDC1D1D1D151515D1D1D1FFFFFF
+                    FFFFFFCCCCCC0B0B0B000000535353FDFDFDFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+                    FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFDCDCDC1D
+                    1D1D151515D2D2D2CCCCCC1111112222227D7D7D000000939393FFFFFFFFFFFF
+                    FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+                    FFFFFFFFFFFFFFDCDCDC1D1D1D141414111111222222E1E1E1FFFFFF3E3E3E40
+                    4040FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+                    FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFDCDCDC1D1D1D000000B4B4B4FFFF
+                    FFFDFDFD323232414141FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+                    FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFDCDCDC
+                    1D1D1D0F0F0F777777464646000000A2A2A2FFFFFFFFFFFFFFFFFFFFFFFFFFFF
+                    FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+                    FFFFFFFFFFFFFFFFE2E2E24B4B4B0404041D1D1D959595FFFFFF}
+                  ParentFont = False
+                  ExplicitLeft = 9
+                  ExplicitTop = 74
+                  ExplicitWidth = 152
+                end
+                object BtnPesquisar: TSpeedButton
+                  AlignWithMargins = True
+                  Left = 5
+                  Top = 237
+                  Width = 128
+                  Height = 40
+                  Margins.Left = 5
+                  Margins.Right = 5
+                  Margins.Bottom = 10
+                  Align = alTop
+                  Caption = 'Pesquisar'
+                  Font.Charset = DEFAULT_CHARSET
+                  Font.Color = clWindowText
+                  Font.Height = -15
+                  Font.Name = 'Segoe UI'
+                  Font.Style = []
+                  Glyph.Data = {
+                    F6060000424DF606000000000000360000002800000018000000180000000100
+                    180000000000C0060000C20E0000C20E00000000000000000000FFFFFFFFFFFF
+                    FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+                    FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFDFDFD8484841A1A1A222222999999FF
+                    FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+                    FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFDFDFD6868680000001515
+                    150F0F0F000000A2A2A2FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+                    FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFDFDFD686868
+                    0000002E2E2EE7E7E7D6D6D6060606393939FFFFFFFFFFFFFFFFFFFFFFFFFFFF
+                    FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFD
+                    FDFD6868680000002E2E2EE6E6E6FFFFFFC3C3C30303033F3F3FFFFFFFFFFFFF
+                    FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+                    FFFFFFFFFDFDFD6868680000002E2E2EE6E6E6FFFFFFC6C6C6111111040404B5
+                    B5B5FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFEBEBEB9595954B4B4B272727111111
+                    1F1F1F3E3E3E848484D6D6D66868680000002E2E2EE6E6E6FFFFFFC6C6C61111
+                    11040404A1A1A1FFFFFFFFFFFFFFFFFFFFFFFFFDFDFD8C8C8C13131300000001
+                    01011A1A1A3030301F1F1F0404040000000101010000002E2E2EE6E6E6FFFFFF
+                    C6C6C6111111040404A1A1A1FFFFFFFFFFFFFFFFFFFFFFFFF3F3F35353530000
+                    00131313848484DBDBDBFFFFFFFFFFFFFFFFFFE8E8E89B9B9B23232300000029
+                    2929DCDCDCC6C6C6111111040404A1A1A1FFFFFFFFFFFFFFFFFFFFFFFFFDFDFD
+                    565656000000424242E7E7E7FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+                    FFF6F6F6646464000000232323111111040404A2A2A2FFFFFFFFFFFFFFFFFFFF
+                    FFFFFFFFFF9696960000003E3E3EF7F7F7FFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+                    FFFFFFFFFFFFFFFFFFFFFFFFFDFDFD6B6B6B000000030303A2A2A2FFFFFFFFFF
+                    FFFFFFFFFFFFFFFFFFFFF2F2F21A1A1A0E0E0EE3E3E3FFFFFFFFFFFFFFFFFFFF
+                    FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF8F8F82C2C2C010101
+                    CACACAFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFA6A6A6000000777777FFFFFFFFFF
+                    FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+                    FFFFABABAB0000006F6F6FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF5E5E5E000000
+                    CBCBCBFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+                    FFFFFFFFFFFFFFFFFFFFF6F6F6111111272727FFFFFFFFFFFFFFFFFFFFFFFFFF
+                    FFFF3C3C3C060606FBFBFBFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+                    FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF383838060606FBFBFBFFFF
+                    FFFFFFFFFFFFFFFFFFFF292929181818FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+                    FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF4F4F4F
+                    000000E7E7E7FFFFFFFFFFFFFFFFFFFFFFFF3A3A3A070707FCFCFCFFFFFFFFFF
+                    FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+                    FFFFFFFFFF3D3D3D050505F9F9F9FFFFFFFFFFFFFFFFFFFFFFFF5C5C5C000000
+                    CDCDCDFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+                    FFFFFFFFFFFFFFFFFFFFF8F8F8121212252525FFFFFFFFFFFFFFFFFFFFFFFFFF
+                    FFFFA5A5A50000007A7A7AFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+                    FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFAFAFAF0000006E6E6EFFFFFFFFFF
+                    FFFFFFFFFFFFFFFFFFFFF1F1F1181818101010E6E6E6FFFFFFFFFFFFFFFFFFFF
+                    FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFBFBFB343434020202
+                    CBCBCBFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF919191000000434343F9F9
+                    F9FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF74
+                    74740000005B5B5BFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFDFDFD
+                    525252000000484848EBEBEBFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+                    FFF9F9F96F6F6F000000292929ECECECFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+                    FFFFFFFFFFFFFFFFF1F1F14D4D4D0000001717178B8B8BE2E2E2FFFFFFFFFFFF
+                    FFFFFFEEEEEEA1A1A12A2A2A0000002B2B2BD9D9D9FFFFFFFFFFFFFFFFFFFFFF
+                    FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFCFCFC85858511111100000002
+                    0202222222353535282828080808000000050505656565EDEDEDFFFFFFFFFFFF
+                    FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+                    FFE7E7E79090904545451E1E1E0B0B0B1A1A1A3838387E7E7ED4D4D4FFFFFFFF
+                    FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF}
+                  ParentFont = False
+                  OnClick = BtnPesquisarClick
+                  ExplicitLeft = 9
+                  ExplicitTop = 74
+                  ExplicitWidth = 152
+                end
+                object BtnCancelar: TSpeedButton
+                  AlignWithMargins = True
+                  Left = 5
+                  Top = 290
+                  Width = 128
+                  Height = 40
+                  Margins.Left = 5
+                  Margins.Right = 5
+                  Margins.Bottom = 10
+                  Align = alTop
+                  Caption = 'Cancelar'
+                  Font.Charset = DEFAULT_CHARSET
+                  Font.Color = clWindowText
+                  Font.Height = -15
+                  Font.Name = 'Segoe UI'
+                  Font.Style = []
+                  Glyph.Data = {
+                    360C0000424D360C000000000000360000002800000020000000200000000100
+                    180000000000000C0000C20E0000C20E00000000000000000000FFFFFFFFFFFF
+                    FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+                    FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+                    FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+                    FFFFFFFFFFFFF7F7F75F5F5F2424242222222222222222222222222222222222
+                    2222222222222222222222222222222222222222222222222222222222222222
+                    22222222222424245F5F5FF8F8F8FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+                    FFFFFFFFFFFFA0A0A0626262FBFBFBFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+                    FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+                    FFFFFFFFFFFBFBFB616161A1A1A1FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+                    FFFFFFFFFFFF8C8C8C929292FFFFFFF1F1F1DDDDDDDDDDDDDDDDDDDDDDDDDDDD
+                    DDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDD
+                    DDDDF1F1F1FFFFFF9292928C8C8CFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+                    FFFFFFFFFFFF8C8C8C929292FFFFFF4E4E4E3939394444444444444444444444
+                    4444444444444444444444444444444444444444444444444444444444444439
+                    39394E4E4EFFFFFF9292928C8C8CFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+                    FFFFFFFFFFFF8C8C8C929292FFFFFF494949D6D6D6FFFFFFFFFFFFFFFFFFFFFF
+                    FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFD6
+                    D6D6494949FFFFFF9292928C8C8CFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+                    FFFFFFFFFFFF8C8C8C929292FFFFFF494949D6D6D6FFFFFFFFFFFFCDCDCDFBFB
+                    FBFFFFFFFFFFFFF4F4F4ACACACAAAAAAABABABF4F4F4FFFFFFFFFFFFFFFFFFD6
+                    D6D6494949FFFFFF9292928C8C8CFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+                    FFFFFFFFFFFF8C8C8C929292FFFFFF494949D6D6D6FFFFFFA3A3A31717175555
+                    55FBFBFBFFFFFFE7E7E7787878777777787878E7E7E7FFFFFFFFFFFFFFFFFFD6
+                    D6D6494949FFFFFF9292928C8C8CFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+                    FFFFFFFFFFFF8C8C8C929292FFFFFF494949D6D6D6FFFFFF7B7B7BECECEC7272
+                    72555555FBFBFBFCFCFCCECECECCCCCCCCCCCCCCCCCCCCCCCCDCDCDCFFFFFFD6
+                    D6D6494949FFFFFF9292928C8C8CFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+                    FFFFFFFFFFFF8C8C8C929292FFFFFF494949D6D6D6FFFFFFFFFFFFFFFFFFFFFF
+                    FF878787E3E3E3E0E0E0565656555555555555555555555555717171FFFFFFD6
+                    D6D6494949FFFFFF9292928C8C8CFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+                    FFFFFFFFFFFF8C8C8C929292FFFFFF494949D6D6D6FFFFFFFFFFFFFFFFFFFFFF
+                    FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFD6
+                    D6D6494949FFFFFF9292928C8C8CFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+                    FFFFFFFFFFFF8C8C8C929292FFFFFF494949D6D6D6FFFFFFFFFFFFBABABAF6F6
+                    F6FFFFFFFFFFFFEFEFEF9A9A9A9999999A9A9AEFEFEFFFFFFFFFFFFFFFFFFFD6
+                    D6D6494949FFFFFF9292928C8C8CFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+                    FFFFFFFFFFFF8C8C8C929292FFFFFF494949D6D6D6FFFFFF9090902222224545
+                    45F6F6F6FFFFFFECECEC8A8A8A8888888A8A8AECECECFFFFFFFFFFFFFFFFFFD6
+                    D6D6494949FFFFFF9292928C8C8CFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+                    FFFFFFFFFFFF8C8C8C929292FFFFFF494949D6D6D6FFFFFF8C8C8CF4F4F48686
+                    86454545F8F8F8F7F7F7BCBCBCBBBBBBBBBBBBBBBBBBBBBBBBCCCCCCFFFFFFD6
+                    D6D6494949FFFFFF9292928C8C8CFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+                    FFFFFFFFFFFF8C8C8C929292FFFFFF494949D6D6D6FFFFFFFFFFFFFFFFFFFFFF
+                    FF9B9B9BE6E6E6E4E4E4686868666666666666666666666666818181FFFFFFD6
+                    D6D6494949FFFFFF9292928C8C8CFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+                    FFFFFFFFFFFF8C8C8C929292FFFFFF494949D6D6D6FFFFFFFFFFFFFFFFFFFFFF
+                    FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFD6
+                    D6D6494949FFFFFF9292928C8C8CFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+                    FFFFFFFFFFFF8C8C8C929292FFFFFF494949D6D6D6FFFFFFFFFFFFA6A6A6F0F0
+                    F0FFFFFFFFFFFFE9E9E97A7A7A7777777A7A7AE9E9E9FFFFFFFFFFFFFFFFFFD6
+                    D6D6494949FFFFFF9292928C8C8CFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+                    FFFFFFFFFFFF8C8C8C929292FFFFFF494949D6D6D6FFFFFF7E7E7E3131313838
+                    38F0F0F0FFFFFFF2F2F29C9C9C9999999C9C9CF2F2F2FFFFFFFFFFFFFFFFFFD6
+                    D6D6494949FFFFFF9292928C8C8CFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+                    FFFFFFFFFFFF8C8C8C929292FFFFFF494949D6D6D6FFFFFF9F9F9FF9F9F99A9A
+                    9A383838F4F4F4F3F3F3ABABABAAAAAAAAAAAAAAAAAAAAAAAABCBCBCFFFFFFD6
+                    D6D6494949FFFFFF9292928C8C8CFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+                    FFFFFFFFFFFF8C8C8C929292FFFFFF494949D6D6D6FFFFFFFFFFFFFFFFFFFFFF
+                    FFB0B0B0EAEAEAE9E9E9797979777777777777777777777777919191FFFFFFD6
+                    D6D6494949FFFFFF9292928C8C8CFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+                    FFFFFFFFFFFF8C8C8C929292FFFFFF494949D6D6D6FFFFFFFFFFFFFFFFFFFFFF
+                    FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFD6
+                    D6D6494949FFFFFF9292928C8C8CFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+                    FFFFFFFFFFFF8C8C8C929292FFFFFF494949D6D6D6FFFFFFFEFEFE909090E8E8
+                    E8FFFFFFFFFFFFE5E5E5686868666666686868E5E5E5FFFFFFFFFFFFFFFFFFD6
+                    D6D6494949FFFFFF9292928C8C8CFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+                    FFFFFFFFFFFF8C8C8C929292FFFFFF494949D6D6D6FFFFFF6C6C6C4343432E2E
+                    2EE8E8E8FFFFFFF7F7F7BCBCBCBBBBBBBCBCBCF7F7F7FFFFFFFFFFFFFFFFFFD6
+                    D6D6494949FFFFFF9292928C8C8CFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+                    FFFFFFFFFFFF8C8C8C929292FFFFFF494949D6D6D6FFFFFFB2B2B2FDFDFDACAC
+                    AC2E2E2EEFEFEFEEEEEE8B8B8B888888888888888888888888A2A2A2FFFFFFD6
+                    D6D6494949FFFFFF9292928C8C8CFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+                    FFFFFFFFFFFF8C8C8C929292FFFFFF494949D6D6D6FFFFFFFFFFFFFFFFFFFFFF
+                    FFC1C1C1EFEFEFEEEEEE8B8B8B888888888888888888888888A2A2A2FFFFFFD6
+                    D6D6494949FFFFFF9292928C8C8CFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+                    FFFFFFFFFFFF8C8C8C929292FFFFFF494949D6D6D6FFFFFFFFFFFFFFFFFFFFFF
+                    FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFD6
+                    D6D6494949FFFFFF9292928C8C8CFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+                    FFFFFFFFFFFF8C8C8C929292FFFFFF4B4B4B4747475555555555555555555555
+                    5555555555555555555555555555555555555555555555555555555555555547
+                    47474B4B4BFFFFFF9292928C8C8CFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+                    FFFFFFFFFFFF8C8C8C929292FFFFFFE3E3E3CCCCCCCCCCCCCCCCCC8181816464
+                    64CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC646464818181CCCCCCCCCCCCCC
+                    CCCCE3E3E3FFFFFF9292928C8C8CFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+                    FFFFFFFFFFFF9A9A9A717171FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFA1A1A17E7E
+                    7EAFAFAF333333333333333333333333B1B1B17E7E7EA1A1A1FFFFFFFFFFFFFF
+                    FFFFFFFFFFFFFFFF7171719B9B9BFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+                    FFFFFFFFFFFFF1F1F14343432020202222222222222222222222221616167E7E
+                    7EFEFEFEEEEEEEEEEEEEEEEEEEEEEEEEFEFEFE7E7E7E16161622222222222222
+                    2222222222202020444444F1F1F1FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+                    FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFBDBDBD2222
+                    22222222222222222222222222222222222222222222BDBDBDFFFFFFFFFFFFFF
+                    FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+                    FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+                    FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+                    FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF}
+                  ParentFont = False
+                  ExplicitLeft = 24
+                  ExplicitTop = 217
+                  ExplicitWidth = 116
+                end
+                object BtnRestaurar: TSpeedButton
+                  AlignWithMargins = True
+                  Left = 5
+                  Top = 184
+                  Width = 128
+                  Height = 40
+                  Margins.Left = 5
+                  Margins.Right = 5
+                  Margins.Bottom = 10
+                  Align = alTop
+                  Caption = 'Restaurar'
+                  Font.Charset = DEFAULT_CHARSET
+                  Font.Color = clWindowText
+                  Font.Height = -15
+                  Font.Name = 'Segoe UI'
+                  Font.Style = []
+                  Glyph.Data = {
+                    F6060000424DF606000000000000360000002800000018000000180000000100
+                    180000000000C0060000C20E0000C20E00000000000000000000FFFFFFFFFFFF
+                    FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF7F7F7EEEEEEFFFF
+                    FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+                    FFFFFFFFFFFDFDFDEEEEEEEEEEEEEEEEEEEEEEEEF8F8F8FFFFFFFFFFFFFFFFFF
+                    C2C2C20000000A0A0A454545929292F2F2F2FFFFFFFFFFFFFFFFFFFFFFFFFFFF
+                    FFFFFFFFFFFFFFFFFFFFFFFFFFE4E4E4000000000000000000000000909090FF
+                    FFFFFFFFFFFFFFFFE7E7E78F8F8F6D6D6D2A2A2A000000141414939393FEFEFE
+                    FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF2F2F28888884141410000
+                    00000000909090FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFC9C9C945
+                    4545000000505050F3F3F3FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+                    B4B4B4060606252525000000909090FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+                    FFFFFFFFFFFFFFFEFEFE909090030303494949FAFAFAFFFFFFFFFFFFFFFFFFFF
+                    FFFFFFFFFFE3E3E3101010303030DADADA000000909090FFFFFFFFFFFFFFFFFF
+                    FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF9C9C9C010101767676FFFF
+                    FFFFFFFFFFFFFFFFFFFFFFFFFF5151510B0B0BD9D9D9F6F6F6888888CBCBCBFF
+                    FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+                    636363050505D3D3D3FFFFFFFFFFFFFFFFFFD7D7D70202027B7B7BFFFFFFFFFF
+                    FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+                    FFFFFFFFFFFFFFFFEEEEEE0D0D0D5F5F5FFFFFFFFFFFFFFFFFFF7C7C7C030303
+                    E9E9E9FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+                    FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF6767670B0B0BF4F4F4FFFFFFFF
+                    FFFF3B3B3B363636FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+                    FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF9E9E9EA7A7A70000
+                    00C3C3C3BEBEBED4D4D4171717636363FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+                    FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFD1D1D1
+                    0303032828280000005959590A0A0A414141040404787878FFFFFFFFFFFFFFFF
+                    FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+                    FFFFFFFFFFFFFFFFA5A5A50303030000000000002B2B2BE9E9E91111116C6C6C
+                    FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+                    FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFA9A9A9040404282828E6E6E6FF
+                    FFFF2F2F2F454545FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+                    FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFB1B1
+                    B1E9E9E9FFFFFFFFFFFF6E6E6E0A0A0AF6F6F6FFFFFFFFFFFFFFFFFFFFFFFFFF
+                    FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+                    FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFC0C0C0000000969696FFFFFFFFFF
+                    FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+                    FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF535353
+                    B2B2B2FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+                    FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFA1A1A1B3B3B3FFFFFFFFFFFFFFFFFFFF
+                    FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+                    FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFCDCDCD0808084E4E4EFEFE
+                    FEFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFD0D0D099999999999999
+                    9999999999F7F7F7FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFC9C9C9121212
+                    1D1D1DEBEBEBFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF8A8A
+                    8A000000000000000000000000EAEAEAFFFFFFFFFFFFFFFFFFFFFFFFF3F3F381
+                    8181060606232323DEDEDEFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+                    FFFFFFFFFFFF8A8A8A0000000000001A1A1A6A6A6AB8B8B8D2D2D2CBCBCBA6A6
+                    A66868681010100000005A5A5AEBEBEBFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+                    FFFFFFFFFFFFFFFFFFFFFFFFFFFF8A8A8A0000008282822C2C2C000000000000
+                    0000000000000000000A0A0A5A5A5AC4C4C4FFFFFFFFFFFFFFFFFFFFFFFFFFFF
+                    FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF8A8A8A000000F1F1F1FF
+                    FFFFE6E6E6BBBBBBAAAAAAABABABD0D0D0FBFBFBFFFFFFFFFFFFFFFFFFFFFFFF
+                    FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFEFEF
+                    EFDDDDDDFDFDFDFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+                    FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF}
+                  ParentFont = False
+                  ExplicitLeft = 13
+                  ExplicitTop = 111
+                  ExplicitWidth = 135
+                end
+                object BtnSair: TSpeedButton
+                  AlignWithMargins = True
+                  Left = 5
+                  Top = 350
+                  Width = 128
+                  Height = 40
+                  Margins.Left = 5
+                  Margins.Top = 10
+                  Margins.Right = 5
+                  Margins.Bottom = 10
+                  Align = alTop
+                  Caption = '   Sair    '
+                  Font.Charset = DEFAULT_CHARSET
+                  Font.Color = clWindowText
+                  Font.Height = -15
+                  Font.Name = 'Segoe UI'
+                  Font.Style = []
+                  Glyph.Data = {
+                    F6060000424DF606000000000000360000002800000018000000180000000100
+                    180000000000C0060000C20E0000C20E00000000000000000000FFFFFFFFFFFF
+                    FFFFFFFFFFFFFFFFFFFFFFFFFCFCFC9696962222220C0C0C6C6C6CFBFBFBFFFF
+                    FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+                    FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFBDBDBD2D2D2D0000003D3D3D5D5D5D
+                    0000008C8C8CFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+                    FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFDDDDDD525252000000222222AD
+                    ADADFFFFFFFFFFFF2B2B2B505050FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+                    FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFDFDFD8080800808080C0C
+                    0C868686F7F7F7FFFFFFFFFFFFFFFFFF353535414141DDDDDDDDDDDDDDDDDDE0
+                    E0E0FCFCFCFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF959595
+                    0000005A5A5AE5E5E5FFFFFFFFFFFFFFFFFFFFFFFFFFFFFF3535350000000000
+                    00000000000000000000151515B7B7B7FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+                    FFFFFFFFFF4F4F4F292929FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+                    353535323232AAAAAAAAAAAAAAAAAAA4A4A4343434131313FAFAFAFFFFFFFFFF
+                    FFFFFFFFFFFFFFFFFFFFFFFFFF494949373737FFFFFFFFFFFFFFFFFFFFFFFFFF
+                    FFFFFFFFFFFFFFFF3535354B4B4BFFFFFFFFFFFFFFFFFFFFFFFFA6A6A6000000
+                    D8D8D8FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF494949373737FFFFFFFFFF
+                    FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF3535354B4B4BFFFFFFFFFFFFFFFFFFFF
+                    FFFFAAAAAA000000D4D4D4FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF494949
+                    373737FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF3535354B4B4BFFFF
+                    FFFFFFFFFFFFFFFFFFFFAAAAAA000000D4D4D4FFFFFFFFFFFFFFFFFFFFFFFFFF
+                    FFFFFFFFFF494949373737FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+                    3535354B4B4BFFFFFFFFFFFFFFFFFFFFFFFFC6C6C60E0E0EE9E9E9FFFFFFFFFF
+                    FFFFFFFFFFFFFFFFFFFFFFFFFF494949373737FFFFFFFFFFFFFFFFFFFFFFFFFF
+                    FFFFFFFFFFFFFFFF3535354B4B4BFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFDFDFD
+                    FFFFFFD8D8D8FEFEFEFFFFFFFFFFFFFFFFFFFFFFFF494949373737FFFFFFFFFF
+                    FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF3535354B4B4BFFFFFFFFFFFFFFFFFFFF
+                    FFFFFFFFFFFFFFFFE0E0E0000000696969FEFEFEFFFFFFFFFFFFFFFFFF494949
+                    373737FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF3535354B4B4BFFFF
+                    FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF7C7C7C000000656565FDFDFDFF
+                    FFFFFFFFFF494949373737FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+                    3535354B4B4BC0C0C03535353333333333333333333333333333333333330404
+                    04000000838383FFFFFFFFFFFF494949373737FFFFFFFFFFFFFFFFFFFFFFFFFF
+                    FFFFFFFFFFFFFFFF3535354B4B4BD1D1D1585858555555555555555555555555
+                    5555555252520303030000009B9B9BFFFFFFFFFFFF494949373737FFFFFFFFFF
+                    FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF3535354B4B4BFFFFFFFFFFFFFFFFFFFF
+                    FFFFFFFFFFFFFFFFFDFDFD5858580000008C8C8CFFFFFFFFFFFFFFFFFF494949
+                    373737FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF3535354B4B4BFFFF
+                    FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFE1E1E10505058C8C8CFFFFFFFFFFFFFF
+                    FFFFFFFFFF494949373737FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF0F0F0
+                    1717175C5C5CFFFFFFFFFFFFFFFFFFFFFFFFEBEBEB7F7F7FFBFBFBF7F7F7FFFF
+                    FFFFFFFFFFFFFFFFFFFFFFFFFF494949373737FFFFFFFFFFFFFFFFFFFFFFFFFE
+                    FEFEA6A6A61D1D1D040404C1C1C1FFFFFFFFFFFFFFFFFFFFFFFFABABAB000000
+                    D5D5D5FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF494949373737FFFFFFFFFF
+                    FFFFFFFFCCCCCC3B3B3B000000333333C7C7C7FFFFFFFFFFFFFFFFFFFFFFFFFF
+                    FFFFAAAAAA000000D4D4D4FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF494949
+                    373737FFFFFFECECEC6E6E6E030303131313909090FCFCFCFFFFFFFFFFFFFFFF
+                    FFFFFFFFFFFFFFFFFFFFAAAAAA000000D4D4D4FFFFFFFFFFFFFFFFFFFFFFFFFF
+                    FFFFFFFFFF5050502B2B2B8989890E0E0E060606767676F1F1F1FFFFFFFFFFFF
+                    FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFA2A2A2000000DBDBDBFFFFFFFFFF
+                    FFFFFFFFFFFFFFFFFFFFFFFFFF8E8E8E00000000000001010153535377777777
+                    77777777777777777777777777777777777777777777777777772121211F1F1F
+                    FDFDFDFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFBFBFB6C6C6C1010100000
+                    0000000000000000000000000000000000000000000000000000000000000003
+                    0303343434CDCDCDFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF}
+                  ParentFont = False
+                  Spacing = 0
+                  ExplicitTop = 322
+                end
+              end
+            end
+          end
+        end
+        object PnlMainEdit: TPanel
+          Left = 0
+          Top = 508
+          Width = 1108
+          Height = 133
+          Align = alBottom
+          BevelOuter = bvNone
+          Color = 6172416
+          ParentBackground = False
+          TabOrder = 1
+          ExplicitTop = 428
+          object PnlBackgrounEdit: TPanel
+            AlignWithMargins = True
+            Left = 0
+            Top = 10
+            Width = 1108
+            Height = 113
+            Margins.Left = 0
+            Margins.Top = 10
+            Margins.Right = 0
+            Margins.Bottom = 10
+            Align = alClient
+            BevelOuter = bvNone
+            Color = 9521152
+            ParentBackground = False
+            TabOrder = 0
+            Visible = False
+            object PnlDesignEdit: TPanel
+              AlignWithMargins = True
+              Left = 20
+              Top = 10
+              Width = 1068
+              Height = 93
+              Margins.Left = 20
+              Margins.Top = 10
+              Margins.Right = 20
+              Margins.Bottom = 10
+              Align = alClient
+              Color = 15790320
+              ParentBackground = False
+              TabOrder = 0
+              Visible = False
+              object Image1: TImage
+                AlignWithMargins = True
+                Left = 952
+                Top = 4
+                Width = 105
+                Height = 85
+                Margins.Right = 10
+                Align = alRight
+                Picture.Data = {
+                  0954506E67496D61676589504E470D0A1A0A0000000D49484452000000700000
+                  00570806000000DC49C1C5000022724944415478DAED7D079C5D55B5FE3EBD9F
+                  DBEFF4CC4C423A3184484968093CE0C913119112459A020F0B8A88FCE5D10CE2
+                  8B0DC5A7185430511EA1A848330408420021105A8014322993E9B797734F2FFF
+                  B5CFCD84C0236A94C7CDF866F91B2673EE29FBAE6FAFB5BE6FEF7DB6041AB731
+                  6D44A31B306EFF988D0338C66D1CC0316EE3008E711B07708CDB388063DCC601
+                  1CE3360EE018B77100C7B88D0338C66D1CC0316EE300BE87CD98713A4BABDE81
+                  3C2FCD09109A6E5A1A6F1BDA168E0BD6AE5FFBF8F38D6EDF9E360EE0BBEC88E3
+                  3FF3614650164B6AE258DBF13922F090E7DB1E4B0546B538BCF29947579C09A7
+                  058D6EE7A88D03B887CD3FEEF479A9D6498F91B42495351B110C873CD741224F
+                  1B03BD5B567234BAE885D5BFCE37BA9D7BDA7E0DA02C37A754559A4251440221
+                  5264189A22491651144950140A0882F41DC73548D22DB92E95755D27BF63C786
+                  E1BFE759C7FCEB998734B71DB02A5FB663042D211FE1070488A60254CC0DDD45
+                  9AD52BD63EF9DFFD8DF6C9BB6DBF04B0AD6DCA398820BF48B1EC21AE03AE6419
+                  14B838953988E338843398E7B88865D9F0180A48E47928FC9D4E37A362B1F827
+                  C733EEE568FDF69E9E1EEBAF3D6FEEDC8B98CE1989E7352B38D8724944D21CA2
+                  499C252D64EBB97B069CFE737A56AEFCABF76984ED5700B6B7772DA028E17A2F
+                  208E41048D1045A32008102F0888A1E16F880B92C48749441324721CC7A7E1B8
+                  65D924CFC9F0B7878A851212250159868E0491ABBA9EB1CCF19D5B77F66C7873
+                  6FCF9D77E2A70E6D699EBCB6627888155464DB36726C0DA902B1BE37B3E9F8F5
+                  8FDE97D9DBB533E79D1827293A78FD99878B8DF0D97E0360476BD7224E106EB7
+                  6C97723D72B9E93A2F476389C5BAAE274551ACE40BF90F93929F25483290C0C3
+                  FDFDFD26DA452666CC98C10EEABA28DAA20AE9B6C90D82299E679FD4DCD4BC48
+                  AB550896A53DD772AEE8E979FD87EFF5ECC38FFBD4A7DB3B27DF51ADB9C8F668
+                  84F333816C646985DB9E79F896CFEDADCD471CF131A5A97BFABAB7366FF8E91B
+                  2F3EF8E346F86DBF0070F2E4699F80AA769BEB070543372F1E1CDCF6383EDEDC
+                  31F390543AFD42B19847B665DD9019D87CEDBEDCB7BD7D669CE1C82FB02CFF79
+                  DB349B216257280A7FDDC68DAF6ED9F3BC134EFEEC6588536FA25909006490EF
+                  0708B2364461F5D5D5BFFDC19CF7BAF761C72D6A6249EE3B8964EBB9D9ECC0F7
+                  9F7D7CF9158DF05DC3019C3973CE698E6DAD304D73A76E307372B9CDD53D3F6F
+                  EA987623495257A9AA5ACB970A53727D9B07F7F5195D5D07450302FDC4B2AC4F
+                  3735A5B2AE6D9EF5E69B2F3C31FAF9C293CEBF545613371B3681183E8A2CC706
+                  F242204920D1C8C096A63F3FFA9B77A4D0F9277C269D8C353D64BBC15C28C144
+                  A994BBF58535CB2F6984FF1A0A607BFBC45924413CC28B42B35ED34FEEEFDFF6
+                  C7779FA324BBA7B6B536BF649886E4D8F605833B36FCEAEF7D5E67E79CAFB23C
+                  B3441058CA302B676FD9B4FE6E38ECCF5DF0C9CF754D98F68B62C5402444A1E7
+                  23C43014C22486A7D1D3B9D2E0E51977643D2632479F707E8718892C43247FAC
+                  C88BC8312D34D2DFFBED179EBDE33F1AE1C3860178C081074EF2757F1530C949
+                  F972F19AEC50EFB7F0F1D609D34E1665756EA95424A1180DE40636FDA2B5FBC0
+                  3F32247962A150F853B5D87FEC3FF2DC49530F5B4893C432D7B7270404B364DB
+                  A6B5DF38FCF873AE9295D88D1C1018000619A60D0C9746AE6782833CC4B3A4AB
+                  D7AA0F57CAE58DB21C3936164F1F5AAE9A08135501B8552137F0D9671E5F767B
+                  23FCD81000274F9E7190E7050FD95ED04620CAA9D66A273804DAA4D24C4C4924
+                  36E47239A4AA51608326D421FB28C3328E4944E3DFE238166533D97B10E9FF98
+                  F2E92C345F71023722F094E0383647D32CFC100C480F8EE779D6765C9A2028C6
+                  0F288A6138DAB24C16244994619879407F0EE1057949424E2DF624F1896453EB
+                  E150F9003C17083013B25DDF77E13F2E127806335E44100400CBA1720518AEA4
+                  20C2739144BB68B0B767C6F36BEEDEF87F02C0CECEC9A7C96AFC76ADA6A958B7
+                  D92E70468232C1392E4992E07042A89F091E04D950ABEA77FBC823144539034B
+                  0A86A42032A04691940DE7B27E282D4864EA66A80B81B0A05AAD06629F0AA328
+                  AC672035A0A320C7F7405EC2391C8F188AB9CAF5D97B3845FD7A229DFEACACC6
+                  28C7F5910BB2920290F03D5DD70E81C4C369183CDF074D4A3108640ED2E17971
+                  5540B55CEF57FFF4C7DB7EF80F3965AC00D8D5D5155563ADDBB3993C8E020C1E
+                  A2985D7805D853FEDBBFF121000C3B6EF4DF1EA8750218A22449E05C3704188E
+                  868E1539058033E03C8420FA20626C14C07D3088A66386D733001C4170F008F6
+                  329948DD42C5E91F3737B79F4B711C4F02302E0068C3CF9ECF44BB3A08EE10F8
+                  F9F859B843F050FFCA85E1DF3DFD871F7EB251E07DE000B6B6769F1089A55761
+                  9A5EA9D690A8A8C8329D5DCEC23F7ED8A4FAEFB70DA72FD0822168D899D891A0
+                  0F9102823DD8151D8E1320458E8620E2BF390ED29E6B869FE3FF31907E395E74
+                  099ABB1C11FC6302A75EA9441327299168D2F683D00F18247CFF3A70F5BF7114
+                  D2E120026E87357ADCA956AA3F439675E39F1F5D9AF95BBFFF9807B0AD6DF245
+                  BCA8DC5A83F48347593CC89E0CC312A30E1BFD8DF5F96814ECD9FB3190914814
+                  552A1524CB32D4480B059E857034E331520BD72F820ACFC7F5CB018EEFF93612
+                  007C9617B0EAFF981DC8CFC422B1DB22D1C4110C2BA671BDF3E1B99099E13A22
+                  1CA2B36C4387CE82D33A342920789E63CAA512443E5F300CFD71CF7696BEF2E4
+                  6FD63512B88600D8DC3CE91A926617EB86F55312721BC708178F360147DD2880
+                  18BCF007681E1ED6C2112088B25B2C16DEB421EF46A3D1598EEDB182C8A16AB9
+                  F8285C7883EBFB094916A75896378B67D9B950336780B60CAF6538AE6AFBD4E7
+                  5CD37F8995E56FA79BDA0F532389CE0050C3C147D3407821559A96866A954A9F
+                  6E68AF05AE7F2749116B291ABA821D50C08A9066150D10A389FE4DC7BE89D0F5
+                  FE3FE28B310960FB8419D79104F5C9C181EC972019BAF144143499301FF7F23D
+                  A39020DF06123E0F23CEB29DFFAAE8F6B725A01424CF5CAA28D12BA1FE515AB5
+                  FC4235DF73D89EDFA9A3634E0BC1A3190C2D7C9361F8A98E179C6218549FA8C8
+                  374513A9D9D158EA001AEA21D67BB8A641A001DB3551A5947B0B7ED6B8A4792D
+                  E3D1679224F1EFD081CAD01E07A487148FA81348C28FEBB5F259AFBDB8FAEE46
+                  83F78103184F767E8D654595A4D85923D9AC4073DC1BC958FC724C5A30706FA7
+                  507F3780F813CF739FCAF66D5C28C63A4F6259898124F79C6DF8F73735A70F25
+                  029F2C97F2DF2867B72D79AF67CE386441B3E9C88AC82AB74663C9C9A21A691F
+                  4D9BD83071B14C3DD02A859E4AB9F884676A8B3DDFF824190437E3CF2DCB08D9
+                  6D00293980940C9C084922BF6CC3EB6BCF6F186A7BD8074C62262FAA19EE4C41
+                  94BE083A4ACAE4B2CB555939173EA24741ACD7BEB701046D878AE5CA799EE7D0
+                  9D133A7F99CFE791A6E9174BA254F003F75E3CBD046514488DB61C6AE2AF95A4
+                  FC6AFF9B6F16469F396BFE278E1638E53B929C9CC14B2A56EA21FBC52A1CD7CA
+                  5C7624A855CB9BAB95C2FD8E61FC8865890B80BADCE8BB4E3855556F4F1002C8
+                  50F01B6A7132A93CF9CA4BCF2F6C34781F38808A929E4F33C2C725257605644D
+                  AF58A9DC2F4AD2F1E04805FB0933463204ADCEFA42E2627B7D0C4D5F200AC263
+                  966B850E2D950AAB2BB9D847DA277A65AC1B313BC5C7B17C2069602301B38E8A
+                  468F95097146B2B5E341D3F6128A1A27B1C6330CA35E5381A58E0CF7077AADB4
+                  09A2EF61333F7C7D204867C3F1A5A65E0BCFF13D074F1E83B8AF2189E7A046EA
+                  C086054453E4CB3D9B5F99DB68F03E700021A1B1F178ED6C251ABFCDB67DAB58
+                  2EBF2ACAF20C9A6114704AC81CBD5D605024134648E0076FD88E7D0748B52538
+                  126A7A153A8262E6CBB96E811356B00CBF003AC32EB60A811C50CF023B3A2F12
+                  6B9AA6269A7E252BD1A469439D23F1DC227C5D9030A2C4A3A19DFD4EA99CD95C
+                  2D8FFCDEF7CC5B3CDBBE10C0B9C1B51D901B0CD22A55A4AA4A085E284BA063D8
+                  4E9D1441103FD3BBE5B5A31A0D5E0300C41639B86DC28417298A23F3C5E200CB
+                  F34DE014C0900E008390CC84A90B51E1A887E3B81B6DCB5ECFB2FC99580B62BA
+                  8FD925207B86ED79473034F36512C0C13F80FA5631A00FA323F18313A9A607D4
+                  5882C7E061B28241C0200B10A5D9EC88572B9776542AD97B76AC7FE8AA58CB87
+                  BE2170FCB73170C5623194281441C2738CF079F85A0F244B5D6A40BB68EA37BD
+                  3DAF9DD368F01A04206223A9C95B055E6AC7BD19D723A85DBD903EB780B2F810
+                  CBB1E9B0EE0420A8C189866ED618865BC7F3E231B942698D24894F903499058A
+                  BF5A60B8844F50C7C1691249322551E06EA779F5DF1459BD951764866270DAF3
+                  429D88476C707461C6A96BD5A1C1BEDEDBABC5CCD2C0AB5D2A08DC15A35A1377
+                  200CB451D3D19E1D060FE1E161354C68F45AF5E2A1814D3F6F34781F34804C34
+                  D1B9D4B25C5590E4A325494D5B20CC19709CA6696FD935ED388E63344A6017D2
+                  3C771E4DB1FF86BB3A05025D51A3B94A45FFA242C4EFDB206C0BDA6BF1F9A222
+                  36E3454DBCC80F414C0C930CD5C4B0D25992205F0CD1CAF898AC385EF8601CD1
+                  AA2C8560E43243B5623E77E386E7EEF94FB979D68FA312FF2592A8EB4D0C201E
+                  A6F3BDD15118B73E7CB78BF084E3A204B1C309EC23CB85F235B2C04F2720F7EA
+                  9AB6BE54C95CFECF0E20D5D2316D8813E414B0482CCC717AC439138FB0D8E0E4
+                  3EF8E345C06C35CB711B41EC1568869E07007ED4F1C8EF921493E545F92C5950
+                  CEE0042E019E049C390A982847D2B4086C15B21E3819E168C3F5B44E82588602
+                  7243A352210B51ED54B56AE9FBC37D3DB7132C730DE57B17D986069FB3C88628
+                  93D5288E40CF30AC2AD46027994CB91CC79AD0C172C092DFAC69DA6B044D3D60
+                  E8DA713445FFDCB58D704602B07D70C78ECD1FFB670710C5D35DABD568FC58C3
+                  70C2BA14AE2A73DC300A099AC0DDBB4EDBC1E904C93CE933FCA7FB5E796C70F6
+                  C24F9DC850D20D0CCF77796E104FA79B29706AB842CD0FEC5DA336341E7606D4
+                  EA63A561CD83C822C371551BF11C656FEBD9F4A5D79FFBFDCF5BBBE72C8E2622
+                  27411EDD4A7AFE0844D6886FA3BE9A55ED95B8F8482C9674D2E934E2231C8AC8
+                  9116AD6AB4142A8509B55A758A6559B302DF9B879FE13978C29786483597EFDC
+                  F9D679FFF4002AD1B6E59178E21C3F1CB3869AE3F875F042C10EBE07676319C0
+                  006507B9F18041098B229C385196A3CB45499D280852D4B49C3AF05E10024481
+                  36C3D34BE17834A45B4C11C33A063A1DAFE9E4B0AA700D676868E795EB9EBA6B
+                  AFD33ED1687A36C54AB3813C4D745C7F6A24169F23CBEA544C6AF068101E87C5
+                  06111FA6520C2005CF67A0EDB65DFB5E7FFFD6AFFFF30318EBF8763C99FC866D
+                  BB8866991040C287E8C14E27C1750C8D74D069244416C18AB346363EF9C68C23
+                  17DD964CB59C4C126C0AC84C7DA0DAABD73516A4072460E487EA004B0F202D78
+                  BD28C809BCA6257030F9F0FC7271E8FC35AB96FFFA2FB52D1E6FBD20964CDD0A
+                  199176A173E071D290484167C0B3273474AC70A4C8AF0388091816F704743AD3
+                  AC5E3634B4E347FFF4000A5272D1D4E933EFB4DD3ADB835A83F0BA5CDFAB0F6B
+                  991ED66022320004498D5D42D1CCF36D6D131F57A389041EF2E26806410AC3A1
+                  60093C2BE3A91E1FC43F4EBDBAE984F37DA00B4342C2C037A30817558A996B9F
+                  5EF5CB1BFEA6F609F1764E9417BA0ED1954AA73F5233AC797870008BFF51268B
+                  E54422190B090E0B20E229AD9ECD9B3F9A2B0E3CFCC1C3F7C1CB08321A6DE900
+                  9618CD144A6A22969C9388A76FD60D334C51722C1232470DC0801AF8AD544BDB
+                  6022DE740DD0F916BCC4229719D17DC7FBEF9AA5DF23B2741B908F539448EC54
+                  070A2ACB89A80AF7C1CEC63A8E849E41931E2AEDDC9A7EFAE97BB3FBDAD05872
+                  CA138AA22EC4E1069D264CF578A1534495D1E0D0C0E52449BCC2335451D3AA99
+                  5CAE6F9F57CABD5FD6D05569B1D8C48828CB0FD3347F0409E9B366E821196145
+                  05598E77B620C87363F1D4856D6DED72AD522DD7B4CAAF5E7C72D9657BDE63C1
+                  8917FE8B144B3D66E06927160FA581F8B74C202D5057ADDAE0CA7B6F6EDBE776
+                  25272E02997327C709A85CAD864374AE5D9F1C565569CD964DEB8E69A4DFF6B4
+                  86AF0B4DA4265D2D88911BEABC860AD96940B17882F693C03A8F3C68F6415FC9
+                  E5724320B6EEE6BCDAB5CF3EFB40F5DDF738FE63972D6325E95C0F8F9E408AC3
+                  13B334A44FD23336ACBCF7A733F7A53DA2986CED9A3875B36E587205E40ED685
+                  B8EED6AA65203A2A1A18EC3D49AF0CAF6CB4DF46ADE100CA7253BA7DE2D4112C
+                  0B7C024FACD22111A129EE7304CB26DADBDA3F5F2D976FDBFCD2C137EE6D12F5
+                  E0A3CEBBA2A3ABEBBB15DD402C3058BC948285F49919DC7EDFCB4FFDFE13FBD2
+                  9EA6D629F7F1BCF47110A610C5221E64400C0BE993C4A343DEB3BDDBD71FD968
+                  9FED690D07101BAFB67C2B996CFA0F0FAF87F1418AF312AA54F5A53CC32F1315
+                  E104DBF16F19D8B47AAFEFE51DBAE0B317C79AD24B1DE04238150740F56B955C
+                  592B65AE7DE399FBFFE677169A9BBBAE8CC4D24B0AC532E24409E137A3F0842F
+                  1E23C532B554CE9D54CCF6EE37D187ADF1004622B19658C75A8EE527E3B532A0
+                  F7303BC5DC72D0B7887F1522C130E9324B58967862DBA6E7EE7CF7E573E79D3E
+                  8B56D2BF8E46E3B30332203C008F838829E507B70E6CEF39AA77E3D3437F4B33
+                  D478DB35B1487CB1079A8464D870B11549D617399138FA4032988676637664CB
+                  D58D76D99ED6700023C9AE9FB1ACF2EF582C874B0577AD3A03C705C0FE76C2BF
+                  8745493A4C1478FC82CBF97D5B5F5C367AED9C234F9D2DC8136E2768695A24A2
+                  889EA3C3752E32F4623633B0F5671B5E7AECBABFA50D72B4FDDA9696966F9AA0
+                  4F1D3B40AE5F4F9F987DD224130E14E0F940D7B39056CE7DA254EABFAFD17E1B
+                  B586022828D15363D1F6BB284660716F77C245B8F8ED202F14CA78168013F8FA
+                  AAE87A34780C2FFEC7B6D79FF8CEF4B91F3D38926CBA99175B66B39CAC586615
+                  093C814A85A11186B077EAB9CC292FBDB4EA2F461FE8BEF904C343DA4C7C0C4F
+                  4785CB1629266C8369D8A1F6C3830D78C8CEA89591AC08F8B5B3E182569E571A
+                  DEB1A391BE1BB58602C8F3F282AE89331F2C577409AF2DC26B39F1B240C3A821
+                  82A6C22133AC0BC9701A80C40E3520460F160549E8ECEABECBB0FC56514EC934
+                  2BA24A256FEAD562BF65545F3632C57377EC78D2DCDB73E3F1D68E2020AF9414
+                  F50B921C4135D30AC53F960B3674163CC080D9A7E7E1D1552A9C8262F0A84FE0
+                  405DB4B6D6AA8513CAE5916D8DF4DDA8353C854202BBA4FB80A9B7E088C3ABCF
+                  B013479703E295639805F2828468A84BC542F1A14A76E3C9DD338FB926164F7E
+                  1AE294E47885F503C22D94B22F03D57F8426C8FBDF4D7892C98E5638752A44D3
+                  745E108E6468F6248AA2237829BDE57A6184E185C2914804697A351CFBC413CA
+                  F8D93885D20C190EDB39B6992F15464ED3B4DC538DF6DAA8ED07002224296D5F
+                  5514F907D871E1A42A515F1E5FAED64066A86114D6F470759843D2EC37870EEE
+                  58B2209B25FA2A5C172F8A92E598DB7BD6AEACB64E3D6A7EB198591C8F282D8E
+                  699609C2E7399A9AA0284ADC84280B3B06684C9C92F1803A270A2159C191EEB8
+                  5638D2122EEB189DCDC00406D5973A3214656DDBD1730272B5358DF6D79EB65F
+                  00884D89357F271E4B7C1DEA50215F28FDD6D4F4E5AC247689BC74552C999A89
+                  5FF90AF0CB5EE05CD068DB1525B24E37CC8C4FFA44449593A0150FA44862862A
+                  8920BA35ACD9EA6B6B10B16BB93C110E7AE3EB3141C160BA107D58A4F33C17CE
+                  32E0A5F37EE0ACA916CB8B4DD7245555FD6C3216FF78005A223332FC855A35FB
+                  77BF9BF8BF65FB0D8060B42C27AFF63C7BA56154D68E1E8CC727755881FBDD74
+                  53CB59A54A15291091F8EDA16AB516AEA8C611C3F16CA8D77CFC420B440B5ECF
+                  E2E3C95CB61E6D183486E6C2DFD8F068004ED1E1846F38406E86623D9FCF2C31
+                  CA683142FDC6E8F3294EFC0881A76DADDAA38D76D07BD9FE04E05F3429DEF595
+                  54AAE987F8B52E178F92F062081EDEB1022FBEA5EA24A73E1311EE5C6185B5CD
+                  7383102C3CFB8FA30DBFE452281490A2AA75D619E0E58EB23E34DC7FAE56D8FE
+                  DB467FCF7DB531036034DD3D5B10E45719964796E38640E14547B6595F2B8A07
+                  E170C461506832DC822404D4F1EA9204038A0124808C8420736C785F1AAE04F1
+                  BF6E70FBC831080DEA8DFE9EFB6A63064029D63E2B194FACAFD60C24AB0A5EF0
+                  1B82A5486A983E4767CCD5F0AD2533FC0C0308752F0080895094EF02D2AD0F14
+                  84D7C920170AD9CCF3E502B500A1BFBE29D0FE6663064025D93625118D6F1645
+                  19E50A4584A77AEAF50D72A0876B65DC28E60AA76AA64632342552A0234DC374
+                  1996AD06BE3B3D168FFE04D73C43B790A8C8BBDFC3C02914B0FCF38EADAFE2A5
+                  F276A3BFE7BEDA9801105B24D6F244BAA979217E3105D742BC121BCFC06386A9
+                  9BE63746FA5F5FB2B76BE3E9CED500F2B138241DCF0D5FC30EDF31342D20B0E5
+                  5FD4AA430D5916F88FDA9802105B73F3849950D73E2C48CA7C40EE508A640FE2
+                  387EFB60A9789836DCB3D7997741891DD1DAD2BA12A235C8158BCF5124BDD6B4
+                  EDE7491FADD3B4E17D9EB1DF5F6CCC01F86E6B9B386D8A5B0B9C9191CDDBFFDA
+                  B9B21C9FA969A80FA142A5D1ED7EBF6CCC03F87FDDC6011CE3F6BF08A07A00CD
+                  D1DD140A38D05F430CE36C03B2F08E2D19239148CCF6B9E9B6E5B6889260598E
+                  BEC3D68A6FEC794E3ADD3189A64955D7EB3B55ECD6774E794B369BD512AD53A6
+                  813420F02EA25610844B7B03062F2A0C88E2C836BCC5E4EE65181C979C42D34C
+                  374B32ACE95A59B8CF5B954A7FF8322807ED0D589AADEF7302E4149811C84ABC
+                  7DCDA0A669EFD889829562B3E840A03DCFAD585666EB9E9F0942BCC325A904DE
+                  5D06F40C0937F06C32A820B3B463CC002829CD5FA348EE82682CDAE638160B6C
+                  CF762DBB375F282C1875184BC5CE4EA4525F26697E32886BDEF75D4A8948DAC8
+                  D0E0030C697E018383CF6B6D9FB60A9C7E0868B600741C19783E4D51045DAD56
+                  7E6407DEEF5439FE47CBF5B0AC036EE311A6697A3CCF73122F30A552FEBC52BE
+                  F73E566E9E29B2FC6296E10E03D9A14247A0480A79D56AF9D5426EFBD1F01431
+                  1E631F0172DBC9D05CE0B8162D081C45903E55332BB796F223D78C7E378A554E
+                  49C45B961204C7B30CFD7ADFCE578EDEF3BB2752DD7815F96978970B8EC72B69
+                  284AD7F58C5EB3EFAF96B77E6DFF0790910E4AC59BFFE838BE00CE7C1E28FBB6
+                  58549DC232EC0C531F995E28142A91C884E312F1D81D103952CDB2873CCF79DE
+                  0FBC2651E4E74992A4566BE5C7F3433B8FC7B78B25BBFEC4B1DC3104416D82A8
+                  18C48B78059E63754DFB9DEB3AAB7859FABE6DDB44A9589E944E374D753D3B63
+                  DBD63A887ADEB19D2536F2362ABCF408A031CD769C3E60AEAFB88E5364587E32
+                  2FF011C7CCCC87CE415044640D41D2334BA5CA3A88CC122772C8766A4440780F
+                  57F2C33F1DFD7AC9A6CE7B58463C4D5612A456A9FA7A39B3B0A40DED9EA188C5
+                  BB562891E85900DA9BB667F7806211058E3D5C1254A5A6E52FCAE5B6FF62BF06
+                  5052D327AA4AECF78EEDF7D4B4C24986911FC0C7A3A9CE39A56CEF2BF8DFCDE9
+                  031EF17CFF28D3B5FFE452E86223DF1F9E134F779C4051E49D922C27B223D973
+                  6A95CC6F9A5AA7AC167869DE40DFE0971D6764AF5F5E8E4EB836A246AED2F5EA
+                  23C5DC8E8FEF6E4FA4F54A5956AE0330DFAA96CA173A4EFEC5D1CF122D93A7E7
+                  87B66C840E15130471B5695ACDAE1B2CD2B41DEF3DDF278A2DAD89F64DAE8332
+                  BAEE3DAC2AF2A581ABAF181AD9F2E9D15322C90977A972E2CC6AAD726929BBF5
+                  BFF0319A6BBEBCA5A9F5FB23237DBFB7ADEC69FB35806AA2FDD04434B19AA639
+                  766870E8CF0CCF7CAF98DDF608DA558B92C9CE164E507A201D52C552EE139562
+                  FF3BB6988CA6DA962593C9734746B2CBAB85C1F394C88427589A9BEF05E8CA52
+                  41BD05A197F0100AFEF1DE715DA2FB6AC88B3720C2F9433ED37BEA6E87C626AC
+                  8AC793C767F3D9EBB452DFE8127B2AFCEF0107D0A8A7C7C29BAB0BB2BA8A08A8
+                  0EDB726ED4347D9D92104A8165254AA5FEDD60269B3BBF2608CAF7B4AAB1C2B3
+                  F92FAA517E1BC71191FECCCE03AC72BD1636B54CBF8717C4D34B95E225E5DCB6
+                  A5F81823B45CD69C6AB949372A8FE6B33D27EED700E2F646E313AE8A46135F87
+                  C2249AF55981ED5AADFA8BECD05B4BA2D1EE0F7102F732CF8941B190990E35F1
+                  1DBBE7C6D3EDD70B827C9D693A0FE447B69E924C1FB09AA1F905866194555535
+                  69861450E06EDBB6F5B5C3E17467F43ABC405812D51BAAB5DC03C55CDF296F1F
+                  9FF8BA22C7A60F0E0F2CB28DE17BE36D6DED3135FE82A105403028B754CD7F84
+                  74FDA180A01E21097A36CF8B6E3C1EE5F1BBF1500751A9904F0F0FF764BBBABA
+                  F86CD1FC037CAF7F191ECA9E0799FA0E51EE7EA4A9297662B1943DBF94EF5B86
+                  9F174B4EBA5B929433F2E51C4468F4CF464D4FC5A2B18B7D371072F991CB8DDA
+                  C04DFB3B80A145229DDD88A62E1279E12C8EE73AFCC0A52AD5CA05A54AEDE9C9
+                  DD1337D66A8657CA678FD0F5A197F6BC2EDD3EE9BB3CCB5F91CF16EEAD5587CE
+                  88443B1F83B2785CE0FBEB4BE5629F240B3ECD0485E1816DEFD8A745963BAF6E
+                  6D69BE6124B3F30FE5F2D0EE086C699BB6DE75C8E901E15E921B79EB976232D9
+                  CA53CC7D3419EBA62846286BA5A329CFDDC9F1E24AF0C674CBB09F66792EE3B9
+                  0E5E47E55084F0956C76832645DB664723CAC3502E39D370BF6CDA6E8F22CB9F
+                  6719EA5CC7357E3532B0F902FCBC64EBB41524499F15049ECE710C0B79026F79
+                  892AC5EA9272B9076F0AFBBEEEF0F401E8C0B98CA80CAF48A612A76633999F1A
+                  DAF0A59178F746A839936DC7FC5121F33633C3B588E28835AA1A3DB0542A7DAD
+                  94EBFD4134DEFD2844DE71C57CE1C26AB56FAF9BAA261293AFE659E106CB29DD
+                  9FCBEDDC5D0393E9C93FE358E922DDA83E54CC73A723B4211CB05663DDCB4982
+                  FD28F2ADE38044F50504B90A884F33007896690E3EF33F3A64BCFD4240F48714
+                  458B1C2B98407869C8300ECBD2A2562B6F728CCC11954AA5A0C627AE88251267
+                  6573C357FBBEBD42E4A4DFD0147BA8A55B8BCAE5F77FBEF17D07100F57353777
+                  2CA9D4F4070D4B7F1DF9641A18E635A9540AEFC27B7D29B7F39B6AA2F30B8AA4
+                  7E1F11BE53AB69BF24C8E077C8F3BB598EFF7FB2A4CC0416592EE4F469B5DA8E
+                  E1647AD263200B16E6F2F90BCDDAF05E973444E5EE6BD44864B161971ECC6677
+                  EC7EDD39959A72144D72BF15152152AD157E57A9647F45D174C03389FF54D5D8
+                  EC6261F8700C202F4AAB41D7751288B8D576803D3A1E02264A80A4D8A49586D6
+                  44E26D77412938D536DD9534436F05B2830CC34691A87236B45FA96885738C72
+                  F6B791F8C43BE3F1D8A291ECE0257A7968A920375D9A4CA46ED64AFACA6279DB
+                  C9E85DB57BBF033012497E38916879B2A2D524881C6458667DEB47C7DD3830D4
+                  7706B23510EA5D7C2419FC24A2AAA77B9EAFB2F8654FCF09E7EA6449DE5A2815
+                  CE2D66763E1B02909EF814C3B2F374BD7271A930B8570065BEE39A4432BED8F1
+                  6B0F0D0EF69CFC8E36C9132F89A6D4EB3DDF4C8B12152EC7A050046F4D521DCE
+                  F7CF07F59E8925928F419D9D06FACDC53A5251250A4FFC160B859B1C8ABA49E5
+                  F8F5144D32854CF640D32CEEDC7DEFD884EFAA51F57220284FE587771E2BC7DA
+                  EE8AA8D133CB95D2255A7160A924A59A13A9A6977D2768C9E5873F639AF93BF6
+                  6B00C1D8A6A6094781BE9B0F2AB6157497E1F92EFE024F1A4661CFFFEB1A221A
+                  ED380AEACDB1006E37CB10651F05AF544BA5274CB3D43B7A522CD67236C3B0CD
+                  36321E2B6532AFEDEDA1ADA92947BA9E77B86557FACA5AF67F6C44978E76CFB6
+                  91B3009A338DA4A980F4C55E8AA0D7640A3DCFC1C7B4126939CF278288C03201
+                  D467D2477EC0E2BD6B02E2355DB7722C4B1E8FB732A956477EF98E1BF3D1AEA4
+                  1A39CD431655CCF03F8EA7FC8F1ABAD3E1DAFA1AC729EFAAEFF2C2E674CB8709
+                  CA2F0F0D6D7D5FB727191F0B1DE3360EE018B77100C7B88D0338C66D1CC0316E
+                  E3008E711B07708CDB388063DCC6011CE3360EE018B77100C7B88D0338C6EDFF
+                  0346549848A99E47470000000049454E44AE426082}
+                ExplicitLeft = 962
+                ExplicitHeight = 95
+              end
+              object PnlEdit: TPanel
+                Left = 1
+                Top = 1
+                Width = 945
+                Height = 91
+                Align = alLeft
+                BevelOuter = bvNone
+                TabOrder = 0
+                object Label1: TLabel
+                  Left = 20
+                  Top = 8
+                  Width = 43
+                  Height = 17
+                  Caption = 'Nome :'
+                  Font.Charset = DEFAULT_CHARSET
+                  Font.Color = clWindowText
+                  Font.Height = -13
+                  Font.Name = 'Segoe UI'
+                  Font.Style = []
+                  ParentFont = False
+                end
+                object Label3: TLabel
+                  Left = 276
+                  Top = 8
+                  Width = 40
+                  Height = 17
+                  Caption = 'Pre'#231'o :'
+                  Font.Charset = DEFAULT_CHARSET
+                  Font.Color = clWindowText
+                  Font.Height = -13
+                  Font.Name = 'Segoe UI'
+                  Font.Style = []
+                  ParentFont = False
+                end
+                object Label4: TLabel
+                  Left = 143
+                  Top = 8
+                  Width = 64
+                  Height = 17
+                  Caption = 'Categoria :'
+                  Font.Charset = DEFAULT_CHARSET
+                  Font.Color = clWindowText
+                  Font.Height = -13
+                  Font.Name = 'Segoe UI'
+                  Font.Style = []
+                  ParentFont = False
+                end
+                object Label5: TLabel
+                  Left = 379
+                  Top = 8
+                  Width = 77
+                  Height = 17
+                  Caption = 'Observa'#231#227'o :'
+                  Font.Charset = DEFAULT_CHARSET
+                  Font.Color = clWindowText
+                  Font.Height = -13
+                  Font.Name = 'Segoe UI'
+                  Font.Style = []
+                  ParentFont = False
+                end
+                object Label2: TLabel
+                  Left = 505
+                  Top = 8
+                  Width = 40
+                  Height = 17
+                  Caption = 'Pe'#231'as :'
+                  Font.Charset = DEFAULT_CHARSET
+                  Font.Color = clWindowText
+                  Font.Height = -13
+                  Font.Name = 'Segoe UI'
+                  Font.Style = []
+                  ParentFont = False
+                end
+                object Label6: TLabel
+                  Left = 610
+                  Top = 8
+                  Width = 74
+                  Height = 17
+                  Caption = 'Profissional :'
+                  Font.Charset = DEFAULT_CHARSET
+                  Font.Color = clWindowText
+                  Font.Height = -13
+                  Font.Name = 'Segoe UI'
+                  Font.Style = []
+                  ParentFont = False
+                end
+                object PnlButtonEnviar: TPanel
+                  AlignWithMargins = True
+                  Left = 717
+                  Top = 30
+                  Width = 123
+                  Height = 31
+                  Margins.Left = 5
+                  Margins.Top = 30
+                  Margins.Right = 0
+                  Margins.Bottom = 30
+                  Align = alLeft
+                  BevelOuter = bvLowered
+                  Color = 9521152
+                  ParentBackground = False
+                  TabOrder = 0
+                  object LblEnviar: TLabel
+                    AlignWithMargins = True
+                    Left = 4
+                    Top = 4
+                    Width = 115
+                    Height = 23
+                    Align = alClient
+                    Alignment = taCenter
+                    Caption = 'Enviar'
+                    Color = clWhite
+                    Font.Charset = DEFAULT_CHARSET
+                    Font.Color = clWhite
+                    Font.Height = -15
+                    Font.Name = 'Segoe UI'
+                    Font.Style = []
+                    ParentColor = False
+                    ParentFont = False
+                    ExplicitWidth = 40
+                    ExplicitHeight = 20
+                  end
+                end
+                object EdtNome: TEdit
+                  AlignWithMargins = True
+                  Left = 20
+                  Top = 30
+                  Width = 117
+                  Height = 31
+                  Margins.Left = 20
+                  Margins.Top = 30
+                  Margins.Bottom = 30
+                  Align = alLeft
+                  AutoSize = False
+                  Font.Charset = DEFAULT_CHARSET
+                  Font.Color = clWindowText
+                  Font.Height = -15
+                  Font.Name = 'Segoe UI'
+                  Font.Style = []
+                  ParentFont = False
+                  TabOrder = 1
+                end
+                object EdtObs: TEdit
+                  AlignWithMargins = True
+                  Left = 379
+                  Top = 30
+                  Width = 118
+                  Height = 31
+                  Margins.Left = 5
+                  Margins.Top = 30
+                  Margins.Right = 5
+                  Margins.Bottom = 30
+                  Align = alLeft
+                  AutoSize = False
+                  Font.Charset = DEFAULT_CHARSET
+                  Font.Color = clWindowText
+                  Font.Height = -15
+                  Font.Name = 'Segoe UI'
+                  Font.Style = []
+                  ParentFont = False
+                  TabOrder = 2
+                end
+                object CmbProfissional: TComboBox
+                  AlignWithMargins = True
+                  Left = 610
+                  Top = 30
+                  Width = 97
+                  Height = 29
+                  Margins.Top = 30
+                  Margins.Right = 5
+                  Margins.Bottom = 5
+                  Align = alLeft
+                  BevelOuter = bvNone
+                  Style = csDropDownList
+                  Font.Charset = DEFAULT_CHARSET
+                  Font.Color = clWindowText
+                  Font.Height = -16
+                  Font.Name = 'Segoe UI'
+                  Font.Style = []
+                  ParentFont = False
+                  TabOrder = 3
+                  Items.Strings = (
+                    'Carro'
+                    'Moto'
+                    'Caminh'#227'o'
+                    #212'nibus'
+                    'Utilit'#225'rio')
+                end
+                object EdtPreço: TEdit
+                  AlignWithMargins = True
+                  Left = 276
+                  Top = 30
+                  Width = 93
+                  Height = 31
+                  Margins.Left = 5
+                  Margins.Top = 30
+                  Margins.Right = 5
+                  Margins.Bottom = 30
+                  Align = alLeft
+                  AutoSize = False
+                  Font.Charset = DEFAULT_CHARSET
+                  Font.Color = clWindowText
+                  Font.Height = -15
+                  Font.Name = 'Segoe UI'
+                  Font.Style = []
+                  ParentFont = False
+                  TabOrder = 4
+                end
+                object CmbCategoria: TComboBox
+                  AlignWithMargins = True
+                  Left = 143
+                  Top = 30
+                  Width = 123
+                  Height = 29
+                  Margins.Top = 30
+                  Margins.Right = 5
+                  Margins.Bottom = 5
+                  Align = alLeft
+                  BevelOuter = bvNone
+                  Style = csDropDownList
+                  Font.Charset = DEFAULT_CHARSET
+                  Font.Color = clWindowText
+                  Font.Height = -16
+                  Font.Name = 'Segoe UI'
+                  Font.Style = []
+                  ParentFont = False
+                  TabOrder = 5
+                  Items.Strings = (
+                    'Carro'
+                    'Moto'
+                    'Caminh'#227'o'
+                    #212'nibus'
+                    'Utilit'#225'rio')
+                end
+                object CmbPeças: TComboBox
+                  AlignWithMargins = True
+                  Left = 505
+                  Top = 30
+                  Width = 97
+                  Height = 29
+                  Margins.Top = 30
+                  Margins.Right = 5
+                  Margins.Bottom = 5
+                  Align = alLeft
+                  BevelOuter = bvNone
+                  Style = csDropDownList
+                  Font.Charset = DEFAULT_CHARSET
+                  Font.Color = clWindowText
+                  Font.Height = -16
+                  Font.Name = 'Segoe UI'
+                  Font.Style = []
+                  ParentFont = False
+                  TabOrder = 6
+                  Items.Strings = (
+                    'Carro'
+                    'Moto'
+                    'Caminh'#227'o'
+                    #212'nibus'
+                    'Utilit'#225'rio')
+                end
+              end
+            end
+          end
+        end
+        object PnlGrid: TPanel
+          AlignWithMargins = True
+          Left = 19
+          Top = 76
+          Width = 888
+          Height = 413
+          Margins.Left = 19
+          Margins.Top = 19
+          Margins.Right = 19
+          Margins.Bottom = 19
+          Align = alClient
+          BevelOuter = bvNone
+          Caption = 'PnlGrid'
+          Color = clBackground
+          ParentBackground = False
+          TabOrder = 2
+          ExplicitHeight = 333
+          object DBGrid1: TDBGrid
+            AlignWithMargins = True
+            Left = 1
+            Top = 1
+            Width = 886
+            Height = 411
+            Margins.Left = 1
+            Margins.Top = 1
+            Margins.Right = 1
+            Margins.Bottom = 1
+            Align = alClient
+            TabOrder = 0
+            TitleFont.Charset = DEFAULT_CHARSET
+            TitleFont.Color = clWindowText
+            TitleFont.Height = -12
+            TitleFont.Name = 'Segoe UI'
+            TitleFont.Style = []
+          end
+          object PnlRestaurar: TPanel
+            AlignWithMargins = True
+            Left = 20
+            Top = 20
+            Width = 848
+            Height = 373
+            Margins.Left = 20
+            Margins.Top = 20
+            Margins.Right = 20
+            Margins.Bottom = 20
+            Align = alClient
+            Color = 6172416
+            ParentBackground = False
+            TabOrder = 1
+            Visible = False
+            ExplicitHeight = 293
+            object LblRestaurar: TLabel
+              AlignWithMargins = True
+              Left = 4
+              Top = 11
+              Width = 840
+              Height = 32
+              Margins.Top = 10
+              Align = alTop
+              Alignment = taCenter
+              Caption = 'Restaurar'
+              Font.Charset = DEFAULT_CHARSET
+              Font.Color = clWhite
+              Font.Height = -24
+              Font.Name = 'Segoe UI'
+              Font.Style = [fsBold]
+              ParentFont = False
+              ExplicitWidth = 109
+            end
+            object ImgFechar: TImage
+              Left = 800
+              Top = 18
+              Width = 25
+              Height = 25
+              Picture.Data = {
+                0954506E67496D61676589504E470D0A1A0A0000000D49484452000000180000
+                00180806000000E0773DF8000000097048597300000EC300000EC301C76FA864
+                0000001974455874536F667477617265007777772E696E6B73636170652E6F72
+                679BEE3C1A0000010F4944415478DAC5964D0AC2301085675C783A050F20F80B
+                820BC55308228A4871E10F75E752F05EAE7551F5854688A549A6A962E0D13493
+                BCAF69324DF9493423A231B485464CF4A012057E155CD6501F5A301AEEA85475
+                FC08754321DAFC00B574D34D0122548646BF20488EB92A115B0227A8094852C2
+                FCEDE1ED9094304F58DA31C45CDD706680BADF40031FC4621E433D73FD3E0052
+                88D43C17E083A46199B915603CE51E6A1BCD173DA6263177021C33318BD3DC0B
+                30667286EA99909A4DC39790FF0558768B59BCC918B2C894994D4C4517D9B5CF
+                D3B02C19730192242A92F15CD4DCE82B82F83E76CEF72B8170A8B914C265CC45
+                901F1F99CB5F1FFA570598A2328176F4BDDF9615D481E62FF3919E24F9015515
+                0000000049454E44AE426082}
+            end
+            object ImgRestaurar: TImage
+              Left = 20
+              Top = 16
+              Width = 25
+              Height = 25
+              Picture.Data = {
+                0954506E67496D61676589504E470D0A1A0A0000000D49484452000000180000
+                00180806000000E0773DF8000000097048597300000EC300000EC301C76FA864
+                0000001974455874536F667477617265007777772E696E6B73636170652E6F72
+                679BEE3C1A000003164944415478DAAD554B681351143D6F26C66452AD2E2C48
+                F7A26D45DB854AC145ADE06721D4CF4AA4E0A75D884D5251942A564B8B28344D
+                2BE207B10B5D89281514A576A32EBAA9FD2F5C8B8BBA31DA997CCCCC78664CED
+                74D24952F0C13093F7EE3DE7DE7BEEBB11286105DBB10B068604D0ACF5E14D29
+                3E0B4B9462A48471C61478C0CF341D9A5642E24DD009BF92C049C3C4591AD538
+                4EFE910423382704D29A8AC7A4FF5D328112411D5F4F4C608B077D5AD751E7F7
+                41E826A649322B4C1C57FB305E942014C57E46FDDCE22990F91C3DAD202A6162
+                34B7A74A268EA871BCF52450DA516B1AF8580C5C16D833AFE28BA2E035B3DCEB
+                38538584DD5A2F3EE713B4609512C2B869A26A19D05F7CD6D8E0061AE7FB311D
+                8CE216A3BFE03624E14C6A1DB3EB4466098112450BC1EFBBEDE9D0E11318D20D
+                0CC826DA2C70FBE418E440252E11A0CB5D096AD2AAC5ECAE5B3CB03A82A98FE8
+                948182755BA9B3353B5231F414281702615C2160976B7B22D987ED791AF8CFA1
+                4AF621915431170CA13BF91597F10C7A2182B236D418123E31A0B5AE529D62A0
+                338B258AE000375FF033618B18C30C4A58C130461866835743D804A130F619C0
+                4B1A067207DF2581463586A96204FEF3D82CEB240136BA8E322CDD51B10C38FE
+                03890D4EA15F098A3BC78D0D1EBE2314ABB19452954551CD5B6D91943BE79560
+                0D77B25BAAB9F9C8E9C0DF3F99417D512D3AE10B26D0C3C6E8606354E8599467
+                0630EBC0C98915C1245F5B9DBE25B5690457097283CFB0652FF336F3CE3424E3
+                B8B3848023B99506F75CFE066FDAB5D47ADC64A459BB146C4B5DA0DFBA745909
+                4D04B80E57BBD3E7742AFEB7228B071CCF811F18E346755E9802B793315CB4C1
+                25BCE74E059F798BCF6DCA569FE6A8A85D0868B961F7819F21470D87350D07CB
+                42D89413B1A240C5AC895ACF893A99A7C1C2B2DB56D8E3DA26E16DDC614AF8C6
+                D0C68A81D3EF703A8677AE66C95FA1766CA3504FAD72F156D764B23065D92658
+                ED013E254938A1F66222BFBA5ECB1ADF0A9A2958C0EA08C72871928C33C3BB5A
+                12832BFACBF45A4E1202B768713C2CE6B3220207C9203539C4CC468BD9FF014B
+                7620018FA76C950000000049454E44AE426082}
+            end
+            object PnlMainRestaurar: TPanel
+              AlignWithMargins = True
+              Left = 21
+              Top = 49
+              Width = 806
+              Height = 303
+              Margins.Left = 20
+              Margins.Right = 20
+              Margins.Bottom = 20
+              Align = alClient
+              BevelOuter = bvNone
+              Color = 9521152
+              ParentBackground = False
+              TabOrder = 0
+              ExplicitHeight = 223
+              object PnlContainerRestaurar: TPanel
+                AlignWithMargins = True
+                Left = 12
+                Top = 10
+                Width = 782
+                Height = 283
+                Margins.Left = 12
+                Margins.Top = 10
+                Margins.Right = 12
+                Margins.Bottom = 10
+                Align = alClient
+                BevelOuter = bvNone
+                Caption = 'PnlGrid'
+                Color = clBackground
+                ParentBackground = False
+                TabOrder = 0
+                ExplicitHeight = 203
+                object DBGridRestaurar: TDBGrid
+                  AlignWithMargins = True
+                  Left = 1
+                  Top = 1
+                  Width = 780
+                  Height = 281
+                  Margins.Left = 1
+                  Margins.Top = 1
+                  Margins.Right = 1
+                  Margins.Bottom = 1
+                  Align = alClient
+                  Font.Charset = DEFAULT_CHARSET
+                  Font.Color = clWindowText
+                  Font.Height = -16
+                  Font.Name = 'Segoe UI'
+                  Font.Style = []
+                  ParentFont = False
+                  ReadOnly = True
+                  TabOrder = 0
+                  TitleFont.Charset = DEFAULT_CHARSET
+                  TitleFont.Color = clWindowText
+                  TitleFont.Height = -19
+                  TitleFont.Name = 'Segoe UI'
+                  TitleFont.Style = []
+                end
               end
             end
           end
@@ -1352,7 +1493,7 @@
           AlignWithMargins = True
           Left = 0
           Top = 0
-          Width = 1106
+          Width = 1107
           Height = 57
           Margins.Left = 0
           Margins.Top = 0
@@ -1362,7 +1503,7 @@
           BevelOuter = bvNone
           Color = 6172416
           ParentBackground = False
-          TabOrder = 1
+          TabOrder = 3
           object EdtPesquisar: TSearchBox
             AlignWithMargins = True
             Left = 20

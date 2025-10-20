@@ -214,6 +214,10 @@
         <DCCReference Include="src\Services\VeiculoCadastroService.pas"/>
         <DCCReference Include="src\controller\VeiculoCadastroController.pas"/>
         <DCCReference Include="src\Model\uVeiculo.pas"/>
+        <DCCReference Include="src\Model\uServiço.pas"/>
+        <DCCReference Include="src\repository\ServiçoCadastroRepository.pas"/>
+        <DCCReference Include="src\Services\ServiçoCadastroService.pas"/>
+        <DCCReference Include="src\controller\ServiçoCadastroController.pas"/>
         <BuildConfiguration Include="Base">
             <Key>Base</Key>
         </BuildConfiguration>
