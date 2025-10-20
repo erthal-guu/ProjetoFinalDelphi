@@ -5,8 +5,8 @@ interface
 uses
   Winapi.Windows, Winapi.Messages, System.SysUtils, System.Variants, System.Classes, Vcl.Graphics,
   Vcl.Controls, Vcl.Forms, Vcl.Dialogs, Vcl.ExtCtrls, Data.DB, Vcl.WinXCtrls,
-  Vcl.Grids, Vcl.DBGrids, Vcl.Buttons, Vcl.Mask, Vcl.StdCtrls,
-  Vcl.Imaging.pngimage, Vcl.ComCtrls;
+  Vcl.Grids, Vcl.DBGrids, Vcl.Buttons, Vcl.Mask, Vcl.StdCtrls, Vcl.Imaging.pngimage, Vcl.ComCtrls,
+  ServiçoCadastroController, uServiço;
 
 type
   TFormCadastroServiços = class(TForm)
@@ -35,7 +35,7 @@ type
     CmbCategoria: TComboBox;
     CmbPeças: TComboBox;
     PnlGrid: TPanel;
-    DBGrid1: TDBGrid;
+    DBGridMain: TDBGrid;
     PnlRestaurar: TPanel;
     LblRestaurar: TLabel;
     ImgFechar: TImage;
@@ -55,9 +55,36 @@ type
     BtnCancelar: TSpeedButton;
     BtnRestaurar: TSpeedButton;
     BtnSair: TSpeedButton;
+    DataSourceRestaurar: TDataSource;
+    DataSourceMain: TDataSource;
+    PnlButtonAtualizar: TPanel;
+    LblAtualizar: TLabel;
+
+    procedure FormCreate(Sender: TObject);
+    procedure FormShow(Sender: TObject);
     procedure BtnAdicionarClick(Sender: TObject);
     procedure BtnPesquisarClick(Sender: TObject);
-    procedure FormCreate(Sender: TObject);
+    procedure BtnEditarClick(Sender: TObject);
+    procedure BtnExcluirClick(Sender: TObject);
+    procedure BtnRestaurarClick(Sender: TObject);
+    procedure BtnRestaurarGridClick(Sender: TObject);
+    procedure LblEnviarClick(Sender: TObject);
+    procedure LblAtualizarClick(Sender: TObject);
+    procedure ImgFecharClick(Sender: TObject);
+    procedure ImgRestaurarClick(Sender: TObject);
+    procedure EdtPesquisarChange(Sender: TObject);
+    function ValidarCampos: Boolean;
+    procedure LimparCampos;
+    procedure CarregarGrid;
+    procedure CarregarGridRestaurar;
+    procedure CarregarCategorias;
+    procedure CarregarPecas;
+    procedure CarregarProfissionais;
+    procedure PegarCamposGridServicos;
+    procedure EditarServicos;
+    procedure RestaurarServicos;
+    procedure BtnCancelarClick(Sender: TObject);
+    procedure BtnSairClick(Sender: TObject);
   private
     { Private declarations }
   public
@@ -71,20 +98,6 @@ implementation
 
 {$R *.dfm}
 
-procedure TFormCadastroServiços.BtnAdicionarClick(Sender: TObject);
-begin
-  PnlBackgrounEdit.Visible := True;
-  PnlDesignEdit.Visible := True;
-  EdtPesquisar.Visible := False;
-end;
-
-procedure TFormCadastroServiços.BtnPesquisarClick(Sender: TObject);
-begin
-  EdtPesquisar.Visible := True;
-  PnlDesignEdit.Visible := false;
-  PnlBackgrounEdit.Visible := false;
-end;
-
 procedure TFormCadastroServiços.FormCreate(Sender: TObject);
 begin
   EdtObs.Height := 31;
@@ -96,6 +109,369 @@ begin
   CmbPeças.Font.Size := 13;
   CmbProfissional.Font.Size := 13;
   CmbCategoria.Font.Size := 13;
+end;
+
+procedure TFormCadastroServiços.FormShow(Sender: TObject);
+begin
+  CarregarGrid;
+  CarregarCategorias;
+  CarregarPecas;
+  CarregarProfissionais;
+end;
+
+procedure TFormCadastroServiços.LimparCampos;
+begin
+  EdtNome.Clear;
+  EdtObs.Clear;
+  EdtPreço.Clear;
+  CmbCategoria.ItemIndex := -1;
+  CmbProfissional.ItemIndex := -1;
+  CmbPeças.ItemIndex := -1;
+end;
+
+function TFormCadastroServiços.ValidarCampos: Boolean;
+begin
+  if EdtNome.Text = '' then begin ShowMessage('O campo Nome não pode ficar vazio'); Exit(False); end;
+  if EdtPreço.Text = '' then begin ShowMessage('O campo Preço não pode ficar vazio'); Exit(False); end;
+  if CmbCategoria.ItemIndex = -1 then begin ShowMessage('Selecione uma Categoria'); Exit(False); end;
+  if CmbPeças.ItemIndex = -1 then begin ShowMessage('Selecione uma Peça'); Exit(False); end;
+  if CmbProfissional.ItemIndex = -1 then begin ShowMessage('Selecione um Profissional'); Exit(False); end;
+  Result := True;
+end;
+
+procedure TFormCadastroServiços.BtnAdicionarClick(Sender: TObject);
+begin
+  PnlBackgrounEdit.Visible := True;
+  PnlEdit.Visible := True;
+  PnlDesignEdit.Visible := True;
+  EdtPesquisar.Visible := False;
+  LimparCampos;
+  PnlButtonEnviar.Visible := True;
+  PnlButtonAtualizar.Visible := False;
+end;
+
+procedure TFormCadastroServiços.BtnPesquisarClick(Sender: TObject);
+begin
+  EdtPesquisar.Visible := True;
+  PnlBackgrounEdit.Visible := False;
+end;
+
+procedure TFormCadastroServiços.BtnCancelarClick(Sender: TObject);
+begin
+  PnlBackgrounEdit.Visible := False;
+  PnlEdit.Visible := False;
+  EdtPesquisar.Visible := False;
+end;
+
+procedure TFormCadastroServiços.BtnEditarClick(Sender: TObject);
+begin
+  PnlBackgrounEdit.Visible := True;
+  PnlEdit.Visible := True;
+  PnlDesignEdit.Visible := True;
+  PnlButtonAtualizar.Visible := True;
+  PnlButtonEnviar.Visible := False;
+  PegarCamposGridServicos;
+end;
+
+procedure TFormCadastroServiços.PegarCamposGridServicos;
+var
+  Categoria, Pecas, Funcionario: Integer;
+  i: Integer;
+begin
+  EdtNome.Text := DBGridMain.DataSource.DataSet.FieldByName('nome').AsString;
+  EdtObs.Text := DBGridMain.DataSource.DataSet.FieldByName('observacao').AsString;
+  EdtPreço.Text := CurrToStr(DBGridMain.DataSource.DataSet.FieldByName('preco').AsCurrency);
+
+  Categoria := DBGridMain.DataSource.DataSet.FieldByName('categoria').AsInteger;
+  for i := 0 to CmbCategoria.Items.Count - 1 do
+    if Integer(CmbCategoria.Items.Objects[i]) = Categoria then
+      CmbCategoria.ItemIndex := i;
+
+  Pecas := DBGridMain.DataSource.DataSet.FieldByName('pecas').AsInteger;
+  for i := 0 to CmbPeças.Items.Count - 1 do
+    if Integer(CmbPeças.Items.Objects[i]) = Pecas then
+      CmbPeças.ItemIndex := i;
+
+  Funcionario := DBGridMain.DataSource.DataSet.FieldByName('Funcionario').AsString;
+  for i := 0 to CmbProfissional.Items.Count - 1 do
+    if Integer(CmbProfissional.Items.Objects[i]) = Funcionario then
+      CmbProfissional.ItemIndex := i;
+end;
+
+procedure TFormCadastroServiços.LblEnviarClick(Sender: TObject);
+var
+  ServicoController: TServicoController;
+  Categoria, Pecas, Profissional: Integer;
+  Preco: Currency;
+begin
+  if ValidarCampos then
+  begin
+    ServicoController := TServicoController.Create;
+    try
+      Preco := StrToCurr(EdtPreço.Text);
+      Categoria := Integer(CmbCategoria.Items.Objects[CmbCategoria.ItemIndex]);
+      Pecas := Integer(CmbPeças.Items.Objects[CmbPeças.ItemIndex]);
+      Profissional := Integer(CmbProfissional.Items.Objects[CmbProfissional.ItemIndex]);
+      if ServicoController.CadastrarServico(
+            EdtNome.Text,
+            Categoria,
+            Preco,
+            EdtObs.Text,
+            Pecas,
+            Profissional)
+      then
+      begin
+        ShowMessage('Serviço cadastrado com sucesso!');
+        LimparCampos;
+        CarregarGrid;
+      end;
+    finally
+      ServicoController.Free;
+    end;
+  end;
+end;
+
+procedure TFormCadastroServiços.EditarServicos;
+var
+  ServicoController: TServicoController;
+  Servico: TServico;
+  IdServico, Categoria, Pecas, Profissional: Integer;
+  Preco: Currency;
+begin
+  if DataSourceMain.DataSet.IsEmpty then
+  begin
+    ShowMessage('Nenhum serviço selecionado!');
+    Exit;
+  end;
+  IdServico := DataSourceMain.DataSet.FieldByName('id').AsInteger;
+  Categoria := Integer(CmbCategoria.Items.Objects[CmbCategoria.ItemIndex]);
+  Pecas := Integer(CmbPeças.Items.Objects[CmbPeças.ItemIndex]);
+  Profissional := Integer(CmbProfissional.Items.Objects[CmbProfissional.ItemIndex]);
+  Preco := StrToCurr(EdtPreço.Text);
+
+  Servico := TServico.Create;
+  try
+    Servico.SetId(IdServico);
+    Servico.SetNome(EdtNome.Text);
+    Servico.SetCategoria(Categoria);
+    Servico.SetPreco(Preco);
+    Servico.SetObservacao(EdtObs.Text);
+    Servico.SetPecas(Pecas);
+    Servico.SetProfissional(Profissional);
+
+    ServicoController := TServicoController.Create;
+    try
+      if ServicoController.EditarServico(Servico) then
+      begin
+        ShowMessage('Serviço atualizado com sucesso!');
+        LimparCampos;
+        CarregarGrid;
+        PnlBackgrounEdit.Visible := False;
+        PnlEdit.Visible := False;
+      end;
+    finally
+      ServicoController.Free;
+    end;
+  finally
+    Servico.Free;
+  end;
+end;
+
+procedure TFormCadastroServiços.LblAtualizarClick(Sender: TObject);
+begin
+  if ValidarCampos then
+  begin
+    EditarServicos;
+    CarregarGrid;
+  end;
+end;
+
+procedure TFormCadastroServiços.BtnExcluirClick(Sender: TObject);
+var
+  ServicoController: TServicoController;
+  IdServico: Integer;
+begin
+  if DataSourceMain.DataSet.IsEmpty then
+  begin
+    ShowMessage('Nenhum serviço selecionado!');
+    Exit;
+  end;
+  IdServico := DataSourceMain.DataSet.FieldByName('id').AsInteger;
+  if MessageDlg('Deseja realmente excluir este serviço?', mtConfirmation, [mbYes, mbNo], 0) = mrYes then
+  begin
+    ServicoController := TServicoController.Create;
+    ServicoController.DeletarServico(IdServico);
+    CarregarGrid;
+    ServicoController.Free;
+  end;
+end;
+
+procedure TFormCadastroServiços.BtnRestaurarClick(Sender: TObject);
+begin
+  PnlRestaurar.Visible := True;
+  CarregarGridRestaurar;
+end;
+
+procedure TFormCadastroServiços.BtnRestaurarGridClick(Sender: TObject);
+begin
+  PnlRestaurar.Visible := True;
+  CarregarGridRestaurar;
+end;
+
+procedure TFormCadastroServiços.BtnSairClick(Sender: TObject);
+begin
+    if MessageDlg('Deseja realmente fechar este formulário?', mtConfirmation, [mbYes, mbNo], 0) = mrYes then
+    Close;
+end;
+
+procedure TFormCadastroServiços.RestaurarServicos;
+var
+  ServicoController: TServicoController;
+  IdServico: Integer;
+begin
+  if DataSourceRestaurar.DataSet.IsEmpty then
+  begin
+    ShowMessage('Nenhum serviço selecionado!');
+    Exit;
+  end;
+
+  IdServico := DataSourceRestaurar.DataSet.FieldByName('id').AsInteger;
+  if MessageDlg('Deseja realmente restaurar este serviço?', mtConfirmation, [mbYes, mbNo], 0) = mrYes then
+  begin
+    ServicoController := TServicoController.Create;
+    ServicoController.RestaurarServico(IdServico);
+    CarregarGridRestaurar;
+    ServicoController.Free;
+  end;
+end;
+
+procedure TFormCadastroServiços.ImgFecharClick(Sender: TObject);
+begin
+  PnlRestaurar.Visible := False;
+  CarregarGrid;
+end;
+
+procedure TFormCadastroServiços.ImgRestaurarClick(Sender: TObject);
+begin
+  RestaurarServicos;
+  CarregarGridRestaurar;
+end;
+
+procedure TFormCadastroServiços.CarregarGrid;
+var
+  ServicoController: TServicoController;
+begin
+  ServicoController := TServicoController.Create;
+  try
+    DataSourceMain.DataSet := ServicoController.ListarServicos;
+    DBGridMain.DataSource := DataSourceMain;
+    for var i := 0 to 7 do
+    begin
+      DBGridMain.Columns[i].Title.Alignment := taCenter;
+      DBGridMain.Columns[i].Alignment := taCenter;
+      DBGridMain.Columns[i].Width := 140;
+      DBGridMain.Columns[i].Title.Font.Size := 15;
+    end;
+    DBGridMain.Columns[0].Width := 40;
+  finally
+    ServicoController.Free;
+  end;
+end;
+
+procedure TFormCadastroServiços.CarregarGridRestaurar;
+var
+  ServicoController: TServicoController;
+begin
+  ServicoController := TServicoController.Create;
+  try
+    DataSourceRestaurar.DataSet := ServicoController.ListarServicosRestaurar;
+    DBGridRestaurar.DataSource := DataSourceRestaurar;
+    for var i := 0 to 7 do
+    begin
+      DBGridRestaurar.Columns[i].Title.Alignment := taCenter;
+      DBGridRestaurar.Columns[i].Alignment := taCenter;
+      DBGridRestaurar.Columns[i].Width := 140;
+      DBGridRestaurar.Columns[i].Title.Font.Size := 15;
+    end;
+    DBGridRestaurar.Columns[0].Width := 40;
+  finally
+    ServicoController.Free;
+  end;
+end;
+
+procedure TFormCadastroServiços.CarregarCategorias;
+var
+  ServicoController: TServicoController;
+  ListaCategorias: TStringList;
+  i: Integer;
+begin
+  CmbCategoria.Items.Clear;
+  ServicoController := TServicoController.Create;
+  try
+    ListaCategorias := ServicoController.CarregarCategorias;
+    try
+      for i := 0 to ListaCategorias.Count - 1 do
+        CmbCategoria.Items.AddObject(ListaCategorias[i], ListaCategorias.Objects[i]);
+    finally
+      ListaCategorias.Free;
+    end;
+  finally
+    ServicoController.Free;
+  end;
+end;
+
+procedure TFormCadastroServiços.CarregarPecas;
+var
+  ServicoController: TServicoController;
+  ListaPecas: TStringList;
+  i: Integer;
+begin
+  CmbPeças.Items.Clear;
+  ServicoController := TServicoController.Create;
+  try
+    ListaPecas := ServicoController.CarregarPecas;
+    try
+      for i := 0 to ListaPecas.Count - 1 do
+        CmbPeças.Items.AddObject(ListaPecas[i], ListaPecas.Objects[i]);
+    finally
+      ListaPecas.Free;
+    end;
+  finally
+    ServicoController.Free;
+  end;
+end;
+
+procedure TFormCadastroServiços.CarregarProfissionais;
+var
+  ServicoController: TServicoController;
+  ListaProfissionais: TStringList;
+  i: Integer;
+begin
+  CmbProfissional.Items.Clear;
+  ServicoController := TServicoController.Create;
+  try
+    ListaProfissionais := ServicoController.CarregarProfissionais;
+    try
+      for i := 0 to ListaProfissionais.Count - 1 do
+        CmbProfissional.Items.AddObject(ListaProfissionais[i], ListaProfissionais.Objects[i]);
+    finally
+      ListaProfissionais.Free;
+    end;
+  finally
+    ServicoController.Free;
+  end;
+end;
+
+procedure TFormCadastroServiços.EdtPesquisarChange(Sender: TObject);
+var
+  ServicoController: TServicoController;
+begin
+  ServicoController := TServicoController.Create;
+  try
+    DataSourceMain.DataSet := ServicoController.PesquisarServicos(EdtPesquisar.Text);
+  finally
+    ServicoController.Free;
+  end;
 end;
 
 end.

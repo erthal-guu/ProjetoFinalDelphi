@@ -1,9 +1,9 @@
-unit ServicoCadastroController;
+unit ServiçoCadastroController;
 
 interface
 
 uses
-  uServico, ServicoCadastroService, System.Classes, Data.DB, System.SysUtils;
+  uServiço, ServiçoCadastroService, System.Classes, Data.DB, System.SysUtils;
 
 type
   TServicoController = class

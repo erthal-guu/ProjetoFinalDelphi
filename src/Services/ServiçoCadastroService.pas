@@ -1,9 +1,9 @@
-unit ServicoCadastroService;
+unit ServiçoCadastroService;
 
 interface
 
 uses
-  uServico, ServicoCadastroRepository, uDMConexao, System.SysUtils,
+  uServiço, ServiçoCadastroRepository, uDMConexao, System.SysUtils,
   FireDAC.Comp.Client, Data.DB, System.Classes;
 
 type

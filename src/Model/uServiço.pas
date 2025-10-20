@@ -1,4 +1,4 @@
-unit uServico;
+unit uServiço;
 
 interface
 
