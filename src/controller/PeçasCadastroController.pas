@@ -3,7 +3,7 @@ unit PeçasCadastroController;
 interface
 
 uses
-  uPeças, PeçasCadastroService, FireDAC.Comp.Client, Data.DB,System.Classes;
+  uPeças, PeçasCadastroService, FireDAC.Comp.Client, Data.DB, System.Classes;
 
 type
   TPecaController = class
@@ -16,11 +16,15 @@ type
     procedure EditarPeca(Peca: TPeca);
     function ListarPecas: TDataSet;
     function CriarObjeto(
-      aNome, aDescricao, aCodigoInterno, aCategoria, aUnidade, aModelo: String;aAtivo:Boolean;aPreço:Currency): TPeca;
+      aNome, aDescricao, aCodigoInterno: String;
+      aCategoria: Integer;
+      aUnidade, aModelo: String;
+      aAtivo: Boolean;
+      aPreço: Currency): TPeca;
     procedure DeletarPeca(const aId: Integer);
     procedure RestaurarPeca(const aId: Integer);
     function PesquisarPecas(const aFiltro: String): TDataSet;
-    function CarregarCategorias : TStringList;
+    function CarregarCategorias: TStringList;
   end;
 
 implementation
@@ -36,13 +40,18 @@ begin
   Service.Free;
   inherited;
 end;
+
 function TPecaController.CarregarCategorias: TStringList;
 begin
   Result := Service.CarregarCategorias;
 end;
 
 function TPecaController.CriarObjeto(
-  aNome, aDescricao, aCodigoInterno, aCategoria, aUnidade, aModelo: String;aAtivo:Boolean;aPreço:Currency): TPeca;
+  aNome, aDescricao, aCodigoInterno: String;
+  aCategoria: Integer;
+  aUnidade, aModelo: String;
+  aAtivo: Boolean;
+  aPreço: Currency): TPeca;
 begin
   Result := TPeca.Create;
   Result.setNome(aNome);

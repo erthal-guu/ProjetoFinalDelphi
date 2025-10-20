@@ -175,6 +175,7 @@ begin
     PecaService.Free;
   end;
 end;
+
 procedure TFormCadastroPecas.CarregarCategorias;
 var
   PeçaController: TPecaController;
@@ -217,20 +218,34 @@ end;
 
 procedure TFormCadastroPecas.PegarCamposGridPecas;
 var
-  preço : Currency;
+  preço: Currency;
+  CategoriaNome: String;
+  i: Integer;
 begin
-try
-  preço := StrToCurr(EdtPreço.Text);
-finally
-  EdtNome.Text:= DBGridMain.DataSource.DataSet.FieldByName('Nome').AsString;
-  EdtDescrição.Text:= DBGridMain.DataSource.DataSet.FieldByName('Descrição').AsString;
-  EdtCodigoInt.Text:= DBGridMain.DataSource.DataSet.FieldByName('Código interno').AsString;
-  CmbCategoria.Text:= DBGridMain.DataSource.DataSet.FieldByName('Categoria').AsString;
-  EdtPreço.Text := CurrToStr(DBGridMain.DataSource.DataSet.FieldByName('Preço').AsCurrency);
-  CmbUnidade.Text:= DBGridMain.DataSource.DataSet.FieldByName('Unidade').AsString;
-  CmbModelo.Text:= DBGridMain.DataSource.DataSet.FieldByName('Modelo').AsString;
-  CmbStatus.Text:= DBGridMain.DataSource.DataSet.FieldByName('Ativo').AsString;
-end;
+  try
+    EdtNome.Text := DBGridMain.DataSource.DataSet.FieldByName('Nome').AsString;
+    EdtDescrição.Text := DBGridMain.DataSource.DataSet.FieldByName('Descrição').AsString;
+    EdtCodigoInt.Text := DBGridMain.DataSource.DataSet.FieldByName('Código interno').AsString;
+    CategoriaNome := DBGridMain.DataSource.DataSet.FieldByName('Categoria').AsString;
+    for i := 0 to CmbCategoria.Items.Count - 1 do
+    begin
+      if CmbCategoria.Items[i] = CategoriaNome then
+      begin
+        CmbCategoria.ItemIndex := i;
+        Break;
+      end;
+    end;
+    preço := DBGridMain.DataSource.DataSet.FieldByName('Preço').AsCurrency;
+    EdtPreço.Text := CurrToStr(preço);
+
+    CmbUnidade.Text := DBGridMain.DataSource.DataSet.FieldByName('Unidade').AsString;
+    CmbModelo.Text := DBGridMain.DataSource.DataSet.FieldByName('Modelo').AsString;
+    CmbStatus.Text := DBGridMain.DataSource.DataSet.FieldByName('Ativo').AsString;
+
+  except
+    on E: Exception do
+      ShowMessage('Erro ao carregar dados: ' + E.Message);
+  end;
 end;
 
 procedure TFormCadastroPecas.BtnEditarClick(Sender: TObject);
@@ -277,7 +292,7 @@ var
   Peca: TPeca;
   Ativo: Boolean;
   preco: Currency;
-  IdCategoria: string;
+  IdCategoria: Integer;
 begin
   if ValidarCampos then
   begin
@@ -285,8 +300,9 @@ begin
     try
       Ativo := (CmbStatus.Text = 'Ativo');
       preco := StrToCurr(EdtPreço.Text);
+
       if CmbCategoria.ItemIndex >= 0 then
-        IdCategoria := IntToStr(Integer(CmbCategoria.Items.Objects[CmbCategoria.ItemIndex]))
+        IdCategoria := Integer(CmbCategoria.Items.Objects[CmbCategoria.ItemIndex])
       else
       begin
         ShowMessage('Selecione uma categoria válida!');
@@ -324,33 +340,50 @@ var
   PecaController: TPecaController;
   Peca: TPeca;
   IdPeca: Integer;
+  IdCategoria: Integer;
+  Ativo: Boolean;
+  Preco: Currency;
 begin
   if DataSourceMain.DataSet.IsEmpty then
   begin
     ShowMessage('Nenhuma peça selecionada!');
     Exit;
   end;
+
   IdPeca := DBGridMain.DataSource.DataSet.FieldByName('id').AsInteger;
   PecaController := TPecaController.Create;
   try
     Peca := TPeca.Create;
     try
-      ValidarCampos;
+      if not ValidarCampos then
+        Exit;
+      if CmbCategoria.ItemIndex >= 0 then
+        IdCategoria := Integer(CmbCategoria.Items.Objects[CmbCategoria.ItemIndex])
+      else
+      begin
+        ShowMessage('Selecione uma categoria válida!');
+        Exit;
+      end;
+
+      Ativo := (CmbStatus.Text = 'Ativo');
+      Preco := StrToCurr(EdtPreço.Text);
+
       Peca.setIdPeca(IdPeca);
       Peca.setNome(EdtNome.Text);
       Peca.setDescricao(EdtDescrição.Text);
       Peca.setCodigoInterno(EdtCodigoInt.Text);
-      Peca.setCategoria(CmbCategoria.Text);
+      Peca.setCategoria(IdCategoria);
       Peca.setUnidade(CmbUnidade.Text);
       Peca.setModelo(CmbModelo.Text);
-      if DBGridMain.DataSource.DataSet.FieldByName('ativo').AsBoolean then begin
-      CmbStatus.ItemIndex := 0;
-      end else begin
-      CmbStatus.ItemIndex := 1;
-    end;
+      Peca.setAtivo(Ativo);
+      Peca.setPreço(Preco);
+
       PecaController.EditarPeca(Peca);
+      ShowMessage('Peça atualizada com sucesso!');
       CarregarGrid;
       LimparCampos;
+      PnlBackgrounEdit.Visible := False;
+      PnlEdit.Visible := False;
     finally
       Peca.Free;
     end;
@@ -432,7 +465,7 @@ begin
   if EdtPreço.Text = '' then begin ShowMessage('O campo Preço não pode ficar vazio'); Exit; end;
   if EdtDescrição.Text = '' then begin ShowMessage('O campo Descrição não pode ficar vazio'); Exit; end;
   if EdtCodigoInt.Text = '' then begin ShowMessage('O campo Código Interno não pode ficar vazio'); Exit; end;
-  if CmbCategoria.Text = '' then begin ShowMessage('O campo Categoria não pode ficar vazio'); Exit; end;
+  if CmbCategoria.ItemIndex = -1 then begin ShowMessage('Selecione uma Categoria válida'); Exit; end;
   if CmbUnidade.Text = '' then begin ShowMessage('O campo Unidade não pode ficar vazio'); Exit; end;
   if CmbModelo.Text = '' then begin ShowMessage('O campo Modelo não pode ficar vazio'); Exit; end;
   if CmbStatus.Text = '' then begin ShowMessage('Selecione o Status'); Exit; end;

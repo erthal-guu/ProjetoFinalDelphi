@@ -13,8 +13,9 @@ type
   public
     constructor Create;
     function SalvarPeca(Peca: TPeca): Boolean;
-    function CriarObjeto(aNome, aDescricao, aCodigoInterno, aCategoria,
-      aUnidade, aModelo: String; aPreco: Currency; aAtivo: Boolean): TPeca;
+    function CriarObjeto(aNome, aDescricao, aCodigoInterno: String;
+      aCategoria: Integer; aUnidade, aModelo: String; aPreco: Currency;
+      aAtivo: Boolean): TPeca;
     procedure EditarPeca(Peca: TPeca);
     function ValidarPeca(PecaValida: TPeca): Boolean;
     function ListarPecas: TDataSet;
@@ -33,7 +34,8 @@ begin
 end;
 
 function TPecaService.CriarObjeto(
-  aNome, aDescricao, aCodigoInterno, aCategoria,
+  aNome, aDescricao, aCodigoInterno: String;
+  aCategoria: Integer;
   aUnidade, aModelo: String; aPreco: Currency; aAtivo: Boolean): TPeca;
 var
   PecaDTO: TPeca;
@@ -109,7 +111,7 @@ begin
     (PecaValida.getNome <> '') and
     (PecaValida.getDescricao <> '') and
     (PecaValida.getCodigoInterno <> '') and
-    (PecaValida.getCategoria <> '') and
+    (PecaValida.getCategoria > 0) and
     (PecaValida.getUnidade <> '') and
     (PecaValida.getModelo <> '') and
     ((PecaValida.getAtivo = True) or (PecaValida.getAtivo = False)) and
@@ -117,4 +119,3 @@ begin
 end;
 
 end.
-

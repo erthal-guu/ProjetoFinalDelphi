@@ -35,17 +35,15 @@ begin
   FQuery.Close;
   FQuery.SQL.Clear;
   FQuery.SQL.Add('INSERT INTO pecas (nome, descricao, codigo_interno, id_categoria, unidade, modelo, ativo, preco_compra)');
-  FQuery.SQL.Add('VALUES (:nome, :descricao, :codigo_interno, :categoria, :unidade, :modelo, :ativo, :preco_compra)');
-
+  FQuery.SQL.Add('VALUES (:nome, :descricao, :codigo_interno, :id_categoria, :unidade, :modelo, :ativo, :preco_compra)');
   FQuery.ParamByName('nome').AsString           := aPeca.getNome;
   FQuery.ParamByName('descricao').AsString      := aPeca.getDescricao;
   FQuery.ParamByName('codigo_interno').AsString := aPeca.getCodigoInterno;
-  FQuery.ParamByName('id_categoria').AsString     := aPeca.getCategoria;
+  FQuery.ParamByName('id_categoria').AsInteger     := aPeca.getCategoria;
   FQuery.ParamByName('unidade').AsString       := aPeca.getUnidade;
   FQuery.ParamByName('modelo').AsString        := aPeca.getModelo;
   FQuery.ParamByName('ativo').AsBoolean         := aPeca.getAtivo;
   FQuery.ParamByName('preco_compra').AsCurrency := aPeca.getPreço;
-
   FQuery.ExecSQL;
 end;
 
@@ -72,7 +70,7 @@ begin
     FQuery.ParamByName('nome').AsString           := aPeca.getNome;
     FQuery.ParamByName('descricao').AsString      := aPeca.getDescricao;
     FQuery.ParamByName('codigo_interno').AsString := aPeca.getCodigoInterno;
-    FQuery.ParamByName('categoria').AsString   := aPeca.getCategoria;
+    FQuery.ParamByName('categoria').AsInteger   := aPeca.getCategoria;
     FQuery.ParamByName('unidade').AsString       := aPeca.getUnidade;
     FQuery.ParamByName('modelo').AsString        := aPeca.getModelo;
     FQuery.ParamByName('ativo').AsBoolean         := aPeca.getAtivo;
@@ -154,13 +152,10 @@ begin
     FQuery.SQL.Clear;
     FQuery.SQL.Add('SELECT id, nome, descricao, codigo_interno, id_categoria, unidade, modelo, ativo, preco_compra');
     FQuery.SQL.Add('FROM pecas');
-    FQuery.SQL.Add('WHERE (nome ILIKE :nome OR codigo_interno ILIKE :codigo_interno OR id_modelo::text ILIKE :modelo)');
+    FQuery.SQL.Add('WHERE (nome ILIKE :filtro OR codigo_interno ILIKE :filtro OR modelo ILIKE :filtro)');
     FQuery.SQL.Add('AND ativo = TRUE');
     FQuery.SQL.Add('ORDER BY id');
-
-    FQuery.ParamByName('nome').AsString           := '%' + Trim(aFiltro) + '%';
-    FQuery.ParamByName('codigo_interno').AsString := '%' + Trim(aFiltro) + '%';
-    FQuery.ParamByName('modelo').AsString         := '%' + Trim(aFiltro) + '%';
+    FQuery.ParamByName('filtro').AsString := '%' + Trim(aFiltro) + '%';
     FQuery.Open;
     Result := FQuery;
   except

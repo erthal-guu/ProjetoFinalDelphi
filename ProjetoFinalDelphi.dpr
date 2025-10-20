@@ -41,7 +41,11 @@ uses
   uFornecedor in 'src\Model\uFornecedor.pas',
   uFuncionario in 'src\Model\uFuncionario.pas',
   uPeças in 'src\Model\uPeças.pas',
-  uUsuario in 'src\Model\uUsuario.pas';
+  uUsuario in 'src\Model\uUsuario.pas',
+  VeiculoCadastroRepository in 'src\repository\VeiculoCadastroRepository.pas',
+  VeiculoCadastroService in 'src\Services\VeiculoCadastroService.pas',
+  VeiculoCadastroController in 'src\controller\VeiculoCadastroController.pas',
+  uVeiculo in 'src\Model\uVeiculo.pas';
 
 {$R *.res}
 

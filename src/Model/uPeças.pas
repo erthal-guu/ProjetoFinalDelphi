@@ -9,7 +9,7 @@ type
     Nome: String;
     Descricao: String;
     CodigoInterno: String;
-    Categoria: String;
+    Categoria: Integer;
     Unidade: String;
     Modelo: String;
     Ativo: Boolean;
@@ -17,28 +17,20 @@ type
   public
     function getIdPeca: Integer;
     procedure setIdPeca(aId: Integer);
-
     function getNome: String;
     procedure setNome(aNome: String);
-
     function getDescricao: String;
     procedure setDescricao(aDescricao: String);
-
     function getCodigoInterno: String;
     procedure setCodigoInterno(aCodigoInterno: String);
-
-    function getCategoria: String;
-    procedure setCategoria(aCategoria: String);
-
+    function getCategoria: Integer;
+    procedure setCategoria(aCategoria: Integer);
     function getUnidade: String;
     procedure setUnidade(aUnidade: String);
-
     function getModelo: String;
     procedure setModelo(aModelo: String);
-
     function getAtivo: Boolean;
     procedure setAtivo(aAtivo: Boolean);
-
     function getPreço: Currency;
     procedure setPreço(aPreço: Currency);
   end;
@@ -85,12 +77,12 @@ begin
   CodigoInterno := aCodigoInterno;
 end;
 
-function TPeca.getCategoria: String;
+function TPeca.getCategoria: Integer;
 begin
   Result := Categoria;
 end;
 
-procedure TPeca.setCategoria(aCategoria: String);
+procedure TPeca.setCategoria(aCategoria: Integer);
 begin
   Categoria := aCategoria;
 end;
@@ -136,4 +128,3 @@ begin
 end;
 
 end.
-
