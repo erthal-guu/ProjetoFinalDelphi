@@ -109,7 +109,6 @@
         <DCC_UnitSearchPath>C:\Users\Auditorio\Desktop\ProjetoFinalDelphi\src\DTO\bcrypt-for-delphi-master;C:\Users\siqueira.6989\Desktop\ProjetoFinalDelphi\src\DTO\bcrypt-for-delphi-master;C:\Users\vplgu\Desktop\ProjetoFinalDelphi\src\DTO\bcrypt-for-delphi-master;C:\Users\vplgu\Desktop\ProjetoFinalDelphi\src\Model;C:\Users\vplgu\Desktop\ProjetoFinalDelphi\src\bcrypt-for-delphi-master;C:\Users\siqueira.6989\Desktop\ProjetoFinalDelphi\src\bcrypt-for-delphi-master;C:\Users\Auditorio\Desktop\ProjetoFinalDelphi\src\bcrypt-for-delphi-master;$(DCC_UnitSearchPath)</DCC_UnitSearchPath>
         <UWP_DelphiLogo44>..\..\Downloads\Captura_de_tela_2025-10-14_164540-removebg-preview.png</UWP_DelphiLogo44>
         <UWP_DelphiLogo150>..\..\Downloads\Captura_de_tela_2025-10-14_164540-removebg-preview.png</UWP_DelphiLogo150>
-        <Icon_MainIcon>ProjetoFinalDelphi_Icon.ico</Icon_MainIcon>
     </PropertyGroup>
     <PropertyGroup Condition="'$(Cfg_1_Win64)'!=''">
         <AppDPIAwarenessMode>PerMonitorV2</AppDPIAwarenessMode>
@@ -219,6 +218,7 @@
         <DCCReference Include="src\Services\ServiçoCadastroService.pas"/>
         <DCCReference Include="src\controller\ServiçoCadastroController.pas"/>
         <DCCReference Include="LogTxt.pas"/>
+        <DCCReference Include="src\session\uSession.pas"/>
         <BuildConfiguration Include="Base">
             <Key>Base</Key>
         </BuildConfiguration>

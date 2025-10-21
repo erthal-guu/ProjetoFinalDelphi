@@ -3,13 +3,14 @@ unit LoginUsuarioService;
 interface
 
 uses
-  uUsuario,UsuarioLoginRepository,uDMConexao,Vcl.Dialogs,BCrypt;
+  uUsuario,UsuarioLoginRepository,uDMConexao,Vcl.Dialogs,BCrypt,uSession,logtxt,System.IOUtils,System.SysUtils;
 
 type TUsuarioLoginService = class
 public
   function ValidarLogin(Usuario : TUsuario): Boolean;
   function CriarObjeto( aCPF, aSenha: String) : TUsuario;
   function ValidarUsuario(UsuarioValido: TUsuario): Boolean;
+  function GetIDeNome(Usuario:TUsuario) :TUsuario;
 end;
 
 implementation
@@ -26,29 +27,66 @@ begin
 end;
 
 
+function TUsuarioLoginService.GetIDeNome(Usuario: TUsuario): TUsuario;
+var
+  Repository: TLoginRepository;
+  UsuarioSelect: TUsuario;
+begin
+  Result := nil;
+  Repository := TLoginRepository.Create(DataModule1.FDQuery);
+  try
+    UsuarioSelect := Repository.SelectUsuario(Usuario);
+
+    if UsuarioSelect <> nil then
+    begin
+      Result := UsuarioSelect;
+      uSession.UsuarioLogadoID := UsuarioSelect.getID;
+    end;
+  finally
+    Repository.Free;
+  end;
+end;
+
+
 function TUsuarioLoginService.ValidarLogin(Usuario: TUsuario): Boolean;
 var
   Repository: TLoginRepository;
-  Repo: TUsuario;
+  UsuarioSelect: TUsuario;
   PasswordRehashNeeded: Boolean;
 begin
   Result := False;
 
-  if Usuario.getSenha <> '' then
+  if (Usuario = nil) or (Usuario.getSenha = '') then
   begin
-    Repository := TLoginRepository.Create(DataModule1.FDQuery);
-    try
-      Repo := Repository.SelectUsuario(Usuario);
+    SalvarLog('LOGIN INVÁLIDO - CPF ou senha vazios');
+  end;
 
-    if (Repo <> nil) and (Repo.getSenha <> '') then
+  Repository := TLoginRepository.Create(DataModule1.FDQuery);
+  try
+    UsuarioSelect := Repository.SelectUsuario(Usuario);
+
+    if UsuarioSelect <> nil then
     begin
-      Result := TBCrypt.CheckPassword(Usuario.getSenha(), Repo.getSenha(), PasswordRehashNeeded);
+      Result := TBCrypt.CheckPassword(Usuario.getSenha, UsuarioSelect.getSenha, PasswordRehashNeeded);
+
+      if Result then
+      begin
+        uSession.UsuarioLogadoID := UsuarioSelect.getID;
+        SalvarLog(Format('LOGIN - Sucesso: Usuário ID %d, Nome: %s, CPF: %s',
+          [UsuarioSelect.getID, UsuarioSelect.getNome, UsuarioSelect.getCPF]));
+      end else begin
+      SalvarLog(Format('LOGIN INVÁLIDO - Senha ou CPF incorretos: CPF %s', [Usuario.getCPF]));
+      end;
+    end else begin
+      SalvarLog(Format('LOGIN INVÁLIDO - Usuário não encontrado: CPF %s', [Usuario.getCPF]));
     end;
-    finally
-      Repository.Free;
-    end;
+
+  finally
+    Repository.Free;
   end;
 end;
+
+
 
 function TUsuarioLoginService.ValidarUsuario(UsuarioValido: TUsuario): Boolean;
 begin

@@ -50,15 +50,16 @@ uses
   ServiçoCadastroRepository in 'src\repository\ServiçoCadastroRepository.pas',
   ServiçoCadastroService in 'src\Services\ServiçoCadastroService.pas',
   ServiçoCadastroController in 'src\controller\ServiçoCadastroController.pas',
-  LogTxt in 'LogTxt.pas';
+  LogTxt in 'LogTxt.pas',
+  uSession in 'src\session\uSession.pas';
 
 {$R *.res}
 
 begin
   Application.Initialize;
   Application.MainFormOnTaskbar := True;
-  Application.CreateForm(TFormHome, FormHome);
   Application.CreateForm(TFormLogin, FormLogin);
+  Application.CreateForm(TFormHome, FormHome);
   Application.CreateForm(TFormCadastro, FormCadastro);
   Application.CreateForm(TFormCadastroUsuarios, FormCadastroUsuarios);
   Application.CreateForm(TFormMain, FormMain);

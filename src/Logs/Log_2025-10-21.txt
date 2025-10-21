@@ -1,0 +1,29 @@
+16:37:05 - Aplicação iniciada
+16:37:05 - Aplicação iniciada
+16:37:55 - Aplicação iniciada
+16:37:55 - Aplicação iniciada
+16:46:30 - Aplicação iniciada
+16:46:30 - Aplicação iniciada
+16:48:16 - Aplicação iniciada
+16:48:16 - Aplicação iniciada
+16:53:10 - Aplicação iniciada
+16:53:10 - Aplicação iniciada
+16:55:48 - Aplicação iniciada
+16:55:48 - Aplicação iniciada
+16:57:09 - Aplicação iniciada
+16:57:10 - Aplicação iniciada
+17:15:05 - Aplicação iniciada
+17:15:06 - Aplicação iniciada
+17:15:14 - LOGIN - Sucesso: Usuário ID 29, Nome: Admin, CPF: 000.000.000-00
+17:18:01 - Aplicação iniciada
+17:18:02 - Aplicação iniciada
+17:19:52 - Aplicação iniciada
+17:19:52 - Aplicação iniciada
+17:19:57 - LOGIN INVÁLIDO - Usuário não encontrado: CPF 178.461.947-10
+17:20:05 - LOGIN - Sucesso: Usuário ID 29, Nome: Admin, CPF: 000.000.000-00
+17:20:30 - Aplicação iniciada
+17:20:30 - Aplicação iniciada
+17:20:39 - LOGIN INVÁLIDO - Senha incorreta: CPF 000.000.000-00
+17:23:38 - Aplicação iniciada
+17:23:38 - Aplicação iniciada
+17:23:44 - LOGIN INVÁLIDO - Senha ou CPF incorretos: Senha 16471y4081u409 CPF 000.000.000-00

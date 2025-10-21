@@ -7,7 +7,7 @@ uses
   System.Classes, Vcl.Graphics,
   Vcl.Controls, Vcl.Forms, Vcl.Dialogs, Vcl.StdCtrls, Vcl.ExtCtrls,
   Vcl.Imaging.pngimage, Vcl.Mask, Vcl.Imaging.jpeg, uUsuario,
-  UsuarioLoginController, uMainController;
+  UsuarioLoginController, uMainController,uSession;
 
 type
   TFormLogin = class(TForm)
@@ -82,22 +82,31 @@ end;
 procedure TFormLogin.PnlButtonClick(Sender: TObject);
 var
   Controller: TUsuarioController;
-  Usuario: TUsuario;
-
+  Usuario, UsuarioLogado: TUsuario;
 begin
+  Controller := TUsuarioController.Create;
   try
-    Controller := TUsuarioController.Create;
     Usuario := Controller.CriarObjeto(EdtCPF.Text, EdtSenha.Text);
-    if Controller.ValidarLogin(Usuario) then begin
+
+    if Controller.ValidarLogin(Usuario) then
+    begin
+      UsuarioLogado := Controller.GetIDNome(Usuario);
+
       MainController.showHome;
       LimparCampos;
-    end else begin
+
+      ShowMessage(Format('Login efetuado com sucesso! Bem-vindo %s ID:%d',
+        [UsuarioLogado.getNome, UsuarioLogado.getID]));
+    end
+    else
       ShowMessage('CPF ou Senha inválidos!');
-    end;
+
   finally
     Controller.Free;
   end;
 end;
+
+
 
 procedure TFormLogin.PnlButtonMouseEnter(Sender: TObject);
 begin
