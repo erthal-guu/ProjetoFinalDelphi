@@ -49,7 +49,8 @@ uses
   uServiço in 'src\Model\uServiço.pas',
   ServiçoCadastroRepository in 'src\repository\ServiçoCadastroRepository.pas',
   ServiçoCadastroService in 'src\Services\ServiçoCadastroService.pas',
-  ServiçoCadastroController in 'src\controller\ServiçoCadastroController.pas';
+  ServiçoCadastroController in 'src\controller\ServiçoCadastroController.pas',
+  LogTxt in 'LogTxt.pas';
 
 {$R *.res}
 

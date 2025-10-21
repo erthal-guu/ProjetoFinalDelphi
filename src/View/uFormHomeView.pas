@@ -13,7 +13,7 @@ uses
   uFormCadastroVeiculosView,
   uFormCadastroPeçasView,
   uFormCadastroServiçosView,
-  uFormCadastroOrdensServiçoView, Vcl.Menus, Vcl.Imaging.pngimage, Vcl.StdCtrls;
+  uFormCadastroOrdensServiçoView, Vcl.Menus, Vcl.Imaging.pngimage, Vcl.StdCtrls,LogTxt;
 
 
 type
@@ -49,6 +49,7 @@ type
     procedure UsuariosClick(Sender: TObject);
     procedure ClientesClick(Sender: TObject);
     procedure TimerTimer(Sender: TObject);
+    procedure FormCreate(Sender: TObject);
   private
     { Private declarations }
   public
@@ -104,6 +105,11 @@ procedure TFormHome.ClientesClick(Sender: TObject);
 begin
   FormCadastroClientes.Position := poScreenCenter;
   FormCadastroClientes.Show;
+end;
+
+procedure TFormHome.FormCreate(Sender: TObject);
+begin
+  SalvarLog('Aplicação iniciada');
 end;
 
 procedure TFormHome.FornecedoresClick(Sender: TObject);

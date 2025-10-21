@@ -218,6 +218,7 @@
         <DCCReference Include="src\repository\ServiçoCadastroRepository.pas"/>
         <DCCReference Include="src\Services\ServiçoCadastroService.pas"/>
         <DCCReference Include="src\controller\ServiçoCadastroController.pas"/>
+        <DCCReference Include="LogTxt.pas"/>
         <BuildConfiguration Include="Base">
             <Key>Base</Key>
         </BuildConfiguration>

@@ -15,6 +15,7 @@
   Menu = MainMenu
   Position = poDesigned
   WindowState = wsMaximized
+  OnCreate = FormCreate
   TextHeight = 15
   object PnlMain: TPanel
     Left = 0

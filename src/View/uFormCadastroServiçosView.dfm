@@ -1048,7 +1048,6 @@
                 Align = alLeft
                 BevelOuter = bvNone
                 TabOrder = 0
-                ExplicitTop = -7
                 object Label1: TLabel
                   Left = 20
                   Top = 8
@@ -1119,7 +1118,7 @@
                   Top = 8
                   Width = 74
                   Height = 17
-                  Caption = 'Profissional :'
+                  Caption = 'Funcion'#225'rio :'
                   Font.Charset = DEFAULT_CHARSET
                   Font.Color = clWindowText
                   Font.Height = -13
@@ -1142,7 +1141,6 @@
                   Color = 9521152
                   ParentBackground = False
                   TabOrder = 0
-                  ExplicitLeft = 717
                   object LblEnviar: TLabel
                     AlignWithMargins = True
                     Left = 4
@@ -1203,7 +1201,6 @@
                   Font.Style = []
                   ParentFont = False
                   TabOrder = 2
-                  ExplicitLeft = 379
                 end
                 object CmbProfissional: TComboBox
                   AlignWithMargins = True
@@ -1244,7 +1241,6 @@
                   Font.Style = []
                   ParentFont = False
                   TabOrder = 4
-                  ExplicitLeft = 276
                 end
                 object CmbCategoria: TComboBox
                   AlignWithMargins = True
@@ -1545,6 +1541,7 @@
             TabOrder = 0
             TextHint = 'Pesquisar'
             Visible = False
+            OnChange = EdtPesquisarChange
             ExplicitHeight = 28
           end
         end

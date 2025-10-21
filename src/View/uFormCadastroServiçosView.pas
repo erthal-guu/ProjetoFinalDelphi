@@ -85,6 +85,8 @@ type
     procedure RestaurarServicos;
     procedure BtnCancelarClick(Sender: TObject);
     procedure BtnSairClick(Sender: TObject);
+    procedure TituloGridRestaurar;
+    procedure TituloGridMain;
   private
     { Private declarations }
   public
@@ -176,23 +178,24 @@ end;
 procedure TFormCadastroServiços.PegarCamposGridServicos;
 var
   Categoria, Pecas, Funcionario: Integer;
+  CategoriaStr,PecasStr,FuncionarioStr: String;
   i: Integer;
 begin
   EdtNome.Text := DBGridMain.DataSource.DataSet.FieldByName('nome').AsString;
   EdtObs.Text := DBGridMain.DataSource.DataSet.FieldByName('observacao').AsString;
   EdtPreço.Text := CurrToStr(DBGridMain.DataSource.DataSet.FieldByName('preco').AsCurrency);
 
-  Categoria := DBGridMain.DataSource.DataSet.FieldByName('categoria').AsInteger;
+  CategoriaStr := DBGridMain.DataSource.DataSet.FieldByName('categoria_nome').AsString;
   for i := 0 to CmbCategoria.Items.Count - 1 do
     if Integer(CmbCategoria.Items.Objects[i]) = Categoria then
       CmbCategoria.ItemIndex := i;
 
-  Pecas := DBGridMain.DataSource.DataSet.FieldByName('pecas').AsInteger;
+  PecasStr := DBGridMain.DataSource.DataSet.FieldByName('peca_nome').AsString;
   for i := 0 to CmbPeças.Items.Count - 1 do
     if Integer(CmbPeças.Items.Objects[i]) = Pecas then
       CmbPeças.ItemIndex := i;
 
-  Funcionario := DBGridMain.DataSource.DataSet.FieldByName('Funcionario').AsString;
+  FuncionarioStr := DBGridMain.DataSource.DataSet.FieldByName('funcionario_nome').AsString;
   for i := 0 to CmbProfissional.Items.Count - 1 do
     if Integer(CmbProfissional.Items.Objects[i]) = Funcionario then
       CmbProfissional.ItemIndex := i;
@@ -221,7 +224,6 @@ begin
             Profissional)
       then
       begin
-        ShowMessage('Serviço cadastrado com sucesso!');
         LimparCampos;
         CarregarGrid;
       end;
@@ -345,6 +347,30 @@ begin
   end;
 end;
 
+procedure TFormCadastroServiços.TituloGridMain;
+begin
+  DBGridMain.Columns[0].Title.Caption:= 'Id';
+  DBGridMain.Columns[1].Title.Caption := 'Nome';
+  DBGridMain.Columns[2].Title.Caption := 'Categoria';
+  DBGridMain.Columns[3].Title.Caption := 'Preço';
+  DBGridMain.Columns[4].Title.Caption := 'Observação';
+  DBGridMain.Columns[5].Title.Caption := 'Peças';
+  DBGridMain.Columns[6].Title.Caption := 'Funcionario';
+  DBGridMain.Columns[7].Title.Caption := 'Ativo';
+end;
+
+procedure TFormCadastroServiços.TituloGridRestaurar;
+begin
+  DBGridMain.Columns[0].Title.Caption:= 'Id';
+  DBGridMain.Columns[1].Title.Caption := 'Nome';
+  DBGridMain.Columns[2].Title.Caption := 'Categoria';
+  DBGridMain.Columns[3].Title.Caption := 'Preço';
+  DBGridMain.Columns[4].Title.Caption := 'Observação';
+  DBGridMain.Columns[5].Title.Caption := 'Peças';
+  DBGridMain.Columns[6].Title.Caption := 'Funcionario';
+  DBGridMain.Columns[7].Title.Caption := 'Ativo';
+end;
+
 procedure TFormCadastroServiços.ImgFecharClick(Sender: TObject);
 begin
   PnlRestaurar.Visible := False;
@@ -371,8 +397,11 @@ begin
       DBGridMain.Columns[i].Alignment := taCenter;
       DBGridMain.Columns[i].Width := 140;
       DBGridMain.Columns[i].Title.Font.Size := 15;
+      TituloGridMain;
     end;
     DBGridMain.Columns[0].Width := 40;
+    DBGridMain.Columns[1].Width := 170;
+    DBGridMain.Columns[4].Width := 210;
   finally
     ServicoController.Free;
   end;
@@ -386,18 +415,25 @@ begin
   try
     DataSourceRestaurar.DataSet := ServicoController.ListarServicosRestaurar;
     DBGridRestaurar.DataSource := DataSourceRestaurar;
-    for var i := 0 to 7 do
+    if DBGridRestaurar.Columns.Count > 0 then
     begin
-      DBGridRestaurar.Columns[i].Title.Alignment := taCenter;
-      DBGridRestaurar.Columns[i].Alignment := taCenter;
-      DBGridRestaurar.Columns[i].Width := 140;
-      DBGridRestaurar.Columns[i].Title.Font.Size := 15;
+      for var i := 0 to DBGridRestaurar.Columns.Count - 1 do
+      begin
+        DBGridRestaurar.Columns[i].Title.Alignment := taCenter;
+        DBGridRestaurar.Columns[i].Alignment := taCenter;
+        DBGridRestaurar.Columns[i].Width := 140;
+        DBGridRestaurar.Columns[i].Title.Font.Size := 15;
+        TituloGridRestaurar;
+      end;
+      DBGridRestaurar.Columns[0].Width := 40;
+      DBGridMain.Columns[1].Width := 170;
+      DBGridMain.Columns[4].Width := 210;
     end;
-    DBGridRestaurar.Columns[0].Width := 40;
   finally
     ServicoController.Free;
   end;
 end;
+
 
 procedure TFormCadastroServiços.CarregarCategorias;
 var
@@ -469,9 +505,25 @@ begin
   ServicoController := TServicoController.Create;
   try
     DataSourceMain.DataSet := ServicoController.PesquisarServicos(EdtPesquisar.Text);
+    DBGridMain.DataSource := DataSourceMain;
+    if DBGridMain.Columns.Count > 0 then
+    begin
+      for var i := 0 to DBGridMain.Columns.Count - 1 do
+      begin
+        DBGridMain.Columns[i].Title.Alignment := taCenter;
+        DBGridMain.Columns[i].Alignment := taCenter;
+        DBGridMain.Columns[i].Width := 140;
+        DBGridMain.Columns[i].Title.Font.Size := 15;
+        TituloGridMain;
+      end;
+      DBGridMain.Columns[0].Width := 40;
+      DBGridMain.Columns[1].Width := 170;
+      DBGridMain.Columns[4].Width := 210;
+    end;
   finally
     ServicoController.Free;
   end;
 end;
+
 
 end.

@@ -3,7 +3,7 @@ unit UsuarioCadastroService;
 interface
 
 uses
-  uUsuario, UsuarioCadastroRepository, uDMConexao, System.SysUtils,uMainController, FireDAC.Comp.Client,Data.DB,BCrypt,Vcl.Dialogs,System.Classes;
+  uUsuario, UsuarioCadastroRepository, uDMConexao, System.SysUtils,uMainController, FireDAC.Comp.Client,Data.DB,BCrypt,Vcl.Dialogs,System.Classes,logTxt;
  type
   TUsuarioService = class
   private

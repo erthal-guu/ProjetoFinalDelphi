@@ -1,0 +1,4 @@
+[2025-10-21 15:38:33] [INFO] Aplicação iniciada
+[2025-10-21 15:38:33] [ERROR] Erro ao processar pagamento | Attributes: user_id=1234;module=PaymentService | TraceID: trace123 | SpanID: span456
+[2025-10-21 15:38:33] [INFO] Aplicação iniciada
+[2025-10-21 15:38:33] [ERROR] Erro ao processar pagamento | Attributes: user_id=1234;module=PaymentService | TraceID: trace123 | SpanID: span456

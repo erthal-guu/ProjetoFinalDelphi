@@ -3,7 +3,7 @@ unit ServiçoCadastroRepository;
 interface
 
 uses
-  uDMConexao, FireDAC.Comp.Client, System.SysUtils, uServiço,Data.DB, System.Classes;
+  uDMConexao, FireDAC.Comp.Client, System.SysUtils, uServiço, Data.DB, System.Classes;
 
 type
   TServicoRepository = class
@@ -35,15 +35,15 @@ procedure TServicoRepository.InserirServico(Servico: TServico);
 begin
   FQuery.Close;
   FQuery.SQL.Clear;
-  FQuery.SQL.Add('INSERT INTO servicos (nome, categoria, preco, observacao, pecas, funcionario, ativo)');
-  FQuery.SQL.Add('VALUES (:nome, :categoria, :preco, :observacao, :pecas, :funcionario, :ativo)');
-  FQuery.ParamByName('nome').AsString        := Servico.GetNome;
-  FQuery.ParamByName('categoria').AsInteger  := Servico.GetCategoria;
-  FQuery.ParamByName('preco').AsCurrency     := Servico.GetPreco;
-  FQuery.ParamByName('observacao').AsString  := Servico.GetObservacao;
-  FQuery.ParamByName('pecas').AsInteger      := Servico.GetPecas;
-  FQuery.ParamByName('funcionario').AsInteger:= Servico.GetProfissional;
-  FQuery.ParamByName('ativo').AsBoolean      := True;
+  FQuery.SQL.Add('INSERT INTO servicos (nome, categoria, preco, observacao, peca_id, funcionario_id, ativo)');
+  FQuery.SQL.Add('VALUES (:nome, :categoria, :preco, :observacao, :peca_id, :funcionario_id, :ativo)');
+  FQuery.ParamByName('nome').AsString           := Servico.GetNome;
+  FQuery.ParamByName('categoria').AsInteger     := Servico.GetCategoria;
+  FQuery.ParamByName('preco').AsCurrency        := Servico.GetPreco;
+  FQuery.ParamByName('observacao').AsString     := Servico.GetObservacao;
+  FQuery.ParamByName('peca_id').AsInteger       := Servico.GetPecas;
+  FQuery.ParamByName('funcionario_id').AsInteger:= Servico.GetProfissional;
+  FQuery.ParamByName('ativo').AsBoolean         := True;
   FQuery.ExecSQL;
 end;
 
@@ -55,16 +55,16 @@ begin
     FQuery.SQL.Clear;
     FQuery.SQL.Add('UPDATE servicos SET');
     FQuery.SQL.Add('nome = :nome, categoria = :categoria, preco = :preco, observacao = :observacao,');
-    FQuery.SQL.Add('pecas = :pecas, funcionario = :funcionario, ativo = :ativo');
+    FQuery.SQL.Add('peca_id = :peca_id, funcionario_id = :funcionario_id, ativo = :ativo');
     FQuery.SQL.Add('WHERE id = :id');
-    FQuery.ParamByName('nome').AsString        := Servico.GetNome;
-    FQuery.ParamByName('categoria').AsInteger  := Servico.GetCategoria;
-    FQuery.ParamByName('preco').AsCurrency     := Servico.GetPreco;
-    FQuery.ParamByName('observacao').AsString  := Servico.GetObservacao;
-    FQuery.ParamByName('pecas').AsInteger      := Servico.GetPecas;
-    FQuery.ParamByName('funcionario').AsInteger:= Servico.GetProfissional;
-    FQuery.ParamByName('ativo').AsBoolean      := True;
-    FQuery.ParamByName('id').AsInteger         := Servico.GetId;
+    FQuery.ParamByName('nome').AsString           := Servico.GetNome;
+    FQuery.ParamByName('categoria').AsInteger     := Servico.GetCategoria;
+    FQuery.ParamByName('preco').AsCurrency        := Servico.GetPreco;
+    FQuery.ParamByName('observacao').AsString     := Servico.GetObservacao;
+    FQuery.ParamByName('peca_id').AsInteger       := Servico.GetPecas;
+    FQuery.ParamByName('funcionario_id').AsInteger:= Servico.GetProfissional;
+    FQuery.ParamByName('ativo').AsBoolean         := True;
+    FQuery.ParamByName('id').AsInteger            := Servico.GetId;
     FQuery.ExecSQL;
     Result := FQuery.RowsAffected > 0;
   except
@@ -79,10 +79,16 @@ begin
     FQuery.Close;
     FQuery.SQL.Clear;
     FQuery.SQL.Add(
-      'SELECT s.id, s.nome, s.categoria, s.preco, s.observacao, s.pecas, ' +
-      'f.nome AS funcionario_nome, s.ativo ' +
+      'SELECT s.id, s.nome, ' +
+      'c.nome AS categoria_nome, ' +
+      's.preco, s.observacao, ' +
+      'p.nome AS peca_nome, ' +
+      'f.nome AS funcionario_nome, ' +
+      's.ativo ' +
       'FROM servicos s ' +
-      'INNER JOIN funcionarios f ON s.funcionario = f.id ' +
+      'LEFT JOIN categorias c ON c.id = s.categoria ' +
+      'LEFT JOIN pecas p ON p.id = s.peca_id ' +
+      'LEFT JOIN funcionarios f ON f.id = s.funcionario_id ' +
       'WHERE s.ativo = TRUE ' +
       'ORDER BY s.id'
     );
@@ -100,10 +106,16 @@ begin
     FQuery.Close;
     FQuery.SQL.Clear;
     FQuery.SQL.Add(
-      'SELECT s.id, s.nome, s.categoria, s.preco, s.observacao, s.pecas, ' +
-      'f.nome AS funcionario_nome, s.ativo ' +
+      'SELECT s.id, s.nome, ' +
+      'c.nome AS categoria_nome, ' +
+      's.preco, s.observacao, ' +
+      'p.nome AS peca_nome, ' +
+      'f.nome AS funcionario_nome, ' +
+      's.ativo ' +
       'FROM servicos s ' +
-      'INNER JOIN funcionarios f ON s.funcionario = f.id ' +
+      'LEFT JOIN categorias c ON c.id = s.categoria ' +
+      'LEFT JOIN pecas p ON p.id = s.peca_id ' +
+      'LEFT JOIN funcionarios f ON f.id = s.funcionario_id ' +
       'WHERE s.ativo = FALSE ' +
       'ORDER BY s.id'
     );
@@ -114,6 +126,7 @@ begin
       raise Exception.Create('Erro ao listar serviços para restauração: ' + E.Message);
   end;
 end;
+
 
 procedure TServicoRepository.DeletarServico(const aId: Integer);
 begin
@@ -139,10 +152,12 @@ begin
     FQuery.Close;
     FQuery.SQL.Clear;
     FQuery.SQL.Add(
-      'SELECT s.id, s.nome, s.categoria, s.preco, s.observacao, s.pecas, ' +
-      'f.nome AS funcionario_nome, s.ativo ' +
+      'SELECT s.id, s.nome, c.nome AS categoria_nome, s.preco, s.observacao, ' +
+      'p.nome AS peca_nome, f.nome AS funcionario_nome, s.ativo ' +
       'FROM servicos s ' +
-      'INNER JOIN funcionarios f ON s.funcionario = f.id ' +
+      'INNER JOIN categorias c ON s.categoria = c.id ' +
+      'INNER JOIN pecas p ON s.peca_id = p.id ' +
+      'INNER JOIN funcionarios f ON s.funcionario_id = f.id ' +
       'WHERE (s.nome ILIKE :filtro OR s.observacao ILIKE :filtro) ' +
       'AND s.ativo = TRUE ' +
       'ORDER BY s.id'
