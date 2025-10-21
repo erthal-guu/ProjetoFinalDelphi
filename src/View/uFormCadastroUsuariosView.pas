@@ -71,7 +71,6 @@ type
     procedure FormCreate(Sender: TObject);
     procedure BtnPesquisarClick(Sender: TObject);
     procedure LblEnviarClick(Sender: TObject);
-    function ValidarCampos : Boolean;
     procedure CarregarGrid;
     procedure CarregarGridRestaurar;
     procedure LimparCampos;
@@ -89,7 +88,7 @@ type
     procedure BtnCancelarClick(Sender: TObject);
     procedure BtnSairClick(Sender: TObject);
     procedure EdtPesquisarChange(Sender: TObject);
-    function ValidarCamposCRUD : Boolean;
+    function ValidarCampos : Boolean;
     procedure EdtCPFClick(Sender: TObject);
     procedure CarregarGrupos;
   private
@@ -322,9 +321,10 @@ end;
 
 procedure TFormCadastroUsuarios.LblAtualizarClick(Sender: TObject);
 begin
-if ValidarCamposCRUD then begin
+if ValidarCampos = True then begin
   EditarUsuarios;
   CarregarGrid;
+  ShowMessage('Deu boa');
 end;
 end;
 
@@ -336,8 +336,8 @@ begin
   if ValidarCampos then begin
   Controller := TUsuarioController.Create;
   try
-    Usuario := Controller.CriarObjetoCRUD(EdtNome.Text,EdtCPF.Text,EdtSenha.Text,CmbGrupo.text,CmbStatus.ItemIndex = 0);
-  Controller.SalvarUsuarioCRUD(Usuario);
+    Usuario := Controller.CriarObjeto(EdtNome.Text,EdtCPF.Text,EdtSenha.Text,CmbGrupo.text,CmbStatus.ItemIndex = 0);
+  Controller.SalvarUsuario(Usuario);
   LimparCampos;
   CarregarGrid;
   finally
@@ -357,70 +357,50 @@ begin
 end;
 
 function TFormCadastroUsuarios.ValidarCampos: Boolean;
+var
+  Controller: TUsuarioController;
+  Usuario: TUsuario;
 begin
-  if EdtNome.Text = '' then begin
-    ShowMessage('O Campo de NOME não pode ficar Vazio');
-    exit;
-  end;
+  Result := False;
 
-  if EdtCPF.Text = '' then begin
-    ShowMessage('O Campo de CPF não pode ficar Vazio');
-    exit;
-  end;
-  if EdtSenha.Text = '' then begin
-    ShowMessage('O Campo de SENHA não pode ficar Vazio');
-    exit;
-  end;
-  if Length(EdtSenha.Text) < 5 then begin
-    ShowMessage('A senha deve Conter Pelo menos "5" Caracteres');
-    exit;
-  end;
-  if EdtSenha.Text <> EdtConfirmarSenha.Text then begin
-    ShowMessage('As Senhas não coincidem');
-    exit;
-  end;
-  if CmbStatus.ItemIndex = -1 then begin
-    ShowMessage('Selecione o STATUS');
+  if EdtNome.Text = '' then
+  begin
+    ShowMessage('O Campo de NOME não pode ficar Vazio');
     Exit;
   end;
-  if (EdtSenha.Text ='') and (EdtConfirmarSenha.Text = '') then begin
-  end;
-  Result := True;
-end;
 
-
-function TFormCadastroUsuarios.ValidarCamposCRUD: Boolean;
-var
-  Controller : TUsuarioController;
-  Usuario : TUsuario;
-begin
-   if EdtNome.Text = '' then begin
-    ShowMessage('O Campo de NOME não pode ficar Vazio');
-    exit;
-  end;
-
-  if EdtCPF.Text = '' then begin
+  if EdtCPF.Text = '' then
+  begin
     ShowMessage('O Campo de CPF não pode ficar Vazio');
-    exit;
+    Exit;
   end;
-    if (EdtSenha.Text ='')  and (EdtConfirmarSenha.Text='') then begin
-      try
-        Controller := TUsuarioController.Create;
-        Usuario := TUsuario.Create;
-        Controller.EditarUsuarioComSenha(Usuario);
-         CarregarGrid;
-         LimparCampos;
-         exit;
-      finally
-      Controller.free;
-      end;
+
+  if (EdtSenha.Text <> '') and (EdtConfirmarSenha.Text <> '') then
+  begin
+    if EdtSenha.Text <> EdtConfirmarSenha.Text then
+    begin
+      ShowMessage('As Senhas não coincidem');
+      Exit;
+    end;
+
+    try
+      Controller := TUsuarioController.Create;
+      Usuario := TUsuario.Create;
+      Controller.EditarUsuarioComSenha(Usuario);
+      CarregarGrid;
+      LimparCampos;
+    finally
+      Controller.Free;
+      Usuario.Free;
+    end;
+
+    Result := True;
+    Exit;
   end;
-  if EdtSenha.Text <> EdtConfirmarSenha.Text then begin
-    ShowMessage('As Senhas não coincidem');
-    exit;
-  end;
+
   Result := True;
 end;
+
 
 procedure TFormCadastroUsuarios.DeletarUsuarios;
   var

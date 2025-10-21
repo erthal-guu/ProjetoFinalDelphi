@@ -15,7 +15,6 @@ type
   public
     procedure ShowLogin;
     procedure ShowHome;
-    procedure ShowCadastro;
   end;
 
 var
@@ -23,16 +22,13 @@ var
 
 implementation
 
-uses uFormCadastroView, uFormLoginView,uFormHomeView;
+uses
+  uFormLoginView,uFormHomeView;
 
 {$R *.dfm}
 
 { TFormMain }
 
-procedure TFormMain.ShowCadastro;
-begin
-  FormCadastro.Show;
-end;
 
 procedure TFormMain.ShowHome;
 begin

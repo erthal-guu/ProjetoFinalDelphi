@@ -4942,49 +4942,6 @@ object FormLogin: TFormLogin
             BevelOuter = bvNone
             TabOrder = 1
           end
-          object PnlCadastrar: TPanel
-            Left = 20
-            Top = 516
-            Width = 285
-            Height = 65
-            BevelOuter = bvNone
-            TabOrder = 2
-            object LblLogin: TLabel
-              Left = 0
-              Top = 0
-              Width = 151
-              Height = 65
-              Margins.Right = 0
-              Align = alLeft
-              Caption = 'N'#227'o tem uma conta ?'
-              ExplicitHeight = 21
-            end
-            object LblCadastro: TLabel
-              AlignWithMargins = True
-              Left = 155
-              Top = 0
-              Width = 82
-              Height = 65
-              Cursor = crHandPoint
-              Margins.Left = 4
-              Margins.Top = 0
-              Margins.Right = 0
-              Margins.Bottom = 0
-              Align = alLeft
-              Caption = 'Cadastre-se'
-              Color = clCornflowerblue
-              Font.Charset = DEFAULT_CHARSET
-              Font.Color = clBlue
-              Font.Height = -16
-              Font.Name = 'Segoe UI'
-              Font.Style = [fsUnderline]
-              ParentColor = False
-              ParentFont = False
-              Transparent = True
-              OnClick = LblCadastroClick
-              ExplicitHeight = 21
-            end
-          end
         end
       end
     end

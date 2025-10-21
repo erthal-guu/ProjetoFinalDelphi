@@ -415,7 +415,7 @@ object FormCadastroUsuarios: TFormCadastroUsuarios
               BevelOuter = bvNone
               TabOrder = 0
               object LblStatus: TLabel
-                Left = 6
+                Left = 3
                 Top = 8
                 Width = 42
                 Height = 17
@@ -529,7 +529,13 @@ object FormCadastroUsuarios: TFormCadastroUsuarios
                 BevelInner = bvNone
                 BevelOuter = bvNone
                 EditMask = '999.999.999-99'
+                Font.Charset = DEFAULT_CHARSET
+                Font.Color = clWindowText
+                Font.Height = -19
+                Font.Name = 'Segoe UI'
+                Font.Style = []
                 MaxLength = 14
+                ParentFont = False
                 TabOrder = 0
                 Text = '   .   .   -  '
                 OnClick = EdtCPFClick
@@ -627,7 +633,7 @@ object FormCadastroUsuarios: TFormCadastroUsuarios
               TabOrder = 5
               object LblGrupo: TLabel
                 AlignWithMargins = True
-                Left = 6
+                Left = 3
                 Top = 7
                 Width = 44
                 Height = 17
@@ -679,8 +685,8 @@ object FormCadastroUsuarios: TFormCadastroUsuarios
                 AlignWithMargins = True
                 Left = 4
                 Top = 4
-                Width = 40
-                Height = 20
+                Width = 102
+                Height = 23
                 Margins.Right = 130
                 Align = alClient
                 Alignment = taCenter
@@ -694,6 +700,8 @@ object FormCadastroUsuarios: TFormCadastroUsuarios
                 ParentColor = False
                 ParentFont = False
                 OnClick = LblEnviarClick
+                ExplicitWidth = 40
+                ExplicitHeight = 20
               end
             end
             object PnlButtonAtualizar: TPanel
@@ -715,8 +723,8 @@ object FormCadastroUsuarios: TFormCadastroUsuarios
                 AlignWithMargins = True
                 Left = 3
                 Top = 3
-                Width = 59
-                Height = 20
+                Width = 101
+                Height = 25
                 Align = alClient
                 Alignment = taCenter
                 Caption = 'Atualizar'
@@ -729,6 +737,8 @@ object FormCadastroUsuarios: TFormCadastroUsuarios
                 ParentColor = False
                 ParentFont = False
                 OnClick = LblAtualizarClick
+                ExplicitWidth = 59
+                ExplicitHeight = 20
               end
             end
           end
@@ -1432,7 +1442,7 @@ object FormCadastroUsuarios: TFormCadastroUsuarios
             AlignWithMargins = True
             Left = 4
             Top = 11
-            Width = 109
+            Width = 840
             Height = 32
             Margins.Top = 10
             Align = alTop
@@ -1444,6 +1454,7 @@ object FormCadastroUsuarios: TFormCadastroUsuarios
             Font.Name = 'Segoe UI'
             Font.Style = [fsBold]
             ParentFont = False
+            ExplicitWidth = 109
           end
           object ImgFechar: TImage
             Left = 800

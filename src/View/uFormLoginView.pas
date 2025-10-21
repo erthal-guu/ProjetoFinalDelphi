@@ -22,9 +22,6 @@ type
     LblNome: TLabel;
     EdtCPF: TMaskEdit;
     PnlLabel: TPanel;
-    PnlCadastrar: TPanel;
-    LblLogin: TLabel;
-    LblCadastro: TLabel;
     PnlButton: TPanel;
     EdtSenha: TEdit;
     PnlCheckBox: TPanel;
@@ -67,7 +64,6 @@ procedure TFormLogin.LblCadastroClick(Sender: TObject);
   MainController : TMainController;
 begin
   MainController := TMainController.Create;
-  MainController.showCadastro;
   Application.ProcessMessages;
   Self.hide
 end;

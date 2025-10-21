@@ -129,10 +129,6 @@
         <DelphiCompile Include="$(MainSource)">
             <MainSource>MainSource</MainSource>
         </DelphiCompile>
-        <DCCReference Include="src\View\uFormCadastroView.pas">
-            <Form>FormCadastro</Form>
-            <FormType>dfm</FormType>
-        </DCCReference>
         <DCCReference Include="src\repository\UsuarioCadastrorepository.pas"/>
         <DCCReference Include="src\Services\UsuarioCadastroService.pas"/>
         <DCCReference Include="src\controller\UsuarioCadastroController.pas"/>
@@ -217,8 +213,8 @@
         <DCCReference Include="src\repository\ServiçoCadastroRepository.pas"/>
         <DCCReference Include="src\Services\ServiçoCadastroService.pas"/>
         <DCCReference Include="src\controller\ServiçoCadastroController.pas"/>
-        <DCCReference Include="LogTxt.pas"/>
         <DCCReference Include="src\session\uSession.pas"/>
+        <DCCReference Include="src\Logs\LogTxt.pas"/>
         <BuildConfiguration Include="Base">
             <Key>Base</Key>
         </BuildConfiguration>

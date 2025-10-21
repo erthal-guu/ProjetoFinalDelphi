@@ -19,9 +19,5 @@ object FormMain: TFormMain
     Height = 646
     Align = alClient
     TabOrder = 0
-    ExplicitLeft = 472
-    ExplicitTop = 320
-    ExplicitWidth = 185
-    ExplicitHeight = 41
   end
 end

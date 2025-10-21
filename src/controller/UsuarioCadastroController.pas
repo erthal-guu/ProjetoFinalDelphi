@@ -10,9 +10,7 @@ type TUsuarioController = class
       procedure EditarUsuario(Usuario: TUsuario);
       procedure EditarUsuarioComSenha(Usuario: TUsuario);
       function ListarUsuarios: TDataSet;
-      function CriarObjeto(aNome, aCPF, aSenha: String): TUsuario;
-      function CriarObjetoCRUD(aNome, aCPF, aSenha,aGrupo: String ; aAtivo:Boolean): TUsuario;
-      procedure SalvarUsuarioCRUD(UsuarioDTO: TUsuario);
+      function CriarObjeto(aNome, aCPF, aSenha,aGrupo: String ; aAtivo:Boolean): TUsuario;
       procedure DeletarUsuarios(const aId :Integer);
       procedure RestaurarUsuarios(const aId :Integer);
       Function PesquisarUsuarios(const aFiltro:String):TDataset;
@@ -36,18 +34,11 @@ begin
   Result := TUsuario.Create;
   Result.setNome(aNome);
   Result.setCPF(aCPF);
-  Result.setSenha(aSenha);;
-end;
-
-function TUsuarioController.CriarObjetoCRUD(aNome, aCPF, aSenha,aGrupo: String ; aAtivo:Boolean): TUsuario;
-begin
-  Result := TUsuario.Create;
-  Result.setNome(aNome);
-  Result.setCPF(aCPF);
   Result.setSenha(aSenha);
   Result.setGrupo(aGrupo);
-  Result.setAtivo(aAtivo);
+  Result.setAtivo(aAtivo)
 end;
+
 
 procedure TUsuarioController.DeletarUsuarios(const aId :Integer);
 begin
@@ -81,10 +72,6 @@ begin
   Result := Service.SalvarUsuario(Usuario);
 end;
 
-procedure TUsuarioController.SalvarUsuarioCRUD(UsuarioDTO: TUsuario);
-begin
-  Service.SalvarUsuarioCRUD(UsuarioDTO);
-end;
 procedure TUsuarioController.RestaurarUsuarios(const aId :Integer);
 begin
   Service.RestaurarUsuarios(aId);

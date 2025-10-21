@@ -4,7 +4,6 @@ program ProjetoFinalDelphi;
 
 uses
   Vcl.Forms,
-  uFormCadastroView in 'src\View\uFormCadastroView.pas' {FormCadastro},
   UsuarioCadastrorepository in 'src\repository\UsuarioCadastrorepository.pas',
   UsuarioCadastroService in 'src\Services\UsuarioCadastroService.pas',
   UsuarioCadastroController in 'src\controller\UsuarioCadastroController.pas',
@@ -50,8 +49,8 @@ uses
   ServiçoCadastroRepository in 'src\repository\ServiçoCadastroRepository.pas',
   ServiçoCadastroService in 'src\Services\ServiçoCadastroService.pas',
   ServiçoCadastroController in 'src\controller\ServiçoCadastroController.pas',
-  LogTxt in 'LogTxt.pas',
-  uSession in 'src\session\uSession.pas';
+  uSession in 'src\session\uSession.pas',
+  LogTxt in 'src\Logs\LogTxt.pas';
 
 {$R *.res}
 
@@ -60,7 +59,6 @@ begin
   Application.MainFormOnTaskbar := True;
   Application.CreateForm(TFormLogin, FormLogin);
   Application.CreateForm(TFormHome, FormHome);
-  Application.CreateForm(TFormCadastro, FormCadastro);
   Application.CreateForm(TFormCadastroUsuarios, FormCadastroUsuarios);
   Application.CreateForm(TFormMain, FormMain);
   Application.CreateForm(TDataModule1, DataModule1);
