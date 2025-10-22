@@ -214,7 +214,7 @@
         <DCCReference Include="src\Services\ServiçoCadastroService.pas"/>
         <DCCReference Include="src\controller\ServiçoCadastroController.pas"/>
         <DCCReference Include="src\session\uSession.pas"/>
-        <DCCReference Include="src\Logs\LogTxt.pas"/>
+        <DCCReference Include="src\Logs\Logs.pas"/>
         <BuildConfiguration Include="Base">
             <Key>Base</Key>
         </BuildConfiguration>
