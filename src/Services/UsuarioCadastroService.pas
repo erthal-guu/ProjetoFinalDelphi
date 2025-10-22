@@ -5,7 +5,7 @@ interface
 uses
   uUsuario, UsuarioCadastroRepository, uDMConexao, System.SysUtils,
   uMainController, FireDAC.Comp.Client, Data.DB, BCrypt, Vcl.Dialogs,
-  System.Classes, LogTxt, uSession;
+  System.Classes, Logs, uSession;
 
 type
   TUsuarioService = class

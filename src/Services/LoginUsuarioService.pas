@@ -3,7 +3,7 @@ unit LoginUsuarioService;
 interface
 
 uses
-  uUsuario,UsuarioLoginRepository,uDMConexao,Vcl.Dialogs,BCrypt,uSession,logtxt,System.IOUtils,System.SysUtils;
+  uUsuario,UsuarioLoginRepository,uDMConexao,Vcl.Dialogs,BCrypt,uSession,Logs,System.IOUtils,System.SysUtils;
 
 type TUsuarioLoginService = class
 public

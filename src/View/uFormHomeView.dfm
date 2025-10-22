@@ -1397,7 +1397,7 @@
         303030080943100606060606216108C2C0C0C0C020240C411818181818848421
         0803030303839030046160606060101286200C0C0C0C0C42C210848181818141
         48FC1F183E060B081BAEE00000000049454E44AE426082}
-      ExplicitLeft = -9
+      ExplicitLeft = 0
       ExplicitTop = 0
     end
   end
@@ -1456,9 +1456,9 @@
   object MainMenu: TMainMenu
     Left = 960
     object Cadastros: TMenuItem
-      Caption = 'Cadastros'
+      Caption = '&Cadastros'
       object Usuarios: TMenuItem
-        Caption = 'Usuarios'
+        Caption = '&Usuarios'
         OnClick = UsuariosClick
       end
       object Clientes: TMenuItem
@@ -1491,7 +1491,7 @@
       end
     end
     object Relatorios: TMenuItem
-      Caption = 'Relat'#243'rios'
+      Caption = '&Relat'#243'rios'
     end
     object Financeiro: TMenuItem
       Caption = 'Financeiro'

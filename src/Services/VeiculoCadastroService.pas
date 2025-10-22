@@ -3,7 +3,7 @@ unit VeiculoCadastroService;
 interface
 uses
   uVeiculo, VeiculoCadastroRepository, uDMConexao, System.SysUtils,
-  FireDAC.Comp.Client, Data.DB, System.Classes, LogTxt, uSession;
+  FireDAC.Comp.Client, Data.DB, System.Classes, Logs, uSession;
 
 type
   TVeiculoService = class

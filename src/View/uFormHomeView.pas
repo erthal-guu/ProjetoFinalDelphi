@@ -11,9 +11,10 @@ uses
   uFormCadastroFuncionariosView,
   uFormCadastroFornecedoresView,
   uFormCadastroVeiculosView,
+
   uFormCadastroPeçasView,
   uFormCadastroServiçosView,
-  uFormCadastroOrdensServiçoView, Vcl.Menus, Vcl.Imaging.pngimage, Vcl.StdCtrls,LogTxt;
+  uFormCadastroOrdensServiçoView, Vcl.Menus, Vcl.Imaging.pngimage, Vcl.StdCtrls,Logs;
 
 
 type

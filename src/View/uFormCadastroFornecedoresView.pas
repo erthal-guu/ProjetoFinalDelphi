@@ -6,7 +6,7 @@ uses
   Winapi.Windows, Winapi.Messages, System.SysUtils, System.Variants, System.Classes,
   Vcl.Graphics, Vcl.Controls, Vcl.Forms, Vcl.Dialogs, Data.DB, Vcl.WinXCtrls,
   Vcl.Grids, Vcl.DBGrids, Vcl.Buttons, Vcl.Mask, Vcl.StdCtrls, Vcl.Imaging.pngimage,
-  Vcl.ExtCtrls, Vcl.ComCtrls, FornecedorCadastroService, FornecedorCadastroController, uFornecedor;
+  Vcl.ExtCtrls, Vcl.ComCtrls, FornecedorCadastroService, FornecedorCadastroController, uFornecedor,PeçasCadastroService;
 
 type
   TFormCadastroFornecedores = class(TForm)
@@ -33,7 +33,6 @@ type
     ImgRestaurar: TImage;
     PnlMainRestaurar: TPanel;
     PnlContainerRestaurar: TPanel;
-    DBGridRestaurar: TDBGrid;
     PnlBackgrounEdit: TPanel;
     DBGridMain: TDBGrid;
     PnlDesignEdit: TPanel;
@@ -66,17 +65,29 @@ type
     EdtCidade: TEdit;
     EdtEstado: TEdit;
     BtnVincularPeças: TSpeedButton;
+    DBGridRestaurar: TDBGrid;
     PnlVincularPeça: TPanel;
-    ListBoxVincular: TListBox;
-    Vincular: TPanel;
+    Image3: TImage;
+    Panel2: TPanel;
+    Panel1: TPanel;
+    Label12: TLabel;
+    Image2: TImage;
+    ComboBox1: TComboBox;
+    PnlButtonVincular: TPanel;
     LblVincular: TLabel;
-    PnlHeaderVincular: TPanel;
+    PnlFooter: TPanel;
+    Label13: TLabel;
+    CheckBoxPeçasVinculadas: TCheckBox;
+    PnlBackgroundVincular: TPanel;
+    DBGridVincular: TDBGrid;
+    PnlButtonDesvincular: TPanel;
+    LblDesvincular: TLabel;
 
     procedure BtnAdicionarClick(Sender: TObject);
     procedure BtnPesquisarClick(Sender: TObject);
     procedure FormCreate(Sender: TObject);
     procedure BtnRestaurarClick(Sender: TObject);
-    procedure ImgFecharClick(Sender: TObject);
+    procedure ImgFecharVincularClick(Sender: TObject);
     procedure BtnCancelarClick(Sender: TObject);
     procedure BtnSairClick(Sender: TObject);
     procedure LblEnviarClick(Sender: TObject);
@@ -100,6 +111,9 @@ type
     procedure EdtCNPJClick(Sender: TObject);
     procedure EdtCEPClick(Sender: TObject);
     procedure BtnVincularPeçasClick(Sender: TObject);
+    procedure ImageFecharVincularClick(Sender: TObject);
+    procedure CheckBoxPeçasVinculadasClick(Sender: TObject);
+    procedure CarregarGridVincular;
 
   private
     { Private declarations }
@@ -193,6 +207,44 @@ begin
   finally
     FornecedorService.Free;
   end;
+end;
+
+procedure TFormCadastroFornecedores.CarregarGridVincular;
+var
+  ServicePecas : TPecaService;
+  begin
+  try
+  ServicePecas := TPecaService.create;
+  DataSourceMain.DataSet := ServicePecas.ListarPecas;
+  DBGridVincular.DataSource := DataSourceMain;
+    if DBGridVincular.Columns.Count >= 8 then
+    begin
+      DBGridVincular.Columns[0].Title.Caption := 'Id';
+      DBGridVincular.Columns[1].Title.Caption := 'Nome';
+      DBGridVincular.Columns[2].Title.Caption := 'Descrição';
+      DBGridVincular.Columns[3].Title.Caption := 'Código Interno';
+      DBGridVincular.Columns[4].Title.Caption := 'Categoria';
+      DBGridVincular.Columns[5].Title.Caption := 'Preço';
+      DBGridVincular.Columns[6].Title.Caption := 'Unidade';
+      DBGridVincular.Columns[7].Title.Caption := 'Modelo';
+      DBGridVincular.Columns[8].Title.Caption := 'Status';
+      for var i := 0 to 8 do begin
+        DBGridVincular.Columns[i].Title.Alignment := taCenter;
+        DBGridVincular.Columns[i].Alignment := taCenter;
+        DBGridVincular.Columns[i].Width := 140;
+        DBGridVincular.Columns[i].Title.Font.Size := 15;
+      end;
+      DBGridVincular.Columns[0].Width := 40;
+    end;
+  finally
+    ServicePecas.Free;
+  end;
+end;
+
+procedure TFormCadastroFornecedores.CheckBoxPeçasVinculadasClick(Sender: TObject);
+begin
+  PnlButtonVincular.Visible := not PnlButtonVincular.Visible;
+  PnlButtonDesvincular.Visible := not PnlButtonDesvincular.Visible;
 end;
 
 procedure TFormCadastroFornecedores.EdtCEPChange(Sender: TObject);
@@ -357,6 +409,7 @@ end;
 procedure TFormCadastroFornecedores.BtnRestaurarClick(Sender: TObject);
 begin
   PnlRestaurar.Visible := True;
+  PnlVincularPeça.Visible := False;
   CarregarGridRestaurar;
 end;
 
@@ -392,7 +445,12 @@ begin
   CarregarGridRestaurar;
 end;
 
-procedure TFormCadastroFornecedores.ImgFecharClick(Sender: TObject);
+procedure TFormCadastroFornecedores.ImageFecharVincularClick(Sender: TObject);
+begin
+  PnlVincularPeça.Visible := false;
+end;
+
+procedure TFormCadastroFornecedores.ImgFecharVincularClick(Sender: TObject);
 begin
   PnlRestaurar.Visible := False;
   CarregarGrid;
@@ -407,6 +465,7 @@ end;
 procedure TFormCadastroFornecedores.BtnVincularPeçasClick(Sender: TObject);
 begin
   PnlVincularPeça.Visible := True;
+  CarregarGridVincular;
 end;
 
 procedure TFormCadastroFornecedores.BuscarCEP;

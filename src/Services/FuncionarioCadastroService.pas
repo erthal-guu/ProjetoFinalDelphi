@@ -5,7 +5,7 @@ interface
 uses
   uFuncionario, FuncionarioCadastroRepository, uDMConexao, System.SysUtils,
   uMainController, FireDAC.Comp.Client, Data.DB, Vcl.Dialogs, IdHTTP, System.JSON,
-  IdSSL, IdSSLOpenSSL, IdSSLOpenSSLHeaders, uSession, LogTxt;
+  IdSSL, IdSSLOpenSSL, IdSSLOpenSSLHeaders, uSession, Logs;
 
 type
   TFuncionarioService = class

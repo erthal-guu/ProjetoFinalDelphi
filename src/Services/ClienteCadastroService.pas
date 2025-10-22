@@ -3,7 +3,7 @@ unit ClienteCadastroService;
 interface
 uses
   uCliente, ClienteCadastroRepository, uDMConexao, System.SysUtils, uMainController,
-  FireDAC.Comp.Client, Data.DB, BCrypt, Vcl.Dialogs, LogTxt, uSession, System.Classes;
+  FireDAC.Comp.Client, Data.DB, BCrypt, Vcl.Dialogs, Logs, uSession, System.Classes;
 
 type
   TClienteService = class

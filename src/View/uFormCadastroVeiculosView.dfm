@@ -1017,8 +1017,7 @@
                 CA2F0F0D6D7D5FB727191F0B1DE3360EE018B77100C7B88D0338C66D1CC0316E
                 E3008E711B07708CDB388063DCC6011CE3360EE018B77100C7B88D0338C6EDFF
                 0346549848A99E47470000000049454E44AE426082}
-              ExplicitLeft = 962
-              ExplicitHeight = 95
+              ExplicitLeft = 960
             end
             object PnlEdit: TPanel
               Left = 1
@@ -1148,7 +1147,6 @@
                 Color = 9521152
                 ParentBackground = False
                 TabOrder = 0
-                ExplicitLeft = 801
                 object LblEnviar: TLabel
                   AlignWithMargins = True
                   Left = 4
@@ -1247,7 +1245,13 @@
                 BevelInner = bvNone
                 BevelOuter = bvNone
                 EditMask = 'LLL9L99'
+                Font.Charset = DEFAULT_CHARSET
+                Font.Color = clWindowText
+                Font.Height = -19
+                Font.Name = 'Segoe UI'
+                Font.Style = []
                 MaxLength = 7
+                ParentFont = False
                 TabOrder = 4
                 Text = '       '
               end
@@ -1337,7 +1341,8 @@
                   ParentColor = False
                   ParentFont = False
                   OnClick = LblAtualizarClick
-                  ExplicitLeft = 3
+                  ExplicitWidth = 59
+                  ExplicitHeight = 20
                 end
               end
               object CmbStatus: TComboBox
@@ -1361,8 +1366,6 @@
                 Items.Strings = (
                   'Ativo'
                   'Inativo')
-                ExplicitLeft = 784
-                ExplicitTop = 62
               end
             end
           end

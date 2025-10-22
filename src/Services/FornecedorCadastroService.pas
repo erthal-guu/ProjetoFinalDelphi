@@ -5,7 +5,7 @@ interface
 uses
   uFornecedor, FornecedorCadastroRepository, uDMConexao, System.SysUtils,
   FireDAC.Comp.Client, Data.DB, IdHTTP, System.JSON,
-  IdSSL, IdSSLOpenSSL, IdSSLOpenSSLHeaders, LogTxt, uSession;
+  IdSSL, IdSSLOpenSSL, IdSSLOpenSSLHeaders, Logs, uSession,PeçasCadastroRepository;
 
 type
   TFornecedorService = class
@@ -24,6 +24,7 @@ type
     procedure RestaurarFornecedor(const aId: Integer);
     function PesquisarFornecedores(const aFiltro: String): TDataSet;
     procedure BuscarCep(const ACep: string; out aRua, aBairro, aCidade, aEstado: string);
+
   end;
 
 implementation

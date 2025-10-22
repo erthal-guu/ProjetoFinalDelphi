@@ -141,6 +141,7 @@ begin
   EdtPesquisar.Visible := True;
   PnlDesignEdit.Visible := false;
   PnlBackgroundEdit.Visible := false;
+  EdtPesquisar.SetFocus;
 end;
 
 

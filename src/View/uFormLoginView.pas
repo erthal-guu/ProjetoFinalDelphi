@@ -35,6 +35,7 @@ type
     procedure LblCadastroClick(Sender: TObject);
     procedure RadioButton1Click(Sender: TObject);
     procedure CheckBox1Click(Sender: TObject);
+    procedure EdtCPFClick(Sender: TObject);
   private
     { Private declarations }
   public
@@ -57,6 +58,11 @@ begin
    end else begin
     EdtSenha.PasswordChar := #0;
 end;
+end;
+
+procedure TFormLogin.EdtCPFClick(Sender: TObject);
+begin
+  EdtCPF.SelStart := 0;
 end;
 
 procedure TFormLogin.LblCadastroClick(Sender: TObject);

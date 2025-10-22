@@ -4877,6 +4877,7 @@ object FormLogin: TFormLogin
               MaxLength = 14
               TabOrder = 0
               Text = '   .   .   -  '
+              OnClick = EdtCPFClick
             end
             object PnlButton: TPanel
               AlignWithMargins = True

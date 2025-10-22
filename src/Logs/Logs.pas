@@ -1,4 +1,4 @@
-unit LogTxt;
+unit Logs;
 
 interface
 
