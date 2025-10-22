@@ -3,7 +3,7 @@ unit VeiculoCadastroService;
 interface
 uses
   uVeiculo, VeiculoCadastroRepository, uDMConexao, System.SysUtils,
-  FireDAC.Comp.Client, Data.DB, System.Classes;
+  FireDAC.Comp.Client, Data.DB, System.Classes, LogTxt, uSession;
 
 type
   TVeiculoService = class
@@ -60,14 +60,68 @@ begin
   end;
 end;
 
-procedure TVeiculoService.DeletarVeiculo(const aId: Integer);
+function TVeiculoService.SalvarVeiculo(Veiculo: TVeiculo): Boolean;
+var
+  IDUsuarioLogado: Integer;
 begin
-  Repository.DeletarVeiculo(aId);
+  Result := False;
+  IDUsuarioLogado := uSession.UsuarioLogadoID;
+
+  if not ValidarVeiculo(Veiculo) then
+    raise Exception.Create('Dados do veículo inválidos!');
+
+  if Repository.ExistePlaca(Veiculo) then
+    raise Exception.Create('Já existe um veículo cadastrado com esta placa!');
+
+  if Repository.ExisteChassi(Veiculo) then
+    raise Exception.Create('Já existe um veículo cadastrado com este chassi!');
+
+  Repository.InserirVeiculo(Veiculo);
+  SalvarLog(Format('CADASTRO - ID: %d cadastrou veículo: %s (Placa: %s)',
+    [IDUsuarioLogado, Veiculo.getModelo, Veiculo.getPlaca]));
+  Result := True;
 end;
 
 procedure TVeiculoService.EditarVeiculo(Veiculo: TVeiculo);
+var
+  IDUsuarioLogado: Integer;
 begin
+  IDUsuarioLogado := uSession.UsuarioLogadoID;
   Repository.EditarVeiculo(Veiculo);
+  SalvarLog(Format('EDITAR - ID: %d editou veículo: %s (Placa: %s)',
+    [IDUsuarioLogado, Veiculo.getModelo, Veiculo.getPlaca]));
+end;
+
+procedure TVeiculoService.DeletarVeiculo(const aId: Integer);
+var
+  IDUsuarioLogado: Integer;
+begin
+  IDUsuarioLogado := uSession.UsuarioLogadoID;
+  Repository.DeletarVeiculo(aId);
+  SalvarLog(Format('DELETAR - ID: %d deletou veículo ID: %d',
+    [IDUsuarioLogado, aId]));
+end;
+
+procedure TVeiculoService.RestaurarVeiculo(const aId: Integer);
+var
+  IDUsuarioLogado: Integer;
+begin
+  IDUsuarioLogado := uSession.UsuarioLogadoID;
+  Repository.RestaurarVeiculo(aId);
+  SalvarLog(Format('RESTAURAR - ID: %d restaurou veículo ID: %d',
+    [IDUsuarioLogado, aId]));
+end;
+
+function TVeiculoService.ValidarVeiculo(VeiculoValido: TVeiculo): Boolean;
+begin
+  Result :=
+    (VeiculoValido.getModelo <> '') and
+    (VeiculoValido.getMarca <> '') and
+    (VeiculoValido.getChassi <> '') and
+    (VeiculoValido.getPlaca <> '') and
+    (VeiculoValido.getCor <> '') and
+    (VeiculoValido.getFabricacao <> '') and
+    (VeiculoValido.getCliente > 0);
 end;
 
 function TVeiculoService.ListarVeiculos: TDataSet;
@@ -85,49 +139,10 @@ begin
   Result := Repository.PesquisarVeiculos(aFiltro);
 end;
 
-procedure TVeiculoService.RestaurarVeiculo(const aId: Integer);
-begin
-  Repository.RestaurarVeiculo(aId);
-end;
-
-function TVeiculoService.SalvarVeiculo(Veiculo: TVeiculo): Boolean;
-begin
-  Result := False;
-
-  if not ValidarVeiculo(Veiculo) then
-  begin
-    raise Exception.Create('Dados do veículo inválidos!');
-  end;
-
-  if Repository.ExistePlaca(Veiculo) then
-  begin
-    raise Exception.Create('Já existe um veículo cadastrado com esta placa!');
-  end;
-
-  if Repository.ExisteChassi(Veiculo) then
-  begin
-    raise Exception.Create('Já existe um veículo cadastrado com este chassi!');
-  end;
-
-  Repository.InserirVeiculo(Veiculo);
-  Result := True;
-end;
-
-function TVeiculoService.ValidarVeiculo(VeiculoValido: TVeiculo): Boolean;
-begin
-  Result :=
-    (VeiculoValido.getModelo <> '') and
-    (VeiculoValido.getMarca <> '') and
-    (VeiculoValido.getChassi <> '') and
-    (VeiculoValido.getPlaca <> '') and
-    (VeiculoValido.getCor <> '') and
-    (VeiculoValido.getFabricacao <> '') and
-    (VeiculoValido.getCliente > 0);
-end;
-
 function TVeiculoService.CarregarClientes: TStringList;
 begin
   Result := Repository.CarregarClientes;
 end;
 
 end.
+

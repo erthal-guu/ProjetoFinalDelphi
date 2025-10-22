@@ -4,8 +4,8 @@ interface
 
 uses
   uFuncionario, FuncionarioCadastroRepository, uDMConexao, System.SysUtils,
-  uMainController, FireDAC.Comp.Client, Data.DB, Vcl.Dialogs,IdHTTP, System.JSON,
-    IdSSL, IdSSLOpenSSL, IdSSLOpenSSLHeaders;
+  uMainController, FireDAC.Comp.Client, Data.DB, Vcl.Dialogs, IdHTTP, System.JSON,
+  IdSSL, IdSSLOpenSSL, IdSSLOpenSSLHeaders, uSession, LogTxt;
 
 type
   TFuncionarioService = class
@@ -62,14 +62,59 @@ begin
   end;
 end;
 
-procedure TFuncionarioService.DeletarFuncionario(const aId: Integer);
+function TFuncionarioService.SalvarFuncionario(Funcionario: TFuncionario): Boolean;
+var
+  IDUsuarioLogado: Integer;
 begin
-  Repository.DeletarFuncionario(aId);
+  Result := False;
+  IDUsuarioLogado := uSession.UsuarioLogadoID;
+
+  if ValidarFuncionario(Funcionario) then
+  begin
+    if not Repository.ExisteCPF(Funcionario) then
+    begin
+      Repository.InserirFuncionario(Funcionario);
+      SalvarLog(Format('CADASTRO - ID: %d cadastrou funcionário: %s (CPF: %s)',
+        [IDUsuarioLogado, Funcionario.getNome, Funcionario.getCPF]));
+      Result := True;
+    end
+    else
+      SalvarLog(Format('CADASTRO - ID: %d falhou ao cadastrar (CPF já existente: %s)',
+        [IDUsuarioLogado, Funcionario.getCPF]));
+  end;
 end;
 
 procedure TFuncionarioService.EditarFuncionario(Funcionario: TFuncionario);
+var
+  IDUsuarioLogado: Integer;
 begin
+  IDUsuarioLogado := uSession.UsuarioLogadoID;
+
   Repository.EditarFuncionario(Funcionario);
+  SalvarLog(Format('EDITAR - ID: %d editou funcionário: %s (CPF: %s)',
+    [IDUsuarioLogado, Funcionario.getNome, Funcionario.getCPF]));
+end;
+
+procedure TFuncionarioService.DeletarFuncionario(const aId: Integer);
+var
+  IDUsuarioLogado: Integer;
+begin
+  IDUsuarioLogado := uSession.UsuarioLogadoID;
+
+  Repository.DeletarFuncionario(aId);
+  SalvarLog(Format('DELETAR - ID: %d deletou funcionário ID: %d',
+    [IDUsuarioLogado, aId]));
+end;
+
+procedure TFuncionarioService.RestaurarFuncionario(const aId: Integer);
+var
+  IDUsuarioLogado: Integer;
+begin
+  IDUsuarioLogado := uSession.UsuarioLogadoID;
+
+  Repository.RestaurarFuncionario(aId);
+  SalvarLog(Format('RESTAURAR - ID: %d restaurou funcionário ID: %d',
+    [IDUsuarioLogado, aId]));
 end;
 
 function TFuncionarioService.ListarFuncionarios: TDataSet;
@@ -85,24 +130,6 @@ end;
 function TFuncionarioService.PesquisarFuncionarios(const aFiltro: String): TDataSet;
 begin
   Result := Repository.PesquisarFuncionarios(aFiltro);
-end;
-
-procedure TFuncionarioService.RestaurarFuncionario(const aId: Integer);
-begin
-  Repository.RestaurarFuncionario(aId);
-end;
-
-function TFuncionarioService.SalvarFuncionario(Funcionario: TFuncionario): Boolean;
-begin
-  Result := False;
-  if ValidarFuncionario(Funcionario) then
-  begin
-    if not Self.Repository.ExisteCPF(Funcionario) then
-    begin
-      Self.Repository.InserirFuncionario(Funcionario);
-      Result := True;
-    end;
-  end;
 end;
 
 function TFuncionarioService.ValidarFuncionario(FuncionarioValido: TFuncionario): Boolean;
@@ -135,9 +162,8 @@ begin
   CepLimpo := StringReplace(CepLimpo, '.', '', [rfReplaceAll]);
   CepLimpo := Trim(CepLimpo);
   if (Length(CepLimpo) <> 8) or (not TryStrToInt(CepLimpo, dummyInt)) then
-  begin
     Exit;
-  end;
+
   IdHTTP := TIdHTTP.Create(nil);
   IdSSL := TIdSSLIOHandlerSocketOpenSSL.Create(nil);
   try
@@ -162,3 +188,4 @@ begin
 end;
 
 end.
+

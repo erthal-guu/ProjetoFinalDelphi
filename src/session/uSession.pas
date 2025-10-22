@@ -7,6 +7,7 @@ uses
 
 var
   UsuarioLogadoID: Integer = 0;
+  UsuarioLogadoNome : String;
 
 implementation
 

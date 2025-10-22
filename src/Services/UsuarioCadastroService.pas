@@ -5,39 +5,39 @@ interface
 uses
   uUsuario, UsuarioCadastroRepository, uDMConexao, System.SysUtils,
   uMainController, FireDAC.Comp.Client, Data.DB, BCrypt, Vcl.Dialogs,
-  System.Classes, LogTxt;
+  System.Classes, LogTxt, uSession;
 
 type
   TUsuarioService = class
   private
     Repository: TCadastroRepository;
   public
-    constructor create;
-    function SalvarUsuario(Usuario : TUsuario): Boolean;
-    function CriarObjeto(aNome, aCPF, aSenha,aGrupo : String; aAtivo:Boolean) : TUsuario;
-    procedure EditarUsuario (Usuario : TUsuario);
-    procedure EditarUsuarioComSenha (Usuario : TUsuario);
-    procedure DeletarUsuarios(const aId :Integer);
-    procedure RestaurarUsuarios(const aId :Integer);
-    function ValidarUsuario(UsuarioValido: TUsuario) : Boolean;
-    function ListarUsuarios : TDataSet;
-    function ListarUsuariosRestaurar : TDataSet;
+    constructor Create;
+    function SalvarUsuario(Usuario: TUsuario): Boolean;
+    function CriarObjeto(aNome, aCPF, aSenha, aGrupo: String; aAtivo: Boolean): TUsuario;
+    procedure EditarUsuario(Usuario: TUsuario);
+    procedure EditarUsuarioComSenha(Usuario: TUsuario);
+    procedure DeletarUsuarios(const aId: Integer);
+    procedure RestaurarUsuarios(const aId: Integer);
+    function ValidarUsuario(UsuarioValido: TUsuario): Boolean;
+    function ListarUsuarios: TDataSet;
+    function ListarUsuariosRestaurar: TDataSet;
     function PesquisarUsuarios(const aFiltro: String): TDataSet;
-    function CarregarGrupos : TStringList;
+    function CarregarGrupos: TStringList;
   end;
 
 implementation
 
 { TUsuarioService }
 
-constructor TUsuarioService.create;
+constructor TUsuarioService.Create;
 begin
   Repository := TCadastroRepository.Create(DataModule1.FDQuery);
 end;
 
-function TUsuarioService.CriarObjeto(aNome, aCPF, aSenha,aGrupo : String; aAtivo:Boolean): TUsuario;
+function TUsuarioService.CriarObjeto(aNome, aCPF, aSenha, aGrupo: String; aAtivo: Boolean): TUsuario;
 var
-  Usuario : TUsuario;
+  Usuario: TUsuario;
 begin
   Usuario := TUsuario.Create;
   Usuario.setNome(aNome);
@@ -57,25 +57,31 @@ end;
 
 function TUsuarioService.SalvarUsuario(Usuario: TUsuario): Boolean;
 var
-  Repo : TCadastroRepository;
+  Repo: TCadastroRepository;
+  IDUsuarioLogado: Integer;
 begin
+  Result := False;
+  IDUsuarioLogado := uSession.UsuarioLogadoID;
+
   if Usuario.getSenha <> '' then
     Usuario.setSenha(TBCrypt.HashPassword(Usuario.getSenha));
 
-  Result := False;
-
-if ValidarUsuario(Usuario) then
-begin
+  if ValidarUsuario(Usuario) then
+  begin
     Repo := TCadastroRepository.Create(DataModule1.FDQuery);
     try
       if not Repo.ExisteCPF(Usuario) then
       begin
-        Repo.inserirUsuario(Usuario);
-        SalvarLog('CADASTRO - Usuário: ' + Usuario.getNome + ' CPF: ' + Usuario.getCPF);
+        Repo.InserirUsuario(Usuario);
+        SalvarLog(Format('CADASTRO - ID: %d cadastrou o usuário: %s (CPF: %s)',
+          [IDUsuarioLogado, Usuario.getNome, Usuario.getCPF]));
         Result := True;
-      end else begin
-        ShowMessage('CPF ja cadastrado ');
-        SalvarLog('CADASTRO - Falha: CPF já existe ' + Usuario.getCPF);
+      end
+      else
+      begin
+        ShowMessage('CPF já cadastrado.');
+        SalvarLog(Format('CADASTRO - ID: %d falhou ao cadastrar (CPF já existente: %s)',
+          [IDUsuarioLogado, Usuario.getCPF]));
       end;
     finally
       Repo.Free;
@@ -84,30 +90,51 @@ begin
 end;
 
 procedure TUsuarioService.EditarUsuario(Usuario: TUsuario);
+var
+  IDUsuarioLogado: Integer;
 begin
+  IDUsuarioLogado := uSession.UsuarioLogadoID;
+
   if Usuario.getSenha <> '' then
     Usuario.setSenha(TBCrypt.HashPassword(Usuario.getSenha));
 
   Repository.EditarUsuario(Usuario);
-  SalvarLog('EDITAR - Usuário: ' + Usuario.getNome + ' CPF: ' + Usuario.getCPF);
+  SalvarLog(Format('EDITAR - ID: %d editou o usuário: %s (CPF: %s)',
+    [IDUsuarioLogado, Usuario.getNome, Usuario.getCPF]));
 end;
 
 procedure TUsuarioService.EditarUsuarioComSenha(Usuario: TUsuario);
+var
+  IDUsuarioLogado: Integer;
 begin
+  IDUsuarioLogado := uSession.UsuarioLogadoID;
+
+  if Usuario.getSenha <> '' then
+    Usuario.setSenha(TBCrypt.HashPassword(Usuario.getSenha));
+
   Repository.EditarUsuarioComSenha(Usuario);
-  SalvarLog('EDITAR COM SENHA - Usuário: ' + Usuario.getNome + ' CPF: ' + Usuario.getCPF);
+  SalvarLog(Format('EDITAR COM SENHA - ID: %d editou o usuário: %s (CPF: %s)',
+    [IDUsuarioLogado, Usuario.getNome, Usuario.getCPF]));
 end;
 
 procedure TUsuarioService.DeletarUsuarios(const aId: Integer);
+var
+  IDUsuarioLogado: Integer;
 begin
-  Repository.DeletarUsuarios(aID);
-  SalvarLog('DELETAR - Usuário ID: ' + IntToStr(aID));
+  IDUsuarioLogado := uSession.UsuarioLogadoID;
+  Repository.DeletarUsuarios(aId);
+  SalvarLog(Format('DELETAR - ID: %d deletou o usuário ID: %d',
+    [IDUsuarioLogado, aId]));
 end;
 
 procedure TUsuarioService.RestaurarUsuarios(const aId: Integer);
+var
+  IDUsuarioLogado: Integer;
 begin
-  Repository.RestaurarUsuarios(aID);
-  SalvarLog('RESTAURAR - Usuário ID: ' + IntToStr(aID));
+  IDUsuarioLogado := uSession.UsuarioLogadoID;
+  Repository.RestaurarUsuarios(aId);
+  SalvarLog(Format('RESTAURAR - ID: %d] restaurou o usuário ID: %d',
+    [IDUsuarioLogado, aId]));
 end;
 
 function TUsuarioService.ListarUsuarios: TDataSet;

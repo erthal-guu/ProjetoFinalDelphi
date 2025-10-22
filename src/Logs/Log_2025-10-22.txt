@@ -1,0 +1,53 @@
+13:50:27 - LOGIN INVÁLIDO - Senha ou CPF incorretos: CPF 111.111.111-11
+13:50:37 - LOGIN INVÁLIDO - Senha ou CPF incorretos: CPF 111.111.111-11
+13:50:51 - LOGIN - Sucesso: Usuário ID 29, Nome: Admin, CPF: 000.000.000-00
+13:51:09 - EDITAR -27 Usuário: Jota CPF: 111.111.111-11
+13:51:19 - RESTAURAR - Usuário ID: 29
+13:57:18 - LOGIN INVÁLIDO - Senha ou CPF incorretos: CPF 000.000.000-00
+13:57:24 - LOGIN - Sucesso: Usuário ID 29, Nome: Admin, CPF: 000.000.000-00
+13:57:47 - EDITAR -29 Usuário: AdminMassa CPF: 000.000.000-00
+14:13:11 - LOGIN INVÁLIDO - Senha ou CPF incorretos: CPF 139.471.969-89
+14:13:19 - LOGIN INVÁLIDO - Senha ou CPF incorretos: CPF 139.471.969-89
+14:13:23 - LOGIN INVÁLIDO - Senha ou CPF incorretos: CPF 139.471.969-89
+14:13:26 - LOGIN - Sucesso: Usuário ID 21, Nome: Gustavo, CPF: 139.471.969-89
+14:13:42 - EDITAR COM SENHA - Usuário:  CPF: 
+14:13:44 - EDITAR - ID: 21Editou usuário:  CPF:    .   .   -  
+14:14:10 - RESTAURAR - Usuário ID: 1
+14:14:34 - EDITAR COM SENHA - Usuário:  CPF: 
+14:14:36 - EDITAR - ID: 21Editou usuário:  CPF:    .   .   -  
+14:14:43 - RESTAURAR - Usuário ID: 1
+14:18:59 - LOGIN INVÁLIDO - Usuário não encontrado: CPF 999.999.999-99
+14:19:07 - LOGIN - Sucesso: Usuário ID 21, Nome: Gustavo, CPF: 139.471.969-89
+14:19:27 - EDITAR - ID: 21Editou usuário: Busta CPF: 794.672.957-07
+14:19:49 - EDITAR - ID: 21Editou usuário: AdminMassa CPF: 000.000.000-00
+14:20:02 - LOGIN - Sucesso: Usuário ID 29, Nome: AdminMassa, CPF: 000.000.000-00
+14:24:25 - LOGIN - Sucesso: Usuário ID 29, Nome: AdminMassa, CPF: 000.000.000-00
+14:25:35 - EDITAR - ID: 29Nome: Editou usuário: Bruno Chefon CPF: 164.917.408-71
+14:26:28 - EDITAR - ID: 29Nome: Editou usuário: Juliana CPF: 146.197.461-97
+14:28:31 - LOGIN - Sucesso: Usuário ID 29, Nome: AdminMassa, CPF: 000.000.000-00
+14:28:40 - EDITAR - ID: 29Editou usuário: Thiago Rocha CPF: 174.986.710-98
+14:34:54 - LOGIN INVÁLIDO - Usuário não encontrado: CPF 999.999.999-99
+14:34:57 - LOGIN INVÁLIDO - Usuário não encontrado: CPF 999.999.999-99
+14:35:01 - LOGIN INVÁLIDO - Usuário não encontrado: CPF 999.999.999-99
+14:35:15 - LOGIN - Sucesso: Usuário ID 29, Nome: AdminMassa, CPF: 000.000.000-00
+14:35:35 - EDITAR - ID: 29] editou o usuário: Juliana Penis (CPF: 146.197.461-97)
+14:40:50 - LOGIN - Sucesso: Usuário ID 29, Nome: AdminMassa, CPF: 000.000.000-00
+14:40:53 - LISTAR CLIENTES - ID: 29 solicitou listagem de clientes
+14:41:03 - EDITAR CLIENTE - ID: 29 editou o cliente: Carlos Gay (CPF: 333.444.555-22)
+14:41:03 - LISTAR CLIENTES - ID: 29 solicitou listagem de clientes
+14:41:03 - LISTAR CLIENTES - ID: 29 solicitou listagem de clientes
+14:42:39 - LOGIN - Sucesso: Usuário ID 29, Nome: AdminMassa, CPF: 000.000.000-00
+14:43:02 - EDITAR CLIENTE - ID: 29 editou o cliente: Gabriel Kuchma (CPF: 444.555.666-33)
+14:43:08 - PESQUISAR CLIENTES - ID: 29 pesquisou por: G
+14:43:08 - PESQUISAR CLIENTES - ID: 29 pesquisou por: Ga
+14:43:08 - PESQUISAR CLIENTES - ID: 29 pesquisou por: Gab
+14:43:09 - PESQUISAR CLIENTES - ID: 29 pesquisou por: Gabr
+14:43:09 - PESQUISAR CLIENTES - ID: 29 pesquisou por: Gabru
+14:43:09 - PESQUISAR CLIENTES - ID: 29 pesquisou por: Gabr
+14:47:19 - LOGIN INVÁLIDO - Senha ou CPF incorretos: CPF 000.000.000-00
+14:47:26 - LOGIN - Sucesso: Usuário ID 29, Nome: AdminMassa, CPF: 000.000.000-00
+14:47:45 - EDITAR - ID: 29 editou funcionário: Ana Banana (CPF: 555.666.777-88)
+14:50:21 - LOGIN - Sucesso: Usuário ID 29, Nome: AdminMassa, (CPF: 000.000.000-00 )
+14:55:46 - LOGIN - Sucesso: Usuário ID 29, Nome: AdminMassa, (CPF: 000.000.000-00)
+14:57:39 - EDITAR - ID: 29 editou serviço: Alinhamento e Balanceamento (Categoria: 13)
+14:58:35 - LOGIN - Sucesso: Usuário ID 29, Nome: AdminMassa, (CPF: 000.000.000-00)

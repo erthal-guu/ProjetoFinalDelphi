@@ -382,7 +382,8 @@ begin
       ShowMessage('As Senhas não coincidem');
       Exit;
     end;
-
+ if (EdtSenha.Text = '') and (EdtConfirmarSenha.Text = '') then
+  begin
     try
       Controller := TUsuarioController.Create;
       Usuario := TUsuario.Create;
@@ -393,7 +394,7 @@ begin
       Controller.Free;
       Usuario.Free;
     end;
-
+  end;
     Result := True;
     Exit;
   end;

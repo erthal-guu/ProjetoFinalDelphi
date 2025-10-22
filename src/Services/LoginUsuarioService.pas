@@ -72,13 +72,13 @@ begin
       if Result then
       begin
         uSession.UsuarioLogadoID := UsuarioSelect.getID;
-        SalvarLog(Format('LOGIN - Sucesso: Usuário ID %d, Nome: %s, CPF: %s',
+        SalvarLog(Format('LOGIN - Sucesso: Usuário ID %d, Nome: %s, (CPF: %s)',
           [UsuarioSelect.getID, UsuarioSelect.getNome, UsuarioSelect.getCPF]));
       end else begin
-      SalvarLog(Format('LOGIN INVÁLIDO - Senha ou CPF incorretos: CPF %s', [Usuario.getCPF]));
+      SalvarLog(Format('LOGIN INVÁLIDO - Senha ou CPF incorretos: (CPF %s )', [Usuario.getCPF]));
       end;
     end else begin
-      SalvarLog(Format('LOGIN INVÁLIDO - Usuário não encontrado: CPF %s', [Usuario.getCPF]));
+      SalvarLog(Format('LOGIN INVÁLIDO - Usuário não encontrado: (CPF %s)', [Usuario.getCPF]));
     end;
 
   finally

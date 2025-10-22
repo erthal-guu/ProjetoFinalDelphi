@@ -4,8 +4,8 @@ interface
 
 uses
   uFornecedor, FornecedorCadastroRepository, uDMConexao, System.SysUtils,
-  FireDAC.Comp.Client, Data.DB,IdHTTP, System.JSON,
-    IdSSL, IdSSLOpenSSL, IdSSLOpenSSLHeaders;
+  FireDAC.Comp.Client, Data.DB, IdHTTP, System.JSON,
+  IdSSL, IdSSLOpenSSL, IdSSLOpenSSLHeaders, LogTxt, uSession;
 
 type
   TFornecedorService = class
@@ -28,48 +28,7 @@ type
 
 implementation
 
-procedure TFornecedorService.BuscarCep(const ACep: string; out aRua, aBairro,
-  aCidade, aEstado: string);
-var
-  IdHTTP: TIdHTTP;
-  IdSSL: TIdSSLIOHandlerSocketOpenSSL;
-  JsonStr: string;
-  JsonObj: TJSONObject;
-  CepLimpo: string;
-  dummyInt: Integer;
-begin
-  aRua := ''; aBairro := ''; aCidade := ''; aEstado := '';
-  CepLimpo := StringReplace(ACep, '-', '', [rfReplaceAll]);
-  CepLimpo := StringReplace(CepLimpo, '.', '', [rfReplaceAll]);
-  CepLimpo := Trim(CepLimpo);
-
-  if (Length(CepLimpo) <> 8) or (not TryStrToInt(CepLimpo, dummyInt)) then
-  begin
-    Exit;
-  end;
-
-  IdHTTP := TIdHTTP.Create(nil);
-  IdSSL := TIdSSLIOHandlerSocketOpenSSL.Create(nil);
-  try
-    IdSSL.SSLOptions.Method := sslvTLSv1_2;
-    IdHTTP.IOHandler := IdSSL;
-    JsonStr := IdHTTP.Get('https://viacep.com.br/ws/' + CepLimpo + '/json/');
-    JsonObj := TJSONObject.ParseJSONValue(JsonStr) as TJSONObject;
-    try
-      if Assigned(JsonObj.Values['erro']) then
-        raise Exception.Create('CEP não encontrado.');
-      aRua    := JsonObj.Values['logradouro'].Value;
-      aBairro := JsonObj.Values['bairro'].Value;
-      aCidade := JsonObj.Values['localidade'].Value;
-      aEstado := JsonObj.Values['uf'].Value;
-    finally
-      JsonObj.Free;
-    end;
-  finally
-    IdSSL.Free;
-    IdHTTP.Free;
-  end;
-end;
+{ TFornecedorService }
 
 constructor TFornecedorService.Create;
 begin
@@ -102,14 +61,58 @@ begin
   end;
 end;
 
-procedure TFornecedorService.DeletarFornecedor(const aId: Integer);
+function TFornecedorService.SalvarFornecedor(Fornecedor: TFornecedor): Boolean;
+var
+  IDUsuarioLogado: Integer;
 begin
-  Repository.DeletarFornecedor(aId);
+  Result := False;
+  IDUsuarioLogado := uSession.UsuarioLogadoID;
+
+  if ValidarFornecedor(Fornecedor) then
+  begin
+    if not Repository.ExisteCNPJ(Fornecedor) then
+    begin
+      Repository.InserirFornecedor(Fornecedor);
+      SalvarLog(Format('CADASTRO - ID: %d cadastrou fornecedor: %s (CNPJ: %s)',
+        [IDUsuarioLogado, Fornecedor.getNome, Fornecedor.getCNPJ]));
+      Result := True;
+    end
+    else
+    begin
+      SalvarLog(Format('CADASTRO - ID: %d falhou ao cadastrar (CNPJ já existente: %s)',
+        [IDUsuarioLogado, Fornecedor.getCNPJ]));
+    end;
+  end;
 end;
 
 procedure TFornecedorService.EditarFornecedor(Fornecedor: TFornecedor);
+var
+  IDUsuarioLogado: Integer;
 begin
+  IDUsuarioLogado := uSession.UsuarioLogadoID;
   Repository.EditarFornecedor(Fornecedor);
+  SalvarLog(Format('EDITAR - ID: %d editou fornecedor: %s (CNPJ: %s)',
+    [IDUsuarioLogado, Fornecedor.getNome, Fornecedor.getCNPJ]));
+end;
+
+procedure TFornecedorService.DeletarFornecedor(const aId: Integer);
+var
+  IDUsuarioLogado: Integer;
+begin
+  IDUsuarioLogado := uSession.UsuarioLogadoID;
+  Repository.DeletarFornecedor(aId);
+  SalvarLog(Format('DELETAR - ID: %d deletou fornecedor ID: %d',
+    [IDUsuarioLogado, aId]));
+end;
+
+procedure TFornecedorService.RestaurarFornecedor(const aId: Integer);
+var
+  IDUsuarioLogado: Integer;
+begin
+  IDUsuarioLogado := uSession.UsuarioLogadoID;
+  Repository.RestaurarFornecedor(aId);
+  SalvarLog(Format('RESTAURAR - ID: %d restaurou fornecedor ID: %d',
+    [IDUsuarioLogado, aId]));
 end;
 
 function TFornecedorService.ListarFornecedores: TDataSet;
@@ -127,24 +130,6 @@ begin
   Result := Repository.PesquisarFornecedores(aFiltro);
 end;
 
-procedure TFornecedorService.RestaurarFornecedor(const aId: Integer);
-begin
-  Repository.RestaurarFornecedor(aId);
-end;
-
-function TFornecedorService.SalvarFornecedor(Fornecedor: TFornecedor): Boolean;
-begin
-  Result := False;
-  if ValidarFornecedor(Fornecedor) then
-  begin
-    if not Repository.ExisteCNPJ(Fornecedor) then
-    begin
-      Repository.InserirFornecedor(Fornecedor);
-      Result := True;
-    end;
-  end;
-end;
-
 function TFornecedorService.ValidarFornecedor(FornecedorValido: TFornecedor): Boolean;
 begin
   Result :=
@@ -160,4 +145,45 @@ begin
     (FornecedorValido.getEstado <> '');
 end;
 
+procedure TFornecedorService.BuscarCep(const ACep: string; out aRua, aBairro, aCidade, aEstado: string);
+var
+  IdHTTP: TIdHTTP;
+  IdSSL: TIdSSLIOHandlerSocketOpenSSL;
+  JsonStr: string;
+  JsonObj: TJSONObject;
+  CepLimpo: string;
+  dummyInt: Integer;
+begin
+  aRua := ''; aBairro := ''; aCidade := ''; aEstado := '';
+  CepLimpo := StringReplace(ACep, '-', '', [rfReplaceAll]);
+  CepLimpo := StringReplace(CepLimpo, '.', '', [rfReplaceAll]);
+  CepLimpo := Trim(CepLimpo);
+
+  if (Length(CepLimpo) <> 8) or (not TryStrToInt(CepLimpo, dummyInt)) then
+    Exit;
+
+  IdHTTP := TIdHTTP.Create(nil);
+  IdSSL := TIdSSLIOHandlerSocketOpenSSL.Create(nil);
+  try
+    IdSSL.SSLOptions.Method := sslvTLSv1_2;
+    IdHTTP.IOHandler := IdSSL;
+    JsonStr := IdHTTP.Get('https://viacep.com.br/ws/' + CepLimpo + '/json/');
+    JsonObj := TJSONObject.ParseJSONValue(JsonStr) as TJSONObject;
+    try
+      if Assigned(JsonObj.Values['erro']) then
+        raise Exception.Create('CEP não encontrado.');
+      aRua    := JsonObj.Values['logradouro'].Value;
+      aBairro := JsonObj.Values['bairro'].Value;
+      aCidade := JsonObj.Values['localidade'].Value;
+      aEstado := JsonObj.Values['uf'].Value;
+    finally
+      JsonObj.Free;
+    end;
+  finally
+    IdSSL.Free;
+    IdHTTP.Free;
+  end;
+end;
+
 end.
+

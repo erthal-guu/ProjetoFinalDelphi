@@ -4,7 +4,7 @@ interface
 
 uses
   uPeças, PeçasCadastroRepository, uDMConexao, System.SysUtils,
-  FireDAC.Comp.Client, Data.DB, System.Classes;
+  FireDAC.Comp.Client, Data.DB, System.Classes, LogTxt, uSession;
 
 type
   TPecaService = class
@@ -57,24 +57,63 @@ begin
   end;
 end;
 
-procedure TPecaService.DeletarPeca(const aId: Integer);
+function TPecaService.SalvarPeca(Peca: TPeca): Boolean;
+var
+  IDUsuarioLogado: Integer;
 begin
-  Repository.DeletarPeca(aId);
+  Result := False;
+  IDUsuarioLogado := uSession.UsuarioLogadoID;
+
+  if ValidarPeca(Peca) then
+  begin
+    if not Repository.ExisteCodigoInterno(Peca) then
+    begin
+      Repository.InserirPeca(Peca);
+      SalvarLog(Format('CADASTRO - ID: %d cadastrou peça: %s (Código Interno: %s)',
+        [IDUsuarioLogado, Peca.getNome, Peca.getCodigoInterno]));
+      Result := True;
+    end
+    else
+    begin
+      SalvarLog(Format('CADASTRO - ID: %d falhou ao cadastrar (Código Interno já existente: %s)',
+        [IDUsuarioLogado, Peca.getCodigoInterno]));
+    end;
+  end;
 end;
 
 procedure TPecaService.EditarPeca(Peca: TPeca);
+var
+  IDUsuarioLogado: Integer;
 begin
+  IDUsuarioLogado := uSession.UsuarioLogadoID;
   Repository.EditarPeca(Peca);
+  SalvarLog(Format('EDITAR - ID: %d editou peça: %s (Código Interno: %s)',
+    [IDUsuarioLogado, Peca.getNome, Peca.getCodigoInterno]));
+end;
+
+procedure TPecaService.DeletarPeca(const aId: Integer);
+var
+  IDUsuarioLogado: Integer;
+begin
+  IDUsuarioLogado := uSession.UsuarioLogadoID;
+  Repository.DeletarPeca(aId);
+  SalvarLog(Format('DELETAR - ID: %d deletou peça ID: %d',
+    [IDUsuarioLogado, aId]));
+end;
+
+procedure TPecaService.RestaurarPeca(const aId: Integer);
+var
+  IDUsuarioLogado: Integer;
+begin
+  IDUsuarioLogado := uSession.UsuarioLogadoID;
+  Repository.RestaurarPeca(aId);
+  SalvarLog(Format('RESTAURAR - ID: %d restaurou peça ID: %d',
+    [IDUsuarioLogado, aId]));
 end;
 
 function TPecaService.ListarPecas: TDataSet;
 begin
   Result := Repository.ListarPecas;
-end;
-
-function TPecaService.CarregarCategorias: TStringList;
-begin
-  Result := Repository.CarregarCategorias;
 end;
 
 function TPecaService.ListarPecasRestaurar: TDataSet;
@@ -87,22 +126,9 @@ begin
   Result := Repository.PesquisarPecas(aFiltro);
 end;
 
-procedure TPecaService.RestaurarPeca(const aId: Integer);
+function TPecaService.CarregarCategorias: TStringList;
 begin
-  Repository.RestaurarPeca(aId);
-end;
-
-function TPecaService.SalvarPeca(Peca: TPeca): Boolean;
-begin
-  Result := False;
-  if ValidarPeca(Peca) then
-  begin
-    if not Repository.ExisteCodigoInterno(Peca) then
-    begin
-      Repository.InserirPeca(Peca);
-      Result := True;
-    end;
-  end;
+  Result := Repository.CarregarCategorias;
 end;
 
 function TPecaService.ValidarPeca(PecaValida: TPeca): Boolean;
@@ -119,3 +145,4 @@ begin
 end;
 
 end.
+
