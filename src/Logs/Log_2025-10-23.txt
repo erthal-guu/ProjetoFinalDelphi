@@ -1,0 +1,7 @@
+16:52:52 - VINCULAR - Peça ID: 12 vinculada ao Fornecedor ID: 24
+16:54:24 - VINCULAR - Peça ID: 1 vinculada ao Fornecedor ID: 26
+16:57:01 - VINCULAR - Peça ID: 1 vinculada ao Fornecedor ID: 23
+16:57:21 - VINCULAR - Peça ID: 12 vinculada ao Fornecedor ID: 22
+16:59:40 - VINCULAR - Peça ID: 1 vinculada ao Fornecedor ID: 40
+17:11:47 - VINCULAR - Peça ID: 17 vinculada ao Fornecedor ID: 25
+17:23:13 - VINCULAR - Peça ID: 12 vinculada ao Fornecedor ID: 23

@@ -3,12 +3,13 @@ unit FornecedorCadastroRepository;
 interface
 
 uses
-  uDMConexao, FireDAC.Comp.Client, System.SysUtils, uFornecedor, Data.DB;
+  uDMConexao, FireDAC.Comp.Client, System.SysUtils, uFornecedor, Data.DB,System.Classes;
 
 type
   TFornecedorRepository = class
   private
     FQuery: TFDQuery;
+
   public
     constructor Create(Query: TFDQuery);
     procedure InserirFornecedor(aFornecedor: TFornecedor);
@@ -19,15 +20,83 @@ type
     procedure DeletarFornecedor(const aID: Integer);
     procedure RestaurarFornecedor(const aID: Integer);
     function PesquisarFornecedores(const aFiltro: String): TDataSet;
+    procedure VincularPecaFornecedor(const aFornecedorId, aPecaId: Integer);
+    function ListarPecasVinculadas(const aFornecedorId: Integer): TDataSet;
+    Function CarregarFornecedores : TStringlist;
+    procedure DesvincularPecaFornecedor(const aFornecedorId,aPecaId : Integer);
+
   end;
 
 implementation
+
+function TFornecedorRepository.CarregarFornecedores: TStringlist;
+var
+  Lista: TStringList;
+  Qry: TFDQuery;
+begin
+  Lista := TStringList.Create;
+  Qry := TFDQuery.Create(nil);
+  try
+    Qry.Connection := FQuery.Connection;
+    Qry.SQL.Add('SELECT id, nome FROM Fornecedores ORDER BY nome');
+    Qry.Open;
+    while not Qry.Eof do
+    begin
+      Lista.AddObject(Qry.FieldByName('nome').AsString, TObject(Qry.FieldByName('id').AsInteger));
+      Qry.Next;
+    end;
+    Result := Lista;
+  except
+    on E: Exception do
+    begin
+      Lista.Free;
+      raise Exception.Create('Erro ao listar Fornecedores: ' + E.Message);
+    end;
+  end;
+  Qry.Free;
+end;
 
 constructor TFornecedorRepository.Create(Query: TFDQuery);
 begin
   inherited Create;
   FQuery := Query;
 end;
+
+procedure TFornecedorRepository.VincularPecaFornecedor(const aFornecedorId, aPecaId: Integer);
+begin
+  try
+    FQuery.Close;
+    FQuery.SQL.Clear;
+    FQuery.SQL.Add('INSERT INTO peca_fornecedor (fornecedor_id, peca_id)');
+    FQuery.SQL.Add('VALUES (:fornecedor_id, :peca_id)');
+    FQuery.ParamByName('fornecedor_id').AsInteger := aFornecedorId;
+    FQuery.ParamByName('peca_id').AsInteger := aPecaId;
+    FQuery.ExecSQL;
+  except
+    on E: Exception do
+      raise Exception.Create('Erro ao vincular peça ao fornecedor: ' + E.Message);
+  end;
+end;
+
+function TFornecedorRepository.ListarPecasVinculadas(const aFornecedorId: Integer): TDataSet;
+begin
+  try
+    FQuery.Close;
+    FQuery.SQL.Clear;
+    FQuery.SQL.Add('SELECT p.id, p.nome, p.descricao, p.codigo_interno, pf.fornecedor_id');
+    FQuery.SQL.Add('FROM pecas p');
+    FQuery.SQL.Add('INNER JOIN peca_fornecedor pf ON p.id = pf.peca_id');
+    FQuery.SQL.Add('WHERE pf.fornecedor_id = :id');
+    FQuery.SQL.Add('ORDER BY p.nome');
+    FQuery.ParamByName('id').AsInteger := aFornecedorId;
+    FQuery.Open;
+    Result := FQuery;
+  except
+    on E: Exception do
+      raise Exception.Create('Erro ao listar peças vinculadas: ' + E.Message);
+  end;
+end;
+
 
 procedure TFornecedorRepository.InserirFornecedor(aFornecedor: TFornecedor);
 begin
@@ -129,6 +198,22 @@ begin
   FQuery.ExecSQL;
 end;
 
+procedure TFornecedorRepository.DesvincularPecaFornecedor(const aFornecedorId, aPecaId: Integer);
+begin
+  try
+    FQuery.Close;
+    FQuery.SQL.Clear;
+    FQuery.SQL.Add('DELETE FROM peca_fornecedor');
+    FQuery.SQL.Add('WHERE fornecedor_id = :fornecedor_id AND peca_id = :peca_id');
+    FQuery.ParamByName('fornecedor_id').AsInteger := aFornecedorId;
+    FQuery.ParamByName('peca_id').AsInteger := aPecaId;
+    FQuery.ExecSQL;
+  except
+    on E: Exception do
+      raise Exception.Create('Erro ao desvincular peça do fornecedor: ' + E.Message);
+  end;
+end;
+
 procedure TFornecedorRepository.RestaurarFornecedor(const aID: Integer);
 begin
   FQuery.Close;
@@ -161,3 +246,4 @@ begin
 end;
 
 end.
+

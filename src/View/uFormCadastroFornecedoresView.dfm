@@ -36,7 +36,6 @@
       Color = 9521152
       ParentBackground = False
       TabOrder = 0
-      ExplicitLeft = 2
       object PnlMainButton: TPanel
         AlignWithMargins = True
         Left = 943
@@ -741,7 +740,6 @@
                   ParentColor = False
                   ParentFont = False
                   OnClick = LblAtualizarClick
-                  ExplicitTop = 4
                   ExplicitWidth = 59
                   ExplicitHeight = 20
                 end
@@ -1509,8 +1507,6 @@
             Font.Name = 'Segoe UI'
             Font.Style = [fsBold]
             ParentFont = False
-            ExplicitLeft = 4
-            ExplicitTop = 11
             ExplicitWidth = 109
           end
           object ImgFechar: TImage
@@ -1715,7 +1711,6 @@
           Color = 9521152
           ParentBackground = False
           TabOrder = 0
-          ExplicitTop = 41
           object PnlBackgroundVincular: TPanel
             AlignWithMargins = True
             Left = 19
@@ -1732,10 +1727,6 @@
             Color = clBackground
             ParentBackground = False
             TabOrder = 2
-            ExplicitLeft = -228
-            ExplicitTop = 25
-            ExplicitWidth = 846
-            ExplicitHeight = 265
           end
           object Panel1: TPanel
             AlignWithMargins = True
@@ -2051,7 +2042,7 @@
                 E3008E711B07708CDB388063DCC6011CE3360EE018B77100C7B88D0338C6EDFF
                 0346549848A99E47470000000049454E44AE426082}
             end
-            object ComboBox1: TComboBox
+            object CmbFornecedor: TComboBox
               Left = 25
               Top = 146
               Width = 164
@@ -2079,7 +2070,6 @@
               ParentBackground = False
               ParentFont = False
               TabOrder = 1
-              ExplicitTop = 199
               object LblVincular: TLabel
                 AlignWithMargins = True
                 Left = 4
@@ -2098,6 +2088,7 @@
                 Font.Style = []
                 ParentColor = False
                 ParentFont = False
+                OnClick = LblVincularClick
                 ExplicitWidth = 53
                 ExplicitHeight = 20
               end
@@ -2141,6 +2132,7 @@
                 Font.Style = []
                 ParentColor = False
                 ParentFont = False
+                OnClick = LblDesvincularClick
                 ExplicitWidth = 76
                 ExplicitHeight = 20
               end
@@ -2219,5 +2211,9 @@
   object DataSourceMain: TDataSource
     DataSet = DataModule1.FDQuery
     Left = 864
+  end
+  object DataSourceVincular: TDataSource
+    Left = 648
+    Top = 8
   end
 end

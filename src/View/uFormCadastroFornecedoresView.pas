@@ -72,7 +72,7 @@ type
     Panel1: TPanel;
     Label12: TLabel;
     Image2: TImage;
-    ComboBox1: TComboBox;
+    CmbFornecedor: TComboBox;
     PnlButtonVincular: TPanel;
     LblVincular: TLabel;
     PnlFooter: TPanel;
@@ -82,6 +82,7 @@ type
     DBGridVincular: TDBGrid;
     PnlButtonDesvincular: TPanel;
     LblDesvincular: TLabel;
+    DataSourceVincular: TDataSource;
 
     procedure BtnAdicionarClick(Sender: TObject);
     procedure BtnPesquisarClick(Sender: TObject);
@@ -114,6 +115,10 @@ type
     procedure ImageFecharVincularClick(Sender: TObject);
     procedure CheckBoxPeçasVinculadasClick(Sender: TObject);
     procedure CarregarGridVincular;
+    procedure ListarPecaPorFornecedor;
+    procedure CarregarFornecedores;
+    procedure LblVincularClick(Sender: TObject);
+    procedure LblDesvincularClick(Sender: TObject);
 
   private
     { Private declarations }
@@ -152,6 +157,28 @@ procedure TFormCadastroFornecedores.BtnPesquisarClick(Sender: TObject);
 begin
   EdtPesquisar.Visible := True;
   PnlBackgrounEdit.Visible := False;
+end;
+
+procedure TFormCadastroFornecedores.CarregarFornecedores;
+var
+  Controller: TFornecedorController;
+  ListaFornecedores: TStringList;
+  i: Integer;
+begin
+  CmbFornecedor.Items.Clear;
+  Controller := TFornecedorController.Create;
+  try
+    ListaFornecedores := Controller.CarregarFornecedores; 
+    try
+      for i := 0 to ListaFornecedores.Count - 1 do
+        CmbFornecedor.Items.AddObject(ListaFornecedores[i], ListaFornecedores.Objects[i]);
+      CmbFornecedor.ItemIndex := -1;
+    finally
+      ListaFornecedores.Free;
+    end;
+  finally
+    Controller.Free;
+  end;
 end;
 
 procedure TFormCadastroFornecedores.CarregarGrid;
@@ -215,7 +242,7 @@ var
   begin
   try
   ServicePecas := TPecaService.create;
-  DataSourceMain.DataSet := ServicePecas.ListarPecas;
+  DataSourceVincular.DataSet := ServicePecas.ListarPecas;
   DBGridVincular.DataSource := DataSourceMain;
     if DBGridVincular.Columns.Count >= 8 then
     begin
@@ -245,6 +272,10 @@ procedure TFormCadastroFornecedores.CheckBoxPeçasVinculadasClick(Sender: TObject
 begin
   PnlButtonVincular.Visible := not PnlButtonVincular.Visible;
   PnlButtonDesvincular.Visible := not PnlButtonDesvincular.Visible;
+  ListarPecaPorFornecedor;
+  if CheckBoxPeçasVinculadas.Checked = False then begin
+  CarregarGridVincular;
+end;
 end;
 
 procedure TFormCadastroFornecedores.EdtCEPChange(Sender: TObject);
@@ -343,6 +374,39 @@ begin
   end;
 end;
 
+procedure TFormCadastroFornecedores.LblDesvincularClick(Sender: TObject);
+var
+  Controller: TFornecedorController;
+  IdPeca, IdFornecedor: Integer;
+begin
+  if CmbFornecedor.ItemIndex = -1 then
+  begin
+    ShowMessage('Selecione um fornecedor!');
+    Exit;
+  end;
+  
+  if DataSourceVincular.DataSet.IsEmpty then
+  begin
+    ShowMessage('Selecione uma peça vinculada para desvincular!');
+    Exit;
+  end;
+  
+  if MessageDlg('Deseja realmente desvincular esta peça do fornecedor?', mtConfirmation, [mbYes, mbNo], 0) = mrYes then
+  begin
+    Controller := TFornecedorController.Create;
+    try 
+      IdPeca := DataSourceVincular.DataSet.FieldByName('id').AsInteger;
+      IdFornecedor := Integer(CmbFornecedor.Items.Objects[CmbFornecedor.ItemIndex]);
+      
+      Controller.DesvincularPecaAoFornecedor(IdFornecedor, IdPeca);
+      ShowMessage('Peça desvinculada com sucesso!');
+      ListarPecaPorFornecedor;
+    finally
+      Controller.Free;
+    end;
+  end;
+end;
+
 procedure TFormCadastroFornecedores.LblEnviarClick(Sender: TObject);
 var
   FornecedorController: TFornecedorController;
@@ -363,6 +427,41 @@ begin
     finally
       FornecedorController.Free;
     end;
+  end;
+end;
+
+procedure TFormCadastroFornecedores.LblVincularClick(Sender: TObject);
+var
+  Controller: TFornecedorController;
+  IdPeca, IdFornecedor: Integer;
+begin
+  if CmbFornecedor.ItemIndex = -1 then
+  begin
+    ShowMessage('Selecione um fornecedor!');
+    Exit;
+  end;
+  
+  if DataSourceVincular.DataSet.IsEmpty then
+  begin
+    ShowMessage('Selecione uma peça na grid!');
+    Exit;
+  end;
+  
+  Controller := TFornecedorController.Create;
+  try 
+    IdPeca := DataSourceVincular.DataSet.FieldByName('id').AsInteger;
+    IdFornecedor := Integer(CmbFornecedor.Items.Objects[CmbFornecedor.ItemIndex]);
+    
+    ShowMessage(Format('Tentando vincular: Peça ID=%d, Fornecedor ID=%d', [IdPeca, IdFornecedor]));
+    
+    Controller.VincularPecaAoFornecedor(IdFornecedor,IdPeca);
+    ShowMessage('Peça vinculada com sucesso!');
+    ListarPecaPorFornecedor;
+    if CheckBoxPeçasVinculadas.Checked then
+      ListarPecaPorFornecedor;
+      
+  finally
+    Controller.Free;
   end;
 end;
 
@@ -448,6 +547,7 @@ end;
 procedure TFormCadastroFornecedores.ImageFecharVincularClick(Sender: TObject);
 begin
   PnlVincularPeça.Visible := false;
+  CarregarGrid;
 end;
 
 procedure TFormCadastroFornecedores.ImgFecharVincularClick(Sender: TObject);
@@ -503,6 +603,7 @@ end;
 procedure TFormCadastroFornecedores.FormShow(Sender: TObject);
 begin
   CarregarGrid;
+  CarregarFornecedores;
 end;
 
 function TFormCadastroFornecedores.ValidarCampos: Boolean;
@@ -525,6 +626,25 @@ procedure TFormCadastroFornecedores.LimparCampos;
 begin
   EdtNome.Clear; EdtRazaoSocial.Clear; EdtCNPJ.Clear; EdtEstado.Clear; EdtTelefone.Clear; EdtBairro.Clear;
   EdtCidade.Clear; EdtRua.Clear; EdtNumero.Clear; EdtCEP.Clear; CmbStatus.ItemIndex := -1;
+end;
+
+procedure TFormCadastroFornecedores.ListarPecaPorFornecedor;
+var
+  Controller: TFornecedorController;
+  IdFornecedor: Integer;
+begin
+  if CmbFornecedor.ItemIndex = -1 then
+    Exit;
+    
+  IdFornecedor := Integer(CmbFornecedor.Items.Objects[CmbFornecedor.ItemIndex]);
+  
+  Controller := TFornecedorController.Create;
+  try
+    DataSourceVincular.DataSet := Controller.ListarPecasPorFornecedor(IdFornecedor);
+    DBGridVincular.DataSource := DataSourceVincular;
+  finally
+    Controller.Free;
+  end;
 end;
 
 end.

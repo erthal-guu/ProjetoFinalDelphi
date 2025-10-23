@@ -5,7 +5,7 @@ interface
 uses
   uFornecedor, FornecedorCadastroRepository, uDMConexao, System.SysUtils,
   FireDAC.Comp.Client, Data.DB, IdHTTP, System.JSON,
-  IdSSL, IdSSLOpenSSL, IdSSLOpenSSLHeaders, Logs, uSession,PeçasCadastroRepository;
+  IdSSL, IdSSLOpenSSL, IdSSLOpenSSLHeaders, Logs, uSession, PeçasCadastroRepository,System.Classes;
 
 type
   TFornecedorService = class
@@ -24,12 +24,20 @@ type
     procedure RestaurarFornecedor(const aId: Integer);
     function PesquisarFornecedores(const aFiltro: String): TDataSet;
     procedure BuscarCep(const ACep: string; out aRua, aBairro, aCidade, aEstado: string);
-
+    procedure VincularPecaAoFornecedor(aPecaID, aFornecedorID: Integer);
+    function ListarPecasPorFornecedor(aFornecedorID: Integer): TDataSet;
+    Function CarregarFornecedores : TStringlist;
+    procedure DesvincularPecaDoFornecedor(aPecaID, aFornecedorID: Integer);
   end;
 
 implementation
 
 { TFornecedorService }
+
+function TFornecedorService.CarregarFornecedores: TStringlist;
+begin
+    Result := Repository.CarregarFornecedores;
+end;
 
 constructor TFornecedorService.Create;
 begin
@@ -104,6 +112,11 @@ begin
   Repository.DeletarFornecedor(aId);
   SalvarLog(Format('DELETAR - ID: %d deletou fornecedor ID: %d',
     [IDUsuarioLogado, aId]));
+end;
+
+procedure TFornecedorService.DesvincularPecaDoFornecedor(aPecaID,aFornecedorID: Integer);
+begin
+ Repository.DesvincularPecaFornecedor(aPecaID,aFornecedorID);
 end;
 
 procedure TFornecedorService.RestaurarFornecedor(const aId: Integer);
@@ -184,6 +197,18 @@ begin
     IdSSL.Free;
     IdHTTP.Free;
   end;
+end;
+
+procedure TFornecedorService.VincularPecaAoFornecedor(aPecaID, aFornecedorID: Integer);
+begin
+  Repository.VincularPecaFornecedor(aPecaID, aFornecedorID);
+  SalvarLog(Format('VINCULAR - Peça ID: %d vinculada ao Fornecedor ID: %d',
+    [aPecaID, aFornecedorID]));
+end;
+
+function TFornecedorService.ListarPecasPorFornecedor(aFornecedorID: Integer): TDataSet;
+begin
+  Result := Repository.ListarPecasVinculadas(aFornecedorID);
 end;
 
 end.

@@ -3,7 +3,7 @@ unit FornecedorCadastroController;
 interface
 
 uses
-  uFornecedor, FornecedorCadastroService, FireDAC.Comp.Client, Data.DB;
+  uFornecedor, FornecedorCadastroService, FireDAC.Comp.Client, Data.DB,System.Classes;
 
 type
   TFornecedorController = class
@@ -22,9 +22,18 @@ type
     procedure DeletarFornecedor(const aId: Integer);
     procedure RestaurarFornecedor(const aId: Integer);
     function PesquisarFornecedores(const aFiltro: String): TDataSet;
+    procedure VincularPecaAoFornecedor(aPecaID, aFornecedorID: Integer);
+    function ListarPecasPorFornecedor(aFornecedorID: Integer): TDataSet;
+    function CarregarFornecedores : TStringList;
+    procedure DesvincularPecaAoFornecedor(aPecaID, aFornecedorID: Integer);
   end;
 
 implementation
+
+function TFornecedorController.CarregarFornecedores: TStringList;
+begin
+  Result := Service.CarregarFornecedores;
+end;
 
 constructor TFornecedorController.Create;
 begin
@@ -36,6 +45,12 @@ destructor TFornecedorController.Destroy;
 begin
   Service.Free;
   inherited;
+end;
+
+procedure TFornecedorController.DesvincularPecaAoFornecedor(aPecaID,
+  aFornecedorID: Integer);
+begin
+ Service.DesvincularPecaDoFornecedor(aPecaID,aFornecedorID);
 end;
 
 function TFornecedorController.CriarObjeto(
@@ -72,6 +87,12 @@ begin
   Result := Service.ListarFornecedores;
 end;
 
+function TFornecedorController.ListarPecasPorFornecedor(
+  aFornecedorID: Integer): TDataSet;
+begin
+  Result := Service.ListarPecasPorFornecedor(aFornecedorID);
+end;
+
 function TFornecedorController.PesquisarFornecedores(const aFiltro: String): TDataSet;
 begin
   Result := Service.PesquisarFornecedores(aFiltro);
@@ -85,6 +106,12 @@ end;
 function TFornecedorController.SalvarFornecedor(Fornecedor: TFornecedor): Boolean;
 begin
   Result := Service.SalvarFornecedor(Fornecedor);
+end;
+
+procedure TFornecedorController.VincularPecaAoFornecedor(aPecaID,
+  aFornecedorID: Integer);
+begin
+   Service.VincularPecaAoFornecedor(aPecaID,aFornecedorID);
 end;
 
 end.
