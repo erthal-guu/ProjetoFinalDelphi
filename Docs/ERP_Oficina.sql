@@ -2,12 +2,12 @@
 -- PostgreSQL database dump
 --
 
-\restrict j0Kp5e6u2O5QJmmyyUlBAkdpRiepANwSRoxomgKtejVEMjEkUFbvDjuuACHoOzl
+\restrict 96Y1IjEM69mQyECdxGOx7ASougf6PuWQUnp1IQLIfei1w8hChiBcG0gJ4AHkMd7
 
 -- Dumped from database version 17.6
 -- Dumped by pg_dump version 17.6
 
--- Started on 2025-10-23 17:24:03
+-- Started on 2025-10-23 17:45:22
 
 SET statement_timeout = 0;
 SET lock_timeout = 0;
@@ -702,13 +702,28 @@ COPY public.grupo (id, nome) FROM stdin;
 --
 
 COPY public.peca_fornecedor (id, peca_id, fornecedor_id, data_vinculo, ativo) FROM stdin;
-1	24	1	2025-10-23 15:07:00	t
 7	25	1	2025-10-23 16:51:44.37824	t
 8	24	12	2025-10-23 16:52:52.186161	t
 9	26	1	2025-10-23 16:54:24.980778	t
 11	22	12	2025-10-23 16:57:21.684807	t
 13	40	1	2025-10-23 16:59:40.536096	t
 14	25	17	2025-10-23 17:11:47.66689	t
+20	36	1	2025-10-23 17:44:06.395554	t
+21	25	3	2025-10-23 17:44:19.844948	t
+23	27	1	2025-10-23 17:45:09.400775	t
+24	28	1	2025-10-23 17:45:09.400775	t
+25	29	1	2025-10-23 17:45:09.400775	t
+26	30	2	2025-10-23 17:45:09.400775	t
+27	31	2	2025-10-23 17:45:09.400775	t
+28	32	2	2025-10-23 17:45:09.400775	t
+29	33	17	2025-10-23 17:45:09.400775	t
+30	34	17	2025-10-23 17:45:09.400775	t
+31	35	17	2025-10-23 17:45:09.400775	t
+32	36	12	2025-10-23 17:45:09.400775	t
+33	37	12	2025-10-23 17:45:09.400775	t
+34	38	12	2025-10-23 17:45:09.400775	t
+35	39	6	2025-10-23 17:45:09.400775	t
+36	41	6	2025-10-23 17:45:09.400775	t
 \.
 
 
@@ -894,7 +909,7 @@ SELECT pg_catalog.setval('public.grupo_id_seq', 4, true);
 -- Name: peca_fornecedor_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
 --
 
-SELECT pg_catalog.setval('public.peca_fornecedor_id_seq', 15, true);
+SELECT pg_catalog.setval('public.peca_fornecedor_id_seq', 36, true);
 
 
 --
@@ -1210,11 +1225,11 @@ ALTER TABLE ONLY public.veiculos
     ADD CONSTRAINT veiculos_id_cliente_fkey FOREIGN KEY (id_cliente) REFERENCES public.clientes(id);
 
 
--- Completed on 2025-10-23 17:24:03
+-- Completed on 2025-10-23 17:45:22
 
 --
 -- PostgreSQL database dump complete
 --
 
-\unrestrict j0Kp5e6u2O5QJmmyyUlBAkdpRiepANwSRoxomgKtejVEMjEkUFbvDjuuACHoOzl
+\unrestrict 96Y1IjEM69mQyECdxGOx7ASougf6PuWQUnp1IQLIfei1w8hChiBcG0gJ4AHkMd7
 

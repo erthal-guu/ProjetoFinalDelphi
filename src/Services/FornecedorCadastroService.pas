@@ -117,6 +117,8 @@ end;
 procedure TFornecedorService.DesvincularPecaDoFornecedor(aPecaID,aFornecedorID: Integer);
 begin
  Repository.DesvincularPecaFornecedor(aPecaID,aFornecedorID);
+   SalvarLog(Format('DESVINCULAR - Peça ID: %d Desvinculada do Fornecedor ID: %d',
+    [aFornecedorID,aPecaID ]));
 end;
 
 procedure TFornecedorService.RestaurarFornecedor(const aId: Integer);
@@ -203,7 +205,7 @@ procedure TFornecedorService.VincularPecaAoFornecedor(aPecaID, aFornecedorID: In
 begin
   Repository.VincularPecaFornecedor(aPecaID, aFornecedorID);
   SalvarLog(Format('VINCULAR - Peça ID: %d vinculada ao Fornecedor ID: %d',
-    [aPecaID, aFornecedorID]));
+    [aFornecedorID,aPecaID ]));
 end;
 
 function TFornecedorService.ListarPecasPorFornecedor(aFornecedorID: Integer): TDataSet;
