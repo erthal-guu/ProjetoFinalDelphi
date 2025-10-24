@@ -27,6 +27,8 @@ type
     function CarregarClientes: TStringList;
     function CarregarPecas: TStringList;
     function CarregarPecasDaOS(const aIDOS: Integer): TList<Integer>;
+    function CalcularPrecoTotal(const aIDServico: Integer;aPecasIDs: TList<Integer>; const aIDVeiculo: Integer): Currency;
+    function ObterClienteDoVeiculo(const aIDVeiculo: Integer): Integer;
   end;
 
 implementation
@@ -115,6 +117,16 @@ end;
 function TOrdemServicoController.CarregarPecasDaOS(const aIDOS: Integer): TList<Integer>;
 begin
   Result := Service.CarregarPecasDaOS(aIDOS);
+end;
+
+function TOrdemServicoController.CalcularPrecoTotal(const aIDServico: Integer;aPecasIDs: TList<Integer>; const aIDVeiculo: Integer): Currency;
+begin
+  Result := Service.CalcularPrecoTotal(aIDServico, aPecasIDs, aIDVeiculo);
+end;
+
+function TOrdemServicoController.ObterClienteDoVeiculo(const aIDVeiculo: Integer): Integer;
+begin
+  Result := Service.ObterClienteDoVeiculo(aIDVeiculo);
 end;
 
 end.

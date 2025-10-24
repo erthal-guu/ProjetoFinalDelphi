@@ -11,10 +11,11 @@ uses
   uFormCadastroFuncionariosView,
   uFormCadastroFornecedoresView,
   uFormCadastroVeiculosView,
-
+  uFormPendenciasView,
+  uFormReceitasView,
   uFormCadastroPeçasView,
   uFormCadastroServiçosView,
-  uFormCadastroOrdensServiçoView, Vcl.Menus, Vcl.Imaging.pngimage, Vcl.StdCtrls,Logs;
+  uFormCadastroOrdensServiçoView, Vcl.Menus, Vcl.Imaging.pngimage, Vcl.StdCtrls;
 
 
 type
@@ -39,6 +40,8 @@ type
     PnlDataTime: TPanel;
     ShapeFooter: TShape;
     LblDataTime: TLabel;
+    Pendncias1: TMenuItem;
+    Receitas1: TMenuItem;
     procedure SairClick(Sender: TObject);
     procedure FuncionariosClick(Sender: TObject);
     procedure FornecedoresClick(Sender: TObject);
@@ -50,6 +53,8 @@ type
     procedure UsuariosClick(Sender: TObject);
     procedure ClientesClick(Sender: TObject);
     procedure TimerTimer(Sender: TObject);
+    procedure Pendncias1Click(Sender: TObject);
+    procedure Receitas1Click(Sender: TObject);
   private
     { Private declarations }
   public
@@ -119,10 +124,22 @@ begin
   FormOrdensServiço.Show;
 end;
 
+procedure TFormHome.Pendncias1Click(Sender: TObject);
+begin
+  FormPendencias.Position := poScreenCenter;
+  FormPendencias.Show;
+end;
+
 procedure TFormHome.PeçasClick(Sender: TObject);
 begin
   FormCadastroPecas.Position := poScreenCenter;
   FormCadastroPecas.Show;
+end;
+
+procedure TFormHome.Receitas1Click(Sender: TObject);
+begin
+  FormReceitas.Position := poScreenCenter;
+  FormReceitas.Show;
 end;
 
 procedure TFormHome.AgendamentosClick(Sender: TObject);

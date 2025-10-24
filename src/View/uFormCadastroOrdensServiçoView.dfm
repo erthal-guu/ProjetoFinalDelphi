@@ -29,8 +29,6 @@
       BevelOuter = bvNone
       BorderStyle = bsSingle
       TabOrder = 0
-      ExplicitLeft = 2
-      ExplicitTop = 2
       object PnlContainer: TPanel
         AlignWithMargins = True
         Left = -2
@@ -63,9 +61,9 @@
         end
         object PnlButtonCrud: TPanel
           Left = 929
-          Top = 59
+          Top = 57
           Width = 178
-          Height = 480
+          Height = 482
           BevelOuter = bvNone
           Color = 9521152
           ParentBackground = False
@@ -75,7 +73,7 @@
             Left = 19
             Top = 19
             Width = 140
-            Height = 442
+            Height = 444
             Margins.Left = 19
             Margins.Top = 19
             Margins.Right = 19
@@ -85,12 +83,13 @@
             Color = clBackground
             ParentBackground = False
             TabOrder = 0
+            ExplicitHeight = 442
             object PnlButton: TPanel
               AlignWithMargins = True
               Left = 1
               Top = 1
               Width = 138
-              Height = 440
+              Height = 442
               Margins.Left = 1
               Margins.Top = 1
               Margins.Right = 1
@@ -100,8 +99,7 @@
               Color = 15790320
               ParentBackground = False
               TabOrder = 0
-              ExplicitLeft = 2
-              ExplicitTop = 2
+              ExplicitHeight = 440
               object BtnExcluir: TSpeedButton
                 AlignWithMargins = True
                 Left = 5
@@ -748,8 +746,6 @@
             ParentBackground = False
             TabOrder = 1
             Visible = False
-            ExplicitLeft = 20
-            ExplicitWidth = 848
             object LblRestaurar: TLabel
               AlignWithMargins = True
               Left = 4
@@ -887,8 +883,6 @@
             ParentBackground = False
             TabOrder = 2
             Visible = False
-            ExplicitLeft = 556
-            ExplicitTop = 49
             object Label7: TLabel
               AlignWithMargins = True
               Left = 4
@@ -905,8 +899,7 @@
               Font.Name = 'Segoe UI'
               Font.Style = [fsBold]
               ParentFont = False
-              ExplicitLeft = 84
-              ExplicitTop = 53
+              ExplicitWidth = 109
             end
             object ImgFecharRestaurar: TImage
               Left = 800
@@ -1400,8 +1393,6 @@
                 Align = alLeft
                 BevelOuter = bvNone
                 TabOrder = 0
-                ExplicitLeft = 0
-                ExplicitTop = -4
                 object Label1: TLabel
                   Left = 20
                   Top = 8
@@ -1512,8 +1503,8 @@
                     ParentColor = False
                     ParentFont = False
                     OnClick = LblEnviarClick
-                    ExplicitLeft = -4
-                    ExplicitTop = 7
+                    ExplicitWidth = 40
+                    ExplicitHeight = 20
                   end
                 end
                 object PnlButtonAtualizar: TPanel
@@ -1591,7 +1582,7 @@
                   Font.Style = []
                   ParentFont = False
                   TabOrder = 3
-                  ExplicitLeft = 655
+                  ExplicitLeft = 587
                 end
                 object EdtPecas: TEdit
                   AlignWithMargins = True
@@ -1634,8 +1625,7 @@
                   Font.Style = []
                   ParentFont = False
                   TabOrder = 5
-                  ExplicitLeft = -1
-                  ExplicitHeight = 23
+                  OnChange = CmbServiçoChange
                 end
                 object CmbFuncionario: TComboBox
                   AlignWithMargins = True
@@ -1656,9 +1646,7 @@
                   Font.Style = []
                   ParentFont = False
                   TabOrder = 6
-                  ExplicitLeft = 259
-                  ExplicitTop = 38
-                  ExplicitHeight = 23
+                  OnChange = CmbFuncionarioChange
                 end
                 object CmbVeiculo: TComboBox
                   AlignWithMargins = True
@@ -1679,8 +1667,7 @@
                   Font.Style = []
                   ParentFont = False
                   TabOrder = 7
-                  ExplicitLeft = 212
-                  ExplicitHeight = 23
+                  OnChange = CmbVeiculoChange
                 end
               end
             end

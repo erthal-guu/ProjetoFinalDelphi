@@ -219,6 +219,14 @@
         <DCCReference Include="src\repository\OrdemServicoCadastroRepository.pas"/>
         <DCCReference Include="src\Services\OrdemServicoCadastroService.pas"/>
         <DCCReference Include="src\controller\OrdemServicoCadastroController.pas"/>
+        <DCCReference Include="src\View\uFormPendenciasView.pas">
+            <Form>FormPendencias</Form>
+            <FormType>dfm</FormType>
+        </DCCReference>
+        <DCCReference Include="src\View\uFormReceitasView.pas">
+            <Form>FormReceitas</Form>
+            <FormType>dfm</FormType>
+        </DCCReference>
         <BuildConfiguration Include="Base">
             <Key>Base</Key>
         </BuildConfiguration>

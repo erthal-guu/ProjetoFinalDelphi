@@ -54,7 +54,9 @@ uses
   uOrdemServico in 'src\Model\uOrdemServico.pas',
   OrdemServicoCadastroRepository in 'src\repository\OrdemServicoCadastroRepository.pas',
   OrdemServicoCadastroService in 'src\Services\OrdemServicoCadastroService.pas',
-  OrdemServicoCadastroController in 'src\controller\OrdemServicoCadastroController.pas';
+  OrdemServicoCadastroController in 'src\controller\OrdemServicoCadastroController.pas',
+  uFormPendenciasView in 'src\View\uFormPendenciasView.pas' {FormPendencias},
+  uFormReceitasView in 'src\View\uFormReceitasView.pas' {FormReceitas};
 
 {$R *.res}
 
@@ -78,5 +80,7 @@ begin
   Application.CreateForm(TFormMain, FormMain);
   Application.CreateForm(TFormCadastroClientes, FormCadastroClientes);
   Application.CreateForm(TFormCadastroPecas, FormCadastroPecas);
+  Application.CreateForm(TFormPendencias, FormPendencias);
+  Application.CreateForm(TFormReceitas, FormReceitas);
   Application.Run;
 end.

@@ -1,0 +1,8 @@
+14:11:30 - CADASTRO - ID: 0 cadastrou ordem de serviço com cliente ID: 3
+16:03:28 - CADASTRO - ID: 0 cadastrou ordem de serviço com cliente ID: 5
+17:35:55 - CADASTRO - ID: 0 cadastrou ordem de serviço com cliente ID: 4
+17:40:06 - CADASTRO CLIENTE - ID: 0 cadastrou o cliente: Kauan Mostaler (CPF: 215.710.857-18)
+17:40:27 - EDITAR - ID: 0 editou veículo: HB20 (Placa: JKL0M12)
+17:40:54 - CADASTRO - ID: 0 cadastrou ordem de serviço com cliente ID: 21
+17:46:03 - DESVINCULAR - Peça ID: 24 Desvinculada do Fornecedor ID: 12
+17:46:12 - VINCULAR - Peça ID: 26 vinculada ao Fornecedor ID: 17

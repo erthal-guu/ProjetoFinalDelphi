@@ -1397,7 +1397,7 @@
         303030080943100606060606216108C2C0C0C0C020240C411818181818848421
         0803030303839030046160606060101286200C0C0C0C0C42C210848181818141
         48FC1F183E060B081BAEE00000000049454E44AE426082}
-      ExplicitLeft = 0
+      ExplicitLeft = 2
       ExplicitTop = 0
     end
   end
@@ -1439,7 +1439,7 @@
       object LblDataTime: TLabel
         AlignWithMargins = True
         Left = 11
-        Top = 5
+        Top = 3
         Width = 105
         Height = 25
         Alignment = taCenter
@@ -1495,6 +1495,14 @@
     end
     object Financeiro: TMenuItem
       Caption = 'Financeiro'
+      object Pendncias1: TMenuItem
+        Caption = 'Pend'#234'ncias'
+        OnClick = Pendncias1Click
+      end
+      object Receitas1: TMenuItem
+        Caption = 'Receitas'
+        OnClick = Receitas1Click
+      end
     end
     object Sair: TMenuItem
       Caption = 'Sair'

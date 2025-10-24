@@ -29,6 +29,9 @@ type
     function CarregarClientes: TStringList;
     function CarregarPecas: TStringList;
     function CarregarPecasDaOS(const aIDOS: Integer): TList<Integer>;
+    function CalcularPrecoTotal(const aIDServico: Integer; aPecasIDs: TList<Integer>; const aIDVeiculo: Integer): Currency;
+    function CriarStringIDsPecas(aPecasIDs: TList<Integer>): string;
+    function ObterClienteDoVeiculo(const aIDVeiculo: Integer): Integer;
   end;
 
 implementation
@@ -55,6 +58,30 @@ begin
   except
     OSDTO.Free;
     raise;
+  end;
+end;
+
+function TOrdemServicoService.CriarStringIDsPecas(aPecasIDs: TList<Integer>): string;
+var
+  i: Integer;
+  StringBuilder: TStringBuilder;
+begin
+  Result := '';
+
+  if (aPecasIDs = nil) or (aPecasIDs.Count = 0) then
+    Exit;
+
+  StringBuilder := TStringBuilder.Create;
+  try
+    for i := 0 to aPecasIDs.Count - 1 do
+    begin
+      if i > 0 then
+        StringBuilder.Append(',');
+      StringBuilder.Append(aPecasIDs[i].ToString);
+    end;
+    Result := StringBuilder.ToString;
+  finally
+    StringBuilder.Free;
   end;
 end;
 
@@ -159,6 +186,33 @@ begin
     (OSValida.getIdVeiculo > 0) and
     (OSValida.getIdCliente > 0) and
     (OSValida.getPreco >= 0);
+end;
+function TOrdemServicoService.CalcularPrecoTotal(const aIDServico: Integer;
+  aPecasIDs: TList<Integer>; const aIDVeiculo: Integer): Currency;
+var
+  PrecoServico, PrecoPecas, PorcentagemAcrescimo: Currency;
+  PrecoBase, ValorAcrescimo: Currency;
+  IDsPecasString: string;
+begin
+  try
+    PrecoServico := Repository.ObterPrecoServico(aIDServico);
+    IDsPecasString := CriarStringIDsPecas(aPecasIDs);
+    PrecoPecas := Repository.ObterPrecoPecas(IDsPecasString);
+
+    PrecoBase := PrecoServico + PrecoPecas;
+    PorcentagemAcrescimo := Repository.ObterPorcentagemMarcaVeiculo(aIDVeiculo);
+    ValorAcrescimo := PrecoBase * (PorcentagemAcrescimo / 100);
+    Result := PrecoBase + ValorAcrescimo;
+  except
+    on E: Exception do
+    begin
+      raise Exception.Create('Erro ao calcular preço total: ' + E.Message);
+    end;
+  end;
+end;
+function TOrdemServicoService.ObterClienteDoVeiculo(const aIDVeiculo: Integer): Integer;
+begin
+  Result := Repository.ObterClienteDoVeiculo(aIDVeiculo);
 end;
 
 end.

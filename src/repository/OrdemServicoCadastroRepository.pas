@@ -25,6 +25,10 @@ type
     function CarregarClientes: TStringList;
     function CarregarPecas: TStringList;
     function CarregarPecasDaOS(const aIDOS: Integer): TList<Integer>;
+    function ObterPrecoServico(const aIDServico: Integer): Currency;
+    function ObterPrecoPecas(const aIDsPecasString: String): Currency;
+    function ObterPorcentagemMarcaVeiculo(const aIDVeiculo: Integer): Currency;
+    function ObterClienteDoVeiculo(const aIDVeiculo: Integer): Integer;
   end;
 
 implementation
@@ -136,7 +140,7 @@ begin
     FQuery.Close;
     FQuery.SQL.Clear;
     FQuery.SQL.Add('SELECT os.id, s.nome AS "Serviço", f.nome AS "Funcionário",');
-    FQuery.SQL.Add('v.placa AS "Veículo", c.nome AS "Cliente", os.preco AS "Preço", os.ativo');
+    FQuery.SQL.Add('v.modelo AS "Veículo", c.nome AS "Cliente", os.preco AS "Preço", os.ativo');
     FQuery.SQL.Add('FROM ordens_servico os');
     FQuery.SQL.Add('INNER JOIN servicos s ON os.id_servico = s.id');
     FQuery.SQL.Add('INNER JOIN funcionarios f ON os.id_funcionario = f.id');
@@ -190,13 +194,13 @@ begin
     FQuery.Close;
     FQuery.SQL.Clear;
     FQuery.SQL.Add('SELECT os.*, s.nome AS servico_nome, f.nome AS funcionario_nome,');
-    FQuery.SQL.Add('v.placa AS veiculo_placa, c.nome AS cliente_nome');
+    FQuery.SQL.Add('v.modelo AS veiculo_placa, c.nome AS cliente_nome');
     FQuery.SQL.Add('FROM ordens_servico os');
     FQuery.SQL.Add('INNER JOIN servicos s ON os.id_servico = s.id');
     FQuery.SQL.Add('INNER JOIN funcionarios f ON os.id_funcionario = f.id');
     FQuery.SQL.Add('INNER JOIN veiculos v ON os.id_veiculo = v.id');
     FQuery.SQL.Add('INNER JOIN clientes c ON os.id_cliente = c.id');
-    FQuery.SQL.Add('WHERE (s.nome ILIKE :filtro OR c.nome ILIKE :filtro OR v.placa ILIKE :filtro)');
+    FQuery.SQL.Add('WHERE (s.nome ILIKE :filtro OR c.nome ILIKE :filtro OR v.modelo ILIKE :filtro)');
     FQuery.SQL.Add('AND os.ativo = TRUE ORDER BY os.id');
     FQuery.ParamByName('filtro').AsString := '%' + Trim(aFiltro) + '%';
     FQuery.Open;
@@ -238,7 +242,7 @@ begin
   Qry := TFDQuery.Create(nil);
   try
     Qry.Connection := FQuery.Connection;
-   Qry.SQL.Add('SELECT id, nome FROM funcionarios WHERE ativo = TRUE AND tipo = ''Mecânico'' ORDER BY nome');
+    Qry.SQL.Add('SELECT id, nome FROM funcionarios WHERE ativo = TRUE AND tipo = ''Mecânico'' ORDER BY nome');
     Qry.Open;
     while not Qry.Eof do
     begin
@@ -260,11 +264,12 @@ begin
   Qry := TFDQuery.Create(nil);
   try
     Qry.Connection := FQuery.Connection;
-    Qry.SQL.Add('SELECT id, placa FROM veiculos WHERE ativo = TRUE ORDER BY placa');
+    Qry.SQL.Clear;
+    Qry.SQL.Add('SELECT id, modelo FROM veiculos WHERE ativo = TRUE ORDER BY modelo');
     Qry.Open;
     while not Qry.Eof do
     begin
-      Lista.AddObject(Qry.FieldByName('placa').AsString, TObject(Qry.FieldByName('id').AsInteger));
+      Lista.AddObject(Qry.FieldByName('modelo').AsString, TObject(Qry.FieldByName('id').AsInteger));
       Qry.Next;
     end;
     Result := Lista;
@@ -335,6 +340,92 @@ begin
       Qry.Next;
     end;
     Result := Lista;
+  finally
+    Qry.Free;
+  end;
+end;
+
+
+function TOrdemServicoRepository.ObterPrecoServico(const aIDServico: Integer): Currency;
+var
+  Qry: TFDQuery;
+begin
+  Result := 0;
+  Qry := TFDQuery.Create(nil);
+  try
+    Qry.Connection := FQuery.Connection;
+    Qry.SQL.Clear;
+    Qry.SQL.Add('SELECT COALESCE(preco, 0) as preco FROM servicos WHERE id = :id AND ativo = TRUE');
+    Qry.ParamByName('id').AsInteger := aIDServico;
+    Qry.Open;
+
+    if not Qry.IsEmpty then
+      Result := Qry.FieldByName('preco').AsCurrency;
+  finally
+    Qry.Free;
+  end;
+end;
+function TOrdemServicoRepository.ObterPrecoPecas(const aIDsPecasString: string): Currency;
+var
+  Qry: TFDQuery;
+begin
+  Result := 0;
+
+  if Trim(aIDsPecasString) = '' then
+    Exit;
+
+  Qry := TFDQuery.Create(nil);
+  try
+    Qry.Connection := FQuery.Connection;
+    Qry.SQL.Clear;
+    Qry.SQL.Add('SELECT COALESCE(SUM(preco_compra), 0) as total FROM pecas');
+    Qry.SQL.Add('WHERE id IN (' + aIDsPecasString + ') AND ativo = TRUE');
+    Qry.Open;
+
+    if not Qry.IsEmpty then
+      Result := Qry.FieldByName('total').AsCurrency;
+  finally
+    Qry.Free;
+  end;
+end;
+
+function TOrdemServicoRepository.ObterClienteDoVeiculo(const aIDVeiculo: Integer): Integer;
+var
+  Qry: TFDQuery;
+begin
+  Result := 0;
+  Qry := TFDQuery.Create(nil);
+  try
+    Qry.Connection := FQuery.Connection;
+    Qry.SQL.Add('SELECT id_cliente FROM veiculos');
+    Qry.SQL.Add('WHERE id = :id_veiculo AND ativo = TRUE');
+    Qry.ParamByName('id_veiculo').AsInteger := aIDVeiculo;
+    Qry.Open;
+
+    if not Qry.IsEmpty then
+      Result := Qry.FieldByName('id_cliente').AsInteger;
+  finally
+    Qry.Free;
+  end;
+end;
+
+function TOrdemServicoRepository.ObterPorcentagemMarcaVeiculo(const aIDVeiculo: Integer): Currency;
+var
+  Qry: TFDQuery;
+begin
+  Result := 0;
+
+  Qry := TFDQuery.Create(nil);
+  try
+    Qry.Connection := FQuery.Connection;
+    Qry.SQL.Clear;
+    Qry.SQL.Add('SELECT COALESCE(porcentagem_acrescimo, 0) as porcentagem_acrescimo FROM veiculos');
+    Qry.SQL.Add('WHERE id = :id AND ativo = TRUE');
+    Qry.ParamByName('id').AsInteger := aIDVeiculo;
+    Qry.Open;
+
+    if not Qry.IsEmpty then
+      Result := Qry.FieldByName('porcentagem_acrescimo').AsCurrency;
   finally
     Qry.Free;
   end;
