@@ -17,6 +17,7 @@ type
     Bairro: String;
     Cidade: String;
     Estado: String;
+    Tipo: String;
     Ativo: Boolean;
   public
     // Getters e Setters
@@ -56,6 +57,9 @@ type
     function getEstado : String;
     procedure setEstado(aEstado: String);
 
+    function getTipo : String;
+    procedure setTipo(aTipo: String);
+
     function getAtivo : Boolean;
     procedure setAtivo(aAtivo: Boolean);
   end;
@@ -77,6 +81,11 @@ end;
 function TFuncionario.getNome: String;
 begin
   Result := Nome;
+end;
+
+function TFuncionario.getTipo: String;
+begin
+  Result := Tipo;
 end;
 
 procedure TFuncionario.setNome(aNome: String);
@@ -112,6 +121,11 @@ end;
 procedure TFuncionario.setNascimento(aNascimento: String);
 begin
   Nascimento := aNascimento;
+end;
+
+procedure TFuncionario.setTipo(aTipo: String);
+begin
+  Tipo := aTipo;
 end;
 
 function TFuncionario.getTelefone: String;

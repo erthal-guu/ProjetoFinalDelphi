@@ -737,6 +737,8 @@ object FormCadastroFuncionarios: TFormCadastroFuncionarios
               ParentBackground = False
               TabOrder = 0
               Visible = False
+              ExplicitLeft = 19
+              ExplicitTop = 3
               object Label3: TLabel
                 Left = 156
                 Top = 8
@@ -777,7 +779,7 @@ object FormCadastroFuncionarios: TFormCadastroFuncionarios
                 ParentFont = False
               end
               object Label5: TLabel
-                Left = 533
+                Left = 640
                 Top = 72
                 Width = 42
                 Height = 17
@@ -1184,11 +1186,24 @@ object FormCadastroFuncionarios: TFormCadastroFuncionarios
                 ExplicitLeft = 983
                 ExplicitTop = 22
               end
+              object Label13: TLabel
+                Left = 533
+                Top = 72
+                Width = 33
+                Height = 17
+                Caption = 'Tipo :'
+                Font.Charset = DEFAULT_CHARSET
+                Font.Color = clWindowText
+                Font.Height = -13
+                Font.Name = 'Segoe UI'
+                Font.Style = []
+                ParentFont = False
+              end
               object CmbStatus: TComboBox
                 AlignWithMargins = True
-                Left = 533
+                Left = 640
                 Top = 96
-                Width = 101
+                Width = 94
                 Height = 29
                 Margins.Top = 40
                 Margins.Right = 10
@@ -1318,9 +1333,9 @@ object FormCadastroFuncionarios: TFormCadastroFuncionarios
               end
               object PnlButtonEnviar: TPanel
                 AlignWithMargins = True
-                Left = 644
+                Left = 739
                 Top = 96
-                Width = 220
+                Width = 125
                 Height = 33
                 Margins.Left = 0
                 Margins.Top = 0
@@ -1334,8 +1349,8 @@ object FormCadastroFuncionarios: TFormCadastroFuncionarios
                   AlignWithMargins = True
                   Left = 4
                   Top = 4
-                  Width = 40
-                  Height = 20
+                  Width = 117
+                  Height = 25
                   Align = alClient
                   Alignment = taCenter
                   Caption = 'Enviar'
@@ -1348,6 +1363,7 @@ object FormCadastroFuncionarios: TFormCadastroFuncionarios
                   ParentColor = False
                   ParentFont = False
                   OnClick = LblEnviarClick
+                  ExplicitLeft = -60
                 end
               end
               object EdtCEP: TEdit
@@ -1433,16 +1449,16 @@ object FormCadastroFuncionarios: TFormCadastroFuncionarios
                 AutoSize = False
                 BevelInner = bvNone
                 BevelOuter = bvNone
-                EditMask = '!99/99/00;1;_'
+                EditMask = '!99/99/0000;1;_'
                 Font.Charset = DEFAULT_CHARSET
                 Font.Color = clWindowText
                 Font.Height = -19
                 Font.Name = 'Segoe UI'
                 Font.Style = []
-                MaxLength = 8
+                MaxLength = 10
                 ParentFont = False
                 TabOrder = 11
-                Text = '  /  /  '
+                Text = '  /  /    '
                 OnClick = EdtDataNascimentoClick
               end
               object EdtTelefone: TMaskEdit
@@ -1472,9 +1488,9 @@ object FormCadastroFuncionarios: TFormCadastroFuncionarios
               end
               object PnlButtonAtualizar: TPanel
                 AlignWithMargins = True
-                Left = 644
+                Left = 739
                 Top = 96
-                Width = 220
+                Width = 125
                 Height = 33
                 Margins.Left = 0
                 Margins.Top = 0
@@ -1488,8 +1504,8 @@ object FormCadastroFuncionarios: TFormCadastroFuncionarios
                   AlignWithMargins = True
                   Left = 4
                   Top = 4
-                  Width = 59
-                  Height = 20
+                  Width = 117
+                  Height = 25
                   Align = alClient
                   Alignment = taCenter
                   Caption = 'Atualizar'
@@ -1502,7 +1518,32 @@ object FormCadastroFuncionarios: TFormCadastroFuncionarios
                   ParentColor = False
                   ParentFont = False
                   OnClick = LblAtualizarClick
+                  ExplicitLeft = 20
+                  ExplicitTop = -12
                 end
+              end
+              object CmbTipo: TComboBox
+                AlignWithMargins = True
+                Left = 533
+                Top = 96
+                Width = 101
+                Height = 29
+                Margins.Top = 40
+                Margins.Right = 10
+                Margins.Bottom = 80
+                BevelOuter = bvNone
+                Style = csDropDownList
+                Font.Charset = DEFAULT_CHARSET
+                Font.Color = clWindowText
+                Font.Height = -16
+                Font.Name = 'Segoe UI'
+                Font.Style = []
+                ParentFont = False
+                TabOrder = 14
+                Items.Strings = (
+                  'Gerente'
+                  'atendente'
+                  'mec'#226'nico')
               end
             end
           end
@@ -1567,7 +1608,7 @@ object FormCadastroFuncionarios: TFormCadastroFuncionarios
               AlignWithMargins = True
               Left = 4
               Top = 11
-              Width = 109
+              Width = 858
               Height = 32
               Margins.Top = 10
               Align = alTop
@@ -1579,6 +1620,7 @@ object FormCadastroFuncionarios: TFormCadastroFuncionarios
               Font.Name = 'Segoe UI'
               Font.Style = [fsBold]
               ParentFont = False
+              ExplicitWidth = 109
             end
             object ImgFechar: TImage
               Left = 800

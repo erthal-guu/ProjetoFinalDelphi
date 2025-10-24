@@ -15,7 +15,7 @@ type
     function SalvarFuncionario(Funcionario: TFuncionario): Boolean;
     procedure EditarFuncionario(Funcionario: TFuncionario);
     function ListarFuncionarios: TDataSet;
-    function CriarObjeto(aNome, aCPF, aRG, aNascimento, aTelefone, aCEP, aRua, aNumero,aBairro, aCidade, aEstado: String; aAtivo: Boolean): TFuncionario;
+    function CriarObjeto(aNome, aCPF, aRG, aNascimento, aTelefone, aCEP, aRua, aNumero,aBairro, aCidade, aEstado,aTipo: String; aAtivo: Boolean): TFuncionario;
     procedure DeletarFuncionario(const aId: Integer);
     procedure RestaurarFuncionario(const aId: Integer);
     function PesquisarFuncionarios(const aFiltro: String): TDataSet;
@@ -37,7 +37,7 @@ end;
 
 function TFuncionarioController.CriarObjeto(
   aNome, aCPF, aRG, aNascimento, aTelefone, aCEP, aRua, aNumero,
-  aBairro, aCidade, aEstado: String; aAtivo: Boolean): TFuncionario;
+  aBairro, aCidade, aEstado,aTipo: String; aAtivo: Boolean): TFuncionario;
 begin
   Result := TFuncionario.Create;
   Result.setNome(aNome);
@@ -51,6 +51,7 @@ begin
   Result.setBairro(aBairro);
   Result.setCidade(aCidade);
   Result.setEstado(aEstado);
+  Result.setTipo(aTipo);
   Result.setAtivo(aAtivo);
 end;
 

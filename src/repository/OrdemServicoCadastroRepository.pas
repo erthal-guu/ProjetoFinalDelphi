@@ -238,7 +238,7 @@ begin
   Qry := TFDQuery.Create(nil);
   try
     Qry.Connection := FQuery.Connection;
-    Qry.SQL.Add('SELECT id, nome FROM funcionarios WHERE ativo = TRUE ORDER BY nome');
+   Qry.SQL.Add('SELECT id, nome FROM funcionarios WHERE ativo = TRUE AND tipo = ''Mecânico'' ORDER BY nome');
     Qry.Open;
     while not Qry.Eof do
     begin

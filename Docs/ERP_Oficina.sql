@@ -2,12 +2,12 @@
 -- PostgreSQL database dump
 --
 
-\restrict Gl9yR2kOIP1okJ6r3COfhgXqoQnzfzMYJw1rHdydNdGRH64luttoIdIhFuRyaD4
+\restrict jk3rQ0cM1cBzljT0xoBMMaA6JIDA6YaWazpamHZolxvPeG1dbmWreLrhtUECig5
 
 -- Dumped from database version 18.0
 -- Dumped by pg_dump version 18.0
 
--- Started on 2025-10-23 21:36:13
+-- Started on 2025-10-23 22:13:43
 
 SET statement_timeout = 0;
 SET lock_timeout = 0;
@@ -187,7 +187,8 @@ CREATE TABLE public.funcionarios (
     bairro character varying(50),
     cidade character varying(50),
     estado character varying(2),
-    ativo boolean DEFAULT true
+    ativo boolean DEFAULT true,
+    tipo character varying(50)
 );
 
 
@@ -753,29 +754,30 @@ COPY public.fornecedores (id, nome, razao_social, cnpj, telefone, cep, rua, nume
 -- Data for Name: funcionarios; Type: TABLE DATA; Schema: public; Owner: postgres
 --
 
-COPY public.funcionarios (id, nome, cpf, rg, nascimento, telefone, cep, rua, numero, bairro, cidade, estado, ativo) FROM stdin;
-1	Gustavo	139.471.968-89	14.178.467-1	15/02/08	(41)98797-0732	81560280	Rua Agostinho Ângelo Trevisan	582	Uberaba	Curitiba	PR	t
-2	Mariana	111.222.333-44	11.222.333-4	10/04/90	(11)99876-1234	04555555	Rua das Flores	100	Centro	São Paulo	SP	t
-3	João	222.333.444-55	22.333.444-5	22/05/85	(21)88776-4567	21060001	Avenida dos Andradas	200	Andaraí	Rio de Janeiro	RJ	t
-4	Clara	333.444.555-66	33.444.555-6	09/01/92	(31)98888-2552	30140081	Rua Timbiras	370	Barro Preto	Belo Horizonte	MG	t
-5	Lucas	444.555.666-77	44.555.666-7	19/11/99	(41)98712-0147	80230010	Rua do Rosário	400	Centro	Curitiba	PR	t
-7	Rafael	666.777.888-99	66.777.888-9	03/03/87	(51)97312-0148	90035050	Rua Mostardeiro	1010	Moinhos	Porto Alegre	RS	t
-8	Isabela	777.888.999-00	77.888.999-0	18/06/93	(62)98416-0022	74003010	Rua 7	70	Centro	Goiânia	GO	t
-9	Pedro	888.999.000-11	88.999.000-1	29/10/91	(67)99123-7758	79003010	Rua Bahia	518	Centro	Campo Grande	MS	t
-10	Julia	999.000.111-22	99.000.111-2	12/12/89	(47)99118-4471	88010010	Rua Conselheiro Mafra	85	Centro	Florianópolis	SC	t
-11	Felipe	123.123.123-12	12.312.312-3	03/07/95	(79)98877-0065	49010010	Rua José Ramos	107	São José	Aracaju	SE	t
-12	Camila	234.234.234-23	23.423.423-4	22/02/96	(16)99674-2093	14010060	Rua Alvares Cabral	208	Centro	Ribeirão Preto	SP	t
-13	Henrique	456.456.456-45	45.645.645-6	11/01/88	(27)99583-2033	29090360	Rua Sete	254	Santa Lúcia	Vitória	ES	t
-14	Gabriela	567.567.567-56	56.756.756-7	29/09/97	(95)99113-2045	69300000	Av. Jaime Brasil	148	Centro	Boa Vista	RR	t
-15	Eduardo	678.678.678-67	67.867.867-8	14/08/94	(27)99963-1097	29101560	Rua das Palmeiras	400	Itapuã	Vila Velha	ES	t
-16	Luana	789.789.789-78	78.978.978-9	25/09/93	(96)99144-2035	68900000	Rua Hamilton Silva	100	Centro	Macapá	AP	t
-17	Marcelo	890.890.890-89	89.089.089-0	22/11/92	(84)99813-2001	59000000	Rua João Pessoa	303	Cidade Alta	Natal	RN	t
-18	Paula	901.901.901-90	90.190.190-1	04/12/90	(82)99344-1010	57020350	Rua do Sol	111	Farol	Maceió	AL	t
-19	Bruno	012.012.012-01	01.201.201-2	17/05/98	(92)98856-7789	69000000	Rua José Paranaguá	289	Centro	Manaus	AM	t
-20	Larissa	123.321.123-32	32.132.132-1	01/06/99	(21)99198-0771	22790150	Rua dos Jacarandás	52	Barra	Rio de Janeiro	RJ	t
-21	kuchma	113.520.000-00	14.617.846-1	16/12/06	(41)64781-4785	81560280	Rua Agostinho Ângelo Trevisan	582	Uberaba	Curitiba	PR	t
-22	jota	146.816.479-16	11.111.111-1	11/11/11	(11)11111-1111	81560280	Rua Agostinho Ângelo Trevisan	582	Uberaba	Curitiba	PR	f
-6	Ana Banana	555.666.777-88	55.666.777-8	13/08/95	(85)99845-6675	60040000	Rua Senador Pompeu	320	Centro	Fortaleza	CE	t
+COPY public.funcionarios (id, nome, cpf, rg, nascimento, telefone, cep, rua, numero, bairro, cidade, estado, ativo, tipo) FROM stdin;
+1	Gustavo	139.471.968-89	14.178.467-1	15/02/08	(41)98797-0732	81560280	Rua Agostinho Ângelo Trevisan	582	Uberaba	Curitiba	PR	t	Gerente
+2	Mariana	111.222.333-44	11.222.333-4	10/04/90	(11)99876-1234	04555555	Rua das Flores	100	Centro	São Paulo	SP	t	Gerente
+3	João	222.333.444-55	22.333.444-5	22/05/85	(21)88776-4567	21060001	Avenida dos Andradas	200	Andaraí	Rio de Janeiro	RJ	t	Gerente
+4	Clara	333.444.555-66	33.444.555-6	09/01/92	(31)98888-2552	30140081	Rua Timbiras	370	Barro Preto	Belo Horizonte	MG	t	Atendente
+5	Lucas	444.555.666-77	44.555.666-7	19/11/99	(41)98712-0147	80230010	Rua do Rosário	400	Centro	Curitiba	PR	t	Atendente
+7	Rafael	666.777.888-99	66.777.888-9	03/03/87	(51)97312-0148	90035050	Rua Mostardeiro	1010	Moinhos	Porto Alegre	RS	t	Atendente
+8	Isabela	777.888.999-00	77.888.999-0	18/06/93	(62)98416-0022	74003010	Rua 7	70	Centro	Goiânia	GO	t	Atendente
+9	Pedro	888.999.000-11	88.999.000-1	29/10/91	(67)99123-7758	79003010	Rua Bahia	518	Centro	Campo Grande	MS	t	Atendente
+10	Julia	999.000.111-22	99.000.111-2	12/12/89	(47)99118-4471	88010010	Rua Conselheiro Mafra	85	Centro	Florianópolis	SC	t	Atendente
+11	Felipe	123.123.123-12	12.312.312-3	03/07/95	(79)98877-0065	49010010	Rua José Ramos	107	São José	Aracaju	SE	t	Atendente
+12	Camila	234.234.234-23	23.423.423-4	22/02/96	(16)99674-2093	14010060	Rua Alvares Cabral	208	Centro	Ribeirão Preto	SP	t	Atendente
+13	Henrique	456.456.456-45	45.645.645-6	11/01/88	(27)99583-2033	29090360	Rua Sete	254	Santa Lúcia	Vitória	ES	t	Mecânico
+14	Gabriela	567.567.567-56	56.756.756-7	29/09/97	(95)99113-2045	69300000	Av. Jaime Brasil	148	Centro	Boa Vista	RR	t	Mecânico
+15	Eduardo	678.678.678-67	67.867.867-8	14/08/94	(27)99963-1097	29101560	Rua das Palmeiras	400	Itapuã	Vila Velha	ES	t	Mecânico
+16	Luana	789.789.789-78	78.978.978-9	25/09/93	(96)99144-2035	68900000	Rua Hamilton Silva	100	Centro	Macapá	AP	t	Mecânico
+17	Marcelo	890.890.890-89	89.089.089-0	22/11/92	(84)99813-2001	59000000	Rua João Pessoa	303	Cidade Alta	Natal	RN	t	Mecânico
+18	Paula	901.901.901-90	90.190.190-1	04/12/90	(82)99344-1010	57020350	Rua do Sol	111	Farol	Maceió	AL	t	Mecânico
+19	Bruno	012.012.012-01	01.201.201-2	17/05/98	(92)98856-7789	69000000	Rua José Paranaguá	289	Centro	Manaus	AM	t	Mecânico
+20	Larissa	123.321.123-32	32.132.132-1	01/06/99	(21)99198-0771	22790150	Rua dos Jacarandás	52	Barra	Rio de Janeiro	RJ	t	Mecânico
+21	kuchma	113.520.000-00	14.617.846-1	16/12/06	(41)64781-4785	81560280	Rua Agostinho Ângelo Trevisan	582	Uberaba	Curitiba	PR	t	Mecânico
+23	Luciana	731.800.509-00	50.578.120-7	20/07/1969	(41)98797-0732	81560280	Rua Agostinho Ângelo Trevisan	582	Uberaba	Curitiba	PR	t	Gerente
+6	Ana Banana	555.666.777-88	55.666.777-8	13/08/95	(85)99845-6675	60040000	Rua Senador Pompeu	320	Centro	Fortaleza	CE	t	Atendente
+22	jota	146.816.479-16	11.111.111-1	11/11/11	(11)11111-1111	81560280	Rua Agostinho Ângelo Trevisan	582	Uberaba	Curitiba	PR	t	Mecânico
 \.
 
 
@@ -1009,7 +1011,7 @@ SELECT pg_catalog.setval('public.fornecedores_id_seq', 20, true);
 -- Name: funcionarios_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
 --
 
-SELECT pg_catalog.setval('public.funcionarios_id_seq', 22, true);
+SELECT pg_catalog.setval('public.funcionarios_id_seq', 23, true);
 
 
 --
@@ -1397,11 +1399,11 @@ ALTER TABLE ONLY public.veiculos
     ADD CONSTRAINT veiculos_id_cliente_fkey FOREIGN KEY (id_cliente) REFERENCES public.clientes(id);
 
 
--- Completed on 2025-10-23 21:36:13
+-- Completed on 2025-10-23 22:13:43
 
 --
 -- PostgreSQL database dump complete
 --
 
-\unrestrict Gl9yR2kOIP1okJ6r3COfhgXqoQnzfzMYJw1rHdydNdGRH64luttoIdIhFuRyaD4
+\unrestrict jk3rQ0cM1cBzljT0xoBMMaA6JIDA6YaWazpamHZolxvPeG1dbmWreLrhtUECig5
 

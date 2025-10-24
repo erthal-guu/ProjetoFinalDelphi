@@ -56,7 +56,7 @@ begin
     FQuery.SQL.Add('UPDATE funcionarios SET');
     FQuery.SQL.Add('nome = :nome, cpf = :cpf, rg = :rg, nascimento = :nascimento, telefone = :telefone,');
     FQuery.SQL.Add('cep = :cep, rua = :rua, numero = :numero, bairro = :bairro, cidade = :cidade,');
-    FQuery.SQL.Add('estado = :estado, ativo = :ativo');
+    FQuery.SQL.Add('estado = :estado,tipo = :tipo, ativo = :ativo');
     FQuery.SQL.Add('WHERE id = :id');
     FQuery.ParamByName('nome').AsString      := aFuncionario.getNome;
     FQuery.ParamByName('cpf').AsString       := aFuncionario.getCPF;
@@ -69,6 +69,7 @@ begin
     FQuery.ParamByName('bairro').AsString    := aFuncionario.getBairro;
     FQuery.ParamByName('cidade').AsString    := aFuncionario.getCidade;
     FQuery.ParamByName('estado').AsString    := aFuncionario.getEstado;
+    FQuery.ParamByName('tipo').AsString    := aFuncionario.getTipo;
     FQuery.ParamByName('ativo').AsBoolean    := aFuncionario.getAtivo;
     FQuery.ParamByName('id').AsInteger       := aFuncionario.getIdFuncionario;
     FQuery.ExecSQL;
@@ -83,9 +84,9 @@ procedure TFuncionarioRepository.InserirFuncionario(aFuncionario: TFuncionario);
 begin
   FQuery.Close;
   FQuery.SQL.Clear;
-  FQuery.SQL.Add('INSERT INTO funcionarios');
-  FQuery.SQL.Add('(nome, cpf, rg, nascimento, telefone, cep, rua, numero, bairro, cidade, estado, ativo)');
-  FQuery.SQL.Add('VALUES (:nome, :cpf, :rg, :nascimento, :telefone, :cep, :rua, :numero, :bairro, :cidade, :estado, :ativo)');
+ FQuery.SQL.Add('INSERT INTO funcionarios');
+FQuery.SQL.Add('(nome, cpf, rg, nascimento, telefone, cep, rua, numero, bairro, cidade, estado, tipo, ativo)');
+FQuery.SQL.Add('VALUES (:nome, :cpf, :rg, :nascimento, :telefone, :cep, :rua, :numero, :bairro, :cidade, :estado, :tipo, :ativo)');
   FQuery.ParamByName('nome').AsString      := aFuncionario.getNome;
   FQuery.ParamByName('cpf').AsString       := aFuncionario.getCPF;
   FQuery.ParamByName('rg').AsString        := aFuncionario.getRG;
@@ -97,6 +98,7 @@ begin
   FQuery.ParamByName('bairro').AsString    := aFuncionario.getBairro;
   FQuery.ParamByName('cidade').AsString    := aFuncionario.getCidade;
   FQuery.ParamByName('estado').AsString    := aFuncionario.getEstado;
+  FQuery.ParamByName('tipo').AsString    := aFuncionario.getTipo;
   FQuery.ParamByName('ativo').AsBoolean    := aFuncionario.getAtivo;
   FQuery.ExecSQL;
 end;
@@ -116,7 +118,7 @@ begin
   try
     FQuery.Close;
     FQuery.SQL.Clear;
-    FQuery.SQL.Add('SELECT id, nome, cpf, rg, nascimento, telefone, cep, rua, numero, bairro, cidade, estado, ativo');
+    FQuery.SQL.Add('SELECT id, nome, cpf, rg, nascimento, telefone, cep, rua, numero, bairro, cidade, estado,tipo,ativo');
     FQuery.SQL.Add('FROM funcionarios WHERE ativo = TRUE ORDER BY id');
     FQuery.Open;
     Result := FQuery;
@@ -131,7 +133,7 @@ begin
   try
     FQuery.Close;
     FQuery.SQL.Clear;
-    FQuery.SQL.Add('SELECT id, nome, cpf, rg, nascimento, telefone, cep, rua, numero, bairro, cidade, estado, ativo');
+    FQuery.SQL.Add('SELECT id, nome, cpf, rg, nascimento, telefone, cep, rua, numero, bairro, cidade, estado,tipo, ativo');
     FQuery.SQL.Add('FROM funcionarios WHERE ativo = FALSE');
     FQuery.Open;
     Result := FQuery;
@@ -146,14 +148,15 @@ begin
   try
     FQuery.Close;
     FQuery.SQL.Clear;
-    FQuery.SQL.Add('SELECT id, nome, cpf, rg, nascimento, telefone, cep, rua, numero, bairro, cidade, estado, ativo');
+    FQuery.SQL.Add('SELECT id, nome, cpf, rg, nascimento, telefone, cep, rua, numero, bairro, cidade, estado,tipo,ativo');
     FQuery.SQL.Add('FROM funcionarios');
-    FQuery.SQL.Add('WHERE (nome ILIKE :nome) OR (cpf LIKE :cpf) OR (telefone ILIKE :telefone)');
+    FQuery.SQL.Add('WHERE (nome ILIKE :nome) OR (cpf LIKE :cpf) OR (telefone ILIKE :telefone) OR (tipo ILIKE :tipo)');
     FQuery.SQL.Add('AND ativo = TRUE');
     FQuery.SQL.Add('ORDER BY id');
     FQuery.ParamByName('nome').AsString      := '%' + Trim(aFiltro) + '%';
     FQuery.ParamByName('cpf').AsString       := '%' + Trim(aFiltro) + '%';
     FQuery.ParamByName('telefone').AsString  := '%' + Trim(aFiltro) + '%';
+    FQuery.ParamByName('tipo').AsString  := '%' + Trim(aFiltro) + '%';
     FQuery.Open;
     Result := FQuery;
   except

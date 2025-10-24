@@ -15,7 +15,7 @@ type
     constructor Create;
     function SalvarFuncionario(Funcionario: TFuncionario): Boolean;
     function CriarObjeto(aNome, aCPF, aRG, aNascimento, aTelefone, aCEP, aRua, aNumero,
-      aBairro, aCidade, aEstado: String; aAtivo: Boolean): TFuncionario;
+      aBairro, aCidade, aEstado,aTipo: String; aAtivo: Boolean): TFuncionario;
     procedure EditarFuncionario(Funcionario: TFuncionario);
     function ValidarFuncionario(FuncionarioValido: TFuncionario): Boolean;
     function ListarFuncionarios: TDataSet;
@@ -37,7 +37,7 @@ end;
 
 function TFuncionarioService.CriarObjeto(
   aNome, aCPF, aRG, aNascimento, aTelefone, aCEP, aRua, aNumero,
-  aBairro, aCidade, aEstado: String; aAtivo: Boolean): TFuncionario;
+  aBairro, aCidade, aEstado,aTipo: String; aAtivo: Boolean): TFuncionario;
 var
   Funcionario: TFuncionario;
 begin
@@ -54,6 +54,7 @@ begin
     Funcionario.setBairro(aBairro);
     Funcionario.setCidade(aCidade);
     Funcionario.setEstado(aEstado);
+    Funcionario.setAtivo(aAtivo);
     Funcionario.setAtivo(aAtivo);
     Result := Funcionario;
   except
@@ -145,6 +146,7 @@ begin
     (FuncionarioValido.getNumero <> '') and
     (FuncionarioValido.getBairro <> '') and
     (FuncionarioValido.getCidade <> '') and
+    (FuncionarioValido.getTipo <> '') and
     (FuncionarioValido.getEstado <> '');
 end;
 

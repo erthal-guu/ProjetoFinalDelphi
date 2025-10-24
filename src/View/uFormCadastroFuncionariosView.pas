@@ -69,6 +69,8 @@ type
     EdtPesquisar: TSearchBox;
     DataSourceRestaurar: TDataSource;
     DataSourceMain: TDataSource;
+    CmbTipo: TComboBox;
+    Label13: TLabel;
     procedure BtnAdicionarClick(Sender: TObject);
     procedure BtnPesquisarClick(Sender: TObject);
     procedure FormCreate(Sender: TObject);
@@ -176,6 +178,8 @@ procedure TFormCadastroFuncionarios.FormCreate(Sender: TObject);
 begin
   CmbStatus.Height := 31;
   CmbStatus.Font.Size := 13;
+  CmbTipo.Height := 31;
+  CmbTipo.Font.Size := 13;
   EdtNome.Height := 31; EdtCPF.Height := 31; EdtRG.Height := 31;
   EdtDataNascimento.Height := 31; EdtTelefone.Height := 31; EdtCEP.Height := 31;
   EdtRua.Height := 31; EdtNumero.Height := 31;
@@ -206,6 +210,7 @@ begin
   if EdtBairro.Text = '' then begin ShowMessage('O Campo de BAIRRO não pode ficar Vazio'); Exit; end;
   if EdtCidade.Text = '' then begin ShowMessage('O Campo de CIDADE não pode ficar Vazio'); Exit; end;
   if EdtEstado.Text = '' then begin ShowMessage('O Campo de ESTADO não pode ficar Vazio'); Exit; end;
+  if CmbTipo.ItemIndex = -1 then begin ShowMessage('Selecione o TIPO'); Exit; end;
   if CmbStatus.ItemIndex = -1 then begin ShowMessage('Selecione o STATUS'); Exit; end;
   Result := True;
 end;
@@ -213,7 +218,7 @@ end;
 procedure TFormCadastroFuncionarios.LimparCampos;
 begin
   EdtNome.Clear; EdtCPF.Clear; EdtRG.Clear; EdtEstado.Clear; EdtTelefone.Clear; EdtBairro.Clear;
-  EdtCidade.Clear; EdtRua.Clear; EdtNumero.Clear; EdtCEP.Clear; EdtDataNascimento.Clear; CmbStatus.ItemIndex := -1;
+  EdtCidade.Clear; EdtRua.Clear; EdtNumero.Clear; EdtCEP.Clear; EdtDataNascimento.Clear; CmbStatus.ItemIndex := -1;CmbTipo.ItemIndex := -1
 end;
 
 procedure TFormCadastroFuncionarios.CarregarGrid;
@@ -224,7 +229,7 @@ begin
   DataSourceMain.DataSet := FuncionarioService.ListarFuncionarios;
   DBGridMain.DataSource := DataSourceMain;
   try
-    if DBGridMain.Columns.Count >= 13 then
+    if DBGridMain.Columns.Count >= 14 then
     begin
       DBGridMain.Columns[0].Title.Caption := 'Id';
       DBGridMain.Columns[1].Title.Caption := 'Nome';
@@ -238,9 +243,10 @@ begin
       DBGridMain.Columns[9].Title.Caption := 'Bairro';
       DBGridMain.Columns[10].Title.Caption := 'Cidade';
       DBGridMain.Columns[11].Title.Caption := 'Estado';
-      DBGridMain.Columns[12].Title.Caption := 'Ativo';
+      DBGridMain.Columns[12].Title.Caption := 'Tipo';
+      DBGridMain.Columns[13].Title.Caption := 'Ativo';
 
-      for var i := 0 to 12 do begin
+      for var i := 0 to 13 do begin
         DBGridMain.Columns[i].Title.Alignment := taCenter;
         DBGridMain.Columns[i].Alignment := taCenter;
         DBGridMain.Columns[i].Width := 120;
@@ -260,9 +266,9 @@ begin
   DataSourceRestaurar.DataSet := FuncionarioService.ListarFuncionariosRestaurar;
   DBGridRestaurar.DataSource := DataSourceRestaurar;
   try
-    if DBGridRestaurar.Columns.Count >= 13 then
+    if DBGridRestaurar.Columns.Count >= 14 then
     begin
-      for var i := 0 to 12 do begin
+      for var i := 0 to 13 do begin
         DBGridRestaurar.Columns[i].Title.Alignment := taCenter;
         DBGridRestaurar.Columns[i].Alignment := taCenter;
         DBGridRestaurar.Columns[i].Width := 120;
@@ -304,6 +310,11 @@ begin
   EdtBairro.Text        := DBGridMain.DataSource.DataSet.FieldByName('bairro').AsString;
   EdtCidade.Text        := DBGridMain.DataSource.DataSet.FieldByName('cidade').AsString;
   EdtEstado.Text        := DBGridMain.DataSource.DataSet.FieldByName('estado').AsString;
+
+  if DBGridMain.DataSource.DataSet.FieldByName('tipo').AsBoolean then
+      CmbTipo.ItemIndex := 0
+      else
+      CmbTipo.ItemIndex := 1;
 
   if DBGridMain.DataSource.DataSet.FieldByName('ativo').AsBoolean then
     CmbStatus.ItemIndex := 0
@@ -361,7 +372,7 @@ begin
       Funcionario := FuncionarioController.CriarObjeto(
         EdtNome.Text, EdtCPF.Text, EdtRG.Text, EdtDataNascimento.Text,
         EdtTelefone.Text, EdtCEP.Text, EdtRua.Text, EdtNumero.Text,
-        EdtBairro.Text, EdtCidade.Text, EdtEstado.Text, CmbStatus.ItemIndex = 0);
+        EdtBairro.Text, EdtCidade.Text, EdtEstado.Text,CmbTipo.text,CmbStatus.ItemIndex = 0);
       FuncionarioController.SalvarFuncionario(Funcionario);
       LimparCampos;
       CarregarGrid;
@@ -402,6 +413,7 @@ begin
       Funcionario.setCidade(EdtCidade.Text);
       Funcionario.setEstado(EdtEstado.Text);
       Funcionario.setAtivo(CmbStatus.ItemIndex = 0);
+       Funcionario.setTipo(CmbTipo.text);
       FuncionarioController.EditarFuncionario(Funcionario);
       CarregarGrid;
       LimparCampos;

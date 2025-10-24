@@ -14,3 +14,8 @@
 21:05:50 - EDITAR - ID: 0 editou ordem de serviço ID: 2
 21:16:28 - DELETAR - ID: 0 deletou ordem de serviço ID: 2
 21:17:09 - RESTAURAR - ID: 0 restaurou ordem de serviço ID: 2
+22:07:09 - CADASTRO - ID: 0 cadastrou funcionário: Luciana (CPF: 731.800.509-00)
+22:07:18 - EDITAR - ID: 0 editou funcionário: Luciana (CPF: 731.800.509-00)
+22:07:24 - DELETAR - ID: 0 deletou funcionário ID: 23
+22:07:27 - RESTAURAR - ID: 0 restaurou funcionário ID: 22
+22:07:29 - RESTAURAR - ID: 0 restaurou funcionário ID: 23
