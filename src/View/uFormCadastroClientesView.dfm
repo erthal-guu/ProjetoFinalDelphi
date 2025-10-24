@@ -1293,7 +1293,7 @@
                 AlignWithMargins = True
                 Left = 4
                 Top = 4
-                Width = 40
+                Width = 97
                 Height = 20
                 Align = alClient
                 Alignment = taCenter
@@ -1307,6 +1307,7 @@
                 ParentColor = False
                 ParentFont = False
                 OnClick = LblEnviarClick
+                ExplicitWidth = 40
               end
             end
             object PnlButtonAtualizar: TPanel
@@ -1328,8 +1329,8 @@
                 AlignWithMargins = True
                 Left = 3
                 Top = 3
-                Width = 59
-                Height = 20
+                Width = 98
+                Height = 24
                 Align = alClient
                 Alignment = taCenter
                 Caption = 'Atualizar'
@@ -1342,6 +1343,8 @@
                 ParentColor = False
                 ParentFont = False
                 OnClick = LblAtualizarClick
+                ExplicitWidth = 59
+                ExplicitHeight = 20
               end
             end
           end
@@ -1403,11 +1406,13 @@
           ParentBackground = False
           TabOrder = 1
           Visible = False
+          ExplicitLeft = 28
+          ExplicitTop = 28
           object LblRestaurar: TLabel
             AlignWithMargins = True
             Left = 4
             Top = 11
-            Width = 109
+            Width = 863
             Height = 32
             Margins.Top = 10
             Align = alTop
@@ -1419,6 +1424,7 @@
             Font.Name = 'Segoe UI'
             Font.Style = [fsBold]
             ParentFont = False
+            ExplicitWidth = 109
           end
           object ImgFechar: TImage
             Left = 800

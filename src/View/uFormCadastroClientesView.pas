@@ -40,13 +40,6 @@
     LblAtualizar: TLabel;
     PnlGrid: TPanel;
     DBGridMain: TDBGrid;
-    PnlRestaurar: TPanel;
-    LblRestaurar: TLabel;
-    ImgFechar: TImage;
-    ImgRestaurar: TImage;
-    PnlMainRestaurar: TPanel;
-    PnlContainerRestaurar: TPanel;
-    DBGridRestaurar: TDBGrid;
     PnlHeader: TPanel;
     EdtPesquisar: TSearchBox;
     PnlButtonCrud: TPanel;
@@ -59,6 +52,13 @@
     BtnCancelar: TSpeedButton;
     BtnRestaurar: TSpeedButton;
     BtnSair: TSpeedButton;
+    PnlRestaurar: TPanel;
+    LblRestaurar: TLabel;
+    ImgFechar: TImage;
+    ImgRestaurar: TImage;
+    PnlMainRestaurar: TPanel;
+    PnlContainerRestaurar: TPanel;
+    DBGridRestaurar: TDBGrid;
       procedure BtnAdicionarClick(Sender: TObject);
       procedure BtnPesquisarClick(Sender: TObject);
       procedure FormCreate(Sender: TObject);

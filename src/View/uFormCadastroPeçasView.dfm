@@ -1441,6 +1441,7 @@
                 Font.Style = []
                 ParentFont = False
                 TabOrder = 3
+                ExplicitLeft = 376
               end
               object CmbModelo: TComboBox
                 AlignWithMargins = True

@@ -215,6 +215,10 @@
         <DCCReference Include="src\controller\ServiçoCadastroController.pas"/>
         <DCCReference Include="src\session\uSession.pas"/>
         <DCCReference Include="src\Logs\Logs.pas"/>
+        <DCCReference Include="src\Model\uOrdemServico.pas"/>
+        <DCCReference Include="src\repository\OrdemServicoCadastroRepository.pas"/>
+        <DCCReference Include="src\Services\OrdemServicoCadastroService.pas"/>
+        <DCCReference Include="src\controller\OrdemServicoCadastroController.pas"/>
         <BuildConfiguration Include="Base">
             <Key>Base</Key>
         </BuildConfiguration>

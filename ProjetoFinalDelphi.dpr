@@ -50,7 +50,11 @@ uses
   ServiçoCadastroService in 'src\Services\ServiçoCadastroService.pas',
   ServiçoCadastroController in 'src\controller\ServiçoCadastroController.pas',
   uSession in 'src\session\uSession.pas',
-  Logs in 'src\Logs\Logs.pas';
+  Logs in 'src\Logs\Logs.pas',
+  uOrdemServico in 'src\Model\uOrdemServico.pas',
+  OrdemServicoCadastroRepository in 'src\repository\OrdemServicoCadastroRepository.pas',
+  OrdemServicoCadastroService in 'src\Services\OrdemServicoCadastroService.pas',
+  OrdemServicoCadastroController in 'src\controller\OrdemServicoCadastroController.pas';
 
 {$R *.res}
 

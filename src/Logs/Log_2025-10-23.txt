@@ -10,3 +10,7 @@
 17:44:19 - VINCULAR - Peça ID: 3 vinculada ao Fornecedor ID: 25
 17:48:52 - VINCULAR - Fornecedor ID: 24 vinculada ao Fornecedor ID: 17
 17:49:48 - VINCULAR - Peça ID: 23 vinculada ao Fornecedor ID: 6
+21:05:15 - CADASTRO - ID: 0 cadastrou ordem de serviço com cliente ID: 2
+21:05:50 - EDITAR - ID: 0 editou ordem de serviço ID: 2
+21:16:28 - DELETAR - ID: 0 deletou ordem de serviço ID: 2
+21:17:09 - RESTAURAR - ID: 0 restaurou ordem de serviço ID: 2
