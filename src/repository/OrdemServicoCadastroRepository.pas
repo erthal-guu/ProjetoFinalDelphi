@@ -48,8 +48,8 @@ begin
   try
     FQuery.Close;
     FQuery.SQL.Clear;
-    FQuery.SQL.Add('INSERT INTO ordens_servico (id_servico, id_funcionario, id_veiculo, id_cliente, preco, ativo)');
-    FQuery.SQL.Add('VALUES (:id_servico, :id_funcionario, :id_veiculo, :id_cliente, :preco, :ativo)');
+    FQuery.SQL.Add('INSERT INTO ordens_servico (id_servico, id_funcionario, id_veiculo, id_cliente, preco, ativo, observacao, data_inicio, data_conclusao, data_abertura)');
+    FQuery.SQL.Add('VALUES (:id_servico, :id_funcionario, :id_veiculo, :id_cliente, :preco, :ativo, :observacao, :data_inicio, :data_conclusao, :data_abertura)');
     FQuery.SQL.Add('RETURNING id');
     FQuery.ParamByName('id_servico').AsInteger := aOS.getIdServico;
     FQuery.ParamByName('id_funcionario').AsInteger := aOS.getIdFuncionario;
@@ -57,6 +57,10 @@ begin
     FQuery.ParamByName('id_cliente').AsInteger := aOS.getIdCliente;
     FQuery.ParamByName('preco').AsCurrency := aOS.getPreco;
     FQuery.ParamByName('ativo').AsBoolean := aOS.getAtivo;
+    FQuery.ParamByName('observacao').AsString := aOS.getObservacao;
+    FQuery.ParamByName('data_inicio').AsDateTime := aOS.getDataInicio;
+    FQuery.ParamByName('data_conclusao').AsDateTime := aOS.getDataConclusao;
+    FQuery.ParamByName('data_abertura').AsDateTime := Now;
     FQuery.Open;
     OSID := FQuery.FieldByName('id').AsInteger;
 
@@ -92,7 +96,8 @@ begin
     FQuery.SQL.Clear;
     FQuery.SQL.Add('UPDATE ordens_servico SET');
     FQuery.SQL.Add('id_servico = :id_servico, id_funcionario = :id_funcionario, id_veiculo = :id_veiculo,');
-    FQuery.SQL.Add('id_cliente = :id_cliente, preco = :preco, ativo = :ativo');
+    FQuery.SQL.Add('id_cliente = :id_cliente, preco = :preco, ativo = :ativo, observacao = :observacao,');
+    FQuery.SQL.Add('data_inicio = :data_inicio, data_conclusao = :data_conclusao');
     FQuery.SQL.Add('WHERE id = :id');
     FQuery.ParamByName('id_servico').AsInteger := aOS.getIdServico;
     FQuery.ParamByName('id_funcionario').AsInteger := aOS.getIdFuncionario;
@@ -100,6 +105,9 @@ begin
     FQuery.ParamByName('id_cliente').AsInteger := aOS.getIdCliente;
     FQuery.ParamByName('preco').AsCurrency := aOS.getPreco;
     FQuery.ParamByName('ativo').AsBoolean := aOS.getAtivo;
+    FQuery.ParamByName('observacao').AsString := aOS.getObservacao;
+    FQuery.ParamByName('data_inicio').AsDateTime := aOS.getDataInicio;
+    FQuery.ParamByName('data_conclusao').AsDateTime := aOS.getDataConclusao;
     FQuery.ParamByName('id').AsInteger := aOS.getIdOrdemServico;
     FQuery.ExecSQL;
 
@@ -140,7 +148,9 @@ begin
     FQuery.Close;
     FQuery.SQL.Clear;
     FQuery.SQL.Add('SELECT os.id, s.nome AS "Serviço", f.nome AS "Funcionário",');
-    FQuery.SQL.Add('v.modelo AS "Veículo", c.nome AS "Cliente", os.preco AS "Preço", os.ativo');
+    FQuery.SQL.Add('v.modelo AS "Veículo", c.nome AS "Cliente", os.preco AS "Preço",');
+    FQuery.SQL.Add('os.observacao AS "Observação", os.data_inicio AS "Data Início",');
+    FQuery.SQL.Add('os.data_conclusao AS "Data Conclusão", os.ativo');
     FQuery.SQL.Add('FROM ordens_servico os');
     FQuery.SQL.Add('INNER JOIN servicos s ON os.id_servico = s.id');
     FQuery.SQL.Add('INNER JOIN funcionarios f ON os.id_funcionario = f.id');
@@ -161,7 +171,12 @@ begin
   try
     FQuery.Close;
     FQuery.SQL.Clear;
-    FQuery.SQL.Add('SELECT * FROM ordens_servico WHERE ativo = FALSE');
+    FQuery.SQL.Add('SELECT os.id, os.id_servico, os.id_funcionario, os.id_veiculo,');
+    FQuery.SQL.Add('os.id_cliente, os.preco, os.observacao, os.data_inicio,');
+    FQuery.SQL.Add('os.data_conclusao, os.ativo');
+    FQuery.SQL.Add('FROM ordens_servico os');
+    FQuery.SQL.Add('WHERE os.ativo = FALSE');
+    FQuery.SQL.Add('ORDER BY os.id');
     FQuery.Open;
     Result := FQuery;
   except

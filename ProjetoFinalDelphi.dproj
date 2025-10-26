@@ -164,10 +164,6 @@
             <Form>FormCadastroVeiculos</Form>
             <FormType>dfm</FormType>
         </DCCReference>
-        <DCCReference Include="src\View\uFormCadastroAgendamentosView.pas">
-            <Form>FormAgendamentos</Form>
-            <FormType>dfm</FormType>
-        </DCCReference>
         <DCCReference Include="src\View\uFormCadastroOrdensServiçoView.pas">
             <Form>FormOrdensServiço</Form>
             <FormType>dfm</FormType>

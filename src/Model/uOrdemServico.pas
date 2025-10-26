@@ -12,6 +12,9 @@ type
     IdCliente: Integer;
     Preco: Currency;
     Ativo: Boolean;
+    Observacao: String;
+    DataInicio: TDateTime;
+    DataConclusao: TDateTime;
   public
     function getIdOrdemServico: Integer;
     procedure setIdOrdemServico(aId: Integer);
@@ -27,6 +30,12 @@ type
     procedure setPreco(aValor: Currency);
     function getAtivo: Boolean;
     procedure setAtivo(aAtivo: Boolean);
+    function getObservacao: String;
+    procedure setObservacao(aObs: String);
+    function getDataInicio: TDateTime;
+    procedure setDataInicio(aData: TDateTime);
+    function getDataConclusao: TDateTime;
+    procedure setDataConclusao(aData: TDateTime);
   end;
 
 implementation
@@ -99,6 +108,36 @@ end;
 procedure TOrdemServico.setAtivo(aAtivo: Boolean);
 begin
   Ativo := aAtivo;
+end;
+
+function TOrdemServico.getObservacao: String;
+begin
+  Result := Observacao;
+end;
+
+procedure TOrdemServico.setObservacao(aObs: String);
+begin
+  Observacao := aObs;
+end;
+
+function TOrdemServico.getDataInicio: TDateTime;
+begin
+  Result := DataInicio;
+end;
+
+procedure TOrdemServico.setDataInicio(aData: TDateTime);
+begin
+  DataInicio := aData;
+end;
+
+function TOrdemServico.getDataConclusao: TDateTime;
+begin
+  Result := DataConclusao;
+end;
+
+procedure TOrdemServico.setDataConclusao(aData: TDateTime);
+begin
+  DataConclusao := aData;
 end;
 
 end.

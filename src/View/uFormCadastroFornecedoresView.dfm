@@ -36,12 +36,13 @@
       Color = 9521152
       ParentBackground = False
       TabOrder = 0
+      ExplicitLeft = 2
       object PnlMainButton: TPanel
         AlignWithMargins = True
         Left = 943
         Top = 57
         Width = 182
-        Height = 407
+        Height = 419
         Margins.Left = 0
         Margins.Top = 0
         Margins.Right = 0
@@ -51,12 +52,13 @@
         Color = 6172416
         ParentBackground = False
         TabOrder = 0
+        ExplicitHeight = 407
       end
       object PnlMainEdit: TPanel
         Left = 0
-        Top = 464
+        Top = 476
         Width = 1125
-        Height = 195
+        Height = 183
         Align = alBottom
         BevelOuter = bvNone
         Color = 6172416
@@ -67,7 +69,7 @@
           Left = 0
           Top = 10
           Width = 1125
-          Height = 175
+          Height = 163
           Margins.Left = 0
           Margins.Top = 10
           Margins.Right = 0
@@ -78,12 +80,13 @@
           ParentBackground = False
           TabOrder = 0
           Visible = False
+          ExplicitHeight = 175
           object PnlDesignEdit: TPanel
             AlignWithMargins = True
             Left = 20
             Top = 20
             Width = 1085
-            Height = 135
+            Height = 123
             Margins.Left = 20
             Margins.Top = 20
             Margins.Right = 20
@@ -93,12 +96,13 @@
             ParentBackground = False
             TabOrder = 0
             Visible = False
+            ExplicitHeight = 135
             object Image1: TImage
               AlignWithMargins = True
               Left = 960
               Top = 31
               Width = 114
-              Height = 100
+              Height = 88
               Margins.Top = 30
               Margins.Right = 10
               Align = alRight
@@ -382,15 +386,17 @@
                 E3008E711B07708CDB388063DCC6011CE3360EE018B77100C7B88D0338C6EDFF
                 0346549848A99E47470000000049454E44AE426082}
               ExplicitTop = 23
+              ExplicitHeight = 100
             end
             object PnlEdit: TPanel
               Left = 1
               Top = 1
               Width = 872
-              Height = 133
+              Height = 121
               Align = alLeft
               BevelOuter = bvNone
               TabOrder = 0
+              ExplicitHeight = 133
               object Label1: TLabel
                 Left = 20
                 Top = 8
@@ -458,7 +464,7 @@
               end
               object Label5: TLabel
                 Left = 558
-                Top = 64
+                Top = 62
                 Width = 42
                 Height = 17
                 Caption = 'Status :'
@@ -484,7 +490,7 @@
               end
               object Label8: TLabel
                 Left = 22
-                Top = 64
+                Top = 62
                 Width = 55
                 Height = 17
                 Caption = 'N'#250'mero :'
@@ -497,7 +503,7 @@
               end
               object Label9: TLabel
                 Left = 153
-                Top = 64
+                Top = 62
                 Width = 42
                 Height = 17
                 Caption = 'Bairro :'
@@ -510,7 +516,7 @@
               end
               object Label10: TLabel
                 Left = 278
-                Top = 64
+                Top = 62
                 Width = 48
                 Height = 17
                 Caption = 'Cidade :'
@@ -523,7 +529,7 @@
               end
               object Label11: TLabel
                 Left = 425
-                Top = 64
+                Top = 62
                 Width = 47
                 Height = 17
                 Caption = 'Estado :'
@@ -539,10 +545,10 @@
                 Left = 155
                 Top = 30
                 Width = 117
-                Height = 33
+                Height = 29
                 Margins.Left = 5
                 Margins.Top = 30
-                Margins.Bottom = 70
+                Margins.Bottom = 62
                 Align = alLeft
                 AutoSize = False
                 Font.Charset = DEFAULT_CHARSET
@@ -552,11 +558,12 @@
                 Font.Style = []
                 ParentFont = False
                 TabOrder = 0
+                ExplicitHeight = 33
               end
               object PnlButtonEnviar: TPanel
                 AlignWithMargins = True
                 Left = 694
-                Top = 88
+                Top = 83
                 Width = 123
                 Height = 33
                 Margins.Left = 0
@@ -594,10 +601,10 @@
                 Left = 278
                 Top = 30
                 Width = 147
-                Height = 33
+                Height = 29
                 Cursor = crHandPoint
                 Margins.Top = 30
-                Margins.Bottom = 70
+                Margins.Bottom = 62
                 Align = alLeft
                 AutoSize = False
                 BevelInner = bvNone
@@ -613,16 +620,17 @@
                 TabOrder = 2
                 Text = '  .   .   /    -  '
                 OnClick = EdtCNPJClick
+                ExplicitHeight = 33
               end
               object EdtNome: TEdit
                 AlignWithMargins = True
                 Left = 20
                 Top = 30
                 Width = 127
-                Height = 33
+                Height = 29
                 Margins.Left = 20
                 Margins.Top = 30
-                Margins.Bottom = 70
+                Margins.Bottom = 62
                 Align = alLeft
                 AutoSize = False
                 Font.Charset = DEFAULT_CHARSET
@@ -632,16 +640,17 @@
                 Font.Style = []
                 ParentFont = False
                 TabOrder = 3
+                ExplicitHeight = 33
               end
               object EdtTelefone: TMaskEdit
                 AlignWithMargins = True
                 Left = 431
                 Top = 30
                 Width = 112
-                Height = 33
+                Height = 29
                 Cursor = crHandPoint
                 Margins.Top = 30
-                Margins.Bottom = 70
+                Margins.Bottom = 62
                 Align = alLeft
                 AutoSize = False
                 BevelInner = bvNone
@@ -657,16 +666,17 @@
                 TabOrder = 4
                 Text = '(   )   -    '
                 OnClick = EdtTelefoneClick
+                ExplicitHeight = 33
               end
               object EdtCEP: TMaskEdit
                 AlignWithMargins = True
                 Left = 549
                 Top = 30
                 Width = 100
-                Height = 33
+                Height = 29
                 Cursor = crHandPoint
                 Margins.Top = 30
-                Margins.Bottom = 70
+                Margins.Bottom = 62
                 Align = alLeft
                 AutoSize = False
                 BevelInner = bvNone
@@ -683,11 +693,12 @@
                 Text = '     -   '
                 OnChange = EdtCEPChange
                 OnClick = EdtCEPClick
+                ExplicitHeight = 33
               end
               object CmbStatus: TComboBox
                 AlignWithMargins = True
                 Left = 559
-                Top = 88
+                Top = 80
                 Width = 125
                 Height = 29
                 Margins.Top = 40
@@ -709,7 +720,7 @@
               object PnlButtonAtualizar: TPanel
                 AlignWithMargins = True
                 Left = 694
-                Top = 85
+                Top = 79
                 Width = 123
                 Height = 36
                 Margins.Left = 0
@@ -749,10 +760,10 @@
                 Left = 657
                 Top = 30
                 Width = 160
-                Height = 33
+                Height = 29
                 Margins.Left = 5
                 Margins.Top = 30
-                Margins.Bottom = 70
+                Margins.Bottom = 62
                 Align = alLeft
                 AutoSize = False
                 Font.Charset = DEFAULT_CHARSET
@@ -762,11 +773,12 @@
                 Font.Style = []
                 ParentFont = False
                 TabOrder = 8
+                ExplicitHeight = 33
               end
               object EdtNumero: TEdit
                 AlignWithMargins = True
                 Left = 20
-                Top = 88
+                Top = 80
                 Width = 127
                 Height = 33
                 Margins.Left = 20
@@ -784,7 +796,7 @@
               object EdtBairro: TEdit
                 AlignWithMargins = True
                 Left = 155
-                Top = 88
+                Top = 80
                 Width = 117
                 Height = 33
                 Margins.Left = 20
@@ -802,9 +814,9 @@
               object EdtCidade: TEdit
                 AlignWithMargins = True
                 Left = 278
-                Top = 88
+                Top = 79
                 Width = 141
-                Height = 33
+                Height = 34
                 Margins.Left = 20
                 Margins.Top = 40
                 Margins.Bottom = 80
@@ -819,8 +831,8 @@
               end
               object EdtEstado: TEdit
                 AlignWithMargins = True
-                Left = 425
-                Top = 88
+                Left = 426
+                Top = 80
                 Width = 127
                 Height = 33
                 Margins.Left = 20
@@ -840,10 +852,10 @@
         end
       end
       object PnlButtonCrud: TPanel
-        Left = 946
-        Top = 57
+        Left = 947
+        Top = 50
         Width = 176
-        Height = 407
+        Height = 426
         BevelOuter = bvNone
         Color = 9521152
         ParentBackground = False
@@ -853,7 +865,7 @@
           Left = 19
           Top = 19
           Width = 138
-          Height = 369
+          Height = 388
           Margins.Left = 19
           Margins.Top = 19
           Margins.Right = 19
@@ -863,12 +875,13 @@
           Color = clBackground
           ParentBackground = False
           TabOrder = 0
+          ExplicitHeight = 369
           object PnlButton: TPanel
             AlignWithMargins = True
             Left = 1
             Top = 1
             Width = 136
-            Height = 367
+            Height = 386
             Margins.Left = 1
             Margins.Top = 1
             Margins.Right = 1
@@ -878,15 +891,16 @@
             Color = 15790320
             ParentBackground = False
             TabOrder = 0
+            ExplicitHeight = 367
             object BtnExcluir: TSpeedButton
               AlignWithMargins = True
               Left = 5
-              Top = 106
+              Top = 101
               Width = 126
               Height = 40
               Margins.Left = 5
               Margins.Right = 5
-              Margins.Bottom = 10
+              Margins.Bottom = 5
               Align = alTop
               Caption = '  Excluir     '
               Font.Charset = DEFAULT_CHARSET
@@ -1044,7 +1058,7 @@
               Height = 40
               Margins.Left = 5
               Margins.Right = 5
-              Margins.Bottom = 10
+              Margins.Bottom = 5
               Align = alTop
               Caption = '  Editar     '
               Font.Charset = DEFAULT_CHARSET
@@ -1118,12 +1132,12 @@
             object BtnPesquisar: TSpeedButton
               AlignWithMargins = True
               Left = 5
-              Top = 212
+              Top = 197
               Width = 126
               Height = 40
               Margins.Left = 5
               Margins.Right = 5
-              Margins.Bottom = 10
+              Margins.Bottom = 5
               Align = alTop
               Caption = 'Pesquisar'
               Font.Charset = DEFAULT_CHARSET
@@ -1197,12 +1211,12 @@
             object BtnRestaurar: TSpeedButton
               AlignWithMargins = True
               Left = 5
-              Top = 159
+              Top = 149
               Width = 126
               Height = 40
               Margins.Left = 5
               Margins.Right = 5
-              Margins.Bottom = 10
+              Margins.Bottom = 5
               Align = alTop
               Caption = 'Restaurar'
               Font.Charset = DEFAULT_CHARSET
@@ -1276,13 +1290,13 @@
             object BtnSair: TSpeedButton
               AlignWithMargins = True
               Left = 5
-              Top = 322
+              Top = 345
               Width = 126
               Height = 40
               Margins.Left = 5
               Margins.Top = 5
               Margins.Right = 5
-              Margins.Bottom = 10
+              Margins.Bottom = 5
               Align = alTop
               Caption = '   Sair    '
               Font.Charset = DEFAULT_CHARSET
@@ -1350,18 +1364,19 @@
               ParentFont = False
               Spacing = 0
               OnClick = BtnSairClick
+              ExplicitTop = 322
               ExplicitWidth = 128
             end
             object BtnVincularPeças: TSpeedButton
               AlignWithMargins = True
               Left = 5
-              Top = 267
+              Top = 247
               Width = 126
               Height = 40
               Margins.Left = 5
               Margins.Top = 5
               Margins.Right = 5
-              Margins.Bottom = 10
+              Margins.Bottom = 5
               Align = alTop
               Caption = '  Vincular  '
               Font.Charset = DEFAULT_CHARSET
@@ -1432,6 +1447,84 @@
               ExplicitTop = 322
               ExplicitWidth = 128
             end
+            object BtnCancelar: TSpeedButton
+              AlignWithMargins = True
+              Left = 5
+              Top = 295
+              Width = 126
+              Height = 40
+              Margins.Left = 5
+              Margins.Right = 5
+              Margins.Bottom = 5
+              Align = alTop
+              Caption = 'Cancelar  '
+              Font.Charset = DEFAULT_CHARSET
+              Font.Color = clWindowText
+              Font.Height = -15
+              Font.Name = 'Segoe UI'
+              Font.Style = []
+              Glyph.Data = {
+                F6060000424DF606000000000000360000002800000018000000180000000100
+                180000000000C0060000C20E0000C20E00000000000000000000FFFFFFFFFFFF
+                FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+                FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+                FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF7F7F7
+                D2D2D2B6B6B6B8B8B8D3D3D3F8F8F8FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+                FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFBC
+                BCBC5151510B0B0B0000000000000000000000000D0D0D545454C2C2C2FFFFFF
+                FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+                FFE7E7E7474747000000060606444444848484A0A0A09F9F9F81818141414104
+                04040000004E4E4EEBEBEBFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+                FFFFFFFFFFFFD0D0D01C1C1C010101656565E3E3E3FFFFFFFFFFFFFFFFFFFFFF
+                FFFFFFFFFFFFFFDFDFDF5D5D5D000000212121D6D6D6FFFFFFFFFFFFFFFFFFFF
+                FFFFFFFFFFFFFFFFFFFFFFE6E6E61B1B1B0A0A0AABABABFFFFFFFFFFFFFFFFFF
+                FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFA3A3A3080808202020EBEB
+                EBFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF434343010101ADADADFFFFFFFF
+                FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+                A3A3A30000004D4D4DFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFB8B8B80000006969
+                69FFFFFFFFFFFFFCFCFCC3C3C3FDFDFDFFFFFFFFFFFFFFFFFFFFFFFFFCFCFCC3
+                C3C3FDFDFDFFFFFFFFFFFF5D5D5D000000C1C1C1FFFFFFFFFFFFFFFFFFFFFFFF
+                484848090909E7E7E7FFFFFFFFFFFFB7B7B70000005F5F5FFDFDFDFFFFFFFFFF
+                FFFBFBFB565656000000C2C2C2FFFFFFFFFFFFE0E0E0050505535353FFFFFFFF
+                FFFFFFFFFFF4F4F40808084C4C4CFFFFFFFFFFFFFFFFFFFAFAFA505050000000
+                5F5F5FFDFDFDFBFBFB565656000000585858FCFCFCFFFFFFFFFFFFFFFFFF4040
+                400C0C0CF8F8F8FFFFFFFFFFFFC8C8C80000008D8D8DFFFFFFFFFFFFFFFFFFFF
+                FFFFFAFAFA5050500000005757575A5A5A000000555555FBFBFBFFFFFFFFFFFF
+                FFFFFFFFFFFF828282000000D3D3D3FFFFFFFFFFFFB0B0B0000000A8A8A8FFFF
+                FFFFFFFFFFFFFFFFFFFFFFFFFFFAFAFA4F4F4F000000000000545454FBFBFBFF
+                FFFFFFFFFFFFFFFFFFFFFFFFFFFF9D9D9D000000BABABAFFFFFFFFFFFFAEAEAE
+                000000A9A9A9FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFCFCFC5959590000000000
+                00575757FCFCFCFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF9F9F9F000000B9B9B9FF
+                FFFFFFFFFFC7C7C70000008E8E8EFFFFFFFFFFFFFFFFFFFFFFFFFCFCFC5B5B5B
+                000000535353505050000000585858FCFCFCFFFFFFFFFFFFFFFFFFFFFFFF8383
+                83000000D2D2D2FFFFFFFFFFFFF2F2F20707074F4F4FFFFFFFFFFFFFFFFFFFFB
+                FBFB565656000000595959FCFCFCFAFAFA5151510000005F5F5FFDFDFDFFFFFF
+                FFFFFFFFFFFF4444440C0C0CF7F7F7FFFFFFFFFFFFFFFFFF4646460A0A0AEAEA
+                EAFFFFFFFFFFFFB7B7B7000000595959FCFCFCFFFFFFFFFFFFFAFAFA51515100
+                0000C8C8C8FFFFFFFFFFFFE4E4E4060606515151FFFFFFFFFFFFFFFFFFFFFFFF
+                B3B3B30000006E6E6EFFFFFFFFFFFFFBFBFBB9B9B9FCFCFCFFFFFFFFFFFFFFFF
+                FFFFFFFFFAFAFABFBFBFFCFCFCFFFFFFFFFFFF636363000000BDBDBDFFFFFFFF
+                FFFFFFFFFFFFFFFFFFFFFF3E3E3E020202B3B3B3FFFFFFFFFFFFFFFFFFFFFFFF
+                FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFA9A9A90101014848
+                48FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFE3E3E31818180C0C0CB3B3B3FF
+                FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFABABAB
+                0909091D1D1DE8E8E8FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFCCCC
+                CC1818180202026E6E6EEAEAEAFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFE6
+                E6E66767670101011C1C1CD2D2D2FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+                FFFFFFFFFFFFFFFFFFE2E2E23D3D3D0000000A0A0A4F4F4F8E8E8EA7A7A7A5A5
+                A58C8C8C4B4B4B080808000000434343E7E7E7FFFFFFFFFFFFFFFFFFFFFFFFFF
+                FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFB1B1B1464646060606
+                000000000000000000000000080808494949B7B7B7FFFFFFFFFFFFFFFFFFFFFF
+                FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+                FFFFFFFFFFF1F1F1C6C6C6B0B0B0B1B1B1C7C7C7F4F4F4FFFFFFFFFFFFFFFFFF
+                FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+                FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+                FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF}
+              ParentFont = False
+              OnClick = BtnCancelarClick
+              ExplicitLeft = -3
+              ExplicitTop = 287
+            end
           end
         end
       end
@@ -1440,7 +1533,7 @@
         Left = 19
         Top = 76
         Width = 905
-        Height = 369
+        Height = 381
         Margins.Left = 19
         Margins.Top = 19
         Margins.Right = 19
@@ -1451,12 +1544,13 @@
         Color = clBackground
         ParentBackground = False
         TabOrder = 3
+        ExplicitHeight = 369
         object DBGridMain: TDBGrid
           AlignWithMargins = True
           Left = 1
           Top = 1
           Width = 903
-          Height = 367
+          Height = 379
           Margins.Left = 1
           Margins.Top = 1
           Margins.Right = 1
@@ -1480,7 +1574,7 @@
           Left = 0
           Top = 0
           Width = 905
-          Height = 369
+          Height = 381
           Margins.Left = 20
           Margins.Top = 20
           Margins.Right = 20
@@ -1491,6 +1585,7 @@
           ParentBackground = False
           TabOrder = 0
           Visible = False
+          ExplicitHeight = 369
           object LblRestaurar: TLabel
             AlignWithMargins = True
             Left = 3
@@ -1572,7 +1667,7 @@
             Left = 20
             Top = 48
             Width = 865
-            Height = 301
+            Height = 313
             Margins.Left = 20
             Margins.Right = 20
             Margins.Bottom = 20
@@ -1581,12 +1676,13 @@
             Color = 9521152
             ParentBackground = False
             TabOrder = 0
+            ExplicitHeight = 301
             object PnlContainerRestaurar: TPanel
               AlignWithMargins = True
               Left = 12
               Top = 10
               Width = 841
-              Height = 281
+              Height = 293
               Margins.Left = 12
               Margins.Top = 10
               Margins.Right = 12
@@ -1597,12 +1693,13 @@
               Color = clBackground
               ParentBackground = False
               TabOrder = 0
+              ExplicitHeight = 281
               object DBGridRestaurar: TDBGrid
                 AlignWithMargins = True
                 Left = 1
                 Top = 1
                 Width = 839
-                Height = 279
+                Height = 291
                 Margins.Left = 1
                 Margins.Top = 1
                 Margins.Right = 1
@@ -1666,8 +1763,8 @@
         end
       end
       object PnlVincularPeça: TPanel
-        Left = 19
-        Top = 76
+        Left = 17
+        Top = 79
         Width = 907
         Height = 369
         BevelOuter = bvNone

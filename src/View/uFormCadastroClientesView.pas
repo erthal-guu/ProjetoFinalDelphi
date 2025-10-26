@@ -49,7 +49,6 @@
     BtnAdicionar: TSpeedButton;
     BtnEditar: TSpeedButton;
     BtnPesquisar: TSpeedButton;
-    BtnCancelar: TSpeedButton;
     BtnRestaurar: TSpeedButton;
     BtnSair: TSpeedButton;
     PnlRestaurar: TPanel;
@@ -59,6 +58,7 @@
     PnlMainRestaurar: TPanel;
     PnlContainerRestaurar: TPanel;
     DBGridRestaurar: TDBGrid;
+    BtnCancelar: TSpeedButton;
       procedure BtnAdicionarClick(Sender: TObject);
       procedure BtnPesquisarClick(Sender: TObject);
       procedure FormCreate(Sender: TObject);
@@ -155,7 +155,11 @@ procedure TFormCadastroClientes.BtnEditarClick(Sender: TObject);
   begin
   if MessageDlg('Deseja realmente fechar este Formulário?', mtConfirmation, [mbYes, mbNo], 0) = mrYes then
   begin
-    FormCadastroClientes.close;
+    Close;
+    PnlBackgrounEdit.Visible := False;
+    PnlEdit.Visible := False;
+    PnlRestaurar.Visible := False;
+    EdtPesquisar.Visible := False;
   end;
 end;
 

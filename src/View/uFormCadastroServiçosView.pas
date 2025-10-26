@@ -16,6 +16,21 @@ type
     PnlContainer: TPanel;
     PnlMainButton: TPanel;
     PnlMainEdit: TPanel;
+    PnlGrid: TPanel;
+    DBGridMain: TDBGrid;
+    PnlRestaurar: TPanel;
+    LblRestaurar: TLabel;
+    ImgFechar: TImage;
+    ImgRestaurar: TImage;
+    PnlMainRestaurar: TPanel;
+    PnlContainerRestaurar: TPanel;
+    DBGridRestaurar: TDBGrid;
+    PnlHeader: TPanel;
+    EdtPesquisar: TSearchBox;
+    PnlButtonCrud: TPanel;
+    PnlBackgroundButton: TPanel;
+    DataSourceRestaurar: TDataSource;
+    DataSourceMain: TDataSource;
     PnlBackgrounEdit: TPanel;
     PnlDesignEdit: TPanel;
     Image1: TImage;
@@ -34,19 +49,8 @@ type
     EdtPreço: TEdit;
     CmbCategoria: TComboBox;
     CmbPeças: TComboBox;
-    PnlGrid: TPanel;
-    DBGridMain: TDBGrid;
-    PnlRestaurar: TPanel;
-    LblRestaurar: TLabel;
-    ImgFechar: TImage;
-    ImgRestaurar: TImage;
-    PnlMainRestaurar: TPanel;
-    PnlContainerRestaurar: TPanel;
-    DBGridRestaurar: TDBGrid;
-    PnlHeader: TPanel;
-    EdtPesquisar: TSearchBox;
-    PnlButtonCrud: TPanel;
-    PnlBackgroundButton: TPanel;
+    PnlButtonAtualizar: TPanel;
+    LblAtualizar: TLabel;
     PnlButton: TPanel;
     BtnExcluir: TSpeedButton;
     BtnAdicionar: TSpeedButton;
@@ -55,10 +59,6 @@ type
     BtnCancelar: TSpeedButton;
     BtnRestaurar: TSpeedButton;
     BtnSair: TSpeedButton;
-    DataSourceRestaurar: TDataSource;
-    DataSourceMain: TDataSource;
-    PnlButtonAtualizar: TPanel;
-    LblAtualizar: TLabel;
 
     procedure FormCreate(Sender: TObject);
     procedure FormShow(Sender: TObject);
@@ -160,9 +160,10 @@ end;
 
 procedure TFormCadastroServiços.BtnCancelarClick(Sender: TObject);
 begin
-  PnlBackgrounEdit.Visible := False;
-  PnlEdit.Visible := False;
-  EdtPesquisar.Visible := False;
+    PnlBackgrounEdit.Visible := False;
+    PnlEdit.Visible := False;
+    PnlRestaurar.Visible := False;
+    EdtPesquisar.Visible := False;
 end;
 
 procedure TFormCadastroServiços.BtnEditarClick(Sender: TObject);
@@ -324,6 +325,10 @@ procedure TFormCadastroServiços.BtnSairClick(Sender: TObject);
 begin
     if MessageDlg('Deseja realmente fechar este formulário?', mtConfirmation, [mbYes, mbNo], 0) = mrYes then
     Close;
+    PnlBackgrounEdit.Visible := False;
+    PnlEdit.Visible := False;
+    PnlRestaurar.Visible := False;
+    EdtPesquisar.Visible := False;
 end;
 
 procedure TFormCadastroServiços.RestaurarServicos;

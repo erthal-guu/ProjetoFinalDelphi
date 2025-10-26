@@ -48,14 +48,6 @@ type
     LblAtualizar: TLabel;
     PnlButtonCrud: TPanel;
     PnlBackgroundButton: TPanel;
-    PnlButton: TPanel;
-    BtnExcluir: TSpeedButton;
-    BtnAdicionar: TSpeedButton;
-    BtnEditar: TSpeedButton;
-    BtnPesquisar: TSpeedButton;
-    BtnCancelar: TSpeedButton;
-    BtnRestaurar: TSpeedButton;
-    BtnSair: TSpeedButton;
     PnlGrid: TPanel;
     DBGridMain: TDBGrid;
     PnlRestaurar: TPanel;
@@ -67,6 +59,14 @@ type
     DBGridRestaurar: TDBGrid;
     PnlHeader: TPanel;
     EdtPesquisar: TSearchBox;
+    PnlButton: TPanel;
+    BtnExcluir: TSpeedButton;
+    BtnAdicionar: TSpeedButton;
+    BtnEditar: TSpeedButton;
+    BtnPesquisar: TSpeedButton;
+    BtnCancelar: TSpeedButton;
+    BtnRestaurar: TSpeedButton;
+    BtnSair: TSpeedButton;
     procedure BtnAdicionarClick(Sender: TObject);
     procedure FormCreate(Sender: TObject);
     procedure BtnPesquisarClick(Sender: TObject);
@@ -117,9 +117,10 @@ end;
 
 procedure TFormCadastroUsuarios.BtnCancelarClick(Sender: TObject);
 begin
-  PnlBackgroundEdit.Visible := False;
-  PnlDesignEdit.Visible := False;
-  EdtPesquisar.Visible := False;
+    PnlBackgroundEdit.Visible := False;
+    PnlEdit.Visible := False;
+    PnlRestaurar.Visible := False;
+    EdtPesquisar.Visible := False;
 end;
 
 procedure TFormCadastroUsuarios.BtnEditarClick(Sender: TObject);
@@ -153,9 +154,12 @@ end;
 
 procedure TFormCadastroUsuarios.BtnSairClick(Sender: TObject);
 begin
-  if MessageDlg('Deseja realmente fechar este Formulário?', mtConfirmation, [mbYes, mbNo], 0) = mrYes then
-  begin
-    FormCadastroUsuarios.close;
+  if MessageDlg('Deseja realmente fechar este Formulário?', mtConfirmation, [mbYes, mbNo], 0) = mrYes then begin
+    Close;
+    PnlBackgroundEdit.Visible := False;
+    PnlEdit.Visible := False;
+    PnlRestaurar.Visible := False;
+    EdtPesquisar.Visible := False;
   end;
 end;
 

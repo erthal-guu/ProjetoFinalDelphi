@@ -5,7 +5,6 @@ interface
 uses
   Winapi.Windows, Winapi.Messages, System.SysUtils, System.Variants, System.Classes, Vcl.Graphics,
   Vcl.Controls, Vcl.Forms, Vcl.Dialogs, Vcl.ExtCtrls,
-  uFormCadastroAgendamentosView,
   uFormCadastroUsuariosView,
   uFormCadastroClientesView,
   uFormCadastroFuncionariosView,
@@ -49,7 +48,6 @@ type
     procedure VeiculosClick(Sender: TObject);
     procedure ServiçosClick(Sender: TObject);
     procedure OrdensServiçoClick(Sender: TObject);
-    procedure AgendamentosClick(Sender: TObject);
     procedure UsuariosClick(Sender: TObject);
     procedure ClientesClick(Sender: TObject);
     procedure TimerTimer(Sender: TObject);
@@ -142,11 +140,6 @@ begin
   FormReceitas.Show;
 end;
 
-procedure TFormHome.AgendamentosClick(Sender: TObject);
-begin
-  FormAgendamentos.Position := poScreenCenter;
-  FormAgendamentos.Show;
-end;
 
 
 end.

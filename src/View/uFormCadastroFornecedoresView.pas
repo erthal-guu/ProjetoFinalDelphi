@@ -83,6 +83,7 @@ type
     PnlButtonDesvincular: TPanel;
     LblDesvincular: TLabel;
     DataSourceVincular: TDataSource;
+    BtnCancelar: TSpeedButton;
 
     procedure BtnAdicionarClick(Sender: TObject);
     procedure BtnPesquisarClick(Sender: TObject);
@@ -150,7 +151,9 @@ procedure TFormCadastroFornecedores.BtnCancelarClick(Sender: TObject);
 begin
   PnlBackgrounEdit.Visible := False;
   PnlEdit.Visible := False;
+  PnlRestaurar.Visible := False;
   EdtPesquisar.Visible := False;
+  PnlVincularPeça.Visible := False;
 end;
 
 procedure TFormCadastroFornecedores.BtnPesquisarClick(Sender: TObject);
@@ -560,6 +563,11 @@ procedure TFormCadastroFornecedores.BtnSairClick(Sender: TObject);
 begin
   if MessageDlg('Deseja realmente fechar este formulário?', mtConfirmation, [mbYes, mbNo], 0) = mrYes then
     Close;
+    PnlBackgrounEdit.Visible := False;
+    PnlEdit.Visible := False;
+    PnlRestaurar.Visible := False;
+    EdtPesquisar.Visible := False;
+    PnlVincularPeça.Visible := False;
 end;
 
 procedure TFormCadastroFornecedores.BtnVincularPeçasClick(Sender: TObject);

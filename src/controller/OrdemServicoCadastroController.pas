@@ -16,8 +16,9 @@ type
     function SalvarOrdemServico(OS: TOrdemServico; PecasIDs: TList<Integer>): Boolean;
     procedure EditarOrdemServico(OS: TOrdemServico; PecasIDs: TList<Integer>);
     function ListarOrdensServico: TDataSet;
-    function CriarObjeto(aIdServico, aIdFuncionario, aIdVeiculo, aIdCliente: Integer;
-      aPreco: Currency; aAtivo: Boolean): TOrdemServico;
+    function CriarObjeto(aIdServico, aIdFuncionario, aIdVeiculo,
+    aIdCliente: Integer; aPreco: Currency; aAtivo: Boolean; aObs: String;
+    aDataInicio, aDataConclusao: TDateTime): TOrdemServico;
     procedure DeletarOrdemServico(const aId: Integer);
     procedure RestaurarOrdemServico(const aId: Integer);
     function PesquisarOrdensServico(const aFiltro: String): TDataSet;
@@ -46,7 +47,8 @@ begin
 end;
 
 function TOrdemServicoController.CriarObjeto(aIdServico, aIdFuncionario, aIdVeiculo,
-  aIdCliente: Integer; aPreco: Currency; aAtivo: Boolean): TOrdemServico;
+  aIdCliente: Integer; aPreco: Currency; aAtivo: Boolean; aObs: String;
+  aDataInicio, aDataConclusao: TDateTime): TOrdemServico;
 begin
   Result := TOrdemServico.Create;
   Result.setIdServico(aIdServico);
@@ -55,6 +57,9 @@ begin
   Result.setIdCliente(aIdCliente);
   Result.setPreco(aPreco);
   Result.setAtivo(aAtivo);
+  Result.setObservacao(aObs);
+  Result.setDataInicio(aDataInicio);
+  Result.setDataConclusao(aDataConclusao);
 end;
 
 function TOrdemServicoController.SalvarOrdemServico(OS: TOrdemServico;

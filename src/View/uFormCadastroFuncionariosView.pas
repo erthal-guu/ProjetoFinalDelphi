@@ -25,6 +25,19 @@ type
     BtnRestaurar: TSpeedButton;
     BtnSair: TSpeedButton;
     PnlMainEdit: TPanel;
+    PnlGrid: TPanel;
+    DBGridMain: TDBGrid;
+    PnlRestaurar: TPanel;
+    LblRestaurar: TLabel;
+    ImgFechar: TImage;
+    ImgRestaurar: TImage;
+    PnlMainRestaurar: TPanel;
+    PnlContainerRestaurar: TPanel;
+    DBGridRestaurar: TDBGrid;
+    PnlHeader: TPanel;
+    EdtPesquisar: TSearchBox;
+    DataSourceRestaurar: TDataSource;
+    DataSourceMain: TDataSource;
     PnlBackgroundEdit: TPanel;
     PnlEdit: TPanel;
     Label3: TLabel;
@@ -40,6 +53,7 @@ type
     Label1: TLabel;
     Label2: TLabel;
     Image1: TImage;
+    Label13: TLabel;
     CmbStatus: TComboBox;
     EdtNome: TEdit;
     EdtNumero: TEdit;
@@ -56,21 +70,7 @@ type
     EdtTelefone: TMaskEdit;
     PnlButtonAtualizar: TPanel;
     LblAtualizar: TLabel;
-    PnlGrid: TPanel;
-    DBGridMain: TDBGrid;
-    PnlRestaurar: TPanel;
-    LblRestaurar: TLabel;
-    ImgFechar: TImage;
-    ImgRestaurar: TImage;
-    PnlMainRestaurar: TPanel;
-    PnlContainerRestaurar: TPanel;
-    DBGridRestaurar: TDBGrid;
-    PnlHeader: TPanel;
-    EdtPesquisar: TSearchBox;
-    DataSourceRestaurar: TDataSource;
-    DataSourceMain: TDataSource;
     CmbTipo: TComboBox;
-    Label13: TLabel;
     procedure BtnAdicionarClick(Sender: TObject);
     procedure BtnPesquisarClick(Sender: TObject);
     procedure FormCreate(Sender: TObject);
@@ -129,6 +129,7 @@ procedure TFormCadastroFuncionarios.BtnCancelarClick(Sender: TObject);
 begin
   PnlBackgroundEdit.Visible := False;
   PnlEdit.Visible := False;
+  PnlRestaurar.Visible := False;
   EdtPesquisar.Visible := False;
 end;
 
@@ -147,6 +148,10 @@ procedure TFormCadastroFuncionarios.BtnSairClick(Sender: TObject);
 begin
   if MessageDlg('Deseja realmente fechar este Formulário?', mtConfirmation, [mbYes, mbNo], 0) = mrYes then
     Close;
+    PnlBackgroundEdit.Visible := False;
+    PnlEdit.Visible := False;
+    PnlRestaurar.Visible := False;
+    EdtPesquisar.Visible := False;
 end;
 
 procedure TFormCadastroFuncionarios.EdtCEPChange(Sender: TObject);

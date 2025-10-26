@@ -2,12 +2,12 @@
 -- PostgreSQL database dump
 --
 
-\restrict pY1Sqrl5VjiCrb8LedEaMyHHOeQ7QZo2IZt1iZVHJBGXEpmKBspD2UCexSbZJNZ
+\restrict ZPhzUNjyGc4uwmGMObTIHIBJmZJ2eFBsGexOZmsu0tvEInMRNSvTUH5FblzUV0O
 
--- Dumped from database version 17.6
--- Dumped by pg_dump version 17.6
+-- Dumped from database version 18.0
+-- Dumped by pg_dump version 18.0
 
--- Started on 2025-10-24 17:52:53
+-- Started on 2025-10-25 22:26:32
 
 SET statement_timeout = 0;
 SET lock_timeout = 0;
@@ -26,7 +26,7 @@ SET default_tablespace = '';
 SET default_table_access_method = heap;
 
 --
--- TOC entry 217 (class 1259 OID 16648)
+-- TOC entry 219 (class 1259 OID 17121)
 -- Name: categorias; Type: TABLE; Schema: public; Owner: postgres
 --
 
@@ -39,7 +39,7 @@ CREATE TABLE public.categorias (
 ALTER TABLE public.categorias OWNER TO postgres;
 
 --
--- TOC entry 218 (class 1259 OID 16651)
+-- TOC entry 220 (class 1259 OID 17125)
 -- Name: clientes; Type: TABLE; Schema: public; Owner: postgres
 --
 
@@ -58,7 +58,7 @@ CREATE TABLE public.clientes (
 ALTER TABLE public.clientes OWNER TO postgres;
 
 --
--- TOC entry 219 (class 1259 OID 16657)
+-- TOC entry 221 (class 1259 OID 17135)
 -- Name: clientes_id_seq; Type: SEQUENCE; Schema: public; Owner: postgres
 --
 
@@ -74,8 +74,8 @@ CREATE SEQUENCE public.clientes_id_seq
 ALTER SEQUENCE public.clientes_id_seq OWNER TO postgres;
 
 --
--- TOC entry 5013 (class 0 OID 0)
--- Dependencies: 219
+-- TOC entry 5190 (class 0 OID 0)
+-- Dependencies: 221
 -- Name: clientes_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: postgres
 --
 
@@ -83,7 +83,7 @@ ALTER SEQUENCE public.clientes_id_seq OWNED BY public.clientes.id;
 
 
 --
--- TOC entry 220 (class 1259 OID 16658)
+-- TOC entry 222 (class 1259 OID 17136)
 -- Name: fornecedor_pecas; Type: TABLE; Schema: public; Owner: postgres
 --
 
@@ -97,7 +97,7 @@ CREATE TABLE public.fornecedor_pecas (
 ALTER TABLE public.fornecedor_pecas OWNER TO postgres;
 
 --
--- TOC entry 221 (class 1259 OID 16661)
+-- TOC entry 223 (class 1259 OID 17142)
 -- Name: fornecedor_pecas_id_seq; Type: SEQUENCE; Schema: public; Owner: postgres
 --
 
@@ -113,8 +113,8 @@ CREATE SEQUENCE public.fornecedor_pecas_id_seq
 ALTER SEQUENCE public.fornecedor_pecas_id_seq OWNER TO postgres;
 
 --
--- TOC entry 5014 (class 0 OID 0)
--- Dependencies: 221
+-- TOC entry 5191 (class 0 OID 0)
+-- Dependencies: 223
 -- Name: fornecedor_pecas_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: postgres
 --
 
@@ -122,7 +122,7 @@ ALTER SEQUENCE public.fornecedor_pecas_id_seq OWNED BY public.fornecedor_pecas.i
 
 
 --
--- TOC entry 222 (class 1259 OID 16662)
+-- TOC entry 224 (class 1259 OID 17143)
 -- Name: fornecedores; Type: TABLE; Schema: public; Owner: postgres
 --
 
@@ -145,7 +145,7 @@ CREATE TABLE public.fornecedores (
 ALTER TABLE public.fornecedores OWNER TO postgres;
 
 --
--- TOC entry 223 (class 1259 OID 16668)
+-- TOC entry 225 (class 1259 OID 17153)
 -- Name: fornecedores_id_seq; Type: SEQUENCE; Schema: public; Owner: postgres
 --
 
@@ -161,8 +161,8 @@ CREATE SEQUENCE public.fornecedores_id_seq
 ALTER SEQUENCE public.fornecedores_id_seq OWNER TO postgres;
 
 --
--- TOC entry 5015 (class 0 OID 0)
--- Dependencies: 223
+-- TOC entry 5192 (class 0 OID 0)
+-- Dependencies: 225
 -- Name: fornecedores_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: postgres
 --
 
@@ -170,7 +170,7 @@ ALTER SEQUENCE public.fornecedores_id_seq OWNED BY public.fornecedores.id;
 
 
 --
--- TOC entry 224 (class 1259 OID 16669)
+-- TOC entry 226 (class 1259 OID 17154)
 -- Name: funcionarios; Type: TABLE; Schema: public; Owner: postgres
 --
 
@@ -195,7 +195,7 @@ CREATE TABLE public.funcionarios (
 ALTER TABLE public.funcionarios OWNER TO postgres;
 
 --
--- TOC entry 225 (class 1259 OID 16673)
+-- TOC entry 227 (class 1259 OID 17161)
 -- Name: funcionarios_id_seq; Type: SEQUENCE; Schema: public; Owner: postgres
 --
 
@@ -211,8 +211,8 @@ CREATE SEQUENCE public.funcionarios_id_seq
 ALTER SEQUENCE public.funcionarios_id_seq OWNER TO postgres;
 
 --
--- TOC entry 5016 (class 0 OID 0)
--- Dependencies: 225
+-- TOC entry 5193 (class 0 OID 0)
+-- Dependencies: 227
 -- Name: funcionarios_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: postgres
 --
 
@@ -220,7 +220,7 @@ ALTER SEQUENCE public.funcionarios_id_seq OWNED BY public.funcionarios.id;
 
 
 --
--- TOC entry 226 (class 1259 OID 16674)
+-- TOC entry 228 (class 1259 OID 17162)
 -- Name: grupo; Type: TABLE; Schema: public; Owner: postgres
 --
 
@@ -233,7 +233,7 @@ CREATE TABLE public.grupo (
 ALTER TABLE public.grupo OWNER TO postgres;
 
 --
--- TOC entry 227 (class 1259 OID 16677)
+-- TOC entry 229 (class 1259 OID 17167)
 -- Name: grupo_id_seq; Type: SEQUENCE; Schema: public; Owner: postgres
 --
 
@@ -249,8 +249,8 @@ CREATE SEQUENCE public.grupo_id_seq
 ALTER SEQUENCE public.grupo_id_seq OWNER TO postgres;
 
 --
--- TOC entry 5017 (class 0 OID 0)
--- Dependencies: 227
+-- TOC entry 5194 (class 0 OID 0)
+-- Dependencies: 229
 -- Name: grupo_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: postgres
 --
 
@@ -258,21 +258,22 @@ ALTER SEQUENCE public.grupo_id_seq OWNED BY public.grupo.id;
 
 
 --
--- TOC entry 228 (class 1259 OID 16678)
+-- TOC entry 230 (class 1259 OID 17168)
 -- Name: ordem_servico_pecas; Type: TABLE; Schema: public; Owner: postgres
 --
 
 CREATE TABLE public.ordem_servico_pecas (
     id integer NOT NULL,
     id_ordem_servico integer NOT NULL,
-    id_peca integer NOT NULL
+    id_peca integer NOT NULL,
+    data_abertura timestamp without time zone DEFAULT CURRENT_TIMESTAMP
 );
 
 
 ALTER TABLE public.ordem_servico_pecas OWNER TO postgres;
 
 --
--- TOC entry 229 (class 1259 OID 16681)
+-- TOC entry 231 (class 1259 OID 17174)
 -- Name: ordem_servico_pecas_id_seq; Type: SEQUENCE; Schema: public; Owner: postgres
 --
 
@@ -288,8 +289,8 @@ CREATE SEQUENCE public.ordem_servico_pecas_id_seq
 ALTER SEQUENCE public.ordem_servico_pecas_id_seq OWNER TO postgres;
 
 --
--- TOC entry 5018 (class 0 OID 0)
--- Dependencies: 229
+-- TOC entry 5195 (class 0 OID 0)
+-- Dependencies: 231
 -- Name: ordem_servico_pecas_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: postgres
 --
 
@@ -297,7 +298,7 @@ ALTER SEQUENCE public.ordem_servico_pecas_id_seq OWNED BY public.ordem_servico_p
 
 
 --
--- TOC entry 230 (class 1259 OID 16682)
+-- TOC entry 232 (class 1259 OID 17175)
 -- Name: ordens_servico; Type: TABLE; Schema: public; Owner: postgres
 --
 
@@ -308,14 +309,18 @@ CREATE TABLE public.ordens_servico (
     id_veiculo integer NOT NULL,
     id_cliente integer NOT NULL,
     preco numeric(10,2) DEFAULT 0,
-    ativo boolean DEFAULT true
+    ativo boolean DEFAULT true,
+    data_abertura timestamp without time zone,
+    data_inicio timestamp without time zone,
+    data_conclusao timestamp without time zone,
+    observacao character varying(255)
 );
 
 
 ALTER TABLE public.ordens_servico OWNER TO postgres;
 
 --
--- TOC entry 231 (class 1259 OID 16687)
+-- TOC entry 233 (class 1259 OID 17185)
 -- Name: ordens_servico_id_seq; Type: SEQUENCE; Schema: public; Owner: postgres
 --
 
@@ -331,8 +336,8 @@ CREATE SEQUENCE public.ordens_servico_id_seq
 ALTER SEQUENCE public.ordens_servico_id_seq OWNER TO postgres;
 
 --
--- TOC entry 5019 (class 0 OID 0)
--- Dependencies: 231
+-- TOC entry 5196 (class 0 OID 0)
+-- Dependencies: 233
 -- Name: ordens_servico_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: postgres
 --
 
@@ -340,7 +345,7 @@ ALTER SEQUENCE public.ordens_servico_id_seq OWNED BY public.ordens_servico.id;
 
 
 --
--- TOC entry 232 (class 1259 OID 16688)
+-- TOC entry 234 (class 1259 OID 17186)
 -- Name: peca_fornecedor; Type: TABLE; Schema: public; Owner: postgres
 --
 
@@ -356,7 +361,7 @@ CREATE TABLE public.peca_fornecedor (
 ALTER TABLE public.peca_fornecedor OWNER TO postgres;
 
 --
--- TOC entry 233 (class 1259 OID 16693)
+-- TOC entry 235 (class 1259 OID 17194)
 -- Name: peca_fornecedor_id_seq; Type: SEQUENCE; Schema: public; Owner: postgres
 --
 
@@ -372,8 +377,8 @@ CREATE SEQUENCE public.peca_fornecedor_id_seq
 ALTER SEQUENCE public.peca_fornecedor_id_seq OWNER TO postgres;
 
 --
--- TOC entry 5020 (class 0 OID 0)
--- Dependencies: 233
+-- TOC entry 5197 (class 0 OID 0)
+-- Dependencies: 235
 -- Name: peca_fornecedor_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: postgres
 --
 
@@ -381,7 +386,7 @@ ALTER SEQUENCE public.peca_fornecedor_id_seq OWNED BY public.peca_fornecedor.id;
 
 
 --
--- TOC entry 234 (class 1259 OID 16694)
+-- TOC entry 236 (class 1259 OID 17195)
 -- Name: pecas; Type: TABLE; Schema: public; Owner: postgres
 --
 
@@ -401,7 +406,7 @@ CREATE TABLE public.pecas (
 ALTER TABLE public.pecas OWNER TO postgres;
 
 --
--- TOC entry 235 (class 1259 OID 16698)
+-- TOC entry 237 (class 1259 OID 17202)
 -- Name: pecas_id_seq; Type: SEQUENCE; Schema: public; Owner: postgres
 --
 
@@ -417,8 +422,8 @@ CREATE SEQUENCE public.pecas_id_seq
 ALTER SEQUENCE public.pecas_id_seq OWNER TO postgres;
 
 --
--- TOC entry 5021 (class 0 OID 0)
--- Dependencies: 235
+-- TOC entry 5198 (class 0 OID 0)
+-- Dependencies: 237
 -- Name: pecas_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: postgres
 --
 
@@ -426,7 +431,55 @@ ALTER SEQUENCE public.pecas_id_seq OWNED BY public.pecas.id;
 
 
 --
--- TOC entry 236 (class 1259 OID 16699)
+-- TOC entry 245 (class 1259 OID 17352)
+-- Name: receitas; Type: TABLE; Schema: public; Owner: postgres
+--
+
+CREATE TABLE public.receitas (
+    id integer NOT NULL,
+    id_ordem_servico integer NOT NULL,
+    id_cliente integer NOT NULL,
+    valor_total numeric(10,2) NOT NULL,
+    valor_recebido numeric(10,2) DEFAULT 0,
+    status character varying(20) NOT NULL,
+    data_emissao timestamp without time zone NOT NULL,
+    data_vencimento timestamp without time zone NOT NULL,
+    data_recebimento timestamp without time zone,
+    forma_pagamento character varying(30),
+    observacao character varying(255),
+    ativo boolean DEFAULT true
+);
+
+
+ALTER TABLE public.receitas OWNER TO postgres;
+
+--
+-- TOC entry 244 (class 1259 OID 17351)
+-- Name: receitas_id_seq; Type: SEQUENCE; Schema: public; Owner: postgres
+--
+
+CREATE SEQUENCE public.receitas_id_seq
+    AS integer
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER SEQUENCE public.receitas_id_seq OWNER TO postgres;
+
+--
+-- TOC entry 5199 (class 0 OID 0)
+-- Dependencies: 244
+-- Name: receitas_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: postgres
+--
+
+ALTER SEQUENCE public.receitas_id_seq OWNED BY public.receitas.id;
+
+
+--
+-- TOC entry 238 (class 1259 OID 17203)
 -- Name: servicos; Type: TABLE; Schema: public; Owner: postgres
 --
 
@@ -445,7 +498,7 @@ CREATE TABLE public.servicos (
 ALTER TABLE public.servicos OWNER TO postgres;
 
 --
--- TOC entry 237 (class 1259 OID 16703)
+-- TOC entry 239 (class 1259 OID 17211)
 -- Name: servicos_id_seq; Type: SEQUENCE; Schema: public; Owner: postgres
 --
 
@@ -461,8 +514,8 @@ CREATE SEQUENCE public.servicos_id_seq
 ALTER SEQUENCE public.servicos_id_seq OWNER TO postgres;
 
 --
--- TOC entry 5022 (class 0 OID 0)
--- Dependencies: 237
+-- TOC entry 5200 (class 0 OID 0)
+-- Dependencies: 239
 -- Name: servicos_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: postgres
 --
 
@@ -470,7 +523,7 @@ ALTER SEQUENCE public.servicos_id_seq OWNED BY public.servicos.id;
 
 
 --
--- TOC entry 238 (class 1259 OID 16704)
+-- TOC entry 240 (class 1259 OID 17212)
 -- Name: usuarios; Type: TABLE; Schema: public; Owner: postgres
 --
 
@@ -487,7 +540,7 @@ CREATE TABLE public.usuarios (
 ALTER TABLE public.usuarios OWNER TO postgres;
 
 --
--- TOC entry 239 (class 1259 OID 16709)
+-- TOC entry 241 (class 1259 OID 17221)
 -- Name: usuarios_id_seq; Type: SEQUENCE; Schema: public; Owner: postgres
 --
 
@@ -503,8 +556,8 @@ CREATE SEQUENCE public.usuarios_id_seq
 ALTER SEQUENCE public.usuarios_id_seq OWNER TO postgres;
 
 --
--- TOC entry 5023 (class 0 OID 0)
--- Dependencies: 239
+-- TOC entry 5201 (class 0 OID 0)
+-- Dependencies: 241
 -- Name: usuarios_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: postgres
 --
 
@@ -512,7 +565,7 @@ ALTER SEQUENCE public.usuarios_id_seq OWNED BY public.usuarios.id;
 
 
 --
--- TOC entry 240 (class 1259 OID 16710)
+-- TOC entry 242 (class 1259 OID 17222)
 -- Name: veiculos; Type: TABLE; Schema: public; Owner: postgres
 --
 
@@ -533,7 +586,7 @@ CREATE TABLE public.veiculos (
 ALTER TABLE public.veiculos OWNER TO postgres;
 
 --
--- TOC entry 241 (class 1259 OID 16714)
+-- TOC entry 243 (class 1259 OID 17235)
 -- Name: veiculos_id_seq; Type: SEQUENCE; Schema: public; Owner: postgres
 --
 
@@ -549,8 +602,8 @@ CREATE SEQUENCE public.veiculos_id_seq
 ALTER SEQUENCE public.veiculos_id_seq OWNER TO postgres;
 
 --
--- TOC entry 5024 (class 0 OID 0)
--- Dependencies: 241
+-- TOC entry 5202 (class 0 OID 0)
+-- Dependencies: 243
 -- Name: veiculos_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: postgres
 --
 
@@ -558,7 +611,7 @@ ALTER SEQUENCE public.veiculos_id_seq OWNED BY public.veiculos.id;
 
 
 --
--- TOC entry 4755 (class 2604 OID 16715)
+-- TOC entry 4920 (class 2604 OID 17236)
 -- Name: clientes id; Type: DEFAULT; Schema: public; Owner: postgres
 --
 
@@ -566,7 +619,7 @@ ALTER TABLE ONLY public.clientes ALTER COLUMN id SET DEFAULT nextval('public.cli
 
 
 --
--- TOC entry 4757 (class 2604 OID 16716)
+-- TOC entry 4922 (class 2604 OID 17237)
 -- Name: fornecedor_pecas id; Type: DEFAULT; Schema: public; Owner: postgres
 --
 
@@ -574,7 +627,7 @@ ALTER TABLE ONLY public.fornecedor_pecas ALTER COLUMN id SET DEFAULT nextval('pu
 
 
 --
--- TOC entry 4758 (class 2604 OID 16717)
+-- TOC entry 4923 (class 2604 OID 17238)
 -- Name: fornecedores id; Type: DEFAULT; Schema: public; Owner: postgres
 --
 
@@ -582,7 +635,7 @@ ALTER TABLE ONLY public.fornecedores ALTER COLUMN id SET DEFAULT nextval('public
 
 
 --
--- TOC entry 4760 (class 2604 OID 16718)
+-- TOC entry 4925 (class 2604 OID 17239)
 -- Name: funcionarios id; Type: DEFAULT; Schema: public; Owner: postgres
 --
 
@@ -590,7 +643,7 @@ ALTER TABLE ONLY public.funcionarios ALTER COLUMN id SET DEFAULT nextval('public
 
 
 --
--- TOC entry 4762 (class 2604 OID 16719)
+-- TOC entry 4927 (class 2604 OID 17240)
 -- Name: grupo id; Type: DEFAULT; Schema: public; Owner: postgres
 --
 
@@ -598,7 +651,7 @@ ALTER TABLE ONLY public.grupo ALTER COLUMN id SET DEFAULT nextval('public.grupo_
 
 
 --
--- TOC entry 4763 (class 2604 OID 16720)
+-- TOC entry 4928 (class 2604 OID 17241)
 -- Name: ordem_servico_pecas id; Type: DEFAULT; Schema: public; Owner: postgres
 --
 
@@ -606,7 +659,7 @@ ALTER TABLE ONLY public.ordem_servico_pecas ALTER COLUMN id SET DEFAULT nextval(
 
 
 --
--- TOC entry 4764 (class 2604 OID 16721)
+-- TOC entry 4930 (class 2604 OID 17242)
 -- Name: ordens_servico id; Type: DEFAULT; Schema: public; Owner: postgres
 --
 
@@ -614,7 +667,7 @@ ALTER TABLE ONLY public.ordens_servico ALTER COLUMN id SET DEFAULT nextval('publ
 
 
 --
--- TOC entry 4767 (class 2604 OID 16722)
+-- TOC entry 4933 (class 2604 OID 17243)
 -- Name: peca_fornecedor id; Type: DEFAULT; Schema: public; Owner: postgres
 --
 
@@ -622,7 +675,7 @@ ALTER TABLE ONLY public.peca_fornecedor ALTER COLUMN id SET DEFAULT nextval('pub
 
 
 --
--- TOC entry 4770 (class 2604 OID 16723)
+-- TOC entry 4936 (class 2604 OID 17244)
 -- Name: pecas id; Type: DEFAULT; Schema: public; Owner: postgres
 --
 
@@ -630,7 +683,15 @@ ALTER TABLE ONLY public.pecas ALTER COLUMN id SET DEFAULT nextval('public.pecas_
 
 
 --
--- TOC entry 4772 (class 2604 OID 16724)
+-- TOC entry 4946 (class 2604 OID 17355)
+-- Name: receitas id; Type: DEFAULT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY public.receitas ALTER COLUMN id SET DEFAULT nextval('public.receitas_id_seq'::regclass);
+
+
+--
+-- TOC entry 4938 (class 2604 OID 17245)
 -- Name: servicos id; Type: DEFAULT; Schema: public; Owner: postgres
 --
 
@@ -638,7 +699,7 @@ ALTER TABLE ONLY public.servicos ALTER COLUMN id SET DEFAULT nextval('public.ser
 
 
 --
--- TOC entry 4774 (class 2604 OID 16725)
+-- TOC entry 4940 (class 2604 OID 17246)
 -- Name: usuarios id; Type: DEFAULT; Schema: public; Owner: postgres
 --
 
@@ -646,7 +707,7 @@ ALTER TABLE ONLY public.usuarios ALTER COLUMN id SET DEFAULT nextval('public.usu
 
 
 --
--- TOC entry 4777 (class 2604 OID 16726)
+-- TOC entry 4943 (class 2604 OID 17247)
 -- Name: veiculos id; Type: DEFAULT; Schema: public; Owner: postgres
 --
 
@@ -654,8 +715,8 @@ ALTER TABLE ONLY public.veiculos ALTER COLUMN id SET DEFAULT nextval('public.vei
 
 
 --
--- TOC entry 4983 (class 0 OID 16648)
--- Dependencies: 217
+-- TOC entry 5158 (class 0 OID 17121)
+-- Dependencies: 219
 -- Data for Name: categorias; Type: TABLE DATA; Schema: public; Owner: postgres
 --
 
@@ -680,8 +741,8 @@ COPY public.categorias (id, nome) FROM stdin;
 
 
 --
--- TOC entry 4984 (class 0 OID 16651)
--- Dependencies: 218
+-- TOC entry 5159 (class 0 OID 17125)
+-- Dependencies: 220
 -- Data for Name: clientes; Type: TABLE DATA; Schema: public; Owner: postgres
 --
 
@@ -711,8 +772,8 @@ COPY public.clientes (id, nome, cpf, email, telefone, nascimento, endereco, ativ
 
 
 --
--- TOC entry 4986 (class 0 OID 16658)
--- Dependencies: 220
+-- TOC entry 5161 (class 0 OID 17136)
+-- Dependencies: 222
 -- Data for Name: fornecedor_pecas; Type: TABLE DATA; Schema: public; Owner: postgres
 --
 
@@ -721,8 +782,8 @@ COPY public.fornecedor_pecas (id, fornecedor_id, peca_id) FROM stdin;
 
 
 --
--- TOC entry 4988 (class 0 OID 16662)
--- Dependencies: 222
+-- TOC entry 5163 (class 0 OID 17143)
+-- Dependencies: 224
 -- Data for Name: fornecedores; Type: TABLE DATA; Schema: public; Owner: postgres
 --
 
@@ -751,8 +812,8 @@ COPY public.fornecedores (id, nome, razao_social, cnpj, telefone, cep, rua, nume
 
 
 --
--- TOC entry 4990 (class 0 OID 16669)
--- Dependencies: 224
+-- TOC entry 5165 (class 0 OID 17154)
+-- Dependencies: 226
 -- Data for Name: funcionarios; Type: TABLE DATA; Schema: public; Owner: postgres
 --
 
@@ -784,8 +845,8 @@ COPY public.funcionarios (id, nome, cpf, rg, nascimento, telefone, cep, rua, num
 
 
 --
--- TOC entry 4992 (class 0 OID 16674)
--- Dependencies: 226
+-- TOC entry 5167 (class 0 OID 17162)
+-- Dependencies: 228
 -- Data for Name: grupo; Type: TABLE DATA; Schema: public; Owner: postgres
 --
 
@@ -798,43 +859,30 @@ COPY public.grupo (id, nome) FROM stdin;
 
 
 --
--- TOC entry 4994 (class 0 OID 16678)
--- Dependencies: 228
+-- TOC entry 5169 (class 0 OID 17168)
+-- Dependencies: 230
 -- Data for Name: ordem_servico_pecas; Type: TABLE DATA; Schema: public; Owner: postgres
 --
 
-COPY public.ordem_servico_pecas (id, id_ordem_servico, id_peca) FROM stdin;
-272	18	26
-273	18	27
-274	18	30
-275	18	31
-276	18	25
-277	19	29
-278	19	38
-279	20	27
-280	20	30
-281	20	31
-282	21	26
+COPY public.ordem_servico_pecas (id, id_ordem_servico, id_peca, data_abertura) FROM stdin;
+299	30	22	2025-10-25 20:22:04.681475
 \.
 
 
 --
--- TOC entry 4996 (class 0 OID 16682)
--- Dependencies: 230
+-- TOC entry 5171 (class 0 OID 17175)
+-- Dependencies: 232
 -- Data for Name: ordens_servico; Type: TABLE DATA; Schema: public; Owner: postgres
 --
 
-COPY public.ordens_servico (id, id_servico, id_funcionario, id_veiculo, id_cliente, preco, ativo) FROM stdin;
-18	12	14	24	3	300.00	t
-19	11	13	4	5	425.50	t
-20	11	14	19	4	1076.25	t
-21	21	14	6	21	870.00	t
+COPY public.ordens_servico (id, id_servico, id_funcionario, id_veiculo, id_cliente, preco, ativo, data_abertura, data_inicio, data_conclusao, observacao) FROM stdin;
+30	3	13	4	2	310.39	t	2025-10-25 20:22:04.682	2025-10-25 00:00:00	2025-10-26 00:00:00	Troca no momento
 \.
 
 
 --
--- TOC entry 4998 (class 0 OID 16688)
--- Dependencies: 232
+-- TOC entry 5173 (class 0 OID 17186)
+-- Dependencies: 234
 -- Data for Name: peca_fornecedor; Type: TABLE DATA; Schema: public; Owner: postgres
 --
 
@@ -865,8 +913,8 @@ COPY public.peca_fornecedor (id, peca_id, fornecedor_id, data_vinculo, ativo) FR
 
 
 --
--- TOC entry 5000 (class 0 OID 16694)
--- Dependencies: 234
+-- TOC entry 5175 (class 0 OID 17195)
+-- Dependencies: 236
 -- Data for Name: pecas; Type: TABLE DATA; Schema: public; Owner: postgres
 --
 
@@ -895,8 +943,18 @@ COPY public.pecas (id, nome, descricao, codigo_interno, id_categoria, unidade, m
 
 
 --
--- TOC entry 5002 (class 0 OID 16699)
--- Dependencies: 236
+-- TOC entry 5184 (class 0 OID 17352)
+-- Dependencies: 245
+-- Data for Name: receitas; Type: TABLE DATA; Schema: public; Owner: postgres
+--
+
+COPY public.receitas (id, id_ordem_servico, id_cliente, valor_total, valor_recebido, status, data_emissao, data_vencimento, data_recebimento, forma_pagamento, observacao, ativo) FROM stdin;
+\.
+
+
+--
+-- TOC entry 5177 (class 0 OID 17203)
+-- Dependencies: 238
 -- Data for Name: servicos; Type: TABLE DATA; Schema: public; Owner: postgres
 --
 
@@ -925,8 +983,8 @@ COPY public.servicos (id, nome, categoria, preco, observacao, peca_id, funcionar
 
 
 --
--- TOC entry 5004 (class 0 OID 16704)
--- Dependencies: 238
+-- TOC entry 5179 (class 0 OID 17212)
+-- Dependencies: 240
 -- Data for Name: usuarios; Type: TABLE DATA; Schema: public; Owner: postgres
 --
 
@@ -965,8 +1023,8 @@ COPY public.usuarios (id, nome, cpf, senha, grupo, ativo) FROM stdin;
 
 
 --
--- TOC entry 5006 (class 0 OID 16710)
--- Dependencies: 240
+-- TOC entry 5181 (class 0 OID 17222)
+-- Dependencies: 242
 -- Data for Name: veiculos; Type: TABLE DATA; Schema: public; Owner: postgres
 --
 
@@ -996,8 +1054,8 @@ COPY public.veiculos (id, modelo, marca, chassi, placa, cor, fabricacao, id_clie
 
 
 --
--- TOC entry 5025 (class 0 OID 0)
--- Dependencies: 219
+-- TOC entry 5203 (class 0 OID 0)
+-- Dependencies: 221
 -- Name: clientes_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
 --
 
@@ -1005,8 +1063,8 @@ SELECT pg_catalog.setval('public.clientes_id_seq', 21, true);
 
 
 --
--- TOC entry 5026 (class 0 OID 0)
--- Dependencies: 221
+-- TOC entry 5204 (class 0 OID 0)
+-- Dependencies: 223
 -- Name: fornecedor_pecas_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
 --
 
@@ -1014,8 +1072,8 @@ SELECT pg_catalog.setval('public.fornecedor_pecas_id_seq', 1, false);
 
 
 --
--- TOC entry 5027 (class 0 OID 0)
--- Dependencies: 223
+-- TOC entry 5205 (class 0 OID 0)
+-- Dependencies: 225
 -- Name: fornecedores_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
 --
 
@@ -1023,8 +1081,8 @@ SELECT pg_catalog.setval('public.fornecedores_id_seq', 20, true);
 
 
 --
--- TOC entry 5028 (class 0 OID 0)
--- Dependencies: 225
+-- TOC entry 5206 (class 0 OID 0)
+-- Dependencies: 227
 -- Name: funcionarios_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
 --
 
@@ -1032,8 +1090,8 @@ SELECT pg_catalog.setval('public.funcionarios_id_seq', 23, true);
 
 
 --
--- TOC entry 5029 (class 0 OID 0)
--- Dependencies: 227
+-- TOC entry 5207 (class 0 OID 0)
+-- Dependencies: 229
 -- Name: grupo_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
 --
 
@@ -1041,26 +1099,26 @@ SELECT pg_catalog.setval('public.grupo_id_seq', 4, true);
 
 
 --
--- TOC entry 5030 (class 0 OID 0)
--- Dependencies: 229
+-- TOC entry 5208 (class 0 OID 0)
+-- Dependencies: 231
 -- Name: ordem_servico_pecas_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
 --
 
-SELECT pg_catalog.setval('public.ordem_servico_pecas_id_seq', 282, true);
+SELECT pg_catalog.setval('public.ordem_servico_pecas_id_seq', 299, true);
 
 
 --
--- TOC entry 5031 (class 0 OID 0)
--- Dependencies: 231
+-- TOC entry 5209 (class 0 OID 0)
+-- Dependencies: 233
 -- Name: ordens_servico_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
 --
 
-SELECT pg_catalog.setval('public.ordens_servico_id_seq', 21, true);
+SELECT pg_catalog.setval('public.ordens_servico_id_seq', 30, true);
 
 
 --
--- TOC entry 5032 (class 0 OID 0)
--- Dependencies: 233
+-- TOC entry 5210 (class 0 OID 0)
+-- Dependencies: 235
 -- Name: peca_fornecedor_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
 --
 
@@ -1068,8 +1126,8 @@ SELECT pg_catalog.setval('public.peca_fornecedor_id_seq', 37, true);
 
 
 --
--- TOC entry 5033 (class 0 OID 0)
--- Dependencies: 235
+-- TOC entry 5211 (class 0 OID 0)
+-- Dependencies: 237
 -- Name: pecas_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
 --
 
@@ -1077,8 +1135,17 @@ SELECT pg_catalog.setval('public.pecas_id_seq', 41, true);
 
 
 --
--- TOC entry 5034 (class 0 OID 0)
--- Dependencies: 237
+-- TOC entry 5212 (class 0 OID 0)
+-- Dependencies: 244
+-- Name: receitas_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
+--
+
+SELECT pg_catalog.setval('public.receitas_id_seq', 1, false);
+
+
+--
+-- TOC entry 5213 (class 0 OID 0)
+-- Dependencies: 239
 -- Name: servicos_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
 --
 
@@ -1086,8 +1153,8 @@ SELECT pg_catalog.setval('public.servicos_id_seq', 24, true);
 
 
 --
--- TOC entry 5035 (class 0 OID 0)
--- Dependencies: 239
+-- TOC entry 5214 (class 0 OID 0)
+-- Dependencies: 241
 -- Name: usuarios_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
 --
 
@@ -1095,8 +1162,8 @@ SELECT pg_catalog.setval('public.usuarios_id_seq', 30, true);
 
 
 --
--- TOC entry 5036 (class 0 OID 0)
--- Dependencies: 241
+-- TOC entry 5215 (class 0 OID 0)
+-- Dependencies: 243
 -- Name: veiculos_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
 --
 
@@ -1104,7 +1171,7 @@ SELECT pg_catalog.setval('public.veiculos_id_seq', 24, true);
 
 
 --
--- TOC entry 4781 (class 2606 OID 16728)
+-- TOC entry 4950 (class 2606 OID 17249)
 -- Name: categorias categorias_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
 --
 
@@ -1113,7 +1180,7 @@ ALTER TABLE ONLY public.categorias
 
 
 --
--- TOC entry 4783 (class 2606 OID 16730)
+-- TOC entry 4952 (class 2606 OID 17251)
 -- Name: clientes clientes_cpf_key; Type: CONSTRAINT; Schema: public; Owner: postgres
 --
 
@@ -1122,7 +1189,7 @@ ALTER TABLE ONLY public.clientes
 
 
 --
--- TOC entry 4785 (class 2606 OID 16732)
+-- TOC entry 4954 (class 2606 OID 17253)
 -- Name: clientes clientes_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
 --
 
@@ -1131,7 +1198,7 @@ ALTER TABLE ONLY public.clientes
 
 
 --
--- TOC entry 4787 (class 2606 OID 16734)
+-- TOC entry 4956 (class 2606 OID 17255)
 -- Name: fornecedor_pecas fornecedor_pecas_fornecedor_id_peca_id_key; Type: CONSTRAINT; Schema: public; Owner: postgres
 --
 
@@ -1140,7 +1207,7 @@ ALTER TABLE ONLY public.fornecedor_pecas
 
 
 --
--- TOC entry 4789 (class 2606 OID 16736)
+-- TOC entry 4958 (class 2606 OID 17257)
 -- Name: fornecedor_pecas fornecedor_pecas_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
 --
 
@@ -1149,7 +1216,7 @@ ALTER TABLE ONLY public.fornecedor_pecas
 
 
 --
--- TOC entry 4793 (class 2606 OID 16738)
+-- TOC entry 4962 (class 2606 OID 17259)
 -- Name: fornecedores fornecedores_cnpj_key; Type: CONSTRAINT; Schema: public; Owner: postgres
 --
 
@@ -1158,7 +1225,7 @@ ALTER TABLE ONLY public.fornecedores
 
 
 --
--- TOC entry 4795 (class 2606 OID 16740)
+-- TOC entry 4964 (class 2606 OID 17261)
 -- Name: fornecedores fornecedores_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
 --
 
@@ -1167,7 +1234,7 @@ ALTER TABLE ONLY public.fornecedores
 
 
 --
--- TOC entry 4797 (class 2606 OID 16742)
+-- TOC entry 4966 (class 2606 OID 17263)
 -- Name: funcionarios funcionarios_cpf_key; Type: CONSTRAINT; Schema: public; Owner: postgres
 --
 
@@ -1176,7 +1243,7 @@ ALTER TABLE ONLY public.funcionarios
 
 
 --
--- TOC entry 4799 (class 2606 OID 16744)
+-- TOC entry 4968 (class 2606 OID 17265)
 -- Name: funcionarios funcionarios_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
 --
 
@@ -1185,7 +1252,7 @@ ALTER TABLE ONLY public.funcionarios
 
 
 --
--- TOC entry 4801 (class 2606 OID 16746)
+-- TOC entry 4970 (class 2606 OID 17267)
 -- Name: funcionarios funcionarios_rg_key; Type: CONSTRAINT; Schema: public; Owner: postgres
 --
 
@@ -1194,7 +1261,7 @@ ALTER TABLE ONLY public.funcionarios
 
 
 --
--- TOC entry 4803 (class 2606 OID 16748)
+-- TOC entry 4972 (class 2606 OID 17269)
 -- Name: grupo grupo_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
 --
 
@@ -1203,7 +1270,7 @@ ALTER TABLE ONLY public.grupo
 
 
 --
--- TOC entry 4805 (class 2606 OID 16750)
+-- TOC entry 4974 (class 2606 OID 17271)
 -- Name: ordem_servico_pecas ordem_servico_pecas_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
 --
 
@@ -1212,7 +1279,7 @@ ALTER TABLE ONLY public.ordem_servico_pecas
 
 
 --
--- TOC entry 4807 (class 2606 OID 16752)
+-- TOC entry 4976 (class 2606 OID 17273)
 -- Name: ordens_servico ordens_servico_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
 --
 
@@ -1221,7 +1288,7 @@ ALTER TABLE ONLY public.ordens_servico
 
 
 --
--- TOC entry 4809 (class 2606 OID 16754)
+-- TOC entry 4978 (class 2606 OID 17275)
 -- Name: peca_fornecedor peca_fornecedor_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
 --
 
@@ -1230,7 +1297,7 @@ ALTER TABLE ONLY public.peca_fornecedor
 
 
 --
--- TOC entry 4813 (class 2606 OID 16756)
+-- TOC entry 4982 (class 2606 OID 17277)
 -- Name: pecas pecas_codigo_interno_key; Type: CONSTRAINT; Schema: public; Owner: postgres
 --
 
@@ -1239,7 +1306,7 @@ ALTER TABLE ONLY public.pecas
 
 
 --
--- TOC entry 4815 (class 2606 OID 16758)
+-- TOC entry 4984 (class 2606 OID 17279)
 -- Name: pecas pecas_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
 --
 
@@ -1248,7 +1315,16 @@ ALTER TABLE ONLY public.pecas
 
 
 --
--- TOC entry 4817 (class 2606 OID 16760)
+-- TOC entry 4998 (class 2606 OID 17366)
+-- Name: receitas receitas_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY public.receitas
+    ADD CONSTRAINT receitas_pkey PRIMARY KEY (id);
+
+
+--
+-- TOC entry 4986 (class 2606 OID 17281)
 -- Name: servicos servicos_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
 --
 
@@ -1257,7 +1333,7 @@ ALTER TABLE ONLY public.servicos
 
 
 --
--- TOC entry 4811 (class 2606 OID 16762)
+-- TOC entry 4980 (class 2606 OID 17283)
 -- Name: peca_fornecedor unq_peca_fornecedor; Type: CONSTRAINT; Schema: public; Owner: postgres
 --
 
@@ -1266,7 +1342,7 @@ ALTER TABLE ONLY public.peca_fornecedor
 
 
 --
--- TOC entry 4819 (class 2606 OID 16764)
+-- TOC entry 4988 (class 2606 OID 17285)
 -- Name: usuarios usuarios_cpf_key; Type: CONSTRAINT; Schema: public; Owner: postgres
 --
 
@@ -1275,7 +1351,7 @@ ALTER TABLE ONLY public.usuarios
 
 
 --
--- TOC entry 4821 (class 2606 OID 16766)
+-- TOC entry 4990 (class 2606 OID 17287)
 -- Name: usuarios usuarios_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
 --
 
@@ -1284,7 +1360,7 @@ ALTER TABLE ONLY public.usuarios
 
 
 --
--- TOC entry 4823 (class 2606 OID 16768)
+-- TOC entry 4992 (class 2606 OID 17289)
 -- Name: veiculos veiculos_chassi_key; Type: CONSTRAINT; Schema: public; Owner: postgres
 --
 
@@ -1293,7 +1369,7 @@ ALTER TABLE ONLY public.veiculos
 
 
 --
--- TOC entry 4825 (class 2606 OID 16770)
+-- TOC entry 4994 (class 2606 OID 17291)
 -- Name: veiculos veiculos_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
 --
 
@@ -1302,7 +1378,7 @@ ALTER TABLE ONLY public.veiculos
 
 
 --
--- TOC entry 4827 (class 2606 OID 16772)
+-- TOC entry 4996 (class 2606 OID 17293)
 -- Name: veiculos veiculos_placa_key; Type: CONSTRAINT; Schema: public; Owner: postgres
 --
 
@@ -1311,7 +1387,7 @@ ALTER TABLE ONLY public.veiculos
 
 
 --
--- TOC entry 4790 (class 1259 OID 16773)
+-- TOC entry 4959 (class 1259 OID 17294)
 -- Name: idx_fornecedor_pecas_fornecedor; Type: INDEX; Schema: public; Owner: postgres
 --
 
@@ -1319,7 +1395,7 @@ CREATE INDEX idx_fornecedor_pecas_fornecedor ON public.fornecedor_pecas USING bt
 
 
 --
--- TOC entry 4791 (class 1259 OID 16774)
+-- TOC entry 4960 (class 1259 OID 17295)
 -- Name: idx_fornecedor_pecas_peca; Type: INDEX; Schema: public; Owner: postgres
 --
 
@@ -1327,7 +1403,7 @@ CREATE INDEX idx_fornecedor_pecas_peca ON public.fornecedor_pecas USING btree (p
 
 
 --
--- TOC entry 4832 (class 2606 OID 16775)
+-- TOC entry 5003 (class 2606 OID 17296)
 -- Name: peca_fornecedor fk_fornecedor; Type: FK CONSTRAINT; Schema: public; Owner: postgres
 --
 
@@ -1336,7 +1412,7 @@ ALTER TABLE ONLY public.peca_fornecedor
 
 
 --
--- TOC entry 4834 (class 2606 OID 16780)
+-- TOC entry 5005 (class 2606 OID 17301)
 -- Name: pecas fk_id_categoria; Type: FK CONSTRAINT; Schema: public; Owner: postgres
 --
 
@@ -1345,7 +1421,7 @@ ALTER TABLE ONLY public.pecas
 
 
 --
--- TOC entry 4833 (class 2606 OID 16785)
+-- TOC entry 5004 (class 2606 OID 17306)
 -- Name: peca_fornecedor fk_peca; Type: FK CONSTRAINT; Schema: public; Owner: postgres
 --
 
@@ -1354,7 +1430,7 @@ ALTER TABLE ONLY public.peca_fornecedor
 
 
 --
--- TOC entry 4828 (class 2606 OID 16790)
+-- TOC entry 4999 (class 2606 OID 17311)
 -- Name: fornecedor_pecas fornecedor_pecas_fornecedor_id_fkey; Type: FK CONSTRAINT; Schema: public; Owner: postgres
 --
 
@@ -1363,7 +1439,7 @@ ALTER TABLE ONLY public.fornecedor_pecas
 
 
 --
--- TOC entry 4829 (class 2606 OID 16795)
+-- TOC entry 5000 (class 2606 OID 17316)
 -- Name: fornecedor_pecas fornecedor_pecas_peca_id_fkey; Type: FK CONSTRAINT; Schema: public; Owner: postgres
 --
 
@@ -1372,7 +1448,7 @@ ALTER TABLE ONLY public.fornecedor_pecas
 
 
 --
--- TOC entry 4830 (class 2606 OID 16800)
+-- TOC entry 5001 (class 2606 OID 17321)
 -- Name: ordem_servico_pecas ordem_servico_pecas_id_ordem_servico_fkey; Type: FK CONSTRAINT; Schema: public; Owner: postgres
 --
 
@@ -1381,7 +1457,7 @@ ALTER TABLE ONLY public.ordem_servico_pecas
 
 
 --
--- TOC entry 4831 (class 2606 OID 16805)
+-- TOC entry 5002 (class 2606 OID 17326)
 -- Name: ordem_servico_pecas ordem_servico_pecas_id_peca_fkey; Type: FK CONSTRAINT; Schema: public; Owner: postgres
 --
 
@@ -1390,7 +1466,25 @@ ALTER TABLE ONLY public.ordem_servico_pecas
 
 
 --
--- TOC entry 4835 (class 2606 OID 16810)
+-- TOC entry 5009 (class 2606 OID 17372)
+-- Name: receitas receitas_id_cliente_fkey; Type: FK CONSTRAINT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY public.receitas
+    ADD CONSTRAINT receitas_id_cliente_fkey FOREIGN KEY (id_cliente) REFERENCES public.clientes(id);
+
+
+--
+-- TOC entry 5010 (class 2606 OID 17367)
+-- Name: receitas receitas_id_ordem_servico_fkey; Type: FK CONSTRAINT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY public.receitas
+    ADD CONSTRAINT receitas_id_ordem_servico_fkey FOREIGN KEY (id_ordem_servico) REFERENCES public.ordens_servico(id);
+
+
+--
+-- TOC entry 5006 (class 2606 OID 17331)
 -- Name: servicos servicos_funcionario_id_fkey; Type: FK CONSTRAINT; Schema: public; Owner: postgres
 --
 
@@ -1399,7 +1493,7 @@ ALTER TABLE ONLY public.servicos
 
 
 --
--- TOC entry 4836 (class 2606 OID 16815)
+-- TOC entry 5007 (class 2606 OID 17336)
 -- Name: servicos servicos_peca_id_fkey; Type: FK CONSTRAINT; Schema: public; Owner: postgres
 --
 
@@ -1408,7 +1502,7 @@ ALTER TABLE ONLY public.servicos
 
 
 --
--- TOC entry 4837 (class 2606 OID 16820)
+-- TOC entry 5008 (class 2606 OID 17341)
 -- Name: veiculos veiculos_id_cliente_fkey; Type: FK CONSTRAINT; Schema: public; Owner: postgres
 --
 
@@ -1416,11 +1510,11 @@ ALTER TABLE ONLY public.veiculos
     ADD CONSTRAINT veiculos_id_cliente_fkey FOREIGN KEY (id_cliente) REFERENCES public.clientes(id);
 
 
--- Completed on 2025-10-24 17:52:53
+-- Completed on 2025-10-25 22:26:32
 
 --
 -- PostgreSQL database dump complete
 --
 
-\unrestrict pY1Sqrl5VjiCrb8LedEaMyHHOeQ7QZo2IZt1iZVHJBGXEpmKBspD2UCexSbZJNZ
+\unrestrict ZPhzUNjyGc4uwmGMObTIHIBJmZJ2eFBsGexOZmsu0tvEInMRNSvTUH5FblzUV0O
 

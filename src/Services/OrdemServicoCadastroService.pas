@@ -14,8 +14,9 @@ type
   public
     constructor Create;
     function SalvarOrdemServico(OS: TOrdemServico; PecasIDs: TList<Integer>): Boolean;
-    function CriarObjeto(aIdServico, aIdFuncionario, aIdVeiculo, aIdCliente: Integer;
-      aPreco: Currency; aAtivo: Boolean): TOrdemServico;
+    function CriarObjeto(aIdServico, aIdFuncionario, aIdVeiculo,
+  aIdCliente: Integer; aPreco: Currency; aAtivo: Boolean; aObs: String;
+  aDataInicio, aDataConclusao: TDateTime): TOrdemServico;
     procedure EditarOrdemServico(OS: TOrdemServico; PecasIDs: TList<Integer>);
     function ValidarOrdemServico(OSValida: TOrdemServico): Boolean;
     function ListarOrdensServico: TDataSet;
@@ -42,7 +43,8 @@ begin
 end;
 
 function TOrdemServicoService.CriarObjeto(aIdServico, aIdFuncionario, aIdVeiculo,
-  aIdCliente: Integer; aPreco: Currency; aAtivo: Boolean): TOrdemServico;
+  aIdCliente: Integer; aPreco: Currency; aAtivo: Boolean; aObs: String;
+  aDataInicio, aDataConclusao: TDateTime): TOrdemServico;
 var
   OSDTO: TOrdemServico;
 begin
@@ -54,6 +56,9 @@ begin
     OSDTO.setIdCliente(aIdCliente);
     OSDTO.setPreco(aPreco);
     OSDTO.setAtivo(aAtivo);
+    OSDTO.setObservacao(aObs);
+    OSDTO.setDataInicio(aDataInicio);
+    OSDTO.setDataConclusao(aDataConclusao);
     Result := OSDTO;
   except
     OSDTO.Free;

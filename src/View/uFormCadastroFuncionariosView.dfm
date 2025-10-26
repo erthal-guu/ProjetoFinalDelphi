@@ -737,8 +737,6 @@ object FormCadastroFuncionarios: TFormCadastroFuncionarios
               ParentBackground = False
               TabOrder = 0
               Visible = False
-              ExplicitLeft = 19
-              ExplicitTop = 3
               object Label3: TLabel
                 Left = 156
                 Top = 8
@@ -1363,7 +1361,8 @@ object FormCadastroFuncionarios: TFormCadastroFuncionarios
                   ParentColor = False
                   ParentFont = False
                   OnClick = LblEnviarClick
-                  ExplicitLeft = -60
+                  ExplicitWidth = 40
+                  ExplicitHeight = 20
                 end
               end
               object EdtCEP: TEdit
@@ -1518,8 +1517,8 @@ object FormCadastroFuncionarios: TFormCadastroFuncionarios
                   ParentColor = False
                   ParentFont = False
                   OnClick = LblAtualizarClick
-                  ExplicitLeft = 20
-                  ExplicitTop = -12
+                  ExplicitWidth = 59
+                  ExplicitHeight = 20
                 end
               end
               object CmbTipo: TComboBox

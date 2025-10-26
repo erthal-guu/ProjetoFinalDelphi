@@ -32,7 +32,6 @@ type
     BtnAdicionar: TSpeedButton;
     BtnEditar: TSpeedButton;
     BtnPesquisar: TSpeedButton;
-    BtnCancelar: TSpeedButton;
     BtnRestaurar: TSpeedButton;
     BtnSair: TSpeedButton;
     DBGridMain: TDBGrid;
@@ -62,6 +61,7 @@ type
     LblAtualizar: TLabel;
     CmbStatus: TComboBox;
     LblStatus: TLabel;
+    BtnCancelar: TSpeedButton;
 
     procedure BtnAdicionarClick(Sender: TObject);
     procedure BtnPesquisarClick(Sender: TObject);
@@ -279,9 +279,10 @@ end;
 
 procedure TFormCadastroVeiculos.BtnCancelarClick(Sender: TObject);
 begin
-  PnlBackgrounEdit.Visible := False;
-  PnlEdit.Visible := False;
-  EdtPesquisar.Visible := False;
+    PnlBackgrounEdit.Visible := False;
+    PnlEdit.Visible := False;
+    PnlRestaurar.Visible := False;
+    EdtPesquisar.Visible := False;
 end;
 
 procedure TFormCadastroVeiculos.BtnEditarClick(Sender: TObject);
@@ -362,6 +363,10 @@ procedure TFormCadastroVeiculos.BtnSairClick(Sender: TObject);
 begin
   if MessageDlg('Deseja realmente fechar este formulário?', mtConfirmation, [mbYes, mbNo], 0) = mrYes then
     Close;
+    PnlBackgrounEdit.Visible := False;
+    PnlEdit.Visible := False;
+    PnlRestaurar.Visible := False;
+    EdtPesquisar.Visible := False;
 end;
 
 procedure TFormCadastroVeiculos.LblEnviarClick(Sender: TObject);

@@ -18,7 +18,6 @@ uses
   uFormCadastroServiçosView in 'src\View\uFormCadastroServiçosView.pas' {FormCadastroServiços},
   uFormCadastroFornecedoresView in 'src\View\uFormCadastroFornecedoresView.pas' {FormCadastroFornecedores},
   uFormCadastroVeiculosView in 'src\View\uFormCadastroVeiculosView.pas' {FormCadastroVeiculos},
-  uFormCadastroAgendamentosView in 'src\View\uFormCadastroAgendamentosView.pas' {FormAgendamentos},
   uFormCadastroOrdensServiçoView in 'src\View\uFormCadastroOrdensServiçoView.pas' {FormOrdensServiço},
   uFormHomeView in 'src\View\uFormHomeView.pas' {FormHome},
   uFormMainView in 'src\View\uFormMainView.pas' {FormMain},
@@ -72,7 +71,6 @@ begin
   Application.CreateForm(TFormCadastroServiços, FormCadastroServiços);
   Application.CreateForm(TFormCadastroFornecedores, FormCadastroFornecedores);
   Application.CreateForm(TFormCadastroVeiculos, FormCadastroVeiculos);
-  Application.CreateForm(TFormAgendamentos, FormAgendamentos);
   Application.CreateForm(TFormOrdensServiço, FormOrdensServiço);
   Application.CreateForm(TFormCadastroVeiculos, FormCadastroVeiculos);
   Application.CreateForm(TFormMain, FormMain);

@@ -114,6 +114,7 @@ procedure TFormCadastroPecas.BtnCancelarClick(Sender: TObject);
 begin
   PnlBackgrounEdit.Visible := False;
   PnlEdit.Visible := False;
+  PnlRestaurar.Visible := False;
   EdtPesquisar.Visible := False;
 end;
 
@@ -438,8 +439,13 @@ end;
 
 procedure TFormCadastroPecas.BtnSairClick(Sender: TObject);
 begin
-  if MessageDlg('Deseja realmente fechar este formulário?', mtConfirmation, [mbYes, mbNo], 0) = mrYes then
-    Close;
+  if MessageDlg('Deseja realmente fechar este formulário?', mtConfirmation, [mbYes, mbNo], 0) = mrYes then begin
+  Close;
+  PnlBackgrounEdit.Visible := False;
+  PnlEdit.Visible := False;
+  PnlRestaurar.Visible := False;
+  EdtPesquisar.Visible := False;
+end;
 end;
 
 procedure TFormCadastroPecas.FormCreate(Sender: TObject);
