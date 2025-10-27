@@ -51,7 +51,6 @@ type
     Label3: TLabel;
     Label4: TLabel;
     EdtObservacao: TEdit;
-    EdtReceita: TEdit;
     CmbFormaPagamento: TComboBox;
     EdtValorTotal: TEdit;
     CmbStatusReceita: TComboBox;
@@ -68,6 +67,7 @@ type
     Label6: TLabel;
     EdtDataRecebimento: TDateTimePicker;
     BtnCancelar: TSpeedButton;
+    CmbReceita: TComboBox;
     procedure BtnDetalharClick(Sender: TObject);
     procedure BtnRestaurarClick(Sender: TObject);
     procedure BtnHistoricoClick(Sender: TObject);
@@ -78,6 +78,7 @@ type
     procedure BtnReceberClick(Sender: TObject);
     procedure BtnCancelarClick(Sender: TObject);
     procedure BtnPesquisarClick(Sender: TObject);
+    procedure FormCreate(Sender: TObject);
   private
     { Private declarations }
   public
@@ -135,6 +136,17 @@ begin
     PnLHistorico.Visible := False;
     PnlBackgrounEdit.Visible := False;
     EdtPesquisar.Visible := False;
+end;
+
+procedure TFormReceitas.FormCreate(Sender: TObject);
+begin
+    EdtObservacao.Height := 31;
+    EdtValorTotal.Height := 31;
+    EdtValorRecebido.Height := 31;
+    EdtDataRecebimento.Height := 31;
+    CmbStatusReceita.Font.Size := 13;
+    CmbFormaPagamento.Font.Size := 13;
+    CmbReceita.Font.Size := 13;
 end;
 
 procedure TFormReceitas.ImgFecharClick(Sender: TObject);

@@ -36,7 +36,6 @@
       Color = 9521152
       ParentBackground = False
       TabOrder = 0
-      ExplicitLeft = 2
       object PnlMainButton: TPanel
         AlignWithMargins = True
         Left = 943
@@ -52,7 +51,6 @@
         Color = 6172416
         ParentBackground = False
         TabOrder = 0
-        ExplicitHeight = 407
       end
       object PnlMainEdit: TPanel
         Left = 0
@@ -80,7 +78,6 @@
           ParentBackground = False
           TabOrder = 0
           Visible = False
-          ExplicitHeight = 175
           object PnlDesignEdit: TPanel
             AlignWithMargins = True
             Left = 20
@@ -96,7 +93,6 @@
             ParentBackground = False
             TabOrder = 0
             Visible = False
-            ExplicitHeight = 135
             object Image1: TImage
               AlignWithMargins = True
               Left = 960
@@ -396,7 +392,6 @@
               Align = alLeft
               BevelOuter = bvNone
               TabOrder = 0
-              ExplicitHeight = 133
               object Label1: TLabel
                 Left = 20
                 Top = 8
@@ -558,7 +553,6 @@
                 Font.Style = []
                 ParentFont = False
                 TabOrder = 0
-                ExplicitHeight = 33
               end
               object PnlButtonEnviar: TPanel
                 AlignWithMargins = True
@@ -620,7 +614,6 @@
                 TabOrder = 2
                 Text = '  .   .   /    -  '
                 OnClick = EdtCNPJClick
-                ExplicitHeight = 33
               end
               object EdtNome: TEdit
                 AlignWithMargins = True
@@ -640,7 +633,6 @@
                 Font.Style = []
                 ParentFont = False
                 TabOrder = 3
-                ExplicitHeight = 33
               end
               object EdtTelefone: TMaskEdit
                 AlignWithMargins = True
@@ -666,7 +658,6 @@
                 TabOrder = 4
                 Text = '(   )   -    '
                 OnClick = EdtTelefoneClick
-                ExplicitHeight = 33
               end
               object EdtCEP: TMaskEdit
                 AlignWithMargins = True
@@ -693,7 +684,6 @@
                 Text = '     -   '
                 OnChange = EdtCEPChange
                 OnClick = EdtCEPClick
-                ExplicitHeight = 33
               end
               object CmbStatus: TComboBox
                 AlignWithMargins = True
@@ -773,7 +763,6 @@
                 Font.Style = []
                 ParentFont = False
                 TabOrder = 8
-                ExplicitHeight = 33
               end
               object EdtNumero: TEdit
                 AlignWithMargins = True
@@ -875,7 +864,6 @@
           Color = clBackground
           ParentBackground = False
           TabOrder = 0
-          ExplicitHeight = 369
           object PnlButton: TPanel
             AlignWithMargins = True
             Left = 1
@@ -891,7 +879,6 @@
             Color = 15790320
             ParentBackground = False
             TabOrder = 0
-            ExplicitHeight = 367
             object BtnExcluir: TSpeedButton
               AlignWithMargins = True
               Left = 5
@@ -1544,7 +1531,6 @@
         Color = clBackground
         ParentBackground = False
         TabOrder = 3
-        ExplicitHeight = 369
         object DBGridMain: TDBGrid
           AlignWithMargins = True
           Left = 1
@@ -1585,7 +1571,8 @@
           ParentBackground = False
           TabOrder = 0
           Visible = False
-          ExplicitHeight = 369
+          ExplicitLeft = 80
+          ExplicitTop = 220
           object LblRestaurar: TLabel
             AlignWithMargins = True
             Left = 3
@@ -1676,7 +1663,6 @@
             Color = 9521152
             ParentBackground = False
             TabOrder = 0
-            ExplicitHeight = 301
             object PnlContainerRestaurar: TPanel
               AlignWithMargins = True
               Left = 12
@@ -1693,7 +1679,6 @@
               Color = clBackground
               ParentBackground = False
               TabOrder = 0
-              ExplicitHeight = 281
               object DBGridRestaurar: TDBGrid
                 AlignWithMargins = True
                 Left = 1
@@ -1763,10 +1748,10 @@
         end
       end
       object PnlVincularPeça: TPanel
-        Left = 17
-        Top = 79
-        Width = 907
-        Height = 369
+        Left = 19
+        Top = 75
+        Width = 905
+        Height = 380
         BevelOuter = bvNone
         Color = 6172416
         ParentBackground = False
@@ -1797,8 +1782,8 @@
           AlignWithMargins = True
           Left = 20
           Top = 40
-          Width = 867
-          Height = 314
+          Width = 865
+          Height = 325
           Margins.Left = 20
           Margins.Top = 40
           Margins.Right = 20
@@ -1808,12 +1793,14 @@
           Color = 9521152
           ParentBackground = False
           TabOrder = 0
+          ExplicitWidth = 867
+          ExplicitHeight = 314
           object PnlBackgroundVincular: TPanel
             AlignWithMargins = True
             Left = 19
             Top = 24
-            Width = 599
-            Height = 267
+            Width = 597
+            Height = 278
             Margins.Left = 19
             Margins.Top = 24
             Margins.Right = 249
@@ -1824,6 +1811,8 @@
             Color = clBackground
             ParentBackground = False
             TabOrder = 2
+            ExplicitWidth = 599
+            ExplicitHeight = 267
           end
           object Panel1: TPanel
             AlignWithMargins = True
@@ -2237,8 +2226,8 @@
           end
           object PnlFooter: TPanel
             Left = 20
-            Top = 265
-            Width = 597
+            Top = 276
+            Width = 595
             Height = 25
             BevelOuter = bvNone
             Color = 6172416
@@ -2278,8 +2267,8 @@
             AlignWithMargins = True
             Left = 20
             Top = 25
-            Width = 597
-            Height = 239
+            Width = 595
+            Height = 250
             Margins.Left = 20
             Margins.Top = 25
             Margins.Right = 250

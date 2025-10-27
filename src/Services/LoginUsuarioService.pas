@@ -36,18 +36,17 @@ begin
   Repository := TLoginRepository.Create(DataModule1.FDQuery);
   try
     UsuarioSelect := Repository.SelectUsuario(Usuario);
-
     if UsuarioSelect <> nil then
     begin
       Result := UsuarioSelect;
       uSession.UsuarioLogadoID := UsuarioSelect.getID;
+      uSession.UsuarioLogadoNome := UsuarioSelect.getNome;
+      uSession.UsuarioLogadoGrupo := UsuarioSelect.getGrupo;
     end;
   finally
     Repository.Free;
   end;
 end;
-
-
 function TUsuarioLoginService.ValidarLogin(Usuario: TUsuario): Boolean;
 var
   Repository: TLoginRepository;
@@ -71,7 +70,7 @@ begin
 
       if Result then
       begin
-        uSession.UsuarioLogadoID := UsuarioSelect.getID;
+         uSession.UsuarioLogadoID := UsuarioSelect.getID;
         SalvarLog(Format('LOGIN - Sucesso: Usuário ID %d, Nome: %s, (CPF: %s)',
           [UsuarioSelect.getID, UsuarioSelect.getNome, UsuarioSelect.getCPF]));
       end else begin
@@ -94,5 +93,6 @@ Result := (UsuarioValido.getNome <> '') and
             (UsuarioValido.getCPF <> '') and
             (UsuarioValido.getSenha <> '');
 end;
+
 
 end.

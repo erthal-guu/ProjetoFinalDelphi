@@ -223,6 +223,10 @@
             <Form>FormReceitas</Form>
             <FormType>dfm</FormType>
         </DCCReference>
+        <DCCReference Include="src\controller\ReceitaController.pas"/>
+        <DCCReference Include="src\Services\ReceitaService.pas"/>
+        <DCCReference Include="src\repository\ReceitaRepository.pas"/>
+        <DCCReference Include="src\Model\uReceita.pas"/>
         <BuildConfiguration Include="Base">
             <Key>Base</Key>
         </BuildConfiguration>

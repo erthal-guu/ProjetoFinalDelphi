@@ -15,19 +15,21 @@
   Menu = MainMenu
   Position = poDesigned
   WindowState = wsMaximized
+  OnShow = FormShow
   TextHeight = 15
   object PnlMain: TPanel
     Left = 0
     Top = 0
     Width = 1132
-    Height = 632
+    Height = 582
     Align = alClient
     TabOrder = 0
+    ExplicitTop = -2
     object PnlLogo: TImage
       Left = 1
       Top = 1
       Width = 1130
-      Height = 630
+      Height = 580
       Align = alClient
       Center = True
       Picture.Data = {
@@ -1399,32 +1401,36 @@
         48FC1F183E060B081BAEE00000000049454E44AE426082}
       ExplicitLeft = 2
       ExplicitTop = 0
+      ExplicitHeight = 630
     end
   end
   object PnlFooter: TPanel
     Left = 0
-    Top = 632
+    Top = 582
     Width = 1132
-    Height = 64
+    Height = 114
     Align = alBottom
     Color = 15724527
     ParentBackground = False
     TabOrder = 1
+    ExplicitLeft = 8
+    ExplicitTop = 587
     object PnlDataTime: TPanel
       AlignWithMargins = True
       Left = 936
-      Top = 16
+      Top = 41
       Width = 185
       Height = 32
       Margins.Left = 10
-      Margins.Top = 15
+      Margins.Top = 40
       Margins.Right = 10
-      Margins.Bottom = 15
+      Margins.Bottom = 40
       Align = alRight
       BevelOuter = bvNone
       Color = 15724527
       ParentBackground = False
       TabOrder = 0
+      ExplicitTop = 16
       object ShapeFooter: TShape
         Left = 4
         Top = 0
@@ -1433,8 +1439,8 @@
         Align = alRight
         Pen.Color = clGray
         Shape = stRoundRect
-        ExplicitTop = -1
-        ExplicitHeight = 35
+        ExplicitTop = 8
+        ExplicitHeight = 33
       end
       object LblDataTime: TLabel
         AlignWithMargins = True
@@ -1444,6 +1450,48 @@
         Height = 25
         Alignment = taCenter
         Caption = 'LblDataTime'
+        Font.Charset = DEFAULT_CHARSET
+        Font.Color = clWindowText
+        Font.Height = -19
+        Font.Name = 'Segoe UI'
+        Font.Style = []
+        ParentFont = False
+      end
+    end
+    object Panel1: TPanel
+      AlignWithMargins = True
+      Left = 11
+      Top = 41
+      Width = 300
+      Height = 32
+      Margins.Left = 10
+      Margins.Top = 40
+      Margins.Right = 10
+      Margins.Bottom = 40
+      Align = alLeft
+      BevelOuter = bvNone
+      Color = 15724527
+      ParentBackground = False
+      TabOrder = 1
+      object Shape1: TShape
+        Left = 0
+        Top = 0
+        Width = 300
+        Height = 32
+        Align = alClient
+        Pen.Color = clGray
+        Shape = stRoundRect
+        ExplicitLeft = 11
+        ExplicitWidth = 181
+      end
+      object LblUsuarioLogado: TLabel
+        AlignWithMargins = True
+        Left = 11
+        Top = 3
+        Width = 116
+        Height = 25
+        Alignment = taCenter
+        Caption = 'UsuarioCargo'
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clWindowText
         Font.Height = -19

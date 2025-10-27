@@ -10,6 +10,7 @@ object FormReceitas: TFormReceitas
   Font.Height = -12
   Font.Name = 'Segoe UI'
   Font.Style = []
+  OnCreate = FormCreate
   TextHeight = 15
   object PnlMain: TPanel
     Left = 0
@@ -20,8 +21,6 @@ object FormReceitas: TFormReceitas
     BevelOuter = bvNone
     BorderStyle = bsSingle
     TabOrder = 0
-    ExplicitWidth = 1246
-    ExplicitHeight = 644
     object Panel1: TPanel
       Left = 0
       Top = 0
@@ -31,8 +30,6 @@ object FormReceitas: TFormReceitas
       BevelOuter = bvNone
       BorderStyle = bsSingle
       TabOrder = 0
-      ExplicitWidth = 1132
-      ExplicitHeight = 703
       object PnlContainer: TPanel
         AlignWithMargins = True
         Left = -2
@@ -62,7 +59,6 @@ object FormReceitas: TFormReceitas
           Color = 6172416
           ParentBackground = False
           TabOrder = 0
-          ExplicitLeft = 926
         end
         object PnlMainEdit: TPanel
           Left = 0
@@ -74,7 +70,6 @@ object FormReceitas: TFormReceitas
           Color = 6172416
           ParentBackground = False
           TabOrder = 1
-          ExplicitWidth = 1108
           object PnlBackgrounEdit: TPanel
             AlignWithMargins = True
             Left = 0
@@ -91,7 +86,6 @@ object FormReceitas: TFormReceitas
             ParentBackground = False
             TabOrder = 0
             Visible = False
-            ExplicitWidth = 1108
             object PnlDesignEdit: TPanel
               AlignWithMargins = True
               Left = 20
@@ -106,7 +100,6 @@ object FormReceitas: TFormReceitas
               Color = 15790320
               ParentBackground = False
               TabOrder = 0
-              ExplicitWidth = 1068
               object Image1: TImage
                 AlignWithMargins = True
                 Left = 966
@@ -417,7 +410,7 @@ object FormReceitas: TFormReceitas
                   ParentFont = False
                 end
                 object Label2: TLabel
-                  Left = 99
+                  Left = 96
                   Top = 8
                   Width = 96
                   Height = 17
@@ -430,7 +423,7 @@ object FormReceitas: TFormReceitas
                   ParentFont = False
                 end
                 object Label3: TLabel
-                  Left = 225
+                  Left = 222
                   Top = 8
                   Width = 110
                   Height = 17
@@ -443,7 +436,7 @@ object FormReceitas: TFormReceitas
                   ParentFont = False
                 end
                 object Label4: TLabel
-                  Left = 489
+                  Left = 486
                   Top = 8
                   Width = 114
                   Height = 17
@@ -456,7 +449,7 @@ object FormReceitas: TFormReceitas
                   ParentFont = False
                 end
                 object LblStatus: TLabel
-                  Left = 771
+                  Left = 768
                   Top = 8
                   Width = 42
                   Height = 17
@@ -469,7 +462,7 @@ object FormReceitas: TFormReceitas
                   ParentFont = False
                 end
                 object Label5: TLabel
-                  Left = 637
+                  Left = 634
                   Top = 8
                   Width = 77
                   Height = 17
@@ -482,7 +475,7 @@ object FormReceitas: TFormReceitas
                   ParentFont = False
                 end
                 object Label6: TLabel
-                  Left = 369
+                  Left = 366
                   Top = 8
                   Width = 69
                   Height = 17
@@ -496,7 +489,7 @@ object FormReceitas: TFormReceitas
                 end
                 object EdtObservacao: TEdit
                   AlignWithMargins = True
-                  Left = 637
+                  Left = 632
                   Top = 30
                   Width = 126
                   Height = 31
@@ -513,30 +506,11 @@ object FormReceitas: TFormReceitas
                   Font.Style = []
                   ParentFont = False
                   TabOrder = 0
-                  ExplicitLeft = 689
-                end
-                object EdtReceita: TEdit
-                  AlignWithMargins = True
-                  Left = 20
-                  Top = 30
-                  Width = 71
-                  Height = 31
-                  Margins.Left = 20
-                  Margins.Top = 30
-                  Margins.Bottom = 30
-                  Align = alLeft
-                  AutoSize = False
-                  Font.Charset = DEFAULT_CHARSET
-                  Font.Color = clWindowText
-                  Font.Height = -15
-                  Font.Name = 'Segoe UI'
-                  Font.Style = []
-                  ParentFont = False
-                  TabOrder = 1
+                  ExplicitLeft = 637
                 end
                 object CmbFormaPagamento: TComboBox
                   AlignWithMargins = True
-                  Left = 489
+                  Left = 484
                   Top = 30
                   Width = 138
                   Height = 29
@@ -552,7 +526,7 @@ object FormReceitas: TFormReceitas
                   Font.Name = 'Segoe UI'
                   Font.Style = []
                   ParentFont = False
-                  TabOrder = 2
+                  TabOrder = 1
                   Items.Strings = (
                     'Dinheiro'
                     'Cart'#227'o de Cr'#233'dito'
@@ -562,11 +536,11 @@ object FormReceitas: TFormReceitas
                     'Boleto Banc'#225'rio'
                     'Cheque'
                     'Dep'#243'sito em Conta')
-                  ExplicitLeft = 401
+                  ExplicitLeft = 489
                 end
                 object EdtValorTotal: TEdit
                   AlignWithMargins = True
-                  Left = 369
+                  Left = 364
                   Top = 30
                   Width = 112
                   Height = 31
@@ -581,12 +555,12 @@ object FormReceitas: TFormReceitas
                   Font.Name = 'Segoe UI'
                   Font.Style = []
                   ParentFont = False
-                  TabOrder = 3
-                  ExplicitLeft = 147
+                  TabOrder = 2
+                  ExplicitLeft = 366
                 end
                 object CmbStatusReceita: TComboBox
                   AlignWithMargins = True
-                  Left = 771
+                  Left = 766
                   Top = 30
                   Width = 100
                   Height = 29
@@ -601,15 +575,16 @@ object FormReceitas: TFormReceitas
                   Font.Name = 'Segoe UI'
                   Font.Style = []
                   ParentFont = False
-                  TabOrder = 4
+                  TabOrder = 3
                   Items.Strings = (
                     'Recebida'
                     'Parcelado '
                     'Cancelada')
+                  ExplicitLeft = 771
                 end
                 object EdtValorRecebido: TEdit
                   AlignWithMargins = True
-                  Left = 99
+                  Left = 94
                   Top = 30
                   Width = 118
                   Height = 31
@@ -625,7 +600,8 @@ object FormReceitas: TFormReceitas
                   Font.Name = 'Segoe UI'
                   Font.Style = []
                   ParentFont = False
-                  TabOrder = 5
+                  TabOrder = 4
+                  ExplicitLeft = 96
                 end
                 object PnlButtonAtualizar: TPanel
                   AlignWithMargins = True
@@ -640,7 +616,7 @@ object FormReceitas: TFormReceitas
                   BevelOuter = bvLowered
                   Color = 9521152
                   ParentBackground = False
-                  TabOrder = 6
+                  TabOrder = 5
                   object LblAtualizar: TLabel
                     AlignWithMargins = True
                     Left = 4
@@ -658,12 +634,13 @@ object FormReceitas: TFormReceitas
                     Font.Style = []
                     ParentColor = False
                     ParentFont = False
-                    ExplicitLeft = -52
+                    ExplicitWidth = 59
+                    ExplicitHeight = 20
                   end
                 end
                 object EdtDataRecebimento: TDateTimePicker
                   AlignWithMargins = True
-                  Left = 225
+                  Left = 220
                   Top = 30
                   Width = 138
                   Height = 31
@@ -674,11 +651,39 @@ object FormReceitas: TFormReceitas
                   BevelOuter = bvNone
                   Date = 45955.000000000000000000
                   Time = 0.800974305559066100
-                  TabOrder = 7
+                  TabOrder = 6
                   StyleElements = [seFont, seClient]
-                  ExplicitLeft = 214
-                  ExplicitTop = 0
-                  ExplicitHeight = 91
+                  ExplicitLeft = 222
+                end
+                object CmbReceita: TComboBox
+                  AlignWithMargins = True
+                  Left = 20
+                  Top = 30
+                  Width = 66
+                  Height = 29
+                  Margins.Left = 20
+                  Margins.Top = 30
+                  Margins.Bottom = 5
+                  Align = alLeft
+                  BevelOuter = bvNone
+                  Style = csDropDownList
+                  Font.Charset = DEFAULT_CHARSET
+                  Font.Color = clWindowText
+                  Font.Height = -16
+                  Font.Name = 'Segoe UI'
+                  Font.Style = []
+                  ParentFont = False
+                  TabOrder = 7
+                  Items.Strings = (
+                    'Dinheiro'
+                    'Cart'#227'o de Cr'#233'dito'
+                    'Cart'#227'o de D'#233'bito'
+                    'PIX'
+                    'Transfer'#234'ncia Banc'#225'ria'
+                    'Boleto Banc'#225'rio'
+                    'Cheque'
+                    'Dep'#243'sito em Conta')
+                  ExplicitLeft = 3
                 end
               end
             end
@@ -1387,7 +1392,7 @@ object FormReceitas: TFormReceitas
                   FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF}
                 ParentFont = False
                 OnClick = BtnCancelarClick
-                ExplicitTop = 365
+                ExplicitLeft = 13
               end
             end
           end
@@ -1408,7 +1413,6 @@ object FormReceitas: TFormReceitas
           Color = clBackground
           ParentBackground = False
           TabOrder = 3
-          ExplicitWidth = 888
           object DBGridMain: TDBGrid
             AlignWithMargins = True
             Left = 1
@@ -1449,7 +1453,6 @@ object FormReceitas: TFormReceitas
             ParentBackground = False
             TabOrder = 1
             Visible = False
-            ExplicitWidth = 848
             object LblRestaurar: TLabel
               AlignWithMargins = True
               Left = 4
@@ -1539,7 +1542,6 @@ object FormReceitas: TFormReceitas
               Color = 9521152
               ParentBackground = False
               TabOrder = 0
-              ExplicitWidth = 806
               object PnlContainerRestaurar: TPanel
                 AlignWithMargins = True
                 Left = 12
@@ -1556,7 +1558,6 @@ object FormReceitas: TFormReceitas
                 Color = clBackground
                 ParentBackground = False
                 TabOrder = 0
-                ExplicitWidth = 782
                 object DBGridRestaurar: TDBGrid
                   AlignWithMargins = True
                   Left = 1
@@ -1600,8 +1601,6 @@ object FormReceitas: TFormReceitas
             ParentBackground = False
             TabOrder = 2
             Visible = False
-            ExplicitLeft = 220
-            ExplicitTop = 149
             object LblHistorico: TLabel
               AlignWithMargins = True
               Left = 4
@@ -1618,8 +1617,7 @@ object FormReceitas: TFormReceitas
               Font.Name = 'Segoe UI'
               Font.Style = [fsBold]
               ParentFont = False
-              ExplicitLeft = 34
-              ExplicitTop = 24
+              ExplicitWidth = 104
             end
             object ImgFecharHistorico: TImage
               Left = 800
@@ -1656,7 +1654,6 @@ object FormReceitas: TFormReceitas
               Color = 9521152
               ParentBackground = False
               TabOrder = 0
-              ExplicitWidth = 806
               object PnlBackgroundGrid: TPanel
                 AlignWithMargins = True
                 Left = 12
@@ -1673,7 +1670,6 @@ object FormReceitas: TFormReceitas
                 Color = clBackground
                 ParentBackground = False
                 TabOrder = 0
-                ExplicitWidth = 782
                 object DBGridHistorico: TDBGrid
                   AlignWithMargins = True
                   Left = 1
@@ -1731,8 +1727,7 @@ object FormReceitas: TFormReceitas
               Font.Name = 'Segoe UI'
               Font.Style = [fsBold]
               ParentFont = False
-              ExplicitLeft = 26
-              ExplicitTop = 38
+              ExplicitWidth = 161
             end
             object ImgFecharDetalhamento: TImage
               Left = 708
@@ -1770,10 +1765,6 @@ object FormReceitas: TFormReceitas
               Color = 9521152
               ParentBackground = False
               TabOrder = 0
-              ExplicitLeft = 21
-              ExplicitTop = 49
-              ExplicitWidth = 806
-              ExplicitHeight = 343
               object ListBoxDetalhes: TListBox
                 AlignWithMargins = True
                 Left = 10
@@ -1807,10 +1798,8 @@ object FormReceitas: TFormReceitas
                     'Observa'#231#227'o: Cliente solicitou or'#231'amento antes de servi'#231'o. Pagame' +
                     'nto confirmado via cart'#227'o.')
                 TabOrder = 0
-                ExplicitLeft = 20
-                ExplicitTop = 44
-                ExplicitWidth = 669
-                ExplicitHeight = 202
+                ExplicitLeft = 13
+                ExplicitTop = 5
               end
             end
           end
@@ -1830,7 +1819,6 @@ object FormReceitas: TFormReceitas
           Color = 6172416
           ParentBackground = False
           TabOrder = 4
-          ExplicitWidth = 1107
           object EdtPesquisar: TSearchBox
             AlignWithMargins = True
             Left = 20

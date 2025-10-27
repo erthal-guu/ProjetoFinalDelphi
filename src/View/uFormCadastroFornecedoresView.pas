@@ -203,8 +203,9 @@ begin
       DBGridMain.Columns[6].Title.Caption := 'Rua';
       DBGridMain.Columns[7].Title.Caption := 'Número';
       DBGridMain.Columns[8].Title.Caption := 'Bairro';
-      DBGridMain.Columns[9].Title.Caption := 'Estado';
-      DBGridMain.Columns[10].Title.Caption := 'Ativo';
+      DBGridMain.Columns[9].Title.Caption := 'Cidade';
+      DBGridMain.Columns[10].Title.Caption := 'Estado';
+      DBGridMain.Columns[11].Title.Caption := 'Ativo';
       for var i := 0 to 11 do begin
         DBGridMain.Columns[i].Title.Alignment := taCenter;
         DBGridMain.Columns[i].Alignment := taCenter;
@@ -332,7 +333,7 @@ begin
   EdtNumero.Text       := DBGridMain.DataSource.DataSet.FieldByName('numero').AsString;
   EdtBairro.Text       := DBGridMain.DataSource.DataSet.FieldByName('bairro').AsString;
   EdtCidade.Text       := DBGridMain.DataSource.DataSet.FieldByName('cidade').AsString;
-  EdtEstado.Text       := DBGridMain.DataSource.DataSet.FieldByName('estado').AsString;
+  EdtEstado.Text       := DBGridMain.DataSource.DataSet.FieldByName('Estado').AsString;
   if DBGridMain.DataSource.DataSet.FieldByName('ativo').AsBoolean then
     CmbStatus.ItemIndex := 0
   else

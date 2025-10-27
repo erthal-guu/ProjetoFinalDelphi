@@ -55,15 +55,19 @@ uses
   OrdemServicoCadastroService in 'src\Services\OrdemServicoCadastroService.pas',
   OrdemServicoCadastroController in 'src\controller\OrdemServicoCadastroController.pas',
   uFormPendenciasView in 'src\View\uFormPendenciasView.pas' {FormPendencias},
-  uFormReceitasView in 'src\View\uFormReceitasView.pas' {FormReceitas};
+  uFormReceitasView in 'src\View\uFormReceitasView.pas' {FormReceitas},
+  ReceitaController in 'src\controller\ReceitaController.pas',
+  ReceitaService in 'src\Services\ReceitaService.pas',
+  ReceitaRepository in 'src\repository\ReceitaRepository.pas',
+  uReceita in 'src\Model\uReceita.pas';
 
 {$R *.res}
 
 begin
   Application.Initialize;
   Application.MainFormOnTaskbar := True;
-  Application.CreateForm(TFormHome, FormHome);
   Application.CreateForm(TFormLogin, FormLogin);
+  Application.CreateForm(TFormHome, FormHome);
   Application.CreateForm(TFormCadastroUsuarios, FormCadastroUsuarios);
   Application.CreateForm(TFormMain, FormMain);
   Application.CreateForm(TDataModule1, DataModule1);

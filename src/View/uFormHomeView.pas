@@ -14,7 +14,7 @@ uses
   uFormReceitasView,
   uFormCadastroPeçasView,
   uFormCadastroServiçosView,
-  uFormCadastroOrdensServiçoView, Vcl.Menus, Vcl.Imaging.pngimage, Vcl.StdCtrls;
+  uFormCadastroOrdensServiçoView, Vcl.Menus, Vcl.Imaging.pngimage, Vcl.StdCtrls,uSession;
 
 
 type
@@ -36,11 +36,14 @@ type
     PnlLogo: TImage;
     PnlFooter: TPanel;
     Timer: TTimer;
+    Pendncias1: TMenuItem;
+    Receitas1: TMenuItem;
     PnlDataTime: TPanel;
     ShapeFooter: TShape;
     LblDataTime: TLabel;
-    Pendncias1: TMenuItem;
-    Receitas1: TMenuItem;
+    Panel1: TPanel;
+    Shape1: TShape;
+    LblUsuarioLogado: TLabel;
     procedure SairClick(Sender: TObject);
     procedure FuncionariosClick(Sender: TObject);
     procedure FornecedoresClick(Sender: TObject);
@@ -53,6 +56,9 @@ type
     procedure TimerTimer(Sender: TObject);
     procedure Pendncias1Click(Sender: TObject);
     procedure Receitas1Click(Sender: TObject);
+    procedure ExibirDadosUsuarioLogado;
+    procedure FormShow(Sender: TObject);
+    procedure VerificarPermissoes;
   private
     { Private declarations }
   public
@@ -67,6 +73,12 @@ implementation
 {$R *.dfm}
 
 
+
+procedure TFormHome.ExibirDadosUsuarioLogado;
+begin
+LblUsuarioLogado.Caption := Format('Bem-vindo,%s', [uSession.UsuarioLogadoGrupo]);
+end;
+
 procedure TFormHome.FuncionariosClick(Sender: TObject);
 begin
   FormCadastroFuncionarios.Show;
@@ -76,7 +88,8 @@ end;
 procedure TFormHome.SairClick(Sender: TObject);
 begin
   if MessageDlg('Deseja realmente fechar a aplicação?', mtConfirmation,
-  [mbYes, mbNo], 0) = mrYes then begin
+  [mbYes, mbNo], 0) = mrYes then
+  begin
     Application.Terminate;
   end;
 end;
@@ -104,10 +117,36 @@ begin
   FormCadastroVeiculos.Show;
 end;
 
+procedure TFormHome.VerificarPermissoes;
+var
+  grupo: string;
+begin
+  grupo := LowerCase(uSession.UsuarioLogadoGrupo);
+
+  if grupo = 'administrador' then begin
+    ShowMessage('Pode tudo rapaz');
+  end;
+
+  if grupo = 'gerente' then begin
+    FormCadastroUsuarios.BtnAdicionar.top := 60;
+    FormCadastroUsuarios.BtnExcluir.Visible := False;
+    FormCadastroUsuarios.BtnRestaurar.Visible := False;
+  end;
+
+  if LowerCase(uSession.UsuarioLogadoGrupo) = 'gerente' then
+    FormCadastroUsuarios.BtnExcluir.Visible := False;
+  end;
+
 procedure TFormHome.ClientesClick(Sender: TObject);
 begin
   FormCadastroClientes.Position := poScreenCenter;
   FormCadastroClientes.Show;
+end;
+
+procedure TFormHome.FormShow(Sender: TObject);
+begin
+  LblUsuarioLogado.Caption := Format('Bem-vindo, %s (%s)', [uSession.UsuarioLogadoNome, uSession.UsuarioLogadoGrupo]);
+  VerificarPermissoes;
 end;
 
 procedure TFormHome.FornecedoresClick(Sender: TObject);
@@ -139,7 +178,5 @@ begin
   FormReceitas.Position := poScreenCenter;
   FormReceitas.Show;
 end;
-
-
 
 end.
