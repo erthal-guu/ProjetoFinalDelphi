@@ -5,7 +5,7 @@
 -- Dumped from database version 17.4
 -- Dumped by pg_dump version 17.4
 
--- Started on 2025-10-27 14:01:13
+-- Started on 2025-10-27 17:20:29
 
 SET statement_timeout = 0;
 SET lock_timeout = 0;
@@ -908,6 +908,7 @@ COPY public.peca_fornecedor (id, peca_id, fornecedor_id, data_vinculo, ativo) FR
 35	39	6	2025-10-23 17:45:09.400775	t
 36	41	6	2025-10-23 17:45:09.400775	t
 37	26	17	2025-10-24 17:46:12.877408	t
+38	22	17	2025-10-27 16:44:59.72211	t
 \.
 
 
@@ -1121,7 +1122,7 @@ SELECT pg_catalog.setval('public.ordens_servico_id_seq', 30, true);
 -- Name: peca_fornecedor_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
 --
 
-SELECT pg_catalog.setval('public.peca_fornecedor_id_seq', 37, true);
+SELECT pg_catalog.setval('public.peca_fornecedor_id_seq', 38, true);
 
 
 --
@@ -1509,7 +1510,7 @@ ALTER TABLE ONLY public.veiculos
     ADD CONSTRAINT veiculos_id_cliente_fkey FOREIGN KEY (id_cliente) REFERENCES public.clientes(id);
 
 
--- Completed on 2025-10-27 14:01:13
+-- Completed on 2025-10-27 17:20:29
 
 --
 -- PostgreSQL database dump complete
