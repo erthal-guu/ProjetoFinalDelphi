@@ -21,15 +21,15 @@
     Left = 0
     Top = 0
     Width = 1132
-    Height = 582
+    Height = 552
     Align = alClient
     TabOrder = 0
-    ExplicitTop = -2
+    ExplicitHeight = 587
     object PnlLogo: TImage
       Left = 1
       Top = 1
       Width = 1130
-      Height = 580
+      Height = 550
       Align = alClient
       Center = True
       Picture.Data = {
@@ -1399,105 +1399,236 @@
         303030080943100606060606216108C2C0C0C0C020240C411818181818848421
         0803030303839030046160606060101286200C0C0C0C0C42C210848181818141
         48FC1F183E060B081BAEE00000000049454E44AE426082}
-      ExplicitLeft = 2
       ExplicitTop = 0
-      ExplicitHeight = 630
     end
   end
   object PnlFooter: TPanel
+    AlignWithMargins = True
     Left = 0
-    Top = 582
+    Top = 552
     Width = 1132
-    Height = 114
+    Height = 144
+    Margins.Left = 0
+    Margins.Top = 0
+    Margins.Right = 0
+    Margins.Bottom = 0
     Align = alBottom
-    Color = 15724527
+    Color = 6172416
     ParentBackground = False
     TabOrder = 1
-    ExplicitLeft = 8
-    ExplicitTop = 587
-    object PnlDataTime: TPanel
-      AlignWithMargins = True
-      Left = 936
-      Top = 41
-      Width = 185
-      Height = 32
-      Margins.Left = 10
-      Margins.Top = 40
-      Margins.Right = 10
-      Margins.Bottom = 40
-      Align = alRight
+    ExplicitLeft = 5
+    ExplicitTop = 554
+    object Panel2: TPanel
+      Left = 337
+      Top = 1
+      Width = 458
+      Height = 142
+      ParentCustomHint = False
+      Align = alClient
       BevelOuter = bvNone
-      Color = 15724527
-      ParentBackground = False
+      ParentColor = True
       TabOrder = 0
-      ExplicitTop = 16
-      object ShapeFooter: TShape
-        Left = 4
-        Top = 0
-        Width = 181
-        Height = 32
-        Align = alRight
-        Pen.Color = clGray
-        Shape = stRoundRect
-        ExplicitTop = 8
-        ExplicitHeight = 33
-      end
-      object LblDataTime: TLabel
+      ExplicitLeft = 343
+      ExplicitTop = 5
+      ExplicitWidth = 464
+      object Panel5: TPanel
         AlignWithMargins = True
-        Left = 11
-        Top = 3
-        Width = 105
-        Height = 25
-        Alignment = taCenter
-        Caption = 'LblDataTime'
-        Font.Charset = DEFAULT_CHARSET
-        Font.Color = clWindowText
-        Font.Height = -19
-        Font.Name = 'Segoe UI'
-        Font.Style = []
-        ParentFont = False
+        Left = 20
+        Top = 50
+        Width = 418
+        Height = 42
+        Margins.Left = 20
+        Margins.Top = 50
+        Margins.Right = 20
+        Margins.Bottom = 50
+        Align = alClient
+        BevelOuter = bvNone
+        Caption = 'Panel4'
+        ParentColor = True
+        TabOrder = 0
+        ExplicitLeft = 29
+        ExplicitTop = 59
+        ExplicitWidth = 422
+        ExplicitHeight = 40
+        object Shape2: TShape
+          Left = 0
+          Top = 0
+          Width = 418
+          Height = 42
+          Align = alClient
+          Brush.Color = 9521152
+          Pen.Color = clBtnFace
+          Shape = stRoundRect
+          ExplicitLeft = 8
+          ExplicitWidth = 424
+        end
+        object LblUsuarioLogado: TLabel
+          AlignWithMargins = True
+          Left = 3
+          Top = 10
+          Width = 412
+          Height = 29
+          Margins.Top = 10
+          Align = alClient
+          Alignment = taCenter
+          Caption = 'LblUsuarioLogado'
+          Font.Charset = DEFAULT_CHARSET
+          Font.Color = clWhite
+          Font.Height = -15
+          Font.Name = 'Segoe UI'
+          Font.Style = [fsBold]
+          ParentFont = False
+          ExplicitLeft = 0
+          ExplicitTop = 8
+          ExplicitWidth = 417
+          ExplicitHeight = 33
+        end
+      end
+    end
+    object Panel3: TPanel
+      Left = 1
+      Top = 1
+      Width = 336
+      Height = 142
+      ParentCustomHint = False
+      Align = alLeft
+      BevelOuter = bvNone
+      ParentColor = True
+      TabOrder = 1
+      ExplicitLeft = -4
+      ExplicitTop = 5
+      object Panel4: TPanel
+        AlignWithMargins = True
+        Left = 20
+        Top = 50
+        Width = 296
+        Height = 42
+        Margins.Left = 20
+        Margins.Top = 50
+        Margins.Right = 20
+        Margins.Bottom = 50
+        Align = alClient
+        BevelOuter = bvNone
+        ParentColor = True
+        TabOrder = 0
+        ExplicitLeft = 80
+        ExplicitTop = 56
+        ExplicitWidth = 185
+        ExplicitHeight = 41
+        object Shape1: TShape
+          Left = 0
+          Top = 0
+          Width = 296
+          Height = 42
+          Align = alClient
+          Brush.Color = 9521152
+          Pen.Color = clBtnFace
+          Shape = stRoundRect
+          ExplicitLeft = 64
+          ExplicitTop = -8
+          ExplicitWidth = 65
+          ExplicitHeight = 65
+        end
+        object LblDataTime: TLabel
+          AlignWithMargins = True
+          Left = 3
+          Top = 10
+          Width = 290
+          Height = 29
+          Margins.Top = 10
+          Align = alClient
+          Alignment = taCenter
+          Caption = 'LblDataTime'
+          Font.Charset = DEFAULT_CHARSET
+          Font.Color = clWhite
+          Font.Height = -15
+          Font.Name = 'Segoe UI'
+          Font.Style = [fsBold]
+          ParentFont = False
+          ExplicitLeft = 0
+          ExplicitTop = 11
+          ExplicitWidth = 297
+          ExplicitHeight = 44
+        end
       end
     end
     object Panel1: TPanel
-      AlignWithMargins = True
-      Left = 11
-      Top = 41
-      Width = 300
-      Height = 32
-      Margins.Left = 10
-      Margins.Top = 40
-      Margins.Right = 10
-      Margins.Bottom = 40
-      Align = alLeft
+      Left = 795
+      Top = 1
+      Width = 336
+      Height = 142
+      ParentCustomHint = False
+      Align = alRight
       BevelOuter = bvNone
-      Color = 15724527
-      ParentBackground = False
-      TabOrder = 1
-      object Shape1: TShape
-        Left = 0
-        Top = 0
-        Width = 300
-        Height = 32
-        Align = alClient
-        Pen.Color = clGray
-        Shape = stRoundRect
-        ExplicitLeft = 11
-        ExplicitWidth = 181
-      end
-      object LblUsuarioLogado: TLabel
+      ParentColor = True
+      TabOrder = 2
+      ExplicitLeft = 9
+      ExplicitTop = 2
+      object Panel6: TPanel
         AlignWithMargins = True
-        Left = 11
-        Top = 3
-        Width = 116
-        Height = 25
-        Alignment = taCenter
-        Caption = 'UsuarioCargo'
-        Font.Charset = DEFAULT_CHARSET
-        Font.Color = clWindowText
-        Font.Height = -19
-        Font.Name = 'Segoe UI'
-        Font.Style = []
-        ParentFont = False
+        Left = 20
+        Top = 50
+        Width = 296
+        Height = 42
+        Margins.Left = 20
+        Margins.Top = 50
+        Margins.Right = 20
+        Margins.Bottom = 50
+        Align = alClient
+        BevelOuter = bvNone
+        Caption = 'Panel4'
+        ParentColor = True
+        TabOrder = 0
+        ExplicitLeft = 29
+        ExplicitTop = 59
+        ExplicitWidth = 294
+        ExplicitHeight = 40
+        object Shape3: TShape
+          Left = 0
+          Top = 0
+          Width = 296
+          Height = 42
+          Align = alClient
+          Brush.Color = 9521152
+          Pen.Color = clBtnFace
+          Shape = stRoundRect
+          ExplicitLeft = 64
+          ExplicitTop = -8
+          ExplicitWidth = 65
+          ExplicitHeight = 65
+        end
+        object Image1: TImage
+          Left = 0
+          Top = 0
+          Width = 296
+          Height = 42
+          Align = alClient
+          Center = True
+          Picture.Data = {
+            0954506E67496D61676589504E470D0A1A0A0000000D49484452000000180000
+            00180806000000E0773DF8000000097048597300000EC300000EC301C76FA864
+            0000001974455874536F667477617265007777772E696E6B73636170652E6F72
+            679BEE3C1A0000020B4944415478DAAD953D481C41148077A389120D98205183
+            285C1A510B1B116C44A2A78D24FEA435E2A9A02028E89142E4D4CA2204C4C242
+            2D2D04E18804120851B0F3A73209064131E450B1B0104114BD7C8F9B853DB9BB
+            993D32F0F1869DB7EFDB9D9D9DB12D83168D463309C5900547B66D5F99DC27CD
+            D614CE2584A01B9EAACB52FC1304111DA52DA07836611D6A92A49C422D928374
+            05138471CD037E43D0E8594071B9FE175EE8A680E64372E85550403831282EAD
+            1541D8AB409E3C6228E840B0E255F0807006CF0C0415087E791228C90C615053
+            7C9BE2D5A912520964DD6FC1CB242997508760272D8192141166E13564B88636
+            6140575C2B70899E13CA417EBEDFF0474D9F889FC01DECC238D288674102E118
+            610A36ACD8727E08F5F26608FC4602B5C1F9A0124AE111FCA0C067C67ED23FA0
+            DFE2CA2F94B7E1DA7E52014952A40DDE4013E4DDF3CE51A09FBC63FA61E9DFBB
+            BF5902D7BFC609D4D30EC390957A7BD0091608EFA093B125B740E673CC60FAE3
+            04300A2356ECE35BEA5BB443094C921B72045FD49478157C8035C871E5C8A1F4
+            D8523FA1239039F37B152498A22EC222ACC25BC6AFFFB7E023211F0252DCFD0D
+            4C05F3DCD84BBE1C9572D804743738826942D040F09DA2AFC85FA6DF00EFE11C
+            64F795E57DC1784F2281AC0279DD328DE0D68A2D653990E4E0AF728DC9E6D7E7
+            2CCF3841BA8D07933F5D76DD1BD873E6DDDDFE01A855D319E4BE252A00000000
+            49454E44AE426082}
+          OnClick = Image1Click
+          ExplicitLeft = -8
+        end
       end
     end
   end

@@ -36,6 +36,7 @@ type
     procedure RadioButton1Click(Sender: TObject);
     procedure CheckBox1Click(Sender: TObject);
     procedure EdtCPFClick(Sender: TObject);
+    procedure EdtSenhaKeyPress(Sender: TObject; var Key: Char);
   private
     { Private declarations }
   public
@@ -60,6 +61,15 @@ end;
 procedure TFormLogin.EdtCPFClick(Sender: TObject);
 begin
   EdtCPF.SelStart := 0;
+end;
+
+procedure TFormLogin.EdtSenhaKeyPress(Sender: TObject; var Key: Char);
+begin
+  if Key = #13 then
+  begin
+    Key := #0;
+    PnlButtonClick(Sender);
+  end;
 end;
 
 procedure TFormLogin.LblCadastroClick(Sender: TObject);

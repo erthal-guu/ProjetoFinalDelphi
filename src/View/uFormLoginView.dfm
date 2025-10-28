@@ -4857,6 +4857,7 @@ object FormLogin: TFormLogin
               ParentFont = False
               PasswordChar = '*'
               TabOrder = 2
+              OnKeyPress = EdtSenhaKeyPress
             end
             object EdtCPF: TMaskEdit
               AlignWithMargins = True

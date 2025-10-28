@@ -401,7 +401,7 @@ object FormCadastroUsuarios: TFormCadastroUsuarios
           object PnlEdit: TPanel
             Left = 1
             Top = 1
-            Width = 920
+            Width = 945
             Height = 91
             Align = alLeft
             BevelOuter = bvNone
@@ -431,7 +431,7 @@ object FormCadastroUsuarios: TFormCadastroUsuarios
                 AlignWithMargins = True
                 Left = 3
                 Top = 30
-                Width = 102
+                Width = 114
                 Height = 29
                 Margins.Top = 30
                 Margins.Bottom = 9
@@ -667,15 +667,14 @@ object FormCadastroUsuarios: TFormCadastroUsuarios
             end
             object PnlButtonEnviar: TPanel
               AlignWithMargins = True
-              Left = 812
-              Top = 30
-              Width = 237
+              Left = 818
+              Top = 29
+              Width = 107
               Height = 31
               Margins.Left = 0
               Margins.Top = 30
               Margins.Right = 0
               Margins.Bottom = 30
-              Align = alLeft
               BevelOuter = bvLowered
               Color = 9521152
               ParentBackground = False
@@ -685,9 +684,8 @@ object FormCadastroUsuarios: TFormCadastroUsuarios
                 AlignWithMargins = True
                 Left = 4
                 Top = 4
-                Width = 102
+                Width = 99
                 Height = 23
-                Margins.Right = 130
                 Align = alClient
                 Alignment = taCenter
                 Caption = 'Enviar'
@@ -700,13 +698,14 @@ object FormCadastroUsuarios: TFormCadastroUsuarios
                 ParentColor = False
                 ParentFont = False
                 OnClick = LblEnviarClick
-                ExplicitWidth = 40
-                ExplicitHeight = 20
+                ExplicitLeft = 19
+                ExplicitTop = 7
+                ExplicitWidth = 57
               end
             end
             object PnlButtonAtualizar: TPanel
               AlignWithMargins = True
-              Left = 815
+              Left = 818
               Top = 30
               Width = 107
               Height = 31
@@ -737,8 +736,7 @@ object FormCadastroUsuarios: TFormCadastroUsuarios
                 ParentColor = False
                 ParentFont = False
                 OnClick = LblAtualizarClick
-                ExplicitWidth = 59
-                ExplicitHeight = 20
+                ExplicitTop = 2
               end
             end
           end
@@ -783,8 +781,6 @@ object FormCadastroUsuarios: TFormCadastroUsuarios
             Color = 15790320
             ParentBackground = False
             TabOrder = 0
-            ExplicitLeft = 2
-            ExplicitTop = 2
             object BtnExcluir: TSpeedButton
               AlignWithMargins = True
               Left = 5

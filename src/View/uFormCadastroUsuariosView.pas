@@ -127,6 +127,7 @@ procedure TFormCadastroUsuarios.BtnEditarClick(Sender: TObject);
 begin
   PnlBackgroundEdit.Visible := true;
   PnlDesignEdit.Visible := True;
+  PnlEdit.Visible := True;
   PnlButtonAtualizar.Visible := True;
   PnlButtonEnviar.Visible := False;
   PegarCamposGridUsuarios;
@@ -219,18 +220,21 @@ begin
       Controller.RestaurarUsuarios(IdUsuario);
     end;
   end;
-procedure TFormCadastroUsuarios.PegarCamposGridUsuarios ;
+procedure TFormCadastroUsuarios.PegarCamposGridUsuarios;
+var
+  i: Integer;
 begin
   EdtNome.Text := DBGridMain.DataSource.DataSet.FieldByName('nome').AsString;
   EdtCPF.Text := DBGridMain.DataSource.DataSet.FieldByName('CPF').AsString;
   CmbGrupo.Text := DBGridMain.DataSource.DataSet.FieldByName('Grupo').AsString;
-  if DBGridMain.DataSource.DataSet.FieldByName('ativo').AsBoolean then begin
-  CmbStatus.ItemIndex := 0;
-  CmbGrupo.ItemIndex := 0;
- end else begin
+  if CmbGrupo.ItemIndex = -1 then
+    CmbGrupo.ItemIndex := CmbGrupo.Items.IndexOf(DBGridMain.DataSource.DataSet.FieldByName('Grupo').AsString);
+  if DBGridMain.DataSource.DataSet.FieldByName('ativo').AsBoolean then
+    CmbStatus.ItemIndex := 0
+  else
   CmbStatus.ItemIndex := 1;
-  CmbGrupo.ItemIndex := 1;
-end;
+  EdtSenha.Clear;
+  EdtConfirmarSenha.Clear;
 end;
 
 procedure TFormCadastroUsuarios.CarregarGridRestaurar;
@@ -329,7 +333,6 @@ begin
 if ValidarCampos = True then begin
   EditarUsuarios;
   CarregarGrid;
-  ShowMessage('Deu boa');
 end;
 end;
 
@@ -362,9 +365,6 @@ begin
 end;
 
 function TFormCadastroUsuarios.ValidarCampos: Boolean;
-var
-  Controller: TUsuarioController;
-  Usuario: TUsuario;
 begin
   Result := False;
 
@@ -380,28 +380,13 @@ begin
     Exit;
   end;
 
-  if (EdtSenha.Text <> '') and (EdtConfirmarSenha.Text <> '') then
+  if (EdtSenha.Text <> '') or (EdtConfirmarSenha.Text <> '') then
   begin
     if EdtSenha.Text <> EdtConfirmarSenha.Text then
     begin
       ShowMessage('As Senhas não coincidem');
       Exit;
     end;
- if (EdtSenha.Text = '') and (EdtConfirmarSenha.Text = '') then
-  begin
-    try
-      Controller := TUsuarioController.Create;
-      Usuario := TUsuario.Create;
-      Controller.EditarUsuarioComSenha(Usuario);
-      CarregarGrid;
-      LimparCampos;
-    finally
-      Controller.Free;
-      Usuario.Free;
-    end;
-  end;
-    Result := True;
-    Exit;
   end;
 
   Result := True;
@@ -440,23 +425,32 @@ begin
     Exit;
   end;
 
+  if not ValidarCampos then
+    Exit;
+
   IdUsuario := DBGridMain.DataSource.DataSet.FieldByName('id').AsInteger;
 
   Controller := TUsuarioController.Create;
   try
     Usuario := TUsuario.Create;
     try
-      ValidarCampos;
       Usuario.SetId(IdUsuario);
       Usuario.SetNome(EdtNome.Text);
       Usuario.SetCPF(EdtCPF.Text);
-      Usuario.setSenha(EdtSenha.text);
       Usuario.SetGrupo(CmbGrupo.Text);
       Usuario.setAtivo(CmbStatus.ItemIndex = 0);
-      Controller.EditarUsuario(Usuario);
+      if (EdtSenha.Text <> '') and (EdtConfirmarSenha.Text <> '') then
+      begin
+        Usuario.setSenha(EdtSenha.Text);
+        Controller.EditarUsuario(Usuario);
+      end else begin
+        Controller.EditarUsuarioComSenha(Usuario);
+      end;
       CarregarGrid;
       LimparCampos;
-
+      PnlBackgroundEdit.Visible := False;
+      PnlDesignEdit.Visible := False;
+      ShowMessage('Usuário atualizado com sucesso!');
     finally
       Usuario.Free;
     end;

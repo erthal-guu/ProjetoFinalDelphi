@@ -1,7 +1,7 @@
-﻿object FormOrdensServiço: TFormOrdensServiço
+﻿object FormCadastroOrdensServiço: TFormCadastroOrdensServiço
   Left = 0
   Top = 0
-  Caption = 'FormOrdensServi'#231'o'
+  Caption = 'FormCadastroOrdensServi'#231'o'
   ClientHeight = 667
   ClientWidth = 1106
   Color = clBtnFace
@@ -1047,7 +1047,6 @@
             Color = 15790320
             ParentBackground = False
             TabOrder = 0
-            ExplicitLeft = 14
             object Image1: TImage
               AlignWithMargins = True
               Left = 934

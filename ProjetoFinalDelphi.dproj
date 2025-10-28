@@ -165,7 +165,7 @@
             <FormType>dfm</FormType>
         </DCCReference>
         <DCCReference Include="src\View\uFormCadastroOrdensServiçoView.pas">
-            <Form>FormOrdensServiço</Form>
+            <Form>FormCadastroOrdensServiço</Form>
             <FormType>dfm</FormType>
         </DCCReference>
         <DCCReference Include="src\View\uFormHomeView.pas">
