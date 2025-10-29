@@ -11,6 +11,7 @@ object FormReceitas: TFormReceitas
   Font.Name = 'Segoe UI'
   Font.Style = []
   OnCreate = FormCreate
+  OnShow = FormShow
   TextHeight = 15
   object PnlMain: TPanel
     Left = 0
@@ -399,9 +400,9 @@ object FormReceitas: TFormReceitas
                 object Label1: TLabel
                   Left = 20
                   Top = 8
-                  Width = 49
+                  Width = 24
                   Height = 17
-                  Caption = 'Receita :'
+                  Caption = 'OS :'
                   Font.Charset = DEFAULT_CHARSET
                   Font.Color = clWindowText
                   Font.Height = -13
@@ -506,7 +507,6 @@ object FormReceitas: TFormReceitas
                   Font.Style = []
                   ParentFont = False
                   TabOrder = 0
-                  ExplicitLeft = 637
                 end
                 object CmbFormaPagamento: TComboBox
                   AlignWithMargins = True
@@ -536,7 +536,6 @@ object FormReceitas: TFormReceitas
                     'Boleto Banc'#225'rio'
                     'Cheque'
                     'Dep'#243'sito em Conta')
-                  ExplicitLeft = 489
                 end
                 object EdtValorTotal: TEdit
                   AlignWithMargins = True
@@ -556,7 +555,6 @@ object FormReceitas: TFormReceitas
                   Font.Style = []
                   ParentFont = False
                   TabOrder = 2
-                  ExplicitLeft = 366
                 end
                 object CmbStatusReceita: TComboBox
                   AlignWithMargins = True
@@ -580,7 +578,6 @@ object FormReceitas: TFormReceitas
                     'Recebida'
                     'Parcelado '
                     'Cancelada')
-                  ExplicitLeft = 771
                 end
                 object EdtValorRecebido: TEdit
                   AlignWithMargins = True
@@ -601,7 +598,6 @@ object FormReceitas: TFormReceitas
                   Font.Style = []
                   ParentFont = False
                   TabOrder = 4
-                  ExplicitLeft = 96
                 end
                 object PnlButtonAtualizar: TPanel
                   AlignWithMargins = True
@@ -634,8 +630,8 @@ object FormReceitas: TFormReceitas
                     Font.Style = []
                     ParentColor = False
                     ParentFont = False
-                    ExplicitWidth = 59
-                    ExplicitHeight = 20
+                    OnClick = LblAtualizarClick
+                    ExplicitLeft = -1
                   end
                 end
                 object EdtDataRecebimento: TDateTimePicker
@@ -653,7 +649,6 @@ object FormReceitas: TFormReceitas
                   Time = 0.800974305559066100
                   TabOrder = 6
                   StyleElements = [seFont, seClient]
-                  ExplicitLeft = 222
                 end
                 object CmbReceita: TComboBox
                   AlignWithMargins = True
@@ -674,16 +669,6 @@ object FormReceitas: TFormReceitas
                   Font.Style = []
                   ParentFont = False
                   TabOrder = 7
-                  Items.Strings = (
-                    'Dinheiro'
-                    'Cart'#227'o de Cr'#233'dito'
-                    'Cart'#227'o de D'#233'bito'
-                    'PIX'
-                    'Transfer'#234'ncia Banc'#225'ria'
-                    'Boleto Banc'#225'rio'
-                    'Cheque'
-                    'Dep'#243'sito em Conta')
-                  ExplicitLeft = 3
                 end
               end
             end
@@ -802,6 +787,7 @@ object FormReceitas: TFormReceitas
                   FFFFFFFFFFFFFFFBFBFB8484843D3D3D33333333333333333333333333333359
                   5959D5D5D5FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF}
                 ParentFont = False
+                OnClick = BtnExcluirClick
                 ExplicitTop = 78
               end
               object BtnReceber: TSpeedButton
@@ -1424,6 +1410,7 @@ object FormReceitas: TFormReceitas
             Margins.Right = 1
             Margins.Bottom = 1
             Align = alClient
+            DataSource = DataSourceMain
             Font.Charset = DEFAULT_CHARSET
             Font.Color = clWindowText
             Font.Height = -13
@@ -1431,7 +1418,7 @@ object FormReceitas: TFormReceitas
             Font.Style = []
             ParentFont = False
             ReadOnly = True
-            TabOrder = 0
+            TabOrder = 3
             TitleFont.Charset = DEFAULT_CHARSET
             TitleFont.Color = clWindowText
             TitleFont.Height = -19
@@ -1451,7 +1438,7 @@ object FormReceitas: TFormReceitas
             Align = alClient
             Color = 6172416
             ParentBackground = False
-            TabOrder = 1
+            TabOrder = 0
             Visible = False
             object LblRestaurar: TLabel
               AlignWithMargins = True
@@ -1599,7 +1586,7 @@ object FormReceitas: TFormReceitas
             Align = alClient
             Color = 6172416
             ParentBackground = False
-            TabOrder = 2
+            TabOrder = 1
             Visible = False
             object LblHistorico: TLabel
               AlignWithMargins = True
@@ -1710,7 +1697,7 @@ object FormReceitas: TFormReceitas
             BevelOuter = bvNone
             Color = 6172416
             ParentBackground = False
-            TabOrder = 3
+            TabOrder = 2
             Visible = False
             object LblDetalhamento: TLabel
               AlignWithMargins = True
@@ -1777,29 +1764,7 @@ object FormReceitas: TFormReceitas
                 Margins.Bottom = 10
                 Align = alClient
                 ItemHeight = 15
-                Items.Strings = (
-                  'Receita N'#186': 1025'
-                  'OS N'#186': 55'
-                  'Cliente: Jo'#227'o da Silva'
-                  'Ve'#237'culo: Fiat Palio - ABC1234'
-                  'Servi'#231'o: Troca de embreagem + revis'#227'o geral'
-                  'Pe'#231'as: Kit embreagem Bosch, '#243'leo 10w40, filtro de '#243'leo'
-                  'Data da OS: 12/06/2024'
-                  'Data de Conclus'#227'o: 15/06/2024'
-                  'Valor Total da OS: R$ 1.250,00'
-                  'Valor Recebido: R$ 1.250,00'
-                  'Status: Recebida'
-                  'Data de Vencimento: 15/06/2024'
-                  'Forma de Pagamento: Cart'#227'o de Cr'#233'dito'
-                  'Data Pagamento: 16/06/2024'
-                  'Parcelamento: 2x'
-                  'Respons'#225'vel pelo Recebimento: Maria Operadora'
-                  
-                    'Observa'#231#227'o: Cliente solicitou or'#231'amento antes de servi'#231'o. Pagame' +
-                    'nto confirmado via cart'#227'o.')
                 TabOrder = 0
-                ExplicitLeft = 13
-                ExplicitTop = 5
               end
             end
           end
@@ -1844,5 +1809,18 @@ object FormReceitas: TFormReceitas
         end
       end
     end
+  end
+  object DataSourceRestaurar: TDataSource
+    Left = 776
+  end
+  object DataSourceMain: TDataSource
+    DataSet = DataModule1.FDQuery
+    Left = 648
+    Top = 8
+  end
+  object DataSourceHistorico: TDataSource
+    DataSet = DataModule1.FDQuery
+    Left = 928
+    Top = 8
   end
 end

@@ -8,7 +8,7 @@
     Vcl.Grids, Vcl.DBGrids, Vcl.Buttons, Vcl.StdCtrls, Vcl.Mask, Vcl.ExtCtrls,
     OrdemServicoCadastroController, OrdemServicoCadastroService, uOrdemServico,
     Vcl.Imaging.pngimage, System.Generics.Collections, Vcl.CheckLst,
-  Vcl.ComCtrls,uSession;
+  Vcl.ComCtrls,uSession,uFormReceitasView;
 
   type
     TFormCadastroOrdensServiço = class(TForm)
@@ -657,16 +657,18 @@ end;
     begin
       EditarOrdemServico;
       CarregarGrid;
+      FormReceitas.CarregarGrid;
     end;
   end;
 
-  procedure TFormCadastroOrdensServiço.LblEnviarClick(Sender: TObject);
+procedure TFormCadastroOrdensServiço.LblEnviarClick(Sender: TObject);
 var
   Controller: TOrdemServicoController;
   OrdemServico: TOrdemServico;
   Preco: Currency;
   IdServico, IdFuncionario, IdVeiculo, IdCliente: Integer;
   PecasIDs: TList<Integer>;
+  OrdensServicoID : Integer;
 begin
   if ValidarCampos then
   begin

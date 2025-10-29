@@ -4,7 +4,7 @@ interface
 
 uses
   uDMConexao, FireDAC.Comp.Client, System.SysUtils, uOrdemServico, Data.DB,
-  System.Classes, System.Generics.Collections;
+  System.Classes, System.Generics.Collections,Variants;
 
 type
   TOrdemServicoRepository = class
@@ -12,7 +12,7 @@ type
     FQuery: TFDQuery;
   public
     constructor Create(Query: TFDQuery);
-    procedure InserirOrdemServico(aOS: TOrdemServico; aPecasIDs: TList<Integer>);
+    Function InserirOrdemServico(aOS: TOrdemServico; aPecasIDs: TList<Integer>): Integer;
     function EditarOrdemServico(aOS: TOrdemServico; aPecasIDs: TList<Integer>): Boolean;
     function ListarOrdensServico: TDataSet;
     function ListarOrdensServicoRestaurar: TDataSet;
@@ -29,6 +29,7 @@ type
     function ObterPrecoPecas(const aIDsPecasString: String): Currency;
     function ObterPorcentagemMarcaVeiculo(const aIDVeiculo: Integer): Currency;
     function ObterClienteDoVeiculo(const aIDVeiculo: Integer): Integer;
+
   end;
 
 implementation
@@ -39,30 +40,40 @@ begin
   FQuery := Query;
 end;
 
-procedure TOrdemServicoRepository.InserirOrdemServico(aOS: TOrdemServico; aPecasIDs: TList<Integer>);
+
+function TOrdemServicoRepository.InserirOrdemServico(
+  aOS: TOrdemServico; aPecasIDs: TList<Integer>
+): Integer;
 var
   OSID: Integer;
   PecaID: Integer;
 begin
+  Result := 0;
   FQuery.Connection.StartTransaction;
   try
+
     FQuery.Close;
     FQuery.SQL.Clear;
-    FQuery.SQL.Add('INSERT INTO ordens_servico (id_servico, id_funcionario, id_veiculo, id_cliente, preco, ativo, observacao, data_inicio, data_conclusao, data_abertura)');
-    FQuery.SQL.Add('VALUES (:id_servico, :id_funcionario, :id_veiculo, :id_cliente, :preco, :ativo, :observacao, :data_inicio, :data_conclusao, :data_abertura)');
-    FQuery.SQL.Add('RETURNING id');
-    FQuery.ParamByName('id_servico').AsInteger := aOS.getIdServico;
-    FQuery.ParamByName('id_funcionario').AsInteger := aOS.getIdFuncionario;
-    FQuery.ParamByName('id_veiculo').AsInteger := aOS.getIdVeiculo;
-    FQuery.ParamByName('id_cliente').AsInteger := aOS.getIdCliente;
-    FQuery.ParamByName('preco').AsCurrency := aOS.getPreco;
-    FQuery.ParamByName('ativo').AsBoolean := aOS.getAtivo;
-    FQuery.ParamByName('observacao').AsString := aOS.getObservacao;
-    FQuery.ParamByName('data_inicio').AsDateTime := aOS.getDataInicio;
+    FQuery.SQL.Add(
+      'INSERT INTO ordens_servico ' +
+      '(id_servico, id_funcionario, id_veiculo, id_cliente, preco, ativo, observacao, data_inicio, data_conclusao, data_abertura) ' +
+      'VALUES (:id_servico, :id_funcionario, :id_veiculo, :id_cliente, :preco, :ativo, :observacao, :data_inicio, :data_conclusao, :data_abertura) ' +
+      'RETURNING id'
+    );
+    FQuery.ParamByName('id_servico').AsInteger    := aOS.getIdServico;
+    FQuery.ParamByName('id_funcionario').AsInteger:= aOS.getIdFuncionario;
+    FQuery.ParamByName('id_veiculo').AsInteger    := aOS.getIdVeiculo;
+    FQuery.ParamByName('id_cliente').AsInteger    := aOS.getIdCliente;
+    FQuery.ParamByName('preco').AsCurrency        := aOS.getPreco;
+    FQuery.ParamByName('ativo').AsBoolean         := aOS.getAtivo;
+    FQuery.ParamByName('observacao').AsString     := aOS.getObservacao;
+    FQuery.ParamByName('data_inicio').AsDateTime  := aOS.getDataInicio;
     FQuery.ParamByName('data_conclusao').AsDateTime := aOS.getDataConclusao;
-    FQuery.ParamByName('data_abertura').AsDateTime := Now;
+    FQuery.ParamByName('data_abertura').AsDateTime:= Now;
     FQuery.Open;
     OSID := FQuery.FieldByName('id').AsInteger;
+    Result := OSID;
+
 
     if Assigned(aPecasIDs) then
     begin
@@ -70,15 +81,37 @@ begin
       begin
         FQuery.Close;
         FQuery.SQL.Clear;
-        FQuery.SQL.Add('INSERT INTO ordem_servico_pecas (id_ordem_servico, id_peca)');
-        FQuery.SQL.Add('VALUES (:id_ordem_servico, :id_peca)');
+        FQuery.SQL.Add(
+          'INSERT INTO ordem_servico_pecas (id_ordem_servico, id_peca) VALUES (:id_ordem_servico, :id_peca)'
+        );
         FQuery.ParamByName('id_ordem_servico').AsInteger := OSID;
         FQuery.ParamByName('id_peca').AsInteger := PecaID;
         FQuery.ExecSQL;
       end;
     end;
 
+    FQuery.Close;
+    FQuery.SQL.Clear;
+    FQuery.SQL.Add(
+      'INSERT INTO receitas ' +
+      '(id_ordem_servico, id_cliente, valor_total, valor_recebido, status, data_emissao, data_vencimento, data_recebimento, forma_pagamento, observacao, ativo) ' +
+      'VALUES (:id_ordem_servico, :id_cliente, :valor_total, :valor_recebido, :status, :data_emissao, :data_vencimento, :data_recebimento, :forma_pagamento, :observacao, :ativo)'
+    );
+    FQuery.ParamByName('id_ordem_servico').AsInteger := OSID;
+    FQuery.ParamByName('id_cliente').AsInteger       := aOS.getIdCliente;
+    FQuery.ParamByName('valor_total').AsCurrency     := aOS.getPreco;
+    FQuery.ParamByName('valor_recebido').AsCurrency  := 0;
+    FQuery.ParamByName('status').AsString            := 'ABERTO';
+    FQuery.ParamByName('data_emissao').AsDateTime    := Now;
+    FQuery.ParamByName('data_vencimento').AsDateTime := aOS.getDataConclusao;
+    FQuery.ParamByName('data_recebimento').DataType := ftDateTime;
+    FQuery.ParamByName('data_recebimento').Value := Null;
+    FQuery.ParamByName('forma_pagamento').AsString   := '';
+    FQuery.ParamByName('observacao').AsString        := aOS.getObservacao;
+    FQuery.ParamByName('ativo').AsBoolean            := True;
+    FQuery.ExecSQL;
     FQuery.Connection.Commit;
+
   except
     FQuery.Connection.Rollback;
     raise;

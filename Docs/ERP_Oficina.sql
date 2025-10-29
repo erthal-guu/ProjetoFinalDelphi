@@ -5,7 +5,7 @@
 -- Dumped from database version 17.4
 -- Dumped by pg_dump version 17.4
 
--- Started on 2025-10-27 17:20:29
+-- Started on 2025-10-29 16:41:00
 
 SET statement_timeout = 0;
 SET lock_timeout = 0;
@@ -865,6 +865,15 @@ COPY public.grupo (id, nome) FROM stdin;
 
 COPY public.ordem_servico_pecas (id, id_ordem_servico, id_peca, data_abertura) FROM stdin;
 299	30	22	2025-10-25 20:22:04.681475
+300	31	26	2025-10-29 14:25:11.160445
+301	31	27	2025-10-29 14:25:11.160445
+302	31	30	2025-10-29 14:25:11.160445
+306	33	25	2025-10-29 16:05:53.124918
+307	33	36	2025-10-29 16:05:53.124918
+308	33	28	2025-10-29 16:05:53.124918
+309	34	31	2025-10-29 16:09:37.938416
+310	34	25	2025-10-29 16:09:37.938416
+311	34	28	2025-10-29 16:09:37.938416
 \.
 
 
@@ -876,6 +885,9 @@ COPY public.ordem_servico_pecas (id, id_ordem_servico, id_peca, data_abertura) F
 
 COPY public.ordens_servico (id, id_servico, id_funcionario, id_veiculo, id_cliente, preco, ativo, data_abertura, data_inicio, data_conclusao, observacao) FROM stdin;
 30	3	13	4	2	310.39	t	2025-10-25 20:22:04.682	2025-10-25 00:00:00	2025-10-26 00:00:00	Troca no momento
+31	5	13	3	1	1374.00	t	2025-10-29 14:25:11.159	2025-10-29 00:00:00	2025-11-06 00:00:00	aaaaaaaaaa
+33	15	22	11	3	910.00	t	2025-10-29 16:05:53.122	2025-10-29 00:00:00	2025-10-30 00:00:00	aaaaaa
+34	11	13	11	3	880.00	t	2025-10-29 16:09:37.936	2025-10-21 00:00:00	2025-11-07 00:00:00	aaaaaa
 \.
 
 
@@ -949,6 +961,8 @@ COPY public.pecas (id, nome, descricao, codigo_interno, id_categoria, unidade, m
 --
 
 COPY public.receitas (id, id_ordem_servico, id_cliente, valor_total, valor_recebido, status, data_emissao, data_vencimento, data_recebimento, forma_pagamento, observacao, ativo) FROM stdin;
+1	33	3	910.00	0.00	ABERTO	2025-10-29 16:05:53.131	2025-10-30 00:00:00	\N		aaaaaa	t
+2	34	3	880.00	0.00	ABERTO	2025-10-29 16:09:37.967	2025-11-07 00:00:00	\N		aaaaaa	t
 \.
 
 
@@ -992,13 +1006,8 @@ COPY public.usuarios (id, nome, cpf, senha, grupo, ativo) FROM stdin;
 1	Busta	794.672.957-07	$2a$11$YoEaqh5yOEVB1LLPPWWOcOk02huStB/lrs5PF6JmG3zHzt9/rVh5m	Administrador	t
 2	Maria Oliveira	23456789012	$2a$12$bcdefghijklmnopqrstuvw	gerente	t
 3	Carlos Pereira Santos	148.174.017-40		Administrador	t
-4	Ana Souza	45678901234	$2a$12$defghijklmnopqrstuvwxy	atendente	t
-5	Pedro Lima	56789012345	$2a$12$efghijklmnopqrstuvwxyz	mecanico	t
 6	Beatriz Costa	67890123456	$2a$12$fghijklmnopqrstuvwxyzab	gerente	t
 7	Rafael Santos	78901234567	$2a$12$ghijklmnopqrstuvwxyzaa	administrador	t
-8	Carla Mendes	89012345678	$2a$12$hijklmnopqrstuvwxyzab	atendente	t
-9	Thiago Rocha	174.986.710-98		Administrador	t
-10	Juliana Penis	146.197.461-97		Administrador	t
 11	Fernando Alves	11234567890	$2a$12$klmnopqrstuvwxyzabcde	administrador	t
 12	Patrícia Fernandes	12234567890	$2a$12$lmnopqrstuvwxyzabcdef	atendente	t
 13	Bruno Chefon	164.917.408-71		Administrador	t
@@ -1015,10 +1024,17 @@ COPY public.usuarios (id, nome, cpf, senha, grupo, ativo) FROM stdin;
 24	juninho gamer	112.312.323-23	$2a$11$7N0uGh43d2hG6Yj1h7624.cON5wSeGLgloVbRZC4vO1prypyQVxsi	Mecânico	t
 25	 Matheus Fofinho	123.123.123-13	$2a$11$OS2.ztctTk9o7Ixk5nsZE.O0rMnPeXhRm8x8/5Xs08gnJVIoMH9o.	Administrador	t
 26	jota	012.746.174-61	$2a$11$70tTtodpFoEUVud9U51mde8spLQf2f/khzQblfYrR3QjHC9rwXux6	Atendente	t
-27	Jota	111.111.111-11		Atendente	t
 28	Bruno	164.871.649-81	$2a$11$C1HftVtAXKbbo.xyuNyLN.oMPf7BMblg2fPY4nh.OuJjWBbgIuY5u	Atendente	t
-29	AdminMassa	000.000.000-00	$2a$11$1qy2RsrPDkQ3U3oKQovkj.MRV8zZ91f0Akazx23ph05Z1a/Ks7p4S	Administrador	t
 30	Luciana	281.496.198-46	$2a$12$pFgWjriUlvg5dV6uGuHcLOJHcGTxOD7w5HkGPLA.YNcq2GdhSCRPS	Atendente	t
+9	Thiago Rocha	174.986.710-98	$2a$11$uefxySQh6E0z5YTtLqjlZuvQKKChk3GIm40gIM3OMEAQJ5btqUJf2	Administrador	t
+8	Carla Mendes	840.981.094-78	$2a$11$14RH2.3PFYl.DA/vL5tEtOc41BxyufRd7uv5KoAQgTlQSuKogM7mi	Administrador	t
+10	Juliana Penis	146.197.461-97	$2a$12$ZVhum3qdsE9HU7tApmLEu.zc.66LP7k/rvwloJeofstiFSgeDDmGy	Administrador	t
+4	Ana Souza	147.198.749-81	$2a$11$GQI60ESYJPNlyLhWAb6nY.Ez/vFQ37UQYtUQzHXbcv9DAwholIFQG	Administrador	t
+5	Pedro Lima	893.150.170-85	$2a$12$99kTj/hLkSsh5Q9Hojr7/.Bsp2O21mhFlZi7E/gqhd1wAdZS6BSPm	Administrador	t
+27	GerenteMassa	111.111.111-11	$2a$11$JncUfRHgr18UHMc5rE7DyO3myOnvTsSrBs3.pwHQPRVez.kRCHw8u	Gerente	t
+29	AdminMassa	000.000.000-00	$2a$11$cpqT9o74vPQ5RHIioGDVeOUzffNh099.vbxr1M6GlxOKTijC8gv8O	Administrador	t
+31	AtendenteMassa	222.222.222-22	$2a$11$2gLvemqnJ.755gkkM16XR.7wBxdAkzUchk5S8esRAq3uHqfAv7YuC	Atendente	t
+32	MecanicoMassa	333.333.333-33	$2a$11$CX20ABh9qkm4slVMQiVFpu8.75wHY4AJLQa/H8VRQjP62y9IMfI5u	Mecânico	t
 \.
 
 
@@ -1104,7 +1120,7 @@ SELECT pg_catalog.setval('public.grupo_id_seq', 4, true);
 -- Name: ordem_servico_pecas_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
 --
 
-SELECT pg_catalog.setval('public.ordem_servico_pecas_id_seq', 299, true);
+SELECT pg_catalog.setval('public.ordem_servico_pecas_id_seq', 311, true);
 
 
 --
@@ -1113,7 +1129,7 @@ SELECT pg_catalog.setval('public.ordem_servico_pecas_id_seq', 299, true);
 -- Name: ordens_servico_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
 --
 
-SELECT pg_catalog.setval('public.ordens_servico_id_seq', 30, true);
+SELECT pg_catalog.setval('public.ordens_servico_id_seq', 34, true);
 
 
 --
@@ -1140,7 +1156,7 @@ SELECT pg_catalog.setval('public.pecas_id_seq', 41, true);
 -- Name: receitas_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
 --
 
-SELECT pg_catalog.setval('public.receitas_id_seq', 1, false);
+SELECT pg_catalog.setval('public.receitas_id_seq', 2, true);
 
 
 --
@@ -1158,7 +1174,7 @@ SELECT pg_catalog.setval('public.servicos_id_seq', 24, true);
 -- Name: usuarios_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
 --
 
-SELECT pg_catalog.setval('public.usuarios_id_seq', 30, true);
+SELECT pg_catalog.setval('public.usuarios_id_seq', 32, true);
 
 
 --
@@ -1510,7 +1526,7 @@ ALTER TABLE ONLY public.veiculos
     ADD CONSTRAINT veiculos_id_cliente_fkey FOREIGN KEY (id_cliente) REFERENCES public.clientes(id);
 
 
--- Completed on 2025-10-27 17:20:29
+-- Completed on 2025-10-29 16:41:00
 
 --
 -- PostgreSQL database dump complete

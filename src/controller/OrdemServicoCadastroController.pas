@@ -74,6 +74,7 @@ begin
   Service.EditarOrdemServico(OS, PecasIDs);
 end;
 
+
 procedure TOrdemServicoController.DeletarOrdemServico(const aId: Integer);
 begin
   Service.DeletarOrdemServico(aId);

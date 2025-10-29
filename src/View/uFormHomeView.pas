@@ -35,21 +35,16 @@ type
     Sair: TMenuItem;
     PnlMain: TPanel;
     PnlLogo: TImage;
-    PnlFooter: TPanel;
-    Timer: TTimer;
     Pendncias1: TMenuItem;
     Receitas1: TMenuItem;
+    PnlFooter: TPanel;
     Panel2: TPanel;
-    Panel3: TPanel;
-    Panel1: TPanel;
-    Panel4: TPanel;
-    Shape1: TShape;
     Panel5: TPanel;
     Shape2: TShape;
+    LblUsuarioLogado: TLabel;
+    Panel1: TPanel;
     Panel6: TPanel;
     Shape3: TShape;
-    LblUsuarioLogado: TLabel;
-    LblDataTime: TLabel;
     Image1: TImage;
     procedure SairClick(Sender: TObject);
     procedure FuncionariosClick(Sender: TObject);
@@ -60,7 +55,6 @@ type
     procedure OrdensServiçoClick(Sender: TObject);
     procedure UsuariosClick(Sender: TObject);
     procedure ClientesClick(Sender: TObject);
-    procedure TimerTimer(Sender: TObject);
     procedure Pendncias1Click(Sender: TObject);
     procedure Receitas1Click(Sender: TObject);
     procedure ExibirDadosUsuarioLogado;
@@ -95,7 +89,8 @@ end;
 
 procedure TFormHome.Image1Click(Sender: TObject);
 begin
-  MainController.ShowLogin
+  MainController.ShowLogin;
+  Self.Hide;
 end;
 
 procedure TFormHome.SairClick(Sender: TObject);
@@ -113,10 +108,6 @@ begin
   FormCadastroServiços.Show;
 end;
 
-procedure TFormHome.TimerTimer(Sender: TObject);
-begin
-  LblDataTime.Caption := FormatDateTime('dd/mm/yyyy hh:nn:ss', Now);
-end;
 
 procedure TFormHome.UsuariosClick(Sender: TObject);
 begin
