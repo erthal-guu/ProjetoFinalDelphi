@@ -631,7 +631,8 @@ object FormReceitas: TFormReceitas
                     ParentColor = False
                     ParentFont = False
                     OnClick = LblAtualizarClick
-                    ExplicitLeft = -1
+                    ExplicitWidth = 59
+                    ExplicitHeight = 20
                   end
                 end
                 object EdtDataRecebimento: TDateTimePicker
