@@ -411,7 +411,7 @@ object FormReceitas: TFormReceitas
                   ParentFont = False
                 end
                 object Label2: TLabel
-                  Left = 96
+                  Left = 98
                   Top = 8
                   Width = 96
                   Height = 17
@@ -490,7 +490,7 @@ object FormReceitas: TFormReceitas
                 end
                 object EdtObservacao: TEdit
                   AlignWithMargins = True
-                  Left = 632
+                  Left = 636
                   Top = 30
                   Width = 126
                   Height = 31
@@ -507,10 +507,11 @@ object FormReceitas: TFormReceitas
                   Font.Style = []
                   ParentFont = False
                   TabOrder = 0
+                  ExplicitLeft = 632
                 end
                 object CmbFormaPagamento: TComboBox
                   AlignWithMargins = True
-                  Left = 484
+                  Left = 488
                   Top = 30
                   Width = 138
                   Height = 29
@@ -536,10 +537,11 @@ object FormReceitas: TFormReceitas
                     'Boleto Banc'#225'rio'
                     'Cheque'
                     'Dep'#243'sito em Conta')
+                  ExplicitLeft = 484
                 end
                 object EdtValorTotal: TEdit
                   AlignWithMargins = True
-                  Left = 364
+                  Left = 368
                   Top = 30
                   Width = 112
                   Height = 31
@@ -555,10 +557,11 @@ object FormReceitas: TFormReceitas
                   Font.Style = []
                   ParentFont = False
                   TabOrder = 2
+                  ExplicitLeft = 364
                 end
                 object CmbStatusReceita: TComboBox
                   AlignWithMargins = True
-                  Left = 766
+                  Left = 770
                   Top = 30
                   Width = 100
                   Height = 29
@@ -578,10 +581,11 @@ object FormReceitas: TFormReceitas
                     'Recebida'
                     'Parcelado '
                     'Cancelada')
+                  ExplicitLeft = 766
                 end
                 object EdtValorRecebido: TEdit
                   AlignWithMargins = True
-                  Left = 94
+                  Left = 98
                   Top = 30
                   Width = 118
                   Height = 31
@@ -598,6 +602,7 @@ object FormReceitas: TFormReceitas
                   Font.Style = []
                   ParentFont = False
                   TabOrder = 4
+                  ExplicitLeft = 96
                 end
                 object PnlButtonAtualizar: TPanel
                   AlignWithMargins = True
@@ -637,7 +642,7 @@ object FormReceitas: TFormReceitas
                 end
                 object EdtDataRecebimento: TDateTimePicker
                   AlignWithMargins = True
-                  Left = 220
+                  Left = 224
                   Top = 30
                   Width = 138
                   Height = 31
@@ -650,22 +655,22 @@ object FormReceitas: TFormReceitas
                   Time = 0.800974305559066100
                   TabOrder = 6
                   StyleElements = [seFont, seClient]
+                  ExplicitLeft = 220
                 end
-                object CmbReceita: TComboBox
+                object EdtReceita: TEdit
                   AlignWithMargins = True
                   Left = 20
                   Top = 30
-                  Width = 66
-                  Height = 29
+                  Width = 70
+                  Height = 31
                   Margins.Left = 20
                   Margins.Top = 30
-                  Margins.Bottom = 5
+                  Margins.Bottom = 30
                   Align = alLeft
-                  BevelOuter = bvNone
-                  Style = csDropDownList
+                  AutoSize = False
                   Font.Charset = DEFAULT_CHARSET
                   Font.Color = clWindowText
-                  Font.Height = -16
+                  Font.Height = -15
                   Font.Name = 'Segoe UI'
                   Font.Style = []
                   ParentFont = False

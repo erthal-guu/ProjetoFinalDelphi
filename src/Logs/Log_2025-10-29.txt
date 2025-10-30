@@ -71,3 +71,4 @@
 22:52:16 - ERRO - ID: 0 tentou inserir receita inválida
 22:55:39 - ERRO - ID: 0 tentou registrar recebimento inválido da receita ID: 2
 23:23:22 - RESTAURAR - ID: 0 restaurou a receita ID: 1
+23:34:52 - ERRO - ID: 0 tentou registrar recebimento inválido da receita ID: 2

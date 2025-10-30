@@ -66,11 +66,11 @@ type
     Label6: TLabel;
     EdtDataRecebimento: TDateTimePicker;
     BtnCancelar: TSpeedButton;
-    CmbReceita: TComboBox;
     DataSourceRestaurar: TDataSource;
     DataSourceMain: TDataSource;
     DataSourceHistorico: TDataSource;
     DBGridMain: TDBGrid;
+    EdtReceita: TEdit;
     procedure DBGridMainCellClick(Column: TColumn);
     procedure BtnDetalharClick(Sender: TObject);
     procedure BtnRestaurarClick(Sender: TObject);
@@ -290,24 +290,12 @@ begin
   begin
     EdtValorTotal.Text := CurrToStr(DataSourceMain.DataSet.FieldByName('valor_total').AsCurrency);
     EdtValorRecebido.Text := CurrToStr(DataSourceMain.DataSet.FieldByName('valor_recebido').AsCurrency);
+    EdtReceita.Text := intToStr(DataSourceMain.DataSet.FieldByName('id_ordem_servico').AsInteger);
 
     try
       EdtDataRecebimento.Date := DataSourceMain.DataSet.FieldByName('data_recebimento').AsDateTime;
     except
       EdtDataRecebimento.Date := Date;
-    end;
-
-    // Seleciona a ordem de serviço correta no ComboBox
-    IdOrdem := DataSourceMain.DataSet.FieldByName('id_ordem_servico').AsInteger;
-    CmbReceita.ItemIndex := 0; // Define como "Selecione..." por padrão
-
-    for i := 1 to CmbReceita.Items.Count - 1 do
-    begin
-      if Pos('Ordem ' + IntToStr(IdOrdem) + ' ', CmbReceita.Items[i]) = 1 then
-      begin
-        CmbReceita.ItemIndex := i;
-        Break;
-      end;
     end;
 
     CmbFormaPagamento.Text := DataSourceMain.DataSet.FieldByName('forma_pagamento').AsString;
@@ -328,7 +316,7 @@ end;
 
 procedure TFormReceitas.LimparCampos;
 begin
-  CmbReceita.ItemIndex := 0;
+  EdtReceita.Text  := '';
   EdtValorTotal.Text := '';
   EdtValorRecebido.Text := '';
   EdtObservacao.Text := '';
@@ -505,7 +493,7 @@ end;
 
 procedure TFormReceitas.LblAtualizarClick(Sender: TObject);
 begin
-  ShowMessage('Para gerar uma receita, selecione uma ordem de serviço na lista.');
+  ReceberReceita;
 end;
 
 
