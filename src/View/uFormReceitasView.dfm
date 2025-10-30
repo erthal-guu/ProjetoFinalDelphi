@@ -1515,6 +1515,7 @@ object FormReceitas: TFormReceitas
                 ED013E254938A1F66222BFBA5ECB1ADF0A9A2958C0EA08C72871928C33C3BB5A
                 12832BFACBF45A4E1202B768713C2CE6B3220207C9203539C4CC468BD9FF014B
                 7620018FA76C950000000049454E44AE426082}
+              OnClick = ImgRestaurarClick
             end
             object PnlMainRestaurar: TPanel
               AlignWithMargins = True
@@ -1805,6 +1806,7 @@ object FormReceitas: TFormReceitas
             TabOrder = 0
             TextHint = 'Pesquisar'
             Visible = False
+            OnChange = EdtPesquisarChange
             ExplicitHeight = 28
           end
         end
@@ -1815,12 +1817,10 @@ object FormReceitas: TFormReceitas
     Left = 776
   end
   object DataSourceMain: TDataSource
-    DataSet = DataModule1.FDQuery
     Left = 648
     Top = 8
   end
   object DataSourceHistorico: TDataSource
-    DataSet = DataModule1.FDQuery
     Left = 928
     Top = 8
   end

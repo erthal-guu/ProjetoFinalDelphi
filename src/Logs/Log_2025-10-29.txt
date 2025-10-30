@@ -49,3 +49,25 @@
 16:33:41 - LOGIN - Sucesso: Usuário ID 29, Nome: AdminMassa, (CPF: 000.000.000-00)
 16:37:12 - LOGIN - Sucesso: Usuário ID 29, Nome: AdminMassa, (CPF: 000.000.000-00)
 16:38:46 - LOGIN - Sucesso: Usuário ID 29, Nome: AdminMassa, (CPF: 000.000.000-00)
+21:34:49 - LOGIN - Sucesso: Usuário ID 29, Nome: AdminMassa, (CPF: 000.000.000-00)
+21:41:48 - LOGIN - Sucesso: Usuário ID 29, Nome: AdminMassa, (CPF: 000.000.000-00)
+21:45:18 - LOGIN - Sucesso: Usuário ID 29, Nome: AdminMassa, (CPF: 000.000.000-00)
+21:46:06 - LOGIN - Sucesso: Usuário ID 29, Nome: AdminMassa, (CPF: 000.000.000-00)
+21:47:48 - DELETAR - ID: 29 deletou a receita ID: 30
+21:49:13 - DELETAR - ID: 29 deletou a receita ID: 31
+22:00:56 - LOGIN - Sucesso: Usuário ID 29, Nome: AdminMassa, (CPF: 000.000.000-00)
+22:01:34 - LOGIN - Sucesso: Usuário ID 29, Nome: AdminMassa, (CPF: 000.000.000-00)
+22:05:09 - LOGIN - Sucesso: Usuário ID 29, Nome: AdminMassa, (CPF: 000.000.000-00)
+22:06:53 - LOGIN - Sucesso: Usuário ID 29, Nome: AdminMassa, (CPF: 000.000.000-00)
+22:08:34 - LOGIN - Sucesso: Usuário ID 29, Nome: AdminMassa, (CPF: 000.000.000-00)
+22:09:51 - LOGIN - Sucesso: Usuário ID 29, Nome: AdminMassa, (CPF: 000.000.000-00)
+22:10:06 - DELETAR - ID: 29 deletou a receita ID: 1
+22:12:54 - LOGIN - Sucesso: Usuário ID 29, Nome: AdminMassa, (CPF: 000.000.000-00)
+22:25:45 - ERRO - ID: 0 tentou registrar recebimento inválido da receita ID: 2
+22:25:49 - ERRO - ID: 0 tentou registrar recebimento inválido da receita ID: 2
+22:26:47 - ERRO - ID: 0 tentou registrar recebimento inválido da receita ID: 2
+22:35:19 - ERRO - ID: 0 tentou inserir receita inválida
+22:50:53 - ERRO - ID: 0 tentou inserir receita inválida
+22:52:16 - ERRO - ID: 0 tentou inserir receita inválida
+22:55:39 - ERRO - ID: 0 tentou registrar recebimento inválido da receita ID: 2
+23:23:22 - RESTAURAR - ID: 0 restaurou a receita ID: 1
