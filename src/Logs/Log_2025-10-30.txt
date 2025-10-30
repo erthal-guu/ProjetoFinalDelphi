@@ -1,0 +1,12 @@
+10:26:35 - ERRO - ID: 0 tentou registrar recebimento inválido da receita ID: 1
+10:29:10 - ERRO - ID: 0 tentou registrar recebimento inválido da receita ID: 1
+10:35:49 - ERRO - ID: 0 tentou registrar recebimento inválido da receita ID: 1 - Forma: Dinheiro - Status: Recebida
+10:40:28 - RECEBER - ID: 0 registrou recebimento da receita ID: 2 - Valor: 880,00
+10:45:19 - RECEBER - ID: 0 registrou recebimento da receita ID: 1 - Valor: 500,00
+10:56:36 - CADASTRO - ID: 0 cadastrou ordem de serviço com cliente ID: 4
+10:57:04 - RECEBER - ID: 0 registrou recebimento da receita ID: 3 - Valor: 1000,00
+11:07:01 - CADASTRO - ID: 0 cadastrou ordem de serviço com cliente ID: 21
+11:07:21 - RECEBER - ID: 0 registrou recebimento da receita ID: 4 - Valor: 1000,00
+11:07:37 - RECEBER - ID: 0 registrou recebimento da receita ID: 4 - Valor: 1205,00
+11:07:58 - DELETAR - ID: 0 deletou a receita ID: 2
+11:08:02 - RESTAURAR - ID: 0 restaurou a receita ID: 2

@@ -36,10 +36,14 @@ begin
     FQuery.Close;
     FQuery.SQL.Clear;
     FQuery.SQL.Add('UPDATE receitas');
-    FQuery.SQL.Add('SET valor_recebido = :valor_recebido, data_recebimento = :data_recebimento');
+    FQuery.SQL.Add('SET valor_recebido = :valor_recebido, data_recebimento = :data_recebimento,');
+    FQuery.SQL.Add('    forma_pagamento = :forma_pagamento, status = :status, observacao = :observacao');
     FQuery.SQL.Add('WHERE id = :id');
     FQuery.ParamByName('valor_recebido').AsCurrency := aReceita.getValorRecebido;
     FQuery.ParamByName('data_recebimento').AsDateTime := aReceita.getDataRecebimento;
+    FQuery.ParamByName('forma_pagamento').AsString := aReceita.getFormaPagamento;
+    FQuery.ParamByName('status').AsString := aReceita.getStatus;
+    FQuery.ParamByName('observacao').AsString := aReceita.getObservacao;
     FQuery.ParamByName('id').AsInteger := aReceita.getIdReceita;
     FQuery.ExecSQL;
   except
@@ -57,6 +61,7 @@ begin
     FQuery.SQL.Add('SELECT ');
     FQuery.SQL.Add('  r.id,');
     FQuery.SQL.Add('  r.id_ordem_servico,');
+    FQuery.SQL.Add('  c.id AS id_cliente,');
     FQuery.SQL.Add('  c.nome AS cliente_nome,');
     FQuery.SQL.Add('  r.valor_total,');
     FQuery.SQL.Add('  r.valor_recebido,');
@@ -71,6 +76,7 @@ begin
     FQuery.SQL.Add('INNER JOIN ordens_servico os ON r.id_ordem_servico = os.id');
     FQuery.SQL.Add('INNER JOIN clientes c ON os.id_cliente = c.id');
     FQuery.SQL.Add('WHERE r.ativo = TRUE');
+    FQuery.SQL.Add('AND (r.status = ''Pendente'' OR r.status = ''Parcial'' OR r.valor_recebido < r.valor_total)');
     FQuery.SQL.Add('ORDER BY r.id DESC');
     FQuery.Open;
     Result := FQuery;

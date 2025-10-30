@@ -25,7 +25,6 @@
     Height = 665
     Align = alClient
     TabOrder = 0
-    ExplicitHeight = 552
     object PnlLogo: TImage
       Left = 1
       Top = 1
@@ -1417,9 +1416,6 @@
       Color = 6172416
       ParentBackground = False
       TabOrder = 0
-      ExplicitLeft = 0
-      ExplicitTop = 616
-      ExplicitWidth = 1132
       object Panel2: TPanel
         Left = 1
         Top = 1
@@ -1430,8 +1426,6 @@
         BevelOuter = bvNone
         ParentColor = True
         TabOrder = 0
-        ExplicitLeft = 0
-        ExplicitTop = 6
         object Panel5: TPanel
           AlignWithMargins = True
           Left = 20

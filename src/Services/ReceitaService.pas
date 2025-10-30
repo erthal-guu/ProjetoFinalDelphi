@@ -59,9 +59,8 @@ function TReceitaService.ValidarReceita(aReceita: TReceita): Boolean;
 begin
   Result := (aReceita.getIdReceita > 0) and
             (aReceita.getValorRecebido >= 0) and
-            (aReceita.getDataRecebimento > 0) and
-            (aReceita.getFormaPagamento <> '') and
-            (aReceita.getStatus <> '');
+            (Trim(aReceita.getFormaPagamento) <> '') and
+            (Trim(aReceita.getStatus) <> '');
 end;
 
 
@@ -71,17 +70,14 @@ var
 begin
   IDUsuarioLogado := uSession.UsuarioLogadoID;
 
-  if ValidarReceita(aReceita) then
-  begin
+  if ValidarReceita(aReceita) then begin
     Repository.ReceberReceita(aReceita);
     SalvarLog(Format('RECEBER - ID: %d registrou recebimento da receita ID: %d - Valor: %.2f',
       [IDUsuarioLogado, aReceita.getIdReceita, aReceita.getValorRecebido]));
-  end
-  else
-  begin
-    ShowMessage('Dados da receita inválidos. Verifique as informações.');
-    SalvarLog(Format('ERRO - ID: %d tentou registrar recebimento inválido da receita ID: %d',
-      [IDUsuarioLogado, aReceita.getIdReceita]));
+  end else begin
+    ShowMessage('Dados Inválido, Tente Novamente');
+    SalvarLog(Format('ERRO - ID: %d tentou registrar recebimento inválido da receita ID: %d - Forma: %s - Status: %s',
+      [IDUsuarioLogado, aReceita.getIdReceita, aReceita.getFormaPagamento, aReceita.getStatus]));
   end;
 end;
 

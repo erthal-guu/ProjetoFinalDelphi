@@ -160,6 +160,20 @@ begin
     Exit;
   end;
 
+  if CmbFormaPagamento.Text = '' then
+  begin
+    ShowMessage('Selecione a forma de pagamento.');
+    CmbFormaPagamento.SetFocus;
+    Exit;
+  end;
+
+  if CmbStatusReceita.Text = '' then
+  begin
+    ShowMessage('Selecione o status da receita.');
+    CmbStatusReceita.SetFocus;
+    Exit;
+  end;
+
   try
     Receita := Controller.CriarObjeto(
       DataSourceMain.DataSet.FieldByName('id').AsInteger,
@@ -213,64 +227,72 @@ begin
       DBGridMain.Columns[1].Alignment := taCenter;
 
 
-      DBGridMain.Columns[2].Title.Caption := 'Cliente';
-      DBGridMain.Columns[2].Width := 200;
+      DBGridMain.Columns[2].Title.Caption := 'Cliente ID';
+      DBGridMain.Columns[2].Width := 80;
       DBGridMain.Columns[2].Title.Alignment := taCenter;
-      DBGridMain.Columns[2].Alignment := taLeftJustify;
+      DBGridMain.Columns[2].Alignment := taCenter;
+      DBGridMain.Columns[2].FieldName := 'id_cliente';
 
 
-      DBGridMain.Columns[3].Title.Caption := 'Valor Total';
-      DBGridMain.Columns[3].Width := 120;
+      DBGridMain.Columns[3].Title.Caption := 'Cliente';
+      DBGridMain.Columns[3].Width := 200;
       DBGridMain.Columns[3].Title.Alignment := taCenter;
-      DBGridMain.Columns[3].Alignment := taRightJustify;
+      DBGridMain.Columns[3].Alignment := taCenter;
+      DBGridMain.Columns[3].FieldName := 'cliente_nome';
 
-      DBGridMain.Columns[4].Title.Caption := 'Valor Recebido';
+
+      DBGridMain.Columns[4].Title.Caption := 'Valor Total';
       DBGridMain.Columns[4].Width := 120;
       DBGridMain.Columns[4].Title.Alignment := taCenter;
-      DBGridMain.Columns[4].Alignment := taRightJustify;
+      DBGridMain.Columns[4].Alignment := taCenter;
 
-
-      DBGridMain.Columns[5].Title.Caption := 'Status';
-      DBGridMain.Columns[5].Width := 100;
+      DBGridMain.Columns[5].Title.Caption := 'Valor Recebido';
+      DBGridMain.Columns[5].Width := 120;
       DBGridMain.Columns[5].Title.Alignment := taCenter;
       DBGridMain.Columns[5].Alignment := taCenter;
 
 
-      DBGridMain.Columns[6].Title.Caption := 'Data Emissão';
-      DBGridMain.Columns[6].Width := 110;
+      DBGridMain.Columns[6].Title.Caption := 'Status';
+      DBGridMain.Columns[6].Width := 100;
       DBGridMain.Columns[6].Title.Alignment := taCenter;
       DBGridMain.Columns[6].Alignment := taCenter;
 
 
-      DBGridMain.Columns[7].Title.Caption := 'Vencimento';
-      DBGridMain.Columns[7].Width := 110;
+      DBGridMain.Columns[7].Title.Caption := 'Data Emissão';
+      DBGridMain.Columns[7].Width := 140;
       DBGridMain.Columns[7].Title.Alignment := taCenter;
       DBGridMain.Columns[7].Alignment := taCenter;
 
 
-      DBGridMain.Columns[8].Title.Caption := 'Recebimento';
+      DBGridMain.Columns[8].Title.Caption := 'Vencimento';
       DBGridMain.Columns[8].Width := 110;
       DBGridMain.Columns[8].Title.Alignment := taCenter;
       DBGridMain.Columns[8].Alignment := taCenter;
 
-      DBGridMain.Columns[9].Title.Caption := 'Forma Pagamento';
-      DBGridMain.Columns[9].Width := 150;
+
+      DBGridMain.Columns[9].Title.Caption := 'Recebimento';
+      DBGridMain.Columns[9].Width := 110;
       DBGridMain.Columns[9].Title.Alignment := taCenter;
-      DBGridMain.Columns[9].Alignment := taLeftJustify;
+      DBGridMain.Columns[9].Alignment := taCenter;
 
-
-      DBGridMain.Columns[10].Title.Caption := 'Observação';
-      DBGridMain.Columns[10].Width := 250;
+      DBGridMain.Columns[10].Title.Caption := 'Forma Pagamento';
+      DBGridMain.Columns[10].Width := 150;
       DBGridMain.Columns[10].Title.Alignment := taCenter;
-      DBGridMain.Columns[10].Alignment := taLeftJustify;
+      DBGridMain.Columns[10].Alignment := taCenter;
 
 
-      DBGridMain.Columns[11].Title.Caption := 'Ativo';
-      DBGridMain.Columns[11].Width := 60;
+      DBGridMain.Columns[11].Title.Caption := 'Observação';
+      DBGridMain.Columns[11].Width := 250;
       DBGridMain.Columns[11].Title.Alignment := taCenter;
       DBGridMain.Columns[11].Alignment := taCenter;
 
-      for var i := 0 to 11 do
+
+      DBGridMain.Columns[12].Title.Caption := 'Ativo';
+      DBGridMain.Columns[12].Width := 60;
+      DBGridMain.Columns[12].Title.Alignment := taCenter;
+      DBGridMain.Columns[12].Alignment := taCenter;
+
+      for var i := 0 to 12 do
       begin
         DBGridMain.Columns[i].Title.Font.Size := 12;
         DBGridMain.Columns[i].Title.Font.Style := [fsBold];
@@ -338,8 +360,9 @@ begin
   ListBoxDetalhes.Items.Add(Format('ID: %d', [IDReceita]));
   ListBoxDetalhes.Items.Add(Format('Ordem de Serviço: %d', [
     DataSourceMain.DataSet.FieldByName('id_ordem_servico').AsInteger]));
-  ListBoxDetalhes.Items.Add(Format('Cliente ID: %d', [
-    DataSourceMain.DataSet.FieldByName('id_cliente').AsInteger]));
+  ListBoxDetalhes.Items.Add(Format('Cliente ID: %d - %s', [
+    DataSourceMain.DataSet.FieldByName('id_cliente').AsInteger,
+    DataSourceMain.DataSet.FieldByName('cliente_nome').AsString]));
   ListBoxDetalhes.Items.Add('');
   ListBoxDetalhes.Items.Add(Format('Valor Total: R$ %.2f', [
     DataSourceMain.DataSet.FieldByName('valor_total').AsCurrency]));
@@ -372,6 +395,7 @@ begin
     Exit;
   end;
   PreencherCamposReceita;
+  EdtDataRecebimento.Date := Date;
   PnlBackgrounEdit.Visible := True;
 end;
 

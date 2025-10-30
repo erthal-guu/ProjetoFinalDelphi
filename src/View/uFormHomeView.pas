@@ -128,8 +128,6 @@ begin
   grupo := LowerCase(Trim(uSession.UsuarioLogadoGrupo));
 
   if grupo = 'administrador' then begin
-    ShowMessage('Pode tudo rapaz');
-    Exit;
   end;
 
   if grupo = 'gerente' then begin
@@ -154,6 +152,7 @@ begin
     FormCadastroOrdensServiço.BtnEditar.Visible := False;
     FormCadastroOrdensServiço.BtnExcluir.Visible := False;
     FormCadastroOrdensServiço.BtnRestaurar.Visible := False;
+    Financeiro.Visible := False;
   end;
 
   if grupo = 'mecânico' then begin
@@ -169,6 +168,7 @@ begin
     FormCadastroOrdensServiço.PnlMainButton.Visible := False;
     FormCadastroOrdensServiço.PnlBackgroundButton.Visible := False;
     FormCadastroOrdensServiço.EdtPesquisar.Visible := True;
+    Financeiro.Visible := False;
   end;
   end;
 

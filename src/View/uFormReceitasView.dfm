@@ -507,7 +507,6 @@ object FormReceitas: TFormReceitas
                   Font.Style = []
                   ParentFont = False
                   TabOrder = 0
-                  ExplicitLeft = 632
                 end
                 object CmbFormaPagamento: TComboBox
                   AlignWithMargins = True
@@ -537,7 +536,6 @@ object FormReceitas: TFormReceitas
                     'Boleto Banc'#225'rio'
                     'Cheque'
                     'Dep'#243'sito em Conta')
-                  ExplicitLeft = 484
                 end
                 object EdtValorTotal: TEdit
                   AlignWithMargins = True
@@ -557,7 +555,6 @@ object FormReceitas: TFormReceitas
                   Font.Style = []
                   ParentFont = False
                   TabOrder = 2
-                  ExplicitLeft = 364
                 end
                 object CmbStatusReceita: TComboBox
                   AlignWithMargins = True
@@ -577,11 +574,6 @@ object FormReceitas: TFormReceitas
                   Font.Style = []
                   ParentFont = False
                   TabOrder = 3
-                  Items.Strings = (
-                    'Recebida'
-                    'Parcelado '
-                    'Cancelada')
-                  ExplicitLeft = 766
                 end
                 object EdtValorRecebido: TEdit
                   AlignWithMargins = True
@@ -602,7 +594,6 @@ object FormReceitas: TFormReceitas
                   Font.Style = []
                   ParentFont = False
                   TabOrder = 4
-                  ExplicitLeft = 96
                 end
                 object PnlButtonAtualizar: TPanel
                   AlignWithMargins = True
@@ -655,7 +646,6 @@ object FormReceitas: TFormReceitas
                   Time = 0.800974305559066100
                   TabOrder = 6
                   StyleElements = [seFont, seClient]
-                  ExplicitLeft = 220
                 end
                 object EdtReceita: TEdit
                   AlignWithMargins = True
