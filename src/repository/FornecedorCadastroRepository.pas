@@ -1,4 +1,4 @@
-unit FornecedorCadastroRepository;
+ï»¿unit FornecedorCadastroRepository;
 
 interface
 
@@ -24,6 +24,9 @@ type
     function ListarPecasVinculadas(const aFornecedorId: Integer): TDataSet;
     Function CarregarFornecedores : TStringlist;
     procedure DesvincularPecaFornecedor(const aFornecedorId,aPecaId : Integer);
+    procedure InserirPedido(aIdFornecedor,aIdPeca,aQuantidade: Integer; aFormaPagamento,aObservaÃ§Ã£o: String; aValorTotal: Currency);
+    function CarregarPecas: TStringList;
+    function ObterPrecoCompraPeca(aIdPeca: Integer): Currency;
 
   end;
 
@@ -74,7 +77,7 @@ begin
     FQuery.ExecSQL;
   except
     on E: Exception do
-      raise Exception.Create('Erro ao vincular peça ao fornecedor: ' + E.Message);
+      raise Exception.Create('Erro ao vincular peï¿½a ao fornecedor: ' + E.Message);
   end;
 end;
 
@@ -93,7 +96,7 @@ begin
     Result := FQuery;
   except
     on E: Exception do
-      raise Exception.Create('Erro ao listar peças vinculadas: ' + E.Message);
+      raise Exception.Create('Erro ao listar peï¿½as vinculadas: ' + E.Message);
   end;
 end;
 
@@ -185,7 +188,7 @@ begin
     Result := FQuery;
   except
     on E: Exception do
-      raise Exception.Create('Erro ao listar Fornecedores para restauração: ' + E.Message);
+      raise Exception.Create('Erro ao listar Fornecedores para restauraï¿½ï¿½o: ' + E.Message);
   end;
 end;
 
@@ -210,7 +213,7 @@ begin
     FQuery.ExecSQL;
   except
     on E: Exception do
-      raise Exception.Create('Erro ao desvincular peça do fornecedor: ' + E.Message);
+      raise Exception.Create('Erro ao desvincular peï¿½a do fornecedor: ' + E.Message);
   end;
 end;
 
@@ -242,6 +245,82 @@ begin
   except
     on E: Exception do
       raise Exception.Create('Erro ao buscar Fornecedor por filtro: ' + E.Message);
+  end;
+end;
+
+
+procedure TFornecedorRepository.InserirPedido(aIdFornecedor,aIdPeca,aQuantidade: Integer; aFormaPagamento,aObservaÃ§Ã£o: String; aValorTotal: Currency);
+begin
+  FQuery.Close;
+  FQuery.SQL.Clear;
+  FQuery.SQL.Add('INSERT INTO pedidos_fornecedor ');
+  FQuery.SQL.Add('  (id_fornecedor, id_peca, data_pedido,quantidade, forma_pagamento, status, observacao, valor_total, ativo)');
+  FQuery.SQL.Add('VALUES ');
+  FQuery.SQL.Add('  (:id_fornecedor, :id_peca, :data_pedido,:quantidade,:forma_pagamento, :status, :observacao, :valor_total, :ativo)');
+
+  FQuery.ParamByName('id_fornecedor').AsInteger := aIdFornecedor;
+  FQuery.ParamByName('id_peca').AsInteger := aIdPeca;
+  FQuery.ParamByName('data_pedido').AsDateTime := Now;
+  FQuery.ParamByName('quantidade').AsInteger := aQuantidade;
+  FQuery.ParamByName('forma_pagamento').AsString := aFormaPagamento;
+  FQuery.ParamByName('status').AsString := 'PENDENTE';
+  FQuery.ParamByName('observacao').AsString := '';
+  FQuery.ParamByName('valor_total').AsCurrency := aValorTotal;
+  FQuery.ParamByName('ativo').AsBoolean := True;
+
+  try
+    FQuery.ExecSQL;
+  except
+    on E: Exception do
+      raise Exception.Create('Erro ao inserir pedido: ' + E.Message);
+  end;
+end;
+
+
+
+function TFornecedorRepository.CarregarPecas: TStringList;
+var
+  Lista: TStringList;
+  Qry: TFDQuery;
+begin
+  Lista := TStringList.Create;
+  Qry := TFDQuery.Create(nil);
+  try
+    Qry.Connection := FQuery.Connection;
+    Qry.SQL.Add('SELECT id, nome FROM pecas WHERE ativo = TRUE ORDER BY nome');
+    Qry.Open;
+    while not Qry.Eof do
+    begin
+      Lista.AddObject(Qry.FieldByName('nome').AsString, TObject(Qry.FieldByName('id').AsInteger));
+      Qry.Next;
+    end;
+    Result := Lista;
+  except
+    on E: Exception do
+    begin
+      Lista.Free;
+      raise Exception.Create('Erro ao listar peÃ§as: ' + E.Message);
+    end;
+  end;
+  Qry.Free;
+end;
+
+function TFornecedorRepository.ObterPrecoCompraPeca(aIdPeca: Integer): Currency;
+begin
+  try
+    FQuery.Close;
+    FQuery.SQL.Clear;
+    FQuery.SQL.Add('SELECT preco_compra FROM pecas WHERE id = :id_peca AND ativo = TRUE');
+    FQuery.ParamByName('id_peca').AsInteger := aIdPeca;
+    FQuery.Open;
+
+    if not FQuery.Eof then
+      Result := FQuery.FieldByName('preco_compra').AsCurrency
+    else
+      Result := 0;
+  except
+    on E: Exception do
+      raise Exception.Create('Erro ao obter preÃ§o da peÃ§a: ' + E.Message);
   end;
 end;
 

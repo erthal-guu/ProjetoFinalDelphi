@@ -1,9 +1,9 @@
-unit FornecedorCadastroController;
+﻿unit FornecedorCadastroController;
 
 interface
 
 uses
-  uFornecedor, FornecedorCadastroService, FireDAC.Comp.Client, Data.DB,System.Classes;
+  uFornecedor, FornecedorCadastroService, FireDAC.Comp.Client, Data.DB,System.Classes,System.Generics.Collections;
 
 type
   TFornecedorController = class
@@ -15,6 +15,7 @@ type
     function SalvarFornecedor(Fornecedor: TFornecedor): Boolean;
     procedure EditarFornecedor(Fornecedor: TFornecedor);
     function ListarFornecedores: TDataSet;
+    function ListarFornecedoresRestaurar: TDataSet;
     function CriarObjeto(
       aNome, aRazaoSocial, aCNPJ, aTelefone, aCEP, aRua, aNumero,
       aBairro, aCidade, aEstado: String; aAtivo: Boolean
@@ -26,6 +27,9 @@ type
     function ListarPecasPorFornecedor(aFornecedorID: Integer): TDataSet;
     function CarregarFornecedores : TStringList;
     procedure DesvincularPecaAoFornecedor(aPecaID, aFornecedorID: Integer);
+    function CarregarPecas: TStringList;
+    function ObterPrecoCompraPeca(aIdPeca: Integer): Currency;
+    function CalcularValorTotal(aPecasIDs: TList<Integer>; aQuantidades: TList<Integer>): Currency;
   end;
 
 implementation
@@ -45,6 +49,11 @@ destructor TFornecedorController.Destroy;
 begin
   Service.Free;
   inherited;
+end;
+
+function TFornecedorController.ListarFornecedoresRestaurar: TDataSet;
+begin
+  Result := Service.ListarFornecedoresRestaurar;
 end;
 
 procedure TFornecedorController.DesvincularPecaAoFornecedor(aPecaID,
@@ -113,5 +122,23 @@ procedure TFornecedorController.VincularPecaAoFornecedor(aPecaID,
 begin
    Service.VincularPecaAoFornecedor(aPecaID,aFornecedorID);
 end;
+
+
+function TFornecedorController.CarregarPecas: TStringList;
+begin
+  Result := Service.CarregarPeças;
+end;
+
+function TFornecedorController.ObterPrecoCompraPeca(aIdPeca: Integer): Currency;
+begin
+  Result := Service.ObterPrecoCompraPeca(aIdPeca);
+end;
+
+function TFornecedorController.CalcularValorTotal(aPecasIDs: TList<Integer>;
+  aQuantidades: TList<Integer>): Currency;
+begin
+  Result := Service.CalcularValorTotal(aPecasIDs, aQuantidades);
+end;
+
 
 end.

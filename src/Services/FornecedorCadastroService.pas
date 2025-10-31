@@ -1,11 +1,11 @@
-unit FornecedorCadastroService;
+ï»¿unit FornecedorCadastroService;
 
 interface
 
 uses
   uFornecedor, FornecedorCadastroRepository, uDMConexao, System.SysUtils,
   FireDAC.Comp.Client, Data.DB, IdHTTP, System.JSON,
-  IdSSL, IdSSLOpenSSL, IdSSLOpenSSLHeaders, Logs, uSession, PeçasCadastroRepository,System.Classes;
+  IdSSL, IdSSLOpenSSL, IdSSLOpenSSLHeaders, Logs, uSession, PeÃ§asCadastroRepository,System.Classes,System.Generics.Collections;
 
 type
   TFornecedorService = class
@@ -28,6 +28,10 @@ type
     function ListarPecasPorFornecedor(aFornecedorID: Integer): TDataSet;
     Function CarregarFornecedores : TStringlist;
     procedure DesvincularPecaDoFornecedor(aPecaID, aFornecedorID: Integer);
+    function CarregarPecas: TStringList;
+    function ObterPrecoCompraPeca(aIdPeca: Integer): Currency;
+    function CalcularValorTotal(aPecasIDs: TList<Integer>; aQuantidades: TList<Integer>): Currency;
+    Function CarregarPeÃ§as : TStringList;
   end;
 
 implementation
@@ -37,6 +41,11 @@ implementation
 function TFornecedorService.CarregarFornecedores: TStringlist;
 begin
     Result := Repository.CarregarFornecedores;
+end;
+
+function TFornecedorService.CarregarPeÃ§as: TStringlist;
+begin
+    Result := Repository.CarregarPecas;
 end;
 
 constructor TFornecedorService.Create;
@@ -88,7 +97,7 @@ begin
     end
     else
     begin
-      SalvarLog(Format('CADASTRO - ID: %d falhou ao cadastrar (CNPJ já existente: %s)',
+      SalvarLog(Format('CADASTRO - ID: %d falhou ao cadastrar (CNPJ jï¿½ existente: %s)',
         [IDUsuarioLogado, Fornecedor.getCNPJ]));
     end;
   end;
@@ -116,9 +125,9 @@ end;
 
 procedure TFornecedorService.DesvincularPecaDoFornecedor(aPecaID,aFornecedorID: Integer);
 begin
- Repository.DesvincularPecaFornecedor(aPecaID,aFornecedorID);
-   SalvarLog(Format('DESVINCULAR - Peça ID: %d Desvinculada do Fornecedor ID: %d',
-    [aFornecedorID,aPecaID ]));
+ Repository.DesvincularPecaFornecedor(aFornecedorID,aPecaID);
+   SalvarLog(Format('DESVINCULAR - Peï¿½a ID: %d Desvinculada do Fornecedor ID: %d',
+    [aPecaID, aFornecedorID]));
 end;
 
 procedure TFornecedorService.RestaurarFornecedor(const aId: Integer);
@@ -187,7 +196,7 @@ begin
     JsonObj := TJSONObject.ParseJSONValue(JsonStr) as TJSONObject;
     try
       if Assigned(JsonObj.Values['erro']) then
-        raise Exception.Create('CEP não encontrado.');
+        raise Exception.Create('CEP nï¿½o encontrado.');
       aRua    := JsonObj.Values['logradouro'].Value;
       aBairro := JsonObj.Values['bairro'].Value;
       aCidade := JsonObj.Values['localidade'].Value;
@@ -203,15 +212,47 @@ end;
 
 procedure TFornecedorService.VincularPecaAoFornecedor(aPecaID, aFornecedorID: Integer);
 begin
-  Repository.VincularPecaFornecedor(aPecaID, aFornecedorID);
-  SalvarLog(Format('VINCULAR - Peça ID: %d vinculada ao Fornecedor ID: %d',
-    [aFornecedorID,aPecaID ]));
+  Repository.VincularPecaFornecedor(aFornecedorID, aPecaID);
+  SalvarLog(Format('VINCULAR - Peï¿½a ID: %d vinculada ao Fornecedor ID: %d',
+    [aPecaID, aFornecedorID]));
 end;
 
 function TFornecedorService.ListarPecasPorFornecedor(aFornecedorID: Integer): TDataSet;
 begin
   Result := Repository.ListarPecasVinculadas(aFornecedorID);
 end;
+
+
+
+function TFornecedorService.CarregarPecas: TStringList;
+begin
+  Result := Repository.CarregarPecas;
+end;
+
+function TFornecedorService.ObterPrecoCompraPeca(aIdPeca: Integer): Currency;
+begin
+  Result := Repository.ObterPrecoCompraPeca(aIdPeca);
+end;
+
+function TFornecedorService.CalcularValorTotal(aPecasIDs: TList<Integer>;
+  aQuantidades: TList<Integer>): Currency;
+var
+  i: Integer;
+  PrecoUnitario: Currency;
+begin
+  Result := 0;
+
+  if (aPecasIDs = nil) or (aQuantidades = nil) or
+     (aPecasIDs.Count <> aQuantidades.Count) then
+    Exit;
+
+  for i := 0 to aPecasIDs.Count - 1 do
+  begin
+    PrecoUnitario := ObterPrecoCompraPeca(aPecasIDs[i]);
+    Result := Result + (PrecoUnitario * aQuantidades[i]);
+  end;
+end;
+
 
 end.
 

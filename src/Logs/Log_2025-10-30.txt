@@ -10,3 +10,6 @@
 11:07:37 - RECEBER - ID: 0 registrou recebimento da receita ID: 4 - Valor: 1205,00
 11:07:58 - DELETAR - ID: 0 deletou a receita ID: 2
 11:08:02 - RESTAURAR - ID: 0 restaurou a receita ID: 2
+22:40:52 - CADASTRO - ID: 0 cadastrou fornecedor: aaaaaaa (CNPJ: 14.717.401/7407-10)
+22:40:56 - DELETAR - ID: 0 deletou fornecedor ID: 21
+22:44:19 - VINCULAR - Pe�a ID: 26 vinculada ao Fornecedor ID: 21
