@@ -2687,6 +2687,7 @@
               Width = 145
               Height = 28
               TabOrder = 2
+              OnChange = CmbFornecedorPedidoChange
             end
             object CmbFormaPagamento: TComboBox
               AlignWithMargins = True
@@ -2734,6 +2735,7 @@
               Font.Style = []
               ParentFont = False
               TabOrder = 4
+              OnChange = EdtQuantidadeChange
             end
             object EdtObservacao: TEdit
               AlignWithMargins = True
@@ -2772,6 +2774,7 @@
               Font.Style = []
               ParentFont = False
               TabOrder = 6
+              OnChange = CmbPeçasChange
             end
             object PnlFinalizar: TPanel
               AlignWithMargins = True

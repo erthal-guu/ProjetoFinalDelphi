@@ -290,6 +290,42 @@ ALTER SEQUENCE public.fornecedores_id_seq OWNED BY public.fornecedores.id;
 
 
 --
+-- TOC entry 248 (class 1259 OID 25100)
+-- Name: pedido_fornecedor; Type: TABLE; Schema: public; Owner: postgres
+--
+
+CREATE TABLE public.pedido_fornecedor (
+    id integer NOT NULL,
+    id_pedido integer NOT NULL,
+    id_fornecedor integer NOT NULL,
+    data_envio timestamp without time zone DEFAULT CURRENT_TIMESTAMP,
+    data_resposta timestamp without time zone,
+    status character varying(20) DEFAULT 'ENVIADO',
+    valor_total_cotacao numeric(10,2),
+    observacao text,
+    ativo boolean DEFAULT true
+);
+
+
+ALTER TABLE public.pedido_fornecedor OWNER TO postgres;
+
+--
+-- TOC entry 249 (class 1259 OID 25101)
+-- Name: pedido_fornecedor_id_seq; Type: SEQUENCE; Schema: public; Owner: postgres
+--
+
+CREATE SEQUENCE public.pedido_fornecedor_id_seq
+    AS integer
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER SEQUENCE public.pedido_fornecedor_id_seq OWNER TO postgres;
+
+--
 -- TOC entry 224 (class 1259 OID 16852)
 -- Name: funcionarios; Type: TABLE; Schema: public; Owner: postgres
 --
@@ -675,9 +711,9 @@ ALTER SEQUENCE public.pecas_id_seq OWNED BY public.pecas.id;
 
 CREATE TABLE public.pedidos (
     id_pedido integer NOT NULL,
-    id_peca integer NOT NULL,
     valor_total numeric(10,2) NOT NULL,
-    data_pedido timestamp without time zone DEFAULT CURRENT_TIMESTAMP NOT NULL
+    data_pedido timestamp without time zone DEFAULT CURRENT_TIMESTAMP NOT NULL,
+    status_pedido character varying(20) DEFAULT 'ABERTO'
 );
 
 
@@ -1274,9 +1310,9 @@ COPY public.pecas (id, nome, descricao, codigo_interno, id_categoria, unidade, m
 -- Data for Name: pedidos; Type: TABLE DATA; Schema: public; Owner: postgres
 --
 
-COPY public.pedidos (id_pedido, id_peca, valor_total, data_pedido) FROM stdin;
-1	31	1314.00	2025-10-31 17:45:31.84
-2	31	1314.00	2025-10-31 17:45:31.84
+COPY public.pedidos (id_pedido, valor_total, data_pedido, status_pedido) FROM stdin;
+1	1314.00	2025-10-31 17:45:31.84	ABERTO
+2	1314.00	2025-10-31 17:45:31.84	ABERTO
 \.
 
 
@@ -1290,6 +1326,16 @@ COPY public.receitas (id, id_ordem_servico, id_cliente, valor_total, valor_receb
 2	34	3	880.00	0.00	ABERTO	2025-10-29 16:09:37.967	2025-11-07 00:00:00	\N		aaaaaa	t
 3	35	2	1109.75	1109.75	Recebido	2025-10-31 14:56:20.163	2025-11-05 00:00:00	2025-10-31 00:00:00	Transferência Bancária	aaaaaaa	t
 1	33	3	910.00	0.00	ABERTO	2025-10-29 16:05:53.131	2025-10-30 00:00:00	\N		aaaaaa	t
+\.
+--
+-- TOC entry 5066 (class 0 OID 25110)
+-- Dependencies: 248
+-- Data for Name: pedido_fornecedor; Type: TABLE DATA; Schema: public; Owner: postgres
+--
+
+COPY public.pedido_fornecedor (id, id_pedido, id_fornecedor, data_envio, status, observacao, ativo) FROM stdin;
+1	1	1	2025-10-31 17:45:31.84	ENVIADO	Pedido enviado para cotação	t
+2	2	1	2025-10-31 17:45:31.84	ENVIADO	Segundo pedido para o mesmo fornecedor	t
 \.
 
 
@@ -1494,6 +1540,14 @@ SELECT pg_catalog.setval('public.pecas_id_seq', 41, true);
 
 SELECT pg_catalog.setval('public.pedidos_id_pedido_seq', 2, true);
 
+--
+-- TOC entry 5107 (class 0 OID 0)
+-- Dependencies: 249
+-- Name: pedido_fornecedor_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
+--
+
+SELECT pg_catalog.setval('public.pedido_fornecedor_id_seq', 2, true);
+
 
 --
 -- TOC entry 5103 (class 0 OID 0)
@@ -1692,6 +1746,22 @@ ALTER TABLE ONLY public.pecas
 ALTER TABLE ONLY public.pedidos
     ADD CONSTRAINT pedidos_pkey PRIMARY KEY (id_pedido);
 
+--
+-- TOC entry 5011 (class 2606 OID 25120)
+-- Name: pedido_fornecedor pedido_fornecedor_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY public.pedido_fornecedor
+    ADD CONSTRAINT pedido_fornecedor_pkey PRIMARY KEY (id);
+
+--
+-- TOC entry 5012 (class 2606 OID 25125)
+-- Name: pedido_fornecedor unq_pedido_fornecedor; Type: CONSTRAINT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY public.pedido_fornecedor
+    ADD CONSTRAINT unq_pedido_fornecedor UNIQUE (id_pedido, id_fornecedor);
+
 
 --
 -- TOC entry 4855 (class 2606 OID 16963)
@@ -1804,6 +1874,27 @@ CREATE INDEX idx_historico_receitas_id_receita ON public.historico_receitas USIN
 
 CREATE INDEX idx_historico_receitas_tipo_operacao ON public.historico_receitas USING btree (tipo_operacao);
 
+--
+-- TOC entry 5013 (class 1259 OID 25140)
+-- Name: idx_pedido_fornecedor_pedido; Type: INDEX; Schema: public; Owner: postgres
+--
+
+CREATE INDEX idx_pedido_fornecedor_pedido ON public.pedido_fornecedor USING btree (id_pedido);
+
+--
+-- TOC entry 5014 (class 1259 OID 25145)
+-- Name: idx_pedido_fornecedor_fornecedor; Type: INDEX; Schema: public; Owner: postgres
+--
+
+CREATE INDEX idx_pedido_fornecedor_fornecedor ON public.pedido_fornecedor USING btree (id_fornecedor);
+
+--
+-- TOC entry 5015 (class 1259 OID 25150)
+-- Name: idx_pedidos_status_pedido; Type: INDEX; Schema: public; Owner: postgres
+--
+
+CREATE INDEX idx_pedidos_status_pedido ON public.pedidos USING btree (status_pedido);
+
 
 --
 -- TOC entry 4886 (class 2620 OID 16983)
@@ -1873,6 +1964,22 @@ ALTER TABLE ONLY public.itens_pedido
 ALTER TABLE ONLY public.itens_pedido
     ADD CONSTRAINT fk_item_pedido_pedido FOREIGN KEY (id_pedido) REFERENCES public.pedidos(id_pedido) ON DELETE CASCADE;
 
+--
+-- TOC entry 5009 (class 2606 OID 25130)
+-- Name: pedido_fornecedor fk_pedido_fornecedor_pedido; Type: FK CONSTRAINT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY public.pedido_fornecedor
+    ADD CONSTRAINT fk_pedido_fornecedor_pedido FOREIGN KEY (id_pedido) REFERENCES public.pedidos(id_pedido) ON DELETE CASCADE;
+
+--
+-- TOC entry 5010 (class 2606 OID 25135)
+-- Name: pedido_fornecedor fk_pedido_fornecedor_fornecedor; Type: FK CONSTRAINT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY public.pedido_fornecedor
+    ADD CONSTRAINT fk_pedido_fornecedor_fornecedor FOREIGN KEY (id_fornecedor) REFERENCES public.fornecedores(id) ON DELETE CASCADE;
+
 
 --
 -- TOC entry 4876 (class 2606 OID 17001)
@@ -1883,13 +1990,8 @@ ALTER TABLE ONLY public.peca_fornecedor
     ADD CONSTRAINT fk_peca FOREIGN KEY (peca_id) REFERENCES public.pecas(id) ON DELETE CASCADE;
 
 
---
--- TOC entry 4883 (class 2606 OID 25074)
--- Name: pedidos fk_peca; Type: FK CONSTRAINT; Schema: public; Owner: postgres
---
-
-ALTER TABLE ONLY public.pedidos
-    ADD CONSTRAINT fk_peca FOREIGN KEY (id_peca) REFERENCES public.pecas(id);
+-- Removida constraint fk_peca da tabela pedidos (campo id_peca foi removido)
+-- A relação agora é feita através da tabela itens_pedido
 
 
 --

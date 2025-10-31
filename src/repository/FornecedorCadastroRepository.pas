@@ -3,7 +3,7 @@
 interface
 
 uses
-  uDMConexao, FireDAC.Comp.Client, System.SysUtils, uFornecedor, Data.DB,System.Classes;
+  uDMConexao, FireDAC.Comp.Client, System.SysUtils, uFornecedor, Data.DB, System.Classes, System.Generics.Collections;
 
 type
   TFornecedorRepository = class
@@ -22,12 +22,13 @@ type
     function PesquisarFornecedores(const aFiltro: String): TDataSet;
     procedure VincularPecaFornecedor(const aFornecedorId, aPecaId: Integer);
     function ListarPecasVinculadas(const aFornecedorId: Integer): TDataSet;
-    Function CarregarFornecedores : TStringlist;
-    procedure DesvincularPecaFornecedor(const aFornecedorId,aPecaId : Integer);
-    Function InserirPedido(aIdPeca: Integer; aValorTotal: Currency):Boolean;
+    function CarregarFornecedores: TStringlist;
+    procedure DesvincularPecaFornecedor(const aFornecedorId, aPecaId: Integer);
+    function InserirPedido(aIdFornecedor: Integer; aFormaPagamento: string; aValorTotal: Currency; aObservacao: string): Integer;
+    procedure InserirItemPedido(aIdPedido: Integer; aIdPeca: Integer; aQuantidade: Integer; aValorUnitario: Currency);
     function CarregarPecas: TStringList;
     function ObterPrecoCompraPeca(aIdPeca: Integer): Currency;
-
+    function CarregarPecasPorFornecedor(aIdFornecedor: Integer): TStringList;
   end;
 
 implementation
@@ -41,7 +42,7 @@ begin
   Qry := TFDQuery.Create(nil);
   try
     Qry.Connection := FQuery.Connection;
-    Qry.SQL.Add('SELECT id, nome FROM Fornecedores ORDER BY nome');
+    Qry.SQL.Add('SELECT id, nome FROM Fornecedores WHERE ativo = TRUE ORDER BY nome');
     Qry.Open;
     while not Qry.Eof do
     begin
@@ -77,7 +78,7 @@ begin
     FQuery.ExecSQL;
   except
     on E: Exception do
-      raise Exception.Create('Erro ao vincular pe�a ao fornecedor: ' + E.Message);
+      raise Exception.Create('Erro ao vincular peça ao fornecedor: ' + E.Message);
   end;
 end;
 
@@ -96,10 +97,9 @@ begin
     Result := FQuery;
   except
     on E: Exception do
-      raise Exception.Create('Erro ao listar pe�as vinculadas: ' + E.Message);
+      raise Exception.Create('Erro ao listar peças vinculadas: ' + E.Message);
   end;
 end;
-
 
 procedure TFornecedorRepository.InserirFornecedor(aFornecedor: TFornecedor);
 begin
@@ -188,7 +188,7 @@ begin
     Result := FQuery;
   except
     on E: Exception do
-      raise Exception.Create('Erro ao listar Fornecedores para restaura��o: ' + E.Message);
+      raise Exception.Create('Erro ao listar Fornecedores para restauração: ' + E.Message);
   end;
 end;
 
@@ -213,7 +213,7 @@ begin
     FQuery.ExecSQL;
   except
     on E: Exception do
-      raise Exception.Create('Erro ao desvincular pe�a do fornecedor: ' + E.Message);
+      raise Exception.Create('Erro ao desvincular peça do fornecedor: ' + E.Message);
   end;
 end;
 
@@ -248,28 +248,90 @@ begin
   end;
 end;
 
-
-function TFornecedorRepository.InserirPedido(aIdPeca: Integer; aValorTotal: Currency): Boolean;
+function TFornecedorRepository.InserirPedido(aIdFornecedor: Integer; aFormaPagamento: string; aValorTotal: Currency; aObservacao: string): Integer;
 begin
-  Result := False;
+  Result := 0;
   FQuery.Close;
   FQuery.SQL.Clear;
-  FQuery.SQL.Add('INSERT INTO pedidos (id_peca, valor_total, data_pedido)');
-  FQuery.SQL.Add('VALUES (:id_peca, :valor_total, :data_pedido)');
-  FQuery.ParamByName('id_peca').AsInteger := aIdPeca;
+  FQuery.SQL.Add('INSERT INTO pedidos (id_fornecedor, forma_pagamento, valor_total, data_pedido, status_pedido, observacao)');
+  FQuery.SQL.Add('VALUES (:id_fornecedor, :forma_pagamento, :valor_total, :data_pedido, :status_pedido, :observacao)');
+  FQuery.SQL.Add('RETURNING id_pedido');
+
+  FQuery.ParamByName('id_fornecedor').AsInteger := aIdFornecedor;
+  FQuery.ParamByName('forma_pagamento').AsString := aFormaPagamento;
   FQuery.ParamByName('valor_total').AsCurrency := aValorTotal;
   FQuery.ParamByName('data_pedido').AsDateTime := Now;
+  FQuery.ParamByName('status_pedido').AsString := 'ABERTO';
+  FQuery.ParamByName('observacao').AsString := aObservacao;
+
   try
-    FQuery.ExecSQL;
-    Result := True;
+    FQuery.Open;
+    if not FQuery.IsEmpty then
+      Result := FQuery.FieldByName('id_pedido').AsInteger;
   except
     on E: Exception do
       raise Exception.Create('Erro ao inserir pedido: ' + E.Message);
   end;
 end;
 
+procedure TFornecedorRepository.InserirItemPedido(aIdPedido: Integer; aIdPeca: Integer; aQuantidade: Integer; aValorUnitario: Currency);
+var
+  ValorTotalItem: Currency;
+begin
+  ValorTotalItem := aValorUnitario * aQuantidade;
 
+  FQuery.Close;
+  FQuery.SQL.Clear;
+  FQuery.SQL.Add('INSERT INTO itens_pedido (id_pedido, id_peca, quantidade, valor_unitario, valor_total)');
+  FQuery.SQL.Add('VALUES (:id_pedido, :id_peca, :quantidade, :valor_unitario, :valor_total)');
 
+  FQuery.ParamByName('id_pedido').AsInteger := aIdPedido;
+  FQuery.ParamByName('id_peca').AsInteger := aIdPeca;
+  FQuery.ParamByName('quantidade').AsInteger := aQuantidade;
+  FQuery.ParamByName('valor_unitario').AsCurrency := aValorUnitario;
+  FQuery.ParamByName('valor_total').AsCurrency := ValorTotalItem;
+
+  try
+    FQuery.ExecSQL;
+  except
+    on E: Exception do
+      raise Exception.Create('Erro ao inserir item do pedido: ' + E.Message);
+  end;
+end;
+
+function TFornecedorRepository.CarregarPecasPorFornecedor(aIdFornecedor: Integer): TStringList;
+var
+  Lista: TStringList;
+  Qry: TFDQuery;
+begin
+  Lista := TStringList.Create;
+  Qry := TFDQuery.Create(nil);
+  try
+    Qry.Connection := FQuery.Connection;
+    Qry.SQL.Add('SELECT p.id, p.nome');
+    Qry.SQL.Add('FROM pecas p');
+    Qry.SQL.Add('INNER JOIN peca_fornecedor pf ON p.id = pf.peca_id');
+    Qry.SQL.Add('WHERE pf.fornecedor_id = :fornecedor_id');
+    Qry.SQL.Add('AND p.ativo = TRUE');
+    Qry.SQL.Add('ORDER BY p.nome');
+    Qry.ParamByName('fornecedor_id').AsInteger := aIdFornecedor;
+    Qry.Open;
+
+    while not Qry.Eof do
+    begin
+      Lista.AddObject(Qry.FieldByName('nome').AsString, TObject(Qry.FieldByName('id').AsInteger));
+      Qry.Next;
+    end;
+    Result := Lista;
+  except
+    on E: Exception do
+    begin
+      Lista.Free;
+      raise Exception.Create('Erro ao listar peças do fornecedor: ' + E.Message);
+    end;
+  end;
+  Qry.Free;
+end;
 
 function TFornecedorRepository.CarregarPecas: TStringList;
 var
@@ -318,4 +380,3 @@ begin
 end;
 
 end.
-

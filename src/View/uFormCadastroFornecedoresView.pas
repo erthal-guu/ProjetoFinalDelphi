@@ -157,6 +157,10 @@ type
     procedure Label18Click(Sender: TObject);
     procedure AtualizarEstadoCombos;
     procedure LblFinalizarClick(Sender: TObject);
+    procedure CmbFornecedorPedidoChange(Sender: TObject);
+    procedure CmbPeçasChange(Sender: TObject);
+    procedure EdtQuantidadeChange(Sender: TObject);
+    procedure CalcularValorTotalPedido;
 
   private
     { Private declarations }
@@ -352,6 +356,48 @@ If CheckBoxPeçasVinculadas.Checked = True then begin
 end;
 end;
 
+procedure TFormCadastroFornecedores.CmbFornecedorPedidoChange(Sender: TObject);
+var
+  Controller: TFornecedorController;
+  ListaPecas: TStringList;
+  IdFornecedor: Integer;
+  i: Integer;
+begin
+  CmbPeças.Items.Clear;
+  CmbPeças.ItemIndex := -1;
+
+  if CmbFornecedorPedido.ItemIndex = -1 then
+    Exit;
+
+  IdFornecedor := Integer(CmbFornecedorPedido.Items.Objects[CmbFornecedorPedido.ItemIndex]);
+
+  Controller := TFornecedorController.Create;
+  try
+    ListaPecas := Controller.CarregarPecasPorFornecedor(IdFornecedor);
+    try
+      if ListaPecas.Count = 0 then
+      begin
+        ShowMessage('Este fornecedor não possui peças vinculadas!');
+        Exit;
+      end;
+
+      for i := 0 to ListaPecas.Count - 1 do
+        CmbPeças.Items.AddObject(ListaPecas[i], ListaPecas.Objects[i]);
+
+      CmbPeças.ItemIndex := -1;
+    finally
+      ListaPecas.Free;
+    end;
+  finally
+    Controller.Free;
+  end;
+end;
+
+procedure TFormCadastroFornecedores.CmbPeçasChange(Sender: TObject);
+begin
+  CalcularValorTotalPedido;
+end;
+
 procedure TFormCadastroFornecedores.EdtCEPChange(Sender: TObject);
 begin
   BuscarCEP;
@@ -388,6 +434,11 @@ begin
   end;
 end;
 
+
+procedure TFormCadastroFornecedores.EdtQuantidadeChange(Sender: TObject);
+begin
+  CalcularValorTotalPedido;
+end;
 
 procedure TFormCadastroFornecedores.EdtTelefoneClick(Sender: TObject);
 begin
@@ -446,6 +497,7 @@ begin
   ListBoxPedidos.Clear;
   AtualizarEstadoCombos;
   LimparCampos;
+  EdtValorTotal.Text := '0,00';
 end;
 
 procedure TFormCadastroFornecedores.AtualizarEstadoCombos;
@@ -463,18 +515,67 @@ begin
 end;
 
 procedure TFormCadastroFornecedores.LblAdicionarClick(Sender: TObject);
+var
+  Controller: TFornecedorController;
+  IdPeca, Quantidade: Integer;
+  PrecoUnitario, ValorItem, ValorTotalAtual: Currency;
 begin
-  if (CmbPeças.ItemIndex = -1) or (EdtQuantidade.Text = '') then
+  if CmbFornecedorPedido.ItemIndex = -1 then
   begin
-    ShowMessage('Selecione uma peça e informe a quantidade!');
+    ShowMessage('Selecione um fornecedor primeiro!');
     Exit;
   end;
 
-  ListBoxPedidos.AddItem('Peça: ' + CmbPeças.Items[CmbPeças.ItemIndex] +
-                         ' - Quantidade: ' + EdtQuantidade.Text, nil);
-  EdtQuantidade.Clear;
-  CmbPeças.ItemIndex := -1;
-  AtualizarEstadoCombos;
+  if CmbPeças.ItemIndex = -1 then
+  begin
+    ShowMessage('Selecione uma peça!');
+    Exit;
+  end;
+
+  if Trim(EdtQuantidade.Text) = '' then
+  begin
+    ShowMessage('Informe a quantidade!');
+    EdtQuantidade.SetFocus;
+    Exit;
+  end;
+
+  Quantidade := StrToIntDef(EdtQuantidade.Text, 0);
+  if Quantidade <= 0 then
+  begin
+    ShowMessage('Quantidade deve ser maior que zero!');
+    EdtQuantidade.SetFocus;
+    Exit;
+  end;
+
+  Controller := TFornecedorController.Create;
+  try
+    IdPeca := Integer(CmbPeças.Items.Objects[CmbPeças.ItemIndex]);
+    PrecoUnitario := Controller.ObterPrecoCompraPeca(IdPeca);
+
+    if PrecoUnitario <= 0 then
+    begin
+      ShowMessage('Preço da peça não encontrado ou inválido!');
+      Exit;
+    end;
+
+    ValorItem := PrecoUnitario * Quantidade;
+    ListBoxPedidos.AddItem(
+      Format('Peça: %s - Qtd: %d - Valor Unit.: R$ %.2f - Subtotal: R$ %.2f',
+        [CmbPeças.Text, Quantidade, PrecoUnitario, ValorItem]),
+      TObject(IdPeca)
+    );
+    ValorTotalAtual := StrToCurrDef(StringReplace(EdtValorTotal.Text, ',', '.', [rfReplaceAll]), 0);
+    ValorTotalAtual := ValorTotalAtual + ValorItem;
+    EdtValorTotal.Text := FormatFloat('#,##0.00', ValorTotalAtual);
+    EdtQuantidade.Clear;
+    CmbPeças.ItemIndex := -1;
+    EdtQuantidade.SetFocus;
+
+    AtualizarEstadoCombos;
+
+  finally
+    Controller.Free;
+  end;
 end;
 
 
@@ -547,60 +648,68 @@ end;
 procedure TFormCadastroFornecedores.LblFinalizarClick(Sender: TObject);
 var
   Controller: TFornecedorController;
-  i, j: Integer;
-  Linha, NomePeca: string;
-  PosTraco: Integer;
-  IdPeca: Integer;
+  i, PosTraco, PosDoisPontos: Integer;
+  Linha, NomePeca, QuantidadeStr: string;
+  IdFornecedor: Integer;
   ValorTotal: Currency;
+  PecasIDs: TList<Integer>;
+  Quantidades: TList<Integer>;
+  FormaPagamento: string;
 begin
-  if MessageDlg('Deseja realmente finalizar este pedido?', mtConfirmation, [mbYes, mbNo], 0) <> mrYes then
-    Exit;
-
+  PecasIDs := TList<Integer>.Create;
+  Quantidades := TList<Integer>.Create;
   Controller := TFornecedorController.Create;
+
   try
+    IdFornecedor := Integer(CmbFornecedorPedido.Items.Objects[CmbFornecedorPedido.ItemIndex]);
+    FormaPagamento := CmbFormaPagamento.Text;
     ValorTotal := StrToCurrDef(StringReplace(EdtValorTotal.Text, '.', '', [rfReplaceAll]), 0);
 
     for i := 0 to ListBoxPedidos.Items.Count - 1 do
     begin
       Linha := ListBoxPedidos.Items[i];
-      Delete(Linha, 1, Pos(':', Linha));
+      PosDoisPontos := Pos(':', Linha);
+      Delete(Linha, 1, PosDoisPontos);
       Linha := Trim(Linha);
+
       PosTraco := Pos(' - Quantidade:', Linha);
       if PosTraco > 0 then
       begin
         NomePeca := Trim(Copy(Linha, 1, PosTraco - 1));
-        IdPeca := 0;
-
-        for j := 0 to CmbPeças.Items.Count - 1 do
+        QuantidadeStr := Trim(Copy(Linha, PosTraco + Length(' - Quantidade:'), Length(Linha)));
+        for var j := 0 to CmbPeças.Items.Count - 1 do
         begin
           if Trim(CmbPeças.Items[j]) = NomePeca then
           begin
-            IdPeca := Integer(CmbPeças.Items.Objects[j]);
+            PecasIDs.Add(Integer(CmbPeças.Items.Objects[j]));
+            Quantidades.Add(StrToIntDef(QuantidadeStr, 1));
             Break;
           end;
         end;
-
-        if IdPeca > 0 then
-          Controller.SalvarPedido(IdPeca, ValorTotal);
       end;
     end;
+    if Controller.SalvarPedido(IdFornecedor, FormaPagamento, ValorTotal, EdtObservacao.Text, PecasIDs, Quantidades) then
+    begin
+      ShowMessage('Pedido finalizado com sucesso!');
+      ListBoxPedidos.Clear;
+      CmbFornecedorPedido.ItemIndex := -1;
+      CmbFormaPagamento.ItemIndex := -1;
+      CmbPeças.ItemIndex := -1;
+      EdtValorTotal.Clear;
+      EdtObservacao.Clear;
+      EdtQuantidade.Clear;
+      AtualizarEstadoCombos;
+      PnlPedido.Visible := False;
+      CarregarGrid;
+    end;
 
-    ShowMessage('Pedido finalizado com sucesso!');
-    ListBoxPedidos.Clear;
-    CmbFornecedorPedido.ItemIndex := -1;
-    CmbFormaPagamento.ItemIndex := -1;
-    CmbPeças.ItemIndex := -1;
-    EdtValorTotal.Clear;
-    EdtObservacao.Clear;
-    EdtQuantidade.Clear;
-    AtualizarEstadoCombos;
-    PnlPedido.Visible := False;
-    CarregarGrid;
   except
     on E: Exception do
       ShowMessage('Erro ao finalizar pedido: ' + E.Message);
   end;
 
+  PecasIDs.Free;
+  Quantidades.Free;
   Controller.Free;
 end;
 
@@ -851,6 +960,7 @@ begin
 end;
 
 
+
 procedure TFormCadastroFornecedores.BtnPedidoClick(Sender: TObject);
 begin
   PnlPedido.Visible := True;
@@ -885,6 +995,29 @@ end;
 
 
 
+
+procedure TFormCadastroFornecedores.CalcularValorTotalPedido;
+var
+  Controller: TFornecedorController;
+  Quantidade: Integer;
+  ValorUnitario: Currency;
+begin
+
+  Controller := TFornecedorController.Create;
+  try
+    Quantidade := StrToIntDef(EdtQuantidade.Text,0);
+    if Quantidade > 0 then
+    begin
+      ValorUnitario := Controller.ObterPrecoCompraPeca(
+        Integer(CmbPeças.Items.Objects[CmbPeças.ItemIndex]));
+      EdtValorTotal.Text := FormatFloat('#,##0.00', Quantidade * ValorUnitario);
+    end
+    else
+      EdtValorTotal.Text := '0,00';
+  finally
+    Controller.Free;
+  end;
+end;
 
 procedure TFormCadastroFornecedores.ImgFecharPedidoClick(Sender: TObject);
 begin

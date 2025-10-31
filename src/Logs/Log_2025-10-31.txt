@@ -7,3 +7,7 @@
 14:58:35 - LOGIN - Sucesso: Usuário ID 32, Nome: MecanicoMassa, (CPF: 333.333.333-33)
 14:59:56 - LOGIN - Sucesso: Usuário ID 31, Nome: AtendenteMassa, (CPF: 222.222.222-22)
 15:00:35 - LOGIN - Sucesso: Usuário ID 32, Nome: MecanicoMassa, (CPF: 333.333.333-33)
+19:40:59 - PEDIDO - Usuário ID: 0 criou Pedido ID: 1 com 1 itens para Fornecedor ID: 12
+19:41:55 - PEDIDO - Usuário ID: 0 criou Pedido ID: 2 com 2 itens para Fornecedor ID: 12
+20:25:09 - PEDIDO - Usuário ID: 0 criou Pedido ID: 3 com 0 itens para Fornecedor ID: 12
+20:29:44 - PEDIDO - Usuário ID: 0 criou Pedido ID: 4 com 0 itens para Fornecedor ID: 12

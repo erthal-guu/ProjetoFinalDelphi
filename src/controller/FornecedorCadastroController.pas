@@ -3,7 +3,7 @@
 interface
 
 uses
-  uFornecedor, FornecedorCadastroService, FireDAC.Comp.Client, Data.DB,System.Classes,System.Generics.Collections;
+  uFornecedor, FornecedorCadastroService, FireDAC.Comp.Client, Data.DB, System.Classes, System.Generics.Collections;
 
 type
   TFornecedorController = class
@@ -25,20 +25,23 @@ type
     function PesquisarFornecedores(const aFiltro: String): TDataSet;
     procedure VincularPecaAoFornecedor(aPecaID, aFornecedorID: Integer);
     function ListarPecasPorFornecedor(aFornecedorID: Integer): TDataSet;
-    function CarregarFornecedores : TStringList;
+    function CarregarFornecedores: TStringList;
     procedure DesvincularPecaAoFornecedor(aPecaID, aFornecedorID: Integer);
     function CarregarPecas: TStringList;
     function ObterPrecoCompraPeca(aIdPeca: Integer): Currency;
     function CalcularValorTotal(aPecasIDs: TList<Integer>; aQuantidades: TList<Integer>): Currency;
-    function SalvarPedido(aIdPeca: Integer; aValoTotal: Currency): Boolean;
+    function SalvarPedido(
+      aIdFornecedor: Integer;
+      aFormaPagamento: string;
+      aValorTotal: Currency;
+      aObservacao: string;
+      aPecasIDs: TList<Integer>;
+      aQuantidades: TList<Integer>
+    ): Boolean;
+    function CarregarPecasPorFornecedor(aIdFornecedor: Integer): TStringList;
   end;
 
 implementation
-
-function TFornecedorController.CarregarFornecedores: TStringList;
-begin
-  Result := Service.CarregarFornecedores;
-end;
 
 constructor TFornecedorController.Create;
 begin
@@ -52,15 +55,19 @@ begin
   inherited;
 end;
 
+function TFornecedorController.CarregarFornecedores: TStringList;
+begin
+  Result := Service.CarregarFornecedores;
+end;
+
 function TFornecedorController.ListarFornecedoresRestaurar: TDataSet;
 begin
   Result := Service.ListarFornecedoresRestaurar;
 end;
 
-procedure TFornecedorController.DesvincularPecaAoFornecedor(aPecaID,
-  aFornecedorID: Integer);
+procedure TFornecedorController.DesvincularPecaAoFornecedor(aPecaID, aFornecedorID: Integer);
 begin
- Service.DesvincularPecaDoFornecedor(aPecaID,aFornecedorID);
+  Service.DesvincularPecaDoFornecedor(aPecaID, aFornecedorID);
 end;
 
 function TFornecedorController.CriarObjeto(
@@ -97,8 +104,7 @@ begin
   Result := Service.ListarFornecedores;
 end;
 
-function TFornecedorController.ListarPecasPorFornecedor(
-  aFornecedorID: Integer): TDataSet;
+function TFornecedorController.ListarPecasPorFornecedor(aFornecedorID: Integer): TDataSet;
 begin
   Result := Service.ListarPecasPorFornecedor(aFornecedorID);
 end;
@@ -118,22 +124,31 @@ begin
   Result := Service.SalvarFornecedor(Fornecedor);
 end;
 
-function TFornecedorController.SalvarPedido(aIdPeca: Integer;
-  aValoTotal: Currency): Boolean;
+function TFornecedorController.SalvarPedido(
+  aIdFornecedor: Integer;
+  aFormaPagamento: string;
+  aValorTotal: Currency;
+  aObservacao: string;
+  aPecasIDs: TList<Integer>;
+  aQuantidades: TList<Integer>
+): Boolean;
 begin
-   Result := Service.SalvarPedido(aIdPeca, aValoTotal);
+  Result := Service.SalvarPedido(aIdFornecedor, aFormaPagamento, aValorTotal, aObservacao, aPecasIDs, aQuantidades);
 end;
 
-procedure TFornecedorController.VincularPecaAoFornecedor(aPecaID,
-  aFornecedorID: Integer);
+procedure TFornecedorController.VincularPecaAoFornecedor(aPecaID, aFornecedorID: Integer);
 begin
-   Service.VincularPecaAoFornecedor(aPecaID,aFornecedorID);
+  Service.VincularPecaAoFornecedor(aPecaID, aFornecedorID);
 end;
-
 
 function TFornecedorController.CarregarPecas: TStringList;
 begin
   Result := Service.CarregarPeças;
+end;
+
+function TFornecedorController.CarregarPecasPorFornecedor(aIdFornecedor: Integer): TStringList;
+begin
+  Result := Service.CarregarPecasPorFornecedor(aIdFornecedor);
 end;
 
 function TFornecedorController.ObterPrecoCompraPeca(aIdPeca: Integer): Currency;
@@ -146,6 +161,5 @@ function TFornecedorController.CalcularValorTotal(aPecasIDs: TList<Integer>;
 begin
   Result := Service.CalcularValorTotal(aPecasIDs, aQuantidades);
 end;
-
 
 end.

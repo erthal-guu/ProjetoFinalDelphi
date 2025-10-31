@@ -93,12 +93,13 @@ procedure TPedidoFornecedorRepository.InserirPecaPedido(aIdPedido, aIdPeca: Inte
 begin
   FQuery.Close;
   FQuery.SQL.Clear;
-  FQuery.SQL.Add('INSERT INTO pecas_pedido (id_pedido, id_peca, quantidade, preco_unitario)');
-  FQuery.SQL.Add('VALUES (:id_pedido, :id_peca, :quantidade, :preco_unitario)');
+  FQuery.SQL.Add('INSERT INTO itens_pedido (id_pedido, id_peca, quantidade, preco_unitario, subtotal)');
+  FQuery.SQL.Add('VALUES (:id_pedido, :id_peca, :quantidade, :preco_unitario, :subtotal)');
   FQuery.ParamByName('id_pedido').AsInteger := aIdPedido;
   FQuery.ParamByName('id_peca').AsInteger := aIdPeca;
   FQuery.ParamByName('quantidade').AsInteger := aQuantidade;
   FQuery.ParamByName('preco_unitario').AsCurrency := aPrecoUnitario;
+  FQuery.ParamByName('subtotal').AsCurrency := aQuantidade * aPrecoUnitario;
   FQuery.ExecSQL;
 end;
 
@@ -106,11 +107,10 @@ function TPedidoFornecedorRepository.ListarPecasDoPedido(aIdPedido: Integer): TD
 begin
   FQuery.Close;
   FQuery.SQL.Clear;
-  FQuery.SQL.Add('SELECT pp.id_peca, p.nome as peca, pp.quantidade, pp.preco_unitario,');
-  FQuery.SQL.Add('(pp.quantidade * pp.preco_unitario) as subtotal');
-  FQuery.SQL.Add('FROM pecas_pedido pp');
-  FQuery.SQL.Add('INNER JOIN pecas p ON pp.id_peca = p.id_peca');
-  FQuery.SQL.Add('WHERE pp.id_pedido = :id_pedido');
+  FQuery.SQL.Add('SELECT ip.id_peca, p.nome as peca, ip.quantidade, ip.preco_unitario, ip.subtotal');
+  FQuery.SQL.Add('FROM itens_pedido ip');
+  FQuery.SQL.Add('INNER JOIN pecas p ON ip.id_peca = p.id');
+  FQuery.SQL.Add('WHERE ip.id_pedido = :id_pedido');
   FQuery.ParamByName('id_pedido').AsInteger := aIdPedido;
   FQuery.Open;
   Result := FQuery;
