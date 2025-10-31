@@ -7,7 +7,7 @@ uses
   Vcl.Graphics, Vcl.Controls, Vcl.Forms, Vcl.Dialogs, Data.DB, Vcl.WinXCtrls,
   Vcl.Grids, Vcl.DBGrids, Vcl.Buttons, Vcl.Mask, Vcl.StdCtrls, Vcl.Imaging.pngimage,
   Vcl.ExtCtrls, Vcl.ComCtrls, FornecedorCadastroService, FornecedorCadastroController, uFornecedor, PeçasCadastroService,
-  Vcl.CheckLst, System.Generics.Collections;
+  Vcl.CheckLst, System.Generics.Collections,uPedido;
 
 type
   TFormCadastroFornecedores = class(TForm)
@@ -156,6 +156,7 @@ type
     procedure LblAdicionarClick(Sender: TObject);
     procedure Label18Click(Sender: TObject);
     procedure AtualizarEstadoCombos;
+    procedure LblFinalizarClick(Sender: TObject);
 
   private
     { Private declarations }
@@ -541,6 +542,66 @@ begin
       FornecedorController.Free;
     end;
   end;
+end;
+
+procedure TFormCadastroFornecedores.LblFinalizarClick(Sender: TObject);
+var
+  Controller: TFornecedorController;
+  i, j: Integer;
+  Linha, NomePeca: string;
+  PosTraco: Integer;
+  IdPeca: Integer;
+  ValorTotal: Currency;
+begin
+  if MessageDlg('Deseja realmente finalizar este pedido?', mtConfirmation, [mbYes, mbNo], 0) <> mrYes then
+    Exit;
+
+  Controller := TFornecedorController.Create;
+  try
+    ValorTotal := StrToCurrDef(StringReplace(EdtValorTotal.Text, '.', '', [rfReplaceAll]), 0);
+
+    for i := 0 to ListBoxPedidos.Items.Count - 1 do
+    begin
+      Linha := ListBoxPedidos.Items[i];
+      Delete(Linha, 1, Pos(':', Linha));
+      Linha := Trim(Linha);
+      PosTraco := Pos(' - Quantidade:', Linha);
+      if PosTraco > 0 then
+      begin
+        NomePeca := Trim(Copy(Linha, 1, PosTraco - 1));
+        IdPeca := 0;
+
+        for j := 0 to CmbPeças.Items.Count - 1 do
+        begin
+          if Trim(CmbPeças.Items[j]) = NomePeca then
+          begin
+            IdPeca := Integer(CmbPeças.Items.Objects[j]);
+            Break;
+          end;
+        end;
+
+        if IdPeca > 0 then
+          Controller.SalvarPedido(IdPeca, ValorTotal);
+      end;
+    end;
+
+    ShowMessage('Pedido finalizado com sucesso!');
+    ListBoxPedidos.Clear;
+    CmbFornecedorPedido.ItemIndex := -1;
+    CmbFormaPagamento.ItemIndex := -1;
+    CmbPeças.ItemIndex := -1;
+    EdtValorTotal.Clear;
+    EdtObservacao.Clear;
+    EdtQuantidade.Clear;
+    AtualizarEstadoCombos;
+    PnlPedido.Visible := False;
+    CarregarGrid;
+  except
+    on E: Exception do
+      ShowMessage('Erro ao finalizar pedido: ' + E.Message);
+  end;
+
+  Controller.Free;
 end;
 
 procedure TFormCadastroFornecedores.LblVincularClick(Sender: TObject);

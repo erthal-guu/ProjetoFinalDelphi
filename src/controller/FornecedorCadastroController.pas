@@ -30,6 +30,7 @@ type
     function CarregarPecas: TStringList;
     function ObterPrecoCompraPeca(aIdPeca: Integer): Currency;
     function CalcularValorTotal(aPecasIDs: TList<Integer>; aQuantidades: TList<Integer>): Currency;
+    function SalvarPedido(aIdPeca: Integer; aValoTotal: Currency): Boolean;
   end;
 
 implementation
@@ -115,6 +116,12 @@ end;
 function TFornecedorController.SalvarFornecedor(Fornecedor: TFornecedor): Boolean;
 begin
   Result := Service.SalvarFornecedor(Fornecedor);
+end;
+
+function TFornecedorController.SalvarPedido(aIdPeca: Integer;
+  aValoTotal: Currency): Boolean;
+begin
+   Result := Service.SalvarPedido(aIdPeca, aValoTotal);
 end;
 
 procedure TFornecedorController.VincularPecaAoFornecedor(aPecaID,

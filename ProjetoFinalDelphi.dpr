@@ -59,7 +59,8 @@ uses
   ReceitaController in 'src\controller\ReceitaController.pas',
   ReceitaService in 'src\Services\ReceitaService.pas',
   ReceitaRepository in 'src\repository\ReceitaRepository.pas',
-  uReceita in 'src\Model\uReceita.pas';
+  uReceita in 'src\Model\uReceita.pas',
+  uPedido in 'src\Model\uPedido.pas';
 
 {$R *.res}
 

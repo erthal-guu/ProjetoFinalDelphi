@@ -32,6 +32,7 @@ type
     function ObterPrecoCompraPeca(aIdPeca: Integer): Currency;
     function CalcularValorTotal(aPecasIDs: TList<Integer>; aQuantidades: TList<Integer>): Currency;
     Function CarregarPeças : TStringList;
+    Function SalvarPedido(aIdPeca: Integer; aValorTotal: Currency): Boolean;
   end;
 
 implementation
@@ -101,6 +102,14 @@ begin
         [IDUsuarioLogado, Fornecedor.getCNPJ]));
     end;
   end;
+end;
+
+
+
+function TFornecedorService.SalvarPedido(aIdPeca: Integer;
+  aValorTotal: Currency): Boolean;
+begin
+  Result := Repository.InserirPedido(aIdPeca,aValorTotal);
 end;
 
 procedure TFornecedorService.EditarFornecedor(Fornecedor: TFornecedor);

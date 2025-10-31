@@ -82,8 +82,6 @@
           Color = 9521152
           ParentBackground = False
           TabOrder = 0
-          ExplicitWidth = 865
-          ExplicitHeight = 361
           object PnlBackgroundVincular: TPanel
             AlignWithMargins = True
             Left = 19
@@ -100,8 +98,6 @@
             Color = clBackground
             ParentBackground = False
             TabOrder = 1
-            ExplicitWidth = 597
-            ExplicitHeight = 314
             object PnlFooter: TPanel
               Left = 1
               Top = 310
@@ -2233,8 +2229,6 @@
           ParentBackground = False
           TabOrder = 0
           Visible = False
-          ExplicitLeft = 144
-          ExplicitTop = 211
           object LblRestaurar: TLabel
             AlignWithMargins = True
             Left = 3
@@ -2251,8 +2245,7 @@
             Font.Name = 'Segoe UI'
             Font.Style = [fsBold]
             ParentFont = False
-            ExplicitLeft = 46
-            ExplicitTop = 13
+            ExplicitWidth = 109
           end
           object ImgFechar: TImage
             Left = 800
@@ -2386,7 +2379,6 @@
         Color = 6172416
         ParentBackground = False
         TabOrder = 4
-        ExplicitTop = -1
         object EdtPesquisar: TSearchBox
           AlignWithMargins = True
           Left = 20
@@ -2437,8 +2429,7 @@
           Font.Name = 'Segoe UI'
           Font.Style = [fsBold]
           ParentFont = False
-          ExplicitLeft = 4
-          ExplicitTop = 69
+          ExplicitWidth = 79
         end
         object ImgFecharPedido: TImage
           Left = 847
@@ -2476,7 +2467,6 @@
           Color = 9521152
           ParentBackground = False
           TabOrder = 0
-          ExplicitLeft = 22
           object PnlDesingPedido: TPanel
             AlignWithMargins = True
             Left = 19
@@ -2493,8 +2483,6 @@
             Color = clBackground
             ParentBackground = False
             TabOrder = 1
-            ExplicitWidth = 447
-            ExplicitHeight = 289
             object ListBoxPedidos: TListBox
               AlignWithMargins = True
               Left = 1
@@ -2508,7 +2496,6 @@
               Align = alClient
               ItemHeight = 20
               TabOrder = 0
-              ExplicitLeft = 4
             end
             object Panel3: TPanel
               AlignWithMargins = True
@@ -2672,7 +2659,8 @@
                 ParentColor = False
                 ParentFont = False
                 OnClick = LblAdicionarClick
-                ExplicitTop = 6
+                ExplicitWidth = 64
+                ExplicitHeight = 20
               end
             end
             object EdtValorTotal: TEdit
@@ -2817,7 +2805,7 @@
                 Font.Style = []
                 ParentColor = False
                 ParentFont = False
-                OnClick = LblAtualizarClick
+                OnClick = LblFinalizarClick
                 ExplicitWidth = 55
                 ExplicitHeight = 20
               end

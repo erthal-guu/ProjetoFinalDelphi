@@ -1,0 +1,9 @@
+14:54:44 - VINCULAR - Pe�a ID: 27 vinculada ao Fornecedor ID: 7
+14:54:56 - DESVINCULAR - Pe�a ID: 27 Desvinculada do Fornecedor ID: 7
+14:56:20 - CADASTRO - ID: 0 cadastrou ordem de serviço com cliente ID: 2
+14:56:41 - RECEBER - ID: 0 registrou recebimento da receita ID: 3 - Valor: 1000,00
+14:57:02 - RECEBER - ID: 0 registrou recebimento da receita ID: 3 - Valor: 1109,75
+14:57:34 - RESTAURAR - ID: 0 restaurou a receita ID: 1
+14:58:35 - LOGIN - Sucesso: Usuário ID 32, Nome: MecanicoMassa, (CPF: 333.333.333-33)
+14:59:56 - LOGIN - Sucesso: Usuário ID 31, Nome: AtendenteMassa, (CPF: 222.222.222-22)
+15:00:35 - LOGIN - Sucesso: Usuário ID 32, Nome: MecanicoMassa, (CPF: 333.333.333-33)

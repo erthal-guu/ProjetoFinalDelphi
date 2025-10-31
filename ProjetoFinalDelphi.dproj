@@ -227,6 +227,7 @@
         <DCCReference Include="src\Services\ReceitaService.pas"/>
         <DCCReference Include="src\repository\ReceitaRepository.pas"/>
         <DCCReference Include="src\Model\uReceita.pas"/>
+        <DCCReference Include="src\Model\uPedido.pas"/>
         <BuildConfiguration Include="Base">
             <Key>Base</Key>
         </BuildConfiguration>

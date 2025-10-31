@@ -24,7 +24,7 @@ type
     function ListarPecasVinculadas(const aFornecedorId: Integer): TDataSet;
     Function CarregarFornecedores : TStringlist;
     procedure DesvincularPecaFornecedor(const aFornecedorId,aPecaId : Integer);
-    procedure InserirPedido(aIdFornecedor,aIdPeca,aQuantidade: Integer; aFormaPagamento,aObservação: String; aValorTotal: Currency);
+    Function InserirPedido(aIdPeca: Integer; aValorTotal: Currency):Boolean;
     function CarregarPecas: TStringList;
     function ObterPrecoCompraPeca(aIdPeca: Integer): Currency;
 
@@ -249,32 +249,25 @@ begin
 end;
 
 
-procedure TFornecedorRepository.InserirPedido(aIdFornecedor,aIdPeca,aQuantidade: Integer; aFormaPagamento,aObservação: String; aValorTotal: Currency);
+function TFornecedorRepository.InserirPedido(aIdPeca: Integer; aValorTotal: Currency): Boolean;
 begin
+  Result := False;
   FQuery.Close;
   FQuery.SQL.Clear;
-  FQuery.SQL.Add('INSERT INTO pedidos_fornecedor ');
-  FQuery.SQL.Add('  (id_fornecedor, id_peca, data_pedido,quantidade, forma_pagamento, status, observacao, valor_total, ativo)');
-  FQuery.SQL.Add('VALUES ');
-  FQuery.SQL.Add('  (:id_fornecedor, :id_peca, :data_pedido,:quantidade,:forma_pagamento, :status, :observacao, :valor_total, :ativo)');
-
-  FQuery.ParamByName('id_fornecedor').AsInteger := aIdFornecedor;
+  FQuery.SQL.Add('INSERT INTO pedidos (id_peca, valor_total, data_pedido)');
+  FQuery.SQL.Add('VALUES (:id_peca, :valor_total, :data_pedido)');
   FQuery.ParamByName('id_peca').AsInteger := aIdPeca;
-  FQuery.ParamByName('data_pedido').AsDateTime := Now;
-  FQuery.ParamByName('quantidade').AsInteger := aQuantidade;
-  FQuery.ParamByName('forma_pagamento').AsString := aFormaPagamento;
-  FQuery.ParamByName('status').AsString := 'PENDENTE';
-  FQuery.ParamByName('observacao').AsString := '';
   FQuery.ParamByName('valor_total').AsCurrency := aValorTotal;
-  FQuery.ParamByName('ativo').AsBoolean := True;
-
+  FQuery.ParamByName('data_pedido').AsDateTime := Now;
   try
     FQuery.ExecSQL;
+    Result := True;
   except
     on E: Exception do
       raise Exception.Create('Erro ao inserir pedido: ' + E.Message);
   end;
 end;
+
 
 
 
