@@ -3,10 +3,14 @@ unit uFormCadastroFuncionariosView;
 interface
 
 uses
-  Winapi.Windows, Winapi.Messages, System.SysUtils, System.Variants, System.Classes,
-  Vcl.Graphics, Vcl.Controls, Vcl.Forms, Vcl.Dialogs, Data.DB, Vcl.WinXCtrls, Vcl.Grids,
-  Vcl.DBGrids, Vcl.Buttons, Vcl.Mask, Vcl.StdCtrls, Vcl.Imaging.pngimage, Vcl.ExtCtrls,
-  Vcl.ComCtrls, FuncionarioCadastroService, FuncionarioCadastroController, uFuncionario;
+  Winapi.Windows, Winapi.Messages, System.SysUtils, System.Variants,
+  System.Classes,
+  Vcl.Graphics, Vcl.Controls, Vcl.Forms, Vcl.Dialogs, Data.DB, Vcl.WinXCtrls,
+  Vcl.Grids,
+  Vcl.DBGrids, Vcl.Buttons, Vcl.Mask, Vcl.StdCtrls, Vcl.Imaging.pngimage,
+  Vcl.ExtCtrls,
+  Vcl.ComCtrls, FuncionarioCadastroService, FuncionarioCadastroController,
+  uFuncionario;
 
 type
   TFormCadastroFuncionarios = class(TForm)
@@ -52,7 +56,6 @@ type
     Label12: TLabel;
     Label1: TLabel;
     Label2: TLabel;
-    Image1: TImage;
     Label13: TLabel;
     CmbStatus: TComboBox;
     EdtNome: TEdit;
@@ -71,6 +74,7 @@ type
     PnlButtonAtualizar: TPanel;
     LblAtualizar: TLabel;
     CmbTipo: TComboBox;
+    Image1: TImage;
     procedure BtnAdicionarClick(Sender: TObject);
     procedure BtnPesquisarClick(Sender: TObject);
     procedure FormCreate(Sender: TObject);
@@ -86,7 +90,7 @@ type
 
     procedure CarregarGrid;
     procedure CarregarGridRestaurar;
-    Function ValidarCampos:Boolean;
+    Function ValidarCampos: Boolean;
     procedure LimparCampos;
     procedure EditarFuncionarios;
     procedure LblAtualizarClick(Sender: TObject);
@@ -100,6 +104,8 @@ type
     procedure FormShow(Sender: TObject);
     procedure BuscaCEP;
     procedure EdtCEPChange(Sender: TObject);
+    procedure ExcluirFuncionarios;
+    procedure CadastrarFuncionarios;
 
   private
     { Private declarations }
@@ -144,14 +150,16 @@ begin
   PnlRestaurar.Visible := True;
   CarregarGridRestaurar;
 end;
+
 procedure TFormCadastroFuncionarios.BtnSairClick(Sender: TObject);
 begin
-  if MessageDlg('Deseja realmente fechar este Formulário?', mtConfirmation, [mbYes, mbNo], 0) = mrYes then
-    Close;
-    PnlBackgroundEdit.Visible := False;
-    PnlEdit.Visible := False;
-    PnlRestaurar.Visible := False;
-    EdtPesquisar.Visible := False;
+  if MessageDlg('Deseja realmente fechar este Formulário?', mtConfirmation,[mbYes, mbNo], 0) = mrYes then begin
+  Close;
+  PnlBackgroundEdit.Visible := False;
+  PnlEdit.Visible := False;
+  PnlRestaurar.Visible := False;
+  EdtPesquisar.Visible := False;
+end;
 end;
 
 procedure TFormCadastroFuncionarios.EdtCEPChange(Sender: TObject);
@@ -179,16 +187,42 @@ begin
   EdtTelefone.SelStart := 0;
 end;
 
+procedure TFormCadastroFuncionarios.ExcluirFuncionarios;
+var
+  FuncionarioController: TFuncionarioController;
+  IdFuncionario: Integer;
+begin
+  if DataSourceMain.DataSet.IsEmpty then begin
+    ShowMessage('Nenhum funcionário selecionado!');
+    Exit;
+  end;
+  IdFuncionario := DBGridMain.DataSource.DataSet.FieldByName('id').AsInteger;
+  if MessageDlg('Deseja realmente deletar este funcionário?', mtConfirmation,
+    [mbYes, mbNo], 0) = mrYes then begin
+    FuncionarioController := TFuncionarioController.Create;
+    FuncionarioController.DeletarFuncionario(IdFuncionario);
+    CarregarGrid;
+    FuncionarioController.Free;
+  end;
+end;
+
 procedure TFormCadastroFuncionarios.FormCreate(Sender: TObject);
 begin
   CmbStatus.Height := 31;
   CmbStatus.Font.Size := 13;
   CmbTipo.Height := 31;
   CmbTipo.Font.Size := 13;
-  EdtNome.Height := 31; EdtCPF.Height := 31; EdtRG.Height := 31;
-  EdtDataNascimento.Height := 31; EdtTelefone.Height := 31; EdtCEP.Height := 31;
-  EdtRua.Height := 31; EdtNumero.Height := 31;
-  EdtBairro.Height := 31; EdtCidade.Height := 31; EdtEstado.Height := 31;
+  EdtNome.Height := 31;
+  EdtCPF.Height := 31;
+  EdtRG.Height := 31;
+  EdtDataNascimento.Height := 31;
+  EdtTelefone.Height := 31;
+  EdtCEP.Height := 31;
+  EdtRua.Height := 31;
+  EdtNumero.Height := 31;
+  EdtBairro.Height := 31;
+  EdtCidade.Height := 31;
+  EdtEstado.Height := 31;
 end;
 
 procedure TFormCadastroFuncionarios.FormShow(Sender: TObject);
@@ -204,26 +238,98 @@ end;
 
 function TFormCadastroFuncionarios.ValidarCampos: Boolean;
 begin
-  if EdtNome.Text = '' then begin ShowMessage('O Campo de NOME não pode ficar Vazio'); Exit; end;
-  if EdtCPF.Text = '' then begin ShowMessage('O Campo de CPF não pode ficar Vazio'); Exit; end;
-  if EdtRG.Text = '' then begin ShowMessage('O Campo de RG não pode ficar Vazio'); Exit; end;
-  if EdtDataNascimento.Text = '' then begin ShowMessage('O Campo de NASCIMENTO não pode ficar Vazio'); Exit; end;
-  if EdtTelefone.Text = '' then begin ShowMessage('O Campo de TELEFONE não pode ficar Vazio'); Exit; end;
-  if EdtCEP.Text = '' then begin ShowMessage('O Campo de CEP não pode ficar Vazio'); Exit; end;
-  if EdtRua.Text = '' then begin ShowMessage('O Campo de RUA não pode ficar Vazio'); Exit; end;
-  if EdtNumero.Text = '' then begin ShowMessage('O Campo de NÚMERO não pode ficar Vazio'); Exit; end;
-  if EdtBairro.Text = '' then begin ShowMessage('O Campo de BAIRRO não pode ficar Vazio'); Exit; end;
-  if EdtCidade.Text = '' then begin ShowMessage('O Campo de CIDADE não pode ficar Vazio'); Exit; end;
-  if EdtEstado.Text = '' then begin ShowMessage('O Campo de ESTADO não pode ficar Vazio'); Exit; end;
-  if CmbTipo.ItemIndex = -1 then begin ShowMessage('Selecione o TIPO'); Exit; end;
-  if CmbStatus.ItemIndex = -1 then begin ShowMessage('Selecione o STATUS'); Exit; end;
+  if EdtNome.Text = '' then begin
+    ShowMessage('O Campo de NOME não pode ficar Vazio');
+    Exit;
+  end;
+  if EdtCPF.Text = '' then begin
+    ShowMessage('O Campo de CPF não pode ficar Vazio');
+    Exit;
+  end;
+  if EdtRG.Text = '' then begin
+    ShowMessage('O Campo de RG não pode ficar Vazio');
+    Exit;
+  end;
+  if EdtDataNascimento.Text = '' then begin
+    ShowMessage('O Campo de NASCIMENTO não pode ficar Vazio');
+    Exit;
+  end;
+  if EdtTelefone.Text = '' then begin
+    ShowMessage('O Campo de TELEFONE não pode ficar Vazio');
+    Exit;
+  end;
+  if EdtCEP.Text = '' then begin
+    ShowMessage('O Campo de CEP não pode ficar Vazio');
+    Exit;
+  end;
+  if EdtRua.Text = '' then begin
+    ShowMessage('O Campo de RUA não pode ficar Vazio');
+    Exit;
+  end;
+  if EdtNumero.Text = '' then begin
+    ShowMessage('O Campo de NÚMERO não pode ficar Vazio');
+    Exit;
+  end;
+  if EdtBairro.Text = '' then begin
+    ShowMessage('O Campo de BAIRRO não pode ficar Vazio');
+    Exit;
+  end;
+  if EdtCidade.Text = '' then begin
+    ShowMessage('O Campo de CIDADE não pode ficar Vazio');
+    Exit;
+  end;
+  if EdtEstado.Text = '' then begin
+    ShowMessage('O Campo de ESTADO não pode ficar Vazio');
+    Exit;
+  end;
+  if CmbTipo.ItemIndex = -1 then begin
+    ShowMessage('Selecione o TIPO');
+    Exit;
+  end;
+  if CmbStatus.ItemIndex = -1 then begin
+    ShowMessage('Selecione o STATUS');
+    Exit;
+  end;
   Result := True;
 end;
 
 procedure TFormCadastroFuncionarios.LimparCampos;
 begin
-  EdtNome.Clear; EdtCPF.Clear; EdtRG.Clear; EdtEstado.Clear; EdtTelefone.Clear; EdtBairro.Clear;
-  EdtCidade.Clear; EdtRua.Clear; EdtNumero.Clear; EdtCEP.Clear; EdtDataNascimento.Clear; CmbStatus.ItemIndex := -1;CmbTipo.ItemIndex := -1
+  EdtNome.Clear;
+  EdtCPF.Clear;
+  EdtRG.Clear;
+  EdtEstado.Clear;
+  EdtTelefone.Clear;
+  EdtBairro.Clear;
+  EdtCidade.Clear;
+  EdtRua.Clear;
+  EdtNumero.Clear;
+  EdtCEP.Clear;
+  EdtDataNascimento.Clear;
+  CmbStatus.ItemIndex := -1;
+  CmbTipo.ItemIndex := -1
+end;
+
+procedure TFormCadastroFuncionarios.CadastrarFuncionarios;
+var
+  FuncionarioController: TFuncionarioController;
+  Funcionario: TFuncionario;
+begin
+  if ValidarCampos then begin
+    FuncionarioController := TFuncionarioController.Create;
+    try
+      Funcionario := FuncionarioController.CriarObjeto(EdtNome.Text,
+        EdtCPF.Text, EdtRG.Text, EdtDataNascimento.Text, EdtTelefone.Text,
+        EdtCEP.Text, EdtRua.Text, EdtNumero.Text, EdtBairro.Text,
+        EdtCidade.Text, EdtEstado.Text, CmbTipo.Text, CmbStatus.ItemIndex = 0);
+      FuncionarioController.SalvarFuncionario(Funcionario);
+      LimparCampos;
+      CarregarGrid;
+      Funcionario.Free;
+    finally
+      FuncionarioController.Free;
+    end;
+  end;
 end;
 
 procedure TFormCadastroFuncionarios.CarregarGrid;
@@ -234,8 +340,7 @@ begin
   DataSourceMain.DataSet := FuncionarioService.ListarFuncionarios;
   DBGridMain.DataSource := DataSourceMain;
   try
-    if DBGridMain.Columns.Count >= 14 then
-    begin
+    if DBGridMain.Columns.Count >= 14 then begin
       DBGridMain.Columns[0].Title.Caption := 'Id';
       DBGridMain.Columns[1].Title.Caption := 'Nome';
       DBGridMain.Columns[2].Title.Caption := 'CPF';
@@ -255,7 +360,7 @@ begin
         DBGridMain.Columns[i].Title.Alignment := taCenter;
         DBGridMain.Columns[i].Alignment := taCenter;
         DBGridMain.Columns[i].Width := 120;
-        DBGridMain.Columns[i].Title.Font.Size :=15;
+        DBGridMain.Columns[i].Title.Font.Size := 15;
       end;
     end;
   finally
@@ -271,13 +376,12 @@ begin
   DataSourceRestaurar.DataSet := FuncionarioService.ListarFuncionariosRestaurar;
   DBGridRestaurar.DataSource := DataSourceRestaurar;
   try
-    if DBGridRestaurar.Columns.Count >= 14 then
-    begin
+    if DBGridRestaurar.Columns.Count >= 14 then begin
       for var i := 0 to 13 do begin
         DBGridRestaurar.Columns[i].Title.Alignment := taCenter;
         DBGridRestaurar.Columns[i].Alignment := taCenter;
         DBGridRestaurar.Columns[i].Width := 120;
-        DBGridMain.Columns[i].Title.Font.Size :=15;
+        DBGridMain.Columns[i].Title.Font.Size := 15;
       end;
     end;
   finally
@@ -291,11 +395,11 @@ var
 begin
   FuncionarioService := TFuncionarioService.Create;
   try
-    DataSourceMain.DataSet := FuncionarioService.PesquisarFuncionarios(EdtPesquisar.Text);
-    for var i := 0 to DBGridMain.Columns.Count-1 do
-    begin
+    DataSourceMain.DataSet := FuncionarioService.PesquisarFuncionarios
+      (EdtPesquisar.Text);
+    for var i := 0 to DBGridMain.Columns.Count - 1 do begin
       DBGridMain.Columns[i].Width := 120;
-      DBGridMain.Columns[i].Title.Font.Size :=15;
+      DBGridMain.Columns[i].Title.Font.Size := 15;
     end;
   finally
     FuncionarioService.Free;
@@ -304,22 +408,28 @@ end;
 
 procedure TFormCadastroFuncionarios.PegarCamposGridFuncionarios;
 begin
-  EdtNome.Text          := DBGridMain.DataSource.DataSet.FieldByName('nome').AsString;
-  EdtCPF.Text           := DBGridMain.DataSource.DataSet.FieldByName('cpf').AsString;
-  EdtRG.Text            := DBGridMain.DataSource.DataSet.FieldByName('rg').AsString;
-  EdtDataNascimento.Text:= DBGridMain.DataSource.DataSet.FieldByName('nascimento').AsString;
-  EdtTelefone.Text      := DBGridMain.DataSource.DataSet.FieldByName('telefone').AsString;
-  EdtCEP.Text           := DBGridMain.DataSource.DataSet.FieldByName('cep').AsString;
-  EdtRua.Text           := DBGridMain.DataSource.DataSet.FieldByName('rua').AsString;
-  EdtNumero.Text        := DBGridMain.DataSource.DataSet.FieldByName('numero').AsString;
-  EdtBairro.Text        := DBGridMain.DataSource.DataSet.FieldByName('bairro').AsString;
-  EdtCidade.Text        := DBGridMain.DataSource.DataSet.FieldByName('cidade').AsString;
-  EdtEstado.Text        := DBGridMain.DataSource.DataSet.FieldByName('estado').AsString;
+  EdtNome.Text := DBGridMain.DataSource.DataSet.FieldByName('nome').AsString;
+  EdtCPF.Text := DBGridMain.DataSource.DataSet.FieldByName('cpf').AsString;
+  EdtRG.Text := DBGridMain.DataSource.DataSet.FieldByName('rg').AsString;
+  EdtDataNascimento.Text := DBGridMain.DataSource.DataSet.FieldByName
+    ('nascimento').AsString;
+  EdtTelefone.Text := DBGridMain.DataSource.DataSet.FieldByName
+    ('telefone').AsString;
+  EdtCEP.Text := DBGridMain.DataSource.DataSet.FieldByName('cep').AsString;
+  EdtRua.Text := DBGridMain.DataSource.DataSet.FieldByName('rua').AsString;
+  EdtNumero.Text := DBGridMain.DataSource.DataSet.FieldByName('numero')
+    .AsString;
+  EdtBairro.Text := DBGridMain.DataSource.DataSet.FieldByName('bairro')
+    .AsString;
+  EdtCidade.Text := DBGridMain.DataSource.DataSet.FieldByName('cidade')
+    .AsString;
+  EdtEstado.Text := DBGridMain.DataSource.DataSet.FieldByName('estado')
+    .AsString;
 
   if DBGridMain.DataSource.DataSet.FieldByName('tipo').AsBoolean then
-      CmbTipo.ItemIndex := 0
-      else
-      CmbTipo.ItemIndex := 1;
+    CmbTipo.ItemIndex := 0
+  else
+    CmbTipo.ItemIndex := 1;
 
   if DBGridMain.DataSource.DataSet.FieldByName('ativo').AsBoolean then
     CmbStatus.ItemIndex := 0
@@ -337,55 +447,21 @@ begin
 end;
 
 procedure TFormCadastroFuncionarios.BtnExcluirClick(Sender: TObject);
-var
-  FuncionarioController: TFuncionarioController;
-  IdFuncionario: Integer;
 begin
-  if DataSourceMain.DataSet.IsEmpty then
-  begin
-    ShowMessage('Nenhum funcionário selecionado!');
-    Exit;
-  end;
-  IdFuncionario := DBGridMain.DataSource.DataSet.FieldByName('id').AsInteger;
-  if MessageDlg('Deseja realmente deletar este funcionário?', mtConfirmation, [mbYes, mbNo], 0) = mrYes then
-  begin
-    FuncionarioController := TFuncionarioController.Create;
-    FuncionarioController.DeletarFuncionario(IdFuncionario);
-    CarregarGrid;
-    FuncionarioController.Free;
-  end;
+  ExcluirFuncionarios;
 end;
 
 procedure TFormCadastroFuncionarios.LblAtualizarClick(Sender: TObject);
 begin
-  if ValidarCampos then
-  begin
+  if ValidarCampos then begin
     EditarFuncionarios;
     CarregarGrid;
   end;
 end;
 
 procedure TFormCadastroFuncionarios.LblEnviarClick(Sender: TObject);
-var
-  FuncionarioController: TFuncionarioController;
-  Funcionario: TFuncionario;
 begin
-  if ValidarCampos then
-  begin
-    FuncionarioController := TFuncionarioController.Create;
-    try
-      Funcionario := FuncionarioController.CriarObjeto(
-        EdtNome.Text, EdtCPF.Text, EdtRG.Text, EdtDataNascimento.Text,
-        EdtTelefone.Text, EdtCEP.Text, EdtRua.Text, EdtNumero.Text,
-        EdtBairro.Text, EdtCidade.Text, EdtEstado.Text,CmbTipo.text,CmbStatus.ItemIndex = 0);
-      FuncionarioController.SalvarFuncionario(Funcionario);
-      LimparCampos;
-      CarregarGrid;
-      Funcionario.Free;
-    finally
-      FuncionarioController.Free;
-    end;
-  end;
+  CadastrarFuncionarios;
 end;
 
 procedure TFormCadastroFuncionarios.EditarFuncionarios;
@@ -394,8 +470,7 @@ var
   Funcionario: TFuncionario;
   IdFuncionario: Integer;
 begin
-  if DataSourceMain.DataSet.IsEmpty then
-  begin
+  if DataSourceMain.DataSet.IsEmpty then begin
     ShowMessage('Nenhum funcionário selecionado!');
     Exit;
   end;
@@ -418,7 +493,7 @@ begin
       Funcionario.setCidade(EdtCidade.Text);
       Funcionario.setEstado(EdtEstado.Text);
       Funcionario.setAtivo(CmbStatus.ItemIndex = 0);
-       Funcionario.setTipo(CmbTipo.text);
+      Funcionario.setTipo(CmbTipo.Text);
       FuncionarioController.EditarFuncionario(Funcionario);
       CarregarGrid;
       LimparCampos;
@@ -441,14 +516,14 @@ var
   FuncionarioController: TFuncionarioController;
   IdFuncionario: Integer;
 begin
-  if DataSourceRestaurar.DataSet.IsEmpty then
-  begin
+  if DataSourceRestaurar.DataSet.IsEmpty then begin
     ShowMessage('Nenhum funcionário selecionado!');
     Exit;
   end;
-  IdFuncionario := DBGridRestaurar.DataSource.DataSet.FieldByName('id').AsInteger;
-  if MessageDlg('Deseja realmente Restaurar este funcionário?', mtConfirmation, [mbYes, mbNo], 0) = mrYes then
-  begin
+  IdFuncionario := DBGridRestaurar.DataSource.DataSet.FieldByName('id')
+    .AsInteger;
+  if MessageDlg('Deseja realmente Restaurar este funcionário?', mtConfirmation,
+    [mbYes, mbNo], 0) = mrYes then begin
     FuncionarioController := TFuncionarioController.Create;
     FuncionarioController.RestaurarFuncionario(IdFuncionario);
     CarregarGridRestaurar;
@@ -471,7 +546,7 @@ begin
   try
     try
       FuncionarioService.BuscarCep(EdtCEP.Text, Rua, Bairro, Cidade, Estado);
-      EdtRua.Text    := Rua;
+      EdtRua.Text := Rua;
       EdtBairro.Text := Bairro;
       EdtCidade.Text := Cidade;
       EdtEstado.Text := Estado;

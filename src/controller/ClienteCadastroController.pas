@@ -10,7 +10,7 @@ type TClienteController = class
       procedure EditarClientes(Cliente: TCliente);
       function ListarClientes: TDataSet;
       function CriarObjeto(aNome,aCPF, aEmail,aTelefone,
-  aNascimento,aEndereco : String; aAtivo: Boolean): TCliente;
+  aNascimento : String; aAtivo: Boolean): TCliente;
       procedure DeletarClientes(const aId :Integer);
       procedure RestaurarClientes(const aId :Integer);
       Function PesquisarClientes(const aFiltro:String):TDataset;
@@ -25,14 +25,13 @@ Self.Service := TClienteService.create;
 end;
 
 function TClienteController.CriarObjeto(aNome,aCPF, aEmail,aTelefone,
-  aNascimento,aEndereco : String; aAtivo: Boolean): TCliente;
+  aNascimento : String; aAtivo: Boolean): TCliente;
 begin
   Result := TCliente.Create;
   Result.setNome(aNome);
   Result.setCPF(aCPF);
   Result.setEmail(aEmail);
   Result.setTelefone(aTelefone);
-  Result.setEndereco(aEndereco);
   Result.setNascimento(aNascimento);
   Result.setAtivo(aAtivo);
 end;

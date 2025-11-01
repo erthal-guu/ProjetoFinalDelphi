@@ -1,38 +1,37 @@
-  unit uFormCadastroClientesView;
+unit uFormCadastroClientesView;
 
-  interface
+interface
 
-  uses
-    Winapi.Windows, Winapi.Messages, System.SysUtils, System.Variants, System.Classes, Vcl.Graphics,
-    Vcl.Controls, Vcl.Forms, Vcl.Dialogs, Data.DB, Vcl.WinXCtrls, Vcl.Grids,
-    Vcl.DBGrids, Vcl.Buttons, Vcl.Mask, Vcl.StdCtrls, Vcl.Imaging.pngimage,
-    Vcl.ExtCtrls, Vcl.ComCtrls,ClienteCadastroService,ClienteCadastroController,uCliente;
+uses
+  Winapi.Windows, Winapi.Messages, System.SysUtils, System.Variants,
+  System.Classes, Vcl.Graphics,
+  Vcl.Controls, Vcl.Forms, Vcl.Dialogs, Data.DB, Vcl.WinXCtrls, Vcl.Grids,
+  Vcl.DBGrids, Vcl.Buttons, Vcl.Mask, Vcl.StdCtrls, Vcl.Imaging.pngimage,
+  Vcl.ExtCtrls, Vcl.ComCtrls, ClienteCadastroService, ClienteCadastroController,
+  uCliente;
 
-  type
-    TFormCadastroClientes = class(TForm)
-      DataSourceRestaurar: TDataSource;
-      DataSourceClientes: TDataSource;
+type
+  TFormCadastroClientes = class(TForm)
+    DataSourceRestaurar: TDataSource;
+    DataSourceClientes: TDataSource;
     PnlMain: TPanel;
     PnlContainer: TPanel;
     PnlMainButton: TPanel;
     PnlMainEdit: TPanel;
     PnlBackgrounEdit: TPanel;
     PnlDesignEdit: TPanel;
-    Image1: TImage;
     PnlEdit: TPanel;
     LblNome: TLabel;
     LblEmail: TLabel;
     LblCPF: TLabel;
     LblTelefone: TLabel;
     LblNascimento: TLabel;
-    LblEndereço: TLabel;
     LblStatus: TLabel;
     EdtNome: TEdit;
     EdtCPF: TMaskEdit;
     EdtEmail: TEdit;
     EdtDataNascimento: TMaskEdit;
     EdtTelefone: TMaskEdit;
-    EdtEndereço: TEdit;
     CmbStatus: TComboBox;
     PnlButtonEnviar: TPanel;
     LblEnviar: TLabel;
@@ -59,51 +58,54 @@
     PnlContainerRestaurar: TPanel;
     DBGridRestaurar: TDBGrid;
     BtnCancelar: TSpeedButton;
-      procedure BtnAdicionarClick(Sender: TObject);
-      procedure BtnPesquisarClick(Sender: TObject);
-      procedure FormCreate(Sender: TObject);
-      procedure LblEnviarClick(Sender: TObject);
-      procedure CarregarGrid;
-      Function ValidarCampos:Boolean;
-      procedure LimparCampos;
-      procedure FormShow(Sender: TObject);
-      procedure EditarClientes;
-      procedure LblAtualizarClick(Sender: TObject);
-      procedure BtnEditarClick(Sender: TObject);
-      procedure PegarCamposGridClientes;
-      procedure BtnExcluirClick(Sender: TObject);
-      procedure BtnRestaurarClick(Sender: TObject);
-      procedure RestaurarUsuarios;
-      procedure CarregarGridRestaurar;
-      procedure ImgRestaurarClick(Sender: TObject);
-      procedure ImgFecharClick(Sender: TObject);
-      procedure EdtPesquisarChange(Sender: TObject);
+    Image1: TImage;
+    procedure BtnAdicionarClick(Sender: TObject);
+    procedure BtnPesquisarClick(Sender: TObject);
+    procedure FormCreate(Sender: TObject);
+    procedure LblEnviarClick(Sender: TObject);
+    procedure CarregarGrid;
+    Function ValidarCampos: Boolean;
+    procedure LimparCampos;
+    procedure FormShow(Sender: TObject);
+    procedure EditarClientes;
+    procedure LblAtualizarClick(Sender: TObject);
+    procedure BtnEditarClick(Sender: TObject);
+    procedure PegarCamposGridClientes;
+    procedure BtnExcluirClick(Sender: TObject);
+    procedure BtnRestaurarClick(Sender: TObject);
+    procedure RestaurarUsuarios;
+    procedure CarregarGridRestaurar;
+    procedure ImgRestaurarClick(Sender: TObject);
+    procedure ImgFecharClick(Sender: TObject);
+    procedure EdtPesquisarChange(Sender: TObject);
     procedure BtnCancelarClick(Sender: TObject);
     procedure BtnSairClick(Sender: TObject);
     procedure EdtCPFClick(Sender: TObject);
     procedure EdtTelefoneClick(Sender: TObject);
     procedure EdtDataNascimentoClick(Sender: TObject);
-    private
-      { Private declarations }
-    public
-      { Public declarations }
-    end;
-
-  var
-    FormCadastroClientes: TFormCadastroClientes;
-
-  implementation
-
-  {$R *.dfm}
-
-  procedure TFormCadastroClientes.BtnAdicionarClick(Sender: TObject);
-  begin
-    PnlBackgrounEdit.Visible := True;
-    PnlDesignEdit.Visible := True;
-    EdtPesquisar.Visible := False;
+    procedure ExcluirUsuarios;
+    procedure CadastrarClientes;
+  private
+    { Private declarations }
+  public
+    { Public declarations }
   end;
 
-  procedure TFormCadastroClientes.BtnCancelarClick(Sender: TObject);
+var
+  FormCadastroClientes: TFormCadastroClientes;
+
+implementation
+
+{$R *.dfm}
+
+procedure TFormCadastroClientes.BtnAdicionarClick(Sender: TObject);
+begin
+  PnlBackgrounEdit.Visible := True;
+  PnlDesignEdit.Visible := True;
+  EdtPesquisar.Visible := False;
+end;
+
+procedure TFormCadastroClientes.BtnCancelarClick(Sender: TObject);
 begin
   PnlDesignEdit.Visible := False;
   EdtPesquisar.Visible := False;
@@ -111,50 +113,54 @@ begin
 end;
 
 procedure TFormCadastroClientes.BtnEditarClick(Sender: TObject);
-  begin
-    PnlDesignEdit.Visible := True;
-    PnlButtonAtualizar.Visible := True;
-    PnlButtonEnviar.Visible := False;
-    PegarCamposGridClientes;
-  end;
+begin
+  PnlDesignEdit.Visible := True;
+  PnlButtonAtualizar.Visible := True;
+  PnlButtonEnviar.Visible := False;
+  PegarCamposGridClientes;
+end;
 
-  procedure TFormCadastroClientes.BtnExcluirClick(Sender: TObject);
-    var
-    ClienteController : TClienteController;
-    IdUsuario: Integer;
-  begin
-    if DataSourceClientes.DataSet.IsEmpty then
-    begin
-      ShowMessage('Nenhum usuário selecionado!');
-      Exit;
-    end;
-    IdUsuario := DBGridMain.DataSource.DataSet.FieldByName('id').AsInteger;
+procedure TFormCadastroClientes.BtnExcluirClick(Sender: TObject);
+begin
+  ExcluirUsuarios;
+end;
 
-    if MessageDlg('Deseja realmente deletar este usuário?', mtConfirmation, [mbYes, mbNo], 0) = mrYes then
-    begin
-      ClienteController := TClienteController.Create;
-        ClienteController.DeletarClientes(IdUsuario);
-        CarregarGrid;
+procedure TFormCadastroClientes.ExcluirUsuarios;
+var
+  ClienteController: TClienteController;
+  IdUsuario: Integer;
+begin
+  if DataSourceClientes.DataSet.IsEmpty then begin
+    ShowMessage('Nenhum usuário selecionado!');
+    Exit;
   end;
-  end;
+  IdUsuario := DBGridMain.DataSource.DataSet.FieldByName('id').AsInteger;
 
-  procedure TFormCadastroClientes.BtnPesquisarClick(Sender: TObject);
-  begin
-    EdtPesquisar.Visible := True;
-    PnlDesignEdit.Visible := false;
-    PnlBackgrounEdit.Visible := false;
+  if MessageDlg('Deseja realmente deletar este usuário?', mtConfirmation,
+    [mbYes, mbNo], 0) = mrYes then begin
+    ClienteController := TClienteController.Create;
+    ClienteController.DeletarClientes(IdUsuario);
+    CarregarGrid;
   end;
+end;
 
-  procedure TFormCadastroClientes.BtnRestaurarClick(Sender: TObject);
-  begin
-    PnlRestaurar.Visible := True;
-    CarregarGridRestaurar;
-  end;
+procedure TFormCadastroClientes.BtnPesquisarClick(Sender: TObject);
+begin
+  EdtPesquisar.Visible := True;
+  PnlDesignEdit.Visible := False;
+  PnlBackgrounEdit.Visible := False;
+end;
 
-  procedure TFormCadastroClientes.BtnSairClick(Sender: TObject);
-  begin
-  if MessageDlg('Deseja realmente fechar este Formulário?', mtConfirmation, [mbYes, mbNo], 0) = mrYes then
-  begin
+procedure TFormCadastroClientes.BtnRestaurarClick(Sender: TObject);
+begin
+  PnlRestaurar.Visible := True;
+  CarregarGridRestaurar;
+end;
+
+procedure TFormCadastroClientes.BtnSairClick(Sender: TObject);
+begin
+  if MessageDlg('Deseja realmente fechar este Formulário?', mtConfirmation,
+    [mbYes, mbNo], 0) = mrYes then begin
     Close;
     PnlBackgrounEdit.Visible := False;
     PnlEdit.Visible := False;
@@ -164,142 +170,146 @@ procedure TFormCadastroClientes.BtnEditarClick(Sender: TObject);
 end;
 
 procedure TFormCadastroClientes.CarregarGrid;
-  var
-    ClienteService : TClienteService;
-  begin
-    ClienteService := TClienteService.create;
-    DataSourceClientes.DataSet :=  ClienteService.ListarClientes;
-    DBGridMain.DataSource := DataSourceClientes;
-     try
-        if DBGridMain.Columns.Count >= 8 then
-      begin
-        DBGridMain.Columns[0].Title.Caption := 'Id';
-        DBGridMain.Columns[1].Title.Caption := 'Nome';
-        DBGridMain.Columns[2].Title.Caption := 'CPF';
-        DBGridMain.Columns[3].Title.Caption := 'Email';
-        DBGridMain.Columns[4].Title.Caption := 'Telefone';
-        DBGridMain.Columns[5].Title.Caption := 'Nascimento';
-        DBGridMain.Columns[6].Title.Caption := 'Endereço';
-        DBGridMain.Columns[7].Title.Caption := 'Ativo';
+var
+  ClienteService: TClienteService;
+begin
+  ClienteService := TClienteService.Create;
+  DataSourceClientes.DataSet := ClienteService.ListarClientes;
+  DBGridMain.DataSource := DataSourceClientes;
+  try
+    if DBGridMain.Columns.Count >= 7 then begin
+      DBGridMain.Columns[0].Title.Caption := 'Id';
+      DBGridMain.Columns[1].Title.Caption := 'Nome';
+      DBGridMain.Columns[2].Title.Caption := 'CPF';
+      DBGridMain.Columns[3].Title.Caption := 'Email';
+      DBGridMain.Columns[4].Title.Caption := 'Telefone';
+      DBGridMain.Columns[5].Title.Caption := 'Nascimento';
+      DBGridMain.Columns[6].Title.Caption := 'Ativo';
 
-        DBGridMain.Columns[0].Title.Alignment := taCenter;
-        DBGridMain.Columns[0].Alignment := taCenter;
-        DBGridMain.Columns[1].Title.Alignment := taCenter;
-        DBGridMain.Columns[1].Alignment := taCenter;
-        DBGridMain.Columns[2].Title.Alignment := taCenter;
-        DBGridMain.Columns[2].Alignment := taCenter;
-        DBGridMain.Columns[3].Title.Alignment := taCenter;
-        DBGridMain.Columns[3].Alignment := taCenter;
-        DBGridMain.Columns[4].Title.Alignment := taCenter;
-        DBGridMain.Columns[4].Alignment := taCenter;
-        DBGridMain.Columns[5].Title.Alignment := taCenter;
-        DBGridMain.Columns[5].Alignment := taCenter;
-        DBGridMain.Columns[6].Title.Alignment := taCenter;
-        DBGridMain.Columns[6].Alignment := taCenter;
-        DBGridMain.Columns[7].Title.Alignment := taCenter;
-        DBGridMain.Columns[7].Alignment := taCenter;
+      DBGridMain.Columns[0].Title.Alignment := taCenter;
+      DBGridMain.Columns[0].Alignment := taCenter;
+      DBGridMain.Columns[1].Title.Alignment := taCenter;
+      DBGridMain.Columns[1].Alignment := taCenter;
+      DBGridMain.Columns[2].Title.Alignment := taCenter;
+      DBGridMain.Columns[2].Alignment := taCenter;
+      DBGridMain.Columns[3].Title.Alignment := taCenter;
+      DBGridMain.Columns[3].Alignment := taCenter;
+      DBGridMain.Columns[4].Title.Alignment := taCenter;
+      DBGridMain.Columns[4].Alignment := taCenter;
+      DBGridMain.Columns[5].Title.Alignment := taCenter;
+      DBGridMain.Columns[5].Alignment := taCenter;
+      DBGridMain.Columns[6].Title.Alignment := taCenter;
+      DBGridMain.Columns[6].Alignment := taCenter;
 
-        DBGridMain.Columns[0].Width := 50;
-        DBGridMain.Columns[1].Width := 160;
-        DBGridMain.Columns[2].Width := 160;
-        DBGridMain.Columns[3].Width := 160;
-        DBGridMain.Columns[4].Width := 160;
-        DBGridMain.Columns[5].Width := 180;
-        DBGridMain.Columns[6].Width := 160;
-        DBGridMain.Columns[7].Width := 50;
-      end;
-     finally
-      ClienteService.Free;
-     end;
+      DBGridMain.Columns[0].Width := 50;
+      DBGridMain.Columns[1].Width := 100;
+      DBGridMain.Columns[2].Width := 160;
+      DBGridMain.Columns[3].Width := 160;
+      DBGridMain.Columns[4].Width := 160;
+      DBGridMain.Columns[5].Width := 180;
+      DBGridMain.Columns[6].Width := 50;
+    end;
+  finally
+    ClienteService.Free;
   end;
+end;
 
-  procedure TFormCadastroClientes.CarregarGridRestaurar;
-  var
-    ClienteService : TClienteService;
-  begin
-  ClienteService := TClienteService.create;
-  DataSourceRestaurar.DataSet :=  ClienteService.ListarClientesRestaurar;
+procedure TFormCadastroClientes.CadastrarClientes;
+var
+  ClienteController: TClienteController;
+  Cliente: TCliente;
+begin
+  ClienteController := TClienteController.Create;
+  try
+    Cliente := ClienteController.CriarObjeto(EdtNome.Text, EdtCPF.Text,
+      EdtEmail.Text, EdtTelefone.Text, EdtDataNascimento.Text,
+      CmbStatus.ItemIndex = 0);
+    ClienteController.SalvarClientes(Cliente);
+  finally
+    ClienteController.Free;
+  end;
+end;
+
+procedure TFormCadastroClientes.CarregarGridRestaurar;
+var
+  ClienteService: TClienteService;
+begin
+  ClienteService := TClienteService.Create;
+  DataSourceRestaurar.DataSet := ClienteService.ListarClientesRestaurar;
   DBGridRestaurar.DataSource := DataSourceRestaurar;
-    try
-      if DBGridRestaurar.Columns.Count >= 5 then
-      begin
-        DBGridMain.Columns[0].Title.Caption := 'Id';
-        DBGridMain.Columns[1].Title.Caption := 'Nome';
-        DBGridMain.Columns[2].Title.Caption := 'CPF';
-        DBGridMain.Columns[3].Title.Caption := 'Email';
-        DBGridMain.Columns[4].Title.Caption := 'Telefone';
-        DBGridMain.Columns[5].Title.Caption := 'Nascimento';
-        DBGridMain.Columns[6].Title.Caption := 'Endereço';
-        DBGridMain.Columns[7].Title.Caption := 'Ativo';
+  try
+    if DBGridRestaurar.Columns.Count >= 7 then begin
+      DBGridMain.Columns[0].Title.Caption := 'Id';
+      DBGridMain.Columns[1].Title.Caption := 'Nome';
+      DBGridMain.Columns[2].Title.Caption := 'CPF';
+      DBGridMain.Columns[3].Title.Caption := 'Email';
+      DBGridMain.Columns[4].Title.Caption := 'Telefone';
+      DBGridMain.Columns[5].Title.Caption := 'Nascimento';
+      DBGridMain.Columns[6].Title.Caption := 'Ativo';
 
-        DBGridMain.Columns[0].Title.Alignment := taCenter;
-        DBGridMain.Columns[0].Alignment := taCenter;
-        DBGridMain.Columns[1].Title.Alignment := taCenter;
-        DBGridMain.Columns[1].Alignment := taCenter;
-        DBGridMain.Columns[2].Title.Alignment := taCenter;
-        DBGridMain.Columns[2].Alignment := taCenter;
-        DBGridMain.Columns[3].Title.Alignment := taCenter;
-        DBGridMain.Columns[3].Alignment := taCenter;
-        DBGridMain.Columns[4].Title.Alignment := taCenter;
-        DBGridMain.Columns[4].Alignment := taCenter;
-        DBGridMain.Columns[5].Title.Alignment := taCenter;
-        DBGridMain.Columns[5].Alignment := taCenter;
-        DBGridMain.Columns[6].Title.Alignment := taCenter;
-        DBGridMain.Columns[6].Alignment := taCenter;
-        DBGridMain.Columns[7].Title.Alignment := taCenter;
-        DBGridMain.Columns[7].Alignment := taCenter;
+      DBGridMain.Columns[0].Title.Alignment := taCenter;
+      DBGridMain.Columns[0].Alignment := taCenter;
+      DBGridMain.Columns[1].Title.Alignment := taCenter;
+      DBGridMain.Columns[1].Alignment := taCenter;
+      DBGridMain.Columns[2].Title.Alignment := taCenter;
+      DBGridMain.Columns[2].Alignment := taCenter;
+      DBGridMain.Columns[3].Title.Alignment := taCenter;
+      DBGridMain.Columns[3].Alignment := taCenter;
+      DBGridMain.Columns[4].Title.Alignment := taCenter;
+      DBGridMain.Columns[4].Alignment := taCenter;
+      DBGridMain.Columns[5].Title.Alignment := taCenter;
+      DBGridMain.Columns[5].Alignment := taCenter;
+      DBGridMain.Columns[6].Title.Alignment := taCenter;
+      DBGridMain.Columns[6].Alignment := taCenter;
 
-        DBGridMain.Columns[0].Width := 50;
-        DBGridMain.Columns[1].Width := 160;
-        DBGridMain.Columns[2].Width := 160;
-        DBGridMain.Columns[3].Width := 160;
-        DBGridMain.Columns[4].Width := 160;
-        DBGridMain.Columns[5].Width := 160;
-        DBGridMain.Columns[6].Width := 160;
-        DBGridMain.Columns[7].Width := 50;
-      end;
-    finally
-      ClienteService.Free;
+      DBGridMain.Columns[0].Width := 50;
+      DBGridMain.Columns[1].Width := 160;
+      DBGridMain.Columns[2].Width := 160;
+      DBGridMain.Columns[3].Width := 160;
+      DBGridMain.Columns[4].Width := 160;
+      DBGridMain.Columns[5].Width := 160;
+      DBGridMain.Columns[6].Width := 50;
     end;
+  finally
+    ClienteService.Free;
+  end;
+end;
+
+procedure TFormCadastroClientes.EditarClientes;
+var
+  ClienteController: TClienteController;
+  Cliente: TCliente;
+  IdCliente: Integer;
+begin
+  if DataSourceClientes.DataSet.IsEmpty then begin
+    ShowMessage('Nenhum usuário selecionado!');
+    Exit;
   end;
 
-  procedure TFormCadastroClientes.EditarClientes;
-  var
-    ClienteController : TClienteController;
-    Cliente : TCliente;
-    IdCliente  : Integer;
-  begin
-    if DataSourceClientes.DataSet.IsEmpty then
-    begin
-      ShowMessage('Nenhum usuário selecionado!');
-      Exit;
-    end;
+  IdCliente := DBGridMain.DataSource.DataSet.FieldByName('id').AsInteger;
 
-    IdCliente := DBGridMain.DataSource.DataSet.FieldByName('id').AsInteger;
-
-    ClienteController := TClienteController.Create;
+  ClienteController := TClienteController.Create;
+  try
+    Cliente := TCliente.Create;
     try
-      Cliente := TCliente.Create;
-      try
-        ValidarCampos;
-        Cliente.setIdCliente(IdCliente);
-        Cliente.SetNome(EdtNome.Text);
-        Cliente.SetCPF(EdtCPF.Text);
-        Cliente.SetEmail(EdtEmail.Text);
-        Cliente.SetTelefone(EdtTelefone.Text);
-        Cliente.SetNascimento(EdtDataNascimento.Text);
-        Cliente.SetEndereco(EdtEndereço.Text);
-        Cliente.setAtivo(CmbStatus.ItemIndex = 0);
-        ClienteController.EditarClientes(Cliente);
-        CarregarGrid;
-        LimparCampos;
-      finally
-        Cliente.Free;
-      end;
+      ValidarCampos;
+      Cliente.setIdCliente(IdCliente);
+      Cliente.SetNome(EdtNome.Text);
+      Cliente.SetCPF(EdtCPF.Text);
+      Cliente.SetEmail(EdtEmail.Text);
+      Cliente.SetTelefone(EdtTelefone.Text);
+      Cliente.SetNascimento(EdtDataNascimento.Text);
+      Cliente.setAtivo(CmbStatus.ItemIndex = 0);
+      ClienteController.EditarClientes(Cliente);
+      CarregarGrid;
+      LimparCampos;
     finally
-      ClienteController.Free;
+      Cliente.Free;
     end;
+  finally
+    ClienteController.Free;
   end;
+end;
 
 procedure TFormCadastroClientes.EdtCPFClick(Sender: TObject);
 begin
@@ -313,162 +323,148 @@ end;
 
 procedure TFormCadastroClientes.EdtPesquisarChange(Sender: TObject);
 var
-  ClienteService : TClienteService;
+  ClienteService: TClienteService;
 begin
   ClienteService := TClienteService.Create;
   try
-    DataSourceClientes.DataSet := ClienteService.PesquisarClientes(EdtPesquisar.Text);
-        DBGridMain.Columns[0].Width := 50;
-        DBGridMain.Columns[1].Width := 160;
-        DBGridMain.Columns[2].Width := 160;
-        DBGridMain.Columns[3].Width := 160;
-        DBGridMain.Columns[4].Width := 160;
-        DBGridMain.Columns[5].Width := 160;
-        DBGridMain.Columns[6].Width := 160;
-        DBGridMain.Columns[7].Width := 50;
+    DataSourceClientes.DataSet := ClienteService.PesquisarClientes
+      (EdtPesquisar.Text);
+    DBGridMain.Columns[0].Width := 50;
+    DBGridMain.Columns[1].Width := 160;
+    DBGridMain.Columns[2].Width := 160;
+    DBGridMain.Columns[3].Width := 160;
+    DBGridMain.Columns[4].Width := 160;
+    DBGridMain.Columns[5].Width := 160;
+    DBGridMain.Columns[6].Width := 50;
   finally
     ClienteService.Free;
   end;
 end;
 
-  procedure TFormCadastroClientes.EdtTelefoneClick(Sender: TObject);
+procedure TFormCadastroClientes.EdtTelefoneClick(Sender: TObject);
 begin
   EdtTelefone.SelStart := 0;
 end;
 
 procedure TFormCadastroClientes.FormCreate(Sender: TObject);
-  begin
-    EdtNome.Height := 31;
-    EdtEmail.Height := 31;
-    EdtCPF.Height := 31;
-    EdtTelefone.Height := 31;
-    EdtDataNascimento.Height := 31;
-    CmbStatus.Font.Size := 13;
-  end;
+begin
+  EdtNome.Height := 31;
+  EdtEmail.Height := 31;
+  EdtCPF.Height := 31;
+  EdtTelefone.Height := 31;
+  EdtDataNascimento.Height := 31;
+  CmbStatus.Font.Size := 13;
+end;
 
-  procedure TFormCadastroClientes.FormShow(Sender: TObject);
-  begin
-    CarregarGrid;
-  end;
+procedure TFormCadastroClientes.FormShow(Sender: TObject);
+begin
+  CarregarGrid;
+end;
 
-  procedure TFormCadastroClientes.ImgFecharClick(Sender: TObject);
-  begin
-    PnlRestaurar.Visible := False;
-    CarregarGrid;
-  end;
+procedure TFormCadastroClientes.ImgFecharClick(Sender: TObject);
+begin
+  PnlRestaurar.Visible := False;
+  CarregarGrid;
+end;
+procedure TFormCadastroClientes.ImgRestaurarClick(Sender: TObject);
+begin
+  RestaurarUsuarios;
+  CarregarGridRestaurar;
+end;
 
-  procedure TFormCadastroClientes.ImgRestaurarClick(Sender: TObject);
-  begin
-    RestaurarUsuarios;
-    CarregarGridRestaurar;
-  end;
-
-  procedure TFormCadastroClientes.LblAtualizarClick(Sender: TObject);
-  begin
+procedure TFormCadastroClientes.LblAtualizarClick(Sender: TObject);
+begin
   if ValidarCampos then begin
     EditarClientes;
     CarregarGrid;
   end;
-  end;
+end;
 
-  procedure TFormCadastroClientes.LblEnviarClick(Sender: TObject);
-  var
-    ClienteController: TClienteController;
-    Cliente: TCliente;
-  begin
-    if ValidarCampos then begin
-    ClienteController := TClienteController.Create;
-    try
-      Cliente := ClienteController.CriarObjeto(EdtNome.Text,EdtCPF.Text,EdtEmail.Text,EdtTelefone.Text,EdtDataNascimento.Text,EdtEndereço.Text,CmbStatus.ItemIndex = 0);
-    ClienteController.SalvarClientes(Cliente);
+procedure TFormCadastroClientes.LblEnviarClick(Sender: TObject);
+begin
+  if ValidarCampos then begin
+    CadastrarClientes;
     LimparCampos;
     CarregarGrid;
-    finally
-      ClienteController.Free;
-    end;
-    end;
   end;
-  procedure TFormCadastroClientes.LimparCampos;
-  begin
-    EdtNome.Clear;
-    EdtCPF.Clear;
-    EdtEmail.Clear;
-    EdtDataNascimento.Clear;
-    EdtTelefone.Clear;
-    EdtEndereço.Clear;
-    CmbStatus.ItemIndex := -1;
-  end;
+end;
 
-  procedure TFormCadastroClientes.PegarCamposGridClientes;
-  begin
-    EdtTelefone.Clear;
-    EdtEndereço.Clear;
-    CmbStatus.ItemIndex := -1;
-    EdtNome.Text := DBGridMain.DataSource.DataSet.FieldByName('nome').AsString;
-    EdtCPF.Text := DBGridMain.DataSource.DataSet.FieldByName('CPF').AsString;
-    EdtEmail.Text := DBGridMain.DataSource.DataSet.FieldByName('email').AsString;
-    EdtTelefone.Text := DBGridMain.DataSource.DataSet.FieldByName('Telefone').AsString;
-    EdtDataNascimento.Text := DBGridMain.DataSource.DataSet.FieldByName('Nascimento').AsString;
-    EdtEndereço.Text := DBGridMain.DataSource.DataSet.FieldByName('endereco').AsString;
-    if DBGridMain.DataSource.DataSet.FieldByName('ativo').AsBoolean then begin
+procedure TFormCadastroClientes.LimparCampos;
+begin
+  EdtNome.Clear;
+  EdtCPF.Clear;
+  EdtEmail.Clear;
+  EdtDataNascimento.Clear;
+  EdtTelefone.Clear;
+  CmbStatus.ItemIndex := -1;
+end;
+
+procedure TFormCadastroClientes.PegarCamposGridClientes;
+begin
+  EdtTelefone.Clear;
+  CmbStatus.ItemIndex := -1;
+  EdtNome.Text := DBGridMain.DataSource.DataSet.FieldByName('nome').AsString;
+  EdtCPF.Text := DBGridMain.DataSource.DataSet.FieldByName('CPF').AsString;
+  EdtEmail.Text := DBGridMain.DataSource.DataSet.FieldByName('email').AsString;
+  EdtTelefone.Text := DBGridMain.DataSource.DataSet.FieldByName
+    ('Telefone').AsString;
+  EdtDataNascimento.Text := DBGridMain.DataSource.DataSet.FieldByName
+    ('Nascimento').AsString;
+  if DBGridMain.DataSource.DataSet.FieldByName('ativo').AsBoolean then begin
     CmbStatus.ItemIndex := 0;
-   end else begin
+  end
+  else begin
     CmbStatus.ItemIndex := 1;
   end;
+end;
+
+procedure TFormCadastroClientes.RestaurarUsuarios;
+var
+  ClienteController: TClienteController;
+  IdUsuario: Integer;
+begin
+  if DataSourceRestaurar.DataSet.IsEmpty then begin
+    ShowMessage('Nenhum usuário selecionado!');
+    Exit;
+  end;
+  IdUsuario := DBGridRestaurar.DataSource.DataSet.FieldByName('id').AsInteger;
+
+  if MessageDlg('Deseja realmente Restaurar este usuário?', mtConfirmation,
+    [mbYes, mbNo], 0) = mrYes then begin
+    ClienteController := TClienteController.Create;
+    ClienteController.RestaurarClientes(IdUsuario);
   end;
 
-  procedure TFormCadastroClientes.RestaurarUsuarios;
-    var
-    ClienteController : TClienteController;
-    IdUsuario: Integer;
-  begin
-    if DataSourceRestaurar.DataSet.IsEmpty then
-    begin
-      ShowMessage('Nenhum usuário selecionado!');
-      Exit;
-    end;
-    IdUsuario := DBGridRestaurar.DataSource.DataSet.FieldByName('id').AsInteger;
+end;
 
-    if MessageDlg('Deseja realmente Restaurar este usuário?', mtConfirmation, [mbYes, mbNo], 0) = mrYes then
-    begin
-      ClienteController := TClienteController.Create;
-        ClienteController.RestaurarClientes(IdUsuario);
-      end;
-
+function TFormCadastroClientes.ValidarCampos: Boolean;
+begin
+  if EdtNome.Text = '' then begin
+    ShowMessage('O Campo de NOME não pode ficar Vazio');
+    Exit;
   end;
 
-  function TFormCadastroClientes.ValidarCampos: Boolean;
-  begin
-    if EdtNome.Text = '' then begin
-      ShowMessage('O Campo de NOME não pode ficar Vazio');
-      exit;
-    end;
-
-    if EdtCPF.Text = '' then begin
-      ShowMessage('O Campo de CPF não pode ficar Vazio');
-      exit;
-    end;
-      if EdtEmail.Text = '' then begin
-      ShowMessage('O Campo de EMAIL não pode ficar Vazio');
-      exit;
-    end;
-      if EdtDataNascimento.Text = '' then begin
-      ShowMessage('O Campo de DATA não pode ficar Vazio');
-      exit;
-    end;
-      if EdtTelefone.Text = '' then begin
-      ShowMessage('O Campo de TELEFONE não pode ficar Vazio');
-      exit;
-    end;
-      if EdtEndereço.Text = '' then begin
-      ShowMessage('O Campo de ENDEREÇO não pode ficar Vazio');
-      exit;
-    end;
-      if CmbStatus.ItemIndex = -1 then begin
+  if EdtCPF.Text = '' then begin
+    ShowMessage('O Campo de CPF não pode ficar Vazio');
+    Exit;
+  end;
+  if EdtEmail.Text = '' then begin
+    ShowMessage('O Campo de EMAIL não pode ficar Vazio');
+    Exit;
+  end;
+  if EdtDataNascimento.Text = '' then begin
+    ShowMessage('O Campo de DATA não pode ficar Vazio');
+    Exit;
+  end;
+  if EdtTelefone.Text = '' then begin
+    ShowMessage('O Campo de TELEFONE não pode ficar Vazio');
+    Exit;
+  end;
+  if CmbStatus.ItemIndex = -1 then begin
     ShowMessage('Selecione o STATUS');
     Exit;
-    end;
-    Result := True;
   end;
+  Result := True;
+end;
 
-  end.
+end.

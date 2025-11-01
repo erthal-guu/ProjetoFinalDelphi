@@ -3,11 +3,14 @@
 interface
 
 uses
-  Winapi.Windows, Winapi.Messages, System.SysUtils, System.Variants, System.Classes,
+  Winapi.Windows, Winapi.Messages, System.SysUtils, System.Variants,
+  System.Classes,
   Vcl.Graphics, Vcl.Controls, Vcl.Forms, Vcl.Dialogs, Data.DB, Vcl.WinXCtrls,
-  Vcl.Grids, Vcl.DBGrids, Vcl.Buttons, Vcl.Mask, Vcl.StdCtrls, Vcl.Imaging.pngimage,
-  Vcl.ExtCtrls, Vcl.ComCtrls, FornecedorCadastroService, FornecedorCadastroController, uFornecedor, PeçasCadastroService,
-  Vcl.CheckLst, System.Generics.Collections,uPedido;
+  Vcl.Grids, Vcl.DBGrids, Vcl.Buttons, Vcl.Mask, Vcl.StdCtrls,
+  Vcl.Imaging.pngimage,
+  Vcl.ExtCtrls, Vcl.ComCtrls, FornecedorCadastroService,
+  FornecedorCadastroController, uFornecedor, PeçasCadastroService,
+  Vcl.CheckLst, System.Generics.Collections, uPedido;
 
 type
   TFormCadastroFornecedores = class(TForm)
@@ -37,7 +40,6 @@ type
     PnlBackgrounEdit: TPanel;
     DBGridMain: TDBGrid;
     PnlDesignEdit: TPanel;
-    Image1: TImage;
     PnlEdit: TPanel;
     Label1: TLabel;
     Label2: TLabel;
@@ -70,9 +72,9 @@ type
     PnlVincularPeça: TPanel;
     Image3: TImage;
     Panel2: TPanel;
-    Panel1: TPanel;
-    Label12: TLabel;
-    Image2: TImage;
+    PnlEditVincular: TPanel;
+    LblFornecedorVincular: TLabel;
+    ImgLogoVincular: TImage;
     CmbFornecedor: TComboBox;
     PnlButtonVincular: TPanel;
     LblVincular: TLabel;
@@ -104,13 +106,14 @@ type
     EdtObservacao: TEdit;
     CmbPeças: TComboBox;
     PnlFooter: TPanel;
-    Label13: TLabel;
+    LblPeçasVinculadas: TLabel;
     CheckBoxPeçasVinculadas: TCheckBox;
     PnlFinalizar: TPanel;
     LblFinalizar: TLabel;
     ListBoxPedidos: TListBox;
     Panel3: TPanel;
     Label18: TLabel;
+    Image1: TImage;
 
     procedure BtnAdicionarClick(Sender: TObject);
     procedure BtnPesquisarClick(Sender: TObject);
@@ -122,7 +125,7 @@ type
     procedure LblEnviarClick(Sender: TObject);
     procedure CarregarGrid;
     procedure CarregarGridRestaurar;
-    Function ValidarCampos:Boolean;
+    Function ValidarCampos: Boolean;
     procedure LimparCampos;
     procedure EditarFornecedores;
     procedure LblAtualizarClick(Sender: TObject);
@@ -161,6 +164,10 @@ type
     procedure CmbPeçasChange(Sender: TObject);
     procedure EdtQuantidadeChange(Sender: TObject);
     procedure CalcularValorTotalPedido;
+    procedure ExcluirFornecedores;
+    procedure CadastrarFornecedores;
+    procedure DesvincularPecaFornecedor;
+    procedure VincularPecaFornecedor;
 
   private
     { Private declarations }
@@ -182,10 +189,10 @@ begin
   PnlEdit.Visible := True;
   EdtPesquisar.Visible := False;
   PnlDesignEdit.Visible := True;
-  EdtNome.SetFocus;
-  LimparCampos;
   PnlButtonEnviar.Visible := True;
   PnlButtonAtualizar.Visible := False;
+  EdtNome.SetFocus;
+  LimparCampos;
 end;
 
 procedure TFormCadastroFornecedores.BtnCancelarClick(Sender: TObject);
@@ -216,7 +223,8 @@ begin
     ListaFornecedores := Controller.CarregarFornecedores;
     try
       for i := 0 to ListaFornecedores.Count - 1 do
-        CmbFornecedor.Items.AddObject(ListaFornecedores[i], ListaFornecedores.Objects[i]);
+        CmbFornecedor.Items.AddObject(ListaFornecedores[i],
+          ListaFornecedores.Objects[i]);
       CmbFornecedor.ItemIndex := -1;
     finally
       ListaFornecedores.Free;
@@ -248,7 +256,6 @@ begin
   end;
 end;
 
-
 procedure TFormCadastroFornecedores.CarregarGrid;
 var
   FornecedorController: TFornecedorController;
@@ -257,8 +264,7 @@ begin
   try
     DataSourceMain.DataSet := FornecedorController.ListarFornecedores;
     DBGridMain.DataSource := DataSourceMain;
-    if DBGridMain.Columns.Count >= 11 then
-    begin
+    if DBGridMain.Columns.Count >= 11 then begin
       DBGridMain.Columns[0].Title.Caption := 'Id';
       DBGridMain.Columns[1].Title.Caption := 'Nome';
       DBGridMain.Columns[2].Title.Caption := 'Razão Social';
@@ -283,16 +289,102 @@ begin
   end;
 end;
 
+procedure TFormCadastroFornecedores.DesvincularPecaFornecedor;
+var
+  Controller: TFornecedorController;
+  IdPeca, IdFornecedor: Integer;
+begin
+  if CmbFornecedor.ItemIndex = -1 then begin
+    ShowMessage('Selecione um fornecedor!');
+    Exit;
+  end;
+
+  if DataSourceVincular.DataSet.IsEmpty then begin
+    ShowMessage('Selecione uma peça vinculada para desvincular!');
+    Exit;
+  end;
+
+  if MessageDlg('Deseja realmente desvincular esta peça do fornecedor?',
+    mtConfirmation, [mbYes, mbNo], 0) = mrYes then begin
+    Controller := TFornecedorController.Create;
+    try
+      IdPeca := DataSourceVincular.DataSet.FieldByName('id').AsInteger;
+      IdFornecedor := Integer(CmbFornecedor.Items.Objects
+        [CmbFornecedor.ItemIndex]);
+
+      Controller.DesvincularPecaAoFornecedor(IdPeca, IdFornecedor);
+      ShowMessage('Peça desvinculada com sucesso!');
+      ListarPecaPorFornecedor;
+    finally
+      Controller.Free;
+    end;
+  end;
+end;
+
+procedure TFormCadastroFornecedores.VincularPecaFornecedor;
+var
+  Controller: TFornecedorController;
+  IdPeca, IdFornecedor: Integer;
+begin
+  if CmbFornecedor.ItemIndex = -1 then begin
+    ShowMessage('Selecione um fornecedor!');
+    Exit;
+  end;
+
+  if DataSourceVincular.DataSet.IsEmpty then begin
+    ShowMessage('Selecione uma peça na grid!');
+    Exit;
+  end;
+
+  Controller := TFornecedorController.Create;
+  try
+    IdPeca := DataSourceVincular.DataSet.FieldByName('id').AsInteger;
+    IdFornecedor := Integer(CmbFornecedor.Items.Objects
+      [CmbFornecedor.ItemIndex]);
+
+    ShowMessage(Format('Tentando vincular: Peça ID=%d, Fornecedor ID=%d',
+      [IdPeca, IdFornecedor]));
+
+    Controller.VincularPecaAoFornecedor(IdPeca, IdFornecedor);
+    ShowMessage('PeÇa vinculada com sucesso!');
+    ListarPecaPorFornecedor;
+    if CheckBoxPeçasVinculadas.Checked then
+      ListarPecaPorFornecedor;
+
+  finally
+    Controller.Free;
+  end;
+end;
+
+procedure TFormCadastroFornecedores.ExcluirFornecedores;
+var
+  FornecedorController: TFornecedorController;
+  IdFornecedor: Integer;
+begin
+  if DataSourceMain.DataSet.IsEmpty then begin
+    ShowMessage('Nenhum fornecedor selecionado!');
+    Exit;
+  end;
+  IdFornecedor := DBGridMain.DataSource.DataSet.FieldByName('id').AsInteger;
+  if MessageDlg('Deseja realmente deletar este fornecedor?', mtConfirmation,
+    [mbYes, mbNo], 0) = mrYes then begin
+    FornecedorController := TFornecedorController.Create;
+    FornecedorController.DeletarFornecedor(IdFornecedor);
+    CarregarGrid;
+    FornecedorController.Free;
+  end;
+end;
+
 procedure TFormCadastroFornecedores.CarregarGridRestaurar;
 var
   FornecedorController: TFornecedorController;
 begin
   FornecedorController := TFornecedorController.Create;
   try
-    DataSourceRestaurar.DataSet := FornecedorController.ListarFornecedoresRestaurar;
+    DataSourceRestaurar.DataSet :=
+      FornecedorController.ListarFornecedoresRestaurar;
     DBGridRestaurar.DataSource := DataSourceRestaurar;
-    if DBGridRestaurar.Columns.Count >= 11 then
-    begin
+    if DBGridRestaurar.Columns.Count >= 11 then begin
       for var i := 0 to 11 do begin
         DBGridRestaurar.Columns[i].Title.Alignment := taCenter;
         DBGridRestaurar.Columns[i].Alignment := taCenter;
@@ -305,16 +397,33 @@ begin
   end;
 end;
 
+procedure TFormCadastroFornecedores.CadastrarFornecedores;
+var
+  FornecedorController: TFornecedorController;
+  Fornecedor: TFornecedor;
+begin
+  FornecedorController := TFornecedorController.Create;
+  try
+    Fornecedor := FornecedorController.CriarObjeto(EdtNome.Text,
+      EdtRazaoSocial.Text, EdtCNPJ.Text, EdtTelefone.Text, EdtCEP.Text,
+      EdtRua.Text, EdtNumero.Text, EdtBairro.Text, EdtCidade.Text,
+      EdtEstado.Text, CmbStatus.ItemIndex = 0);
+    FornecedorController.SalvarFornecedor(Fornecedor);
+    Fornecedor.Free;
+  finally
+    FornecedorController.Free;
+  end;
+end;
+
 procedure TFormCadastroFornecedores.CarregarGridVincular;
 var
-  ServicePecas : TPecaService;
-  begin
+  ServicePecas: TPecaService;
+begin
   try
-  ServicePecas := TPecaService.create;
-  DataSourceVincular.DataSet := ServicePecas.ListarPecas;
-  DBGridVincular.DataSource := DataSourceVincular;
-    if DBGridVincular.Columns.Count >= 8 then
-    begin
+    ServicePecas := TPecaService.Create;
+    DataSourceVincular.DataSet := ServicePecas.ListarPecas;
+    DBGridVincular.DataSource := DataSourceVincular;
+    if DBGridVincular.Columns.Count >= 8 then begin
       DBGridVincular.Columns[0].Title.Caption := 'Id';
       DBGridVincular.Columns[1].Title.Caption := 'Nome';
       DBGridVincular.Columns[2].Title.Caption := 'Descrição';
@@ -337,23 +446,21 @@ var
   end;
 end;
 
-
-
 procedure TFormCadastroFornecedores.CheckBoxPeçasVinculadasClick(Sender: TObject);
 begin
   PnlButtonVincular.Visible := not PnlButtonVincular.Visible;
   PnlButtonDesvincular.Visible := not PnlButtonDesvincular.Visible;
   ListarPecaPorFornecedor;
   if CheckBoxPeçasVinculadas.Checked = False then begin
-  CarregarGridVincular;
-end;
+    CarregarGridVincular;
+  end;
 end;
 
 procedure TFormCadastroFornecedores.CmbFornecedorChange(Sender: TObject);
 begin
-If CheckBoxPeçasVinculadas.Checked = True then begin
-  ListarPecaPorFornecedor;
-end;
+  If CheckBoxPeçasVinculadas.Checked = True then begin
+    ListarPecaPorFornecedor;
+  end;
 end;
 
 procedure TFormCadastroFornecedores.CmbFornecedorPedidoChange(Sender: TObject);
@@ -369,14 +476,14 @@ begin
   if CmbFornecedorPedido.ItemIndex = -1 then
     Exit;
 
-  IdFornecedor := Integer(CmbFornecedorPedido.Items.Objects[CmbFornecedorPedido.ItemIndex]);
+  IdFornecedor := Integer(CmbFornecedorPedido.Items.Objects
+    [CmbFornecedorPedido.ItemIndex]);
 
   Controller := TFornecedorController.Create;
   try
     ListaPecas := Controller.CarregarPecasPorFornecedor(IdFornecedor);
     try
-      if ListaPecas.Count = 0 then
-      begin
+      if ListaPecas.Count = 0 then begin
         ShowMessage('Este fornecedor não possui peças vinculadas!');
         Exit;
       end;
@@ -403,19 +510,15 @@ begin
   BuscarCEP;
 end;
 
-
 procedure TFormCadastroFornecedores.EdtCEPClick(Sender: TObject);
 begin
   EdtCEP.SelStart := 0;
 end;
 
-
 procedure TFormCadastroFornecedores.EdtCNPJClick(Sender: TObject);
 begin
   EdtCNPJ.SelStart := 0;
 end;
-
-
 
 procedure TFormCadastroFornecedores.EdtPesquisarChange(Sender: TObject);
 var
@@ -423,17 +526,16 @@ var
 begin
   FornecedorService := TFornecedorService.Create;
   try
-    DataSourceMain.DataSet := FornecedorService.PesquisarFornecedores(EdtPesquisar.Text);
-    for var i := 0 to DBGridMain.Columns.Count-1 do
-    begin
+    DataSourceMain.DataSet := FornecedorService.PesquisarFornecedores
+      (EdtPesquisar.Text);
+    for var i := 0 to DBGridMain.Columns.Count - 1 do begin
       DBGridMain.Columns[i].Width := 140;
-      DBGridMain.Columns[i].Title.Font.Size :=15;
+      DBGridMain.Columns[i].Title.Font.Size := 15;
     end;
   finally
     FornecedorService.Free;
   end;
 end;
-
 
 procedure TFormCadastroFornecedores.EdtQuantidadeChange(Sender: TObject);
 begin
@@ -447,16 +549,22 @@ end;
 
 procedure TFormCadastroFornecedores.PegarCamposGridFornecedores;
 begin
-  EdtNome.Text         := DBGridMain.DataSource.DataSet.FieldByName('nome').AsString;
-  EdtRazaoSocial.Text  := DBGridMain.DataSource.DataSet.FieldByName('razao_social').AsString;
-  EdtCNPJ.Text         := DBGridMain.DataSource.DataSet.FieldByName('cnpj').AsString;
-  EdtTelefone.Text     := DBGridMain.DataSource.DataSet.FieldByName('telefone').AsString;
-  EdtCEP.Text          := DBGridMain.DataSource.DataSet.FieldByName('cep').AsString;
-  EdtRua.Text          := DBGridMain.DataSource.DataSet.FieldByName('rua').AsString;
-  EdtNumero.Text       := DBGridMain.DataSource.DataSet.FieldByName('numero').AsString;
-  EdtBairro.Text       := DBGridMain.DataSource.DataSet.FieldByName('bairro').AsString;
-  EdtCidade.Text       := DBGridMain.DataSource.DataSet.FieldByName('cidade').AsString;
-  EdtEstado.Text       := DBGridMain.DataSource.DataSet.FieldByName('Estado').AsString;
+  EdtNome.Text := DBGridMain.DataSource.DataSet.FieldByName('nome').AsString;
+  EdtRazaoSocial.Text := DBGridMain.DataSource.DataSet.FieldByName
+    ('razao_social').AsString;
+  EdtCNPJ.Text := DBGridMain.DataSource.DataSet.FieldByName('cnpj').AsString;
+  EdtTelefone.Text := DBGridMain.DataSource.DataSet.FieldByName
+    ('telefone').AsString;
+  EdtCEP.Text := DBGridMain.DataSource.DataSet.FieldByName('cep').AsString;
+  EdtRua.Text := DBGridMain.DataSource.DataSet.FieldByName('rua').AsString;
+  EdtNumero.Text := DBGridMain.DataSource.DataSet.FieldByName('numero')
+    .AsString;
+  EdtBairro.Text := DBGridMain.DataSource.DataSet.FieldByName('bairro')
+    .AsString;
+  EdtCidade.Text := DBGridMain.DataSource.DataSet.FieldByName('cidade')
+    .AsString;
+  EdtEstado.Text := DBGridMain.DataSource.DataSet.FieldByName('Estado')
+    .AsString;
   if DBGridMain.DataSource.DataSet.FieldByName('ativo').AsBoolean then
     CmbStatus.ItemIndex := 0
   else
@@ -473,23 +581,8 @@ begin
 end;
 
 procedure TFormCadastroFornecedores.BtnExcluirClick(Sender: TObject);
-var
-  FornecedorController: TFornecedorController;
-  IdFornecedor: Integer;
 begin
-  if DataSourceMain.DataSet.IsEmpty then
-  begin
-    ShowMessage('Nenhum fornecedor selecionado!');
-    Exit;
-  end;
-  IdFornecedor := DBGridMain.DataSource.DataSet.FieldByName('id').AsInteger;
-  if MessageDlg('Deseja realmente deletar este fornecedor?', mtConfirmation, [mbYes, mbNo], 0) = mrYes then
-  begin
-    FornecedorController := TFornecedorController.Create;
-    FornecedorController.DeletarFornecedor(IdFornecedor);
-    CarregarGrid;
-    FornecedorController.Free;
-  end;
+  ExcluirFornecedores;
 end;
 
 procedure TFormCadastroFornecedores.Label18Click(Sender: TObject);
@@ -502,13 +595,11 @@ end;
 
 procedure TFormCadastroFornecedores.AtualizarEstadoCombos;
 begin
-  if ListBoxPedidos.Items.Count > 0 then
-  begin
+  if ListBoxPedidos.Items.Count > 0 then begin
     CmbFornecedorPedido.Enabled := False;
     CmbFormaPagamento.Enabled := False;
   end
-  else
-  begin
+  else begin
     CmbFornecedorPedido.Enabled := True;
     CmbFormaPagamento.Enabled := True;
   end;
@@ -520,28 +611,24 @@ var
   IdPeca, Quantidade: Integer;
   PrecoUnitario, ValorItem, ValorTotalAtual: Currency;
 begin
-  if CmbFornecedorPedido.ItemIndex = -1 then
-  begin
+  if CmbFornecedorPedido.ItemIndex = -1 then begin
     ShowMessage('Selecione um fornecedor primeiro!');
     Exit;
   end;
 
-  if CmbPeças.ItemIndex = -1 then
-  begin
+  if CmbPeças.ItemIndex = -1 then begin
     ShowMessage('Selecione uma peça!');
     Exit;
   end;
 
-  if Trim(EdtQuantidade.Text) = '' then
-  begin
+  if Trim(EdtQuantidade.Text) = '' then begin
     ShowMessage('Informe a quantidade!');
     EdtQuantidade.SetFocus;
     Exit;
   end;
 
   Quantidade := StrToIntDef(EdtQuantidade.Text, 0);
-  if Quantidade <= 0 then
-  begin
+  if Quantidade <= 0 then begin
     ShowMessage('Quantidade deve ser maior que zero!');
     EdtQuantidade.SetFocus;
     Exit;
@@ -552,19 +639,17 @@ begin
     IdPeca := Integer(CmbPeças.Items.Objects[CmbPeças.ItemIndex]);
     PrecoUnitario := Controller.ObterPrecoCompraPeca(IdPeca);
 
-    if PrecoUnitario <= 0 then
-    begin
+    if PrecoUnitario <= 0 then begin
       ShowMessage('Preço da peça não encontrado ou inválido!');
       Exit;
     end;
 
     ValorItem := PrecoUnitario * Quantidade;
-    ListBoxPedidos.AddItem(
-      Format('Peça: %s - Qtd: %d - Valor Unit.: R$ %.2f - Subtotal: R$ %.2f',
-        [CmbPeças.Text, Quantidade, PrecoUnitario, ValorItem]),
-      TObject(IdPeca)
-    );
-    ValorTotalAtual := StrToCurrDef(StringReplace(EdtValorTotal.Text, ',', '.', [rfReplaceAll]), 0);
+    ListBoxPedidos.AddItem
+      (Format('Peça: %s - Qtd: %d - Valor Unit.: R$ %.2f - Subtotal: R$ %.2f',
+      [CmbPeças.Text, Quantidade, PrecoUnitario, ValorItem]), TObject(IdPeca));
+    ValorTotalAtual := StrToCurrDef(StringReplace(EdtValorTotal.Text, ',', '.',
+      [rfReplaceAll]), 0);
     ValorTotalAtual := ValorTotalAtual + ValorItem;
     EdtValorTotal.Text := FormatFloat('#,##0.00', ValorTotalAtual);
     EdtQuantidade.Clear;
@@ -578,70 +663,25 @@ begin
   end;
 end;
 
-
-
 procedure TFormCadastroFornecedores.LblAtualizarClick(Sender: TObject);
 begin
-  if ValidarCampos then
-  begin
+  if ValidarCampos then begin
     EditarFornecedores;
     CarregarGrid;
   end;
 end;
 
 procedure TFormCadastroFornecedores.LblDesvincularClick(Sender: TObject);
-var
-  Controller: TFornecedorController;
-  IdPeca, IdFornecedor: Integer;
 begin
-  if CmbFornecedor.ItemIndex = -1 then
-  begin
-    ShowMessage('Selecione um fornecedor!');
-    Exit;
-  end;
-
-  if DataSourceVincular.DataSet.IsEmpty then
-  begin
-    ShowMessage('Selecione uma peça vinculada para desvincular!');
-    Exit;
-  end;
-
-  if MessageDlg('Deseja realmente desvincular esta peça do fornecedor?', mtConfirmation, [mbYes, mbNo], 0) = mrYes then
-  begin
-    Controller := TFornecedorController.Create;
-    try
-      IdPeca := DataSourceVincular.DataSet.FieldByName('id').AsInteger;
-      IdFornecedor := Integer(CmbFornecedor.Items.Objects[CmbFornecedor.ItemIndex]);
-
-      Controller.DesvincularPecaAoFornecedor(IdPeca, IdFornecedor);
-      ShowMessage('Peça desvinculada com sucesso!');
-      ListarPecaPorFornecedor;
-    finally
-      Controller.Free;
-    end;
-  end;
+  DesvincularPecaFornecedor;
 end;
 
 procedure TFormCadastroFornecedores.LblEnviarClick(Sender: TObject);
-var
-  FornecedorController: TFornecedorController;
-  FornecedorDTO: TFornecedor;
 begin
-  if ValidarCampos then
-  begin
-    FornecedorController := TFornecedorController.Create;
-    try
-      FornecedorDTO := FornecedorController.CriarObjeto(
-        EdtNome.Text, EdtRazaoSocial.Text, EdtCNPJ.Text, EdtTelefone.Text,
-        EdtCEP.Text, EdtRua.Text, EdtNumero.Text,
-        EdtBairro.Text, EdtCidade.Text, EdtEstado.Text, CmbStatus.ItemIndex = 0);
-      FornecedorController.SalvarFornecedor(FornecedorDTO);
-      LimparCampos;
-      CarregarGrid;
-      FornecedorDTO.Free;
-    finally
-      FornecedorController.Free;
-    end;
+  if ValidarCampos then begin
+    CadastrarFornecedores;
+    LimparCampos;
+    CarregarGrid;
   end;
 end;
 
@@ -661,26 +701,25 @@ begin
   Controller := TFornecedorController.Create;
 
   try
-    IdFornecedor := Integer(CmbFornecedorPedido.Items.Objects[CmbFornecedorPedido.ItemIndex]);
+    IdFornecedor := Integer(CmbFornecedorPedido.Items.Objects
+      [CmbFornecedorPedido.ItemIndex]);
     FormaPagamento := CmbFormaPagamento.Text;
-    ValorTotal := StrToCurrDef(StringReplace(EdtValorTotal.Text, '.', '', [rfReplaceAll]), 0);
+    ValorTotal := StrToCurrDef(StringReplace(EdtValorTotal.Text, '.', '',
+      [rfReplaceAll]), 0);
 
-    for i := 0 to ListBoxPedidos.Items.Count - 1 do
-    begin
+    for i := 0 to ListBoxPedidos.Items.Count - 1 do begin
       Linha := ListBoxPedidos.Items[i];
       PosDoisPontos := Pos(':', Linha);
       Delete(Linha, 1, PosDoisPontos);
       Linha := Trim(Linha);
 
       PosTraco := Pos(' - Quantidade:', Linha);
-      if PosTraco > 0 then
-      begin
+      if PosTraco > 0 then begin
         NomePeca := Trim(Copy(Linha, 1, PosTraco - 1));
-        QuantidadeStr := Trim(Copy(Linha, PosTraco + Length(' - Quantidade:'), Length(Linha)));
-        for var j := 0 to CmbPeças.Items.Count - 1 do
-        begin
-          if Trim(CmbPeças.Items[j]) = NomePeca then
-          begin
+        QuantidadeStr := Trim(Copy(Linha, PosTraco + Length(' - Quantidade:'),
+          Length(Linha)));
+        for var j := 0 to CmbPeças.Items.Count - 1 do begin
+          if Trim(CmbPeças.Items[j]) = NomePeca then begin
             PecasIDs.Add(Integer(CmbPeças.Items.Objects[j]));
             Quantidades.Add(StrToIntDef(QuantidadeStr, 1));
             Break;
@@ -688,8 +727,8 @@ begin
         end;
       end;
     end;
-    if Controller.SalvarPedido(IdFornecedor, FormaPagamento, ValorTotal, EdtObservacao.Text, PecasIDs, Quantidades) then
-    begin
+    if Controller.SalvarPedido(IdFornecedor, FormaPagamento, ValorTotal,
+      EdtObservacao.Text, PecasIDs, Quantidades) then begin
       ShowMessage('Pedido finalizado com sucesso!');
       ListBoxPedidos.Clear;
       CmbFornecedorPedido.ItemIndex := -1;
@@ -714,38 +753,8 @@ begin
 end;
 
 procedure TFormCadastroFornecedores.LblVincularClick(Sender: TObject);
-var
-  Controller: TFornecedorController;
-  IdPeca, IdFornecedor: Integer;
 begin
-  if CmbFornecedor.ItemIndex = -1 then
-  begin
-    ShowMessage('Selecione um fornecedor!');
-    Exit;
-  end;
-
-  if DataSourceVincular.DataSet.IsEmpty then
-  begin
-    ShowMessage('Selecione uma peça na grid!');
-    Exit;
-  end;
-
-  Controller := TFornecedorController.Create;
-  try
-    IdPeca := DataSourceVincular.DataSet.FieldByName('id').AsInteger;
-    IdFornecedor := Integer(CmbFornecedor.Items.Objects[CmbFornecedor.ItemIndex]);
-
-    ShowMessage(Format('Tentando vincular: Peça ID=%d, Fornecedor ID=%d', [IdPeca, IdFornecedor]));
-
-    Controller.VincularPecaAoFornecedor(IdPeca, IdFornecedor);
-    ShowMessage('PeÇa vinculada com sucesso!');
-    ListarPecaPorFornecedor;
-    if CheckBoxPeçasVinculadas.Checked then
-      ListarPecaPorFornecedor;
-
-  finally
-    Controller.Free;
-  end;
+  VincularPecaFornecedor;
 end;
 
 procedure TFormCadastroFornecedores.EditarFornecedores;
@@ -754,8 +763,7 @@ var
   Fornecedor: TFornecedor;
   IdFornecedor: Integer;
 begin
-  if DataSourceMain.DataSet.IsEmpty then
-  begin
+  if DataSourceMain.DataSet.IsEmpty then begin
     ShowMessage('Nenhum fornecedor selecionado!');
     Exit;
   end;
@@ -806,14 +814,14 @@ var
   FornecedorController: TFornecedorController;
   IdFornecedor: Integer;
 begin
-  if DataSourceRestaurar.DataSet.IsEmpty then
-  begin
+  if DataSourceRestaurar.DataSet.IsEmpty then begin
     ShowMessage('Nenhum fornecedor selecionado!');
     Exit;
   end;
-  IdFornecedor := DBGridRestaurar.DataSource.DataSet.FieldByName('id').AsInteger;
-  if MessageDlg('Deseja realmente restaurar este fornecedor?', mtConfirmation, [mbYes, mbNo], 0) = mrYes then
-  begin
+  IdFornecedor := DBGridRestaurar.DataSource.DataSet.FieldByName('id')
+    .AsInteger;
+  if MessageDlg('Deseja realmente restaurar este fornecedor?', mtConfirmation,
+    [mbYes, mbNo], 0) = mrYes then begin
     FornecedorController := TFornecedorController.Create;
     FornecedorController.RestaurarFornecedor(IdFornecedor);
     CarregarGridRestaurar;
@@ -829,7 +837,7 @@ end;
 
 procedure TFormCadastroFornecedores.ImageFecharVincularClick(Sender: TObject);
 begin
-  PnlVincularPeça.Visible := false;
+  PnlVincularPeça.Visible := False;
   CarregarGrid;
 end;
 
@@ -841,15 +849,16 @@ end;
 
 procedure TFormCadastroFornecedores.BtnSairClick(Sender: TObject);
 begin
-  if MessageDlg('Deseja realmente fechar este formulário?', mtConfirmation, [mbYes, mbNo], 0) = mrYes then
+  if MessageDlg('Deseja realmente fechar este formulário?', mtConfirmation,
+    [mbYes, mbNo], 0) = mrYes then
     Close;
-    PnlBackgrounEdit.Visible := False;
-    PnlEdit.Visible := False;
-    PnlRestaurar.Visible := False;
-    EdtPesquisar.Visible := False;
-    PnlVincularPeça.Visible := False;
-    PnlPedido.Visible := False;
-    ListBoxPedidos.Clear;
+  PnlBackgrounEdit.Visible := False;
+  PnlEdit.Visible := False;
+  PnlRestaurar.Visible := False;
+  EdtPesquisar.Visible := False;
+  PnlVincularPeça.Visible := False;
+  PnlPedido.Visible := False;
+  ListBoxPedidos.Clear;
 end;
 
 procedure TFormCadastroFornecedores.BtnVincularPeçasClick(Sender: TObject);
@@ -866,8 +875,8 @@ begin
   FornecedorService := TFornecedorService.Create;
   try
     try
-      FornecedorService.BuscarCep(EdtCEP.Text, Rua, Bairro, Cidade, Estado);
-      EdtRua.Text    := Rua;
+      FornecedorService.BuscarCEP(EdtCEP.Text, Rua, Bairro, Cidade, Estado);
+      EdtRua.Text := Rua;
       EdtBairro.Text := Bairro;
       EdtCidade.Text := Cidade;
       EdtEstado.Text := Estado;
@@ -884,10 +893,16 @@ procedure TFormCadastroFornecedores.FormCreate(Sender: TObject);
 begin
   CmbStatus.Height := 31;
   CmbStatus.Font.Size := 13;
-  EdtNome.Height := 31; EdtRazaoSocial.Height := 31; EdtCNPJ.Height := 31;
-  EdtTelefone.Height := 31; EdtCEP.Height := 31;
-  EdtRua.Height := 31; EdtNumero.Height := 31;
-  EdtBairro.Height := 31; EdtCidade.Height := 31; EdtEstado.Height := 31;
+  EdtNome.Height := 31;
+  EdtRazaoSocial.Height := 31;
+  EdtCNPJ.Height := 31;
+  EdtTelefone.Height := 31;
+  EdtCEP.Height := 31;
+  EdtRua.Height := 31;
+  EdtNumero.Height := 31;
+  EdtBairro.Height := 31;
+  EdtCidade.Height := 31;
+  EdtEstado.Height := 31;
 end;
 
 procedure TFormCadastroFornecedores.FormShow(Sender: TObject);
@@ -899,16 +914,46 @@ end;
 
 function TFormCadastroFornecedores.ValidarCampos: Boolean;
 begin
-  if EdtNome.Text = '' then begin ShowMessage('O campo Nome não pode ficar vazio'); Exit; end;
-  if EdtRazaoSocial.Text = '' then begin ShowMessage('O campo Razão Social não pode ficar vazio'); Exit; end;
-  if EdtCNPJ.Text = '' then begin ShowMessage('O campo CNPJ não pode ficar vazio'); Exit; end;
-  if EdtTelefone.Text = '' then begin ShowMessage('O campo Telefone não pode ficar vazio'); Exit; end;
-  if EdtCEP.Text = '' then begin ShowMessage('O campo CEP não pode ficar vazio'); Exit; end;
-  if EdtRua.Text = '' then begin ShowMessage('O campo Rua não pode ficar vazio'); Exit; end;
-  if EdtNumero.Text = '' then begin ShowMessage('O campo Número não pode ficar vazio'); Exit; end;
-  if EdtBairro.Text = '' then begin ShowMessage('O campo Bairro não pode ficar vazio'); Exit; end;
-  if EdtCidade.Text = '' then begin ShowMessage('O campo Cidade não pode ficar vazio'); Exit; end;
-  if EdtEstado.Text = '' then begin ShowMessage('O campo Estado não pode ficar vazio'); Exit; end;
+  if EdtNome.Text = '' then begin
+    ShowMessage('O campo Nome não pode ficar vazio');
+    Exit;
+  end;
+  if EdtRazaoSocial.Text = '' then begin
+    ShowMessage('O campo Razão Social não pode ficar vazio');
+    Exit;
+  end;
+  if EdtCNPJ.Text = '' then begin
+    ShowMessage('O campo CNPJ não pode ficar vazio');
+    Exit;
+  end;
+  if EdtTelefone.Text = '' then begin
+    ShowMessage('O campo Telefone não pode ficar vazio');
+    Exit;
+  end;
+  if EdtCEP.Text = '' then begin
+    ShowMessage('O campo CEP não pode ficar vazio');
+    Exit;
+  end;
+  if EdtRua.Text = '' then begin
+    ShowMessage('O campo Rua não pode ficar vazio');
+    Exit;
+  end;
+  if EdtNumero.Text = '' then begin
+    ShowMessage('O campo Número não pode ficar vazio');
+    Exit;
+  end;
+  if EdtBairro.Text = '' then begin
+    ShowMessage('O campo Bairro não pode ficar vazio');
+    Exit;
+  end;
+  if EdtCidade.Text = '' then begin
+    ShowMessage('O campo Cidade não pode ficar vazio');
+    Exit;
+  end;
+  if EdtEstado.Text = '' then begin
+    ShowMessage('O campo Estado não pode ficar vazio');
+    Exit;
+  end;
   Result := True;
 end;
 
@@ -945,24 +990,20 @@ begin
 
   Controller := TFornecedorController.Create;
   try
-    DataSourceVincular.DataSet := Controller.ListarPecasPorFornecedor(IdFornecedor);
+    DataSourceVincular.DataSet := Controller.ListarPecasPorFornecedor
+      (IdFornecedor);
     DBGridVincular.DataSource := DataSourceVincular;
   finally
     Controller.Free;
   end;
 end;
 
-
-
 procedure TFormCadastroFornecedores.BtnPedidoClick(Sender: TObject);
 begin
   PnlPedido.Visible := True;
   CarregarFornecedoresPedido;
-  CmbFormaPagamento.ItemIndex := -1;
-  EdtValorTotal.Clear;
-  CmbPeças.ItemIndex := -1;
+  LimparCampos;
 end;
-
 
 procedure TFormCadastroFornecedores.CarregarFornecedoresPedido;
 var
@@ -976,7 +1017,8 @@ begin
     ListaFornecedores := Controller.CarregarFornecedores;
     try
       for i := 0 to ListaFornecedores.Count - 1 do
-        CmbFornecedorPedido.Items.AddObject(ListaFornecedores[i], ListaFornecedores.Objects[i]);
+        CmbFornecedorPedido.Items.AddObject(ListaFornecedores[i],
+          ListaFornecedores.Objects[i]);
       CmbFornecedorPedido.ItemIndex := -1;
     finally
       ListaFornecedores.Free;
@@ -985,9 +1027,6 @@ begin
     Controller.Free;
   end;
 end;
-
-
-
 
 procedure TFormCadastroFornecedores.CalcularValorTotalPedido;
 var
@@ -998,11 +1037,10 @@ begin
 
   Controller := TFornecedorController.Create;
   try
-    Quantidade := StrToIntDef(EdtQuantidade.Text,0);
-    if Quantidade > 0 then
-    begin
-      ValorUnitario := Controller.ObterPrecoCompraPeca(
-        Integer(CmbPeças.Items.Objects[CmbPeças.ItemIndex]));
+    Quantidade := StrToIntDef(EdtQuantidade.Text, 0);
+    if Quantidade > 0 then begin
+      ValorUnitario := Controller.ObterPrecoCompraPeca
+        (Integer(CmbPeças.Items.Objects[CmbPeças.ItemIndex]));
       EdtValorTotal.Text := FormatFloat('#,##0.00', Quantidade * ValorUnitario);
     end
     else

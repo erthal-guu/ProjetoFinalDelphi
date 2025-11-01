@@ -44,14 +44,13 @@ begin
     FQuery.Close;
     FQuery.SQL.Clear;
     FQuery.SQL.Add('UPDATE Clientes');
-    FQuery.SQL.Add('SET nome = :nome, cpf = :cpf ,email = :email,telefone = :telefone, nascimento = :nascimento,endereco = :endereco, ativo = :ativo');
+    FQuery.SQL.Add('SET nome = :nome, cpf = :cpf ,email = :email,telefone = :telefone, nascimento = :nascimento, ativo = :ativo');
     FQuery.SQL.Add('WHERE id = :id');
   FQuery.ParamByName('nome').AsString    := aCliente.getNome;
   FQuery.ParamByName('cpf').AsString     := aCliente.getCPF;
   FQuery.ParamByName('email').AsString   := aCliente.getEmail;
   FQuery.ParamByName('telefone').AsString:= aCliente.getTelefone;
   FQuery.ParamByName('nascimento').AsString := aCliente.getNascimento;
-  FQuery.ParamByName('endereco').AsString := aCliente.getEndereco;
   FQuery.ParamByName('ativo').AsBoolean := aCliente.getAtivo;
   FQuery.ParamByName('id').AsInteger := aCliente.getIdCliente;
 
@@ -79,14 +78,13 @@ procedure TClienteRepository.inserirCliente(aCliente: TCliente);
 begin
   FQuery.Close;
   FQuery.SQL.Clear;
-  FQuery.SQL.Add('INSERT INTO clientes (nome, cpf, email, telefone, nascimento, endereco, ativo)');
-  FQuery.SQL.Add('VALUES (:nome, :cpf, :email, :telefone, :nascimento, :endereco, :ativo)');
+  FQuery.SQL.Add('INSERT INTO clientes (nome, cpf, email, telefone, nascimento, ativo)');
+  FQuery.SQL.Add('VALUES (:nome, :cpf, :email, :telefone, :nascimento, :ativo)');
   FQuery.ParamByName('nome').AsString    := aCliente.getNome;
   FQuery.ParamByName('cpf').AsString     := aCliente.getCPF;
   FQuery.ParamByName('email').AsString   := aCliente.getEmail;
   FQuery.ParamByName('telefone').AsString:= aCliente.getTelefone;
   FQuery.ParamByName('nascimento').AsString := aCliente.getNascimento;
-  FQuery.ParamByName('endereco').AsString := aCliente.getEndereco;
   FQuery.ParamByName('ativo').AsBoolean := aCliente.getAtivo;
   FQuery.ExecSQL;
 end;
@@ -96,7 +94,7 @@ begin
     try
     FQuery.Close;
     FQuery.SQL.Clear;
-    FQuery.SQL.Add('SELECT id, nome,cpf,email,telefone,nascimento,endereco,ativo FROM Clientes WHERE ativo = TRUE');
+    FQuery.SQL.Add('SELECT id, nome,cpf,email,telefone,nascimento,ativo FROM Clientes WHERE ativo = TRUE');
     FQuery.SQL.Add('ORDER BY id');
     FQuery.Open;
     Result := FQuery;
@@ -111,7 +109,7 @@ begin
     try
     FQuery.Close;
     FQuery.SQL.Clear;
-    FQuery.SQL.Add('SELECT id, nome,cpf,email,telefone,nascimento,endereco,ativo FROM Clientes WHERE ativo = FALSE');
+    FQuery.SQL.Add('SELECT id, nome,cpf,email,telefone,nascimento,ativo FROM Clientes WHERE ativo = FALSE');
     FQuery.Open;
     Result := FQuery;
   except
@@ -125,7 +123,7 @@ begin
   try
     FQuery.Close;
     FQuery.SQL.Clear;
-    FQuery.SQL.Add('SELECT id, nome, cpf, email,telefone,nascimento,endereco,ativo');
+    FQuery.SQL.Add('SELECT id, nome, cpf, email,telefone,nascimento,ativo');
     FQuery.SQL.Add('FROM clientes');
     FQuery.SQL.Add('WHERE(nome ILIKE :nome) OR (cpf LIKE :cpf) OR (telefone ILIKE :telefone)');
     FQuery.SQL.Add('AND ativo = TRUE');

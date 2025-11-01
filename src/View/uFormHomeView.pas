@@ -78,7 +78,8 @@ implementation
 
 procedure TFormHome.ExibirDadosUsuarioLogado;
 begin
-LblUsuarioLogado.Caption := Format('Bem-vindo %s', [uSession.UsuarioLogadoGrupo]);
+LblUsuarioLogado.Caption := Format('Bem-vindo %s : %s', [uSession.UsuarioLogadoNome, uSession.UsuarioLogadoGrupo]);
+
 end;
 
 procedure TFormHome.FuncionariosClick(Sender: TObject);

@@ -13,7 +13,7 @@ type
     constructor Create;
     destructor Destroy; override;
     function SalvarClientes(Cliente: TCliente): Boolean;
-    function CriarObjeto(aNome, aCPF, aEmail, aTelefone, aNascimento, aEndereco: String;
+    function CriarObjeto(aNome, aCPF, aEmail, aTelefone, aNascimento: String;
       aAtivo: Boolean): TCliente;
     procedure EditarClientes(Cliente: TCliente);
     function ValidarClientes(ClienteValido: TCliente): Boolean;
@@ -40,22 +40,21 @@ begin
 end;
 
 function TClienteService.CriarObjeto(aNome, aCPF, aEmail, aTelefone,
-  aNascimento, aEndereco: String; aAtivo: Boolean): TCliente;
+  aNascimento: String; aAtivo: Boolean): TCliente;
 var
-  ClienteDTO: TCliente;
+  Cliente: TCliente;
 begin
-  ClienteDTO := TCliente.Create;
+  Cliente := TCliente.Create;
   try
-    ClienteDTO.setNome(aNome);
-    ClienteDTO.setCPF(aCPF);
-    ClienteDTO.setEmail(aEmail);
-    ClienteDTO.setTelefone(aTelefone);
-    ClienteDTO.setEndereco(aEndereco);
-    ClienteDTO.setNascimento(aNascimento);
-    ClienteDTO.setAtivo(aAtivo);
-    Result := ClienteDTO;
+    Cliente.setNome(aNome);
+    Cliente.setCPF(aCPF);
+    Cliente.setEmail(aEmail);
+    Cliente.setTelefone(aTelefone);
+    Cliente.setNascimento(aNascimento);
+    Cliente.setAtivo(aAtivo);
+    Result := Cliente;
   except
-    ClienteDTO.Free;
+    Cliente.Free;
     raise;
   end;
 end;
@@ -66,7 +65,6 @@ begin
             (ClienteValido.getCPF <> '') and
             (ClienteValido.getEmail <> '') and
             (ClienteValido.getTelefone <> '') and
-            (ClienteValido.getEndereco <> '') and
             (ClienteValido.getNascimento <> '');
 end;
 

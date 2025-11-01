@@ -3,7 +3,8 @@ unit uFormCadastroVeiculosView;
 interface
 
 uses
-  Winapi.Windows, Winapi.Messages, System.SysUtils, System.Variants, System.Classes,
+  Winapi.Windows, Winapi.Messages, System.SysUtils, System.Variants,
+  System.Classes,
   Vcl.Graphics, Vcl.Controls, Vcl.Forms, Vcl.Dialogs, Data.DB, Vcl.WinXCtrls,
   Vcl.Grids, Vcl.DBGrids, Vcl.Buttons, Vcl.StdCtrls, Vcl.Mask, Vcl.ExtCtrls,
   VeiculoCadastroController, VeiculoCadastroService, uVeiculo,
@@ -86,6 +87,8 @@ type
     procedure FormShow(Sender: TObject);
     procedure CarregarClientes;
     procedure BtnCancelarClick(Sender: TObject);
+    procedure ExcluirVeiculos;
+    procedure CadastrarVeiculos;
 
   private
     { Private declarations }
@@ -136,13 +139,34 @@ end;
 
 function TFormCadastroVeiculos.ValidarCampos: Boolean;
 begin
-  if EdtModelo.Text = '' then begin ShowMessage('O campo Modelo não pode ficar vazio'); Exit(False); end;
-  if EdtMarca.Text = '' then begin ShowMessage('O campo Marca não pode ficar vazio'); Exit(False); end;
-  if EdtChassi.Text = '' then begin ShowMessage('O campo Chassi não pode ficar vazio'); Exit(False); end;
-  if EdtPlaca.Text = '' then begin ShowMessage('O campo Placa não pode ficar vazio'); Exit(False); end;
-  if EdtCor.Text = '' then begin ShowMessage('O campo Cor não pode ficar vazio'); Exit(False); end;
-  if EdtFabricação.Text = '' then begin ShowMessage('O campo Fabricação não pode ficar vazio'); Exit(False); end;
-  if CmbCliente.ItemIndex = -1 then begin ShowMessage('Selecione um Cliente válido'); Exit(False); end;
+  if EdtModelo.Text = '' then begin
+    ShowMessage('O campo Modelo não pode ficar vazio');
+    Exit(False);
+  end;
+  if EdtMarca.Text = '' then begin
+    ShowMessage('O campo Marca não pode ficar vazio');
+    Exit(False);
+  end;
+  if EdtChassi.Text = '' then begin
+    ShowMessage('O campo Chassi não pode ficar vazio');
+    Exit(False);
+  end;
+  if EdtPlaca.Text = '' then begin
+    ShowMessage('O campo Placa não pode ficar vazio');
+    Exit(False);
+  end;
+  if EdtCor.Text = '' then begin
+    ShowMessage('O campo Cor não pode ficar vazio');
+    Exit(False);
+  end;
+  if EdtFabricação.Text = '' then begin
+    ShowMessage('O campo Fabricação não pode ficar vazio');
+    Exit(False);
+  end;
+  if CmbCliente.ItemIndex = -1 then begin
+    ShowMessage('Selecione um Cliente válido');
+    Exit(False);
+  end;
   Result := True;
 end;
 
@@ -156,6 +180,7 @@ begin
   EdtFabricação.Clear;
   CmbCliente.ItemIndex := -1;
 end;
+
 procedure TFormCadastroVeiculos.CarregarGrid;
 var
   VeiculoController: TVeiculoController;
@@ -164,9 +189,8 @@ begin
   DataSourceMain.DataSet := VeiculoController.ListarVeiculos;
   DBGridMain.DataSource := DataSourceMain;
   try
-    if DBGridMain.Columns.Count >= 8 then
-    begin
-      DBGridMain.Columns[0].Title.Caption:= 'Id';
+    if DBGridMain.Columns.Count >= 8 then begin
+      DBGridMain.Columns[0].Title.Caption := 'Id';
       DBGridMain.Columns[1].Title.Caption := 'Modelo';
       DBGridMain.Columns[2].Title.Caption := 'Marca';
       DBGridMain.Columns[3].Title.Caption := 'Chassi';
@@ -175,8 +199,7 @@ begin
       DBGridMain.Columns[6].Title.Caption := 'Fabricação';
       DBGridMain.Columns[7].Title.Caption := 'Cliente';
       DBGridMain.Columns[8].Title.Caption := 'Ativo';
-      for var i := 0 to 8 do
-      begin
+      for var i := 0 to 8 do begin
         DBGridMain.Columns[i].Title.Alignment := taCenter;
         DBGridMain.Columns[i].Alignment := taCenter;
         DBGridMain.Columns[i].Width := 140;
@@ -196,8 +219,7 @@ begin
   DataSourceRestaurar.DataSet := VeiculoController.ListarVeiculosRestaurar;
   DBGridRestaurar.DataSource := DataSourceRestaurar;
   try
-    for var i := 0 to 7 do
-    begin
+    for var i := 0 to 7 do begin
       DBGridRestaurar.Columns[i].Title.Alignment := taCenter;
       DBGridRestaurar.Columns[i].Alignment := taCenter;
       DBGridRestaurar.Columns[i].Width := 140;
@@ -209,6 +231,33 @@ begin
   end;
 end;
 
+procedure TFormCadastroVeiculos.CadastrarVeiculos;
+var
+  VeiculoController: TVeiculoController;
+  IdCategoria, IdCliente: Integer;
+begin
+  VeiculoController := TVeiculoController.Create;
+  try
+    if CmbCliente.ItemIndex >= 0 then begin
+      IdCliente := Integer(CmbCliente.Items.Objects[CmbCliente.ItemIndex])
+    end
+    else begin
+      ShowMessage('Selecione um cliente válido!');
+      Exit;
+    end;
+
+    try
+      VeiculoController.CadastrarVeiculo(EdtModelo.Text, EdtMarca.Text,
+        EdtChassi.Text, EdtPlaca.Text, EdtCor.Text, EdtFabricação.Text,
+        IdCliente);
+    except
+      on E: Exception do
+        ShowMessage(E.Message);
+    end;
+  finally
+    VeiculoController.Free;
+  end;
+end;
 
 procedure TFormCadastroVeiculos.CarregarClientes;
 var
@@ -238,14 +287,33 @@ var
 begin
   VeiculoController := TVeiculoController.Create;
   try
-    DataSourceMain.DataSet := VeiculoController.PesquisarVeiculos(EdtPesquisar.Text);
-    for var i := 0 to 7 do
-    begin
+    DataSourceMain.DataSet := VeiculoController.PesquisarVeiculos
+      (EdtPesquisar.Text);
+    for var i := 0 to 7 do begin
       DBGridMain.Columns[i].Width := 140;
       DBGridMain.Columns[i].Title.Font.Size := 15;
     end;
     DBGridRestaurar.Columns[0].Width := 40;
   finally
+    VeiculoController.Free;
+  end;
+end;
+
+procedure TFormCadastroVeiculos.ExcluirVeiculos;
+var
+  VeiculoController: TVeiculoController;
+  IdVeiculo: Integer;
+begin
+  if DataSourceMain.DataSet.IsEmpty then begin
+    ShowMessage('Nenhum veículo selecionado!');
+    Exit;
+  end;
+  IdVeiculo := DBGridMain.DataSource.DataSet.FieldByName('id').AsInteger;
+  if MessageDlg('Deseja realmente deletar este veículo?', mtConfirmation,
+    [mbYes, mbNo], 0) = mrYes then begin
+    VeiculoController := TVeiculoController.Create;
+    VeiculoController.DeletarVeiculo(IdVeiculo);
+    CarregarGrid;
     VeiculoController.Free;
   end;
 end;
@@ -256,17 +324,21 @@ var
   i: Integer;
 begin
   try
-    EdtModelo.Text := DBGridMain.DataSource.DataSet.FieldByName('Modelo').AsString;
-    EdtMarca.Text := DBGridMain.DataSource.DataSet.FieldByName('Marca').AsString;
-    EdtChassi.Text := DBGridMain.DataSource.DataSet.FieldByName('Chassi').AsString;
-    EdtPlaca.Text := DBGridMain.DataSource.DataSet.FieldByName('Placa').AsString;
+    EdtModelo.Text := DBGridMain.DataSource.DataSet.FieldByName
+      ('Modelo').AsString;
+    EdtMarca.Text := DBGridMain.DataSource.DataSet.FieldByName('Marca')
+      .AsString;
+    EdtChassi.Text := DBGridMain.DataSource.DataSet.FieldByName
+      ('Chassi').AsString;
+    EdtPlaca.Text := DBGridMain.DataSource.DataSet.FieldByName('Placa')
+      .AsString;
     EdtCor.Text := DBGridMain.DataSource.DataSet.FieldByName('Cor').AsString;
-    EdtFabricação.Text := DBGridMain.DataSource.DataSet.FieldByName('Fabricacao').AsString;
-    ClienteNome := DBGridMain.DataSource.DataSet.FieldByName('Cliente').AsString;
-    for i := 0 to CmbCliente.Items.Count - 1 do
-    begin
-      if CmbCliente.Items[i] = ClienteNome then
-      begin
+    EdtFabricação.Text := DBGridMain.DataSource.DataSet.FieldByName
+      ('Fabricacao').AsString;
+    ClienteNome := DBGridMain.DataSource.DataSet.FieldByName('Cliente')
+      .AsString;
+    for i := 0 to CmbCliente.Items.Count - 1 do begin
+      if CmbCliente.Items[i] = ClienteNome then begin
         CmbCliente.ItemIndex := i;
         Break;
       end;
@@ -279,10 +351,10 @@ end;
 
 procedure TFormCadastroVeiculos.BtnCancelarClick(Sender: TObject);
 begin
-    PnlBackgrounEdit.Visible := False;
-    PnlEdit.Visible := False;
-    PnlRestaurar.Visible := False;
-    EdtPesquisar.Visible := False;
+  PnlBackgrounEdit.Visible := False;
+  PnlEdit.Visible := False;
+  PnlRestaurar.Visible := False;
+  EdtPesquisar.Visible := False;
 end;
 
 procedure TFormCadastroVeiculos.BtnEditarClick(Sender: TObject);
@@ -296,23 +368,8 @@ begin
 end;
 
 procedure TFormCadastroVeiculos.BtnExcluirClick(Sender: TObject);
-var
-  VeiculoController: TVeiculoController;
-  IdVeiculo: Integer;
 begin
-  if DataSourceMain.DataSet.IsEmpty then
-  begin
-    ShowMessage('Nenhum veículo selecionado!');
-    Exit;
-  end;
-  IdVeiculo := DBGridMain.DataSource.DataSet.FieldByName('id').AsInteger;
-  if MessageDlg('Deseja realmente deletar este veículo?', mtConfirmation, [mbYes, mbNo], 0) = mrYes then
-  begin
-    VeiculoController := TVeiculoController.Create;
-    VeiculoController.DeletarVeiculo(IdVeiculo);
-    CarregarGrid;
-    VeiculoController.Free;
-  end;
+  ExcluirVeiculos;
 end;
 
 procedure TFormCadastroVeiculos.BtnRestaurarClick(Sender: TObject);
@@ -332,14 +389,13 @@ var
   VeiculoController: TVeiculoController;
   IdVeiculo: Integer;
 begin
-  if DataSourceRestaurar.DataSet.IsEmpty then
-  begin
+  if DataSourceRestaurar.DataSet.IsEmpty then begin
     ShowMessage('Nenhum veículo selecionado!');
     Exit;
   end;
   IdVeiculo := DBGridRestaurar.DataSource.DataSet.FieldByName('id').AsInteger;
-  if MessageDlg('Deseja realmente restaurar este veículo?', mtConfirmation, [mbYes, mbNo], 0) = mrYes then
-  begin
+  if MessageDlg('Deseja realmente restaurar este veículo?', mtConfirmation,
+    [mbYes, mbNo], 0) = mrYes then begin
     VeiculoController := TVeiculoController.Create;
     VeiculoController.RestaurarVeiculo(IdVeiculo);
     CarregarGridRestaurar;
@@ -361,52 +417,31 @@ end;
 
 procedure TFormCadastroVeiculos.BtnSairClick(Sender: TObject);
 begin
-  if MessageDlg('Deseja realmente fechar este formulário?', mtConfirmation, [mbYes, mbNo], 0) = mrYes then
+  if MessageDlg('Deseja realmente fechar este formulário?', mtConfirmation,
+    [mbYes, mbNo], 0) = mrYes then
     Close;
-    PnlBackgrounEdit.Visible := False;
-    PnlEdit.Visible := False;
-    PnlRestaurar.Visible := False;
-    EdtPesquisar.Visible := False;
+  PnlBackgrounEdit.Visible := False;
+  PnlEdit.Visible := False;
+  PnlRestaurar.Visible := False;
+  EdtPesquisar.Visible := False;
 end;
 
 procedure TFormCadastroVeiculos.LblEnviarClick(Sender: TObject);
-var
-  VeiculoController: TVeiculoController;
-  IdCategoria, IdCliente: Integer;
 begin
-  if ValidarCampos then
-  begin
-    VeiculoController := TVeiculoController.Create;
-    try
-      if CmbCliente.ItemIndex >= 0 then
-        IdCliente := Integer(CmbCliente.Items.Objects[CmbCliente.ItemIndex])
-      else
-      begin
-        ShowMessage('Selecione um cliente válido!');
-        Exit;
-      end;
-
-      try
-        VeiculoController.CadastrarVeiculo(EdtModelo.Text,EdtMarca.Text,EdtChassi.Text,EdtPlaca.Text,EdtCor.Text,EdtFabricação.Text,IdCliente);
-        LimparCampos;
-        CarregarGrid;
-      except
-        on E: Exception do
-          ShowMessage(E.Message);
-      end;
-    finally
-      VeiculoController.Free;
-    end;
+  if ValidarCampos then begin
+    CadastrarVeiculos;
+    LimparCampos;
+    CarregarGrid;
   end;
 end;
+
 procedure TFormCadastroVeiculos.EditarVeiculos;
 var
   VeiculoController: TVeiculoController;
   Veiculo: TVeiculo;
   IdVeiculo, IdCategoria, IdCliente: Integer;
 begin
-  if DataSourceMain.DataSet.IsEmpty then
-  begin
+  if DataSourceMain.DataSet.IsEmpty then begin
     ShowMessage('Nenhum veículo selecionado!');
     Exit;
   end;
@@ -419,8 +454,7 @@ begin
         Exit;
       if CmbCliente.ItemIndex >= 0 then
         IdCliente := Integer(CmbCliente.Items.Objects[CmbCliente.ItemIndex])
-      else
-      begin
+      else begin
         ShowMessage('Selecione um cliente válido!');
         Exit;
       end;
@@ -435,8 +469,7 @@ begin
       Veiculo.setCategoria(IdCategoria);
       Veiculo.setCliente(IdCliente);
 
-      if VeiculoController.EditarVeiculo(Veiculo) then
-      begin
+      if VeiculoController.EditarVeiculo(Veiculo) then begin
         ShowMessage('Veículo atualizado com sucesso!');
         CarregarGrid;
         LimparCampos;
@@ -453,8 +486,7 @@ end;
 
 procedure TFormCadastroVeiculos.LblAtualizarClick(Sender: TObject);
 begin
-  if ValidarCampos then
-  begin
+  if ValidarCampos then begin
     EditarVeiculos;
     CarregarGrid;
   end;
