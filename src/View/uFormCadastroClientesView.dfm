@@ -1041,7 +1041,7 @@
               ParentFont = False
             end
             object LblNascimento: TLabel
-              Left = 541
+              Left = 697
               Top = 8
               Width = 76
               Height = 17
@@ -1054,7 +1054,7 @@
               ParentFont = False
             end
             object LblEndereço: TLabel
-              Left = 627
+              Left = 541
               Top = 8
               Width = 62
               Height = 17
@@ -1125,7 +1125,7 @@
             end
             object EdtEmail: TEdit
               AlignWithMargins = True
-              Left = 627
+              Left = 283
               Top = 30
               Width = 150
               Height = 33
@@ -1143,7 +1143,7 @@
             end
             object EdtDataNascimento: TMaskEdit
               AlignWithMargins = True
-              Left = 541
+              Left = 697
               Top = 30
               Width = 80
               Height = 33
@@ -1193,7 +1193,7 @@
             end
             object EdtEndereço: TEdit
               AlignWithMargins = True
-              Left = 283
+              Left = 541
               Top = 30
               Width = 150
               Height = 33
@@ -1208,6 +1208,7 @@
               Font.Style = []
               ParentFont = False
               TabOrder = 5
+              ExplicitLeft = 439
             end
             object CmbStatus: TComboBox
               AlignWithMargins = True

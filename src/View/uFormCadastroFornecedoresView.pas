@@ -909,13 +909,6 @@ begin
   if EdtBairro.Text = '' then begin ShowMessage('O campo Bairro não pode ficar vazio'); Exit; end;
   if EdtCidade.Text = '' then begin ShowMessage('O campo Cidade não pode ficar vazio'); Exit; end;
   if EdtEstado.Text = '' then begin ShowMessage('O campo Estado não pode ficar vazio'); Exit; end;
-  if Edtobservacao.Text = '' then begin ShowMessage('O campo Observação não pode ficar vazio'); Exit; end;
-  if EdtValorTotal.Text = '' then begin ShowMessage('O campo Valor Total não pode ficar vazio'); Exit; end;
-  if EdtQuantidade.Text = '' then begin ShowMessage('O campo Quantidade não pode ficar vazio'); Exit; end;
-  if CmbStatus.ItemIndex = -1 then begin ShowMessage('Selecione o Status'); Exit; end;
-  if CmbFornecedor.ItemIndex = -1 then begin ShowMessage('Selecione o Fornecedor'); Exit; end;
-  if CmbFormaPagamento.ItemIndex = -1 then begin ShowMessage('Selecione a Forma de Pagemento'); Exit; end;
-  if CmbPeças.ItemIndex = -1 then begin ShowMessage('Selecione a Peça'); Exit; end;
   Result := True;
 end;
 
