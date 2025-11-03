@@ -91,7 +91,7 @@ begin
   try
     FQuery.Close;
     FQuery.SQL.Clear;
-    FQuery.SQL.Add('SELECT id, valor_recebido, data_recebimento, valor_total,');
+    FQuery.SQL.Add('SELECT id,valor_recebido, data_recebimento, valor_total,');
     FQuery.SQL.Add('       data_emissao, data_vencimento, forma_pagamento, observacao, status, ativo');
     FQuery.SQL.Add('FROM receitas');
     FQuery.SQL.Add('WHERE ativo = FALSE');
@@ -109,7 +109,7 @@ begin
   try
     FQuery.Close;
     FQuery.SQL.Clear;
-    FQuery.SQL.Add('SELECT id, valor_recebido, data_recebimento, valor_total,');
+    FQuery.SQL.Add('SELECT id,valor_recebido, data_recebimento, valor_total,');
     FQuery.SQL.Add('       data_emissao, data_vencimento, forma_pagamento, observacao, status, ativo');
     FQuery.SQL.Add('FROM receitas');
     FQuery.SQL.Add('ORDER BY id');

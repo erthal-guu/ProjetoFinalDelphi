@@ -342,15 +342,16 @@ begin
     IdFornecedor := Integer(CmbFornecedor.Items.Objects
       [CmbFornecedor.ItemIndex]);
 
-    ShowMessage(Format('Tentando vincular: Peça ID=%d, Fornecedor ID=%d',
-      [IdPeca, IdFornecedor]));
-
-    Controller.VincularPecaAoFornecedor(IdPeca, IdFornecedor);
-    ShowMessage('PeÇa vinculada com sucesso!');
-    ListarPecaPorFornecedor;
-    if CheckBoxPeçasVinculadas.Checked then
-      ListarPecaPorFornecedor;
-
+    if Controller.VincularPecaAoFornecedor(IdPeca, IdFornecedor) then begin
+      ShowMessage('Peça vinculada com sucesso!');
+      CarregarGridVincular;
+      if CheckBoxPeçasVinculadas.Checked then
+        ListarPecaPorFornecedor;
+    end else begin
+      ShowMessage('Esta peça já está vinculada a este fornecedor!');
+      CarregarGridVincular;
+      Exit;
+    end;
   finally
     Controller.Free;
   end;
@@ -446,7 +447,8 @@ begin
   end;
 end;
 
-procedure TFormCadastroFornecedores.CheckBoxPeçasVinculadasClick(Sender: TObject);
+procedure TFormCadastroFornecedores.CheckBoxPeçasVinculadasClick
+  (Sender: TObject);
 begin
   PnlButtonVincular.Visible := not PnlButtonVincular.Visible;
   PnlButtonDesvincular.Visible := not PnlButtonDesvincular.Visible;

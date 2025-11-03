@@ -397,6 +397,7 @@ begin
   PreencherCamposReceita;
   EdtDataRecebimento.Date := Date;
   PnlBackgrounEdit.Visible := True;
+  PnlEdit.Visible := True;
 end;
 
 procedure TFormReceitas.BtnExcluirClick(Sender: TObject);
@@ -433,7 +434,6 @@ procedure TFormReceitas.BtnHistoricoClick(Sender: TObject);
 begin
   if Assigned(Controller) then
     Controller.Free;
-
   Controller := TReceitaController.Create;
   DataSourceHistorico.DataSet := Controller.ListarHistoricoReceitas;
   DBGridHistorico.DataSource := DataSourceHistorico;
@@ -470,6 +470,7 @@ end;
 procedure TFormReceitas.ImgFecharHistoricoClick(Sender: TObject);
 begin
   PnLHistorico.Visible := False;
+  CarregarGrid;
 end;
 
 procedure TFormReceitas.ImgFecharDetalhamentoClick(Sender: TObject);

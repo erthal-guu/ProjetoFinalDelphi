@@ -1,0 +1,58 @@
+14:44:17 - VINCULAR - Peça ID: 2 vinculada ao Fornecedor ID: 1
+14:44:26 - VINCULAR - Peça ID: 8 vinculada ao Fornecedor ID: 1
+14:44:40 - PEDIDO - Usuário ID: 0 criou Pedido ID: 1 com 0 itens para Fornecedor ID: 1
+14:46:17 - VINCULAR - Peça ID: 4 vinculada ao Fornecedor ID: 1
+15:37:46 - FALHA AO VINCULAR - Peça ID: 4 Já está vinculada ao Fornecedor ID: 1
+15:38:55 - FALHA AO VINCULAR - Peça ID: 4 Já está vinculada ao Fornecedor ID: 1
+15:39:08 - FALHA AO VINCULAR - Peça ID: 9 Já está vinculada ao Fornecedor ID: 1
+15:39:15 - FALHA AO VINCULAR - Peça ID: 8 Já está vinculada ao Fornecedor ID: 1
+15:44:57 - FALHA AO VINCULAR - Peça ID: 8 Já está vinculada ao Fornecedor ID: 1
+15:45:10 - VINCULAR - Peça ID: 7 vinculada ao Fornecedor ID: 1
+15:46:33 - VINCULAR - Peça ID: 3 vinculada ao Fornecedor ID: 1
+15:49:47 - VINCULAR - Peça ID: 10 vinculada ao Fornecedor ID: 1
+16:01:04 - FALHA AO VINCULAR - Peça ID: 10 Já está vinculada ao Fornecedor ID: 24
+16:01:12 - FALHA AO VINCULAR - Peça ID: 6 Já está vinculada ao Fornecedor ID: 24
+16:03:06 - FALHA AO VINCULAR - Peça ID: 7 Já está vinculada ao Fornecedor ID: 1
+16:03:23 - VINCULAR - Peça ID: 4 vinculada ao Fornecedor ID: 1
+16:03:30 - FALHA AO VINCULAR - Peça ID: 9 Já está vinculada ao Fornecedor ID: 1
+16:04:05 - FALHA AO VINCULAR - Peça ID: 9 Já está vinculada ao Fornecedor ID: 1
+16:05:38 - FALHA AO VINCULAR - Peça ID: 6 Já está vinculada ao Fornecedor ID: 1
+16:09:14 - VINCULAR - Peça ID: 5 vinculada ao Fornecedor ID: 1
+16:12:12 - VINCULAR - Peça ID: 7 vinculada ao Fornecedor ID: 3
+16:12:39 - FALHA AO VINCULAR - Peça ID: 8 Já está vinculada ao Fornecedor ID: 1
+16:13:51 - FALHA AO VINCULAR - Peça ID: 5 Já está vinculada ao Fornecedor ID: 1
+16:13:56 - FALHA AO VINCULAR - Peça ID: 3 Já está vinculada ao Fornecedor ID: 1
+16:16:52 - VINCULAR - Peça ID: 5 vinculada ao Fornecedor ID: 3
+16:16:58 - VINCULAR - Peça ID: 8 vinculada ao Fornecedor ID: 3
+16:19:56 - FALHA AO VINCULAR - Peça ID: 8 Já está vinculada ao Fornecedor ID: 1
+16:20:00 - VINCULAR - Peça ID: 10 vinculada ao Fornecedor ID: 1
+16:20:05 - FALHA AO VINCULAR - Peça ID: 2 Já está vinculada ao Fornecedor ID: 1
+16:21:00 - PEDIDO - Usuário ID: 0 criou Pedido ID: 2 com 0 itens para Fornecedor ID: 3
+16:23:34 - PEDIDO - Usuário ID: 0 criou Pedido ID: 3 com 0 itens para Fornecedor ID: 1
+16:24:49 - LOGIN - Sucesso: Usuário ID 3, Nome: AdminMassa, (CPF: 000.000.000-00)
+16:25:10 - FALHA AO VINCULAR - Peça ID: 10 Já está vinculada ao Fornecedor ID: 1
+16:25:19 - VINCULAR - Peça ID: 1 vinculada ao Fornecedor ID: 1
+16:25:31 - VINCULAR - Peça ID: 9 vinculada ao Fornecedor ID: 1
+16:25:35 - FALHA AO VINCULAR - Peça ID: 8 Já está vinculada ao Fornecedor ID: 1
+16:26:06 - VINCULAR - Peça ID: 5 vinculada ao Fornecedor ID: 1
+16:26:16 - FALHA AO VINCULAR - Peça ID: 4 Já está vinculada ao Fornecedor ID: 1
+16:26:24 - FALHA AO VINCULAR - Peça ID: 1 Já está vinculada ao Fornecedor ID: 1
+16:26:35 - VINCULAR - Peça ID: 3 vinculada ao Fornecedor ID: 1
+16:38:01 - CADASTRO - ID: 0 cadastrou ordem de serviço com cliente ID: 2
+16:38:28 - RECEBER - ID: 0 registrou recebimento da receita ID: 1 - Valor: 1200,00
+16:38:43 - RECEBER - ID: 0 registrou recebimento da receita ID: 1 - Valor: 1230,00
+16:41:28 - CADASTRO - ID: 0 cadastrou ordem de serviço com cliente ID: 3
+16:41:48 - RECEBER - ID: 0 registrou recebimento da receita ID: 2 - Valor: 1375,00
+16:44:55 - CADASTRO - ID: 0 cadastrou ordem de serviço com cliente ID: 2
+16:46:04 - RECEBER - ID: 0 registrou recebimento da receita ID: 3 - Valor: 896,00
+16:46:24 - RECEBER - ID: 0 registrou recebimento da receita ID: 3 - Valor: 897,00
+16:56:00 - VINCULAR - Peça ID: 26 vinculada ao Fornecedor ID: 27
+17:05:05 - LOGIN - Sucesso: Usuário ID 3, Nome: AdminMassa, (CPF: 000.000.000-00)
+17:07:57 - VINCULAR - Peça ID: 26 vinculada ao Fornecedor ID: 1
+17:08:01 - VINCULAR - Peça ID: 27 vinculada ao Fornecedor ID: 1
+17:08:04 - VINCULAR - Peça ID: 29 vinculada ao Fornecedor ID: 1
+17:08:39 - PEDIDO - Usuário ID: 0 criou Pedido ID: 5 com 0 itens para Fornecedor ID: 1
+17:09:36 - PEDIDO - Usuário ID: 0 criou Pedido ID: 6 com 0 itens para Fornecedor ID: 27
+17:10:49 - PEDIDO - Usuário ID: 0 criou Pedido ID: 7 com 0 itens para Fornecedor ID: 1
+17:11:58 - ERRO PEDIDO - Usuário ID: 0 - List index out of bounds (36632596).  TList<System.Integer> is empty
+17:12:06 - ERRO PEDIDO - Usuário ID: 0 - List index out of bounds (36632596).  TList<System.Integer> is empty

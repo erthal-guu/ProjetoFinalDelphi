@@ -6,7 +6,7 @@ uses
   uFornecedor, FornecedorCadastroRepository, uDMConexao, System.SysUtils,
   FireDAC.Comp.Client, Data.DB, IdHTTP, System.JSON,
   IdSSL, IdSSLOpenSSL, IdSSLOpenSSLHeaders, Logs, uSession, PeçasCadastroRepository,
-  System.Classes, System.Generics.Collections;
+  System.Classes, System.Generics.Collections,Vcl.Dialogs;
 
 type
   TFornecedorService = class
@@ -25,7 +25,7 @@ type
     procedure RestaurarFornecedor(const aId: Integer);
     function PesquisarFornecedores(const aFiltro: String): TDataSet;
     procedure BuscarCep(const ACep: string; out aRua, aBairro, aCidade, aEstado: string);
-    procedure VincularPecaAoFornecedor(aPecaID, aFornecedorID: Integer);
+    Function VincularPecaAoFornecedor(aPecaID, aFornecedorID: Integer):Boolean;
     function ListarPecasPorFornecedor(aFornecedorID: Integer): TDataSet;
     function CarregarFornecedores: TStringlist;
     procedure DesvincularPecaDoFornecedor(aPecaID, aFornecedorID: Integer);
@@ -128,10 +128,8 @@ var
 begin
   Result := False;
   IDUsuarioLogado := uSession.UsuarioLogadoID;
-
   try
     IdPedido := Repository.InserirPedido(aIdFornecedor, aFormaPagamento, aValorTotal, aObservacao);
-
     if IdPedido > 0 then
     begin
       for i := 0 to aPecasIDs.Count - 1 do
@@ -263,12 +261,19 @@ begin
   end;
 end;
 
-procedure TFornecedorService.VincularPecaAoFornecedor(aPecaID, aFornecedorID: Integer);
-begin
-  Repository.VincularPecaFornecedor(aFornecedorID, aPecaID);
-  SalvarLog(Format('VINCULAR - Peça ID: %d vinculada ao Fornecedor ID: %d',
-    [aPecaID, aFornecedorID]));
-end;
+Function TFornecedorService.VincularPecaAoFornecedor(aPecaID, aFornecedorID: Integer):Boolean;
+    begin
+      if Repository.PeçajaVinculada(aFornecedorID, aPecaID) then begin
+        SalvarLog(Format('FALHA AO VINCULAR - Peça ID: %d Já está vinculada ao Fornecedor ID: %d',
+        [aPecaID, aFornecedorID]));
+        Result := False;
+      end else begin
+        Repository.VincularPecaFornecedor(aFornecedorID, aPecaID);
+        SalvarLog(Format('VINCULAR - Peça ID: %d vinculada ao Fornecedor ID: %d',
+        [aPecaID, aFornecedorID]));
+        Result := True;
+      end;
+    end;
 
 function TFornecedorService.ListarPecasPorFornecedor(aFornecedorID: Integer): TDataSet;
 begin

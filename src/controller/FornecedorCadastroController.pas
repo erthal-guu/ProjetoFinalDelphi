@@ -23,7 +23,7 @@ type
     procedure DeletarFornecedor(const aId: Integer);
     procedure RestaurarFornecedor(const aId: Integer);
     function PesquisarFornecedores(const aFiltro: String): TDataSet;
-    procedure VincularPecaAoFornecedor(aPecaID, aFornecedorID: Integer);
+    Function VincularPecaAoFornecedor(aPecaID, aFornecedorID: Integer):Boolean;
     function ListarPecasPorFornecedor(aFornecedorID: Integer): TDataSet;
     function CarregarFornecedores: TStringList;
     procedure DesvincularPecaAoFornecedor(aPecaID, aFornecedorID: Integer);
@@ -136,9 +136,9 @@ begin
   Result := Service.SalvarPedido(aIdFornecedor, aFormaPagamento, aValorTotal, aObservacao, aPecasIDs, aQuantidades);
 end;
 
-procedure TFornecedorController.VincularPecaAoFornecedor(aPecaID, aFornecedorID: Integer);
+Function TFornecedorController.VincularPecaAoFornecedor(aPecaID, aFornecedorID: Integer):Boolean;
 begin
-  Service.VincularPecaAoFornecedor(aPecaID, aFornecedorID);
+  Result := Service.VincularPecaAoFornecedor(aPecaID, aFornecedorID);
 end;
 
 function TFornecedorController.CarregarPecas: TStringList;
