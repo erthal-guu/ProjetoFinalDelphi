@@ -9,3 +9,10 @@
 14:10:27 - PEDIDO - Usuário ID: 0 criou Pedido ID: 18 com 1 itens para Fornecedor ID: 22
 15:35:06 - PEDIDO - Usuário ID: 0 criou Pedido ID: 19 com 1 itens para Fornecedor ID: 22
 15:35:59 - PEDIDO - Usuário ID: 0 criou Pedido ID: 20 com 2 itens para Fornecedor ID: 1
+15:46:20 - CADASTRO - ID: 0 cadastrou ordem de serviço com cliente ID: 1
+15:46:40 - RECEBER - ID: 0 registrou recebimento da receita ID: 4 - Valor: 1200,00
+15:46:51 - RECEBER - ID: 0 registrou recebimento da receita ID: 4 - Valor: 1230,00
+15:49:58 - FALHA AO VINCULAR - Peça ID: 26 Já está vinculada ao Fornecedor ID: 22
+15:51:10 - PEDIDO - Usuário ID: 0 criou Pedido ID: 21 com 2 itens para Fornecedor ID: 1
+15:56:03 - CADASTRO - ID: 0 cadastrou ordem de serviço com cliente ID: 4
+16:02:03 - LOGIN - Sucesso: Usuário ID 3, Nome: AdminMassa, (CPF: 000.000.000-00)

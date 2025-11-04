@@ -3137,7 +3137,8 @@
             Font.Name = 'Segoe UI'
             Font.Style = [fsBold]
             ParentFont = False
-            ExplicitLeft = 0
+            ExplicitWidth = 127
+            ExplicitHeight = 20
           end
         end
       end
@@ -3251,9 +3252,12 @@
         Caption = 'Servi'#231'os'
         OnClick = ServiçosClick
       end
-      object OrdensServiço: TMenuItem
+    end
+    object Movimentaes1: TMenuItem
+      Caption = 'Movimenta'#231#245'es'
+      object OrdensServio1: TMenuItem
         Caption = 'Ordens de Servi'#231'o'
-        OnClick = OrdensServiçoClick
+        OnClick = OrdensServio1Click
       end
     end
     object Relatorios: TMenuItem

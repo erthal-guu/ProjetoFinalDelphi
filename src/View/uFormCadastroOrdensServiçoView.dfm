@@ -1,6 +1,7 @@
 ﻿object FormCadastroOrdensServiço: TFormCadastroOrdensServiço
   Left = 0
   Top = 0
+  BorderStyle = bsDialog
   Caption = 'FormCadastroOrdensServi'#231'o'
   ClientHeight = 667
   ClientWidth = 1106

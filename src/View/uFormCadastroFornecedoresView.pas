@@ -204,6 +204,7 @@ begin
   EdtPesquisar.Visible := False;
   PnlVincularPeça.Visible := False;
   PnlPedido.Visible := False;
+  limparCampos;
 end;
 
 procedure TFormCadastroFornecedores.BtnPesquisarClick(Sender: TObject);
@@ -765,7 +766,6 @@ begin
         Trim(EdtObservacao.Text), PecasIDs, Quantidades) then begin
 
         ShowMessage('Pedido finalizado com sucesso!');
-
         ListBoxPedidos.Clear;
         CmbFornecedorPedido.ItemIndex := -1;
         CmbFormaPagamento.ItemIndex := -1;

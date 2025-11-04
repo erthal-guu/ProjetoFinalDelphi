@@ -29,7 +29,6 @@ type
     Peças: TMenuItem;
     Veiculos: TMenuItem;
     Serviços: TMenuItem;
-    OrdensServiço: TMenuItem;
     Relatorios: TMenuItem;
     Financeiro: TMenuItem;
     Sair: TMenuItem;
@@ -46,13 +45,14 @@ type
     Panel6: TPanel;
     Shape3: TShape;
     Image1: TImage;
+    Movimentaes1: TMenuItem;
+    OrdensServio1: TMenuItem;
     procedure SairClick(Sender: TObject);
     procedure FuncionariosClick(Sender: TObject);
     procedure FornecedoresClick(Sender: TObject);
     procedure PeçasClick(Sender: TObject);
     procedure VeiculosClick(Sender: TObject);
     procedure ServiçosClick(Sender: TObject);
-    procedure OrdensServiçoClick(Sender: TObject);
     procedure UsuariosClick(Sender: TObject);
     procedure ClientesClick(Sender: TObject);
     procedure Pendncias1Click(Sender: TObject);
@@ -61,6 +61,7 @@ type
     procedure FormShow(Sender: TObject);
     procedure VerificarPermissoes;
     procedure Image1Click(Sender: TObject);
+    procedure OrdensServio1Click(Sender: TObject);
   private
     { Private declarations }
   public
@@ -79,7 +80,6 @@ implementation
 procedure TFormHome.ExibirDadosUsuarioLogado;
 begin
 LblUsuarioLogado.Caption := Format('Bem-vindo %s : %s', [uSession.UsuarioLogadoNome, uSession.UsuarioLogadoGrupo]);
-
 end;
 
 procedure TFormHome.FuncionariosClick(Sender: TObject);
@@ -206,11 +206,12 @@ begin
   FormCadastroFornecedores.Show;
 end;
 
-procedure TFormHome.OrdensServiçoClick(Sender: TObject);
+procedure TFormHome.OrdensServio1Click(Sender: TObject);
 begin
   FormCadastroOrdensServiço.Position := poScreenCenter;
   FormCadastroOrdensServiço.Show;
 end;
+
 
 procedure TFormHome.Pendncias1Click(Sender: TObject);
 begin
