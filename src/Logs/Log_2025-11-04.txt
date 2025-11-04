@@ -1,0 +1,11 @@
+13:42:05 - PEDIDO - Usuário ID: 0 criou Pedido ID: 15 com 0 itens para Fornecedor ID: 1
+13:52:52 - PEDIDO - Usuário ID: 0 criou Pedido ID: 16 com 1 itens para Fornecedor ID: 1
+13:53:28 - PEDIDO - Usuário ID: 0 criou Pedido ID: 17 com 2 itens para Fornecedor ID: 1
+14:09:54 - VINCULAR - Peça ID: 22 vinculada ao Fornecedor ID: 22
+14:09:58 - VINCULAR - Peça ID: 23 vinculada ao Fornecedor ID: 22
+14:10:01 - VINCULAR - Peça ID: 24 vinculada ao Fornecedor ID: 22
+14:10:04 - VINCULAR - Peça ID: 25 vinculada ao Fornecedor ID: 22
+14:10:08 - VINCULAR - Peça ID: 26 vinculada ao Fornecedor ID: 22
+14:10:27 - PEDIDO - Usuário ID: 0 criou Pedido ID: 18 com 1 itens para Fornecedor ID: 22
+15:35:06 - PEDIDO - Usuário ID: 0 criou Pedido ID: 19 com 1 itens para Fornecedor ID: 22
+15:35:59 - PEDIDO - Usuário ID: 0 criou Pedido ID: 20 com 2 itens para Fornecedor ID: 1

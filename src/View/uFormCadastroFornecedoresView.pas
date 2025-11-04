@@ -168,6 +168,7 @@ type
     procedure CadastrarFornecedores;
     procedure DesvincularPecaFornecedor;
     procedure VincularPecaFornecedor;
+    function ValidarCamposPedido: Boolean;
 
   private
     { Private declarations }
@@ -347,7 +348,8 @@ begin
       CarregarGridVincular;
       if CheckBoxPeçasVinculadas.Checked then
         ListarPecaPorFornecedor;
-    end else begin
+    end
+    else begin
       ShowMessage('Esta peça já está vinculada a este fornecedor!');
       CarregarGridVincular;
       Exit;
@@ -615,11 +617,19 @@ var
 begin
   if CmbFornecedorPedido.ItemIndex = -1 then begin
     ShowMessage('Selecione um fornecedor primeiro!');
+    CmbFornecedorPedido.SetFocus;
+    Exit;
+  end;
+
+  if CmbFormaPagamento.ItemIndex = -1 then begin
+    ShowMessage('Selecione uma forma de pagamento!');
+    CmbFormaPagamento.SetFocus;
     Exit;
   end;
 
   if CmbPeças.ItemIndex = -1 then begin
     ShowMessage('Selecione uma peça!');
+    CmbPeças.SetFocus;
     Exit;
   end;
 
@@ -645,19 +655,21 @@ begin
       ShowMessage('Preço da peça não encontrado ou inválido!');
       Exit;
     end;
-
     ValorItem := PrecoUnitario * Quantidade;
-    ListBoxPedidos.AddItem
-      (Format('Peça: %s - Qtd: %d - Valor Unit.: R$ %.2f - Subtotal: R$ %.2f',
-      [CmbPeças.Text, Quantidade, PrecoUnitario, ValorItem]), TObject(IdPeca));
-    ValorTotalAtual := StrToCurrDef(StringReplace(EdtValorTotal.Text, ',', '.',
-      [rfReplaceAll]), 0);
+    ListBoxPedidos.AddItem(
+      Format('Peça: %s - Qtd: %d - Subtotal: R$ %.2f',
+        [CmbPeças.Text, Quantidade, ValorItem]),
+      TObject(IdPeca)
+    );
+
+    ValorTotalAtual := StrToCurrDef(
+      StringReplace(EdtValorTotal.Text, '.', '', [rfReplaceAll]), 0
+    );
     ValorTotalAtual := ValorTotalAtual + ValorItem;
     EdtValorTotal.Text := FormatFloat('#,##0.00', ValorTotalAtual);
     EdtQuantidade.Clear;
     CmbPeças.ItemIndex := -1;
-    EdtQuantidade.SetFocus;
-
+    CmbPeças.SetFocus;
     AtualizarEstadoCombos;
 
   finally
@@ -690,69 +702,96 @@ end;
 procedure TFormCadastroFornecedores.LblFinalizarClick(Sender: TObject);
 var
   Controller: TFornecedorController;
-  i, PosTraco, PosDoisPontos: Integer;
-  Linha, NomePeca, QuantidadeStr: string;
+  i: Integer;
+  Linha, QuantidadeStr: string;
   IdFornecedor: Integer;
   ValorTotal: Currency;
   PecasIDs: TList<Integer>;
   Quantidades: TList<Integer>;
   FormaPagamento: string;
+  PosQtd: Integer;
 begin
+  if CmbFornecedorPedido.ItemIndex = -1 then begin
+    ShowMessage('Selecione um fornecedor para o pedido!');
+    CmbFornecedorPedido.SetFocus;
+    Exit;
+  end;
+
+  if CmbFormaPagamento.ItemIndex = -1 then begin
+    ShowMessage('Selecione uma forma de pagamento!');
+    CmbFormaPagamento.SetFocus;
+    Exit;
+  end;
+
+  if ListBoxPedidos.Items.Count = 0 then begin
+    ShowMessage('Adicione pelo menos uma peça ao pedido!');
+    CmbPeças.SetFocus;
+    Exit;
+  end;
+
+  if MessageDlg('Deseja realmente finalizar este pedido?', mtConfirmation,
+    [mbYes, mbNo], 0) <> mrYes then
+    Exit;
+
   PecasIDs := TList<Integer>.Create;
   Quantidades := TList<Integer>.Create;
   Controller := TFornecedorController.Create;
-
   try
-    IdFornecedor := Integer(CmbFornecedorPedido.Items.Objects
-      [CmbFornecedorPedido.ItemIndex]);
-    FormaPagamento := CmbFormaPagamento.Text;
-    ValorTotal := StrToCurrDef(StringReplace(EdtValorTotal.Text, '.', '',
-      [rfReplaceAll]), 0);
+    try
+      IdFornecedor := Integer(CmbFornecedorPedido.Items.Objects
+        [CmbFornecedorPedido.ItemIndex]);
+      FormaPagamento := CmbFormaPagamento.Text;
+      for i := 0 to ListBoxPedidos.Items.Count - 1 do begin
+        PecasIDs.Add(Integer(ListBoxPedidos.Items.Objects[i]));
+        Linha := ListBoxPedidos.Items[i];
+        PosQtd := Pos('Qtd: ', Linha);
 
-    for i := 0 to ListBoxPedidos.Items.Count - 1 do begin
-      Linha := ListBoxPedidos.Items[i];
-      PosDoisPontos := Pos(':', Linha);
-      Delete(Linha, 1, PosDoisPontos);
-      Linha := Trim(Linha);
-
-      PosTraco := Pos(' - Quantidade:', Linha);
-      if PosTraco > 0 then begin
-        NomePeca := Trim(Copy(Linha, 1, PosTraco - 1));
-        QuantidadeStr := Trim(Copy(Linha, PosTraco + Length(' - Quantidade:'),
-          Length(Linha)));
-        for var j := 0 to CmbPeças.Items.Count - 1 do begin
-          if Trim(CmbPeças.Items[j]) = NomePeca then begin
-            PecasIDs.Add(Integer(CmbPeças.Items.Objects[j]));
-            Quantidades.Add(StrToIntDef(QuantidadeStr, 1));
-            Break;
-          end;
+        if PosQtd > 0 then begin
+          Delete(Linha, 1, PosQtd + 4);
+          QuantidadeStr := Copy(Linha, 1, Pos(' ', Linha) - 1);
+          Quantidades.Add(StrToIntDef(QuantidadeStr, 1));
+        end
+        else begin
+          Quantidades.Add(1);
         end;
       end;
-    end;
-    if Controller.SalvarPedido(IdFornecedor, FormaPagamento, ValorTotal,
-      EdtObservacao.Text, PecasIDs, Quantidades) then begin
-      ShowMessage('Pedido finalizado com sucesso!');
-      ListBoxPedidos.Clear;
-      CmbFornecedorPedido.ItemIndex := -1;
-      CmbFormaPagamento.ItemIndex := -1;
-      CmbPeças.ItemIndex := -1;
-      EdtValorTotal.Clear;
-      EdtObservacao.Clear;
-      EdtQuantidade.Clear;
-      AtualizarEstadoCombos;
-      PnlPedido.Visible := False;
-      CarregarGrid;
-    end;
+      ValorTotal := Controller.CalcularValorTotal(PecasIDs, Quantidades);
+      if ValorTotal <= 0 then begin
+        ShowMessage('O valor total do pedido deve ser maior que zero!');
+        Exit;
+      end;
+      EdtValorTotal.Text := FormatFloat('0.00', ValorTotal);
+      if Controller.SalvarPedido(IdFornecedor, FormaPagamento, ValorTotal,
+        Trim(EdtObservacao.Text), PecasIDs, Quantidades) then begin
 
-  except
-    on E: Exception do
-      ShowMessage('Erro ao finalizar pedido: ' + E.Message);
+        ShowMessage('Pedido finalizado com sucesso!');
+
+        ListBoxPedidos.Clear;
+        CmbFornecedorPedido.ItemIndex := -1;
+        CmbFormaPagamento.ItemIndex := -1;
+        CmbPeças.ItemIndex := -1;
+        EdtValorTotal.clear;
+        EdtObservacao.Clear;
+        EdtQuantidade.Clear;
+        AtualizarEstadoCombos;
+        PnlPedido.Visible := False;
+        CarregarGrid;
+      end
+      else begin
+        ShowMessage('Erro ao salvar o pedido. Tente novamente.');
+      end;
+
+    except
+      on E: Exception do
+        ShowMessage('Erro ao finalizar pedido: ' + E.Message);
+    end;
+  finally
+    PecasIDs.Free;
+    Quantidades.Free;
+    Controller.Free;
   end;
-
-  PecasIDs.Free;
-  Quantidades.Free;
-  Controller.Free;
 end;
+
 
 procedure TFormCadastroFornecedores.LblVincularClick(Sender: TObject);
 begin
@@ -914,51 +953,116 @@ begin
   CarregarPeças;
 end;
 
+
 function TFormCadastroFornecedores.ValidarCampos: Boolean;
 begin
-  if EdtNome.Text = '' then begin
-    ShowMessage('O campo Nome não pode ficar vazio');
+  Result := False;
+  if Trim(EdtNome.Text) = '' then begin
+    ShowMessage('O campo Nome não pode ficar vazio!');
+    EdtNome.SetFocus;
     Exit;
   end;
-  if EdtRazaoSocial.Text = '' then begin
-    ShowMessage('O campo Razão Social não pode ficar vazio');
+
+  if Trim(EdtRazaoSocial.Text) = '' then begin
+    ShowMessage('O campo Razão Social não pode ficar vazio!');
+    EdtRazaoSocial.SetFocus;
     Exit;
   end;
-  if EdtCNPJ.Text = '' then begin
-    ShowMessage('O campo CNPJ não pode ficar vazio');
+
+  if Trim(EdtCNPJ.Text) = '' then begin
+    ShowMessage('O campo CNPJ não pode ficar vazio!');
+    EdtCNPJ.SetFocus;
     Exit;
   end;
-  if EdtTelefone.Text = '' then begin
-    ShowMessage('O campo Telefone não pode ficar vazio');
+
+  if Length(StringReplace(StringReplace(EdtCNPJ.Text, '.', '', [rfReplaceAll]),
+    '/', '', [rfReplaceAll]).Replace('-', '')) <> 14 then begin
+    ShowMessage('CNPJ inválido! Deve conter 14 dígitos.');
+    EdtCNPJ.SetFocus;
     Exit;
   end;
-  if EdtCEP.Text = '' then begin
-    ShowMessage('O campo CEP não pode ficar vazio');
+
+  if Trim(EdtTelefone.Text) = '' then begin
+    ShowMessage('O campo Telefone não pode ficar vazio!');
+    EdtTelefone.SetFocus;
     Exit;
   end;
-  if EdtRua.Text = '' then begin
-    ShowMessage('O campo Rua não pode ficar vazio');
+
+
+  if Trim(EdtCEP.Text) = '' then begin
+    ShowMessage('O campo CEP não pode ficar vazio!');
+    EdtCEP.SetFocus;
     Exit;
   end;
-  if EdtNumero.Text = '' then begin
-    ShowMessage('O campo Número não pode ficar vazio');
+
+  if Trim(EdtRua.Text) = '' then begin
+    ShowMessage('O campo Rua não pode ficar vazio!');
+    EdtRua.SetFocus;
     Exit;
   end;
-  if EdtBairro.Text = '' then begin
-    ShowMessage('O campo Bairro não pode ficar vazio');
+
+  if Trim(EdtNumero.Text) = '' then begin
+    ShowMessage('O campo Número não pode ficar vazio!');
+    EdtNumero.SetFocus;
     Exit;
   end;
-  if EdtCidade.Text = '' then begin
-    ShowMessage('O campo Cidade não pode ficar vazio');
+
+  if Trim(EdtBairro.Text) = '' then begin
+    ShowMessage('O campo Bairro não pode ficar vazio!');
+    EdtBairro.SetFocus;
     Exit;
   end;
-  if EdtEstado.Text = '' then begin
-    ShowMessage('O campo Estado não pode ficar vazio');
+
+  if Trim(EdtCidade.Text) = '' then begin
+    ShowMessage('O campo Cidade não pode ficar vazio!');
+    EdtCidade.SetFocus;
     Exit;
   end;
+
+  if Trim(EdtEstado.Text) = '' then begin
+    ShowMessage('O campo Estado não pode ficar vazio!');
+    EdtEstado.SetFocus;
+    Exit;
+  end;
+
+  if CmbStatus.ItemIndex = -1 then begin
+    ShowMessage('Selecione o Status do fornecedor!');
+    CmbStatus.SetFocus;
+    Exit;
+  end;
+
   Result := True;
 end;
 
+function TFormCadastroFornecedores.ValidarCamposPedido: Boolean;
+begin
+  Result := False;
+
+  if CmbFornecedorPedido.ItemIndex = -1 then begin
+    ShowMessage('Selecione um fornecedor para o pedido!');
+    CmbFornecedorPedido.SetFocus;
+    Exit;
+  end;
+
+  if CmbFormaPagamento.ItemIndex = -1 then begin
+    ShowMessage('Selecione uma forma de pagamento!');
+    CmbFormaPagamento.SetFocus;
+    Exit;
+  end;
+
+  if ListBoxPedidos.Items.Count = 0 then begin
+    ShowMessage('Adicione pelo menos uma peça ao pedido!');
+    CmbPeças.SetFocus;
+    Exit;
+  end;
+
+  if (Trim(EdtValorTotal.Text) = '') or (EdtValorTotal.Text = '0,00') then begin
+    ShowMessage('O valor total do pedido deve ser maior que zero!');
+    Exit;
+  end;
+
+  Result := True;
+end;
 procedure TFormCadastroFornecedores.LimparCampos;
 begin
   EdtNome.Clear;
@@ -1003,6 +1107,8 @@ end;
 procedure TFormCadastroFornecedores.BtnPedidoClick(Sender: TObject);
 begin
   PnlPedido.Visible := True;
+  PnlRestaurar.Visible := False;
+  PnlVincularPeça.Visible := False;
   CarregarFornecedoresPedido;
   LimparCampos;
 end;
@@ -1055,6 +1161,7 @@ end;
 procedure TFormCadastroFornecedores.ImgFecharPedidoClick(Sender: TObject);
 begin
   PnlPedido.Visible := False;
+  CarregarGrid;
 end;
 
 end.
