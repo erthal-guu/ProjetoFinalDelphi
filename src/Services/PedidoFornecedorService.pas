@@ -3,13 +3,14 @@ unit PedidoFornecedorService;
 interface
 
 uses
-  PedidoFornecedorRepository, uDMConexao, System.SysUtils, FireDAC.Comp.Client,
+  PedidoFornecedorRepository, PendenciaService, uPendencia, uDMConexao, System.SysUtils, FireDAC.Comp.Client,
   Data.DB, System.Classes, Logs, uSession, System.Generics.Collections;
 
 type
   TPedidoFornecedorService = class
   private
     Repository: TPedidoFornecedorRepository;
+    PendenciaServ: TPendenciaService;
   public
     constructor Create;
 
@@ -38,6 +39,7 @@ implementation
 constructor TPedidoFornecedorService.Create;
 begin
   Repository := TPedidoFornecedorRepository.Create(DataModule1.FDQuery);
+  PendenciaServ := TPendenciaService.Create;
 end;
 
 function TPedidoFornecedorService.SalvarPedido(aIdFornecedor: Integer;
@@ -47,6 +49,7 @@ var
   ValorTotal: Currency;
   DataPedido: TDateTime;
   i: Integer;
+  NovaPendencia: TPendencia;
 begin
   Result := False;
   IDUsuarioLogado := uSession.UsuarioLogadoID;
@@ -72,6 +75,12 @@ begin
 
     SalvarLog(Format('CADASTRO - ID: %d cadastrou pedido ao fornecedor ID: %d',
       [IDUsuarioLogado, aIdFornecedor]));
+
+    NovaPendencia := PendenciaServ.CriarObjeto(0, 1, 'Aguardando entrega do pedido ao fornecedor ID: ' + IntToStr(aIdFornecedor),
+      ValorTotal, DataPedido + 7, Now, 'PENDENTE', aObservacao, True);
+    PendenciaServ.SalvarPendencia(NovaPendencia);
+    NovaPendencia.Free;
+
     Result := True;
   end;
 end;

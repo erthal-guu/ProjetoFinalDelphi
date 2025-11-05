@@ -1,13 +1,12 @@
-unit uFormPendenciasView;
+﻿unit uFormPendenciasView;
 
 interface
 
 uses
-  Winapi.Windows, Winapi.Messages, System.SysUtils, System.Variants,
-  System.Classes, Vcl.Graphics,
-  Vcl.Controls, Vcl.Forms, Vcl.Dialogs, Data.DB, Vcl.WinXCtrls, Vcl.StdCtrls,
-  Vcl.Grids, Vcl.DBGrids, Vcl.Buttons, Vcl.ComCtrls, Vcl.Imaging.pngimage,
-  Vcl.ExtCtrls, Vcl.CheckLst;
+  Winapi.Windows, Winapi.Messages, System.SysUtils, System.Variants, System.Classes, System.StrUtils,
+  Vcl.Graphics, Vcl.Controls, Vcl.Forms, Vcl.Dialogs, Data.DB, Vcl.WinXCtrls, Vcl.Grids,
+  Vcl.DBGrids, Vcl.Buttons, Vcl.Mask, Vcl.StdCtrls, Vcl.Imaging.pngimage,
+  Vcl.ExtCtrls, Vcl.ComCtrls, PendenciaController, uPendencia;
 
 type
   TFormPendencias = class(TForm)
@@ -16,68 +15,91 @@ type
     PnlContainer: TPanel;
     PnlMainButton: TPanel;
     PnlMainEdit: TPanel;
-    PnlBackgrounEdit: TPanel;
-    PnlDesignEdit: TPanel;
-    Image1: TImage;
-    PnlEdit: TPanel;
-    Label1: TLabel;
-    Label3: TLabel;
-    Label4: TLabel;
-    LblStatus: TLabel;
-    Label5: TLabel;
-    Label6: TLabel;
-    EdtObservacao: TEdit;
-    CmbFormaPagamento: TComboBox;
-    EdtValorTotal: TEdit;
-    CmbStatusReceita: TComboBox;
-    PnlButtonAtualizar: TPanel;
-    LblAtualizar: TLabel;
-    EdtDataRecebimento: TDateTimePicker;
-    EdtReceita: TEdit;
     PnlButtonCrud: TPanel;
     PnlBackgroundButton: TPanel;
     PnlButton: TPanel;
     BtnExcluir: TSpeedButton;
-    BtnReceber: TSpeedButton;
     BtnDetalhar: TSpeedButton;
     BtnPesquisar: TSpeedButton;
     BtnHistorico: TSpeedButton;
     BtnRestaurar: TSpeedButton;
     BtnSair: TSpeedButton;
-    BtnCancelar: TSpeedButton;
     PnlGrid: TPanel;
-    DBGridMain: TDBGrid;
     PnlRestaurar: TPanel;
     LblRestaurar: TLabel;
     ImgFechar: TImage;
-    ImgRestaurar: TImage;
     PnlMainRestaurar: TPanel;
     PnlContainerRestaurar: TPanel;
     DBGridRestaurar: TDBGrid;
+    PnlHeader: TPanel;
+    EdtPesquisar: TSearchBox;
+    ImgRestaurar: TImage;
     PnLHistorico: TPanel;
     LblHistorico: TLabel;
     ImgFecharHistorico: TImage;
     PnlDesingGrid: TPanel;
     PnlBackgroundGrid: TPanel;
     DBGridHistorico: TDBGrid;
+    PnlBackgrounEdit: TPanel;
+    PnlDesignEdit: TPanel;
+    Image1: TImage;
+    PnlEdit: TPanel;
+    Label1: TLabel;
+    Label2: TLabel;
+    Label3: TLabel;
+    Label4: TLabel;
+    Label5: TLabel;
+    Label6: TLabel;
+    Label7: TLabel;
+    EdtObservacao: TEdit;
+    PnlButtonAtualizar: TPanel;
+    LblAtualizar: TLabel;
+    BtnCancelar: TSpeedButton;
     PnlDetlhamento: TPanel;
     LblDetalhamento: TLabel;
     ImgFecharDetalhamento: TImage;
     PnlDesingDetalhamento: TPanel;
     ListBoxDetalhes: TListBox;
-    PnlHeader: TPanel;
-    EdtPesquisar: TSearchBox;
-    Panel2: TPanel;
-    Label2: TLabel;
-    Image2: TImage;
-    ComboBox1: TComboBox;
-    Label7: TLabel;
-    procedure BtnReceberClick(Sender: TObject);
-    procedure parcelar;
-    procedure CmbFormaPagamentoChange(Sender: TObject);
+    DataSourceRestaurar: TDataSource;
+    DataSourceHistorico: TDataSource;
+    DataSourceMain: TDataSource;
+    DBGridMain: TDBGrid;
+    EdtDataVencimento: TDateTimePicker;
+    EdtValorTotal: TEdit;
+    CmbStatus: TComboBox;
+    LblStatus: TLabel;
+    CmbFormaPagamento: TComboBox;
+    CmbParcelar: TComboBox;
+    procedure DBGridMainCellClick(Column: TColumn);
+    procedure BtnDetalharClick(Sender: TObject);
+    procedure BtnRestaurarClick(Sender: TObject);
+    procedure BtnHistoricoClick(Sender: TObject);
+    procedure ImgFecharHistoricoClick(Sender: TObject);
+    procedure ImgFecharDetalhamentoClick(Sender: TObject);
+    procedure ImgFecharClick(Sender: TObject);
+    procedure BtnSairClick(Sender: TObject);
+    procedure BtnConcluirClick(Sender: TObject);
+    procedure BtnCancelarClick(Sender: TObject);
+    procedure BtnPesquisarClick(Sender: TObject);
+    procedure BtnExcluirClick(Sender: TObject);
     procedure FormCreate(Sender: TObject);
+    procedure FormDestroy(Sender: TObject);
+    procedure ImgRestaurarClick(Sender: TObject);
+    procedure FormShow(Sender: TObject);
+    procedure LblAtualizarClick(Sender: TObject);
+    procedure CarregarPendenciasRestaurar;
+    procedure LimparCampos;
+    procedure ExibirDetalhes;
+    procedure CarregarGrid;
+    procedure EdtPesquisarChange(Sender: TObject);
+    procedure PreencherCamposPendencia;
+    procedure ConcluirPendencia;
+    procedure BtnReceberClick(Sender: TObject);
+    procedure Parcelar;
   private
     { Private declarations }
+    Controller: TPendenciaController;
+    procedure HabilitarCampos(aEnable: Boolean);
   public
     { Public declarations }
   end;
@@ -89,39 +111,314 @@ implementation
 
 {$R *.dfm}
 
-procedure TFormPendencias.BtnReceberClick(Sender: TObject);
+procedure TFormPendencias.BtnConcluirClick(Sender: TObject);
 begin
-  EdtDataRecebimento.Date := Date;
   PnlBackgrounEdit.Visible := True;
   PnlEdit.Visible := True;
+  HabilitarCampos(False);
+  EdtDataVencimento.Date := Date;
+  EdtObservacao.Text := '';
+  EdtValorTotal.Text := '';
+  CmbStatus.Text := 'CONCLUIDA';
+  EdtObservacao.SetFocus;
 end;
 
-procedure TFormPendencias.CmbFormaPagamentoChange(Sender: TObject);
+procedure TFormPendencias.BtnExcluirClick(Sender: TObject);
+var
+  IDPendencia: Integer;
 begin
-  parcelar;
+  if not Assigned(DataSourceMain.DataSet) or DataSourceMain.DataSet.Eof then
+  begin
+    ShowMessage('Selecione uma pendência para excluir.');
+    Exit;
+  end;
+
+  if MessageDlg('Deseja realmente excluir esta pendência?', mtConfirmation, [mbYes, mbNo], 0) = mrYes then
+  begin
+    IDPendencia := DataSourceMain.DataSet.FieldByName('id').AsInteger;
+    Controller.DeletarPendencia(IDPendencia);
+    CarregarGrid;
+    ShowMessage('Pendência excluída com sucesso!');
+  end;
 end;
 
-procedure TFormPendencias.FormCreate(Sender: TObject);
-  begin
-    EdtObservacao.Left := 521;
-    label5.Left := 482;
-    LblStatus.Left := 617
-  end;
+procedure TFormPendencias.BtnDetalharClick(Sender: TObject);
+begin
+  ExibirDetalhes;
+end;
+
+procedure TFormPendencias.BtnReceberClick(Sender: TObject);
+begin
+  PnlBackgrounEdit.Visible := True;
+  PnLHistorico.Visible := False;
+  PnlRestaurar.Visible := False;
+  PnlDetlhamento.Visible := False;
+  EdtPesquisar.Visible := False;
+  PreencherCamposPendencia;
+end;
 
 procedure TFormPendencias.parcelar;
 begin
-  if CmbFormaPagamento.ItemIndex = 2 then begin
-  ComboBox1.Visible := True;
+  if CmbFormaPagamento .ItemIndex = 2 then begin
+  CmbParcelar.Visible := True;
   Label7.Visible := True;
   label5.Left := 620;
   LblStatus.Left := 754;
   end else begin
-  ComboBox1.Visible := False;
+  CmbParcelar.Visible := False;
   Label7.Visible := False;
   label5.Left := 482;
   LblStatus.Left := 617;
   end;
+end;
 
+procedure TFormPendencias.BtnRestaurarClick(Sender: TObject);
+begin
+  PnlRestaurar.Visible := True;
+  CarregarPendenciasRestaurar;
+end;
+
+procedure TFormPendencias.BtnHistoricoClick(Sender: TObject);
+begin
+  PnLHistorico.Visible := True;
+  DataSourceHistorico.DataSet := Controller.ListarHistoricoPendencias;
+  DBGridHistorico.DataSource := DataSourceHistorico;
+end;
+
+procedure TFormPendencias.BtnPesquisarClick(Sender: TObject);
+begin
+  EdtPesquisar.Visible := True;
+  EdtPesquisar.SetFocus;
+end;
+
+procedure TFormPendencias.BtnSairClick(Sender: TObject);
+begin
+  PnlBackgrounEdit.Visible := False;
+  PnlEdit.Visible := False;
+end;
+
+procedure TFormPendencias.BtnCancelarClick(Sender: TObject);
+begin
+  PnlBackgrounEdit.Visible := False;
+  PnlEdit.Visible := False;
+  LimparCampos;
+end;
+
+procedure TFormPendencias.CarregarGrid;
+var
+  i: Integer;
+begin
+  DataSourceMain.DataSet := Controller.ListarPendencias;
+  DBGridMain.DataSource := DataSourceMain;
+
+  for i := 0 to DBGridMain.Columns.Count - 1 do
+  begin
+    DBGridMain.Columns[i].Title.Alignment := taCenter;
+    DBGridMain.Columns[i].Alignment := taCenter;
+    DBGridMain.Columns[i].Width := 160;
+    DBGridMain.Columns[i].Title.Font.Size := 15;
+  end;
+  if DBGridMain.Columns.Count >= 8 then begin
+  DBGridMain.Columns[0].Title.Caption := 'ID';
+  DBGridMain.Columns[1].Title.Caption := 'Cliente';
+  DBGridMain.Columns[2].Title.Caption := 'Descrição';
+  DBGridMain.Columns[3].Title.Caption := 'Valor Total';
+  DBGridMain.Columns[4].Title.Caption := 'Vencimento';
+  DBGridMain.Columns[5].Title.Caption := 'Status';
+  DBGridMain.Columns[6].Title.Caption := 'Observação';
+  DBGridMain.Columns[7].Title.Caption := 'Ativo';
+end;
+end;
+
+procedure TFormPendencias.CarregarPendenciasRestaurar;
+begin
+  DataSourceRestaurar.DataSet := Controller.ListarPendenciasRestaurar;
+  DBGridRestaurar.DataSource := DataSourceRestaurar;
+  for var i := 0 to DBGridMain.Columns.Count - 1 do
+  begin
+    DBGridRestaurar.Columns[i].Title.Alignment := taCenter;
+    DBGridRestaurar.Columns[i].Alignment := taCenter;
+    DBGridRestaurar.Columns[i].Width := 160;
+    DBGridRestaurar.Columns[i].Title.Font.Size := 15;
+  end;
+  if DBGridMain.Columns.Count >= 8 then begin
+  DBGridRestaurar.Columns[0].Title.Caption := 'ID';
+  DBGridRestaurar.Columns[1].Title.Caption := 'Cliente';
+  DBGridRestaurar.Columns[2].Title.Caption := 'Descrição';
+  DBGridRestaurar.Columns[3].Title.Caption := 'Valor Total';
+  DBGridRestaurar.Columns[4].Title.Caption := 'Vencimento';
+  DBGridRestaurar.Columns[5].Title.Caption := 'Status';
+  DBGridRestaurar.Columns[6].Title.Caption := 'Observação';
+  DBGridRestaurar.Columns[7].Title.Caption := 'Ativo';
+  end;
+end;
+
+procedure TFormPendencias.ConcluirPendencia;
+var
+  Pendencia: TPendencia;
+begin
+  Pendencia := Controller.CriarObjeto(
+    DataSourceMain.DataSet.FieldByName('id').AsInteger,
+    DataSourceMain.DataSet.FieldByName('id_cliente').AsInteger,
+    DataSourceMain.DataSet.FieldByName('descricao').AsString,
+    DataSourceMain.DataSet.FieldByName('valor_total').AsCurrency,
+    DataSourceMain.DataSet.FieldByName('data_vencimento').AsDateTime,
+    DataSourceMain.DataSet.FieldByName('data_criacao').AsDateTime,
+    CmbStatus.Text,
+    EdtObservacao.Text,
+    True
+  );
+
+  try
+    Controller.ConcluirPendencia(Pendencia);
+    CarregarGrid;
+    ShowMessage('Pendência concluída com sucesso!');
+    PnlBackgrounEdit.Visible := False;
+    PnlEdit.Visible := False;
+  finally
+    Pendencia.Free;
+  end;
+end;
+
+procedure TFormPendencias.DBGridMainCellClick(Column: TColumn);
+begin
+  PreencherCamposPendencia;
+end;
+
+procedure TFormPendencias.EdtPesquisarChange(Sender: TObject);
+var
+  Filtro: String;
+begin
+  Filtro := EdtPesquisar.Text;
+  if Trim(Filtro) = '' then
+    CarregarGrid
+  else
+    DataSourceMain.DataSet := Controller.PesquisarPendencias(Filtro);
+end;
+
+procedure TFormPendencias.ExibirDetalhes;
+begin
+  if not Assigned(DataSourceMain.DataSet) or DataSourceMain.DataSet.Eof then
+  begin
+    ShowMessage('Selecione uma pendência para detalhar.');
+    Exit;
+  end;
+
+  ListBoxDetalhes.Items.Clear;
+  ListBoxDetalhes.Items.Add('ID: ' + DataSourceMain.DataSet.FieldByName('id').AsString);
+  ListBoxDetalhes.Items.Add('Cliente: ' + DataSourceMain.DataSet.FieldByName('cliente_nome').AsString);
+  ListBoxDetalhes.Items.Add('Descrição: ' + DataSourceMain.DataSet.FieldByName('descricao').AsString);
+  ListBoxDetalhes.Items.Add('Valor: R$ ' + FormatFloat('0.00', DataSourceMain.DataSet.FieldByName('valor_total').AsCurrency));
+  ListBoxDetalhes.Items.Add('Vencimento: ' + DateToStr(DataSourceMain.DataSet.FieldByName('data_vencimento').AsDateTime));
+  ListBoxDetalhes.Items.Add('Status: ' + DataSourceMain.DataSet.FieldByName('status').AsString);
+  ListBoxDetalhes.Items.Add('Observação: ' + DataSourceMain.DataSet.FieldByName('observacao').AsString);
+
+  PnlDetlhamento.Visible := True;
+end;
+
+procedure TFormPendencias.FormCreate(Sender: TObject);
+begin
+  EdtObservacao.Left := 521;
+  label5.Left := 482;
+  LblStatus.Left := 617;
+  Controller := TPendenciaController.Create;
+  DataSourceMain := TDataSource.Create(Self);
+  DataSourceHistorico := TDataSource.Create(Self);
+  DataSourceRestaurar := TDataSource.Create(Self);
+  for var i := 0 to DBGridMain.Columns.Count - 1 do
+  begin
+    DBGridHistorico.Columns[i].Title.Alignment := taCenter;
+    DBGridHistorico.Columns[i].Alignment := taCenter;
+    DBGridHistorico.Columns[i].Width := 160;
+    DBGridHistorico.Columns[i].Title.Font.Size := 15;
+    end;
+    if DBGridMain.Columns.Count >= 8 then begin
+    DBGridHistorico.Columns[0].Title.Caption := 'ID';
+    DBGridHistorico.Columns[1].Title.Caption := 'Cliente';
+    DBGridHistorico.Columns[2].Title.Caption := 'Descrição';
+    DBGridHistorico.Columns[3].Title.Caption := 'Valor Total';
+    DBGridHistorico.Columns[4].Title.Caption := 'Vencimento';
+    DBGridHistorico.Columns[5].Title.Caption := 'Status';
+    DBGridHistorico.Columns[6].Title.Caption := 'Observação';
+    DBGridHistorico.Columns[7].Title.Caption := 'Ativo';
+    end;
+end;
+
+procedure TFormPendencias.FormDestroy(Sender: TObject);
+begin
+  Controller.Free;
+end;
+
+procedure TFormPendencias.FormShow(Sender: TObject);
+begin
+  CarregarGrid;
+end;
+
+procedure TFormPendencias.HabilitarCampos(aEnable: Boolean);
+begin
+  EdtValorTotal.Enabled := aEnable;
+  EdtDataVencimento.Enabled := aEnable;
+  CmbStatus.Enabled := aEnable;
+  EdtObservacao.Enabled := aEnable;
+end;
+
+procedure TFormPendencias.ImgFecharClick(Sender: TObject);
+begin
+  PnlRestaurar.Visible := False;
+end;
+
+procedure TFormPendencias.ImgFecharDetalhamentoClick(Sender: TObject);
+begin
+  PnlDetlhamento.Visible := False;
+end;
+
+procedure TFormPendencias.ImgFecharHistoricoClick(Sender: TObject);
+begin
+  PnLHistorico.Visible := False;
+end;
+
+procedure TFormPendencias.ImgRestaurarClick(Sender: TObject);
+var
+  IDPendencia: Integer;
+begin
+  if not Assigned(DataSourceRestaurar.DataSet) or DataSourceRestaurar.DataSet.Eof then
+  begin
+    ShowMessage('Selecione uma pendência para restaurar.');
+    Exit;
+  end;
+
+  if MessageDlg('Deseja realmente restaurar esta pendência?', mtConfirmation, [mbYes, mbNo], 0) = mrYes then
+  begin
+    IDPendencia := DataSourceRestaurar.DataSet.FieldByName('id').AsInteger;
+    Controller.RestaurarPendencia(IDPendencia);
+    CarregarPendenciasRestaurar;
+    CarregarGrid;
+    ShowMessage('Pendência restaurada com sucesso!');
+  end;
+end;
+
+procedure TFormPendencias.LblAtualizarClick(Sender: TObject);
+begin
+  ConcluirPendencia;
+end;
+
+procedure TFormPendencias.LimparCampos;
+begin
+  EdtValorTotal.Clear;
+  EdtDataVencimento.Date := Now + 7;
+  CmbStatus.ItemIndex := -1;
+  EdtObservacao.Clear;
+end;
+
+procedure TFormPendencias.PreencherCamposPendencia;
+begin
+  if Assigned(DataSourceMain.DataSet) and not DataSourceMain.DataSet.Eof then
+  begin
+    EdtValorTotal.Text := FormatFloat('0.00', DataSourceMain.DataSet.FieldByName('valor_total').AsCurrency);
+    EdtDataVencimento.Date := DataSourceMain.DataSet.FieldByName('data_vencimento').AsDateTime;
+    CmbStatus.Text := DataSourceMain.DataSet.FieldByName('status').AsString;
+    EdtObservacao.Text := DataSourceMain.DataSet.FieldByName('observacao').AsString;
+  end;
 end;
 
 end.

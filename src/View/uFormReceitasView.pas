@@ -422,12 +422,16 @@ end;
 procedure TFormReceitas.BtnDetalharClick(Sender: TObject);
 begin
   ExibirDetalhes;
+  PnlRestaurar.Visible := False;
+  PnLHistorico.Visible := False;
 end;
 
 procedure TFormReceitas.BtnRestaurarClick(Sender: TObject);
 begin
   CarregarReceitasRestaurar;
   PnlRestaurar.Visible := True;
+  PnlDetlhamento.Visible := False;
+  PnLHistorico.Visible := False;
 end;
 
 procedure TFormReceitas.BtnHistoricoClick(Sender: TObject);
@@ -438,6 +442,8 @@ begin
   DataSourceHistorico.DataSet := Controller.ListarHistoricoReceitas;
   DBGridHistorico.DataSource := DataSourceHistorico;
   PnLHistorico.Visible := True;
+  PnlRestaurar.Visible := False;
+  PnlDetlhamento.Visible := False;
 end;
 
 procedure TFormReceitas.BtnPesquisarClick(Sender: TObject);
@@ -494,6 +500,11 @@ procedure TFormReceitas.BtnCancelarClick(Sender: TObject);
 begin
   LimparCampos;
   PnlBackgrounEdit.Visible := False;
+  PnlEdit.Visible := False;
+  PnlRestaurar.Visible := False;
+  PnlDetlhamento.Visible := False;
+  PnLHistorico.Visible := False;
+  EdtPesquisar.Visible := False;
 end;
 
 procedure TFormReceitas.ImgRestaurarClick(Sender: TObject);

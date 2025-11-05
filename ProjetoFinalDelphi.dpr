@@ -60,7 +60,11 @@ uses
   ReceitaService in 'src\Services\ReceitaService.pas',
   ReceitaRepository in 'src\repository\ReceitaRepository.pas',
   uReceita in 'src\Model\uReceita.pas',
-  uPedido in 'src\Model\uPedido.pas';
+  uPedido in 'src\Model\uPedido.pas',
+  PendenciaController in 'src\controller\PendenciaController.pas',
+  PendenciaService in 'src\Services\PendenciaService.pas',
+  PendenciaRepository in 'src\repository\PendenciaRepository.pas',
+  uPendencia in 'src\Model\uPendencia.pas';
 
 {$R *.res}
 

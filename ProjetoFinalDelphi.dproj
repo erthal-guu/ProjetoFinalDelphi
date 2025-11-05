@@ -228,6 +228,10 @@
         <DCCReference Include="src\repository\ReceitaRepository.pas"/>
         <DCCReference Include="src\Model\uReceita.pas"/>
         <DCCReference Include="src\Model\uPedido.pas"/>
+        <DCCReference Include="src\controller\PendenciaController.pas"/>
+        <DCCReference Include="src\Services\PendenciaService.pas"/>
+        <DCCReference Include="src\repository\PendenciaRepository.pas"/>
+        <DCCReference Include="src\Model\uPendencia.pas"/>
         <BuildConfiguration Include="Base">
             <Key>Base</Key>
         </BuildConfiguration>

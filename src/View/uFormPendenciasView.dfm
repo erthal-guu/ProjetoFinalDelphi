@@ -11,6 +11,7 @@ object FormPendencias: TFormPendencias
   Font.Name = 'Segoe UI'
   Font.Style = []
   OnCreate = FormCreate
+  OnShow = FormShow
   TextHeight = 15
   object PnlMain: TPanel
     Left = 0
@@ -21,10 +22,6 @@ object FormPendencias: TFormPendencias
     BevelOuter = bvNone
     BorderStyle = bsSingle
     TabOrder = 0
-    ExplicitLeft = -10
-    ExplicitTop = -24
-    ExplicitWidth = 1121
-    ExplicitHeight = 699
     object Panel1: TPanel
       Left = 0
       Top = 0
@@ -34,8 +31,6 @@ object FormPendencias: TFormPendencias
       BevelOuter = bvNone
       BorderStyle = bsSingle
       TabOrder = 0
-      ExplicitWidth = 1117
-      ExplicitHeight = 695
       object PnlContainer: TPanel
         AlignWithMargins = True
         Left = -2
@@ -421,7 +416,6 @@ object FormPendencias: TFormPendencias
                 Align = alLeft
                 BevelOuter = bvNone
                 TabOrder = 0
-                ExplicitLeft = 0
                 object Label1: TLabel
                   Left = 20
                   Top = 8
@@ -454,19 +448,6 @@ object FormPendencias: TFormPendencias
                   Width = 114
                   Height = 17
                   Caption = 'Forma Pagamento :'
-                  Font.Charset = DEFAULT_CHARSET
-                  Font.Color = clWindowText
-                  Font.Height = -13
-                  Font.Name = 'Segoe UI'
-                  Font.Style = []
-                  ParentFont = False
-                end
-                object LblStatus: TLabel
-                  Left = 754
-                  Top = 8
-                  Width = 42
-                  Height = 17
-                  Caption = 'Status :'
                   Font.Charset = DEFAULT_CHARSET
                   Font.Color = clWindowText
                   Font.Height = -13
@@ -514,6 +495,19 @@ object FormPendencias: TFormPendencias
                   ParentFont = False
                   Visible = False
                 end
+                object LblStatus: TLabel
+                  Left = 754
+                  Top = 8
+                  Width = 42
+                  Height = 17
+                  Caption = 'Status :'
+                  Font.Charset = DEFAULT_CHARSET
+                  Font.Color = clWindowText
+                  Font.Height = -13
+                  Font.Name = 'Segoe UI'
+                  Font.Style = []
+                  ParentFont = False
+                end
                 object EdtObservacao: TEdit
                   AlignWithMargins = True
                   Left = 620
@@ -533,81 +527,6 @@ object FormPendencias: TFormPendencias
                   Font.Style = []
                   ParentFont = False
                   TabOrder = 0
-                  ExplicitLeft = 629
-                end
-                object CmbFormaPagamento: TComboBox
-                  AlignWithMargins = True
-                  Left = 303
-                  Top = 30
-                  Width = 170
-                  Height = 29
-                  Margins.Top = 30
-                  Margins.Right = 5
-                  Margins.Bottom = 5
-                  Align = alLeft
-                  BevelOuter = bvNone
-                  Style = csDropDownList
-                  Font.Charset = DEFAULT_CHARSET
-                  Font.Color = clWindowText
-                  Font.Height = -16
-                  Font.Name = 'Segoe UI'
-                  Font.Style = []
-                  ParentFont = False
-                  TabOrder = 1
-                  OnChange = CmbFormaPagamentoChange
-                  Items.Strings = (
-                    'Dinheiro'
-                    'Cr'#233'dito/A VISTA'
-                    'Cr'#233'dito/PARCELADO'
-                    'D'#233'bito'
-                    'PIX'
-                    'Transfer'#234'ncia'
-                    'Boleto'
-                    'Cheque'
-                    'Dep'#243'sito')
-                end
-                object EdtValorTotal: TEdit
-                  AlignWithMargins = True
-                  Left = 183
-                  Top = 30
-                  Width = 112
-                  Height = 31
-                  Margins.Top = 30
-                  Margins.Right = 5
-                  Margins.Bottom = 30
-                  Align = alLeft
-                  AutoSize = False
-                  Font.Charset = DEFAULT_CHARSET
-                  Font.Color = clWindowText
-                  Font.Height = -15
-                  Font.Name = 'Segoe UI'
-                  Font.Style = []
-                  ParentFont = False
-                  TabOrder = 2
-                  ExplicitLeft = 368
-                end
-                object CmbStatusReceita: TComboBox
-                  AlignWithMargins = True
-                  Left = 754
-                  Top = 30
-                  Width = 100
-                  Height = 29
-                  Margins.Top = 30
-                  Margins.Bottom = 45
-                  Align = alLeft
-                  BevelOuter = bvNone
-                  Style = csDropDownList
-                  Font.Charset = DEFAULT_CHARSET
-                  Font.Color = clWindowText
-                  Font.Height = -16
-                  Font.Name = 'Segoe UI'
-                  Font.Style = []
-                  ParentFont = False
-                  TabOrder = 3
-                  Items.Strings = (
-                    'Ativo'
-                    'Inativo')
-                  ExplicitLeft = 793
                 end
                 object PnlButtonAtualizar: TPanel
                   AlignWithMargins = True
@@ -623,8 +542,7 @@ object FormPendencias: TFormPendencias
                   BevelOuter = bvLowered
                   Color = 9521152
                   ParentBackground = False
-                  TabOrder = 4
-                  ExplicitLeft = 879
+                  TabOrder = 1
                   object LblAtualizar: TLabel
                     AlignWithMargins = True
                     Left = 4
@@ -646,22 +564,6 @@ object FormPendencias: TFormPendencias
                     ExplicitHeight = 20
                   end
                 end
-                object EdtDataRecebimento: TDateTimePicker
-                  AlignWithMargins = True
-                  Left = 96
-                  Top = 30
-                  Width = 81
-                  Height = 31
-                  Margins.Top = 30
-                  Margins.Bottom = 30
-                  Align = alLeft
-                  BevelInner = bvNone
-                  BevelOuter = bvNone
-                  Date = 45955.000000000000000000
-                  Time = 0.800974305559066100
-                  TabOrder = 5
-                  StyleElements = [seFont, seClient]
-                end
                 object EdtReceita: TEdit
                   AlignWithMargins = True
                   Left = 20
@@ -679,9 +581,98 @@ object FormPendencias: TFormPendencias
                   Font.Name = 'Segoe UI'
                   Font.Style = []
                   ParentFont = False
-                  TabOrder = 6
+                  TabOrder = 2
                 end
-                object ComboBox1: TComboBox
+                object EdtDataVencimento: TDateTimePicker
+                  AlignWithMargins = True
+                  Left = 96
+                  Top = 30
+                  Width = 81
+                  Height = 31
+                  Margins.Top = 30
+                  Margins.Bottom = 30
+                  Align = alLeft
+                  BevelInner = bvNone
+                  BevelOuter = bvNone
+                  Date = 45955.000000000000000000
+                  Time = 0.800974305559066100
+                  TabOrder = 3
+                  StyleElements = [seFont, seClient]
+                end
+                object EdtValorTotal: TEdit
+                  AlignWithMargins = True
+                  Left = 183
+                  Top = 30
+                  Width = 112
+                  Height = 31
+                  Margins.Top = 30
+                  Margins.Right = 5
+                  Margins.Bottom = 30
+                  Align = alLeft
+                  AutoSize = False
+                  Font.Charset = DEFAULT_CHARSET
+                  Font.Color = clWindowText
+                  Font.Height = -15
+                  Font.Name = 'Segoe UI'
+                  Font.Style = []
+                  ParentFont = False
+                  TabOrder = 4
+                end
+                object CmbStatus: TComboBox
+                  AlignWithMargins = True
+                  Left = 754
+                  Top = 30
+                  Width = 100
+                  Height = 29
+                  Margins.Top = 30
+                  Margins.Bottom = 45
+                  Align = alLeft
+                  BevelOuter = bvNone
+                  Style = csDropDownList
+                  Font.Charset = DEFAULT_CHARSET
+                  Font.Color = clWindowText
+                  Font.Height = -16
+                  Font.Name = 'Segoe UI'
+                  Font.Style = []
+                  ParentFont = False
+                  TabOrder = 5
+                  Items.Strings = (
+                    'Ativo'
+                    'Inativo')
+                  ExplicitHeight = 23
+                end
+                object CmbFormaPagamento: TComboBox
+                  AlignWithMargins = True
+                  Left = 303
+                  Top = 30
+                  Width = 170
+                  Height = 29
+                  Margins.Top = 30
+                  Margins.Right = 5
+                  Margins.Bottom = 5
+                  Align = alLeft
+                  BevelOuter = bvNone
+                  Style = csDropDownList
+                  Font.Charset = DEFAULT_CHARSET
+                  Font.Color = clWindowText
+                  Font.Height = -16
+                  Font.Name = 'Segoe UI'
+                  Font.Style = []
+                  ParentFont = False
+                  TabOrder = 6
+                  Items.Strings = (
+                    'Dinheiro'
+                    'Cr'#233'dito/A VISTA'
+                    'Cr'#233'dito/PARCELADO'
+                    'D'#233'bito'
+                    'PIX'
+                    'Transfer'#234'ncia'
+                    'Boleto'
+                    'Cheque'
+                    'Dep'#243'sito')
+                  ExplicitHeight = 23
+                end
+                object CmbParcelar: TComboBox
                   AlignWithMargins = True
                   Left = 481
                   Top = 30
@@ -701,7 +692,6 @@ object FormPendencias: TFormPendencias
                   ParentFont = False
                   TabOrder = 7
                   Visible = False
-                  OnChange = CmbFormaPagamentoChange
                   Items.Strings = (
                     'Parcelar em 2x  '
                     'Parcelar em 3x  '
@@ -714,7 +704,7 @@ object FormPendencias: TFormPendencias
                     'Parcelar em 10x  '
                     'Parcelar em 11x  '
                     'Parcelar em 12x')
-                  ExplicitLeft = 464
+                  ExplicitHeight = 23
                 end
               end
             end
@@ -846,7 +836,7 @@ object FormPendencias: TFormPendencias
                 Margins.Right = 5
                 Margins.Bottom = 10
                 Align = alTop
-                Caption = 'Pagar'
+                Caption = ' Pagar      '
                 Font.Charset = DEFAULT_CHARSET
                 Font.Color = clWindowText
                 Font.Height = -15
@@ -1030,6 +1020,7 @@ object FormPendencias: TFormPendencias
                   11111111111111111111111111111111111111111111111111080808676767FD
                   FDFDFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF}
                 ParentFont = False
+                OnClick = BtnDetalharClick
                 ExplicitLeft = 9
                 ExplicitTop = 74
                 ExplicitWidth = 152
@@ -1108,6 +1099,7 @@ object FormPendencias: TFormPendencias
                   FFE7E7E79090904545451E1E1E0B0B0B1A1A1A3838387E7E7ED4D4D4FFFFFFFF
                   FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF}
                 ParentFont = False
+                OnClick = BtnPesquisarClick
                 ExplicitLeft = 9
                 ExplicitTop = 74
                 ExplicitWidth = 152
@@ -1186,6 +1178,7 @@ object FormPendencias: TFormPendencias
                   FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF8F8F8DADADAC6C6C6D3D3D3EBEBEBFF
                   FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF}
                 ParentFont = False
+                OnClick = BtnHistoricoClick
                 ExplicitTop = 243
               end
               object BtnRestaurar: TSpeedButton
@@ -1262,6 +1255,7 @@ object FormPendencias: TFormPendencias
                   EFDDDDDDFDFDFDFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
                   FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF}
                 ParentFont = False
+                OnClick = BtnRestaurarClick
                 ExplicitTop = 133
               end
               object BtnSair: TSpeedButton
@@ -1340,6 +1334,7 @@ object FormPendencias: TFormPendencias
                   0303343434CDCDCDFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF}
                 ParentFont = False
                 Spacing = 0
+                OnClick = BtnSairClick
                 ExplicitLeft = 13
                 ExplicitTop = 365
               end
@@ -1417,6 +1412,7 @@ object FormPendencias: TFormPendencias
                   FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
                   FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF}
                 ParentFont = False
+                OnClick = BtnCancelarClick
                 ExplicitLeft = 13
               end
             end
@@ -1515,6 +1511,7 @@ object FormPendencias: TFormPendencias
                 D3B02C19730192242A92F15CD4DCE82B82F83E76CEF72B8170A8B914C265CC45
                 901F1F99CB5F1FFA570598A2328176F4BDDF9615D481E62FF3919E24F9015515
                 0000000049454E44AE426082}
+              OnClick = ImgFecharClick
             end
             object ImgRestaurar: TImage
               Left = 20
@@ -1662,6 +1659,7 @@ object FormPendencias: TFormPendencias
                 D3B02C19730192242A92F15CD4DCE82B82F83E76CEF72B8170A8B914C265CC45
                 901F1F99CB5F1FFA570598A2328176F4BDDF9615D481E62FF3919E24F9015515
                 0000000049454E44AE426082}
+              OnClick = ImgFecharHistoricoClick
             end
             object PnlDesingGrid: TPanel
               AlignWithMargins = True
@@ -1750,7 +1748,7 @@ object FormPendencias: TFormPendencias
               Font.Name = 'Segoe UI'
               Font.Style = [fsBold]
               ParentFont = False
-              ExplicitLeft = 0
+              ExplicitWidth = 161
             end
             object ImgFecharDetalhamento: TImage
               Left = 708
@@ -1771,6 +1769,7 @@ object FormPendencias: TFormPendencias
                 D3B02C19730192242A92F15CD4DCE82B82F83E76CEF72B8170A8B914C265CC45
                 901F1F99CB5F1FFA570598A2328176F4BDDF9615D481E62FF3919E24F9015515
                 0000000049454E44AE426082}
+              OnClick = ImgFecharDetalhamentoClick
             end
             object PnlDesingDetalhamento: TPanel
               AlignWithMargins = True
@@ -1896,5 +1895,16 @@ object FormPendencias: TFormPendencias
         end
       end
     end
+  end
+  object DataSourceMain: TDataSource
+    Left = 568
+    Top = 16
+  end
+  object DataSourceRestaurar: TDataSource
+    Left = 776
+  end
+  object DataSourceHistorico: TDataSource
+    Left = 928
+    Top = 8
   end
 end

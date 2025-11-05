@@ -289,25 +289,45 @@ function TFornecedorRepository.InserirPedido(aIdFornecedor: Integer;
   aFormaPagamento: string; aValorTotal: Currency; aObservacao: string): Integer;
 begin
   Result := 0;
-  FQuery.Close;
-  FQuery.SQL.Clear;
-  FQuery.SQL.Add
-    ('INSERT INTO pedidos (id_fornecedor, forma_pagamento, valor_total, data_pedido, status_pedido, observacao)');
-  FQuery.SQL.Add
-    ('VALUES (:id_fornecedor, :forma_pagamento, :valor_total, :data_pedido, :status_pedido, :observacao)');
-  FQuery.SQL.Add('RETURNING id_pedido');
-
-  FQuery.ParamByName('id_fornecedor').AsInteger := aIdFornecedor;
-  FQuery.ParamByName('forma_pagamento').AsString := aFormaPagamento;
-  FQuery.ParamByName('valor_total').AsCurrency := aValorTotal;
-  FQuery.ParamByName('data_pedido').AsDateTime := Now;
-  FQuery.ParamByName('status_pedido').AsString := 'ABERTO';
-  FQuery.ParamByName('observacao').AsString := aObservacao;
 
   try
+    // Inserir o pedido
+    FQuery.Close;
+    FQuery.SQL.Clear;
+    FQuery.SQL.Add('INSERT INTO pedidos (id_fornecedor, forma_pagamento, valor_total, data_pedido, status_pedido, observacao)');
+    FQuery.SQL.Add('VALUES (:id_fornecedor, :forma_pagamento, :valor_total, :data_pedido, :status_pedido, :observacao)');
+    FQuery.SQL.Add('RETURNING id_pedido');
+    FQuery.ParamByName('id_fornecedor').AsInteger := aIdFornecedor;
+    FQuery.ParamByName('forma_pagamento').AsString := aFormaPagamento;
+    FQuery.ParamByName('valor_total').AsCurrency := aValorTotal;
+    FQuery.ParamByName('data_pedido').AsDateTime := Now;
+    FQuery.ParamByName('status_pedido').AsString := 'ABERTO';
+    FQuery.ParamByName('observacao').AsString := aObservacao;
+
     FQuery.Open;
+
     if not FQuery.IsEmpty then
+    begin
       Result := FQuery.FieldByName('id_pedido').AsInteger;
+
+      FQuery.Close;
+      FQuery.SQL.Clear;
+      FQuery.SQL.Add('INSERT INTO pendencias (id_cliente, descricao, valor_total, data_vencimento, data_criacao, status, observacao, ativo, id_pedido, id_fornecedor)');
+      FQuery.SQL.Add('VALUES (:id_cliente, :descricao, :valor_total, :data_vencimento, :data_criacao, :status, :observacao, :ativo, :id_pedido, :id_fornecedor)');
+      FQuery.ParamByName('id_cliente').AsInteger := aIdFornecedor;
+      FQuery.ParamByName('descricao').AsString := 'Pedido #' + IntToStr(Result);
+      FQuery.ParamByName('valor_total').AsCurrency := aValorTotal;
+      FQuery.ParamByName('data_vencimento').AsDateTime := Now + 30;
+      FQuery.ParamByName('data_criacao').AsDateTime := Now;
+      FQuery.ParamByName('status').AsString := 'PENDENTE';
+      FQuery.ParamByName('observacao').AsString := aObservacao;
+      FQuery.ParamByName('ativo').AsBoolean := True;
+      FQuery.ParamByName('id_pedido').AsInteger := Result;
+      FQuery.ParamByName('id_fornecedor').AsInteger := aIdFornecedor;
+
+      FQuery.ExecSQL;
+    end;
+
   except
     on E: Exception do
       raise Exception.Create('Erro ao inserir pedido: ' + E.Message);
@@ -320,7 +340,6 @@ var
   ValorTotalItem: Currency;
 begin
   ValorTotalItem := aValorUnitario * aQuantidade;
-
   FQuery.Close;
   FQuery.SQL.Clear;
   FQuery.SQL.Add
