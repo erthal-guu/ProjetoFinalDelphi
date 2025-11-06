@@ -13,31 +13,21 @@ type
     Repository: TPendenciaRepository;
   public
     constructor Create;
-
-    // CRUD Básico
-    procedure SalvarPendencia(aPendencia: TPendencia);
+    procedure PagarPendencia(aPendencia: TPendencia);
     procedure EditarPendencia(aPendencia: TPendencia);
     procedure DeletarPendencia(const aId: Integer);
     procedure ConcluirPendencia(aPendencia: TPendencia);
-
-    // Validações
     function ValidarPendencia(aPendencia: TPendencia): Boolean;
-
-    // Listagens
     function ListarPendencias: TDataSet;
     function ListarPendenciasRestaurar: TDataSet;
     function ListarHistoricoPendencias: TDataSet;
     function PesquisarPendencias(const aFiltro: String): TDataSet;
     function CarregarClientes: TDataSet;
-
-    // Criação de Objetos
     function CriarObjeto(aId: Integer; aIdCliente: Integer; aDescricao: String;
-                        aValorTotal: Currency;
-                        aDataVencimento: TDateTime; aDataCriacao: TDateTime;
-                         aStatus: String;
-                        aObservacao: String; aAtivo: Boolean): TPendencia;
-
-    // Restauração
+    aValorTotal: Currency;
+    aDataVencimento: TDateTime;
+    aStatus: String;
+    aObservacao: String; aAtivo: Boolean): TPendencia;
     procedure RestaurarPendencia(const aId: Integer);
   end;
 
@@ -51,10 +41,10 @@ begin
 end;
 
 function TPendenciaService.CriarObjeto(aId: Integer; aIdCliente: Integer; aDescricao: String;
-                                       aValorTotal: Currency;
-                                       aDataVencimento: TDateTime; aDataCriacao: TDateTime;
-                                        aStatus: String;
-                                       aObservacao: String; aAtivo: Boolean): TPendencia;
+  aValorTotal: Currency;
+  aDataVencimento: TDateTime;
+  aStatus: String;
+  aObservacao: String; aAtivo: Boolean): TPendencia;
 var
   Pendencia: TPendencia;
 begin
@@ -64,7 +54,6 @@ begin
   Pendencia.setDescricao(aDescricao);
   Pendencia.setValorTotal(aValorTotal);
   Pendencia.setDataVencimento(aDataVencimento);
-  Pendencia.setDataCriacao(aDataCriacao);
   Pendencia.setStatus(aStatus);
   Pendencia.setObservacao(aObservacao);
   Pendencia.setAtivo(aAtivo);
@@ -78,7 +67,7 @@ begin
             (Trim(aPendencia.getStatus) <> '');
 end;
 
-procedure TPendenciaService.SalvarPendencia(aPendencia: TPendencia);
+procedure TPendenciaService.PagarPendencia(aPendencia: TPendencia);
 var
   IDUsuarioLogado: Integer;
 begin
@@ -88,7 +77,7 @@ begin
   begin
     if not Repository.ExistePendencia(aPendencia) then
     begin
-      Repository.InserirPendencia(aPendencia);
+      Repository.PagarPendencia(aPendencia);
       SalvarLog(Format('CADASTRO - ID: %d cadastrou pendência para cliente ID: %d - Descrição: %s',
         [IDUsuarioLogado, aPendencia.getIdCliente, aPendencia.getDescricao]));
     end

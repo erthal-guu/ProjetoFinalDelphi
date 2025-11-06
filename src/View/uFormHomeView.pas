@@ -45,7 +45,7 @@ type
     Panel6: TPanel;
     Shape3: TShape;
     Image1: TImage;
-    Movimentaes1: TMenuItem;
+    Movimentações: TMenuItem;
     OrdensServio1: TMenuItem;
     procedure SairClick(Sender: TObject);
     procedure FuncionariosClick(Sender: TObject);
@@ -170,6 +170,7 @@ begin
     FormCadastroOrdensServiço.PnlBackgroundButton.Visible := False;
     FormCadastroOrdensServiço.EdtPesquisar.Visible := True;
     Financeiro.Visible := False;
+    Movimentações.Visible := False;
   end;
   end;
 

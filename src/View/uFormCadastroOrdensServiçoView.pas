@@ -449,6 +449,7 @@ begin
     end;
 
     DBGridMain.Columns[0].Width := 50;
+    DBGridMain.Columns[1].Width := 200;
     DBGridMain.Columns[6].Width := 200;
   end;
 

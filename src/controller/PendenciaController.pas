@@ -13,7 +13,7 @@ type
     constructor Create;
     destructor Destroy; override;
 
-    procedure SalvarPendencia(aPendencia: TPendencia);
+    procedure PagarPendencia(aPendencia: TPendencia);
     procedure EditarPendencia(aPendencia: TPendencia);
     procedure DeletarPendencia(const aId: Integer);
     procedure ConcluirPendencia(aPendencia: TPendencia);
@@ -25,7 +25,7 @@ type
     function CarregarClientes: TDataSet;
     function CriarObjeto(aId: Integer; aIdCliente: Integer; aDescricao: String;
                         aValorTotal: Currency;
-                        aDataVencimento: TDateTime; aDataCriacao: TDateTime;
+                        aDataVencimento: TDateTime;
                          aStatus: String;
                         aObservacao: String; aAtivo: Boolean): TPendencia;
 
@@ -46,9 +46,9 @@ begin
   inherited;
 end;
 
-procedure TPendenciaController.SalvarPendencia(aPendencia: TPendencia);
+procedure TPendenciaController.PagarPendencia(aPendencia: TPendencia);
 begin
-  Service.SalvarPendencia(aPendencia);
+  Service.PagarPendencia(aPendencia);
 end;
 
 procedure TPendenciaController.EditarPendencia(aPendencia: TPendencia);
@@ -93,12 +93,12 @@ end;
 
 function TPendenciaController.CriarObjeto(aId: Integer; aIdCliente: Integer; aDescricao: String;
   aValorTotal: Currency;
-  aDataVencimento: TDateTime; aDataCriacao: TDateTime;
+  aDataVencimento: TDateTime;
   aStatus: String;
   aObservacao: String; aAtivo: Boolean): TPendencia;
 begin
   Result := Service.CriarObjeto(aId, aIdCliente, aDescricao, aValorTotal,
-  aDataVencimento, aDataCriacao,aStatus,
+  aDataVencimento,aStatus,
   aObservacao, aAtivo);
 end;
 

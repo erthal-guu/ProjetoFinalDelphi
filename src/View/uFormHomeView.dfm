@@ -3253,7 +3253,7 @@
         OnClick = ServiçosClick
       end
     end
-    object Movimentaes1: TMenuItem
+    object Movimentações: TMenuItem
       Caption = 'Movimenta'#231#245'es'
       object OrdensServio1: TMenuItem
         Caption = 'Ordens de Servi'#231'o'

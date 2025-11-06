@@ -432,9 +432,9 @@ object FormPendencias: TFormPendencias
                 object Label3: TLabel
                   Left = 96
                   Top = 8
-                  Width = 34
+                  Width = 74
                   Height = 17
-                  Caption = 'Data :'
+                  Caption = 'Vencimento :'
                   Font.Charset = DEFAULT_CHARSET
                   Font.Color = clWindowText
                   Font.Height = -13
@@ -560,28 +560,10 @@ object FormPendencias: TFormPendencias
                     Font.Style = []
                     ParentColor = False
                     ParentFont = False
+                    OnClick = LblAtualizarClick
                     ExplicitWidth = 59
                     ExplicitHeight = 20
                   end
-                end
-                object EdtReceita: TEdit
-                  AlignWithMargins = True
-                  Left = 20
-                  Top = 30
-                  Width = 70
-                  Height = 31
-                  Margins.Left = 20
-                  Margins.Top = 30
-                  Margins.Bottom = 30
-                  Align = alLeft
-                  AutoSize = False
-                  Font.Charset = DEFAULT_CHARSET
-                  Font.Color = clWindowText
-                  Font.Height = -15
-                  Font.Name = 'Segoe UI'
-                  Font.Style = []
-                  ParentFont = False
-                  TabOrder = 2
                 end
                 object EdtDataVencimento: TDateTimePicker
                   AlignWithMargins = True
@@ -596,7 +578,7 @@ object FormPendencias: TFormPendencias
                   BevelOuter = bvNone
                   Date = 45955.000000000000000000
                   Time = 0.800974305559066100
-                  TabOrder = 3
+                  TabOrder = 2
                   StyleElements = [seFont, seClient]
                 end
                 object EdtValorTotal: TEdit
@@ -616,7 +598,7 @@ object FormPendencias: TFormPendencias
                   Font.Name = 'Segoe UI'
                   Font.Style = []
                   ParentFont = False
-                  TabOrder = 4
+                  TabOrder = 3
                 end
                 object CmbStatus: TComboBox
                   AlignWithMargins = True
@@ -635,11 +617,10 @@ object FormPendencias: TFormPendencias
                   Font.Name = 'Segoe UI'
                   Font.Style = []
                   ParentFont = False
-                  TabOrder = 5
+                  TabOrder = 4
                   Items.Strings = (
                     'Ativo'
                     'Inativo')
-                  ExplicitHeight = 23
                 end
                 object CmbFormaPagamento: TComboBox
                   AlignWithMargins = True
@@ -659,7 +640,8 @@ object FormPendencias: TFormPendencias
                   Font.Name = 'Segoe UI'
                   Font.Style = []
                   ParentFont = False
-                  TabOrder = 6
+                  TabOrder = 5
+                  OnChange = CmbFormaPagamentoChange
                   Items.Strings = (
                     'Dinheiro'
                     'Cr'#233'dito/A VISTA'
@@ -670,7 +652,6 @@ object FormPendencias: TFormPendencias
                     'Boleto'
                     'Cheque'
                     'Dep'#243'sito')
-                  ExplicitHeight = 23
                 end
                 object CmbParcelar: TComboBox
                   AlignWithMargins = True
@@ -690,7 +671,7 @@ object FormPendencias: TFormPendencias
                   Font.Name = 'Segoe UI'
                   Font.Style = []
                   ParentFont = False
-                  TabOrder = 7
+                  TabOrder = 6
                   Visible = False
                   Items.Strings = (
                     'Parcelar em 2x  '
@@ -704,7 +685,25 @@ object FormPendencias: TFormPendencias
                     'Parcelar em 10x  '
                     'Parcelar em 11x  '
                     'Parcelar em 12x')
-                  ExplicitHeight = 23
+                end
+                object EdtPedido: TEdit
+                  AlignWithMargins = True
+                  Left = 20
+                  Top = 30
+                  Width = 70
+                  Height = 31
+                  Margins.Left = 20
+                  Margins.Top = 30
+                  Margins.Bottom = 30
+                  Align = alLeft
+                  AutoSize = False
+                  Font.Charset = DEFAULT_CHARSET
+                  Font.Color = clWindowText
+                  Font.Height = -15
+                  Font.Name = 'Segoe UI'
+                  Font.Style = []
+                  ParentFont = False
+                  TabOrder = 7
                 end
               end
             end
@@ -823,6 +822,7 @@ object FormPendencias: TFormPendencias
                   FFFFFFFFFFFFFFFBFBFB8484843D3D3D33333333333333333333333333333359
                   5959D5D5D5FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF}
                 ParentFont = False
+                OnClick = BtnExcluirClick
                 ExplicitTop = 78
               end
               object BtnReceber: TSpeedButton
@@ -1548,6 +1548,7 @@ object FormPendencias: TFormPendencias
                 ED013E254938A1F66222BFBA5ECB1ADF0A9A2958C0EA08C72871928C33C3BB5A
                 12832BFACBF45A4E1202B768713C2CE6B3220207C9203539C4CC468BD9FF014B
                 7620018FA76C950000000049454E44AE426082}
+              OnClick = ImgRestaurarClick
             end
             object PnlMainRestaurar: TPanel
               AlignWithMargins = True

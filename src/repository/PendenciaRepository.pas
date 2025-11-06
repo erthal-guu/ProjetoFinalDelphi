@@ -11,7 +11,7 @@ type
     FQuery: TFDQuery;
   public
     constructor Create(Query: TFDQuery);
-    procedure InserirPendencia(aPendencia: TPendencia);
+    procedure PagarPendencia(aPendencia: TPendencia);
     function EditarPendencia(aPendencia: TPendencia): Boolean;
     procedure DeletarPendencia(const aID: Integer);
     procedure ConcluirPendencia(aPendencia: TPendencia);
@@ -32,7 +32,7 @@ begin
   FQuery := Query;
 end;
 
-procedure TPendenciaRepository.InserirPendencia(aPendencia: TPendencia);
+procedure TPendenciaRepository.PagarPendencia(aPendencia: TPendencia);
 begin
   try
     FQuery.Close;
@@ -121,16 +121,17 @@ begin
     FQuery.SQL.Clear;
     FQuery.SQL.Add('SELECT ');
     FQuery.SQL.Add('  p.id,');
+    FQuery.SQL.Add('  p.id_pedido,');
+    FQuery.SQL.Add('  p.id_cliente,');
     FQuery.SQL.Add('  f.nome AS cliente_nome,');
     FQuery.SQL.Add('  p.descricao,');
     FQuery.SQL.Add('  p.valor_total,');
     FQuery.SQL.Add('  p.data_vencimento,');
-    FQuery.SQL.Add('  p.status,');
-    FQuery.SQL.Add('  p.observacao,');
-    FQuery.SQL.Add('  p.ativo');
+    FQuery.SQL.Add('  p.data_criacao,');
+    FQuery.SQL.Add('  p.status');
     FQuery.SQL.Add('FROM pendencias p');
     FQuery.SQL.Add('LEFT JOIN fornecedores f ON p.id_cliente = f.id');
-    FQuery.SQL.Add('WHERE p.ativo = TRUE');
+    FQuery.SQL.Add('WHERE p.ativo = TRUE AND p.status <> ''CONCLUIDA''');
     FQuery.SQL.Add('ORDER BY p.data_vencimento ASC');
     FQuery.Open;
     Result := FQuery;
@@ -170,7 +171,7 @@ begin
     FQuery.SQL.Add('       p.status, p.observacao, p.ativo');
     FQuery.SQL.Add('FROM pendencias p');
     FQuery.SQL.Add('LEFT JOIN fornecedores f ON p.id_cliente = f.id');
-    FQuery.SQL.Add('ORDER BY p.id DESC');
+    FQuery.SQL.Add('ORDER BY p.id');
     FQuery.Open;
     Result := FQuery;
   except

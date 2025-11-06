@@ -26,6 +26,7 @@ type
     EdtSenha: TEdit;
     PnlCheckBox: TPanel;
     CheckBox1: TCheckBox;
+    Panel1: TPanel;
     Image1: TImage;
     function ValidarCampos: Boolean;
     procedure LimparCampos;
@@ -116,12 +117,12 @@ end;
 
 procedure TFormLogin.PnlButtonMouseEnter(Sender: TObject);
 begin
-  PnlButton.Color := $003E1F00;
+  PnlButton.Color := $00904000;
 end;
 
 procedure TFormLogin.PnlButtonMouseLeave(Sender: TObject);
 begin
-  PnlButton.Color := $005E2F00;
+  PnlButton.Color := $00914800;
 end;
 
 procedure TFormLogin.RadioButton1Click(Sender: TObject);

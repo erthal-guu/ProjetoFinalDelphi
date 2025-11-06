@@ -70,6 +70,7 @@ type
     LblStatus: TLabel;
     CmbFormaPagamento: TComboBox;
     CmbParcelar: TComboBox;
+    EdtPedido: TEdit;
     procedure DBGridMainCellClick(Column: TColumn);
     procedure BtnDetalharClick(Sender: TObject);
     procedure BtnRestaurarClick(Sender: TObject);
@@ -96,6 +97,7 @@ type
     procedure ConcluirPendencia;
     procedure BtnReceberClick(Sender: TObject);
     procedure Parcelar;
+    procedure CmbFormaPagamentoChange(Sender: TObject);
   private
     { Private declarations }
     Controller: TPendenciaController;
@@ -193,8 +195,13 @@ end;
 
 procedure TFormPendencias.BtnSairClick(Sender: TObject);
 begin
-  PnlBackgrounEdit.Visible := False;
-  PnlEdit.Visible := False;
+  if MessageDlg('Deseja realmente fechar este formulário?', mtConfirmation, [mbYes, mbNo], 0) = mrYes then
+  begin
+    PnlBackgrounEdit.Visible := False;
+    PnlRestaurar.Visible := False;
+    EdtPesquisar.Visible := False;
+    Close;
+  end;
 end;
 
 procedure TFormPendencias.BtnCancelarClick(Sender: TObject);
@@ -218,16 +225,18 @@ begin
     DBGridMain.Columns[i].Width := 160;
     DBGridMain.Columns[i].Title.Font.Size := 15;
   end;
-  if DBGridMain.Columns.Count >= 8 then begin
-  DBGridMain.Columns[0].Title.Caption := 'ID';
-  DBGridMain.Columns[1].Title.Caption := 'Cliente';
-  DBGridMain.Columns[2].Title.Caption := 'Descrição';
-  DBGridMain.Columns[3].Title.Caption := 'Valor Total';
-  DBGridMain.Columns[4].Title.Caption := 'Vencimento';
-  DBGridMain.Columns[5].Title.Caption := 'Status';
-  DBGridMain.Columns[6].Title.Caption := 'Observação';
-  DBGridMain.Columns[7].Title.Caption := 'Ativo';
-end;
+  if DBGridMain.Columns.Count >= 9 then begin
+    DBGridMain.Columns[0].Title.Caption := 'ID';
+    DBGridMain.Columns[1].Title.Caption := 'Pedido';
+    DBGridMain.Columns[2].Title.Caption := 'Fornecedor';
+    DBGridMain.Columns[3].Title.Caption := 'Descrição';
+    DBGridMain.Columns[4].Title.Caption := 'Valor Total';
+    DBGridMain.Columns[5].Title.Caption := 'Vencimento';
+    DBGridMain.Columns[6].Title.Caption := 'Status';
+    DBGridMain.Columns[7].Title.Caption := 'Observação';
+    DBGridMain.Columns[8].Title.Caption := 'Ativo';
+    DBGridMain.Columns[1].Visible := False;
+  end;
 end;
 
 procedure TFormPendencias.CarregarPendenciasRestaurar;
@@ -241,16 +250,26 @@ begin
     DBGridRestaurar.Columns[i].Width := 160;
     DBGridRestaurar.Columns[i].Title.Font.Size := 15;
   end;
-  if DBGridMain.Columns.Count >= 8 then begin
-  DBGridRestaurar.Columns[0].Title.Caption := 'ID';
-  DBGridRestaurar.Columns[1].Title.Caption := 'Cliente';
-  DBGridRestaurar.Columns[2].Title.Caption := 'Descrição';
-  DBGridRestaurar.Columns[3].Title.Caption := 'Valor Total';
-  DBGridRestaurar.Columns[4].Title.Caption := 'Vencimento';
-  DBGridRestaurar.Columns[5].Title.Caption := 'Status';
-  DBGridRestaurar.Columns[6].Title.Caption := 'Observação';
-  DBGridRestaurar.Columns[7].Title.Caption := 'Ativo';
+  if DBGridRestaurar.Columns.Count >= 9 then begin
+    DBGridRestaurar.Columns[0].Title.Caption := 'ID';
+    DBGridRestaurar.Columns[1].Title.Caption := 'Pedido';
+    DBGridRestaurar.Columns[2].Title.Caption := 'Fornecedor';
+    DBGridRestaurar.Columns[3].Title.Caption := 'Descrição';
+    DBGridRestaurar.Columns[4].Title.Caption := 'Valor Total';
+    DBGridRestaurar.Columns[5].Title.Caption := 'Vencimento';
+    DBGridRestaurar.Columns[6].Title.Caption := 'Status';
+    DBGridRestaurar.Columns[7].Title.Caption := 'Observação';
+    DBGridRestaurar.Columns[8].Title.Caption := 'Ativo';
+    
+    DBGridMain.Columns[1].Visible := False;  
+    DBGridMain.Columns[2].Visible := False;
+    DBGridMain.Columns[7].Visible := False;
   end;
+  end;
+
+procedure TFormPendencias.CmbFormaPagamentoChange(Sender: TObject);
+begin
+  Parcelar;
 end;
 
 procedure TFormPendencias.ConcluirPendencia;
@@ -263,7 +282,6 @@ begin
     DataSourceMain.DataSet.FieldByName('descricao').AsString,
     DataSourceMain.DataSet.FieldByName('valor_total').AsCurrency,
     DataSourceMain.DataSet.FieldByName('data_vencimento').AsDateTime,
-    DataSourceMain.DataSet.FieldByName('data_criacao').AsDateTime,
     CmbStatus.Text,
     EdtObservacao.Text,
     True
@@ -332,16 +350,18 @@ begin
     DBGridHistorico.Columns[i].Width := 160;
     DBGridHistorico.Columns[i].Title.Font.Size := 15;
     end;
-    if DBGridMain.Columns.Count >= 8 then begin
+  if DBGridHistorico.Columns.Count >= 9 then begin
     DBGridHistorico.Columns[0].Title.Caption := 'ID';
-    DBGridHistorico.Columns[1].Title.Caption := 'Cliente';
-    DBGridHistorico.Columns[2].Title.Caption := 'Descrição';
-    DBGridHistorico.Columns[3].Title.Caption := 'Valor Total';
-    DBGridHistorico.Columns[4].Title.Caption := 'Vencimento';
-    DBGridHistorico.Columns[5].Title.Caption := 'Status';
-    DBGridHistorico.Columns[6].Title.Caption := 'Observação';
-    DBGridHistorico.Columns[7].Title.Caption := 'Ativo';
-    end;
+    DBGridHistorico.Columns[1].Title.Caption := 'Pedido';
+    DBGridHistorico.Columns[2].Title.Caption := 'Fornecedor';
+    DBGridHistorico.Columns[3].Title.Caption := 'Descrição';
+    DBGridHistorico.Columns[4].Title.Caption := 'Valor Total';
+    DBGridHistorico.Columns[5].Title.Caption := 'Vencimento';
+    DBGridHistorico.Columns[6].Title.Caption := 'Status';
+    DBGridHistorico.Columns[7].Title.Caption := 'Observação';
+    DBGridHistorico.Columns[8].Title.Caption := 'Ativo';
+    DBGridHistorico.Columns[1].Visible := False;
+  end;
 end;
 
 procedure TFormPendencias.FormDestroy(Sender: TObject);
@@ -365,16 +385,19 @@ end;
 procedure TFormPendencias.ImgFecharClick(Sender: TObject);
 begin
   PnlRestaurar.Visible := False;
+  CarregarGrid;
 end;
 
 procedure TFormPendencias.ImgFecharDetalhamentoClick(Sender: TObject);
 begin
   PnlDetlhamento.Visible := False;
+  CarregarGrid;
 end;
 
 procedure TFormPendencias.ImgFecharHistoricoClick(Sender: TObject);
 begin
   PnLHistorico.Visible := False;
+  CarregarGrid;
 end;
 
 procedure TFormPendencias.ImgRestaurarClick(Sender: TObject);
@@ -391,8 +414,8 @@ begin
   begin
     IDPendencia := DataSourceRestaurar.DataSet.FieldByName('id').AsInteger;
     Controller.RestaurarPendencia(IDPendencia);
-    CarregarPendenciasRestaurar;
     CarregarGrid;
+    CarregarPendenciasRestaurar;
     ShowMessage('Pendência restaurada com sucesso!');
   end;
 end;
@@ -405,7 +428,7 @@ end;
 procedure TFormPendencias.LimparCampos;
 begin
   EdtValorTotal.Clear;
-  EdtDataVencimento.Date := Now + 7;
+  EdtDataVencimento.Date := Now;
   CmbStatus.ItemIndex := -1;
   EdtObservacao.Clear;
 end;
@@ -418,6 +441,7 @@ begin
     EdtDataVencimento.Date := DataSourceMain.DataSet.FieldByName('data_vencimento').AsDateTime;
     CmbStatus.Text := DataSourceMain.DataSet.FieldByName('status').AsString;
     EdtObservacao.Text := DataSourceMain.DataSet.FieldByName('observacao').AsString;
+    EdtPedido.Text:= DataSourceMain.DataSet.FieldByName('id_pedido').AsString;
   end;
 end;
 
