@@ -3,8 +3,8 @@ object FormCadastroUsuarios: TFormCadastroUsuarios
   Top = 0
   BorderStyle = bsNone
   Caption = 'FormCadastroUsuarios'
-  ClientHeight = 703
-  ClientWidth = 1132
+  ClientHeight = 683
+  ClientWidth = 1113
   Color = clWhite
   Font.Charset = DEFAULT_CHARSET
   Font.Color = clWindowText
@@ -30,12 +30,13 @@ object FormCadastroUsuarios: TFormCadastroUsuarios
   object PnlMain: TPanel
     Left = 0
     Top = 0
-    Width = 1132
-    Height = 703
+    Width = 1113
+    Height = 683
     Align = alClient
     BevelOuter = bvNone
     BorderStyle = bsSingle
     TabOrder = 1
+    ExplicitHeight = 695
     object PnlContainer: TPanel
       AlignWithMargins = True
       Left = 0
@@ -92,6 +93,7 @@ object FormCadastroUsuarios: TFormCadastroUsuarios
           ParentBackground = False
           TabOrder = 1
           Visible = False
+          ExplicitLeft = -1
         end
         object PnlDesignEdit: TPanel
           AlignWithMargins = True
@@ -425,13 +427,14 @@ object FormCadastroUsuarios: TFormCadastroUsuarios
             BevelOuter = bvNone
             TabOrder = 0
             object PnlCmbStatus: TPanel
-              Left = 695
+              Left = 705
               Top = 0
               Width = 117
               Height = 91
               Align = alLeft
               BevelOuter = bvNone
               TabOrder = 0
+              ExplicitLeft = 695
               object LblStatus: TLabel
                 Left = 3
                 Top = 8
@@ -515,7 +518,7 @@ object FormCadastroUsuarios: TFormCadastroUsuarios
             object PnlEdtCPF: TPanel
               Left = 161
               Top = 0
-              Width = 171
+              Width = 181
               Height = 91
               Align = alLeft
               BevelOuter = bvNone
@@ -537,7 +540,7 @@ object FormCadastroUsuarios: TFormCadastroUsuarios
                 AlignWithMargins = True
                 Left = 3
                 Top = 30
-                Width = 161
+                Width = 168
                 Height = 31
                 Cursor = crHandPoint
                 Margins.Top = 30
@@ -560,13 +563,14 @@ object FormCadastroUsuarios: TFormCadastroUsuarios
               end
             end
             object PnlEdtSenha: TPanel
-              Left = 332
+              Left = 342
               Top = 0
               Width = 123
               Height = 91
               Align = alLeft
               BevelOuter = bvNone
               TabOrder = 3
+              ExplicitLeft = 332
               object LblSenha: TLabel
                 Left = 6
                 Top = 10
@@ -601,13 +605,14 @@ object FormCadastroUsuarios: TFormCadastroUsuarios
               end
             end
             object Panel5: TPanel
-              Left = 455
+              Left = 465
               Top = 0
               Width = 120
               Height = 91
               Align = alLeft
               BevelOuter = bvNone
               TabOrder = 4
+              ExplicitLeft = 455
               object LblConfrimarSenha: TLabel
                 Left = 6
                 Top = 8
@@ -642,13 +647,14 @@ object FormCadastroUsuarios: TFormCadastroUsuarios
               end
             end
             object PnlCmbGrupo: TPanel
-              Left = 575
+              Left = 585
               Top = 0
               Width = 120
               Height = 91
               Align = alLeft
               BevelOuter = bvNone
               TabOrder = 5
+              ExplicitLeft = 575
               object LblGrupo: TLabel
                 AlignWithMargins = True
                 Left = 3
@@ -685,7 +691,7 @@ object FormCadastroUsuarios: TFormCadastroUsuarios
             end
             object PnlButtonEnviar: TPanel
               AlignWithMargins = True
-              Left = 818
+              Left = 834
               Top = 29
               Width = 107
               Height = 31
@@ -716,13 +722,12 @@ object FormCadastroUsuarios: TFormCadastroUsuarios
                 ParentColor = False
                 ParentFont = False
                 OnClick = LblEnviarClick
-                ExplicitWidth = 40
-                ExplicitHeight = 20
+                ExplicitLeft = 10
               end
             end
             object PnlButtonAtualizar: TPanel
               AlignWithMargins = True
-              Left = 818
+              Left = 834
               Top = 30
               Width = 107
               Height = 31
@@ -1393,7 +1398,7 @@ object FormCadastroUsuarios: TFormCadastroUsuarios
           TitleFont.Color = clWindowText
           TitleFont.Height = -19
           TitleFont.Name = 'Segoe UI'
-          TitleFont.Style = []
+          TitleFont.Style = [fsBold]
         end
         object PnlRestaurar: TPanel
           AlignWithMargins = True
@@ -1539,7 +1544,7 @@ object FormCadastroUsuarios: TFormCadastroUsuarios
                 TitleFont.Color = clWindowText
                 TitleFont.Height = -19
                 TitleFont.Name = 'Segoe UI'
-                TitleFont.Style = []
+                TitleFont.Style = [fsBold]
               end
             end
           end

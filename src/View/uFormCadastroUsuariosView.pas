@@ -289,6 +289,7 @@ begin
       Controller.SalvarUsuario(Usuario);
       LimparCampos;
       CarregarGrid;
+      ShowMessage('Usuario Cadastrado com sucesso!');
     finally
       Controller.Free;
     end;
@@ -348,7 +349,7 @@ end;
 
 procedure TFormCadastroUsuarios.LblAtualizarClick(Sender: TObject);
 begin
-  if ValidarCampos = True then begin
+   if ValidarCampos = True then begin
     EditarUsuarios;
     CarregarGrid;
   end;
@@ -469,11 +470,22 @@ begin
   Controller := TUsuarioController.create;
   Controller.PesquisarUsuarios(EdtPesquisar.Text);
 
-  DBGridMain.Columns[0].Width := 140;
-  DBGridMain.Columns[1].Width := 140;
-  DBGridMain.Columns[2].Width := 140;
-  DBGridMain.Columns[3].Width := 140;
-  DBGridMain.Columns[4].Width := 140;
+  DBGridMain.Columns[0].Alignment := taCenter;
+  DBGridMain.Columns[0].Alignment := taCenter;
+  DBGridMain.Columns[1].Title.Alignment := taCenter;
+  DBGridMain.Columns[1].Alignment := taCenter;
+  DBGridMain.Columns[2].Title.Alignment := taCenter;
+  DBGridMain.Columns[2].Alignment := taCenter;
+  DBGridMain.Columns[3].Title.Alignment := taCenter;
+  DBGridMain.Columns[3].Alignment := taCenter;
+  DBGridMain.Columns[4].Title.Alignment := taCenter;
+  DBGridMain.Columns[4].Alignment := taCenter;
+
+  DBGridMain.Columns[0].Width := 100;
+  DBGridMain.Columns[1].Width := 191;
+  DBGridMain.Columns[2].Width := 191;
+  DBGridMain.Columns[3].Width := 191;
+  DBGridMain.Columns[4].Width := 191;
 end;
 
 end.

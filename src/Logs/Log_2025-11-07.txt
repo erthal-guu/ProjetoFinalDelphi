@@ -1,0 +1,23 @@
+16:37:10 - DELETAR - ID: 0 deletou o usuário ID: 1
+16:37:13 - RESTAURAR - ID: 0] restaurou o usuário ID: 1
+16:43:58 - CADASTRO CLIENTE - ID: 0 cadastrou o cliente: aaaaaaa (CPF: 197.480.917-50)
+16:44:10 - DELETAR CLIENTE - ID: 0 deletou o cliente ID: 47
+16:44:57 - DELETAR CLIENTE - ID: 0 deletou o cliente ID: 1
+16:45:01 - RESTAURAR CLIENTE - ID: 0 restaurou o cliente ID: 1
+16:45:10 - EDITAR CLIENTE - ID: 0 editou o cliente: Ana Banana (CPF: 111.222.333-00)
+16:45:24 - EDITAR CLIENTE - ID: 0 editou o cliente: Ana Banana (CPF: 111.222.333-00)
+16:51:26 - EDITAR - ID: 0 editou funcionário: Maria Clara Dalbelo (CPF: 333.444.555-66)
+16:51:41 - DELETAR - ID: 0 deletou funcionário ID: 1
+16:51:45 - RESTAURAR - ID: 0 restaurou funcionário ID: 1
+16:59:20 - CADASTRO - ID: 0 cadastrou fornecedor: aaaaaaaa (CNPJ: 74.916.580/9165-16)
+16:59:33 - EDITAR - ID: 0 editou fornecedor: Penis (CNPJ: 74.916.580/9165-16)
+16:59:37 - DELETAR - ID: 0 deletou fornecedor ID: 32
+16:59:41 - RESTAURAR - ID: 0 restaurou fornecedor ID: 32
+17:00:35 - FALHA AO VINCULAR - Peça ID: 26 Já está vinculada ao Fornecedor ID: 1
+17:00:38 - VINCULAR - Peça ID: 31 vinculada ao Fornecedor ID: 1
+17:00:49 - DESVINCULAR - Peça ID: 29 Desvinculada do Fornecedor ID: 1
+17:01:06 - PEDIDO - Usuário ID: 0 criou Pedido ID: 30 com 1 itens para Fornecedor ID: 1
+17:02:56 - CADASTRO - ID: 0 cadastrou peça: aaaaaaaa (Código Interno: 1415262)
+17:03:21 - CADASTRO - ID: 0 cadastrou o usuário: aaaaa (CPF: 171.567.951-69)
+17:39:41 - PEDIDO - Usuário ID: 0 criou Pedido ID: 31 com 1 itens para Fornecedor ID: 22
+17:46:07 - CADASTRO - ID: 0 cadastrou ordem de serviço com cliente ID: 3

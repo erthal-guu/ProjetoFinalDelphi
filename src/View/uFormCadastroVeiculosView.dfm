@@ -1,9 +1,10 @@
 ﻿object FormCadastroVeiculos: TFormCadastroVeiculos
   Left = 0
   Top = 0
+  BorderStyle = bsNone
   Caption = 'FormCadastroVeiculos'
-  ClientHeight = 665
-  ClientWidth = 1116
+  ClientHeight = 651
+  ClientWidth = 1109
   Color = clBtnFace
   Font.Charset = DEFAULT_CHARSET
   Font.Color = clWindowText
@@ -16,12 +17,14 @@
   object PnlMain: TPanel
     Left = 0
     Top = 0
-    Width = 1116
-    Height = 665
+    Width = 1109
+    Height = 651
     Align = alClient
     BevelOuter = bvNone
     BorderStyle = bsSingle
     TabOrder = 0
+    ExplicitWidth = 1116
+    ExplicitHeight = 665
     object PnlContainer: TPanel
       AlignWithMargins = True
       Left = -2
@@ -1313,8 +1316,7 @@
                   ParentColor = False
                   ParentFont = False
                   OnClick = LblAtualizarClick
-                  ExplicitWidth = 59
-                  ExplicitHeight = 20
+                  ExplicitLeft = 7
                 end
               end
               object CmbStatus: TComboBox

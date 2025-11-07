@@ -337,6 +337,7 @@ begin
     CadastrarPecas;
     LimparCampos;
     CarregarGrid;
+    ShowMessage('Peça Cadastrada com sucesso!');
   end;
 end;
 

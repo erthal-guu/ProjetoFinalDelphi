@@ -292,10 +292,12 @@ begin
         try
           Controller.SalvarOrdemServico(OrdemServico, PecasIDs);
           CarregarGrid;
-          ShowMessage('Ordem de serviço cadastrada com sucesso!');
           LimparCampos;
           PnlBackgrounEdit.Visible := false;
           PnlEdit.Visible := false;
+          ShowMessage('Ordem de serviço cadastrada com sucesso!');
+          Sleep(1000);
+          ShowMessage('Receita Financeira gerada com sucesso!');
         finally
           PecasIDs.Free;
         end;

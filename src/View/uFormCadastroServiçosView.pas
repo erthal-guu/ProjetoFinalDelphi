@@ -229,6 +229,7 @@ begin
     CadastrarServicos;
     LimparCampos;
     CarregarGrid;
+    ShowMessage('Serviço Cadastrado com sucesso!');
   end;
 end;
 

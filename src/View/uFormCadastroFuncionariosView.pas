@@ -137,17 +137,22 @@ begin
   PnlEdit.Visible := False;
   PnlRestaurar.Visible := False;
   EdtPesquisar.Visible := False;
+  CarregarGrid;
 end;
 
 procedure TFormCadastroFuncionarios.BtnPesquisarClick(Sender: TObject);
 begin
   EdtPesquisar.Visible := True;
   PnlBackgroundEdit.Visible := False;
+  EdtPesquisar.SetFocus;
 end;
 
 procedure TFormCadastroFuncionarios.BtnRestaurarClick(Sender: TObject);
 begin
   PnlRestaurar.Visible := True;
+  EdtPesquisar.Visible := False;
+  PnlEdit.Visible := False;
+  PnlBackgroundEdit.Visible := False;
   CarregarGridRestaurar;
 end;
 
@@ -325,7 +330,7 @@ begin
       FuncionarioController.SalvarFuncionario(Funcionario);
       LimparCampos;
       CarregarGrid;
-      Funcionario.Free;
+      ShowMessage('Funcionário Cadastrado com sucesso!');
     finally
       FuncionarioController.Free;
     end;

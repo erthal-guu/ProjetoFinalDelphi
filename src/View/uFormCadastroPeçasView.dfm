@@ -1,9 +1,10 @@
 ﻿object FormCadastroPecas: TFormCadastroPecas
   Left = 0
   Top = 0
+  BorderStyle = bsNone
   Caption = 'FormCadastroPecas'
-  ClientHeight = 668
-  ClientWidth = 1121
+  ClientHeight = 665
+  ClientWidth = 1109
   Color = clBtnFace
   Font.Charset = DEFAULT_CHARSET
   Font.Color = clWindowText
@@ -16,12 +17,14 @@
   object PnlMain: TPanel
     Left = 0
     Top = 0
-    Width = 1121
-    Height = 668
+    Width = 1109
+    Height = 665
     Align = alClient
     BevelOuter = bvNone
     BorderStyle = bsSingle
     TabOrder = 0
+    ExplicitTop = 8
+    ExplicitHeight = 657
     object PnlContainer: TPanel
       AlignWithMargins = True
       Left = -2

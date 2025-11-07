@@ -54,8 +54,8 @@ begin
     FQuery.Close;
     FQuery.SQL.Clear;
     FQuery.SQL.Add('INSERT INTO ordens_servico ' +
-      '(id_servico, id_funcionario, id_veiculo, id_cliente, preco, ativo, observacao, data_inicio data_abertura) '
-      + 'VALUES (:id_servico, :id_funcionario, :id_veiculo, :id_cliente, :preco, :ativo, :observacao, :data_inicio, :data_conclusao, :data_abertura) '
+      '(id_servico, id_funcionario, id_veiculo, id_cliente, preco, ativo, observacao, data_inicio,data_abertura) '
+      + 'VALUES (:id_servico, :id_funcionario, :id_veiculo, :id_cliente, :preco, :ativo, :observacao, :data_inicio, :data_abertura) '
       + 'RETURNING id');
     FQuery.ParamByName('id_servico').AsInteger := aOS.getIdServico;
     FQuery.ParamByName('id_funcionario').AsInteger := aOS.getIdFuncionario;

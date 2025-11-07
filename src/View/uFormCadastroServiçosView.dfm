@@ -1,9 +1,10 @@
 ﻿object FormCadastroServiços: TFormCadastroServiços
   Left = 0
   Top = 0
+  BorderStyle = bsNone
   Caption = 'FormCadastroServi'#231'os'
-  ClientHeight = 649
-  ClientWidth = 1117
+  ClientHeight = 643
+  ClientWidth = 1109
   Color = clBtnFace
   Font.Charset = DEFAULT_CHARSET
   Font.Color = clWindowText
@@ -16,16 +17,14 @@
   object PnlMain: TPanel
     Left = 0
     Top = 0
-    Width = 1117
-    Height = 649
+    Width = 1109
+    Height = 643
     Align = alClient
     BevelOuter = bvNone
     BorderStyle = bsSingle
     TabOrder = 0
-    ExplicitLeft = 2
-    ExplicitTop = 2
-    ExplicitWidth = 1115
-    ExplicitHeight = 647
+    ExplicitWidth = 1117
+    ExplicitHeight = 649
     object PnlContainer: TPanel
       AlignWithMargins = True
       Left = 0

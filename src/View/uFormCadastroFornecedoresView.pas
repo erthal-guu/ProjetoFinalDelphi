@@ -69,51 +69,26 @@ type
     EdtEstado: TEdit;
     BtnVincularPeças: TSpeedButton;
     DBGridRestaurar: TDBGrid;
+    DataSourceVincular: TDataSource;
+    BtnCancelar: TSpeedButton;
+    BtnPedido: TSpeedButton;
+    Image1: TImage;
     PnlVincularPeça: TPanel;
     Image3: TImage;
     Panel2: TPanel;
+    PnlBackgroundVincular: TPanel;
+    PnlFooter: TPanel;
+    LblPeçasVinculadas: TLabel;
+    CheckBoxPeçasVinculadas: TCheckBox;
+    DBGridVincular: TDBGrid;
     PnlEditVincular: TPanel;
     LblFornecedorVincular: TLabel;
     ImgLogoVincular: TImage;
     CmbFornecedor: TComboBox;
     PnlButtonVincular: TPanel;
     LblVincular: TLabel;
-    PnlBackgroundVincular: TPanel;
-    DBGridVincular: TDBGrid;
     PnlButtonDesvincular: TPanel;
     LblDesvincular: TLabel;
-    DataSourceVincular: TDataSource;
-    BtnCancelar: TSpeedButton;
-    BtnPedido: TSpeedButton;
-    PnlPedido: TPanel;
-    ImgFecharPedido: TImage;
-    LblPedido: TLabel;
-    PnlBackgroundPedido: TPanel;
-    PnlDesingPedido: TPanel;
-    PnlEditPedido: TPanel;
-    Label14: TLabel;
-    Label15: TLabel;
-    Label16: TLabel;
-    Label17: TLabel;
-    Label19: TLabel;
-    Label20: TLabel;
-    PnlAdicionar: TPanel;
-    LblAdicionar: TLabel;
-    EdtValorTotal: TEdit;
-    CmbFornecedorPedido: TComboBox;
-    CmbFormaPagamento: TComboBox;
-    EdtQuantidade: TEdit;
-    EdtObservacao: TEdit;
-    CmbPeças: TComboBox;
-    PnlFooter: TPanel;
-    LblPeçasVinculadas: TLabel;
-    CheckBoxPeçasVinculadas: TCheckBox;
-    PnlFinalizar: TPanel;
-    LblFinalizar: TLabel;
-    ListBoxPedidos: TListBox;
-    Panel3: TPanel;
-    Label18: TLabel;
-    Image1: TImage;
 
     procedure BtnAdicionarClick(Sender: TObject);
     procedure BtnPesquisarClick(Sender: TObject);
@@ -211,6 +186,7 @@ procedure TFormCadastroFornecedores.BtnPesquisarClick(Sender: TObject);
 begin
   EdtPesquisar.Visible := True;
   PnlBackgrounEdit.Visible := False;
+  EdtPesquisar.setFocus;
 end;
 
 procedure TFormCadastroFornecedores.CarregarFornecedores;
@@ -697,6 +673,7 @@ begin
     CadastrarFornecedores;
     LimparCampos;
     CarregarGrid;
+    ShowMessage('Fornecedor Cadastrado com sucesso!');
   end;
 end;
 
@@ -774,23 +751,19 @@ begin
         EdtObservacao.Clear;
         EdtQuantidade.Clear;
         AtualizarEstadoCombos;
-        PnlPedido.Visible := False;
         CarregarGrid;
-      end
-      else begin
-        ShowMessage('Erro ao salvar o pedido. Tente novamente.');
+        Sleep(1000);
+        ShowMessage('Pendência Financeira gerada com sucesso!');
+        PnlPedido.Visible := False;
       end;
-
-    except
-      on E: Exception do
-        ShowMessage('Erro ao finalizar pedido: ' + E.Message);
-    end;
   finally
     PecasIDs.Free;
     Quantidades.Free;
     Controller.Free;
   end;
-end;
+  finally
+  end;
+  end;
 
 
 procedure TFormCadastroFornecedores.LblVincularClick(Sender: TObject);
