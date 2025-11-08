@@ -23,8 +23,6 @@
     BevelOuter = bvNone
     BorderStyle = bsSingle
     TabOrder = 0
-    ExplicitTop = 8
-    ExplicitHeight = 657
     object PnlContainer: TPanel
       AlignWithMargins = True
       Left = -2
@@ -685,24 +683,29 @@
         end
         object PnlRestaurar: TPanel
           AlignWithMargins = True
-          Left = 20
-          Top = 20
-          Width = 848
-          Height = 394
-          Margins.Left = 20
-          Margins.Top = 20
-          Margins.Right = 20
-          Margins.Bottom = 20
+          Left = 0
+          Top = 0
+          Width = 888
+          Height = 434
+          Margins.Left = 0
+          Margins.Top = 0
+          Margins.Right = 0
+          Margins.Bottom = 0
           Align = alClient
+          BevelOuter = bvNone
           Color = 6172416
           ParentBackground = False
           TabOrder = 1
           Visible = False
+          ExplicitLeft = 20
+          ExplicitTop = 20
+          ExplicitWidth = 848
+          ExplicitHeight = 394
           object LblRestaurar: TLabel
             AlignWithMargins = True
-            Left = 4
-            Top = 11
-            Width = 840
+            Left = 3
+            Top = 10
+            Width = 882
             Height = 32
             Margins.Top = 10
             Align = alTop
@@ -714,6 +717,8 @@
             Font.Name = 'Segoe UI'
             Font.Style = [fsBold]
             ParentFont = False
+            ExplicitLeft = 4
+            ExplicitTop = 11
             ExplicitWidth = 109
           end
           object ImgFechar: TImage
@@ -776,10 +781,10 @@
           end
           object PnlMainRestaurar: TPanel
             AlignWithMargins = True
-            Left = 21
-            Top = 49
-            Width = 806
-            Height = 324
+            Left = 20
+            Top = 48
+            Width = 848
+            Height = 366
             Margins.Left = 20
             Margins.Right = 20
             Margins.Bottom = 20
@@ -788,12 +793,16 @@
             Color = 9521152
             ParentBackground = False
             TabOrder = 0
+            ExplicitLeft = 21
+            ExplicitTop = 49
+            ExplicitWidth = 806
+            ExplicitHeight = 324
             object PnlContainerRestaurar: TPanel
               AlignWithMargins = True
               Left = 12
               Top = 10
-              Width = 782
-              Height = 304
+              Width = 824
+              Height = 346
               Margins.Left = 12
               Margins.Top = 10
               Margins.Right = 12
@@ -804,12 +813,14 @@
               Color = clBackground
               ParentBackground = False
               TabOrder = 0
+              ExplicitWidth = 782
+              ExplicitHeight = 304
               object DBGridRestaurar: TDBGrid
                 AlignWithMargins = True
                 Left = 1
                 Top = 1
-                Width = 780
-                Height = 302
+                Width = 822
+                Height = 344
                 Margins.Left = 1
                 Margins.Top = 1
                 Margins.Right = 1

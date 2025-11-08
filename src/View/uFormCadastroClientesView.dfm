@@ -4,7 +4,7 @@ object FormCadastroClientes: TFormCadastroClientes
   BorderStyle = bsNone
   Caption = 'FormCadastroClientes'
   ClientHeight = 695
-  ClientWidth = 1131
+  ClientWidth = 1132
   Color = clBtnFace
   Font.Charset = DEFAULT_CHARSET
   Font.Color = clWindowText
@@ -17,10 +17,11 @@ object FormCadastroClientes: TFormCadastroClientes
   object PnlMain: TPanel
     Left = 0
     Top = 0
-    Width = 1131
+    Width = 1132
     Height = 695
     Align = alClient
     TabOrder = 0
+    ExplicitWidth = 1131
     object PnlContainer: TPanel
       AlignWithMargins = True
       Left = 0
@@ -684,7 +685,6 @@ object FormCadastroClientes: TFormCadastroClientes
           ParentBackground = False
           TabOrder = 0
           Visible = False
-          ExplicitLeft = 19
           object Image1: TImage
             AlignWithMargins = True
             Left = 966
@@ -1352,7 +1352,6 @@ object FormCadastroClientes: TFormCadastroClientes
               Color = 9521152
               ParentBackground = False
               TabOrder = 6
-              ExplicitWidth = 122
               object LblEnviar: TLabel
                 AlignWithMargins = True
                 Left = 4
@@ -1457,24 +1456,29 @@ object FormCadastroClientes: TFormCadastroClientes
         end
         object PnlRestaurar: TPanel
           AlignWithMargins = True
-          Left = 20
-          Top = 20
-          Width = 871
-          Height = 410
-          Margins.Left = 20
-          Margins.Top = 20
-          Margins.Right = 20
-          Margins.Bottom = 20
+          Left = 0
+          Top = 0
+          Width = 911
+          Height = 450
+          Margins.Left = 0
+          Margins.Top = 0
+          Margins.Right = 0
+          Margins.Bottom = 0
           Align = alClient
+          BevelOuter = bvNone
           Color = 6172416
           ParentBackground = False
           TabOrder = 1
           Visible = False
+          ExplicitLeft = 20
+          ExplicitTop = 20
+          ExplicitWidth = 871
+          ExplicitHeight = 410
           object LblRestaurar: TLabel
             AlignWithMargins = True
-            Left = 4
-            Top = 11
-            Width = 863
+            Left = 3
+            Top = 10
+            Width = 905
             Height = 32
             Margins.Top = 10
             Align = alTop
@@ -1486,6 +1490,8 @@ object FormCadastroClientes: TFormCadastroClientes
             Font.Name = 'Segoe UI'
             Font.Style = [fsBold]
             ParentFont = False
+            ExplicitLeft = 4
+            ExplicitTop = 11
             ExplicitWidth = 109
           end
           object ImgFechar: TImage
@@ -1548,10 +1554,10 @@ object FormCadastroClientes: TFormCadastroClientes
           end
           object PnlMainRestaurar: TPanel
             AlignWithMargins = True
-            Left = 21
-            Top = 49
-            Width = 829
-            Height = 340
+            Left = 20
+            Top = 48
+            Width = 871
+            Height = 382
             Margins.Left = 20
             Margins.Right = 20
             Margins.Bottom = 20
@@ -1560,12 +1566,16 @@ object FormCadastroClientes: TFormCadastroClientes
             Color = 9521152
             ParentBackground = False
             TabOrder = 0
+            ExplicitLeft = 21
+            ExplicitTop = 49
+            ExplicitWidth = 829
+            ExplicitHeight = 340
             object PnlContainerRestaurar: TPanel
               AlignWithMargins = True
               Left = 12
               Top = 10
-              Width = 805
-              Height = 320
+              Width = 847
+              Height = 362
               Margins.Left = 12
               Margins.Top = 10
               Margins.Right = 12
@@ -1576,12 +1586,14 @@ object FormCadastroClientes: TFormCadastroClientes
               Color = clBackground
               ParentBackground = False
               TabOrder = 0
+              ExplicitWidth = 805
+              ExplicitHeight = 320
               object DBGridRestaurar: TDBGrid
                 AlignWithMargins = True
                 Left = 1
                 Top = 1
-                Width = 803
-                Height = 318
+                Width = 845
+                Height = 360
                 Margins.Left = 1
                 Margins.Top = 1
                 Margins.Right = 1

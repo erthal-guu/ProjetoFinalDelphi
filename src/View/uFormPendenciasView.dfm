@@ -1,9 +1,10 @@
 object FormPendencias: TFormPendencias
   Left = 0
   Top = 0
+  BorderStyle = bsNone
   Caption = 'FormPendencias'
-  ClientHeight = 675
-  ClientWidth = 1111
+  ClientHeight = 682
+  ClientWidth = 1117
   Color = clBtnFace
   Font.Charset = DEFAULT_CHARSET
   Font.Color = clWindowText
@@ -16,21 +17,25 @@ object FormPendencias: TFormPendencias
   object PnlMain: TPanel
     Left = 0
     Top = 0
-    Width = 1111
-    Height = 675
+    Width = 1117
+    Height = 682
     Align = alClient
     BevelOuter = bvNone
     BorderStyle = bsSingle
     TabOrder = 0
+    ExplicitWidth = 1111
+    ExplicitHeight = 675
     object Panel1: TPanel
       Left = 0
       Top = 0
-      Width = 1107
-      Height = 671
+      Width = 1113
+      Height = 678
       Align = alClient
       BevelOuter = bvNone
       BorderStyle = bsSingle
       TabOrder = 0
+      ExplicitWidth = 1107
+      ExplicitHeight = 671
       object PnlContainer: TPanel
         AlignWithMargins = True
         Left = -2
@@ -1461,24 +1466,29 @@ object FormPendencias: TFormPendencias
           end
           object PnlRestaurar: TPanel
             AlignWithMargins = True
-            Left = 20
-            Top = 20
-            Width = 855
-            Height = 413
-            Margins.Left = 20
-            Margins.Top = 20
-            Margins.Right = 20
-            Margins.Bottom = 20
+            Left = 0
+            Top = 0
+            Width = 895
+            Height = 453
+            Margins.Left = 0
+            Margins.Top = 0
+            Margins.Right = 0
+            Margins.Bottom = 0
             Align = alClient
+            BevelOuter = bvNone
             Color = 6172416
             ParentBackground = False
             TabOrder = 0
             Visible = False
+            ExplicitLeft = 20
+            ExplicitTop = 20
+            ExplicitWidth = 855
+            ExplicitHeight = 413
             object LblRestaurar: TLabel
               AlignWithMargins = True
-              Left = 4
-              Top = 11
-              Width = 847
+              Left = 3
+              Top = 10
+              Width = 889
               Height = 32
               Margins.Top = 10
               Align = alTop
@@ -1490,6 +1500,8 @@ object FormPendencias: TFormPendencias
               Font.Name = 'Segoe UI'
               Font.Style = [fsBold]
               ParentFont = False
+              ExplicitLeft = 4
+              ExplicitTop = 11
               ExplicitWidth = 109
             end
             object ImgFechar: TImage
@@ -1552,10 +1564,10 @@ object FormPendencias: TFormPendencias
             end
             object PnlMainRestaurar: TPanel
               AlignWithMargins = True
-              Left = 21
-              Top = 49
-              Width = 813
-              Height = 343
+              Left = 20
+              Top = 48
+              Width = 855
+              Height = 385
               Margins.Left = 20
               Margins.Right = 20
               Margins.Bottom = 20
@@ -1564,12 +1576,16 @@ object FormPendencias: TFormPendencias
               Color = 9521152
               ParentBackground = False
               TabOrder = 0
+              ExplicitLeft = 21
+              ExplicitTop = 49
+              ExplicitWidth = 813
+              ExplicitHeight = 343
               object PnlContainerRestaurar: TPanel
                 AlignWithMargins = True
                 Left = 12
                 Top = 10
-                Width = 789
-                Height = 323
+                Width = 831
+                Height = 365
                 Margins.Left = 12
                 Margins.Top = 10
                 Margins.Right = 12
@@ -1580,12 +1596,14 @@ object FormPendencias: TFormPendencias
                 Color = clBackground
                 ParentBackground = False
                 TabOrder = 0
+                ExplicitWidth = 789
+                ExplicitHeight = 323
                 object DBGridRestaurar: TDBGrid
                   AlignWithMargins = True
                   Left = 1
                   Top = 1
-                  Width = 787
-                  Height = 321
+                  Width = 829
+                  Height = 363
                   Margins.Left = 1
                   Margins.Top = 1
                   Margins.Right = 1
@@ -1610,24 +1628,29 @@ object FormPendencias: TFormPendencias
           end
           object PnLHistorico: TPanel
             AlignWithMargins = True
-            Left = 20
-            Top = 20
-            Width = 855
-            Height = 413
-            Margins.Left = 20
-            Margins.Top = 20
-            Margins.Right = 20
-            Margins.Bottom = 20
+            Left = 0
+            Top = 0
+            Width = 895
+            Height = 453
+            Margins.Left = 0
+            Margins.Top = 0
+            Margins.Right = 0
+            Margins.Bottom = 0
             Align = alClient
+            BevelOuter = bvNone
             Color = 6172416
             ParentBackground = False
             TabOrder = 1
             Visible = False
+            ExplicitLeft = 20
+            ExplicitTop = 20
+            ExplicitWidth = 855
+            ExplicitHeight = 413
             object LblHistorico: TLabel
               AlignWithMargins = True
-              Left = 4
-              Top = 11
-              Width = 847
+              Left = 3
+              Top = 10
+              Width = 889
               Height = 32
               Margins.Top = 10
               Align = alTop
@@ -1639,6 +1662,8 @@ object FormPendencias: TFormPendencias
               Font.Name = 'Segoe UI'
               Font.Style = [fsBold]
               ParentFont = False
+              ExplicitLeft = 4
+              ExplicitTop = 11
               ExplicitWidth = 104
             end
             object ImgFecharHistorico: TImage
@@ -1664,10 +1689,10 @@ object FormPendencias: TFormPendencias
             end
             object PnlDesingGrid: TPanel
               AlignWithMargins = True
-              Left = 21
-              Top = 49
-              Width = 813
-              Height = 343
+              Left = 20
+              Top = 48
+              Width = 855
+              Height = 385
               Margins.Left = 20
               Margins.Right = 20
               Margins.Bottom = 20
@@ -1676,12 +1701,16 @@ object FormPendencias: TFormPendencias
               Color = 9521152
               ParentBackground = False
               TabOrder = 0
+              ExplicitLeft = 21
+              ExplicitTop = 49
+              ExplicitWidth = 813
+              ExplicitHeight = 343
               object PnlBackgroundGrid: TPanel
                 AlignWithMargins = True
                 Left = 12
                 Top = 10
-                Width = 789
-                Height = 323
+                Width = 831
+                Height = 365
                 Margins.Left = 12
                 Margins.Top = 10
                 Margins.Right = 12
@@ -1692,12 +1721,14 @@ object FormPendencias: TFormPendencias
                 Color = clBackground
                 ParentBackground = False
                 TabOrder = 0
+                ExplicitWidth = 789
+                ExplicitHeight = 323
                 object DBGridHistorico: TDBGrid
                   AlignWithMargins = True
                   Left = 1
                   Top = 1
-                  Width = 787
-                  Height = 321
+                  Width = 829
+                  Height = 363
                   Margins.Left = 1
                   Margins.Top = 1
                   Margins.Right = 1
@@ -1840,58 +1871,6 @@ object FormPendencias: TFormPendencias
             TextHint = 'Pesquisar'
             Visible = False
             ExplicitHeight = 28
-          end
-        end
-        object Panel2: TPanel
-          AlignWithMargins = True
-          Left = -40
-          Top = -243
-          Width = 749
-          Height = 300
-          Margins.Left = 20
-          Margins.Right = 20
-          Margins.Bottom = 20
-          BevelOuter = bvNone
-          Color = 6172416
-          ParentBackground = False
-          TabOrder = 5
-          Visible = False
-          object Label2: TLabel
-            AlignWithMargins = True
-            Left = 3
-            Top = 3
-            Width = 743
-            Height = 32
-            Align = alTop
-            Alignment = taCenter
-            Caption = 'Detalhamento'
-            Font.Charset = DEFAULT_CHARSET
-            Font.Color = clWhite
-            Font.Height = -24
-            Font.Name = 'Segoe UI'
-            Font.Style = [fsBold]
-            ParentFont = False
-            ExplicitWidth = 161
-          end
-          object Image2: TImage
-            Left = 708
-            Top = 10
-            Width = 25
-            Height = 25
-            Picture.Data = {
-              0954506E67496D61676589504E470D0A1A0A0000000D49484452000000180000
-              00180806000000E0773DF8000000097048597300000EC300000EC301C76FA864
-              0000001974455874536F667477617265007777772E696E6B73636170652E6F72
-              679BEE3C1A0000010F4944415478DAC5964D0AC2301085675C783A050F20F80B
-              820BC55308228A4871E10F75E752F05EAE7551F5854688A549A6A962E0D13493
-              BCAF69324DF9493423A231B485464CF4A012057E155CD6501F5A301AEEA85475
-              FC08754321DAFC00B574D34D0122548646BF20488EB92A115B0227A8094852C2
-              FCEDE1ED9094304F58DA31C45CDD706680BADF40031FC4621E433D73FD3E0052
-              88D43C17E083A46199B915603CE51E6A1BCD173DA6263177021C33318BD3DC0B
-              30667286EA99909A4DC39790FF0558768B59BCC918B2C894994D4C4517D9B5CF
-              D3B02C19730192242A92F15CD4DCE82B82F83E76CEF72B8170A8B914C265CC45
-              901F1F99CB5F1FFA570598A2328176F4BDDF9615D481E62FF3919E24F9015515
-              0000000049454E44AE426082}
           end
         end
       end

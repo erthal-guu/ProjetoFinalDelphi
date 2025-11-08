@@ -4,7 +4,7 @@ interface
 
 uses
   Winapi.Windows, Winapi.Messages, System.SysUtils, System.Variants, System.Classes, Vcl.Graphics,
-  Vcl.Controls, Vcl.Forms, Vcl.Dialogs, Vcl.ExtCtrls,
+  Vcl.Controls, Vcl.Forms, Vcl.Dialogs, Vcl.ExtCtrls,Vcl.ActnList,Vcl.PlatformDefaultStyleActnCtrls,
   uFormCadastroUsuariosView,
   uFormCadastroClientesView,
   uFormCadastroFuncionariosView,
@@ -15,7 +15,9 @@ uses
   uFormCadastroPeçasView,
   uFormCadastroServiçosView,
   uFormCadastroOrdensServiçoView, Vcl.Menus, Vcl.Imaging.pngimage, Vcl.StdCtrls,uSession,
-  Vcl.Buttons,uMainController;
+  Vcl.Buttons,uMainController, System.ImageList, Vcl.ImgList,
+  Vcl.BaseImageCollection, Vcl.ImageCollection, Vcl.VirtualImageList,
+  Vcl.ToolWin, Vcl.ActnMan, Vcl.ActnCtrls, Vcl.ActnMenus, Vcl.ComCtrls;
 
 
 type
@@ -47,6 +49,9 @@ type
     Image1: TImage;
     Movimentações: TMenuItem;
     OrdensServio1: TMenuItem;
+    VirtualImageList: TVirtualImageList;
+    ImageCollection: TImageCollection;
+    Image2: TImage;
     procedure SairClick(Sender: TObject);
     procedure FuncionariosClick(Sender: TObject);
     procedure FornecedoresClick(Sender: TObject);
@@ -79,7 +84,7 @@ implementation
 
 procedure TFormHome.ExibirDadosUsuarioLogado;
 begin
-LblUsuarioLogado.Caption := Format('Bem-vindo %s : %s', [uSession.UsuarioLogadoNome, uSession.UsuarioLogadoGrupo]);
+LblUsuarioLogado.Caption := Format('  %s : %s', [uSession.UsuarioLogadoNome, uSession.UsuarioLogadoGrupo]);
 end;
 
 procedure TFormHome.FuncionariosClick(Sender: TObject);
@@ -199,6 +204,17 @@ begin
   ExibirDadosUsuarioLogado;
   VerificarPermissoes;
   FormCadastroOrdensServiço.AplicarPermissoes(uSession.UsuarioLogadoGrupo);
+
+  VirtualImageList.ImageCollection := ImageCollection;
+  VirtualImageList.Width := 17;
+  VirtualImageList.Height := 17;
+  MainMenu.Images := VirtualImageList;
+  Cadastros.ImageIndex := 0;
+  Movimentações.ImageIndex := 1;
+  Relatorios.ImageIndex := 2;
+  Financeiro.ImageIndex := 3;
+  Sair.ImageIndex := 4;
+
 end;
 
 procedure TFormHome.FornecedoresClick(Sender: TObject);

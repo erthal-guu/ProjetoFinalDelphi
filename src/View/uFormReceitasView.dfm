@@ -1,9 +1,10 @@
 object FormReceitas: TFormReceitas
   Left = 0
   Top = 0
+  BorderStyle = bsNone
   Caption = 'FormReceitas'
-  ClientHeight = 699
-  ClientWidth = 1121
+  ClientHeight = 686
+  ClientWidth = 1119
   Color = clBtnFace
   Font.Charset = DEFAULT_CHARSET
   Font.Color = clWindowText
@@ -16,8 +17,8 @@ object FormReceitas: TFormReceitas
   object PnlMain: TPanel
     Left = 0
     Top = 0
-    Width = 1121
-    Height = 699
+    Width = 1119
+    Height = 686
     Align = alClient
     BevelOuter = bvNone
     BorderStyle = bsSingle
@@ -25,8 +26,8 @@ object FormReceitas: TFormReceitas
     object Panel1: TPanel
       Left = 0
       Top = 0
-      Width = 1117
-      Height = 695
+      Width = 1115
+      Height = 682
       Align = alClient
       BevelOuter = bvNone
       BorderStyle = bsSingle
@@ -1442,24 +1443,25 @@ object FormReceitas: TFormReceitas
           end
           object PnlRestaurar: TPanel
             AlignWithMargins = True
-            Left = 20
-            Top = 20
-            Width = 855
-            Height = 413
-            Margins.Left = 20
-            Margins.Top = 20
-            Margins.Right = 20
-            Margins.Bottom = 20
+            Left = 0
+            Top = 0
+            Width = 895
+            Height = 453
+            Margins.Left = 0
+            Margins.Top = 0
+            Margins.Right = 0
+            Margins.Bottom = 0
             Align = alClient
+            BevelOuter = bvNone
             Color = 6172416
             ParentBackground = False
             TabOrder = 0
             Visible = False
             object LblRestaurar: TLabel
               AlignWithMargins = True
-              Left = 4
-              Top = 11
-              Width = 847
+              Left = 3
+              Top = 10
+              Width = 889
               Height = 32
               Margins.Top = 10
               Align = alTop
@@ -1533,10 +1535,10 @@ object FormReceitas: TFormReceitas
             end
             object PnlMainRestaurar: TPanel
               AlignWithMargins = True
-              Left = 21
-              Top = 49
-              Width = 813
-              Height = 343
+              Left = 20
+              Top = 48
+              Width = 855
+              Height = 385
               Margins.Left = 20
               Margins.Right = 20
               Margins.Bottom = 20
@@ -1549,8 +1551,8 @@ object FormReceitas: TFormReceitas
                 AlignWithMargins = True
                 Left = 12
                 Top = 10
-                Width = 789
-                Height = 323
+                Width = 831
+                Height = 365
                 Margins.Left = 12
                 Margins.Top = 10
                 Margins.Right = 12
@@ -1565,8 +1567,8 @@ object FormReceitas: TFormReceitas
                   AlignWithMargins = True
                   Left = 1
                   Top = 1
-                  Width = 787
-                  Height = 321
+                  Width = 829
+                  Height = 363
                   Margins.Left = 1
                   Margins.Top = 1
                   Margins.Right = 1
@@ -1591,24 +1593,25 @@ object FormReceitas: TFormReceitas
           end
           object PnLHistorico: TPanel
             AlignWithMargins = True
-            Left = 20
-            Top = 20
-            Width = 855
-            Height = 413
-            Margins.Left = 20
-            Margins.Top = 20
-            Margins.Right = 20
-            Margins.Bottom = 20
+            Left = 0
+            Top = 0
+            Width = 895
+            Height = 453
+            Margins.Left = 0
+            Margins.Top = 0
+            Margins.Right = 0
+            Margins.Bottom = 0
             Align = alClient
+            BevelOuter = bvNone
             Color = 6172416
             ParentBackground = False
             TabOrder = 1
             Visible = False
             object LblHistorico: TLabel
               AlignWithMargins = True
-              Left = 4
-              Top = 11
-              Width = 847
+              Left = 3
+              Top = 10
+              Width = 889
               Height = 32
               Margins.Top = 10
               Align = alTop
@@ -1645,10 +1648,10 @@ object FormReceitas: TFormReceitas
             end
             object PnlDesingGrid: TPanel
               AlignWithMargins = True
-              Left = 21
-              Top = 49
-              Width = 813
-              Height = 343
+              Left = 20
+              Top = 48
+              Width = 855
+              Height = 385
               Margins.Left = 20
               Margins.Right = 20
               Margins.Bottom = 20
@@ -1661,8 +1664,8 @@ object FormReceitas: TFormReceitas
                 AlignWithMargins = True
                 Left = 12
                 Top = 10
-                Width = 789
-                Height = 323
+                Width = 831
+                Height = 365
                 Margins.Left = 12
                 Margins.Top = 10
                 Margins.Right = 12
@@ -1677,8 +1680,8 @@ object FormReceitas: TFormReceitas
                   AlignWithMargins = True
                   Left = 1
                   Top = 1
-                  Width = 787
-                  Height = 321
+                  Width = 829
+                  Height = 363
                   Margins.Left = 1
                   Margins.Top = 1
                   Margins.Right = 1
