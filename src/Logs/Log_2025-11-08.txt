@@ -1,3 +1,10 @@
 01:03:43 - LOGIN - Sucesso: Usuário ID 3, Nome: AdminMassa, (CPF: 000.000.000-00)
 01:04:45 - LOGIN - Sucesso: Usuário ID 3, Nome: AdminMassa, (CPF: 000.000.000-00)
 01:05:08 - LOGIN - Sucesso: Usuário ID 3, Nome: AdminMassa, (CPF: 000.000.000-00)
+19:15:06 - LOGIN - Sucesso: Usuário ID 3, Nome: AdminMassa, (CPF: 000.000.000-00)
+19:15:41 - PEDIDO - Usuário ID: 3 criou Pedido ID: 32 com 1 itens para Fornecedor ID: 1
+19:19:13 - CADASTRO - ID: 0 cadastrou o usuário: aaaaaaaaa (CPF: 124.162.478-56)
+19:19:36 - CADASTRO CLIENTE - ID: 0 cadastrou o cliente: aaaaaaaaa (CPF: 451.659.175-89)
+19:27:53 - LOGIN - Sucesso: Usuário ID 3, Nome: AdminMassa, (CPF: 000.000.000-00)
+19:28:13 - LOGIN - Sucesso: Usuário ID 6, Nome: MecanicoMassa, (CPF: 333.333.333-33)
+19:32:14 - LOGIN - Sucesso: Usuário ID 6, Nome: MecanicoMassa, (CPF: 333.333.333-33)

@@ -169,8 +169,10 @@ begin
     Peças.Visible := False;
     FormCadastroServiços.PnlMainButton.Visible := False;
     FormCadastroServiços.EdtPesquisar.Visible := True;
+    FormCadastroServiços.ImgFecharForm.Visible := True;
     FormCadastroVeiculos.PnlMainButton.Visible := False;
     FormCadastroVeiculos.EdtPesquisar.Visible := True;
+    FormCadastroVeiculos.ImgFecharForm.Visible := True;
     FormCadastroOrdensServiço.PnlMainButton.Visible := False;
     FormCadastroOrdensServiço.PnlBackgroundButton.Visible := False;
     FormCadastroOrdensServiço.EdtPesquisar.Visible := True;

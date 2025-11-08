@@ -63,6 +63,8 @@ type
     CmbStatus: TComboBox;
     LblStatus: TLabel;
     BtnCancelar: TSpeedButton;
+    Label5: TLabel;
+    ImgFecharForm: TImage;
 
     procedure BtnAdicionarClick(Sender: TObject);
     procedure BtnPesquisarClick(Sender: TObject);
@@ -89,6 +91,7 @@ type
     procedure BtnCancelarClick(Sender: TObject);
     procedure ExcluirVeiculos;
     procedure CadastrarVeiculos;
+    procedure ImgFecharFormClick(Sender: TObject);
 
   private
     { Private declarations }
@@ -413,6 +416,14 @@ procedure TFormCadastroVeiculos.ImgFecharClick(Sender: TObject);
 begin
   PnlRestaurar.Visible := False;
   CarregarGrid;
+end;
+
+procedure TFormCadastroVeiculos.ImgFecharFormClick(Sender: TObject);
+begin
+  if MessageDlg('Deseja realmente fechar este formulário?', mtConfirmation,
+    [mbYes, mbNo], 0) = mrYes then begin
+    Close;
+  end;
 end;
 
 procedure TFormCadastroVeiculos.BtnSairClick(Sender: TObject);

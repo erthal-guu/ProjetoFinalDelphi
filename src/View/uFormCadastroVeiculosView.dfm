@@ -1395,10 +1395,6 @@
           ParentBackground = False
           TabOrder = 0
           Visible = False
-          ExplicitLeft = 20
-          ExplicitTop = 20
-          ExplicitWidth = 848
-          ExplicitHeight = 383
           object LblRestaurar: TLabel
             AlignWithMargins = True
             Left = 3
@@ -1415,8 +1411,6 @@
             Font.Name = 'Segoe UI'
             Font.Style = [fsBold]
             ParentFont = False
-            ExplicitLeft = 4
-            ExplicitTop = 11
             ExplicitWidth = 109
           end
           object ImgFechar: TImage
@@ -1491,10 +1485,6 @@
             Color = 9521152
             ParentBackground = False
             TabOrder = 0
-            ExplicitLeft = 21
-            ExplicitTop = 49
-            ExplicitWidth = 806
-            ExplicitHeight = 313
             object PnlContainerRestaurar: TPanel
               AlignWithMargins = True
               Left = 12
@@ -1511,8 +1501,6 @@
               Color = clBackground
               ParentBackground = False
               TabOrder = 0
-              ExplicitWidth = 782
-              ExplicitHeight = 293
               object DBGridRestaurar: TDBGrid
                 AlignWithMargins = True
                 Left = 1
@@ -1557,6 +1545,44 @@
         Color = 6172416
         ParentBackground = False
         TabOrder = 3
+        object Label5: TLabel
+          AlignWithMargins = True
+          Left = 533
+          Top = 14
+          Width = 94
+          Height = 32
+          Margins.Top = 10
+          Alignment = taCenter
+          Caption = 'Ve'#237'culos'
+          Font.Charset = DEFAULT_CHARSET
+          Font.Color = clWhite
+          Font.Height = -24
+          Font.Name = 'Segoe UI'
+          Font.Style = [fsBold]
+          ParentFont = False
+        end
+        object ImgFecharForm: TImage
+          Left = 1052
+          Top = 16
+          Width = 30
+          Height = 28
+          Picture.Data = {
+            0954506E67496D61676589504E470D0A1A0A0000000D49484452000000180000
+            00180806000000E0773DF8000000097048597300000EC300000EC301C76FA864
+            0000001974455874536F667477617265007777772E696E6B73636170652E6F72
+            679BEE3C1A0000010F4944415478DAC5964D0AC2301085675C783A050F20F80B
+            820BC55308228A4871E10F75E752F05EAE7551F5854688A549A6A962E0D13493
+            BCAF69324DF9493423A231B485464CF4A012057E155CD6501F5A301AEEA85475
+            FC08754321DAFC00B574D34D0122548646BF20488EB92A115B0227A8094852C2
+            FCEDE1ED9094304F58DA31C45CDD706680BADF40031FC4621E433D73FD3E0052
+            88D43C17E083A46199B915603CE51E6A1BCD173DA6263177021C33318BD3DC0B
+            30667286EA99909A4DC39790FF0558768B59BCC918B2C894994D4C4517D9B5CF
+            D3B02C19730192242A92F15CD4DCE82B82F83E76CEF72B8170A8B914C265CC45
+            901F1F99CB5F1FFA570598A2328176F4BDDF9615D481E62FF3919E24F9015515
+            0000000049454E44AE426082}
+          Visible = False
+          OnClick = ImgFecharFormClick
+        end
         object EdtPesquisar: TSearchBox
           AlignWithMargins = True
           Left = 20

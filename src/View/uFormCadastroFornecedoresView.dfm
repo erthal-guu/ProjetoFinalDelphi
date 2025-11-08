@@ -21,8 +21,6 @@
     Height = 754
     Align = alClient
     TabOrder = 0
-    ExplicitWidth = 1127
-    ExplicitHeight = 715
     object PnlContainer: TPanel
       AlignWithMargins = True
       Left = 1
@@ -38,8 +36,6 @@
       Color = 9521152
       ParentBackground = False
       TabOrder = 0
-      ExplicitWidth = 1125
-      ExplicitHeight = 713
       object PnlMainButton: TPanel
         AlignWithMargins = True
         Left = 959
@@ -55,8 +51,6 @@
         Color = 6172416
         ParentBackground = False
         TabOrder = 0
-        ExplicitLeft = 943
-        ExplicitHeight = 473
       end
       object PnlMainEdit: TPanel
         Left = 0
@@ -68,8 +62,6 @@
         Color = 6172416
         ParentBackground = False
         TabOrder = 1
-        ExplicitTop = 530
-        ExplicitWidth = 1125
         object PnlBackgrounEdit: TPanel
           AlignWithMargins = True
           Left = 0
@@ -86,7 +78,6 @@
           ParentBackground = False
           TabOrder = 0
           Visible = False
-          ExplicitTop = 11
           object PnlDesignEdit: TPanel
             AlignWithMargins = True
             Left = 20
@@ -102,7 +93,6 @@
             ParentBackground = False
             TabOrder = 0
             Visible = False
-            ExplicitWidth = 1085
             object Image1: TImage
               AlignWithMargins = True
               Left = 976
@@ -878,8 +868,7 @@
                   ParentColor = False
                   ParentFont = False
                   OnClick = LblAtualizarClick
-                  ExplicitWidth = 59
-                  ExplicitHeight = 20
+                  ExplicitLeft = 3
                 end
               end
               object EdtRua: TEdit
@@ -1001,7 +990,6 @@
           Color = clBackground
           ParentBackground = False
           TabOrder = 0
-          ExplicitHeight = 439
           object PnlButton: TPanel
             AlignWithMargins = True
             Left = 1
@@ -1017,7 +1005,6 @@
             Color = 15790320
             ParentBackground = False
             TabOrder = 0
-            ExplicitHeight = 437
             object BtnExcluir: TSpeedButton
               AlignWithMargins = True
               Left = 5
@@ -1790,8 +1777,6 @@
         Color = clBackground
         ParentBackground = False
         TabOrder = 3
-        ExplicitWidth = 905
-        ExplicitHeight = 435
         object PnlRestaurar: TPanel
           Left = 0
           Top = 0
@@ -1807,8 +1792,6 @@
           ParentBackground = False
           TabOrder = 0
           Visible = False
-          ExplicitWidth = 905
-          ExplicitHeight = 435
           object LblRestaurar: TLabel
             AlignWithMargins = True
             Left = 3
@@ -1899,8 +1882,6 @@
             Color = 9521152
             ParentBackground = False
             TabOrder = 0
-            ExplicitWidth = 865
-            ExplicitHeight = 367
             object PnlContainerRestaurar: TPanel
               AlignWithMargins = True
               Left = 12
@@ -1917,8 +1898,6 @@
               Color = clBackground
               ParentBackground = False
               TabOrder = 0
-              ExplicitWidth = 841
-              ExplicitHeight = 347
               object DBGridRestaurar: TDBGrid
                 AlignWithMargins = True
                 Left = 1
@@ -1988,7 +1967,23 @@
         Color = 6172416
         ParentBackground = False
         TabOrder = 4
-        ExplicitWidth = 1125
+        ExplicitTop = 64
+        object Label12: TLabel
+          AlignWithMargins = True
+          Left = 522
+          Top = 8
+          Width = 154
+          Height = 32
+          Margins.Top = 10
+          Alignment = taCenter
+          Caption = 'Fornecedores'
+          Font.Charset = DEFAULT_CHARSET
+          Font.Color = clWhite
+          Font.Height = -24
+          Font.Name = 'Segoe UI'
+          Font.Style = [fsBold]
+          ParentFont = False
+        end
         object EdtPesquisar: TSearchBox
           AlignWithMargins = True
           Left = 20
@@ -2077,8 +2072,6 @@
           Color = 9521152
           ParentBackground = False
           TabOrder = 0
-          ExplicitWidth = 866
-          ExplicitHeight = 356
           object PnlDesingPedido: TPanel
             AlignWithMargins = True
             Left = 19
@@ -2095,8 +2088,6 @@
             Color = clBackground
             ParentBackground = False
             TabOrder = 1
-            ExplicitWidth = 448
-            ExplicitHeight = 309
             object ListBoxPedidos: TListBox
               AlignWithMargins = True
               Left = 1
@@ -2110,8 +2101,6 @@
               Align = alClient
               ItemHeight = 20
               TabOrder = 0
-              ExplicitLeft = 6
-              ExplicitTop = 0
             end
             object Panel3: TPanel
               AlignWithMargins = True
@@ -2146,8 +2135,8 @@
                 ParentColor = False
                 ParentFont = False
                 OnClick = Label18Click
-                ExplicitLeft = -1
-                ExplicitWidth = 465
+                ExplicitWidth = 59
+                ExplicitHeight = 20
               end
             end
           end
@@ -2478,7 +2467,6 @@
           Color = 9521152
           ParentBackground = False
           TabOrder = 0
-          ExplicitTop = 34
           object PnlBackgroundVincular: TPanel
             AlignWithMargins = True
             Left = 19
@@ -2495,8 +2483,6 @@
             Color = clBackground
             ParentBackground = False
             TabOrder = 1
-            ExplicitLeft = 22
-            ExplicitTop = 20
             object PnlFooter: TPanel
               Left = 0
               Top = 347
@@ -2992,15 +2978,16 @@
     end
   end
   object DataSourceRestaurar: TDataSource
-    Left = 776
+    Left = 752
+    Top = 96
   end
   object DataSourceMain: TDataSource
     DataSet = DataModule1.FDQuery
-    Left = 528
-    Top = 8
+    Left = 552
+    Top = 56
   end
   object DataSourceVincular: TDataSource
-    Left = 648
-    Top = 8
+    Left = 632
+    Top = 104
   end
 end

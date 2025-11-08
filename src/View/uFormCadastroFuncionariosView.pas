@@ -75,6 +75,7 @@ type
     LblAtualizar: TLabel;
     CmbTipo: TComboBox;
     Image1: TImage;
+    Label14: TLabel;
     procedure BtnAdicionarClick(Sender: TObject);
     procedure BtnPesquisarClick(Sender: TObject);
     procedure FormCreate(Sender: TObject);
@@ -466,7 +467,12 @@ end;
 
 procedure TFormCadastroFuncionarios.LblEnviarClick(Sender: TObject);
 begin
-  CadastrarFuncionarios;
+  if ValidarCampos then begin
+    CadastrarFuncionarios;
+    LimparCampos;
+    CarregarGrid;
+    ShowMessage('Funcionário cadastrado com sucesso!');
+  end;
 end;
 
 procedure TFormCadastroFuncionarios.EditarFuncionarios;

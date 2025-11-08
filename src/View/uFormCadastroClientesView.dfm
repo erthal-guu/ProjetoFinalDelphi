@@ -21,7 +21,6 @@ object FormCadastroClientes: TFormCadastroClientes
     Height = 695
     Align = alClient
     TabOrder = 0
-    ExplicitWidth = 1131
     object PnlContainer: TPanel
       AlignWithMargins = True
       Left = 0
@@ -1470,10 +1469,6 @@ object FormCadastroClientes: TFormCadastroClientes
           ParentBackground = False
           TabOrder = 1
           Visible = False
-          ExplicitLeft = 20
-          ExplicitTop = 20
-          ExplicitWidth = 871
-          ExplicitHeight = 410
           object LblRestaurar: TLabel
             AlignWithMargins = True
             Left = 3
@@ -1490,8 +1485,6 @@ object FormCadastroClientes: TFormCadastroClientes
             Font.Name = 'Segoe UI'
             Font.Style = [fsBold]
             ParentFont = False
-            ExplicitLeft = 4
-            ExplicitTop = 11
             ExplicitWidth = 109
           end
           object ImgFechar: TImage
@@ -1566,10 +1559,6 @@ object FormCadastroClientes: TFormCadastroClientes
             Color = 9521152
             ParentBackground = False
             TabOrder = 0
-            ExplicitLeft = 21
-            ExplicitTop = 49
-            ExplicitWidth = 829
-            ExplicitHeight = 340
             object PnlContainerRestaurar: TPanel
               AlignWithMargins = True
               Left = 12
@@ -1586,8 +1575,6 @@ object FormCadastroClientes: TFormCadastroClientes
               Color = clBackground
               ParentBackground = False
               TabOrder = 0
-              ExplicitWidth = 805
-              ExplicitHeight = 320
               object DBGridRestaurar: TDBGrid
                 AlignWithMargins = True
                 Left = 1
@@ -1632,6 +1619,22 @@ object FormCadastroClientes: TFormCadastroClientes
         Color = 6172416
         ParentBackground = False
         TabOrder = 3
+        object Label1: TLabel
+          AlignWithMargins = True
+          Left = 541
+          Top = 15
+          Width = 90
+          Height = 32
+          Margins.Top = 10
+          Alignment = taCenter
+          Caption = 'Clientes'
+          Font.Charset = DEFAULT_CHARSET
+          Font.Color = clWhite
+          Font.Height = -24
+          Font.Name = 'Segoe UI'
+          Font.Style = [fsBold]
+          ParentFont = False
+        end
         object EdtPesquisar: TSearchBox
           AlignWithMargins = True
           Left = 20
@@ -1653,7 +1656,7 @@ object FormCadastroClientes: TFormCadastroClientes
           TextHint = 'Pesquisar'
           Visible = False
           OnChange = EdtPesquisarChange
-          ExplicitHeight = 28
+          ExplicitLeft = 156
         end
       end
     end

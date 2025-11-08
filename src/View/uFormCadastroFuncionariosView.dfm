@@ -1689,10 +1689,6 @@ object FormCadastroFuncionarios: TFormCadastroFuncionarios
             ParentBackground = False
             TabOrder = 1
             Visible = False
-            ExplicitLeft = 20
-            ExplicitTop = 20
-            ExplicitWidth = 866
-            ExplicitHeight = 357
             object LblRestaurar: TLabel
               AlignWithMargins = True
               Left = 3
@@ -1709,8 +1705,6 @@ object FormCadastroFuncionarios: TFormCadastroFuncionarios
               Font.Name = 'Segoe UI'
               Font.Style = [fsBold]
               ParentFont = False
-              ExplicitLeft = 4
-              ExplicitTop = 11
               ExplicitWidth = 109
             end
             object ImgFechar: TImage
@@ -1785,10 +1779,6 @@ object FormCadastroFuncionarios: TFormCadastroFuncionarios
               Color = 9521152
               ParentBackground = False
               TabOrder = 0
-              ExplicitLeft = 21
-              ExplicitTop = 49
-              ExplicitWidth = 824
-              ExplicitHeight = 287
               object PnlContainerRestaurar: TPanel
                 AlignWithMargins = True
                 Left = 12
@@ -1805,8 +1795,6 @@ object FormCadastroFuncionarios: TFormCadastroFuncionarios
                 Color = clBackground
                 ParentBackground = False
                 TabOrder = 0
-                ExplicitWidth = 800
-                ExplicitHeight = 267
                 object DBGridRestaurar: TDBGrid
                   AlignWithMargins = True
                   Left = 1
@@ -1851,6 +1839,22 @@ object FormCadastroFuncionarios: TFormCadastroFuncionarios
           Color = 6172416
           ParentBackground = False
           TabOrder = 3
+          object Label14: TLabel
+            AlignWithMargins = True
+            Left = 514
+            Top = 10
+            Width = 147
+            Height = 32
+            Margins.Top = 10
+            Alignment = taCenter
+            Caption = 'Funcion'#225'rios'
+            Font.Charset = DEFAULT_CHARSET
+            Font.Color = clWhite
+            Font.Height = -24
+            Font.Name = 'Segoe UI'
+            Font.Style = [fsBold]
+            ParentFont = False
+          end
           object EdtPesquisar: TSearchBox
             AlignWithMargins = True
             Left = 20

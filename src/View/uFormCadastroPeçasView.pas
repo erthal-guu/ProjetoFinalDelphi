@@ -63,6 +63,7 @@ type
     EdtPreço: TEdit;
     Label7: TLabel;
     Image1: TImage;
+    Label8: TLabel;
 
     procedure BtnAdicionarClick(Sender: TObject);
     procedure BtnPesquisarClick(Sender: TObject);

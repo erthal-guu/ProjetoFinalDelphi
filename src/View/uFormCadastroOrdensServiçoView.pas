@@ -74,6 +74,7 @@ type
     LblAtualizar: TLabel;
     DTimeConclusao: TDateTimePicker;
     Image1: TImage;
+    Label11: TLabel;
 
     procedure BtnAdicionarClick(Sender: TObject);
     procedure BtnPesquisarClick(Sender: TObject);
@@ -765,9 +766,11 @@ begin
       PecasIDs := ObterPecasSelecionadas;
       try
         Controller.EditarOrdemServico(OrdemServico, PecasIDs);
-        ShowMessage('Ordem de serviço atualizada com sucesso!');
+        ShowMessage('Ordem de serviço cadastrada com sucesso!');
         CarregarGrid;
         LimparCampos;
+        Sleep(1000);
+        ShowMessage('Receita Financeira gerada com sucesso !');
         PnlBackgrounEdit.Visible := false;
         PnlEdit.Visible := false;
       finally

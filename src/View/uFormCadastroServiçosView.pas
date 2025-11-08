@@ -59,6 +59,8 @@ type
     PnlHeader: TPanel;
     EdtPesquisar: TSearchBox;
     Image1: TImage;
+    Label7: TLabel;
+    ImgFecharForm: TImage;
 
     procedure FormCreate(Sender: TObject);
     procedure FormShow(Sender: TObject);
@@ -89,6 +91,7 @@ type
     procedure TituloGridMain;
     procedure ExcluirServicos;
     procedure CadastrarServicos;
+    procedure ImgFecharFormClick(Sender: TObject);
   private
     { Private declarations }
   public
@@ -362,6 +365,14 @@ procedure TFormCadastroServiços.ImgFecharClick(Sender: TObject);
 begin
   PnlRestaurar.Visible := False;
   CarregarGrid;
+end;
+
+procedure TFormCadastroServiços.ImgFecharFormClick(Sender: TObject);
+begin
+  if MessageDlg('Deseja realmente fechar este formulário?', mtConfirmation,
+    [mbYes, mbNo], 0) = mrYes then begin
+    Close;
+  end;
 end;
 
 procedure TFormCadastroServiços.ImgRestaurarClick(Sender: TObject);

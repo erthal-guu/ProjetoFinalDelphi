@@ -59,6 +59,7 @@ type
     DBGridRestaurar: TDBGrid;
     BtnCancelar: TSpeedButton;
     Image1: TImage;
+    Label1: TLabel;
     procedure BtnAdicionarClick(Sender: TObject);
     procedure BtnPesquisarClick(Sender: TObject);
     procedure FormCreate(Sender: TObject);
@@ -386,6 +387,7 @@ begin
     CadastrarClientes;
     LimparCampos;
     CarregarGrid;
+    ShowMessage('Cliente cadastrado com sucesso!');
   end;
 end;
 

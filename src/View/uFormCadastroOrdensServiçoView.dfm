@@ -23,8 +23,6 @@
     BevelOuter = bvNone
     BorderStyle = bsSingle
     TabOrder = 0
-    ExplicitWidth = 1106
-    ExplicitHeight = 667
     object PnlContainer: TPanel
       AlignWithMargins = True
       Left = -2
@@ -837,10 +835,6 @@
           ParentBackground = False
           TabOrder = 2
           Visible = False
-          ExplicitLeft = 20
-          ExplicitTop = 20
-          ExplicitWidth = 848
-          ExplicitHeight = 350
           object Label7: TLabel
             AlignWithMargins = True
             Left = 3
@@ -857,8 +851,6 @@
             Font.Name = 'Segoe UI'
             Font.Style = [fsBold]
             ParentFont = False
-            ExplicitLeft = 4
-            ExplicitTop = 11
             ExplicitWidth = 109
           end
           object ImgFecharRestaurar: TImage
@@ -933,10 +925,6 @@
             Color = 9521152
             ParentBackground = False
             TabOrder = 0
-            ExplicitLeft = 21
-            ExplicitTop = 49
-            ExplicitWidth = 806
-            ExplicitHeight = 280
             object Panel4: TPanel
               AlignWithMargins = True
               Left = 12
@@ -953,8 +941,6 @@
               Color = clBackground
               ParentBackground = False
               TabOrder = 0
-              ExplicitWidth = 782
-              ExplicitHeight = 260
               object DBGridRestaurar: TDBGrid
                 AlignWithMargins = True
                 Left = 1
@@ -999,6 +985,22 @@
         Color = 6172416
         ParentBackground = False
         TabOrder = 3
+        object Label11: TLabel
+          AlignWithMargins = True
+          Left = 471
+          Top = 9
+          Width = 208
+          Height = 32
+          Margins.Top = 10
+          Alignment = taCenter
+          Caption = 'Ordens de Servi'#231'o'
+          Font.Charset = DEFAULT_CHARSET
+          Font.Color = clWhite
+          Font.Height = -24
+          Font.Name = 'Segoe UI'
+          Font.Style = [fsBold]
+          ParentFont = False
+        end
         object EdtPesquisar: TSearchBox
           AlignWithMargins = True
           Left = 20

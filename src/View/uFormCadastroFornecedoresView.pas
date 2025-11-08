@@ -114,6 +114,7 @@ type
     LblPeçasVinculadas: TLabel;
     CheckBoxPeçasVinculadas: TCheckBox;
     DBGridVincular: TDBGrid;
+    Label12: TLabel;
 
     procedure BtnAdicionarClick(Sender: TObject);
     procedure BtnPesquisarClick(Sender: TObject);
@@ -697,6 +698,7 @@ begin
     CadastrarFornecedores;
     LimparCampos;
     CarregarGrid;
+    ShowMessage('Fornecedor cadastrado com sucesso!');
   end;
 end;
 
@@ -774,8 +776,10 @@ begin
         EdtObservacao.Clear;
         EdtQuantidade.Clear;
         AtualizarEstadoCombos;
-        PnlPedido.Visible := False;
         CarregarGrid;
+        Sleep(1000);
+        ShowMessage('Pendência Financeira gerada com sucesso !');
+        PnlPedido.Visible := False;
       end
       else begin
         ShowMessage('Erro ao salvar o pedido. Tente novamente.');

@@ -1411,10 +1411,6 @@ object FormCadastroUsuarios: TFormCadastroUsuarios
           ParentBackground = False
           TabOrder = 1
           Visible = False
-          ExplicitLeft = 20
-          ExplicitTop = 20
-          ExplicitWidth = 848
-          ExplicitHeight = 413
           object LblRestaurar: TLabel
             AlignWithMargins = True
             Left = 3
@@ -1431,8 +1427,6 @@ object FormCadastroUsuarios: TFormCadastroUsuarios
             Font.Name = 'Segoe UI'
             Font.Style = [fsBold]
             ParentFont = False
-            ExplicitLeft = 4
-            ExplicitTop = 11
             ExplicitWidth = 109
           end
           object ImgFechar: TImage
@@ -1507,10 +1501,6 @@ object FormCadastroUsuarios: TFormCadastroUsuarios
             Color = 9521152
             ParentBackground = False
             TabOrder = 0
-            ExplicitLeft = 21
-            ExplicitTop = 49
-            ExplicitWidth = 806
-            ExplicitHeight = 343
             object PnlContainerRestaurar: TPanel
               AlignWithMargins = True
               Left = 12
@@ -1527,8 +1517,6 @@ object FormCadastroUsuarios: TFormCadastroUsuarios
               Color = clBackground
               ParentBackground = False
               TabOrder = 0
-              ExplicitWidth = 782
-              ExplicitHeight = 323
               object DBGridRestaurar: TDBGrid
                 AlignWithMargins = True
                 Left = 1
@@ -1573,6 +1561,22 @@ object FormCadastroUsuarios: TFormCadastroUsuarios
         Color = 6172416
         ParentBackground = False
         TabOrder = 4
+        object Label1: TLabel
+          AlignWithMargins = True
+          Left = 536
+          Top = 12
+          Width = 99
+          Height = 32
+          Margins.Top = 10
+          Alignment = taCenter
+          Caption = 'Usu'#225'rios'
+          Font.Charset = DEFAULT_CHARSET
+          Font.Color = clWhite
+          Font.Height = -24
+          Font.Name = 'Segoe UI'
+          Font.Style = [fsBold]
+          ParentFont = False
+        end
         object EdtPesquisar: TSearchBox
           AlignWithMargins = True
           Left = 20

@@ -3110,7 +3110,6 @@
           Color = 6172416
           ParentBackground = False
           TabOrder = 0
-          ExplicitWidth = 418
           object Shape2: TShape
             Left = 0
             Top = 0
@@ -3254,7 +3253,7 @@
   object MainMenu: TMainMenu
     Left = 960
     object Cadastros: TMenuItem
-      Caption = '&Cadastros     '
+      Caption = ' &Cadastros     '
       object Usuarios: TMenuItem
         Caption = '&Usuarios'
         OnClick = UsuariosClick
@@ -3285,17 +3284,17 @@
       end
     end
     object Movimentações: TMenuItem
-      Caption = 'Movimenta'#231#245'es     '
+      Caption = ' &Movimenta'#231#245'es     '
       object OrdensServio1: TMenuItem
         Caption = 'Ordens de Servi'#231'o'
         OnClick = OrdensServio1Click
       end
     end
     object Relatorios: TMenuItem
-      Caption = '&Relat'#243'rios     '
+      Caption = ' &Relat'#243'rios     '
     end
     object Financeiro: TMenuItem
-      Caption = 'Financeiro     '
+      Caption = ' Financeiro     '
       object Pendncias1: TMenuItem
         Caption = 'Pend'#234'ncias'
         OnClick = Pendncias1Click
