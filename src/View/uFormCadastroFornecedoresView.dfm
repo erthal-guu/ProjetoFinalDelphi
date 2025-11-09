@@ -868,7 +868,8 @@
                   ParentColor = False
                   ParentFont = False
                   OnClick = LblAtualizarClick
-                  ExplicitLeft = 3
+                  ExplicitWidth = 59
+                  ExplicitHeight = 20
                 end
               end
               object EdtRua: TEdit
@@ -1777,6 +1778,31 @@
         Color = clBackground
         ParentBackground = False
         TabOrder = 3
+        object DBGridMain: TDBGrid
+          AlignWithMargins = True
+          Left = 1
+          Top = 1
+          Width = 919
+          Height = 472
+          Margins.Left = 1
+          Margins.Top = 1
+          Margins.Right = 1
+          Margins.Bottom = 1
+          Align = alClient
+          Font.Charset = DEFAULT_CHARSET
+          Font.Color = clWindowText
+          Font.Height = -13
+          Font.Name = 'Segoe UI'
+          Font.Style = []
+          ParentFont = False
+          ReadOnly = True
+          TabOrder = 1
+          TitleFont.Charset = DEFAULT_CHARSET
+          TitleFont.Color = clWindowText
+          TitleFont.Height = -19
+          TitleFont.Name = 'Segoe UI'
+          TitleFont.Style = [fsBold]
+        end
         object PnlRestaurar: TPanel
           Left = 0
           Top = 0
@@ -1811,8 +1837,8 @@
             ExplicitWidth = 109
           end
           object ImgFechar: TImage
-            Left = 800
-            Top = 18
+            Left = 876
+            Top = 17
             Width = 25
             Height = 25
             Picture.Data = {
@@ -1926,31 +1952,6 @@
             end
           end
         end
-        object DBGridMain: TDBGrid
-          AlignWithMargins = True
-          Left = 1
-          Top = 1
-          Width = 919
-          Height = 472
-          Margins.Left = 1
-          Margins.Top = 1
-          Margins.Right = 1
-          Margins.Bottom = 1
-          Align = alClient
-          Font.Charset = DEFAULT_CHARSET
-          Font.Color = clWindowText
-          Font.Height = -13
-          Font.Name = 'Segoe UI'
-          Font.Style = []
-          ParentFont = False
-          ReadOnly = True
-          TabOrder = 1
-          TitleFont.Charset = DEFAULT_CHARSET
-          TitleFont.Color = clWindowText
-          TitleFont.Height = -19
-          TitleFont.Name = 'Segoe UI'
-          TitleFont.Style = [fsBold]
-        end
       end
       object PnlHeader: TPanel
         AlignWithMargins = True
@@ -1967,7 +1968,6 @@
         Color = 6172416
         ParentBackground = False
         TabOrder = 4
-        ExplicitTop = 64
         object Label12: TLabel
           AlignWithMargins = True
           Left = 522
@@ -2009,14 +2009,14 @@
         end
       end
       object PnlPedido: TPanel
-        Left = 18
-        Top = 76
+        Left = 16
+        Top = 74
         Width = 921
         Height = 474
         BevelOuter = bvNone
         Color = 6172416
         ParentBackground = False
-        TabOrder = 6
+        TabOrder = 5
         Visible = False
         object LblPedido: TLabel
           AlignWithMargins = True
@@ -2429,7 +2429,7 @@
         BevelOuter = bvNone
         Color = 6172416
         ParentBackground = False
-        TabOrder = 5
+        TabOrder = 6
         Visible = False
         object Image3: TImage
           Left = 860

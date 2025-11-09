@@ -71,6 +71,7 @@ type
     DataSourceHistorico: TDataSource;
     DBGridMain: TDBGrid;
     EdtReceita: TEdit;
+    Label7: TLabel;
     procedure DBGridMainCellClick(Column: TColumn);
     procedure BtnDetalharClick(Sender: TObject);
     procedure BtnRestaurarClick(Sender: TObject);

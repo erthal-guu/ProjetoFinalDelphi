@@ -1669,9 +1669,9 @@ object FormCadastroFuncionarios: TFormCadastroFuncionarios
             TabOrder = 0
             TitleFont.Charset = DEFAULT_CHARSET
             TitleFont.Color = clWindowText
-            TitleFont.Height = -12
+            TitleFont.Height = -19
             TitleFont.Name = 'Segoe UI'
-            TitleFont.Style = []
+            TitleFont.Style = [fsBold]
           end
           object PnlRestaurar: TPanel
             AlignWithMargins = True

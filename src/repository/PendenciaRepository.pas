@@ -122,13 +122,14 @@ begin
     FQuery.SQL.Add('SELECT ');
     FQuery.SQL.Add('  p.id,');
     FQuery.SQL.Add('  p.id_pedido,');
-    FQuery.SQL.Add('  p.id_cliente,');
     FQuery.SQL.Add('  f.nome AS cliente_nome,');
     FQuery.SQL.Add('  p.descricao,');
     FQuery.SQL.Add('  p.valor_total,');
     FQuery.SQL.Add('  p.data_vencimento,');
     FQuery.SQL.Add('  p.data_criacao,');
-    FQuery.SQL.Add('  p.status');
+    FQuery.SQL.Add('  p.status,');
+    FQuery.SQL.Add('  p.observacao,');
+    FQuery.SQL.Add('  p.id_cliente');
     FQuery.SQL.Add('FROM pendencias p');
     FQuery.SQL.Add('LEFT JOIN fornecedores f ON p.id_cliente = f.id');
     FQuery.SQL.Add('WHERE p.ativo = TRUE AND p.status <> ''CONCLUIDA''');

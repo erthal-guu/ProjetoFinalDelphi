@@ -50,6 +50,9 @@ type
     BtnPesquisar: TSpeedButton;
     BtnRestaurar: TSpeedButton;
     BtnSair: TSpeedButton;
+    BtnCancelar: TSpeedButton;
+    Image1: TImage;
+    Label1: TLabel;
     PnlRestaurar: TPanel;
     LblRestaurar: TLabel;
     ImgFechar: TImage;
@@ -57,9 +60,6 @@ type
     PnlMainRestaurar: TPanel;
     PnlContainerRestaurar: TPanel;
     DBGridRestaurar: TDBGrid;
-    BtnCancelar: TSpeedButton;
-    Image1: TImage;
-    Label1: TLabel;
     procedure BtnAdicionarClick(Sender: TObject);
     procedure BtnPesquisarClick(Sender: TObject);
     procedure FormCreate(Sender: TObject);
@@ -86,6 +86,7 @@ type
     procedure EdtDataNascimentoClick(Sender: TObject);
     procedure ExcluirUsuarios;
     procedure CadastrarClientes;
+    Function ValidarData:Boolean;
   private
     { Private declarations }
   public
@@ -179,7 +180,7 @@ begin
   DBGridMain.DataSource := DataSourceClientes;
   try
     if DBGridMain.Columns.Count >= 7 then begin
-      DBGridMain.Columns[0].Title.Caption := 'Id';
+      DBGridMain.Columns[0].Title.Caption := 'ID';
       DBGridMain.Columns[1].Title.Caption := 'Nome';
       DBGridMain.Columns[2].Title.Caption := 'CPF';
       DBGridMain.Columns[3].Title.Caption := 'Email';
@@ -240,7 +241,7 @@ begin
   DBGridRestaurar.DataSource := DataSourceRestaurar;
   try
     if DBGridRestaurar.Columns.Count >= 7 then begin
-      DBGridMain.Columns[0].Title.Caption := 'Id';
+      DBGridMain.Columns[0].Title.Caption := 'ID';
       DBGridMain.Columns[1].Title.Caption := 'Nome';
       DBGridMain.Columns[2].Title.Caption := 'CPF';
       DBGridMain.Columns[3].Title.Caption := 'Email';
@@ -326,20 +327,21 @@ procedure TFormCadastroClientes.EdtPesquisarChange(Sender: TObject);
 var
   ClienteService: TClienteService;
 begin
-  ClienteService := TClienteService.Create;
-  try
+Try
     DataSourceClientes.DataSet := ClienteService.PesquisarClientes
       (EdtPesquisar.Text);
-    DBGridMain.Columns[0].Width := 50;
-    DBGridMain.Columns[1].Width := 160;
-    DBGridMain.Columns[2].Width := 160;
-    DBGridMain.Columns[3].Width := 160;
-    DBGridMain.Columns[4].Width := 160;
-    DBGridMain.Columns[5].Width := 160;
-    DBGridMain.Columns[6].Width := 50;
+  DBGridMain.Columns[0].Width := 50;
+  DBGridMain.Columns[1].Width := 160;
+  DBGridMain.Columns[2].Width := 160;
+  DBGridMain.Columns[3].Width := 160;
+  DBGridMain.Columns[4].Width := 160;
+  DBGridMain.Columns[5].Width := 160;
+  DBGridMain.Columns[6].Width := 50;
   finally
-    ClienteService.Free;
-  end;
+  ClienteService.Free
+end;
+
+
 end;
 
 procedure TFormCadastroClientes.EdtTelefoneClick(Sender: TObject);
@@ -367,6 +369,7 @@ begin
   PnlRestaurar.Visible := False;
   CarregarGrid;
 end;
+
 procedure TFormCadastroClientes.ImgRestaurarClick(Sender: TObject);
 begin
   RestaurarUsuarios;
@@ -375,7 +378,7 @@ end;
 
 procedure TFormCadastroClientes.LblAtualizarClick(Sender: TObject);
 begin
-  if ValidarCampos then begin
+  if (ValidarCampos and ValidarData) then begin
     EditarClientes;
     CarregarGrid;
   end;
@@ -383,7 +386,7 @@ end;
 
 procedure TFormCadastroClientes.LblEnviarClick(Sender: TObject);
 begin
-  if ValidarCampos then begin
+  if(ValidarCampos and ValidarData) then begin
     CadastrarClientes;
     LimparCampos;
     CarregarGrid;
@@ -467,6 +470,32 @@ begin
     Exit;
   end;
   Result := True;
+end;
+
+Function TFormCadastroClientes.ValidarData:Boolean;
+var
+    dia, mes, ano: Integer;
+    dataValida: Boolean;
+  begin
+    if Length(EdtDataNascimento.Text) = 10 then
+    begin
+        dia := StrToInt(Copy(EdtDataNascimento.Text, 1, 2));
+        mes := StrToInt(Copy(EdtDataNascimento.Text, 4, 2));
+        ano := StrToInt(Copy(EdtDataNascimento.Text, 7, 4));
+
+        dataValida := (dia >= 1) and (dia <= 31) and
+                     (mes >= 1) and (mes <= 12) and
+                     (ano > 1900) and (ano < 2100);
+
+        if not dataValida then
+        begin
+          ShowMessage('Data inválida!');
+          EdtDataNascimento.SetFocus;
+          Result := False;
+          Exit;
+        end;
+        Result := True;
+    end;
 end;
 
 end.

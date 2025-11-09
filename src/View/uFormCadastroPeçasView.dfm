@@ -673,13 +673,19 @@
           Margins.Right = 1
           Margins.Bottom = 1
           Align = alClient
+          Font.Charset = DEFAULT_CHARSET
+          Font.Color = clWindowText
+          Font.Height = -12
+          Font.Name = 'Segoe UI'
+          Font.Style = []
+          ParentFont = False
           ReadOnly = True
           TabOrder = 0
           TitleFont.Charset = DEFAULT_CHARSET
           TitleFont.Color = clWindowText
-          TitleFont.Height = -12
+          TitleFont.Height = -19
           TitleFont.Name = 'Segoe UI'
-          TitleFont.Style = []
+          TitleFont.Style = [fsBold]
         end
         object PnlRestaurar: TPanel
           AlignWithMargins = True
@@ -849,8 +855,8 @@
         TabOrder = 3
         object Label8: TLabel
           AlignWithMargins = True
-          Left = 541
-          Top = 15
+          Left = 520
+          Top = 11
           Width = 63
           Height = 32
           Margins.Top = 10

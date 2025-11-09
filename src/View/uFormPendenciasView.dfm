@@ -23,8 +23,6 @@ object FormPendencias: TFormPendencias
     BevelOuter = bvNone
     BorderStyle = bsSingle
     TabOrder = 0
-    ExplicitWidth = 1111
-    ExplicitHeight = 675
     object Panel1: TPanel
       Left = 0
       Top = 0
@@ -34,8 +32,6 @@ object FormPendencias: TFormPendencias
       BevelOuter = bvNone
       BorderStyle = bsSingle
       TabOrder = 0
-      ExplicitWidth = 1107
-      ExplicitHeight = 671
       object PnlContainer: TPanel
         AlignWithMargins = True
         Left = -2
@@ -1480,10 +1476,6 @@ object FormPendencias: TFormPendencias
             ParentBackground = False
             TabOrder = 0
             Visible = False
-            ExplicitLeft = 20
-            ExplicitTop = 20
-            ExplicitWidth = 855
-            ExplicitHeight = 413
             object LblRestaurar: TLabel
               AlignWithMargins = True
               Left = 3
@@ -1500,8 +1492,6 @@ object FormPendencias: TFormPendencias
               Font.Name = 'Segoe UI'
               Font.Style = [fsBold]
               ParentFont = False
-              ExplicitLeft = 4
-              ExplicitTop = 11
               ExplicitWidth = 109
             end
             object ImgFechar: TImage
@@ -1576,10 +1566,6 @@ object FormPendencias: TFormPendencias
               Color = 9521152
               ParentBackground = False
               TabOrder = 0
-              ExplicitLeft = 21
-              ExplicitTop = 49
-              ExplicitWidth = 813
-              ExplicitHeight = 343
               object PnlContainerRestaurar: TPanel
                 AlignWithMargins = True
                 Left = 12
@@ -1596,8 +1582,6 @@ object FormPendencias: TFormPendencias
                 Color = clBackground
                 ParentBackground = False
                 TabOrder = 0
-                ExplicitWidth = 789
-                ExplicitHeight = 323
                 object DBGridRestaurar: TDBGrid
                   AlignWithMargins = True
                   Left = 1
@@ -1642,10 +1626,6 @@ object FormPendencias: TFormPendencias
             ParentBackground = False
             TabOrder = 1
             Visible = False
-            ExplicitLeft = 20
-            ExplicitTop = 20
-            ExplicitWidth = 855
-            ExplicitHeight = 413
             object LblHistorico: TLabel
               AlignWithMargins = True
               Left = 3
@@ -1662,13 +1642,11 @@ object FormPendencias: TFormPendencias
               Font.Name = 'Segoe UI'
               Font.Style = [fsBold]
               ParentFont = False
-              ExplicitLeft = 4
-              ExplicitTop = 11
               ExplicitWidth = 104
             end
             object ImgFecharHistorico: TImage
-              Left = 800
-              Top = 15
+              Left = 831
+              Top = 17
               Width = 25
               Height = 25
               Picture.Data = {
@@ -1701,10 +1679,6 @@ object FormPendencias: TFormPendencias
               Color = 9521152
               ParentBackground = False
               TabOrder = 0
-              ExplicitLeft = 21
-              ExplicitTop = 49
-              ExplicitWidth = 813
-              ExplicitHeight = 343
               object PnlBackgroundGrid: TPanel
                 AlignWithMargins = True
                 Left = 12
@@ -1721,8 +1695,6 @@ object FormPendencias: TFormPendencias
                 Color = clBackground
                 ParentBackground = False
                 TabOrder = 0
-                ExplicitWidth = 789
-                ExplicitHeight = 323
                 object DBGridHistorico: TDBGrid
                   AlignWithMargins = True
                   Left = 1
@@ -1850,6 +1822,22 @@ object FormPendencias: TFormPendencias
           Color = 6172416
           ParentBackground = False
           TabOrder = 4
+          object Label2: TLabel
+            AlignWithMargins = True
+            Left = 482
+            Top = 12
+            Width = 128
+            Height = 32
+            Margins.Top = 10
+            Alignment = taCenter
+            Caption = 'Pend'#234'ncias'
+            Font.Charset = DEFAULT_CHARSET
+            Font.Color = clWhite
+            Font.Height = -24
+            Font.Name = 'Segoe UI'
+            Font.Style = [fsBold]
+            ParentFont = False
+          end
           object EdtPesquisar: TSearchBox
             AlignWithMargins = True
             Left = 20

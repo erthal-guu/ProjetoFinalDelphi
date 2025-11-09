@@ -107,6 +107,7 @@ type
     procedure EdtCEPChange(Sender: TObject);
     procedure ExcluirFuncionarios;
     procedure CadastrarFuncionarios;
+    Function ValidarData : Boolean;
 
   private
     { Private declarations }
@@ -459,7 +460,7 @@ end;
 
 procedure TFormCadastroFuncionarios.LblAtualizarClick(Sender: TObject);
 begin
-  if ValidarCampos then begin
+  if (ValidarCampos and ValidarData) then begin
     EditarFuncionarios;
     CarregarGrid;
   end;
@@ -467,7 +468,7 @@ end;
 
 procedure TFormCadastroFuncionarios.LblEnviarClick(Sender: TObject);
 begin
-  if ValidarCampos then begin
+  if (ValidarCampos and ValidarData) then begin
     CadastrarFuncionarios;
     LimparCampos;
     CarregarGrid;
@@ -568,6 +569,31 @@ begin
   finally
     FuncionarioService.Free;
   end;
+end;
+Function TFormCadastroFuncionarios.ValidarData:Boolean;
+var
+    dia, mes, ano: Integer;
+    dataValida: Boolean;
+  begin
+    if Length(EdtDataNascimento.Text) = 10 then
+    begin
+        dia := StrToInt(Copy(EdtDataNascimento.Text, 1, 2));
+        mes := StrToInt(Copy(EdtDataNascimento.Text, 4, 2));
+        ano := StrToInt(Copy(EdtDataNascimento.Text, 7, 4));
+
+        dataValida := (dia >= 1) and (dia <= 31) and
+                     (mes >= 1) and (mes <= 12) and
+                     (ano > 1900) and (ano < 2100);
+
+        if not dataValida then
+        begin
+          ShowMessage('Data inválida!');
+          EdtDataNascimento.SetFocus;
+          Result := False;
+          Exit;
+        end;
+        Result := True;
+    end;
 end;
 
 end.

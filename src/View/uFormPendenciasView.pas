@@ -70,6 +70,7 @@ type
     CmbFormaPagamento: TComboBox;
     CmbParcelar: TComboBox;
     EdtPedido: TEdit;
+    Label2: TLabel;
     procedure DBGridMainCellClick(Column: TColumn);
     procedure BtnDetalharClick(Sender: TObject);
     procedure BtnRestaurarClick(Sender: TObject);
@@ -234,7 +235,7 @@ begin
     DBGridMain.Columns[6].Title.Caption := 'Status';
     DBGridMain.Columns[7].Title.Caption := 'Observação';
     DBGridMain.Columns[8].Title.Caption := 'Ativo';
-    DBGridMain.Columns[1].Visible := False;
+    DBGridMain.Columns[9].Visible := False;
   end;
 end;
 

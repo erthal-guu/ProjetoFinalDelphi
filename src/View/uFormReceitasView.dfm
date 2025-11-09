@@ -1803,6 +1803,22 @@ object FormReceitas: TFormReceitas
           Color = 6172416
           ParentBackground = False
           TabOrder = 4
+          object Label7: TLabel
+            AlignWithMargins = True
+            Left = 497
+            Top = 12
+            Width = 93
+            Height = 32
+            Margins.Top = 10
+            Alignment = taCenter
+            Caption = 'Receitas'
+            Font.Charset = DEFAULT_CHARSET
+            Font.Color = clWhite
+            Font.Height = -24
+            Font.Name = 'Segoe UI'
+            Font.Style = [fsBold]
+            ParentFont = False
+          end
           object EdtPesquisar: TSearchBox
             AlignWithMargins = True
             Left = 20

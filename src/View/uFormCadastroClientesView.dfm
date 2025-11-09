@@ -1265,7 +1265,7 @@ object FormCadastroClientes: TFormCadastroClientes
               AlignWithMargins = True
               Left = 569
               Top = 30
-              Width = 80
+              Width = 78
               Height = 33
               Cursor = crHandPoint
               Margins.Top = 30
@@ -1275,16 +1275,16 @@ object FormCadastroClientes: TFormCadastroClientes
               AutoSize = False
               BevelInner = bvNone
               BevelOuter = bvNone
-              EditMask = '!99/99/00;1;_'
+              EditMask = '!99/99/0000;1;_'
               Font.Charset = DEFAULT_CHARSET
               Font.Color = clWindowText
               Font.Height = -16
               Font.Name = 'Segoe UI'
               Font.Style = []
-              MaxLength = 8
+              MaxLength = 10
               ParentFont = False
               TabOrder = 3
-              Text = '  /  /  '
+              Text = '  /  /    '
               OnClick = EdtDataNascimentoClick
             end
             object EdtTelefone: TMaskEdit
@@ -1315,7 +1315,7 @@ object FormCadastroClientes: TFormCadastroClientes
             end
             object CmbStatus: TComboBox
               AlignWithMargins = True
-              Left = 662
+              Left = 660
               Top = 30
               Width = 82
               Height = 29
@@ -1338,14 +1338,14 @@ object FormCadastroClientes: TFormCadastroClientes
             end
             object PnlButtonEnviar: TPanel
               AlignWithMargins = True
-              Left = 754
+              Left = 752
               Top = 30
-              Width = 105
-              Height = 28
+              Width = 107
+              Height = 31
               Margins.Left = 0
               Margins.Top = 30
               Margins.Right = 100
-              Margins.Bottom = 50
+              Margins.Bottom = 47
               Align = alClient
               BevelOuter = bvLowered
               Color = 9521152
@@ -1355,8 +1355,8 @@ object FormCadastroClientes: TFormCadastroClientes
                 AlignWithMargins = True
                 Left = 4
                 Top = 4
-                Width = 97
-                Height = 20
+                Width = 99
+                Height = 23
                 Align = alClient
                 Alignment = taCenter
                 Caption = 'Enviar'
@@ -1370,13 +1370,14 @@ object FormCadastroClientes: TFormCadastroClientes
                 ParentFont = False
                 OnClick = LblEnviarClick
                 ExplicitWidth = 40
+                ExplicitHeight = 20
               end
             end
             object PnlButtonAtualizar: TPanel
               AlignWithMargins = True
-              Left = 754
-              Top = 29
-              Width = 122
+              Left = 752
+              Top = 31
+              Width = 107
               Height = 30
               Margins.Left = 0
               Margins.Top = 30
@@ -1391,7 +1392,7 @@ object FormCadastroClientes: TFormCadastroClientes
                 AlignWithMargins = True
                 Left = 3
                 Top = 3
-                Width = 116
+                Width = 101
                 Height = 24
                 Align = alClient
                 Alignment = taCenter
@@ -1431,11 +1432,11 @@ object FormCadastroClientes: TFormCadastroClientes
         object DBGridMain: TDBGrid
           AlignWithMargins = True
           Left = 1
-          Top = 1
+          Top = 0
           Width = 909
-          Height = 448
+          Height = 449
           Margins.Left = 1
-          Margins.Top = 1
+          Margins.Top = 0
           Margins.Right = 1
           Margins.Bottom = 1
           Align = alClient
@@ -1451,7 +1452,7 @@ object FormCadastroClientes: TFormCadastroClientes
           TitleFont.Color = clWindowText
           TitleFont.Height = -19
           TitleFont.Name = 'Segoe UI'
-          TitleFont.Style = []
+          TitleFont.Style = [fsBold]
         end
         object PnlRestaurar: TPanel
           AlignWithMargins = True
@@ -1488,8 +1489,8 @@ object FormCadastroClientes: TFormCadastroClientes
             ExplicitWidth = 109
           end
           object ImgFechar: TImage
-            Left = 800
-            Top = 18
+            Left = 866
+            Top = 17
             Width = 25
             Height = 25
             Picture.Data = {
@@ -1656,7 +1657,7 @@ object FormCadastroClientes: TFormCadastroClientes
           TextHint = 'Pesquisar'
           Visible = False
           OnChange = EdtPesquisarChange
-          ExplicitLeft = 156
+          ExplicitHeight = 28
         end
       end
     end

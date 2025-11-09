@@ -69,18 +69,6 @@ type
     EdtEstado: TEdit;
     BtnVincularPeças: TSpeedButton;
     DBGridRestaurar: TDBGrid;
-    PnlVincularPeça: TPanel;
-    Image3: TImage;
-    PnlDesignVincular: TPanel;
-    PnlEditVincular: TPanel;
-    LblFornecedorVincular: TLabel;
-    ImgLogoVincular: TImage;
-    CmbFornecedor: TComboBox;
-    PnlButtonVincular: TPanel;
-    LblVincular: TLabel;
-    PnlBackgroundVincular: TPanel;
-    PnlButtonDesvincular: TPanel;
-    LblDesvincular: TLabel;
     DataSourceVincular: TDataSource;
     BtnCancelar: TSpeedButton;
     BtnPedido: TSpeedButton;
@@ -110,11 +98,23 @@ type
     Panel3: TPanel;
     Label18: TLabel;
     Image1: TImage;
+    Label12: TLabel;
+    PnlVincularPeça: TPanel;
+    Image3: TImage;
+    PnlDesignVincular: TPanel;
+    PnlBackgroundVincular: TPanel;
     PnlFooter: TPanel;
     LblPeçasVinculadas: TLabel;
     CheckBoxPeçasVinculadas: TCheckBox;
     DBGridVincular: TDBGrid;
-    Label12: TLabel;
+    PnlEditVincular: TPanel;
+    LblFornecedorVincular: TLabel;
+    ImgLogoVincular: TImage;
+    CmbFornecedor: TComboBox;
+    PnlButtonVincular: TPanel;
+    LblVincular: TLabel;
+    PnlButtonDesvincular: TPanel;
+    LblDesvincular: TLabel;
 
     procedure BtnAdicionarClick(Sender: TObject);
     procedure BtnPesquisarClick(Sender: TObject);
@@ -286,6 +286,7 @@ begin
         DBGridMain.Columns[i].Width := 140;
         DBGridMain.Columns[i].Title.Font.Size := 15;
       end;
+      DBGridMain.Columns[0].Width := 50;
     end;
   finally
     FornecedorController.Free;
@@ -396,6 +397,7 @@ begin
         DBGridRestaurar.Columns[i].Width := 120;
         DBGridRestaurar.Columns[i].Title.Font.Size := 15;
       end;
+      DBGridMain.Columns[0].Width := 50;
     end;
   finally
     FornecedorController.Free;
@@ -429,7 +431,7 @@ begin
     DataSourceVincular.DataSet := ServicePecas.ListarPecas;
     DBGridVincular.DataSource := DataSourceVincular;
     if DBGridVincular.Columns.Count >= 8 then begin
-      DBGridVincular.Columns[0].Title.Caption := 'Id';
+      DBGridVincular.Columns[0].Title.Caption := 'ID';
       DBGridVincular.Columns[1].Title.Caption := 'Nome';
       DBGridVincular.Columns[2].Title.Caption := 'Descrição';
       DBGridVincular.Columns[3].Title.Caption := 'Código Interno';
