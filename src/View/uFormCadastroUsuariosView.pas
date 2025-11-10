@@ -38,16 +38,12 @@ type
     PnlEdtSenha: TPanel;
     LblSenha: TLabel;
     EdtSenha: TEdit;
-    Panel5: TPanel;
+    PnlEdtConfirmar: TPanel;
     LblConfrimarSenha: TLabel;
     EdtConfirmarSenha: TEdit;
     PnlCmbGrupo: TPanel;
     LblGrupo: TLabel;
     CmbGrupo: TComboBox;
-    PnlButtonEnviar: TPanel;
-    LblEnviar: TLabel;
-    PnlButtonAtualizar: TPanel;
-    LblAtualizar: TLabel;
     PnlButtonCrud: TPanel;
     PnlBackgroundButton: TPanel;
     PnlGrid: TPanel;
@@ -70,6 +66,12 @@ type
     BtnRestaurar: TSpeedButton;
     BtnSair: TSpeedButton;
     Label1: TLabel;
+    PnlButtonForm: TPanel;
+    PnlButtonEnviar: TPanel;
+    LblEnviar: TLabel;
+    PnlButtonAtualizar: TPanel;
+    LblAtualizar: TLabel;
+    ShpButton: TShape;
     procedure BtnAdicionarClick(Sender: TObject);
     procedure FormCreate(Sender: TObject);
     procedure BtnPesquisarClick(Sender: TObject);
@@ -161,6 +163,7 @@ begin
     [mbYes, mbNo], 0) = mrYes then begin
     Close;
     PnlBackgroundEdit.Visible := False;
+    PnlDesignEdit.Visible := False;
     PnlEdit.Visible := False;
     PnlRestaurar.Visible := False;
     EdtPesquisar.Visible := False;
@@ -469,7 +472,7 @@ var
   Controller: TUsuarioController;
 begin
   Controller := TUsuarioController.create;
-  Controller.PesquisarUsuarios(EdtPesquisar.Text);
+  DataSourceMain.DataSet := Controller.PesquisarUsuarios(EdtPesquisar.Text);
 
   DBGridMain.Columns[0].Alignment := taCenter;
   DBGridMain.Columns[0].Alignment := taCenter;

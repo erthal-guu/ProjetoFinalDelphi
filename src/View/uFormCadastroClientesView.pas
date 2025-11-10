@@ -33,10 +33,6 @@ type
     EdtDataNascimento: TMaskEdit;
     EdtTelefone: TMaskEdit;
     CmbStatus: TComboBox;
-    PnlButtonEnviar: TPanel;
-    LblEnviar: TLabel;
-    PnlButtonAtualizar: TPanel;
-    LblAtualizar: TLabel;
     PnlGrid: TPanel;
     DBGridMain: TDBGrid;
     PnlHeader: TPanel;
@@ -60,6 +56,12 @@ type
     PnlMainRestaurar: TPanel;
     PnlContainerRestaurar: TPanel;
     DBGridRestaurar: TDBGrid;
+    PnlButtonForm: TPanel;
+    ShpButton: TShape;
+    PnlButtonEnviar: TPanel;
+    LblEnviar: TLabel;
+    PnlButtonAtualizar: TPanel;
+    LblAtualizar: TLabel;
     procedure BtnAdicionarClick(Sender: TObject);
     procedure BtnPesquisarClick(Sender: TObject);
     procedure FormCreate(Sender: TObject);
@@ -102,6 +104,8 @@ implementation
 
 procedure TFormCadastroClientes.BtnAdicionarClick(Sender: TObject);
 begin
+  LimparCampos;
+  PnlButtonEnviar.Visible := True;
   PnlBackgrounEdit.Visible := True;
   PnlDesignEdit.Visible := True;
   EdtPesquisar.Visible := False;
@@ -328,8 +332,7 @@ var
   ClienteService: TClienteService;
 begin
 Try
-    DataSourceClientes.DataSet := ClienteService.PesquisarClientes
-      (EdtPesquisar.Text);
+  DataSourceClientes.DataSet := ClienteService.PesquisarClientes(EdtPesquisar.Text);
   DBGridMain.Columns[0].Width := 50;
   DBGridMain.Columns[1].Width := 160;
   DBGridMain.Columns[2].Width := 160;

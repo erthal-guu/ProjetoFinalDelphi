@@ -1,0 +1,4 @@
+21:54:47 - EDITAR COM SENHA - ID: 0 editou o usuário: Busta (CPF: 794.672.957-07)
+22:08:15 - EDITAR - ID: 0 editou funcionário: Gustavo (CPF: 139.471.968-89)
+22:08:31 - EDITAR - ID: 0 editou funcionário: Gustavo (CPF: 139.471.968-89)
+22:16:51 - VINCULAR - Peça ID: 28 vinculada ao Fornecedor ID: 22

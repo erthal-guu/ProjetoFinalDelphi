@@ -23,6 +23,7 @@ type
     procedure DeletarFornecedor(const aId: Integer);
     procedure RestaurarFornecedor(const aId: Integer);
     function PesquisarFornecedores(const aFiltro: String): TDataSet;
+    function PesquisarFornecedoresRestaurar(const aFiltro: String): TDataSet;
     Function VincularPecaAoFornecedor(aPecaID, aFornecedorID: Integer):Boolean;
     function ListarPecasPorFornecedor(aFornecedorID: Integer): TDataSet;
     function CarregarFornecedores: TStringList;
@@ -112,6 +113,12 @@ end;
 function TFornecedorController.PesquisarFornecedores(const aFiltro: String): TDataSet;
 begin
   Result := Service.PesquisarFornecedores(aFiltro);
+end;
+
+function TFornecedorController.PesquisarFornecedoresRestaurar(
+  const aFiltro: String): TDataSet;
+begin
+  Result := Service.PesquisarFornecedoresRestaurar(aFiltro);
 end;
 
 procedure TFornecedorController.RestaurarFornecedor(const aId: Integer);

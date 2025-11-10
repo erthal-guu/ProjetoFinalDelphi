@@ -40,33 +40,6 @@ type
     PnlBackgrounEdit: TPanel;
     DBGridMain: TDBGrid;
     PnlDesignEdit: TPanel;
-    PnlEdit: TPanel;
-    Label1: TLabel;
-    Label2: TLabel;
-    Label3: TLabel;
-    Label4: TLabel;
-    Label6: TLabel;
-    Label5: TLabel;
-    Label7: TLabel;
-    Label8: TLabel;
-    Label9: TLabel;
-    Label10: TLabel;
-    Label11: TLabel;
-    EdtRazaoSocial: TEdit;
-    PnlButtonEnviar: TPanel;
-    LblEnviar: TLabel;
-    EdtCNPJ: TMaskEdit;
-    EdtNome: TEdit;
-    EdtTelefone: TMaskEdit;
-    EdtCEP: TMaskEdit;
-    CmbStatus: TComboBox;
-    PnlButtonAtualizar: TPanel;
-    LblAtualizar: TLabel;
-    EdtRua: TEdit;
-    EdtNumero: TEdit;
-    EdtBairro: TEdit;
-    EdtCidade: TEdit;
-    EdtEstado: TEdit;
     BtnVincularPeças: TSpeedButton;
     DBGridRestaurar: TDBGrid;
     DataSourceVincular: TDataSource;
@@ -115,6 +88,38 @@ type
     LblVincular: TLabel;
     PnlButtonDesvincular: TPanel;
     LblDesvincular: TLabel;
+    PnlEdit: TPanel;
+    Label1: TLabel;
+    Label2: TLabel;
+    Label3: TLabel;
+    Label4: TLabel;
+    Label6: TLabel;
+    Label5: TLabel;
+    Label7: TLabel;
+    Label8: TLabel;
+    Label9: TLabel;
+    Label10: TLabel;
+    Label11: TLabel;
+    EdtRazaoSocial: TEdit;
+    EdtCNPJ: TMaskEdit;
+    EdtNome: TEdit;
+    EdtTelefone: TMaskEdit;
+    EdtCEP: TMaskEdit;
+    CmbStatus: TComboBox;
+    EdtRua: TEdit;
+    EdtNumero: TEdit;
+    EdtBairro: TEdit;
+    EdtCidade: TEdit;
+    EdtEstado: TEdit;
+    PnlButtonForm: TPanel;
+    ShpButton: TShape;
+    PnlButtonEnviar: TPanel;
+    LblEnviar: TLabel;
+    PnlButtonAtualizar: TPanel;
+    LlAtualizar: TLabel;
+    Shape1: TShape;
+    Shape2: TShape;
+    Shape3: TShape;
 
     procedure BtnAdicionarClick(Sender: TObject);
     procedure BtnPesquisarClick(Sender: TObject);
@@ -170,6 +175,7 @@ type
     procedure DesvincularPecaFornecedor;
     procedure VincularPecaFornecedor;
     function ValidarCamposPedido: Boolean;
+    procedure EdtPesquisarRestaurarChange(Sender: TObject);
 
   private
     { Private declarations }
@@ -193,6 +199,9 @@ begin
   PnlDesignEdit.Visible := True;
   PnlButtonEnviar.Visible := True;
   PnlButtonAtualizar.Visible := False;
+  PnlRestaurar.Visible := False;
+  PnlPedido.Visible := False;
+  PnlVincularPeça.Visible := False;
   EdtNome.SetFocus;
   LimparCampos;
 end;
@@ -205,13 +214,17 @@ begin
   EdtPesquisar.Visible := False;
   PnlVincularPeça.Visible := False;
   PnlPedido.Visible := False;
-  limparCampos;
+  LimparCampos;
 end;
 
 procedure TFormCadastroFornecedores.BtnPesquisarClick(Sender: TObject);
 begin
   EdtPesquisar.Visible := True;
+  PnlRestaurar.Visible := False;
+  PnlPedido.Visible := False;
+  PnlVincularPeça.Visible := False;
   PnlBackgrounEdit.Visible := False;
+  CarregarGrid;
 end;
 
 procedure TFormCadastroFornecedores.CarregarFornecedores;
@@ -397,7 +410,7 @@ begin
         DBGridRestaurar.Columns[i].Width := 120;
         DBGridRestaurar.Columns[i].Title.Font.Size := 15;
       end;
-      DBGridMain.Columns[0].Width := 50;
+      DBGridRestaurar.Columns[0].Width := 50;
     end;
   finally
     FornecedorController.Free;
@@ -456,9 +469,17 @@ end;
 procedure TFormCadastroFornecedores.CheckBoxPeçasVinculadasClick
   (Sender: TObject);
 begin
-  PnlButtonVincular.Visible := not PnlButtonVincular.Visible;
-  PnlButtonDesvincular.Visible := not PnlButtonDesvincular.Visible;
-  ListarPecaPorFornecedor;
+  if CmbFornecedor.ItemIndex = -1 then begin
+    ShowMessage('Selecione um fornecedor!');
+    Exit;
+    CheckBoxPeçasVinculadas.Checked := False;
+    CarregarGridVincular
+  end
+  else begin
+    PnlButtonVincular.Visible := not PnlButtonVincular.Visible;
+    PnlButtonDesvincular.Visible := not PnlButtonDesvincular.Visible;
+    ListarPecaPorFornecedor;
+  end;
   if CheckBoxPeçasVinculadas.Checked = False then begin
     CarregarGridVincular;
   end;
@@ -534,12 +555,32 @@ var
 begin
   FornecedorService := TFornecedorService.Create;
   try
+    DataSourceMain.DataSet := nil;
     DataSourceMain.DataSet := FornecedorService.PesquisarFornecedores
       (EdtPesquisar.Text);
     for var i := 0 to DBGridMain.Columns.Count - 1 do begin
       DBGridMain.Columns[i].Width := 140;
       DBGridMain.Columns[i].Title.Font.Size := 15;
     end;
+    DBGridMain.Columns[0].Width := 50;
+  finally
+    FornecedorService.Free;
+  end;
+end;
+
+procedure TFormCadastroFornecedores.EdtPesquisarRestaurarChange(Sender: TObject);
+var
+  FornecedorService: TFornecedorService;
+begin
+  FornecedorService := TFornecedorService.Create;
+  try
+    DataSourceRestaurar.DataSet := nil;
+    DataSourceRestaurar.DataSet := FornecedorService.PesquisarFornecedoresRestaurar(EdtPesquisar.Text);
+    for var i := 0 to DBGridMain.Columns.Count - 1 do begin
+      DBGridRestaurar.Columns[i].Width := 140;
+      DBGridRestaurar.Columns[i].Title.Font.Size := 15;
+    end;
+    DBGridRestaurar.Columns[0].Width := 50;
   finally
     FornecedorService.Free;
   end;
@@ -660,15 +701,11 @@ begin
       Exit;
     end;
     ValorItem := PrecoUnitario * Quantidade;
-    ListBoxPedidos.AddItem(
-      Format('Peça: %s - Qtd: %d - Subtotal: R$ %.2f',
-        [CmbPeças.Text, Quantidade, ValorItem]),
-      TObject(IdPeca)
-    );
+    ListBoxPedidos.AddItem(Format('Peça: %s - Qtd: %d - Subtotal: R$ %.2f',
+      [CmbPeças.Text, Quantidade, ValorItem]), TObject(IdPeca));
 
-    ValorTotalAtual := StrToCurrDef(
-      StringReplace(EdtValorTotal.Text, '.', '', [rfReplaceAll]), 0
-    );
+    ValorTotalAtual := StrToCurrDef(StringReplace(EdtValorTotal.Text, '.', '',
+      [rfReplaceAll]), 0);
     ValorTotalAtual := ValorTotalAtual + ValorItem;
     EdtValorTotal.Text := FormatFloat('#,##0.00', ValorTotalAtual);
     EdtQuantidade.Clear;
@@ -774,7 +811,7 @@ begin
         CmbFornecedorPedido.ItemIndex := -1;
         CmbFormaPagamento.ItemIndex := -1;
         CmbPeças.ItemIndex := -1;
-        EdtValorTotal.clear;
+        EdtValorTotal.Clear;
         EdtObservacao.Clear;
         EdtQuantidade.Clear;
         AtualizarEstadoCombos;
@@ -797,7 +834,6 @@ begin
     Controller.Free;
   end;
 end;
-
 
 procedure TFormCadastroFornecedores.LblVincularClick(Sender: TObject);
 begin
@@ -846,9 +882,11 @@ end;
 procedure TFormCadastroFornecedores.BtnRestaurarClick(Sender: TObject);
 begin
   PnlRestaurar.Visible := True;
+  PnlBackgrounEdit.Visible := False;
   PnlVincularPeça.Visible := False;
+  EdtPesquisar.Visible := False;
   CarregarGridRestaurar;
-end;
+  end;
 
 procedure TFormCadastroFornecedores.BtnRestaurarGridClick(Sender: TObject);
 begin
@@ -885,6 +923,7 @@ end;
 procedure TFormCadastroFornecedores.ImageFecharVincularClick(Sender: TObject);
 begin
   PnlVincularPeça.Visible := False;
+  CmbFornecedor.ItemIndex := -1;
   CarregarGrid;
 end;
 
@@ -911,6 +950,7 @@ end;
 procedure TFormCadastroFornecedores.BtnVincularPeçasClick(Sender: TObject);
 begin
   PnlVincularPeça.Visible := True;
+  PnlBackgrounEdit.Visible := False;
   CarregarGridVincular;
 end;
 
@@ -959,7 +999,6 @@ begin
   CarregarPeças;
 end;
 
-
 function TFormCadastroFornecedores.ValidarCampos: Boolean;
 begin
   Result := False;
@@ -993,7 +1032,6 @@ begin
     EdtTelefone.SetFocus;
     Exit;
   end;
-
 
   if Trim(EdtCEP.Text) = '' then begin
     ShowMessage('O campo CEP não pode ficar vazio!');
@@ -1069,6 +1107,7 @@ begin
 
   Result := True;
 end;
+
 procedure TFormCadastroFornecedores.LimparCampos;
 begin
   EdtNome.Clear;
@@ -1115,6 +1154,7 @@ begin
   PnlPedido.Visible := True;
   PnlRestaurar.Visible := False;
   PnlVincularPeça.Visible := False;
+  PnlBackgrounEdit.Visible := False;
   CarregarFornecedoresPedido;
   LimparCampos;
 end;
