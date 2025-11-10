@@ -46,10 +46,6 @@ type
     CmbUnidade: TComboBox;
     CmbCategoria: TComboBox;
     CmbModelo: TComboBox;
-    PnlButtonEnviar: TPanel;
-    LblEnviar: TLabel;
-    PnlButtonAtualizar: TPanel;
-    LblAtualizar: TLabel;
     EdtDescrição: TEdit;
     PnlButton: TPanel;
     BtnExcluir: TSpeedButton;
@@ -64,6 +60,12 @@ type
     Label7: TLabel;
     Image1: TImage;
     Label8: TLabel;
+    PnlButtonForm: TPanel;
+    PnlButtonEnviar: TPanel;
+    LblEnviar: TLabel;
+    PnlButtonAtualizar: TPanel;
+    LblAtualizar: TLabel;
+    ShpButton: TShape;
 
     procedure BtnAdicionarClick(Sender: TObject);
     procedure BtnPesquisarClick(Sender: TObject);

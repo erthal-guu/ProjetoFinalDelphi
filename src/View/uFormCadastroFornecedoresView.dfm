@@ -93,7 +93,6 @@
             ParentBackground = False
             TabOrder = 0
             Visible = False
-            ExplicitTop = 13
             object Image1: TImage
               AlignWithMargins = True
               Left = 976
@@ -520,7 +519,6 @@
               Align = alLeft
               BevelOuter = bvNone
               TabOrder = 0
-              ExplicitTop = -15
               object Label1: TLabel
                 Left = 20
                 Top = 8
@@ -990,7 +988,8 @@
                     ParentColor = False
                     ParentFont = False
                     OnClick = LblEnviarClick
-                    ExplicitTop = 1
+                    ExplicitWidth = 40
+                    ExplicitHeight = 20
                   end
                 end
               end
@@ -1849,8 +1848,6 @@
           ParentBackground = False
           TabOrder = 0
           Visible = False
-          ExplicitLeft = -16
-          ExplicitTop = -1
           object LblRestaurar: TLabel
             AlignWithMargins = True
             Left = 3
@@ -2001,7 +1998,6 @@
         Color = 6172416
         ParentBackground = False
         TabOrder = 4
-        ExplicitTop = -1
         object Label12: TLabel
           AlignWithMargins = True
           Left = 522
@@ -2086,8 +2082,6 @@
           Color = 9521152
           ParentBackground = False
           TabOrder = 0
-          ExplicitWidth = 881
-          ExplicitHeight = 419
           object PnlBackgroundVincular: TPanel
             AlignWithMargins = True
             Left = 19
@@ -2104,8 +2098,6 @@
             Color = clBackground
             ParentBackground = False
             TabOrder = 1
-            ExplicitWidth = 613
-            ExplicitHeight = 372
             object PnlFooter: TPanel
               Left = 0
               Top = 347
@@ -2554,8 +2546,6 @@
                 ParentColor = False
                 ParentFont = False
                 OnClick = LblDesvincularClick
-                ExplicitLeft = 4
-                ExplicitTop = 11
                 ExplicitWidth = 76
                 ExplicitHeight = 20
               end
@@ -2607,8 +2597,6 @@
                 ParentColor = False
                 ParentFont = False
                 OnClick = LblVincularClick
-                ExplicitLeft = 4
-                ExplicitTop = 11
                 ExplicitWidth = 53
                 ExplicitHeight = 20
               end
@@ -2680,8 +2668,6 @@
           Color = 9521152
           ParentBackground = False
           TabOrder = 0
-          ExplicitWidth = 881
-          ExplicitHeight = 394
           object PnlDesingPedido: TPanel
             AlignWithMargins = True
             Left = 19
@@ -2698,8 +2684,6 @@
             Color = clBackground
             ParentBackground = False
             TabOrder = 1
-            ExplicitWidth = 463
-            ExplicitHeight = 347
             object ListBoxPedidos: TListBox
               AlignWithMargins = True
               Left = 1
@@ -2713,8 +2697,6 @@
               Align = alClient
               ItemHeight = 20
               TabOrder = 0
-              ExplicitWidth = 461
-              ExplicitHeight = 306
             end
             object Panel3: TPanel
               AlignWithMargins = True
@@ -2749,7 +2731,8 @@
                 ParentColor = False
                 ParentFont = False
                 OnClick = Label18Click
-                ExplicitWidth = 462
+                ExplicitWidth = 59
+                ExplicitHeight = 20
               end
             end
           end
@@ -2875,7 +2858,7 @@
             object PnlAdicionar: TPanel
               AlignWithMargins = True
               Left = 16
-              Top = 214
+              Top = 212
               Width = 315
               Height = 36
               Margins.Left = 0
@@ -2905,7 +2888,8 @@
                 ParentColor = False
                 ParentFont = False
                 OnClick = LblAdicionarClick
-                ExplicitTop = 13
+                ExplicitWidth = 64
+                ExplicitHeight = 20
               end
             end
             object EdtValorTotal: TEdit
@@ -3054,7 +3038,8 @@
                 ParentColor = False
                 ParentFont = False
                 OnClick = LblFinalizarClick
-                ExplicitTop = 23
+                ExplicitWidth = 55
+                ExplicitHeight = 20
               end
             end
           end

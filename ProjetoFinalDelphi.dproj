@@ -232,6 +232,16 @@
         <DCCReference Include="src\Services\PendenciaService.pas"/>
         <DCCReference Include="src\repository\PendenciaRepository.pas"/>
         <DCCReference Include="src\Model\uPendencia.pas"/>
+        <DCCReference Include="src\repository\RelatoriosRepository.pas"/>
+        <DCCReference Include="src\controller\RelatoriosController.pas"/>
+        <DCCReference Include="src\Services\RelatoriosService.pas"/>
+        <DCCReference Include="src\repository\RelatorioEntradaRepository.pas"/>
+        <DCCReference Include="src\Services\RelatorioEntradaService.pas"/>
+        <DCCReference Include="src\controller\RelatorioEntradaController.pas"/>
+        <DCCReference Include="src\View\uFormRelatoriosEntradasView.pas">
+            <Form>FormEntradas</Form>
+            <FormType>dfm</FormType>
+        </DCCReference>
         <BuildConfiguration Include="Base">
             <Key>Base</Key>
         </BuildConfiguration>

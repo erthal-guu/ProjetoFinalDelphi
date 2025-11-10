@@ -64,7 +64,14 @@ uses
   PendenciaController in 'src\controller\PendenciaController.pas',
   PendenciaService in 'src\Services\PendenciaService.pas',
   PendenciaRepository in 'src\repository\PendenciaRepository.pas',
-  uPendencia in 'src\Model\uPendencia.pas';
+  uPendencia in 'src\Model\uPendencia.pas',
+  RelatoriosRepository in 'src\repository\RelatoriosRepository.pas',
+  RelatoriosController in 'src\controller\RelatoriosController.pas',
+  RelatoriosService in 'src\Services\RelatoriosService.pas',
+  RelatorioEntradaRepository in 'src\repository\RelatorioEntradaRepository.pas',
+  RelatorioEntradaService in 'src\Services\RelatorioEntradaService.pas',
+  RelatorioEntradaController in 'src\controller\RelatorioEntradaController.pas',
+  uFormRelatoriosEntradasView in 'src\View\uFormRelatoriosEntradasView.pas' {FormEntradas};
 
 {$R *.res}
 
@@ -89,5 +96,6 @@ begin
   Application.CreateForm(TFormCadastroPecas, FormCadastroPecas);
   Application.CreateForm(TFormPendencias, FormPendencias);
   Application.CreateForm(TFormReceitas, FormReceitas);
+  Application.CreateForm(TFormEntradas, FormEntradas);
   Application.Run;
 end.

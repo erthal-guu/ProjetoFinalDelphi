@@ -115,8 +115,9 @@ begin
   LimparCampos;
   PnlBackgroundEdit.Visible := True;
   PnlDesignEdit.Visible := True;
-  EdtPesquisar.Visible := False;
   PnlButtonEnviar.Visible := True;
+  EdtPesquisar.Visible := False;
+  PnlEdit.Visible := True;
   PnlButtonAtualizar.Visible := False;
 end;
 

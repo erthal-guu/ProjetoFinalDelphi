@@ -26,7 +26,7 @@
     object PnlContainer: TPanel
       AlignWithMargins = True
       Left = -2
-      Top = 3
+      Top = 0
       Width = 1108
       Height = 662
       Margins.Left = 0
@@ -92,6 +92,7 @@
             Color = 15790320
             ParentBackground = False
             TabOrder = 0
+            ExplicitTop = 7
             object BtnExcluir: TSpeedButton
               AlignWithMargins = True
               Left = 5
@@ -853,6 +854,7 @@
         Color = 6172416
         ParentBackground = False
         TabOrder = 3
+        ExplicitTop = 2
         object Label8: TLabel
           AlignWithMargins = True
           Left = 520
@@ -919,6 +921,7 @@
           ParentBackground = False
           TabOrder = 0
           Visible = False
+          ExplicitLeft = 1
           object PnlDesignEdit: TPanel
             AlignWithMargins = True
             Left = 20
@@ -1242,11 +1245,12 @@
             object PnlEdit: TPanel
               Left = 1
               Top = 1
-              Width = 968
+              Width = 866
               Height = 91
               Align = alLeft
               BevelOuter = bvNone
               TabOrder = 0
+              ExplicitLeft = -2
               object Label1: TLabel
                 Left = 20
                 Top = 8
@@ -1466,78 +1470,6 @@
                   #212'nibus'
                   'Utilit'#225'rio')
               end
-              object PnlButtonEnviar: TPanel
-                AlignWithMargins = True
-                Left = 872
-                Top = 30
-                Width = 89
-                Height = 31
-                Margins.Left = 5
-                Margins.Top = 30
-                Margins.Right = 0
-                Margins.Bottom = 30
-                BevelOuter = bvLowered
-                Color = 9521152
-                ParentBackground = False
-                TabOrder = 5
-                object LblEnviar: TLabel
-                  AlignWithMargins = True
-                  Left = 4
-                  Top = 4
-                  Width = 81
-                  Height = 23
-                  Align = alClient
-                  Alignment = taCenter
-                  Caption = 'Enviar'
-                  Color = clWhite
-                  Font.Charset = DEFAULT_CHARSET
-                  Font.Color = clWhite
-                  Font.Height = -15
-                  Font.Name = 'Segoe UI'
-                  Font.Style = []
-                  ParentColor = False
-                  ParentFont = False
-                  OnClick = LblEnviarClick
-                  ExplicitWidth = 40
-                  ExplicitHeight = 20
-                end
-              end
-              object PnlButtonAtualizar: TPanel
-                AlignWithMargins = True
-                Left = 872
-                Top = 30
-                Width = 89
-                Height = 31
-                Margins.Left = 5
-                Margins.Top = 30
-                Margins.Right = 0
-                Margins.Bottom = 30
-                BevelOuter = bvLowered
-                Color = 9521152
-                ParentBackground = False
-                TabOrder = 6
-                object LblAtualizar: TLabel
-                  AlignWithMargins = True
-                  Left = 4
-                  Top = 4
-                  Width = 81
-                  Height = 23
-                  Align = alClient
-                  Alignment = taCenter
-                  Caption = 'Atualizar'
-                  Color = clWhite
-                  Font.Charset = DEFAULT_CHARSET
-                  Font.Color = clWhite
-                  Font.Height = -15
-                  Font.Name = 'Segoe UI'
-                  Font.Style = []
-                  ParentColor = False
-                  ParentFont = False
-                  OnClick = LblAtualizarClick
-                  ExplicitWidth = 59
-                  ExplicitHeight = 20
-                end
-              end
               object EdtDescrição: TEdit
                 AlignWithMargins = True
                 Left = 145
@@ -1555,7 +1487,7 @@
                 Font.Name = 'Segoe UI'
                 Font.Style = []
                 ParentFont = False
-                TabOrder = 7
+                TabOrder = 5
               end
               object CmbStatus: TComboBox
                 AlignWithMargins = True
@@ -1574,7 +1506,7 @@
                 Font.Name = 'Segoe UI'
                 Font.Style = []
                 ParentFont = False
-                TabOrder = 8
+                TabOrder = 6
                 Items.Strings = (
                   'Ativo'
                   'Inativo')
@@ -1597,7 +1529,111 @@
                 Font.Name = 'Segoe UI'
                 Font.Style = []
                 ParentFont = False
-                TabOrder = 9
+                TabOrder = 7
+              end
+            end
+            object PnlButtonForm: TPanel
+              Left = 867
+              Top = 1
+              Width = 104
+              Height = 91
+              Align = alLeft
+              BevelOuter = bvNone
+              TabOrder = 1
+              ExplicitLeft = 871
+              ExplicitTop = 9
+              object ShpButton: TShape
+                AlignWithMargins = True
+                Left = 3
+                Top = 30
+                Width = 95
+                Height = 29
+                Margins.Top = 30
+                Margins.Bottom = 32
+                Align = alLeft
+                Brush.Color = 9521152
+                Pen.Color = clSilver
+                Shape = stRoundRect
+                ExplicitTop = 29
+              end
+              object PnlButtonAtualizar: TPanel
+                AlignWithMargins = True
+                Left = 8
+                Top = 32
+                Width = 86
+                Height = 23
+                Margins.Left = 0
+                Margins.Top = 30
+                Margins.Right = 0
+                Margins.Bottom = 30
+                BevelOuter = bvNone
+                Color = 9521152
+                ParentBackground = False
+                TabOrder = 1
+                Visible = False
+                object LblAtualizar: TLabel
+                  AlignWithMargins = True
+                  Left = 3
+                  Top = 3
+                  Width = 80
+                  Height = 17
+                  Align = alClient
+                  Alignment = taCenter
+                  Caption = 'Atualizar'
+                  Color = clWhite
+                  Font.Charset = DEFAULT_CHARSET
+                  Font.Color = clWhite
+                  Font.Height = -15
+                  Font.Name = 'Segoe UI'
+                  Font.Style = []
+                  ParentColor = False
+                  ParentFont = False
+                  OnClick = LblAtualizarClick
+                  ExplicitLeft = 27
+                  ExplicitTop = 27
+                  ExplicitHeight = 19
+                end
+              end
+              object PnlButtonEnviar: TPanel
+                AlignWithMargins = True
+                Left = 11
+                Top = 32
+                Width = 81
+                Height = 25
+                Margins.Left = 0
+                Margins.Top = 30
+                Margins.Right = 0
+                Margins.Bottom = 30
+                BevelOuter = bvNone
+                Color = 9521152
+                ParentBackground = False
+                TabOrder = 0
+                Visible = False
+                object LblEnviar: TLabel
+                  AlignWithMargins = True
+                  Left = 0
+                  Top = 2
+                  Width = 81
+                  Height = 23
+                  Margins.Left = 0
+                  Margins.Top = 2
+                  Margins.Right = 0
+                  Margins.Bottom = 0
+                  Align = alClient
+                  Alignment = taCenter
+                  Caption = 'Enviar'
+                  Color = clWhite
+                  Font.Charset = DEFAULT_CHARSET
+                  Font.Color = clWhite
+                  Font.Height = -15
+                  Font.Name = 'Segoe UI'
+                  Font.Style = []
+                  ParentColor = False
+                  ParentFont = False
+                  OnClick = LblEnviarClick
+                  ExplicitTop = 4
+                  ExplicitHeight = 17
+                end
               end
             end
           end

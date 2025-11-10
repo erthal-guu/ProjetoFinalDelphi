@@ -36,7 +36,6 @@ object FormCadastroUsuarios: TFormCadastroUsuarios
     BevelOuter = bvNone
     BorderStyle = bsSingle
     TabOrder = 1
-    ExplicitHeight = 683
     object PnlContainer: TPanel
       AlignWithMargins = True
       Left = 0
@@ -109,7 +108,6 @@ object FormCadastroUsuarios: TFormCadastroUsuarios
           ParentBackground = False
           TabOrder = 0
           Visible = False
-          ExplicitLeft = 19
           object imgLogo: TImage
             AlignWithMargins = True
             Left = 952
@@ -423,7 +421,6 @@ object FormCadastroUsuarios: TFormCadastroUsuarios
             Align = alLeft
             BevelOuter = bvNone
             TabOrder = 0
-            ExplicitLeft = 0
             object PnlCmbStatus: TPanel
               Left = 705
               Top = 0
@@ -432,7 +429,6 @@ object FormCadastroUsuarios: TFormCadastroUsuarios
               Align = alLeft
               BevelOuter = bvNone
               TabOrder = 0
-              ExplicitLeft = 686
               object LblStatus: TLabel
                 Left = 3
                 Top = 8
@@ -477,8 +473,6 @@ object FormCadastroUsuarios: TFormCadastroUsuarios
               Align = alLeft
               BevelOuter = bvNone
               TabOrder = 1
-              ExplicitLeft = 298
-              ExplicitTop = 24
               object LblNome: TLabel
                 AlignWithMargins = True
                 Left = 22
@@ -523,8 +517,6 @@ object FormCadastroUsuarios: TFormCadastroUsuarios
               Align = alLeft
               BevelOuter = bvNone
               TabOrder = 2
-              ExplicitLeft = 209
-              ExplicitTop = 8
               object LblCPF: TLabel
                 Left = 6
                 Top = 8
@@ -562,8 +554,6 @@ object FormCadastroUsuarios: TFormCadastroUsuarios
                 TabOrder = 0
                 Text = '   .   .   -  '
                 OnClick = EdtCPFClick
-                ExplicitLeft = 91
-                ExplicitTop = 22
               end
             end
             object PnlEdtSenha: TPanel
@@ -751,7 +741,6 @@ object FormCadastroUsuarios: TFormCadastroUsuarios
                   ParentColor = False
                   ParentFont = False
                   OnClick = LblEnviarClick
-                  ExplicitTop = 5
                   ExplicitWidth = 40
                   ExplicitHeight = 20
                 end

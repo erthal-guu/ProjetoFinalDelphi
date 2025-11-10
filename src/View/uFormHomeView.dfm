@@ -3292,6 +3292,10 @@
     end
     object Relatorios: TMenuItem
       Caption = ' &Relat'#243'rios     '
+      object Entradas1: TMenuItem
+        Caption = 'Entradas'
+        OnClick = Entradas1Click
+      end
     end
     object Financeiro: TMenuItem
       Caption = ' Financeiro     '

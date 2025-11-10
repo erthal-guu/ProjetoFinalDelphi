@@ -17,7 +17,7 @@ uses
   uFormCadastroOrdensServiçoView, Vcl.Menus, Vcl.Imaging.pngimage, Vcl.StdCtrls,uSession,
   Vcl.Buttons,uMainController, System.ImageList, Vcl.ImgList,
   Vcl.BaseImageCollection, Vcl.ImageCollection, Vcl.VirtualImageList,
-  Vcl.ToolWin, Vcl.ActnMan, Vcl.ActnCtrls, Vcl.ActnMenus, Vcl.ComCtrls;
+  Vcl.ToolWin, Vcl.ActnMan, Vcl.ActnCtrls, Vcl.ActnMenus, Vcl.ComCtrls,RelatoriosController;
 
 
 type
@@ -52,6 +52,7 @@ type
     VirtualImageList: TVirtualImageList;
     ImageCollection: TImageCollection;
     Image2: TImage;
+    Entradas1: TMenuItem;
     procedure SairClick(Sender: TObject);
     procedure FuncionariosClick(Sender: TObject);
     procedure FornecedoresClick(Sender: TObject);
@@ -67,6 +68,7 @@ type
     procedure VerificarPermissoes;
     procedure Image1Click(Sender: TObject);
     procedure OrdensServio1Click(Sender: TObject);
+    procedure Entradas1Click(Sender: TObject);
   private
     { Private declarations }
   public
@@ -81,6 +83,23 @@ implementation
 {$R *.dfm}
 
 
+
+  procedure TFormHome.Entradas1Click(Sender: TObject);
+  Var
+    RelatorioController: TRelatorioController;
+  begin
+    try
+      RelatorioController := TRelatorioController.Create;
+      try
+        RelatorioController.GerarRelatorioEntrda;
+      finally
+        FreeAndNil(RelatorioController);
+      end;
+    except
+      on E: Exception do
+        ShowMessage('Erro ao gerar relatório: ' + E.Message);
+    end;
+  end;
 
 procedure TFormHome.ExibirDadosUsuarioLogado;
 begin

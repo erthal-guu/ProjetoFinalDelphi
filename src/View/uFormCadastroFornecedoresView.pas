@@ -58,7 +58,6 @@ type
     Label19: TLabel;
     Label20: TLabel;
     PnlAdicionar: TPanel;
-    LblAdicionar: TLabel;
     EdtValorTotal: TEdit;
     CmbFornecedorPedido: TComboBox;
     CmbFormaPagamento: TComboBox;
@@ -120,6 +119,7 @@ type
     Shape1: TShape;
     Shape2: TShape;
     Shape3: TShape;
+    LblAdicionar: TLabel;
 
     procedure BtnAdicionarClick(Sender: TObject);
     procedure BtnPesquisarClick(Sender: TObject);
