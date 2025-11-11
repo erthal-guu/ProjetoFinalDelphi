@@ -80,28 +80,30 @@ begin
         FQuery.ExecSQL;
       end;
     end;
-    FQuery.Close;
-    FQuery.SQL.Clear;
-    FQuery.SQL.Add
-      ('INSERT INTO pendencias (id_cliente, descricao, valor_pendente, data_vencimento, data_criacao, status, observacao, ativo)');
-    FQuery.SQL.Add
-      ('VALUES (:id_cliente, :descricao, :valor_pendente, :data_vencimento, :data_criacao, :status, :observacao, :ativo)');
-    FQuery.ParamByName('id_cliente').AsInteger := aOS.getIdCliente;
-    FQuery.ParamByName('descricao').AsString := 'Ordem de Serviço #' +
-      IntToStr(OSID);
-    FQuery.ParamByName('valor_pendente').AsCurrency := aOS.getPreco;
-    FQuery.ParamByName('data_vencimento').AsDateTime := Now + 30;
-    FQuery.ParamByName('data_criacao').AsDateTime := Now;
-    FQuery.ParamByName('status').AsString := 'PENDENTE';
-    FQuery.ParamByName('observacao').AsString := aOS.getObservacao;
-    FQuery.ParamByName('ativo').AsBoolean := True;
-    FQuery.ExecSQL;
-    FQuery.Connection.Commit;
-  except
-    FQuery.Connection.Rollback;
-    raise;
+      FQuery.Close;
+      FQuery.SQL.Clear;
+      FQuery.SQL.Add('INSERT INTO Receitas (id_ordem_servico, id_cliente, valor_total, valor_recebido, status, data_emissao, data_vencimento, data_recebimento, forma_pagamento, observacao, ativo)');
+      FQuery.SQL.Add('VALUES (:id_ordem_servico, :id_cliente, :valor_total, :valor_recebido, :status, :data_emissao, :data_vencimento, :data_recebimento, :forma_pagamento, :observacao, :ativo)');
+
+      FQuery.ParamByName('id_ordem_servico').AsInteger := OSID;
+      FQuery.ParamByName('id_cliente').AsInteger := aOS.getIdCliente;
+      FQuery.ParamByName('valor_total').AsCurrency := aOS.getPreco;
+      FQuery.ParamByName('valor_recebido').AsCurrency := 0;
+      FQuery.ParamByName('status').AsString := 'PENDENTE';
+      FQuery.ParamByName('data_emissao').AsDateTime := Now;
+      FQuery.ParamByName('data_vencimento').AsDateTime := Now + 30;
+      FQuery.ParamByName('data_recebimento').AsDateTime := Now;
+      FQuery.ParamByName('forma_pagamento').AsString := 'Pendente';
+      FQuery.ParamByName('observacao').AsString := aOS.getObservacao;
+      FQuery.ParamByName('ativo').AsBoolean := True;
+
+      FQuery.ExecSQL;
+      FQuery.Connection.Commit;
+    except
+      FQuery.Connection.Rollback;
+      raise;
+    end;
   end;
-end;
 
 function TOrdemServicoRepository.EditarOrdemServico(aOS: TOrdemServico;
   aPecasIDs: TList<Integer>): Boolean;

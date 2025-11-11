@@ -1,25 +1,23 @@
-unit RelatoriosRepository;
+﻿unit RelatoriosRepository;
 
 interface
 
 uses
-  uDMConexao, FireDAC.Comp.Client, System.SysUtils, uReceita, Data.DB,
-  Generics.Collections, System.Classes, Vcl.Tee.Chart;
+  uDMconexao, FireDAC.Comp.Client, System.SysUtils, uReceita, Data.DB,
+  Generics.Collections, System.Classes, VCLTee.Chart,VCL.Dialogs;
+
 
 type
   TRelatorioRepository = class
   private
     QueryEntradas: TFDQuery;
 
-    // Métodos privados para gráficos
     procedure CarregarGraficoFormasPagamento(Chart: TChart);
     procedure CarregarGraficoEvolucaoMensal(Chart: TChart);
     procedure CarregarGraficoTopClientes(Chart: TChart);
 
   public
     procedure GerarRelatorioEntrada;
-
-    // Método principal para carregar todos os gráficos
     procedure CarregarGraficos(ChartFormasPagamento, ChartEvolucao, ChartTopClientes: TChart);
 
     constructor create(Query: TFDQuery);
@@ -27,7 +25,8 @@ type
 
 implementation
 
-uses Vcl.Tee.Series, Vcl.Tee.TeEngine;
+uses VCLTee.Series, VCLTee.TeEngine;
+
 
 { TRelatorioRepository }
 

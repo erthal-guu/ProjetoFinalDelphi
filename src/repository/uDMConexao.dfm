@@ -8,14 +8,11 @@ object DataModule1: TDataModule1
       'Password=root'
       'Server=localhost'
       'DriverID=PG')
-    Connected = True
     Left = 496
     Top = 288
   end
   object FDPhysPgDriverLink1: TFDPhysPgDriverLink
-    VendorLib = 
-      'C:\Users\Auditorio\Desktop\ProjetoFinalDelphi\src\lib\lib\libpq.' +
-      'dll'
+    VendorLib = 'C:\Users\vplgu\Desktop\ProjetoFinalDelphi\src\lib\lib\libpq.dll'
     Left = 597
     Top = 289
   end
@@ -469,33 +466,5 @@ object DataModule1: TDataModule1
     DataSetOptions = []
     Left = 592
     Top = 368
-    FieldDefs = <
-      item
-        FieldName = 'id'
-      end
-      item
-        FieldName = 'nome'
-        FieldType = fftString
-        Size = 100
-      end
-      item
-        FieldName = 'cpf'
-        FieldType = fftString
-        Size = 14
-      end
-      item
-        FieldName = 'senha'
-        FieldType = fftString
-        Size = 255
-      end
-      item
-        FieldName = 'grupo'
-        FieldType = fftString
-        Size = 50
-      end
-      item
-        FieldName = 'ativo'
-        FieldType = fftBoolean
-      end>
   end
 end

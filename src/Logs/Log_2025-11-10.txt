@@ -1,3 +1,7 @@
 13:58:24 - CONCLUSÃO - ID: 0 concluiu pendência ID: 1 - Cliente: 27 - Descrição: Pedido #26
 13:58:46 - DELETAR - ID: 0 deletou a receita ID: 5
 16:09:34 - LOGIN - Sucesso: Usuário ID 3, Nome: AdminMassa, (CPF: 000.000.000-00)
+21:09:57 - CADASTRO - ID: 0 cadastrou ordem de serviço com cliente ID: 1
+21:25:32 - CADASTRO - ID: 0 cadastrou ordem de serviço com cliente ID: 1
+21:25:49 - RECEBER - ID: 0 registrou recebimento da receita ID: 6 - Valor: 1512,00
+21:26:00 - RECEBER - ID: 0 registrou recebimento da receita ID: 6 - Valor: 1512,00

@@ -14,6 +14,7 @@ uses
   uFormReceitasView,
   uFormCadastroPeçasView,
   uFormCadastroServiçosView,
+  uFormRelatoriosEntradasView,
   uFormCadastroOrdensServiçoView, Vcl.Menus, Vcl.Imaging.pngimage, Vcl.StdCtrls,uSession,
   Vcl.Buttons,uMainController, System.ImageList, Vcl.ImgList,
   Vcl.BaseImageCollection, Vcl.ImageCollection, Vcl.VirtualImageList,
@@ -84,22 +85,11 @@ implementation
 
 
 
-  procedure TFormHome.Entradas1Click(Sender: TObject);
-  Var
-    RelatorioController: TRelatorioController;
-  begin
-    try
-      RelatorioController := TRelatorioController.Create;
-      try
-        RelatorioController.GerarRelatorioEntrda;
-      finally
-        FreeAndNil(RelatorioController);
-      end;
-    except
-      on E: Exception do
-        ShowMessage('Erro ao gerar relatório: ' + E.Message);
-    end;
-  end;
+procedure TFormHome.Entradas1Click(Sender: TObject);
+begin
+FormEntradas.Show;
+FormEntradas.Position := poScreenCenter;
+end;
 
 procedure TFormHome.ExibirDadosUsuarioLogado;
 begin

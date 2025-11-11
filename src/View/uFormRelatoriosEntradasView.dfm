@@ -1,15 +1,18 @@
 ﻿object FormEntradas: TFormEntradas
   Left = 0
   Top = 0
+  BorderStyle = bsNone
   Caption = 'FormEntradas'
-  ClientHeight = 545
-  ClientWidth = 976
+  ClientHeight = 541
+  ClientWidth = 973
   Color = clBtnFace
   Font.Charset = DEFAULT_CHARSET
   Font.Color = clWindowText
   Font.Height = -12
   Font.Name = 'Segoe UI'
   Font.Style = []
+  OnCreate = FormCreate
+  OnShow = FormShow
   TextHeight = 15
   object PnlRestaurar: TPanel
     AlignWithMargins = True
@@ -25,8 +28,7 @@
     Color = 6172416
     ParentBackground = False
     TabOrder = 0
-    Visible = False
-    object LblRestaurar: TLabel
+    object LblTituloEntradas: TLabel
       AlignWithMargins = True
       Left = 3
       Top = 20
@@ -42,8 +44,7 @@
       Font.Name = 'Segoe UI'
       Font.Style = [fsBold]
       ParentFont = False
-      ExplicitLeft = 6
-      ExplicitTop = 26
+      ExplicitWidth = 99
     end
     object Shape3: TShape
       AlignWithMargins = True
@@ -59,7 +60,7 @@
       Pen.Color = clHighlight
       Shape = stRoundRect
     end
-    object Label5: TLabel
+    object LblTotalHead: TLabel
       Left = 794
       Top = 89
       Width = 131
@@ -72,12 +73,12 @@
       Font.Style = [fsBold]
       ParentFont = False
     end
-    object Label6: TLabel
-      Left = 794
-      Top = 115
-      Width = 131
+    object LblTotal: TLabel
+      Left = 807
+      Top = 113
+      Width = 102
       Height = 40
-      Caption = '25.500,00'
+      Caption = '2500,00'
       Font.Charset = DEFAULT_CHARSET
       Font.Color = clWhite
       Font.Height = -29
@@ -113,10 +114,10 @@
       Pen.Color = clHighlight
       Shape = stRoundRect
     end
-    object Label7: TLabel
+    object LblQuantidadeHead: TLabel
       Left = 766
       Top = 255
-      Width = 185
+      Width = 183
       Height = 21
       Caption = 'Quantidade de Entradas'
       Font.Charset = DEFAULT_CHARSET
@@ -126,12 +127,12 @@
       Font.Style = [fsBold]
       ParentFont = False
     end
-    object Label8: TLabel
-      Left = 838
-      Top = 287
-      Width = 46
+    object LblQuantidade: TLabel
+      Left = 849
+      Top = 282
+      Width = 16
       Height = 40
-      Caption = ' 10'
+      Caption = '1'
       Font.Charset = DEFAULT_CHARSET
       Font.Color = clWhite
       Font.Height = -29
@@ -139,8 +140,8 @@
       Font.Style = []
       ParentFont = False
     end
-    object Label9: TLabel
-      Left = 807
+    object LblTickMedioHead: TLabel
+      Left = 806
       Top = 418
       Width = 103
       Height = 21
@@ -152,18 +153,39 @@
       Font.Style = [fsBold]
       ParentFont = False
     end
-    object Label10: TLabel
-      Left = 814
+    object LblTickMedio: TLabel
+      Left = 807
       Top = 445
-      Width = 86
+      Width = 102
       Height = 40
-      Caption = '886,90'
+      Caption = '1000,00'
       Font.Charset = DEFAULT_CHARSET
       Font.Color = clWhite
       Font.Height = -29
       Font.Name = 'Segoe UI'
       Font.Style = []
       ParentFont = False
+    end
+    object ImgFecharEntradas: TImage
+      Left = 936
+      Top = 20
+      Width = 25
+      Height = 25
+      Picture.Data = {
+        0954506E67496D61676589504E470D0A1A0A0000000D49484452000000180000
+        00180806000000E0773DF8000000097048597300000EC300000EC301C76FA864
+        0000001974455874536F667477617265007777772E696E6B73636170652E6F72
+        679BEE3C1A0000010F4944415478DAC5964D0AC2301085675C783A050F20F80B
+        820BC55308228A4871E10F75E752F05EAE7551F5854688A549A6A962E0D13493
+        BCAF69324DF9493423A231B485464CF4A012057E155CD6501F5A301AEEA85475
+        FC08754321DAFC00B574D34D0122548646BF20488EB92A115B0227A8094852C2
+        FCEDE1ED9094304F58DA31C45CDD706680BADF40031FC4621E433D73FD3E0052
+        88D43C17E083A46199B915603CE51E6A1BCD173DA6263177021C33318BD3DC0B
+        30667286EA99909A4DC39790FF0558768B59BCC918B2C894994D4C4517D9B5CF
+        D3B02C19730192242A92F15CD4DCE82B82F83E76CEF72B8170A8B914C265CC45
+        901F1F99CB5F1FFA570598A2328176F4BDDF9615D481E62FF3919E24F9015515
+        0000000049454E44AE426082}
+      OnClick = ImgFecharEntradasClick
     end
     object PnlMainRestaurar: TPanel
       AlignWithMargins = True
@@ -395,7 +417,6 @@
         View3D = False
         Align = alClient
         TabOrder = 0
-        ExplicitHeight = 192
         DefaultCanvas = 'TGDIPlusCanvas'
         ColorPaletteIndex = 13
         object Series1: TBarSeries
@@ -429,8 +450,6 @@
         View3D = False
         Align = alClient
         TabOrder = 0
-        ExplicitLeft = 7
-        ExplicitHeight = 206
         DefaultCanvas = 'TGDIPlusCanvas'
         ColorPaletteIndex = 13
         object Series2: TAreaSeries
