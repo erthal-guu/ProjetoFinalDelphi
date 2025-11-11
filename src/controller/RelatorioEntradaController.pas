@@ -3,7 +3,7 @@
 interface
 
 uses
-  RelatorioEntradaService, uDMConexao, FireDAC.Comp.Client, VCLTee.Series;
+  RelatorioEntradaService, uDMConexao, FireDAC.Comp.Client, VCLTee.Series,Data.DB;
 
 type
   TRelatorioEntradaController = class
@@ -24,7 +24,7 @@ implementation
 constructor TRelatorioEntradaController.Create;
 begin
   inherited Create;
-  Service := TRelatorioEntradaService.Create(nil);
+    Service := TRelatorioEntradaService.Create(DataModule1.FDQuery)
 end;
 
 destructor TRelatorioEntradaController.Destroy;

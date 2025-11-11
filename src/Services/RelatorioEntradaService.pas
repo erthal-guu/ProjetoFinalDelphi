@@ -4,14 +4,14 @@ interface
 
 uses
   RelatorioEntradaRepository, uDMConexao, FireDAC.Comp.Client, System.SysUtils,
-  VCLTee.Series, VCLTee.TeEngine, Graphics;
+  VCLTee.Series, VCLTee.TeEngine, Graphics,System.Classes,Data.DB;
 
 type
   TRelatorioEntradaService = class
   private
     Repository: TRelatorioEntradaRepository;
   public
-    constructor Create(AQuery: TFDQuery);
+    constructor Create(Query: TFDQuery);
     destructor Destroy; override;
     function GetTotalEntradas: Double;
     function GetQuantidadeEntradas: Integer;
@@ -22,10 +22,10 @@ implementation
 
 { TRelatorioEntradaService }
 
-constructor TRelatorioEntradaService.Create(AQuery: TFDQuery);
+constructor TRelatorioEntradaService.Create(Query: TFDQuery);
 begin
   inherited Create;
-  Repository := TRelatorioEntradaRepository.Create(AQuery);
+  Repository := TRelatorioEntradaRepository.Create(Query);
 end;
 
 destructor TRelatorioEntradaService.Destroy;

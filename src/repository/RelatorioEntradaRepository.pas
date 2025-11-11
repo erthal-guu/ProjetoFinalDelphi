@@ -12,7 +12,6 @@ type
     FQuery: TFDQuery;
   public
     constructor Create(Query: TFDQuery);
-    procedure CarregarGraficoMensal;
     function GetTotalEntradas: Double;
     function GetQuantidadeEntradas:Integer;
     function GetTicketMedio: Double;
@@ -22,32 +21,15 @@ implementation
 
 { TRelatorioEntradaRepository }
 
-procedure TRelatorioEntradaRepository.CarregarGraficoMensal;
-begin
-  FQuery.Close;
-  FQuery.SQL.Clear;
-  FQuery.SQL.Add('SELECT * FROM usuarios');
-  FQuery.ExecSQL;
-end;
-
 constructor TRelatorioEntradaRepository.Create(Query: TFDQuery);
 begin
   inherited Create;
-  if Assigned(Query) then
     FQuery := Query
-  else
-  begin
-    FQuery := TFDQuery.Create(nil);
-    FQuery.Connection := DataModule1.FDConnection1;
-  end;
 end;
 
   function TRelatorioEntradaRepository.GetQuantidadeEntradas: Integer;
 begin
   try
-    if not Assigned(FQuery) then
-      raise Exception.Create('Query não foi inicializada no Repository');
-
     FQuery.Close;
     FQuery.SQL.Clear;
     FQuery.SQL.Add('SELECT COUNT(*) as total FROM Receitas WHERE status = ''Recebido''');
@@ -64,9 +46,6 @@ end;
 function TRelatorioEntradaRepository.GetTicketMedio: Double;
 begin
   try
-    if not Assigned(FQuery) then
-      raise Exception.Create('Query não foi inicializada no Repository');
-
     FQuery.Close;
     FQuery.SQL.Clear;
     FQuery.SQL.Add('SELECT COALESCE(AVG(valor_total), 0) as media FROM Receitas');

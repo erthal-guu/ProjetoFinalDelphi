@@ -6,21 +6,22 @@ uses
   Winapi.Windows, Winapi.Messages, System.SysUtils, System.Variants, System.Classes, Vcl.Graphics,
   Vcl.Controls, Vcl.Forms, Vcl.Dialogs, Vcl.StdCtrls, Vcl.ExtCtrls, Vcl.ComCtrls,
   VclTee.TeeGDIPlus, VCLTee.Series, VCLTee.TeEngine, VCLTee.TeeProcs,
-  VCLTee.Chart, RelatorioEntradaController, Vcl.Imaging.pngimage;
+  VCLTee.Chart, RelatorioEntradaController, Vcl.Imaging.pngimage, Data.DB,RelatoriosController,
+  VCLTee.DBChart;
 
 type
   TFormEntradas = class(TForm)
     PnlRestaurar: TPanel;
     LblTituloEntradas: TLabel;
     PnlMainRestaurar: TPanel;
+    Shape3: TShape;
+    Shape4: TShape;
+    Shape5: TShape;
+    ImgFecharEntradas: TImage;
     Panel1: TPanel;
     LblTitulo: TLabel;
     Label1: TLabel;
-    Label2: TLabel;
-    Label3: TLabel;
-    EdtDataInicio: TDateTimePicker;
     CmbRelatorios: TComboBox;
-    EdtDataFinal: TDateTimePicker;
     Panel2: TPanel;
     Shape2: TShape;
     PnlAdicionar: TPanel;
@@ -29,38 +30,30 @@ type
     Shape1: TShape;
     Panel4: TPanel;
     Label4: TLabel;
-    PnlGraficoPecasUsadas: TPanel;
-    PnlGraficoEntradasMes: TPanel;
-    GraficoEntradasMes: TChart;
-    Series2: TAreaSeries;
-    Shape3: TShape;
-    LblTotalHead: TLabel;
-    LblTotal: TLabel;
-    Shape4: TShape;
-    Shape5: TShape;
+    PnlQuantidade: TPanel;
     LblQuantidadeHead: TLabel;
     LblQuantidade: TLabel;
-    LblTickMedioHead: TLabel;
-    LblTickMedio: TLabel;
-    GraficoPeçasUsadas: TChart;
-    Series1: TBarSeries;
-    ImgFecharEntradas: TImage;
+    PnlTicket: TPanel;
+    LblTicketHead: TLabel;
+    LblTicketMedio: TLabel;
+    PnlTotal: TPanel;
+    LblTotalHead: TLabel;
+    LblTotal: TLabel;
+    PnlLogo: TImage;
     procedure FormCreate(Sender: TObject);
     procedure FormDestroy(Sender: TObject);
     procedure FormShow(Sender: TObject);
     procedure ImgFecharEntradasClick(Sender: TObject);
-  private
-    { Private declarations }
-    Controller: TRelatorioEntradaController;
+    procedure LblAdicionarClick(Sender: TObject);
     procedure AtualizarTotalEntradas;
     procedure AtualizarQuantidadeEntradas;
     procedure AtualizarTicketMedio;
-  public
-    { Public declarations }
   end;
 
 var
   FormEntradas: TFormEntradas;
+  Controller: TRelatorioEntradaController;
+  RelatorioController : TRelatorioController;
 
 implementation
 
@@ -71,11 +64,13 @@ implementation
 procedure TFormEntradas.FormCreate(Sender: TObject);
 begin
   Controller := TRelatorioEntradaController.Create;
+  RelatorioController := TRelatorioController.create
 end;
 
 procedure TFormEntradas.FormDestroy(Sender: TObject);
 begin
-  FreeAndNil(Controller);
+  Controller.Free;
+  RelatorioController.Free;
 end;
 
 procedure TFormEntradas.FormShow(Sender: TObject);
@@ -85,9 +80,18 @@ begin
   AtualizarTicketMedio;
 end;
 
-  procedure TFormEntradas.ImgFecharEntradasClick(Sender: TObject);
+procedure TFormEntradas.ImgFecharEntradasClick(Sender: TObject);
 begin
-  Self.Close;
+  if MessageDlg('Deseja realmente fechar esse Formulário?', mtConfirmation,
+  [mbYes, mbNo], 0) = mrYes then
+  begin
+   Self.close;
+  end;
+end;
+
+procedure TFormEntradas.LblAdicionarClick(Sender: TObject);
+begin
+  RelatorioController.GerarRelatorioEntrada;
 end;
 
 procedure TFormEntradas.AtualizarQuantidadeEntradas;
@@ -103,7 +107,7 @@ var
   TicketMedio: Double;
 begin
     TicketMedio := Controller.GetTicketMedio;
-    LblTickMedio.Caption := FormatFloat('#,##0.00', TicketMedio);
+    LblTicketMedio.Caption := FormatFloat('#,##0.00', TicketMedio);
 end;
 
 procedure TFormEntradas.AtualizarTotalEntradas;

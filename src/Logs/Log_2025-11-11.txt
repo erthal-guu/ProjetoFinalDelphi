@@ -1,0 +1,19 @@
+14:32:33 - LOGIN - Sucesso: Usuário ID 3, Nome: AdminMassa, (CPF: 000.000.000-00)
+14:33:02 - VINCULAR - Peça ID: 22 vinculada ao Fornecedor ID: 1
+14:33:17 - PEDIDO - Usuário ID: 3 criou Pedido ID: 27 com 1 itens para Fornecedor ID: 1
+14:33:42 - CONCLUSÃO - ID: 3 concluiu pendência ID: 2 - Cliente: 1 - Descrição: Pedido #27
+14:34:52 - CADASTRO - ID: 3 cadastrou ordem de serviço com cliente ID: 4
+14:35:17 - RECEBER - ID: 3 registrou recebimento da receita ID: 6 - Valor: 865,00
+14:35:55 - RECEBER - ID: 3 registrou recebimento da receita ID: 6 - Valor: 866,25
+14:36:30 - CADASTRO - ID: 3 cadastrou ordem de serviço com cliente ID: 2
+14:57:33 - FALHA AO VINCULAR - Peça ID: 26 Já está vinculada ao Fornecedor ID: 1
+14:57:40 - FALHA AO VINCULAR - Peça ID: 27 Já está vinculada ao Fornecedor ID: 1
+14:57:43 - VINCULAR - Peça ID: 33 vinculada ao Fornecedor ID: 1
+14:58:18 - PEDIDO - Usuário ID: 0 criou Pedido ID: 28 com 2 itens para Fornecedor ID: 1
+14:58:42 - CONCLUSÃO - ID: 0 concluiu pendência ID: 3 - Cliente: 1 - Descrição: Pedido #28
+14:59:54 - CADASTRO - ID: 0 cadastrou ordem de serviço com cliente ID: 4
+15:00:18 - RECEBER - ID: 0 registrou recebimento da receita ID: 8 - Valor: 1500,00
+15:00:40 - RECEBER - ID: 0 registrou recebimento da receita ID: 8 - Valor: 1569,75
+15:00:54 - RECEBER - ID: 0 registrou recebimento da receita ID: 7 - Valor: 747,50
+15:01:12 - LOGIN - Sucesso: Usuário ID 3, Nome: AdminMassa, (CPF: 000.000.000-00)
+15:01:21 - LOGIN - Sucesso: Usuário ID 6, Nome: MecanicoMassa, (CPF: 333.333.333-33)
