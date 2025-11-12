@@ -970,11 +970,11 @@
                     AlignWithMargins = True
                     Left = 0
                     Top = 2
-                    Width = 101
+                    Width = 86
                     Height = 24
                     Margins.Left = 0
                     Margins.Top = 2
-                    Margins.Right = 0
+                    Margins.Right = 15
                     Margins.Bottom = 0
                     Align = alClient
                     Alignment = taCenter
@@ -988,8 +988,27 @@
                     ParentColor = False
                     ParentFont = False
                     OnClick = LblEnviarClick
-                    ExplicitWidth = 40
-                    ExplicitHeight = 20
+                    ExplicitWidth = 97
+                  end
+                  object Image6: TImage
+                    Left = 67
+                    Top = -9
+                    Width = 33
+                    Height = 44
+                    Center = True
+                    Picture.Data = {
+                      0954506E67496D61676589504E470D0A1A0A0000000D49484452000000100000
+                      001008060000001FF3FF61000000097048597300000EC300000EC301C76FA864
+                      0000001974455874536F667477617265007777772E696E6B73636170652E6F72
+                      679BEE3C1A000000F04944415478DA9592BB0E014114861D6F21A8BD0071894B
+                      848E68507A01051E42A2508937A050A8244A9D909048BC804E780BEB9B984D5C
+                      C6EECE49BE9CD9D9FC5FCECEAC842CCA719C302D076D88405F2C434D88C2413F
+                      8FC522E4D6095AB080A3040C99C2192808C1048BAE47C82D77EC25A4E1067125
+                      B8FA044D61555311E929C18C878E65585511C156F4F7E7694328F97CB35B7788
+                      21787CDC02A22A6D04498FB0AA09E1815AFC5C2312B55787B361EC8FF18D8237
+                      5183B632BC7A9D3EE3FB09441F60EADFF89E022DA9D1D65FDB7904BB40022DD9
+                      D3B2DFA76F23A8D036A6F10309B4641E7AFD23650497F7774F92DE6092530844
+                      830000000049454E44AE426082}
                   end
                 end
               end

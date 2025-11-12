@@ -33,6 +33,9 @@ type
     FDQueryValorTotalreceitas_pendentes: TLargeintField;
     FDQueryValorTotalreceitas_parciais: TLargeintField;
     FDQueryValorTotalvalor_pendente: TFMTBCDField;
+    FDQueryValorTotalPendentescliente: TWideStringField;
+    FDQueryValorTotalPendentestotal_cancelado: TFMTBCDField;
+    FDQueryValorTotalPendentesquantidade_cancelada: TLargeintField;
   private
     { Private declarations }
   public

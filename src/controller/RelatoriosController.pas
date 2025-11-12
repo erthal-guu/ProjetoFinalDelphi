@@ -6,6 +6,7 @@ interface
     type TRelatorioController = class
      RelatorioService : TRelatorioService;
      procedure GerarRelatorioValorTotalEntrada(aDataIncio,aDataFinal:TDate);
+     procedure GerarRelatorioReceitasCanceladas(aDataIncio,aDataFinal:TDate);
      constructor create ;
     end;
 implementation
@@ -15,6 +16,12 @@ implementation
 constructor TRelatorioController.create;
 begin
   RelatorioService := TRelatorioService.Create;
+end;
+
+procedure TRelatorioController.GerarRelatorioReceitasCanceladas(aDataIncio,
+  aDataFinal: TDate);
+begin
+  RelatorioService.GerarRelatorioReceitasCanceladas(aDataIncio,aDataFinal);
 end;
 
 procedure TRelatorioController.GerarRelatorioValorTotalEntrada(aDataIncio,aDataFinal:TDate);

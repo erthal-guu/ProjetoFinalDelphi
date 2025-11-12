@@ -15,19 +15,6 @@ type
     LblTituloEntradas: TLabel;
     ImgFecharEntradas: TImage;
     Panel5: TPanel;
-    PnlMainEdit: TPanel;
-    PnlEdits: TPanel;
-    LblTitulo: TLabel;
-    Label1: TLabel;
-    CmbRelatorios: TComboBox;
-    Panel3: TPanel;
-    Shape1: TShape;
-    Panel4: TPanel;
-    Label4: TLabel;
-    Panel2: TPanel;
-    Shape2: TShape;
-    PnlAdicionar: TPanel;
-    LblAdicionar: TLabel;
     PnlLogo: TImage;
     PnlQuantidade: TPanel;
     LblQuantidadeHead: TLabel;
@@ -41,10 +28,29 @@ type
     PnlTotal: TPanel;
     LblTotalHead: TLabel;
     LblTotal: TLabel;
-    DateTimeFinal: TDateTimePicker;
+    Image1: TImage;
+    Image2: TImage;
+    Image3: TImage;
+    PnlEdits: TPanel;
+    LblTitulo: TLabel;
+    Label1: TLabel;
     Label2: TLabel;
-    DateTimeInicio: TDateTimePicker;
     Label3: TLabel;
+    CmbRelatorios: TComboBox;
+    DateTimeFinal: TDateTimePicker;
+    Panel2: TPanel;
+    Shape2: TShape;
+    PnlAdicionar: TPanel;
+    LblAdicionar: TLabel;
+    DateTimeInicio: TDateTimePicker;
+    Panel3: TPanel;
+    Shape1: TShape;
+    Panel4: TPanel;
+    Label4: TLabel;
+    Shape6: TShape;
+    Image4: TImage;
+    Image5: TImage;
+    Image6: TImage;
     procedure FormCreate(Sender: TObject);
     procedure FormDestroy(Sender: TObject);
     procedure FormShow(Sender: TObject);
@@ -71,7 +77,9 @@ implementation
 procedure TFormEntradas.FormCreate(Sender: TObject);
 begin
   Controller := TRelatorioEntradaController.Create;
-  RelatorioController := TRelatorioController.create
+  RelatorioController := TRelatorioController.Create;
+  DateTimeFinal.Date := now;
+ DateTimeInicio.Date := now;
 end;
 
 procedure TFormEntradas.FormDestroy(Sender: TObject);
@@ -106,7 +114,7 @@ begin
   if CmbRelatorios.ItemIndex = 0 then begin
    RelatorioController.GerarRelatorioValorTotalEntrada(DateTimeInicio.Date,DateTimeFinal.Date);
   end else if CmbRelatorios.ItemIndex = 1 then begin
-
+  RelatorioController.GerarRelatorioReceitasCanceladas(DateTimeInicio.Date,DateTimeFinal.Date);
   end else if CmbRelatorios.ItemIndex = 2 then begin
 
   end;

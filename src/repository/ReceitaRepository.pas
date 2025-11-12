@@ -76,8 +76,9 @@ begin
     FQuery.SQL.Add('INNER JOIN ordens_servico os ON r.id_ordem_servico = os.id');
     FQuery.SQL.Add('INNER JOIN clientes c ON os.id_cliente = c.id');
     FQuery.SQL.Add('WHERE r.ativo = TRUE');
-    FQuery.SQL.Add('AND (r.status = ''Pendente'' OR r.status = ''Parcial'' OR r.valor_recebido < r.valor_total)');
-    FQuery.SQL.Add('ORDER BY r.id DESC');
+    FQuery.SQL.Add('  AND r.status <> ''Cancelada''');
+    FQuery.SQL.Add('  AND (r.status = ''Pendente'' OR r.status = ''Parcial'' OR r.valor_recebido < r.valor_total)');
+    FQuery.SQL.Add('ORDER BY r.id DESC;');
     FQuery.Open;
     Result := FQuery;
   except
@@ -85,6 +86,7 @@ begin
       raise Exception.Create('Erro ao listar receitas: ' + E.Message);
   end;
 end;
+
 
 function TReceitaRepository.ListarReceitasRestaurar: TDataSet;
 begin
@@ -126,7 +128,9 @@ begin
   try
     FQuery.Close;
     FQuery.SQL.Clear;
-    FQuery.SQL.Add('UPDATE receitas SET ativo = FALSE WHERE id = :id');
+    FQuery.SQL.Add('UPDATE receitas');
+    FQuery.SQL.Add('SET ativo = FALSE, status = ''Cancelada''');
+    FQuery.SQL.Add('WHERE id = :id;');
     FQuery.ParamByName('id').AsInteger := aID;
     FQuery.ExecSQL;
   except
@@ -134,6 +138,7 @@ begin
       raise Exception.Create('Erro ao deletar receita: ' + E.Message);
   end;
 end;
+
 
 procedure TReceitaRepository.RestaurarReceita(const aID: Integer);
 begin

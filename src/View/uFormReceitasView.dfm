@@ -547,15 +547,6 @@ object FormReceitas: TFormReceitas
                   Font.Style = []
                   ParentFont = False
                   TabOrder = 1
-                  Items.Strings = (
-                    'Dinheiro'
-                    'Cart'#227'o de Cr'#233'dito'
-                    'Cart'#227'o de D'#233'bito'
-                    'PIX'
-                    'Transfer'#234'ncia Banc'#225'ria'
-                    'Boleto Banc'#225'rio'
-                    'Cheque'
-                    'Dep'#243'sito em Conta')
                 end
                 object EdtValorTotal: TEdit
                   AlignWithMargins = True

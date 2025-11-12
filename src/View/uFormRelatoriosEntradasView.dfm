@@ -31,10 +31,10 @@ object FormEntradas: TFormEntradas
     object LblTituloEntradas: TLabel
       AlignWithMargins = True
       Left = 3
-      Top = 10
+      Top = 8
       Width = 967
       Height = 32
-      Margins.Top = 10
+      Margins.Top = 8
       Align = alTop
       Alignment = taCenter
       Caption = 'Entradas'
@@ -44,8 +44,7 @@ object FormEntradas: TFormEntradas
       Font.Name = 'Segoe UI'
       Font.Style = [fsBold]
       ParentFont = False
-      ExplicitLeft = 0
-      ExplicitTop = 0
+      ExplicitTop = 9
     end
     object ImgFecharEntradas: TImage
       Left = 936
@@ -70,13 +69,37 @@ object FormEntradas: TFormEntradas
     end
     object Panel5: TPanel
       Left = 16
-      Top = 51
+      Top = 48
       Width = 945
       Height = 449
       BevelOuter = bvNone
       Color = 6172416
       ParentBackground = False
       TabOrder = 0
+      object Image4: TImage
+        Left = 67
+        Top = 317
+        Width = 37
+        Height = 51
+        Center = True
+        Picture.Data = {
+          0954506E67496D61676589504E470D0A1A0A0000000D49484452000000100000
+          001008060000001FF3FF61000000097048597300000EC300000EC301C76FA864
+          0000001974455874536F667477617265007777772E696E6B73636170652E6F72
+          679BEE3C1A0000016A4944415478DA95924F2844511487DF2D0BC9C2CE9F1516
+          7694626956231B455868C62C2635350B2B65848585144544D9909424B2F0B29E
+          148A58D959589162A1948534757D2767EAF6BA536F5E7DFDEEBDE7FCCE3BEFBC
+          6B822A1F6B6D2772044D3065AA343723B73007CF10C62E80B916B9840B63CC12
+          FB14EBD958054896BC43104D6B0739188C5B600119867ED80099C3109DBC980A
+          862E64157AE10D5A20093BFAED93987F026D296A9E40D6601ECEA10376A151CF
+          9731DB72BE718C7512D4378D92F4E4C47A9053CEDAA22F34041BD07128C035E4
+          49FC8E742539AF9CD7FB0ABCA3F7B0021FEE9B9D0239ED6AC057E0010D21018B
+          20FB2CEC61F825DE1EFC5F9E24FB475F8111F40CA6E14E07562039D4B95CC13E
+          FB6DDF1F33DAE2A65C0A68856392D39CD5B03E812FF6D94A77C4FD0B79645D5A
+          872D9D490952FA2932E81BB93CDE025A442ECC0C64E040D6184A1AEBD633E9A8
+          CF5BC0F7601C438A983E59CB3C2CEB4439FE073F969146A27D8F530000000049
+          454E44AE426082}
+      end
       object PnlLogo: TImage
         Left = 567
         Top = 74
@@ -2504,221 +2527,274 @@ object FormEntradas: TFormEntradas
         Pen.Color = clHighlight
         Shape = stRoundRect
       end
-      object PnlMainEdit: TPanel
+      object Shape6: TShape
+        Left = 24
+        Top = 22
+        Width = 257
+        Height = 403
+        Brush.Color = 15790320
+        Shape = stRoundRect
+      end
+      object PnlEdits: TPanel
         AlignWithMargins = True
-        Left = 18
-        Top = 13
-        Width = 277
-        Height = 423
+        Left = 35
+        Top = 43
+        Width = 237
+        Height = 369
         Margins.Left = 20
+        Margins.Top = 20
         Margins.Right = 20
         Margins.Bottom = 20
         BevelOuter = bvNone
-        Color = 9521152
+        Color = 15790320
         ParentBackground = False
-        TabOrder = 0
-        object PnlEdits: TPanel
-          AlignWithMargins = True
-          Left = 20
-          Top = 20
-          Width = 237
-          Height = 383
-          Margins.Left = 20
-          Margins.Top = 20
-          Margins.Right = 20
-          Margins.Bottom = 20
-          Align = alClient
+        TabOrder = 3
+        object LblTitulo: TLabel
+          Left = 47
+          Top = 8
+          Width = 145
+          Height = 37
+          Caption = 'Rel'#225'torios :'
+          Font.Charset = DEFAULT_CHARSET
+          Font.Color = clBlack
+          Font.Height = -27
+          Font.Name = 'Segoe UI'
+          Font.Style = [fsBold]
+          ParentFont = False
+        end
+        object Label1: TLabel
+          Left = 10
+          Top = 164
+          Width = 57
+          Height = 15
+          Caption = 'Categoria :'
+        end
+        object Label2: TLabel
+          Left = 10
+          Top = 115
+          Width = 58
+          Height = 15
+          Caption = 'Data Final :'
+        end
+        object Label3: TLabel
+          Left = 10
+          Top = 66
+          Width = 62
+          Height = 15
+          Caption = 'Data in'#237'cio :'
+        end
+        object CmbRelatorios: TComboBox
+          Left = 10
+          Top = 181
+          Width = 215
+          Height = 23
+          TabOrder = 1
+          Items.Strings = (
+            'Receitas Recebidas'
+            'Receitas Or'#231'amentadas ou Canceladas'
+            'Receitas Pendentes')
+        end
+        object DateTimeFinal: TDateTimePicker
+          Left = 10
+          Top = 131
+          Width = 215
+          Height = 23
+          Date = 45972.000000000000000000
+          Time = 0.918136874999618200
+          TabOrder = 3
+        end
+        object Panel2: TPanel
+          Left = 10
+          Top = 229
+          Width = 215
+          Height = 44
           BevelOuter = bvNone
-          Color = 15790320
-          ParentBackground = False
+          Caption = 'Panel2'
           TabOrder = 0
-          object LblTitulo: TLabel
-            Left = 45
-            Top = 15
-            Width = 145
-            Height = 37
-            Caption = 'Rel'#225'torios :'
-            Font.Charset = DEFAULT_CHARSET
-            Font.Color = clWindowText
-            Font.Height = -27
-            Font.Name = 'Segoe UI'
-            Font.Style = [fsBold]
-            ParentFont = False
-          end
-          object Label1: TLabel
-            Left = 10
-            Top = 164
-            Width = 57
-            Height = 15
-            Caption = 'Categoria :'
-          end
-          object Label2: TLabel
-            Left = 10
-            Top = 115
-            Width = 58
-            Height = 15
-            Caption = 'Data Final :'
-          end
-          object Label3: TLabel
-            Left = 10
-            Top = 66
-            Width = 62
-            Height = 15
-            Caption = 'Data in'#237'cio :'
-          end
-          object CmbRelatorios: TComboBox
-            Left = 10
-            Top = 181
-            Width = 215
-            Height = 23
-            TabOrder = 1
-            Items.Strings = (
-              'Receitas Recebidas'
-              'Receitas Or'#231'amentadas ou Canceladas'
-              'Receitas Pendentes')
-          end
-          object DateTimeFinal: TDateTimePicker
-            Left = 10
-            Top = 131
-            Width = 215
-            Height = 23
-            Date = 45972.000000000000000000
-            Time = 0.918136874999618200
-            TabOrder = 3
-          end
-          object Panel2: TPanel
-            Left = 10
-            Top = 229
+          object Shape2: TShape
+            AlignWithMargins = True
+            Left = 0
+            Top = 0
             Width = 215
             Height = 44
+            Margins.Left = 0
+            Margins.Top = 0
+            Margins.Right = 0
+            Margins.Bottom = 0
+            Align = alClient
+            Brush.Color = 9521152
+            Pen.Color = clSilver
+            Shape = stRoundRect
+            ExplicitTop = 8
+            ExplicitWidth = 207
+          end
+          object PnlAdicionar: TPanel
+            AlignWithMargins = True
+            Left = 5
+            Top = 5
+            Width = 205
+            Height = 34
+            Margins.Left = 5
+            Margins.Top = 5
+            Margins.Right = 5
+            Margins.Bottom = 5
+            Align = alClient
             BevelOuter = bvNone
-            Caption = 'Panel2'
+            Color = 9521152
+            ParentBackground = False
             TabOrder = 0
-            object Shape2: TShape
+            object LblAdicionar: TLabel
               AlignWithMargins = True
-              Left = 0
-              Top = 0
-              Width = 215
+              Left = 3
+              Top = 6
+              Width = 199
+              Height = 25
+              Margins.Top = 6
+              Align = alClient
+              Alignment = taCenter
+              Caption = 'Gerar Relat'#243'rio'
+              Color = clWhite
+              Font.Charset = DEFAULT_CHARSET
+              Font.Color = clWhite
+              Font.Height = -15
+              Font.Name = 'Segoe UI'
+              Font.Style = []
+              ParentColor = False
+              ParentFont = False
+              OnClick = LblAdicionarClick
+              ExplicitLeft = 0
+              ExplicitTop = 9
+            end
+            object Image6: TImage
+              Left = 9
+              Top = -5
+              Width = 33
               Height = 44
-              Margins.Left = 0
-              Margins.Top = 0
-              Margins.Right = 0
-              Margins.Bottom = 0
-              Align = alClient
-              Brush.Color = 9521152
-              Pen.Color = clSilver
-              Shape = stRoundRect
-              ExplicitTop = 8
-              ExplicitWidth = 207
-            end
-            object PnlAdicionar: TPanel
-              AlignWithMargins = True
-              Left = 5
-              Top = 5
-              Width = 205
-              Height = 34
-              Margins.Left = 5
-              Margins.Top = 5
-              Margins.Right = 5
-              Margins.Bottom = 5
-              Align = alClient
-              BevelOuter = bvNone
-              Color = 9521152
-              ParentBackground = False
-              TabOrder = 0
-              object LblAdicionar: TLabel
-                AlignWithMargins = True
-                Left = 3
-                Top = 6
-                Width = 199
-                Height = 25
-                Margins.Top = 6
-                Align = alClient
-                Alignment = taCenter
-                Caption = 'Gerar Relat'#243'rio'
-                Color = clWhite
-                Font.Charset = DEFAULT_CHARSET
-                Font.Color = clWhite
-                Font.Height = -15
-                Font.Name = 'Segoe UI'
-                Font.Style = []
-                ParentColor = False
-                ParentFont = False
-                OnClick = LblAdicionarClick
-                ExplicitWidth = 101
-                ExplicitHeight = 20
-              end
+              Center = True
+              Picture.Data = {
+                0954506E67496D61676589504E470D0A1A0A0000000D49484452000000180000
+                00180806000000E0773DF8000000097048597300000EC300000EC301C76FA864
+                0000001974455874536F667477617265007777772E696E6B73636170652E6F72
+                679BEE3C1A0000021D4944415478DAB596CF4B14511CC0DF9888A1E221A135E9
+                87170B42F6506875CC8C360A0F79112D1012223C2E12742B5010FC03820A890D
+                82B483107810A4420AA11215CA100CC48322A8A141484C9F6FFB1D7A8E6EF346
+                76BFF06166DF7CDFFBBC9F33EB19C2F7FD3B5C1E4295898E457805F73DCFDB8A
+                4AF668BC5A2B1D7068DC8ECFD084642D4A7081EB44CCC683988466243F0A2590
+                780F97916C164A203188A0B39002896348165D045FC1DE1D3590D07B99EB05A8
+                87A2505B2904A35182EF24D5DA093C97C6A6F56727CF07291BE2FE46A8AD169E
+                8DB88C600EEC05731D81B360BFE124D886C7DAD320A4B757F5FE23BC815B66F7
+                A977122C4123FCB4721A2058BC7BF0045EC04515BE85151846309FAF2992C3D5
+                4D839FA87FD064D7688DDFEBF910C80E6A87243C804B506C4D611FA2E15C02E9
+                41975E833867B26F5A89699DC216780625393A318024BD9760036E8704E7B5A7
+                122993DDA653501A31D20E24CFE34CD1321C8147DA8970C8EE3A6DFEEDAE6F08
+                4EC611BCA6C235F2650427B46C424723E256C8409B55E7781C4106C14DF2E58C
+                5468D9535D3399AE2BF0D2EC3CE167E3084611A4C8FFC2FD292DFB05757008DE
+                419995EF43B508923ACCA8904FE361E885B4552E87B31C2A43F99374A85104B2
+                873FC0190749078CC1ACF9FF1F84DF26FB291DF7FE8EC5F7CB7491121182252A
+                65C897AD3B924322EFB3BBE4C93BCD780EBDDE339048677AE03A1C855518877E
+                1A9F09F2FE0009B1D47817C646930000000049454E44AE426082}
             end
           end
-          object DateTimeInicio: TDateTimePicker
-            Left = 10
-            Top = 82
-            Width = 215
-            Height = 23
-            Date = 45972.000000000000000000
-            Time = 0.918136874999618200
-            TabOrder = 4
-          end
-          object Panel3: TPanel
-            Left = 30
-            Top = 287
+        end
+        object DateTimeInicio: TDateTimePicker
+          Left = 10
+          Top = 82
+          Width = 215
+          Height = 23
+          Date = 45972.000000000000000000
+          Time = 0.918136874999618200
+          TabOrder = 4
+        end
+        object Panel3: TPanel
+          Left = 30
+          Top = 287
+          Width = 177
+          Height = 36
+          BevelOuter = bvNone
+          Caption = 'Panel2'
+          TabOrder = 2
+          object Shape1: TShape
+            AlignWithMargins = True
+            Left = 0
+            Top = 0
             Width = 177
             Height = 36
+            Margins.Left = 0
+            Margins.Top = 0
+            Margins.Right = 0
+            Margins.Bottom = 0
+            Align = alClient
+            Brush.Color = 6172416
+            Pen.Color = clSilver
+            Shape = stRoundRect
+            ExplicitLeft = 32
+            ExplicitWidth = 145
+          end
+          object Panel4: TPanel
+            AlignWithMargins = True
+            Left = 5
+            Top = 5
+            Width = 167
+            Height = 26
+            Margins.Left = 5
+            Margins.Top = 5
+            Margins.Right = 5
+            Margins.Bottom = 5
+            Align = alClient
             BevelOuter = bvNone
-            Caption = 'Panel2'
-            TabOrder = 2
-            object Shape1: TShape
+            Color = 6172416
+            ParentBackground = False
+            TabOrder = 0
+            object Label4: TLabel
               AlignWithMargins = True
-              Left = 0
-              Top = 0
-              Width = 177
-              Height = 36
-              Margins.Left = 0
-              Margins.Top = 0
-              Margins.Right = 0
-              Margins.Bottom = 0
+              Left = 10
+              Top = 3
+              Width = 154
+              Height = 20
+              Margins.Left = 10
               Align = alClient
-              Brush.Color = 6172416
-              Pen.Color = clSilver
-              Shape = stRoundRect
-              ExplicitTop = -8
-              ExplicitHeight = 44
+              Alignment = taCenter
+              Caption = 'Limpar Filtros '
+              Color = clWhite
+              Font.Charset = DEFAULT_CHARSET
+              Font.Color = clWhite
+              Font.Height = -15
+              Font.Name = 'Segoe UI'
+              Font.Style = []
+              ParentColor = False
+              ParentFont = False
+              OnClick = Label4Click
+              ExplicitLeft = 12
+              ExplicitWidth = 161
             end
-            object Panel4: TPanel
-              AlignWithMargins = True
-              Left = 5
-              Top = 5
-              Width = 167
-              Height = 26
-              Margins.Left = 5
-              Margins.Top = 5
-              Margins.Right = 5
-              Margins.Bottom = 5
-              Align = alClient
-              BevelOuter = bvNone
-              Color = 6172416
-              ParentBackground = False
-              TabOrder = 0
-              object Label4: TLabel
-                AlignWithMargins = True
-                Left = 3
-                Top = 3
-                Width = 161
-                Height = 20
-                Align = alClient
-                Alignment = taCenter
-                Caption = 'Limpar Filtros'
-                Color = clWhite
-                Font.Charset = DEFAULT_CHARSET
-                Font.Color = clWhite
-                Font.Height = -15
-                Font.Name = 'Segoe UI'
-                Font.Style = []
-                ParentColor = False
-                ParentFont = False
-                OnClick = Label4Click
-                ExplicitWidth = 90
-              end
+            object Image5: TImage
+              Left = -1
+              Top = -10
+              Width = 33
+              Height = 44
+              Center = True
+              Picture.Data = {
+                0954506E67496D61676589504E470D0A1A0A0000000D49484452000000180000
+                00180806000000E0773DF8000000097048597300000EC300000EC301C76FA864
+                0000001974455874536F667477617265007777772E696E6B73636170652E6F72
+                679BEE3C1A000002134944415478DAAD954D4854511886EF3584940217421884
+                4A9B209130D4205DB45390287F36632881886D1A4170579B992021C114575248
+                0D883F0BD195B62A4449144411DAB450306A60507444C2EAF67CDC33721CEF1F
+                3373E099EF9E73BEEF7D9973CE3DD73472D82CCB6A2644A104E6206CE650BC8D
+                3009BA662C270688DF257C81C2B4A964D60688CB727C851B0ED3DFB33240BC80
+                F019AA5D52DA3336405C6A63107298FE0D3DA6698E6763F094F0DE612A0E8F11
+                5F964E2003C4AE106AA10C7EAA653986300C429E4ADD848788EFA46A7D0D10EF
+                5022C5DA7002A2080D31FF9CE7B7867DEEDB194BEAF5A687F025C2083CF3F07F
+                01AFA00BDE21FE2F3DC17411BF469880073E7F5036F326C27B6E09170C107F44
+                1885EB7ECBA75A370663BE0608DF26BC86A680C267CB8441D4D500E17E255A67
+                043C5569AD13830F5E0687C4AB19084B3B82720C125E062BC47B191A84111FF6
+                4A108356628DEAF742BE7A3ED59E9DDA02346260791AC88FDAE0252852E3723B
+                FE81FB2E75BB508D78DCEF2FA60C6E19F6EB2F57C2006CC10C6C40555ACD09D4
+                23BE1E640DF5632A260720AFFA34440CFB7DB8A3E5FF8510E253AAA685B0A6DF
+                3DAE069A5139E10754C2AA36257BF22425AE72657E84B18F810DB4E23EC21BD5
+                DD37ECF33EEF90275FB245B86CD89BFE2D90812AAE30EC8D9EA5F097D3B2D097
+                2B7B4895BC643C12D8C0C5F4DCB2D02F257C02F97C3630BEADE7FF079E60B5E6
+                2EE27C5D0000000049454E44AE426082}
             end
           end
         end
@@ -2731,29 +2807,32 @@ object FormEntradas: TFormEntradas
         BevelOuter = bvNone
         Color = 9521152
         ParentBackground = False
-        TabOrder = 1
+        TabOrder = 0
         object LblQuantidadeHead: TLabel
           AlignWithMargins = True
-          Left = 3
+          Left = 10
           Top = 3
-          Width = 194
+          Width = 187
           Height = 21
+          Margins.Left = 10
           Align = alTop
           Alignment = taCenter
-          Caption = 'Quantidade de Entradas '
+          Caption = 'Quantidade'
           Font.Charset = DEFAULT_CHARSET
           Font.Color = clWhite
           Font.Height = -16
           Font.Name = 'Segoe UI'
           Font.Style = [fsBold]
           ParentFont = False
+          ExplicitLeft = 26
         end
         object LblQuantidade: TLabel
           AlignWithMargins = True
-          Left = 3
+          Left = 10
           Top = 30
-          Width = 194
+          Width = 187
           Height = 40
+          Margins.Left = 10
           Align = alTop
           Alignment = taCenter
           Caption = '1'
@@ -2763,8 +2842,37 @@ object FormEntradas: TFormEntradas
           Font.Name = 'Segoe UI'
           Font.Style = []
           ParentFont = False
-          ExplicitTop = 54
-          ExplicitWidth = 200
+          ExplicitLeft = 18
+        end
+        object Image2: TImage
+          Left = 0
+          Top = -2
+          Width = 64
+          Height = 102
+          Center = True
+          Picture.Data = {
+            0954506E67496D61676589504E470D0A1A0A0000000D49484452000000200000
+            00200806000000737A7AF4000000097048597300000EC300000EC301C76FA864
+            0000001974455874536F667477617265007777772E696E6B73636170652E6F72
+            679BEE3C1A0000023E4944415478DAED974D48545114C7EFE5F9516981866404
+            8AA00ED34268E162B05A89452E12112909C5C04D9BA01004D3A0453B3786CD26
+            5752D062408366DA44312E8314448988D0042182289329AD9C7E977B95F1F1BE
+            485F427AE0C779BC7BDE39FF73EF7D5F52ECB2C93D25209BCD96E1CEC059380D
+            43A10AA0E021DC45535011B535DD12B680182E0D792E21C7425F0244B4E11E41
+            BE6DE89D94B2E65F08A8C325E1846D680C019DA109A07031AE1F6E3A74AFEC1A
+            02E23B2E80C216AE1BEEC0F18DD3108729B86F049D42C0F48E09A0F0015C27F4
+            4275CED0ACE9366DE25A71C350C9B9DFDB1640C2A3B81EB80EE539439F60101E
+            50E897ED1A4E49352B7FF720224101AED9747C010A6C85EFA92E29F2D52F5760
+            011455DD9D83F3D004A5B6900F30643ACE986B0A857EF8580E29D5ACCC498742
+            6AF7564205D440BDA1D641F04F780AA390526B6ACB3529F423D7CD5292A0010E
+            3ACC349618BC6C0D5EC2042428FAD165C60EE2323EB9D69580650E0E7B04ADC2
+            0CA86ED44E7E11646DC95B845BF18B5302BAF097E1077C832FF01EDEC05B98CF
+            9D5AE2D53D1C135B37DEE6304C11FF39B000BF0087CE1E0ABD646EB628F47EB1
+            C212302FF426F5B2A811128A8005A1EF102F3B29F46D194C004923B8BB70C425
+            EE15DC626DD7C312F018D7EE13DB8880E761097826F453CECBDA1090D817B02F
+            E0BF15302EF40F849735232049AC7A47447C62AB6049E8B7A1E511F77D434083
+            D01F8BC52E81AFE10A025689BDC4F16DE1FE327A42DC0D93B70F7755B87F908C
+            ECAD9F5327FB031BD210BE19F6E9440000000049454E44AE426082}
         end
       end
       object PnlTicket: TPanel
@@ -2775,13 +2883,14 @@ object FormEntradas: TFormEntradas
         BevelOuter = bvNone
         Color = 9521152
         ParentBackground = False
-        TabOrder = 2
+        TabOrder = 1
         object LblTicketHead: TLabel
           AlignWithMargins = True
-          Left = 3
+          Left = 30
           Top = 3
-          Width = 191
+          Width = 164
           Height = 21
+          Margins.Left = 30
           Align = alTop
           Alignment = taCenter
           Caption = 'Ticket M'#233'dio '
@@ -2791,14 +2900,16 @@ object FormEntradas: TFormEntradas
           Font.Name = 'Segoe UI'
           Font.Style = [fsBold]
           ParentFont = False
+          ExplicitLeft = 3
           ExplicitWidth = 103
         end
         object LblTicketMedio: TLabel
           AlignWithMargins = True
-          Left = 3
+          Left = 30
           Top = 30
-          Width = 191
+          Width = 164
           Height = 40
+          Margins.Left = 30
           Align = alTop
           Alignment = taCenter
           Caption = '1'
@@ -2808,7 +2919,44 @@ object FormEntradas: TFormEntradas
           Font.Name = 'Segoe UI'
           Font.Style = []
           ParentFont = False
+          ExplicitLeft = 3
           ExplicitWidth = 16
+        end
+        object Image3: TImage
+          Left = -1
+          Top = 1
+          Width = 64
+          Height = 102
+          Center = True
+          Picture.Data = {
+            0954506E67496D61676589504E470D0A1A0A0000000D49484452000000200000
+            00200806000000737A7AF4000000097048597300000EC300000EC301C76FA864
+            0000001974455874536F667477617265007777772E696E6B73636170652E6F72
+            679BEE3C1A000002EC4944415478DAED96496854411086DFD3B805DC62D090A0
+            2844F0A032602020E2866884B81C44700D1A858088E286E24110544444109C8B
+            F11A70B979700311110CA2A2899011C5049904133133040D0AA3E357997ADA76
+            FA21338CC9C169F8A97ED555D5FF5455F7B4EF0DF3F00B040A04D2E9F448E41C
+            30F61FEF950231DFF7BFD9046E20E7833E8753099808DAF34060B497C9780412
+            DF4D02BDC84A94BDB6076B1B10AB58DBADDF1310B3B3D8F407680936C4BF0B51
+            C577974920819C05C468251821D9C0E80E6B63989732EFD400671147B2FCE5AB
+            F1BFADFE71447510CF2650014EA8BE1FEC041B35033B34C079C4812C09ACC5FF
+            A641407E684AE5A55F04304A3A4AB01E51C35A431E335061ACF50404E6611477
+            1028D612BCD76F69C84AC3640A4868AD65141B19F454DF8A7F0A5F39651D609A
+            E19F1402F79854812B181EB2086CD20CD439C8D520AE8235AC3F549D9430F0E9
+            306C258317BCC1473DE9AB8174F723B01FC7FB8663ADF6C05E6BF33244CCCB1C
+            5159BFABFAD38863E031BA85AA9B8E78078A1CE549FA46D028E2158E5143375E
+            4BD06E11904C9DD34F1701190BD03F47B784F98390FE18284129936AD00896E2
+            F4DAD868B36E506711B88CD8A59F42F8B0F6431358A4FA2DF8356976DF80A90E
+            02DD42E00393B7E0A2368D64E533CEB7B4CE2B1CBD710671D450C9C532C9FBDD
+            8476662288535EE69E91527C025BC153F31E28F732F78010F802EA81B02F2350
+            CC2220196BF6C2C7473013BF7ECB2F388651D6F688CE24300E6C0B32A0A90D4A
+            B0DDDE01BF46253968497E9DA4DFE1131068955261D36712908E6E300848432D
+            07CB303CEE08360A71D22A85F8D5637FCD9516EB2212DBE6BFDD84D2A0E5ACB5
+            84042CD17A06E325B691B0BA386EC28153D0CD641DE871F8887E31381812531A
+            EF99F1DD066A436CE54FEE09986C13D8C7441A421E26D2A133BCA11BC93F9E64
+            9091F4C4730C96170272143B730C96CB48D804A40C2FC0DC2122707DD0AB585F
+            41F2482DCA3E5E56E32B681BFE677981C07F4FE027BB2B5521FFD682A7000000
+            0049454E44AE426082}
         end
       end
       object PnlTotal: TPanel
@@ -2819,13 +2967,14 @@ object FormEntradas: TFormEntradas
         BevelOuter = bvNone
         Color = 9521152
         ParentBackground = False
-        TabOrder = 3
+        TabOrder = 2
         object LblTotalHead: TLabel
           AlignWithMargins = True
-          Left = 3
+          Left = 30
           Top = 3
-          Width = 198
+          Width = 171
           Height = 21
+          Margins.Left = 30
           Align = alTop
           Alignment = taCenter
           Caption = 'Total de Entradas'
@@ -2835,14 +2984,16 @@ object FormEntradas: TFormEntradas
           Font.Name = 'Segoe UI'
           Font.Style = [fsBold]
           ParentFont = False
-          ExplicitLeft = 4
+          ExplicitLeft = 19
+          ExplicitWidth = 198
         end
         object LblTotal: TLabel
           AlignWithMargins = True
-          Left = 3
+          Left = 30
           Top = 30
-          Width = 198
+          Width = 171
           Height = 40
+          Margins.Left = 30
           Align = alTop
           Alignment = taCenter
           Caption = '1'
@@ -2852,7 +3003,47 @@ object FormEntradas: TFormEntradas
           Font.Name = 'Segoe UI'
           Font.Style = []
           ParentFont = False
-          ExplicitTop = 14
+          ExplicitLeft = 19
+          ExplicitWidth = 198
+        end
+        object Image1: TImage
+          Left = -3
+          Top = -6
+          Width = 64
+          Height = 110
+          Center = True
+          Picture.Data = {
+            0954506E67496D61676589504E470D0A1A0A0000000D49484452000000200000
+            00200806000000737A7AF4000000097048597300000EC300000EC301C76FA864
+            0000001974455874536F667477617265007777772E696E6B73636170652E6F72
+            679BEE3C1A000003604944415478DAAD965B48154118C76753BA10459676A15E
+            8C20A2B222A30B840565372DD1B0878AA29B85502F5650F9600F15442F5D2825
+            0C321FBA8796A44891863D549089D04B105DEC76BA47248AA7DFD7CCD2F1743C
+            BB7B76077E7CC3EE37F3FDF79B6F66D6523E5A381CDE83390296836B0FECB22C
+            EB64F40BA7814E02D661AA5CBA1720E05AD0029230ED30D1C1557C3210D013A8
+            0023623DE6BC83DB6A825F8DF522080192859B90D6874B07E4C5FAFA4004F86D
+            7E6B601566B90BD79F708C2C74042280C0C99872D8E461D8375883887A5F0208
+            2E632A616302DABB211F11B57E041CC494269239D37EC11C44B4791640F06998
+            C790E44380B4A79089882EAF02EE6216F80C6EB7ED0828772D80E0D9987A17AE
+            211806C90E7E2F21DD8B808B984217AEA9B00D0EB9F0CD7625C054FE471811C7
+            4DF67805692DC37F12FDF99001C571C61CF79281D118B9FDF6414AD4EB2F3025
+            FAA061CC4CCCA338D33EB48CE300CC32A54FB519301286C067F800F7A10EEEC1
+            58907D3C3D62A2CB042F649E0AFA5BDD7E94CC6D99AD751DD25D0C688602A58B
+            AC150699E74D08C862AE5CFA394A17E02C98EA305FB7089089323CA8AE24D866
+            C6D59A6076DBC1F33311E9EF8739AD7441F6D94480A43945B96F8D045ADC47BA
+            DF2A5D8CBF4DE0AFF0C6494009F6A8CBE09DB012010D8C2B8FFABA7613584508
+            900BE8755C01265D92CA9D9005FD63F87D87DB7098E04FCC984801B7781EB91C
+            F61288CF16A70C1429BDAE5DF4A5F2A51ED2CCB2844C5A5BCD7B29BE1CFA17A2
+            04C8057345BE9C7745BC5B48FF044C764AA908388B5D0A97A009E4969243E787
+            D2D52EDB4EAA7909E4C15E39C3632C81DD64EFCB7F42B153705B806C99036640
+            6A1CDFE75046F0AA184B90680B8B80794CDA627E2E672BBD7FED25904CBC8366
+            7CDACD912C77F983800484444083D27F2AD54A1F28AF7A49D4C534C12CC106A8
+            C7677F40026A4480A4FD9CFA77A8C8DE95E293CA971A18A3F48927224FC16E53
+            9041085824024631E17BEC781EAC804CA5EF825E4B0075F88522FCBD9EFBD14D
+            FE924B44805C34F2A753CD8367B13CCDDACF55FA47346CB65A0DFDDC04027F82
+            52E69063FAEF2E907D7F43E9CB486EBEB6A82518A7F47E1E6A32916F32B196FE
+            600F81BBE005B430BED37E689F840395AE811CB304B20B86472C819C0F72F9DC
+            6170D847DAFF6B7F002B3E5D5DC500FB290000000049454E44AE426082}
         end
       end
     end

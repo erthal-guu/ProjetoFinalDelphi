@@ -1,0 +1,18 @@
+13:51:08 - CADASTRO - ID: 0 cadastrou ordem de serviço com cliente ID: 1
+13:51:26 - CADASTRO - ID: 0 cadastrou ordem de serviço com cliente ID: 7
+13:51:49 - RECEBER - ID: 0 registrou recebimento da receita ID: 10 - Valor: 770,00
+13:52:18 - RECEBER - ID: 0 registrou recebimento da receita ID: 9 - Valor: 1608,00
+15:27:41 - CADASTRO - ID: 0 cadastrou ordem de serviço com cliente ID: 1
+16:43:57 - CADASTRO - ID: 0 cadastrou ordem de serviço com cliente ID: 4
+16:44:11 - CADASTRO - ID: 0 cadastrou ordem de serviço com cliente ID: 3
+16:44:33 - CADASTRO - ID: 0 cadastrou ordem de serviço com cliente ID: 4
+16:45:47 - DELETAR - ID: 0 deletou a receita ID: 11
+16:51:16 - RECEBER - ID: 0 registrou recebimento da receita ID: 14 - Valor: 1000,00
+16:53:09 - RECEBER - ID: 0 registrou recebimento da receita ID: 13 - Valor: 0,00
+16:53:20 - RECEBER - ID: 0 registrou recebimento da receita ID: 12 - Valor: 0,00
+17:06:17 - RECEBER - ID: 0 registrou recebimento da receita ID: 13 - Valor: 0,00
+17:06:29 - RECEBER - ID: 0 registrou recebimento da receita ID: 12 - Valor: 0,00
+17:06:37 - RECEBER - ID: 0 registrou recebimento da receita ID: 14 - Valor: 1000,00
+17:09:58 - DELETAR - ID: 0 deletou a receita ID: 12
+17:10:02 - DELETAR - ID: 0 deletou a receita ID: 13
+17:10:05 - DELETAR - ID: 0 deletou a receita ID: 14

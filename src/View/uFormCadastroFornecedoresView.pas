@@ -120,6 +120,7 @@ type
     Shape2: TShape;
     Shape3: TShape;
     LblAdicionar: TLabel;
+    Image6: TImage;
 
     procedure BtnAdicionarClick(Sender: TObject);
     procedure BtnPesquisarClick(Sender: TObject);
