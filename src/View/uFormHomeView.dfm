@@ -3296,6 +3296,12 @@
         Caption = 'Entradas'
         OnClick = Entradas1Click
       end
+      object Sadas1: TMenuItem
+        Caption = 'Sa'#237'das'
+      end
+      object Sadas2: TMenuItem
+        Caption = 'Servi'#231'os'
+      end
     end
     object Financeiro: TMenuItem
       Caption = ' Financeiro     '

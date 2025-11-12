@@ -8,13 +8,12 @@ object DataModule1: TDataModule1
       'Password=root'
       'Server=localhost'
       'DriverID=PG')
+    Connected = True
     Left = 496
     Top = 288
   end
   object FDPhysPgDriverLink1: TFDPhysPgDriverLink
-    VendorLib = 
-      'C:\Users\Auditorio\Desktop\ProjetoFinalDelphi\src\lib\lib\libpq.' +
-      'dll'
+    VendorLib = 'C:\Users\vplgu\Desktop\ProjetoFinalDelphi\src\lib\lib\libpq.dll'
     Left = 597
     Top = 289
   end
@@ -171,7 +170,7 @@ object DataModule1: TDataModule1
           AllowVectorExport = True
           Top = -3.779530000000000000
           Width = 718.110717773437500000
-          Height = 26.456710000000000000
+          Height = 56.692950000000000000
           ContentScaleOptions.Constraints.MaxIterationValue = 0
           ContentScaleOptions.Constraints.MinIterationValue = 0
           Font.Charset = DEFAULT_CHARSET
@@ -183,7 +182,7 @@ object DataModule1: TDataModule1
           Fill.BackColor = clGray
           HAlign = haCenter
           Memo.UTF8W = (
-            'Report')
+            'Relat'#243'rio de Entradas Financeiras')
           ParentFont = False
           Style = 'Title'
           VAlign = vaCenter
@@ -196,13 +195,13 @@ object DataModule1: TDataModule1
         FillGap.Bottom = 0
         FillGap.Right = 0
         Frame.Typ = []
-        Height = 22.677180000000000000
+        Height = 89.708720000000000000
         Top = 68.031540000000000000
         Width = 718.110700000000000000
         object Memo2: TfrxMemoView
           AllowVectorExport = True
+          Left = 3.779530000000000000
           Width = 718.110236220000000000
-          Height = 22.677180000000000000
           ContentScaleOptions.Constraints.MaxIterationValue = 0
           ContentScaleOptions.Constraints.MinIterationValue = 0
           Font.Charset = DEFAULT_CHARSET
@@ -217,9 +216,9 @@ object DataModule1: TDataModule1
         end
         object Memo3: TfrxMemoView
           AllowVectorExport = True
-          Left = 302.362400000000000000
-          Top = -3.000000000000000000
-          Width = 54.809310470000000000
+          Left = 151.401670000000000000
+          Top = 25.236240000000000000
+          Width = 35.911660470000000000
           Height = 22.677180000000000000
           ContentScaleOptions.Constraints.MaxIterationValue = 0
           ContentScaleOptions.Constraints.MinIterationValue = 0
@@ -234,30 +233,11 @@ object DataModule1: TDataModule1
           ParentFont = False
           Style = 'Header'
         end
-        object Memo4: TfrxMemoView
-          AllowVectorExport = True
-          Left = 140.738500470000000000
-          Top = -4.000000000000000000
-          Width = 61.741390850000000000
-          Height = 22.677180000000000000
-          ContentScaleOptions.Constraints.MaxIterationValue = 0
-          ContentScaleOptions.Constraints.MinIterationValue = 0
-          Font.Charset = DEFAULT_CHARSET
-          Font.Color = clMaroon
-          Font.Height = -13
-          Font.Name = 'Arial'
-          Font.Style = [fsBold]
-          Frame.Typ = []
-          Memo.UTF8W = (
-            'grupo')
-          ParentFont = False
-          Style = 'Header'
-        end
         object Memo5: TfrxMemoView
           AllowVectorExport = True
-          Left = 227.936601320000000000
-          Top = -4.000000000000000000
-          Width = 43.338926030000000000
+          Left = 122.109761320000000000
+          Top = 25.236240000000000000
+          Width = 24.441276030000000000
           Height = 22.677180000000000000
           ContentScaleOptions.Constraints.MaxIterationValue = 0
           ContentScaleOptions.Constraints.MinIterationValue = 0
@@ -272,11 +252,30 @@ object DataModule1: TDataModule1
           ParentFont = False
           Style = 'Header'
         end
+        object Memo4: TfrxMemoView
+          AllowVectorExport = True
+          Left = 76.486490470000000000
+          Top = 25.236240000000000000
+          Width = 42.843740850000000000
+          Height = 22.677180000000000000
+          ContentScaleOptions.Constraints.MaxIterationValue = 0
+          ContentScaleOptions.Constraints.MinIterationValue = 0
+          Font.Charset = DEFAULT_CHARSET
+          Font.Color = clMaroon
+          Font.Height = -13
+          Font.Name = 'Arial'
+          Font.Style = [fsBold]
+          Frame.Typ = []
+          Memo.UTF8W = (
+            'grupo')
+          ParentFont = False
+          Style = 'Header'
+        end
         object Memo6: TfrxMemoView
           AllowVectorExport = True
-          Left = 55.062787350000000000
-          Top = -3.000000000000000000
-          Width = 56.335217250000000000
+          Left = 27.606077350000000000
+          Top = 25.456710000000000000
+          Width = 44.996627250000000000
           Height = 22.677180000000000000
           ContentScaleOptions.Constraints.MaxIterationValue = 0
           ContentScaleOptions.Constraints.MinIterationValue = 0
@@ -293,8 +292,8 @@ object DataModule1: TDataModule1
         end
         object Memo7: TfrxMemoView
           AllowVectorExport = True
-          Left = 8.571164610000000000
-          Top = -1.000000000000000000
+          Left = 1.012104610000000000
+          Top = 25.456710000000000000
           Width = 25.664611610000000000
           Height = 22.677180000000000000
           ContentScaleOptions.Constraints.MaxIterationValue = 0
@@ -319,7 +318,7 @@ object DataModule1: TDataModule1
         FillGap.Right = 0
         Frame.Typ = []
         Height = 18.897650000000000000
-        Top = 151.181200000000000000
+        Top = 219.212740000000000000
         Width = 718.110700000000000000
         DataSet = frxDBDataset1
         DataSetName = 'frxDBDataset1'
@@ -426,8 +425,8 @@ object DataModule1: TDataModule1
         FillGap.Bottom = 0
         FillGap.Right = 0
         Frame.Typ = []
-        Height = 26.456710000000000000
-        Top = 230.551330000000000000
+        Height = 23.677180000000000000
+        Top = 298.582870000000000000
         Width = 718.110700000000000000
         object Memo13: TfrxMemoView
           Align = baWidth
@@ -468,5 +467,33 @@ object DataModule1: TDataModule1
     DataSetOptions = []
     Left = 592
     Top = 368
+    FieldDefs = <
+      item
+        FieldName = 'id'
+      end
+      item
+        FieldName = 'nome'
+        FieldType = fftString
+        Size = 100
+      end
+      item
+        FieldName = 'cpf'
+        FieldType = fftString
+        Size = 14
+      end
+      item
+        FieldName = 'senha'
+        FieldType = fftString
+        Size = 255
+      end
+      item
+        FieldName = 'grupo'
+        FieldType = fftString
+        Size = 50
+      end
+      item
+        FieldName = 'ativo'
+        FieldType = fftBoolean
+      end>
   end
 end

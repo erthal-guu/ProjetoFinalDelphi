@@ -89,7 +89,7 @@ begin
       FQuery.ParamByName('id_cliente').AsInteger := aOS.getIdCliente;
       FQuery.ParamByName('valor_total').AsCurrency := aOS.getPreco;
       FQuery.ParamByName('valor_recebido').AsCurrency := 0;
-      FQuery.ParamByName('status').AsString := 'PENDENTE';
+      FQuery.ParamByName('status').AsString := 'ORÇAMENTO';
       FQuery.ParamByName('data_emissao').AsDateTime := Now;
       FQuery.ParamByName('data_vencimento').AsDateTime := Now + 30;
       FQuery.ParamByName('data_recebimento').AsDateTime := Now;

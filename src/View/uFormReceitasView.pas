@@ -125,6 +125,7 @@ begin
   CmbStatusReceita.Items.Add('Recebido');
   CmbStatusReceita.Items.Add('Cancelado');
   CmbStatusReceita.Items.Add('Parcial');
+  CmbStatusReceita.Items.Add('Orçamento');
 end;
 
 procedure TFormReceitas.FormDestroy(Sender: TObject);

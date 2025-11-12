@@ -13,33 +13,38 @@ type
   TFormEntradas = class(TForm)
     PnlRestaurar: TPanel;
     LblTituloEntradas: TLabel;
-    PnlMainRestaurar: TPanel;
-    Shape3: TShape;
-    Shape4: TShape;
-    Shape5: TShape;
     ImgFecharEntradas: TImage;
-    Panel1: TPanel;
+    Panel5: TPanel;
+    PnlMainEdit: TPanel;
+    PnlEdits: TPanel;
     LblTitulo: TLabel;
     Label1: TLabel;
     CmbRelatorios: TComboBox;
-    Panel2: TPanel;
-    Shape2: TShape;
-    PnlAdicionar: TPanel;
-    LblAdicionar: TLabel;
     Panel3: TPanel;
     Shape1: TShape;
     Panel4: TPanel;
     Label4: TLabel;
+    Panel2: TPanel;
+    Shape2: TShape;
+    PnlAdicionar: TPanel;
+    LblAdicionar: TLabel;
+    PnlLogo: TImage;
     PnlQuantidade: TPanel;
     LblQuantidadeHead: TLabel;
     LblQuantidade: TLabel;
+    Shape3: TShape;
+    Shape4: TShape;
+    Shape5: TShape;
     PnlTicket: TPanel;
     LblTicketHead: TLabel;
     LblTicketMedio: TLabel;
     PnlTotal: TPanel;
     LblTotalHead: TLabel;
     LblTotal: TLabel;
-    PnlLogo: TImage;
+    DateTimeFinal: TDateTimePicker;
+    Label2: TLabel;
+    DateTimeInicio: TDateTimePicker;
+    Label3: TLabel;
     procedure FormCreate(Sender: TObject);
     procedure FormDestroy(Sender: TObject);
     procedure FormShow(Sender: TObject);
@@ -48,6 +53,8 @@ type
     procedure AtualizarTotalEntradas;
     procedure AtualizarQuantidadeEntradas;
     procedure AtualizarTicketMedio;
+    procedure LimparFiltros;
+    procedure Label4Click(Sender: TObject);
   end;
 
 var
@@ -89,9 +96,27 @@ begin
   end;
 end;
 
+procedure TFormEntradas.Label4Click(Sender: TObject);
+begin
+  LimparFiltros;
+end;
+
 procedure TFormEntradas.LblAdicionarClick(Sender: TObject);
 begin
-  RelatorioController.GerarRelatorioEntrada;
+  if CmbRelatorios.ItemIndex = 0 then begin
+   RelatorioController.GerarRelatorioEntrda(DateTimeInicio.Date,DateTimeFinal.Date);
+  end else if CmbRelatorios.ItemIndex = 1 then begin
+
+  end else if CmbRelatorios.ItemIndex = 2 then begin
+
+  end;
+end;
+
+procedure TFormEntradas.LimparFiltros;
+begin
+ DateTimeFinal.Date := now;
+ DateTimeInicio.Date := now;
+ CmbRelatorios.ItemIndex := -1;
 end;
 
 procedure TFormEntradas.AtualizarQuantidadeEntradas;

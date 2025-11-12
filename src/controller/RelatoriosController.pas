@@ -5,7 +5,7 @@ interface
     RelatoriosService,System.Classes, Data.DB, System.SysUtils;
     type TRelatorioController = class
      RelatorioService : TRelatorioService;
-     procedure GerarRelatorioEntrda;
+     procedure GerarRelatorioEntrda(aDataIncio,aDataFinal:TDate);
      constructor create ;
     end;
 implementation
@@ -17,9 +17,9 @@ begin
   RelatorioService := TRelatorioService.Create;
 end;
 
-procedure TRelatorioController.GerarRelatorioEntrda;
+procedure TRelatorioController.GerarRelatorioEntrda(aDataIncio,aDataFinal:TDate);
 begin
-  RelatorioService.GerarRelatorioEntrada;
+  RelatorioService.GerarRelatorioEntrada(aDataIncio,aDataFinal);
 end;
 
 end.

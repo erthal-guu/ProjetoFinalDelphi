@@ -54,6 +54,8 @@ type
     ImageCollection: TImageCollection;
     Image2: TImage;
     Entradas1: TMenuItem;
+    Sadas1: TMenuItem;
+    Sadas2: TMenuItem;
     procedure SairClick(Sender: TObject);
     procedure FuncionariosClick(Sender: TObject);
     procedure FornecedoresClick(Sender: TObject);
