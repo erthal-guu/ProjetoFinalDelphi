@@ -4,7 +4,7 @@ interface
 
 uses
   uDMconexao, FireDAC.Comp.Client, System.SysUtils, uReceita, Data.DB,
-  Generics.Collections, System.Classes;
+  Generics.Collections, System.Classes,VCL.Dialogs;
 
 
 type
@@ -14,7 +14,6 @@ type
 
   public
     function GerarRelatorioValorTotalEntradas(aDataIncio, aDataFinal : TDate): TDataSet;
-    function ShowReportEntradas(aDataIncio, aDataFinal: TDate): TDataSet;
 
     constructor create(Query: TFDQuery);
   end;
@@ -28,8 +27,14 @@ begin
   QueryEntradas := Query;
 end;
 function TRelatorioRepository.GerarRelatorioValorTotalEntradas(aDataIncio, aDataFinal : TDate): TDataSet;
+var
+  DataIni, DataFim: string;
 begin
   try
+    // Formata as datas
+    DataIni := QuotedStr(FormatDateTime('yyyy-mm-dd', aDataIncio));
+    DataFim := QuotedStr(FormatDateTime('yyyy-mm-dd', aDataFinal));
+
     QueryEntradas.Close;
     QueryEntradas.SQL.Clear;
     QueryEntradas.SQL.Add('SELECT ');
@@ -49,19 +54,16 @@ begin
     QueryEntradas.SQL.Add('INNER JOIN ordens_servico os ON r.id_ordem_servico = os.id');
     QueryEntradas.SQL.Add('INNER JOIN clientes c ON os.id_cliente = c.id');
     QueryEntradas.SQL.Add('WHERE r.ativo = TRUE');
-    QueryEntradas.SQL.Add('  AND r.data_emissao BETWEEN :DATA_INICIO AND :DATA_FINAL');
+    QueryEntradas.SQL.Add('  AND r.data_emissao BETWEEN ' + DataIni + ' AND ' + DataFim);
     QueryEntradas.SQL.Add('GROUP BY c.id, c.nome');
     QueryEntradas.SQL.Add('ORDER BY valor_total_receitas DESC');
-
-    QueryEntradas.ParamByName('DATA_INICIO').AsDate := aDataIncio;
-    QueryEntradas.ParamByName('DATA_FINAL').AsDate := aDataFinal;
     QueryEntradas.Open;
+
     Result := QueryEntradas;
+    DataModule1.frxReport1.ShowReport();
   except
     on E: Exception do
-    begin
-      raise Exception.Create('Erro ao gerar relatório completo de entradas por cliente: ' + E.Message);
-    end;
+      raise Exception.Create('Erro ao gerar relatório: ' + E.Message);
   end;
 end;
 

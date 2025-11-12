@@ -104,7 +104,7 @@ end;
 procedure TFormEntradas.LblAdicionarClick(Sender: TObject);
 begin
   if CmbRelatorios.ItemIndex = 0 then begin
-   RelatorioController.GerarRelatorioEntrda(DateTimeInicio.Date,DateTimeFinal.Date);
+   RelatorioController.GerarRelatorioValorTotalEntrada(DateTimeInicio.Date,DateTimeFinal.Date);
   end else if CmbRelatorios.ItemIndex = 1 then begin
 
   end else if CmbRelatorios.ItemIndex = 2 then begin

@@ -6,7 +6,7 @@ uses
   RelatoriosRepository, System.Classes, Data.DB, System.SysUtils,uDMConexao;
    type TRelatorioService = class
      RelatorioRepository : TRelatorioRepository;
-     procedure GerarRelatorioEntrada(aDataIncio,aDataFinal:TDate);
+     procedure GerarRelatorioValorTotalEntrada(aDataIncio,aDataFinal:TDate);
      constructor Create;
    end;
 implementation
@@ -15,10 +15,10 @@ implementation
 
 constructor TRelatorioService.Create;
 begin
-  RelatorioRepository := TRelatorioRepository.create(DataModule1.FDQueryEntradas)
+  RelatorioRepository := TRelatorioRepository.create(DataModule1.FDQueryValorTotal)
 end;
 
-procedure TRelatorioService.GerarRelatorioEntrada(aDataIncio,aDataFinal:TDate);
+procedure TRelatorioService.GerarRelatorioValorTotalEntrada(aDataIncio,aDataFinal:TDate);
 begin
   RelatorioRepository.GerarRelatorioValorTotalEntradas(aDataIncio,aDataFinal);
 end;

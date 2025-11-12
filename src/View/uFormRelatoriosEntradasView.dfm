@@ -78,8 +78,8 @@ object FormEntradas: TFormEntradas
       ParentBackground = False
       TabOrder = 0
       object PnlLogo: TImage
-        Left = 615
-        Top = 58
+        Left = 567
+        Top = 74
         Width = 509
         Height = 346
         Picture.Data = {

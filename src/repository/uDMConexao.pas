@@ -15,15 +15,24 @@ type
     FDConnection1: TFDConnection;
     FDPhysPgDriverLink1: TFDPhysPgDriverLink;
     FDQuery: TFDQuery;
-    FDQueryEntradas: TFDQuery;
+    FDQueryValorTotal: TFDQuery;
     frxReport1: TfrxReport;
     frxDBDataset1: TfrxDBDataset;
-    FDQueryEntradasid: TIntegerField;
-    FDQueryEntradasnome: TWideStringField;
-    FDQueryEntradascpf: TWideStringField;
-    FDQueryEntradassenha: TWideStringField;
-    FDQueryEntradasgrupo: TWideStringField;
-    FDQueryEntradasativo: TBooleanField;
+    FDQueryValorTotalPendentes: TFDQuery;
+    frxReport2: TfrxReport;
+    frxDBDataset2: TfrxDBDataset;
+    FDQueryValorTotalcodigo_cliente: TIntegerField;
+    FDQueryValorTotalnome_cliente: TWideStringField;
+    FDQueryValorTotalvalor_total_receitas: TFMTBCDField;
+    FDQueryValorTotalvalor_total_recebido: TFMTBCDField;
+    FDQueryValorTotalquantidade_ordens: TLargeintField;
+    FDQueryValorTotalticket_medio_cliente: TFMTBCDField;
+    FDQueryValorTotalprimeira_receita: TSQLTimeStampField;
+    FDQueryValorTotalultima_receita: TSQLTimeStampField;
+    FDQueryValorTotalreceitas_recebidas: TLargeintField;
+    FDQueryValorTotalreceitas_pendentes: TLargeintField;
+    FDQueryValorTotalreceitas_parciais: TLargeintField;
+    FDQueryValorTotalvalor_pendente: TFMTBCDField;
   private
     { Private declarations }
   public
