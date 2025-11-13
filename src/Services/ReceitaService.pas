@@ -16,6 +16,7 @@ type
     procedure ReceberReceita(aReceita: TReceita);
     procedure DeletarReceita(const aId: Integer);
     procedure RestaurarReceita(const aId: Integer);
+    procedure AtualizarStatusAutomatico(const aID: Integer);
     function ValidarReceita(aReceita: TReceita): Boolean;
     function ListarReceitas: TDataSet;
     function ListarReceitasRestaurar: TDataSet;
@@ -24,7 +25,7 @@ type
     function CarregarOrdensServico: TDataSet;
     function CriarObjeto(aIdReceita: Integer; aValorRecebido: Currency; aDataRecebimento: TDateTime;
                          aValorTotal: Currency; aFormaPagamento: String;
-                         aObservacao: String; aStatus: String; aAtivo: Boolean): TReceita;
+                         aObservacao: String; aAtivo: Boolean): TReceita;
   end;
 
 implementation
@@ -39,7 +40,7 @@ end;
 
 function TReceitaService.CriarObjeto(aIdReceita: Integer; aValorRecebido: Currency; aDataRecebimento: TDateTime;
                                      aValorTotal: Currency; aFormaPagamento: String;
-                                     aObservacao: String; aStatus: String; aAtivo: Boolean): TReceita;
+                                     aObservacao: String; aAtivo: Boolean): TReceita;
 var
   Receita: TReceita;
 begin
@@ -50,7 +51,6 @@ begin
   Receita.setValorTotal(aValorTotal);
   Receita.setFormaPagamento(aFormaPagamento);
   Receita.setObservacao(aObservacao);
-  Receita.setStatus(aStatus);
   Receita.setAtivo(aAtivo);
   Result := Receita;
 end;
@@ -59,25 +59,30 @@ function TReceitaService.ValidarReceita(aReceita: TReceita): Boolean;
 begin
   Result := (aReceita.getIdReceita > 0) and
             (aReceita.getValorRecebido >= 0) and
-            (Trim(aReceita.getFormaPagamento) <> '') and
-            (Trim(aReceita.getStatus) <> '');
+            (Trim(aReceita.getFormaPagamento) <> '');
 end;
 
 
 procedure TReceitaService.ReceberReceita(aReceita: TReceita);
 var
   IDUsuarioLogado: Integer;
+  StatusAntigo: String;
 begin
   IDUsuarioLogado := uSession.UsuarioLogadoID;
 
+  StatusAntigo := aReceita.getStatus;
+
   if ValidarReceita(aReceita) then begin
     Repository.ReceberReceita(aReceita);
-    SalvarLog(Format('RECEBER - ID: %d registrou recebimento da receita ID: %d - Valor: %.2f',
-      [IDUsuarioLogado, aReceita.getIdReceita, aReceita.getValorRecebido]));
+
+    AtualizarStatusAutomatico(aReceita.getIdReceita);
+
+    SalvarLog(Format('RECEBER - ID: %d registrou recebimento da receita ID: %d - Valor: %.2f - Status Antigo: %s',
+      [IDUsuarioLogado, aReceita.getIdReceita, aReceita.getValorRecebido, StatusAntigo]));
   end else begin
     ShowMessage('Dados Inválido, Tente Novamente');
-    SalvarLog(Format('ERRO - ID: %d tentou registrar recebimento inválido da receita ID: %d - Forma: %s - Status: %s',
-      [IDUsuarioLogado, aReceita.getIdReceita, aReceita.getFormaPagamento, aReceita.getStatus]));
+    SalvarLog(Format('ERRO - ID: %d tentou registrar recebimento inválido da receita ID: %d - Forma: %s - Valor: %.2f',
+      [IDUsuarioLogado, aReceita.getIdReceita, aReceita.getFormaPagamento, aReceita.getValorRecebido]));
   end;
 end;
 
@@ -125,6 +130,11 @@ end;
 function TReceitaService.CarregarOrdensServico: TDataSet;
 begin
   Result := Repository.CarregarOrdensServico;
+end;
+
+procedure TReceitaService.AtualizarStatusAutomatico(const aID: Integer);
+begin
+  Repository.AtualizarStatusAutomatico(aID);
 end;
 
 end.

@@ -7,6 +7,7 @@ interface
      RelatorioService : TRelatorioService;
      procedure GerarRelatorioValorTotalEntrada(aDataIncio,aDataFinal:TDate);
      procedure GerarRelatorioReceitasCanceladas(aDataIncio,aDataFinal:TDate);
+     procedure GerarRelatorioReceitasPendentes(aDataIncio,aDataFinal:TDate);
      constructor create ;
     end;
 implementation
@@ -27,6 +28,11 @@ end;
 procedure TRelatorioController.GerarRelatorioValorTotalEntrada(aDataIncio,aDataFinal:TDate);
 begin
   RelatorioService.GerarRelatorioValorTotalEntrada(aDataIncio,aDataFinal);
+end;
+
+procedure TRelatorioController.GerarRelatorioReceitasPendentes(aDataIncio,aDataFinal:TDate);
+begin
+  RelatorioService.GerarRelatorioReceitasPendentes(aDataIncio,aDataFinal);
 end;
 
 end.

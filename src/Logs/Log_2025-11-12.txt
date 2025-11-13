@@ -16,3 +16,14 @@
 17:09:58 - DELETAR - ID: 0 deletou a receita ID: 12
 17:10:02 - DELETAR - ID: 0 deletou a receita ID: 13
 17:10:05 - DELETAR - ID: 0 deletou a receita ID: 14
+20:23:52 - CADASTRO - ID: 0 cadastrou ordem de serviço com cliente ID: 1
+20:24:11 - CADASTRO - ID: 0 cadastrou ordem de serviço com cliente ID: 7
+20:25:33 - RECEBER - ID: 0 registrou recebimento da receita ID: 16 - Valor: 0,00
+20:25:40 - RECEBER - ID: 0 registrou recebimento da receita ID: 15 - Valor: 0,00
+20:32:30 - CADASTRO - ID: 0 cadastrou ordem de serviço com cliente ID: 1
+20:34:11 - RECEBER - ID: 0 registrou recebimento da receita ID: 17 - Valor: 1500,00
+20:37:17 - DELETAR - ID: 0 deletou a receita ID: 15
+20:37:21 - DELETAR - ID: 0 deletou a receita ID: 16
+20:37:32 - RECEBER - ID: 0 registrou recebimento da receita ID: 17 - Valor: 1555,00
+20:40:22 - CADASTRO - ID: 0 cadastrou ordem de serviço com cliente ID: 3
+20:40:44 - RECEBER - ID: 0 registrou recebimento da receita ID: 18 - Valor: 1295,00

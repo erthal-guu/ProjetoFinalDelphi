@@ -11,7 +11,7 @@ uses
 
 type
   TFormEntradas = class(TForm)
-    PnlRestaurar: TPanel;
+    PnlRelatorio: TPanel;
     LblTituloEntradas: TLabel;
     ImgFecharEntradas: TImage;
     Panel5: TPanel;
@@ -111,12 +111,16 @@ end;
 
 procedure TFormEntradas.LblAdicionarClick(Sender: TObject);
 begin
+    if MessageDlg('Deseja realmente Gerar um Relatório?', mtConfirmation,
+  [mbYes, mbNo], 0) = mrYes then
+  begin
   if CmbRelatorios.ItemIndex = 0 then begin
    RelatorioController.GerarRelatorioValorTotalEntrada(DateTimeInicio.Date,DateTimeFinal.Date);
   end else if CmbRelatorios.ItemIndex = 1 then begin
   RelatorioController.GerarRelatorioReceitasCanceladas(DateTimeInicio.Date,DateTimeFinal.Date);
   end else if CmbRelatorios.ItemIndex = 2 then begin
-
+  RelatorioController.GerarRelatorioReceitasPendentes(DateTimeInicio.Date,DateTimeFinal.Date);
+  end;
   end;
 end;
 

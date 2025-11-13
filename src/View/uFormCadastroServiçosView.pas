@@ -37,16 +37,12 @@ type
     Label5: TLabel;
     Label2: TLabel;
     Label6: TLabel;
-    PnlButtonEnviar: TPanel;
-    LblEnviar: TLabel;
     EdtNome: TEdit;
     EdtObs: TEdit;
     CmbProfissional: TComboBox;
     EdtPreço: TEdit;
     CmbCategoria: TComboBox;
     CmbPeças: TComboBox;
-    PnlButtonAtualizar: TPanel;
-    LblAtualizar: TLabel;
     PnlGrid: TPanel;
     DBGridMain: TDBGrid;
     PnlRestaurar: TPanel;
@@ -61,6 +57,14 @@ type
     Image1: TImage;
     Label7: TLabel;
     ImgFecharForm: TImage;
+    PnlButtonForm: TPanel;
+    ShpButton: TShape;
+    PnlButtonEnviar: TPanel;
+    LblEnviar: TLabel;
+    Image6: TImage;
+    PnlButtonAtualizar: TPanel;
+    LblAtualizar: TLabel;
+    Image2: TImage;
 
     procedure FormCreate(Sender: TObject);
     procedure FormShow(Sender: TObject);

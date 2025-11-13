@@ -78,6 +78,8 @@ type
     LblEnviar: TLabel;
     PnlButtonAtualizar: TPanel;
     LlAtualizar: TLabel;
+    Image2: TImage;
+    Image6: TImage;
     procedure BtnAdicionarClick(Sender: TObject);
     procedure BtnPesquisarClick(Sender: TObject);
     procedure FormCreate(Sender: TObject);

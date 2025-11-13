@@ -72,6 +72,8 @@ type
     PnlButtonAtualizar: TPanel;
     LblAtualizar: TLabel;
     ShpButton: TShape;
+    Image6: TImage;
+    Image1: TImage;
     procedure BtnAdicionarClick(Sender: TObject);
     procedure FormCreate(Sender: TObject);
     procedure BtnPesquisarClick(Sender: TObject);

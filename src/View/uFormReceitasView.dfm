@@ -572,7 +572,7 @@ object FormReceitas: TFormReceitas
                   Left = 770
                   Top = 30
                   Width = 100
-                  Height = 29
+                  Height = 16
                   Margins.Top = 30
                   Margins.Bottom = 45
                   Align = alLeft
@@ -624,8 +624,8 @@ object FormReceitas: TFormReceitas
                     AlignWithMargins = True
                     Left = 4
                     Top = 4
-                    Width = 81
-                    Height = 23
+                    Width = 59
+                    Height = 20
                     Align = alClient
                     Alignment = taCenter
                     Caption = 'Atualizar'
@@ -638,8 +638,6 @@ object FormReceitas: TFormReceitas
                     ParentColor = False
                     ParentFont = False
                     OnClick = LblAtualizarClick
-                    ExplicitWidth = 59
-                    ExplicitHeight = 20
                   end
                 end
                 object EdtDataRecebimento: TDateTimePicker
@@ -1452,7 +1450,7 @@ object FormReceitas: TFormReceitas
               AlignWithMargins = True
               Left = 3
               Top = 10
-              Width = 889
+              Width = 109
               Height = 32
               Margins.Top = 10
               Align = alTop
@@ -1464,7 +1462,6 @@ object FormReceitas: TFormReceitas
               Font.Name = 'Segoe UI'
               Font.Style = [fsBold]
               ParentFont = False
-              ExplicitWidth = 109
             end
             object ImgFechar: TImage
               Left = 800
@@ -1602,7 +1599,7 @@ object FormReceitas: TFormReceitas
               AlignWithMargins = True
               Left = 3
               Top = 10
-              Width = 889
+              Width = 104
               Height = 32
               Margins.Top = 10
               Align = alTop
@@ -1614,7 +1611,6 @@ object FormReceitas: TFormReceitas
               Font.Name = 'Segoe UI'
               Font.Style = [fsBold]
               ParentFont = False
-              ExplicitWidth = 104
             end
             object ImgFecharHistorico: TImage
               Left = 800
@@ -1713,7 +1709,7 @@ object FormReceitas: TFormReceitas
               AlignWithMargins = True
               Left = 3
               Top = 3
-              Width = 743
+              Width = 161
               Height = 32
               Align = alTop
               Alignment = taCenter
@@ -1724,7 +1720,6 @@ object FormReceitas: TFormReceitas
               Font.Name = 'Segoe UI'
               Font.Style = [fsBold]
               ParentFont = False
-              ExplicitWidth = 161
             end
             object ImgFecharDetalhamento: TImage
               Left = 708

@@ -18,7 +18,7 @@ uses
   uFormCadastroOrdensServiçoView, Vcl.Menus, Vcl.Imaging.pngimage, Vcl.StdCtrls,uSession,
   Vcl.Buttons,uMainController, System.ImageList, Vcl.ImgList,
   Vcl.BaseImageCollection, Vcl.ImageCollection, Vcl.VirtualImageList,
-  Vcl.ToolWin, Vcl.ActnMan, Vcl.ActnCtrls, Vcl.ActnMenus, Vcl.ComCtrls,RelatoriosController;
+  Vcl.ToolWin, Vcl.ActnMan, Vcl.ActnCtrls, Vcl.ActnMenus, Vcl.ComCtrls,RelatoriosController,uFormRelatoriosSaídasView;
 
 
 type
@@ -72,6 +72,7 @@ type
     procedure Image1Click(Sender: TObject);
     procedure OrdensServio1Click(Sender: TObject);
     procedure Entradas1Click(Sender: TObject);
+    procedure Sadas1Click(Sender: TObject);
   private
     { Private declarations }
   public
@@ -108,6 +109,11 @@ procedure TFormHome.Image1Click(Sender: TObject);
 begin
   MainController.ShowLogin;
   Self.Hide;
+end;
+
+procedure TFormHome.Sadas1Click(Sender: TObject);
+begin
+  FormSaidas.Show;
 end;
 
 procedure TFormHome.SairClick(Sender: TObject);

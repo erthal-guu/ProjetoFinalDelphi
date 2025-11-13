@@ -58,10 +58,12 @@ type
     DBGridRestaurar: TDBGrid;
     PnlButtonForm: TPanel;
     ShpButton: TShape;
-    PnlButtonEnviar: TPanel;
-    LblEnviar: TLabel;
     PnlButtonAtualizar: TPanel;
     LblAtualizar: TLabel;
+    Image2: TImage;
+    PnlButtonEnviar: TPanel;
+    LblEnviar: TLabel;
+    Image6: TImage;
     procedure BtnAdicionarClick(Sender: TObject);
     procedure BtnPesquisarClick(Sender: TObject);
     procedure FormCreate(Sender: TObject);

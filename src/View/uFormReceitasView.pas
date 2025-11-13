@@ -96,6 +96,7 @@ type
     procedure EdtPesquisarChange(Sender: TObject);
     procedure PreencherCamposReceita;
     procedure ReceberReceita;
+    procedure EdtValorRecebidoExit(Sender: TObject);
   public
 
   end;
@@ -121,9 +122,8 @@ begin
   CmbFormaPagamento.Items.Add('Cheque');
   CmbFormaPagamento.Items.Add('Boleto');
 
-  CmbStatusReceita.Items.Add('Pendente');
-  CmbStatusReceita.Items.Add('Recebido');
-  CmbStatusReceita.Items.Add('Parcial');
+  CmbStatusReceita.Style := csSimple;
+  CmbStatusReceita.Enabled := False;
 end;
 
 procedure TFormReceitas.FormDestroy(Sender: TObject);
@@ -159,6 +159,13 @@ begin
     ShowMessage('Valor recebido inválido.');
     Exit;
   end;
+  if ValorRecebido > DataSourceMain.DataSet.FieldByName('valor_total').AsCurrency then
+  begin
+    ShowMessage(Format('ERRO: O valor recebido (R$ %.2f) não pode ser maior que o valor total (R$ %.2f).',
+      [ValorRecebido, DataSourceMain.DataSet.FieldByName('valor_total').AsCurrency]));
+    EdtValorRecebido.SetFocus;
+    Exit;
+  end;
 
   if CmbFormaPagamento.Text = '' then
   begin
@@ -167,13 +174,7 @@ begin
     Exit;
   end;
 
-  if CmbStatusReceita.Text = '' then
-  begin
-    ShowMessage('Selecione o status da receita.');
-    CmbStatusReceita.SetFocus;
-    Exit;
-  end;
-
+  
   try
     Receita := Controller.CriarObjeto(
       DataSourceMain.DataSet.FieldByName('id').AsInteger,
@@ -182,7 +183,6 @@ begin
       DataSourceMain.DataSet.FieldByName('valor_total').AsCurrency,
       CmbFormaPagamento.Text,
       EdtObservacao.Text,
-      CmbStatusReceita.Text,
       True
     );
 
@@ -323,6 +323,7 @@ begin
     CmbFormaPagamento.Text := DataSourceMain.DataSet.FieldByName('forma_pagamento').AsString;
     EdtObservacao.Text := DataSourceMain.DataSet.FieldByName('observacao').AsString;
     CmbStatusReceita.Text := DataSourceMain.DataSet.FieldByName('status').AsString;
+    CmbStatusReceita.Enabled := False;
   end;
 end;
 
@@ -530,6 +531,38 @@ end;
 procedure TFormReceitas.LblAtualizarClick(Sender: TObject);
 begin
   ReceberReceita;
+end;
+
+procedure TFormReceitas.EdtValorRecebidoExit(Sender: TObject);
+var
+  ValorRecebido, ValorTotal: Currency;
+begin
+  // Se o campo estiver vazio, sai da validação
+  if Trim(EdtValorRecebido.Text) = '' then
+    Exit;
+
+  // Tenta converter o texto para Currency
+  if not TryStrToCurr(EdtValorRecebido.Text, ValorRecebido) then
+  begin
+    ShowMessage('Valor recebido inválido. Informe um valor numérico válido.');
+    EdtValorRecebido.SetFocus;
+    Exit;
+  end;
+
+  // Se tiver uma receita selecionada, pega o valor total dela
+  if Assigned(DataSourceMain.DataSet) and not DataSourceMain.DataSet.Eof then
+  begin
+    ValorTotal := DataSourceMain.DataSet.FieldByName('valor_total').AsCurrency;
+
+    // Valida se o valor recebido é maior que o valor total
+    if ValorRecebido > ValorTotal then
+    begin
+      ShowMessage(Format('ERRO: O valor recebido (R$ %.2f) não pode ser maior que o valor total (R$ %.2f).',
+        [ValorRecebido, ValorTotal]));
+      EdtValorRecebido.SetFocus;
+      EdtValorRecebido.SelectAll;
+    end;
+  end;
 end;
 
 

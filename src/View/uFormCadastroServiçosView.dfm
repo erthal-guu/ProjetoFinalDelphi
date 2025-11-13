@@ -1078,43 +1078,6 @@
                 Font.Style = []
                 ParentFont = False
               end
-              object PnlButtonEnviar: TPanel
-                AlignWithMargins = True
-                Left = 803
-                Top = 30
-                Width = 123
-                Height = 31
-                Margins.Left = 5
-                Margins.Top = 30
-                Margins.Right = 0
-                Margins.Bottom = 30
-                Align = alLeft
-                BevelOuter = bvLowered
-                Color = 9521152
-                ParentBackground = False
-                TabOrder = 0
-                object LblEnviar: TLabel
-                  AlignWithMargins = True
-                  Left = 4
-                  Top = 4
-                  Width = 115
-                  Height = 23
-                  Align = alClient
-                  Alignment = taCenter
-                  Caption = 'Enviar'
-                  Color = clWhite
-                  Font.Charset = DEFAULT_CHARSET
-                  Font.Color = clWhite
-                  Font.Height = -15
-                  Font.Name = 'Segoe UI'
-                  Font.Style = []
-                  ParentColor = False
-                  ParentFont = False
-                  OnClick = LblEnviarClick
-                  ExplicitWidth = 40
-                  ExplicitHeight = 20
-                end
-              end
               object EdtNome: TEdit
                 AlignWithMargins = True
                 Left = 20
@@ -1132,7 +1095,7 @@
                 Font.Name = 'Segoe UI'
                 Font.Style = []
                 ParentFont = False
-                TabOrder = 1
+                TabOrder = 0
               end
               object EdtObs: TEdit
                 AlignWithMargins = True
@@ -1152,7 +1115,7 @@
                 Font.Name = 'Segoe UI'
                 Font.Style = []
                 ParentFont = False
-                TabOrder = 2
+                TabOrder = 1
               end
               object CmbProfissional: TComboBox
                 AlignWithMargins = True
@@ -1161,7 +1124,7 @@
                 Width = 128
                 Height = 29
                 Margins.Top = 30
-                Margins.Right = 5
+                Margins.Right = 1
                 Margins.Bottom = 5
                 Align = alLeft
                 BevelOuter = bvNone
@@ -1172,7 +1135,7 @@
                 Font.Name = 'Segoe UI'
                 Font.Style = []
                 ParentFont = False
-                TabOrder = 3
+                TabOrder = 2
               end
               object EdtPreço: TEdit
                 AlignWithMargins = True
@@ -1192,7 +1155,7 @@
                 Font.Name = 'Segoe UI'
                 Font.Style = []
                 ParentFont = False
-                TabOrder = 4
+                TabOrder = 3
               end
               object CmbCategoria: TComboBox
                 AlignWithMargins = True
@@ -1212,7 +1175,7 @@
                 Font.Name = 'Segoe UI'
                 Font.Style = []
                 ParentFont = False
-                TabOrder = 5
+                TabOrder = 4
               end
               object CmbPeças: TComboBox
                 AlignWithMargins = True
@@ -1232,42 +1195,165 @@
                 Font.Name = 'Segoe UI'
                 Font.Style = []
                 ParentFont = False
-                TabOrder = 6
+                TabOrder = 5
               end
-              object PnlButtonAtualizar: TPanel
+              object PnlButtonForm: TPanel
                 AlignWithMargins = True
-                Left = 803
-                Top = 30
-                Width = 123
-                Height = 31
-                Margins.Left = 5
-                Margins.Top = 30
+                Left = 794
+                Top = 0
+                Width = 131
+                Height = 91
+                Margins.Left = 0
+                Margins.Top = 0
                 Margins.Right = 0
-                Margins.Bottom = 30
-                BevelOuter = bvLowered
-                Color = 9521152
-                ParentBackground = False
-                TabOrder = 7
-                object LblAtualizar: TLabel
+                Margins.Bottom = 0
+                Align = alLeft
+                BevelOuter = bvNone
+                TabOrder = 6
+                ExplicitLeft = 798
+                object ShpButton: TShape
                   AlignWithMargins = True
-                  Left = 4
-                  Top = 4
-                  Width = 115
-                  Height = 23
-                  Align = alClient
-                  Alignment = taCenter
-                  Caption = 'Atualizar'
-                  Color = clWhite
-                  Font.Charset = DEFAULT_CHARSET
-                  Font.Color = clWhite
-                  Font.Height = -15
-                  Font.Name = 'Segoe UI'
-                  Font.Style = []
-                  ParentColor = False
-                  ParentFont = False
-                  OnClick = LblAtualizarClick
-                  ExplicitWidth = 59
-                  ExplicitHeight = 20
+                  Left = 10
+                  Top = 29
+                  Width = 113
+                  Height = 33
+                  Margins.Left = 10
+                  Margins.Top = 29
+                  Margins.Bottom = 29
+                  Align = alLeft
+                  Brush.Color = 9521152
+                  Pen.Color = clSilver
+                  Shape = stRoundRect
+                  ExplicitLeft = 9
+                end
+                object PnlButtonEnviar: TPanel
+                  AlignWithMargins = True
+                  Left = 16
+                  Top = 31
+                  Width = 101
+                  Height = 26
+                  Margins.Left = 0
+                  Margins.Top = 30
+                  Margins.Right = 0
+                  Margins.Bottom = 30
+                  BevelOuter = bvNone
+                  Color = 9521152
+                  ParentBackground = False
+                  TabOrder = 0
+                  Visible = False
+                  object LblEnviar: TLabel
+                    AlignWithMargins = True
+                    Left = 0
+                    Top = 4
+                    Width = 86
+                    Height = 22
+                    Margins.Left = 0
+                    Margins.Top = 4
+                    Margins.Right = 15
+                    Margins.Bottom = 0
+                    Align = alClient
+                    Alignment = taCenter
+                    Caption = 'Enviar'
+                    Color = clWhite
+                    Font.Charset = DEFAULT_CHARSET
+                    Font.Color = clWhite
+                    Font.Height = -15
+                    Font.Name = 'Segoe UI'
+                    Font.Style = [fsBold]
+                    ParentColor = False
+                    ParentFont = False
+                    OnClick = LblEnviarClick
+                    ExplicitWidth = 43
+                    ExplicitHeight = 20
+                  end
+                  object Image6: TImage
+                    Left = 75
+                    Top = -7
+                    Width = 33
+                    Height = 44
+                    Center = True
+                    Picture.Data = {
+                      0954506E67496D61676589504E470D0A1A0A0000000D49484452000000100000
+                      001008060000001FF3FF61000000097048597300000EC300000EC301C76FA864
+                      0000001974455874536F667477617265007777772E696E6B73636170652E6F72
+                      679BEE3C1A000000F04944415478DA9592BB0E014114861D6F21A8BD0071894B
+                      848E68507A01051E42A2508937A050A8244A9D909048BC804E780BEB9B984D5C
+                      C6EECE49BE9CD9D9FC5FCECEAC842CCA719C302D076D88405F2C434D88C2413F
+                      8FC522E4D6095AB080A3040C99C2192808C1048BAE47C82D77EC25A4E1067125
+                      B8FA044D61555311E929C18C878E65585511C156F4F7E7694328F97CB35B7788
+                      21787CDC02A22A6D04498FB0AA09E1815AFC5C2312B55787B361EC8FF18D8237
+                      5183B632BC7A9D3EE3FB09441F60EADFF89E022DA9D1D65FDB7904BB40022DD9
+                      D3B2DFA76F23A8D036A6F10309B4641E7AFD23650497F7774F92DE6092530844
+                      830000000049454E44AE426082}
+                  end
+                end
+                object PnlButtonAtualizar: TPanel
+                  AlignWithMargins = True
+                  Left = 21
+                  Top = 32
+                  Width = 96
+                  Height = 25
+                  Margins.Left = 0
+                  Margins.Top = 30
+                  Margins.Right = 0
+                  Margins.Bottom = 30
+                  BevelOuter = bvNone
+                  Color = 9521152
+                  ParentBackground = False
+                  TabOrder = 1
+                  Visible = False
+                  object LblAtualizar: TLabel
+                    AlignWithMargins = True
+                    Left = 3
+                    Top = 3
+                    Width = 63
+                    Height = 19
+                    Margins.Right = 30
+                    Align = alClient
+                    Alignment = taCenter
+                    Caption = 'Atualizar'
+                    Color = clWhite
+                    Font.Charset = DEFAULT_CHARSET
+                    Font.Color = clWhite
+                    Font.Height = -15
+                    Font.Name = 'Segoe UI'
+                    Font.Style = [fsBold]
+                    ParentColor = False
+                    ParentFont = False
+                    OnClick = LblAtualizarClick
+                    ExplicitHeight = 20
+                  end
+                  object Image2: TImage
+                    Left = 69
+                    Top = -8
+                    Width = 33
+                    Height = 44
+                    Center = True
+                    Picture.Data = {
+                      0954506E67496D61676589504E470D0A1A0A0000000D49484452000000180000
+                      00180806000000E0773DF8000000097048597300000EC300000EC301C76FA864
+                      0000001974455874536F667477617265007777772E696E6B73636170652E6F72
+                      679BEE3C1A000002454944415478DAB5954F48174114C767AD4030EA2099178B
+                      40FC470A892182D1C54B887A321514BA68815D0409927E2061E949BC75303A45
+                      69DE94F4A611A9A04849282A420491680A919248D4CFCF6B67FD0D3F76F7376B
+                      34F0E1EDCCBCF7BEBB6F76661CF59F9B63EB188FC7D330593A66CB719CDFFF2C
+                      40D2F39836A8852B70424FFD8105780D4F10DB8A24406249D405F7E0748A97FC
+                      097DF0D8EFAB1C9FE467304370C3BAD06E1B40A0235440BFF95852F25F300CA3
+                      B02E6E90A7CBD60027E10B9423F03595400CF3D0185A849B04AE0594B200F314
+                      DAF1590C5D03BDA0EB46CD25E01A81BBB6352287E4BB4ACC9C9F80F9F65296CB
+                      416F1E22D08DB92F2526763259601E53A6BBCF71688998FC16E699CEF91D2AC9
+                      B1E4E84959DC0395F8CFA5EE2311925761C6E19431FC192A3C816CCC8631598A
+                      C07BCBE439988F70D6677ACEC1A193875CB86D4C0CC237E84768278580246E85
+                      8B70D7987A049F44E00D0FD77D62B7A104810D65D1C8237B624877A5DC19B2B3
+                      452093CE34E41BFEFB5085C34C8475788969D4DD0562FFFE30DE1A5CC2CC82EC
+                      05D9A9CD38BC8890BC08F3412516B98BF8DE2301ED548E9982074CF647482E6B
+                      F056CAA987F620CF2B6DF25151C4C4B2D197B5D9646C252079A172CFA9626338
+                      867F8FD709BC0F0896A077900EAF947B08AE825C3C72D8D541BD720F3BAF4D40
+                      8D796C07DD07B216729E5CB02D9572375A13C97F98834102F25672D9C4F41784
+                      35A9B95C387D56178ECF97DC816A285589A3440E43D9E972470C46BE3243BEEA
+                      9C727F6359F8B84D9CB5C071DB218A8ECE5507F1C4EA0000000049454E44AE42
+                      6082}
+                  end
                 end
               end
             end

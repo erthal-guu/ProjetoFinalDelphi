@@ -71,7 +71,8 @@ uses
   RelatorioEntradaRepository in 'src\repository\RelatorioEntradaRepository.pas',
   RelatorioEntradaService in 'src\Services\RelatorioEntradaService.pas',
   RelatorioEntradaController in 'src\controller\RelatorioEntradaController.pas',
-  uFormRelatoriosEntradasView in 'src\View\uFormRelatoriosEntradasView.pas' {FormEntradas};
+  uFormRelatoriosEntradasView in 'src\View\uFormRelatoriosEntradasView.pas' {FormEntradas},
+  uFormRelatoriosSaídasView in 'src\View\uFormRelatoriosSaídasView.pas' {FormSaidas};
 
 {$R *.res}
 
@@ -97,5 +98,6 @@ begin
   Application.CreateForm(TFormPendencias, FormPendencias);
   Application.CreateForm(TFormReceitas, FormReceitas);
   Application.CreateForm(TFormEntradas, FormEntradas);
+  Application.CreateForm(TFormSaidas, FormSaidas);
   Application.Run;
 end.

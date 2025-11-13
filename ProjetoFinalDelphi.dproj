@@ -242,6 +242,10 @@
             <Form>FormEntradas</Form>
             <FormType>dfm</FormType>
         </DCCReference>
+        <DCCReference Include="src\View\uFormRelatoriosSaídasView.pas">
+            <Form>FormSaidas</Form>
+            <FormType>dfm</FormType>
+        </DCCReference>
         <BuildConfiguration Include="Base">
             <Key>Base</Key>
         </BuildConfiguration>

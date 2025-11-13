@@ -19,6 +19,8 @@ type
     procedure RestaurarReceita(const aID: Integer);
     function PesquisarReceitas(const aFiltro: String): TDataSet;
     function CarregarOrdensServico: TDataSet;
+    procedure AtualizarStatusConcluida(const aID: Integer);
+    procedure AtualizarStatusAutomatico(const aID: Integer);
   end;
 
 implementation
@@ -77,7 +79,7 @@ begin
     FQuery.SQL.Add('INNER JOIN clientes c ON os.id_cliente = c.id');
     FQuery.SQL.Add('WHERE r.ativo = TRUE');
     FQuery.SQL.Add('  AND r.status <> ''Cancelada''');
-    FQuery.SQL.Add('  AND (r.status = ''Pendente'' OR r.status = ''Parcial'' OR r.valor_recebido < r.valor_total)');
+    FQuery.SQL.Add('  AND r.status <> ''Recebido''');
     FQuery.SQL.Add('ORDER BY r.id DESC;');
     FQuery.Open;
     Result := FQuery;
@@ -190,6 +192,45 @@ begin
   except
     on E: Exception do
       raise Exception.Create('Erro ao carregar ordens de serviço: ' + E.Message);
+  end;
+end;
+
+procedure TReceitaRepository.AtualizarStatusConcluida(const aID: Integer);
+begin
+  try
+    FQuery.Close;
+    FQuery.SQL.Clear;
+    FQuery.SQL.Add('UPDATE receitas');
+    FQuery.SQL.Add('SET status = ''Concluida''');
+    FQuery.SQL.Add('WHERE id = :id');
+    FQuery.SQL.Add('  AND valor_total = valor_recebido');
+    FQuery.SQL.Add('  AND valor_recebido > 0');
+    FQuery.ParamByName('id').AsInteger := aID;
+    FQuery.ExecSQL;
+  except
+    on E: Exception do
+      raise Exception.Create('Erro ao atualizar status para Concluida: ' + E.Message);
+  end;
+end;
+
+procedure TReceitaRepository.AtualizarStatusAutomatico(const aID: Integer);
+begin
+  try
+    FQuery.Close;
+    FQuery.SQL.Clear;
+    FQuery.SQL.Add('UPDATE receitas');
+    FQuery.SQL.Add('SET status = CASE');
+    FQuery.SQL.Add('    WHEN valor_recebido = valor_total AND valor_recebido > 0 THEN ''Recebido''');
+    FQuery.SQL.Add('    WHEN valor_recebido > 0 AND valor_recebido < valor_total THEN ''Parcial''');
+    FQuery.SQL.Add('    WHEN data_emissao < CURRENT_DATE - INTERVAL ''1 day'' AND status = ''Orçamento'' THEN ''Pendente''');
+    FQuery.SQL.Add('    ELSE status');
+    FQuery.SQL.Add('  END');
+    FQuery.SQL.Add('WHERE id = :id');
+    FQuery.ParamByName('id').AsInteger := aID;
+    FQuery.ExecSQL;
+  except
+    on E: Exception do
+      raise Exception.Create('Erro ao atualizar status automaticamente: ' + E.Message);
   end;
 end;
 

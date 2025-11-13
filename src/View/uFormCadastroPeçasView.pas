@@ -66,6 +66,8 @@ type
     PnlButtonAtualizar: TPanel;
     LblAtualizar: TLabel;
     ShpButton: TShape;
+    Image6: TImage;
+    Image2: TImage;
 
     procedure BtnAdicionarClick(Sender: TObject);
     procedure BtnPesquisarClick(Sender: TObject);

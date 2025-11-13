@@ -13,9 +13,7 @@ object DataModule1: TDataModule1
     Top = 288
   end
   object FDPhysPgDriverLink1: TFDPhysPgDriverLink
-    VendorLib = 
-      'C:\Users\Auditorio\Desktop\ProjetoFinalDelphi\src\lib\lib\libpq.' +
-      'dll'
+    VendorLib = 'C:\Users\vplgu\Desktop\ProjetoFinalDelphi\src\lib\lib\libpq.dll'
     Left = 597
     Top = 289
   end
@@ -25,7 +23,6 @@ object DataModule1: TDataModule1
     Top = 288
   end
   object FDQueryValorTotal: TFDQuery
-    Active = True
     Connection = FDConnection1
     SQL.Strings = (
       'SELECT '
@@ -6063,31 +6060,60 @@ object DataModule1: TDataModule1
         Size = 64
       end>
   end
-  object FDQueryValorTotalPendentes: TFDQuery
+  object FDQueryValorTotalCanceladas: TFDQuery
+    Active = True
     Connection = FDConnection1
     SQL.Strings = (
-      'SELECT'
-      '    c.nome AS cliente,'
+      '  SELECT'
+      '      c.nome AS cliente,'
+      '      COUNT(*) AS quantidade_canceladas,'
+      '      COALESCE(SUM(r.valor_total), 0) AS total_cancelado,'
+      '      COALESCE(SUM(r.valor_recebido), 0) AS total_recebido,'
       
-        '    SUM(r.valor_total) AS total_cancelado, -- Simplificado para ' +
-        'somar apenas o total cancelado'
-      '    COUNT(*) AS quantidade_cancelada'
-      'FROM receitas r'
-      'INNER JOIN clientes c ON r.id_cliente = c.id'
+        '      COALESCE(SUM(r.valor_total - COALESCE(r.valor_recebido, 0)' +
+        '), 0) AS total_perdido,'
+      '      ROUND('
+      '          CASE'
+      '              WHEN SUM(r.valor_total) > 0'
       
-        'WHERE r.status = '#39'Cancelada'#39' -- Alterado para filtrar apenas '#39'Ca' +
-        'ncelado'#39
-      '  AND r.ativo = true'
-      'GROUP BY c.id, c.nome'
-      'ORDER BY total_cancelado DESC;')
+        '              THEN (SUM(r.valor_recebido) * 100.0 / SUM(r.valor_' +
+        'total))'
+      '              ELSE 0'
+      '          END, 2'
+      '      ) AS percentual_recuperado,'
+      '      ROUND('
+      '          CASE'
+      '              WHEN SUM(r.valor_total) > 0'
+      
+        '              THEN ((SUM(r.valor_total - COALESCE(r.valor_recebi' +
+        'do, 0))) * 100.0 / SUM(r.valor_total))'
+      '              ELSE 0'
+      '          END, 2'
+      '      ) AS percentual_perda'
+      '  FROM receitas r'
+      '  INNER JOIN ordens_servico os ON r.id_ordem_servico = os.id'
+      '  INNER JOIN clientes c ON os.id_cliente = c.id'
+      '  WHERE r.status = '#39'Cancelada'#39
+      '    AND r.ativo = FALSE'
+      '    AND os.ativo = TRUE'
+      '    AND c.ativo = TRUE'
+      '    AND r.data_emissao BETWEEN '#39'2025-01-01'#39' AND '#39'2025-12-31'#39
+      '  GROUP BY c.id, c.nome'
+      '  ORDER BY total_cancelado DESC')
     Left = 392
     Top = 440
-    object FDQueryValorTotalPendentescliente: TWideStringField
+    object FDQueryValorTotalCanceladascliente: TWideStringField
       FieldName = 'cliente'
       Origin = 'cliente'
       Size = 100
     end
-    object FDQueryValorTotalPendentestotal_cancelado: TFMTBCDField
+    object FDQueryValorTotalCanceladasquantidade_canceladas: TLargeintField
+      AutoGenerateValue = arDefault
+      FieldName = 'quantidade_canceladas'
+      Origin = 'quantidade_canceladas'
+      ReadOnly = True
+    end
+    object FDQueryValorTotalCanceladastotal_cancelado: TFMTBCDField
       AutoGenerateValue = arDefault
       FieldName = 'total_cancelado'
       Origin = 'total_cancelado'
@@ -6095,11 +6121,37 @@ object DataModule1: TDataModule1
       Precision = 64
       Size = 64
     end
-    object FDQueryValorTotalPendentesquantidade_cancelada: TLargeintField
+    object FDQueryValorTotalCanceladastotal_recebido: TFMTBCDField
       AutoGenerateValue = arDefault
-      FieldName = 'quantidade_cancelada'
-      Origin = 'quantidade_cancelada'
+      FieldName = 'total_recebido'
+      Origin = 'total_recebido'
       ReadOnly = True
+      Precision = 64
+      Size = 64
+    end
+    object FDQueryValorTotalCanceladastotal_perdido: TFMTBCDField
+      AutoGenerateValue = arDefault
+      FieldName = 'total_perdido'
+      Origin = 'total_perdido'
+      ReadOnly = True
+      Precision = 64
+      Size = 64
+    end
+    object FDQueryValorTotalCanceladaspercentual_recuperado: TFMTBCDField
+      AutoGenerateValue = arDefault
+      FieldName = 'percentual_recuperado'
+      Origin = 'percentual_recuperado'
+      ReadOnly = True
+      Precision = 64
+      Size = 64
+    end
+    object FDQueryValorTotalCanceladaspercentual_perda: TFMTBCDField
+      AutoGenerateValue = arDefault
+      FieldName = 'percentual_perda'
+      Origin = 'percentual_perda'
+      ReadOnly = True
+      Precision = 64
+      Size = 64
     end
   end
   object frxReport2: TfrxReport
@@ -6110,8 +6162,8 @@ object DataModule1: TDataModule1
     PreviewOptions.Zoom = 1.000000000000000000
     PrintOptions.Printer = 'Default'
     PrintOptions.PrintOnSheet = 0
-    ReportOptions.CreateDate = 45973.711899618060000000
-    ReportOptions.LastChange = 45973.711899618060000000
+    ReportOptions.CreateDate = 45973.834728287000000000
+    ReportOptions.LastChange = 45973.834728287000000000
     ScriptLanguage = 'PascalScript'
     ScriptText.Strings = (
       ''
@@ -6241,8 +6293,10 @@ object DataModule1: TDataModule1
         Width = 718.110700000000000000
         object Memo2: TfrxMemoView
           AllowVectorExport = True
-          Width = 718.110236220472400000
+          Width = 718.110236220000000000
           Height = 22.677180000000000000
+          ContentScaleOptions.Constraints.MaxIterationValue = 0
+          ContentScaleOptions.Constraints.MinIterationValue = 0
           Font.Charset = DEFAULT_CHARSET
           Font.Color = clWindowText
           Font.Height = -13
@@ -6255,8 +6309,11 @@ object DataModule1: TDataModule1
         end
         object Memo3: TfrxMemoView
           AllowVectorExport = True
-          Width = 475.000000000000000000
+          Left = 136.063080000000000000
+          Width = 154.000000000000000000
           Height = 22.677180000000000000
+          ContentScaleOptions.Constraints.MaxIterationValue = 0
+          ContentScaleOptions.Constraints.MinIterationValue = 0
           Font.Charset = DEFAULT_CHARSET
           Font.Color = clMaroon
           Font.Height = -13
@@ -6264,15 +6321,17 @@ object DataModule1: TDataModule1
           Font.Style = [fsBold]
           Frame.Typ = []
           Memo.UTF8W = (
-            'total_cancelado')
+            'Quantidade Cancelada :')
           ParentFont = False
           Style = 'Header'
         end
         object Memo4: TfrxMemoView
           AllowVectorExport = True
-          Left = 475.000000000000000000
-          Width = 147.000000000000000000
+          Left = 297.622140000000000000
+          Width = 125.159942890000000000
           Height = 22.677180000000000000
+          ContentScaleOptions.Constraints.MaxIterationValue = 0
+          ContentScaleOptions.Constraints.MinIterationValue = 0
           Font.Charset = DEFAULT_CHARSET
           Font.Color = clMaroon
           Font.Height = -13
@@ -6280,7 +6339,61 @@ object DataModule1: TDataModule1
           Font.Style = [fsBold]
           Frame.Typ = []
           Memo.UTF8W = (
-            'quantidade_cancelada')
+            ' Valor Cancelado :')
+          ParentFont = False
+          Style = 'Header'
+        end
+        object Memo6: TfrxMemoView
+          AllowVectorExport = True
+          Left = 433.170066190000000000
+          Width = 90.359858080000000000
+          Height = 22.677180000000000000
+          ContentScaleOptions.Constraints.MaxIterationValue = 0
+          ContentScaleOptions.Constraints.MinIterationValue = 0
+          Font.Charset = DEFAULT_CHARSET
+          Font.Color = clMaroon
+          Font.Height = -13
+          Font.Name = 'Arial'
+          Font.Style = [fsBold]
+          Frame.Typ = []
+          Memo.UTF8W = (
+            'Total Perdido :')
+          ParentFont = False
+          Style = 'Header'
+        end
+        object Memo7: TfrxMemoView
+          AllowVectorExport = True
+          Left = 531.088984270000000000
+          Width = 152.975695130000000000
+          Height = 22.677180000000000000
+          ContentScaleOptions.Constraints.MaxIterationValue = 0
+          ContentScaleOptions.Constraints.MinIterationValue = 0
+          Font.Charset = DEFAULT_CHARSET
+          Font.Color = clMaroon
+          Font.Height = -13
+          Font.Name = 'Arial'
+          Font.Style = [fsBold]
+          Frame.Typ = []
+          Memo.UTF8W = (
+            'Recuperado:')
+          ParentFont = False
+          Style = 'Header'
+        end
+        object Memo8: TfrxMemoView
+          AllowVectorExport = True
+          Left = 642.489849400000000000
+          Width = 117.195216820000000000
+          Height = 22.677180000000000000
+          ContentScaleOptions.Constraints.MaxIterationValue = 0
+          ContentScaleOptions.Constraints.MinIterationValue = 0
+          Font.Charset = DEFAULT_CHARSET
+          Font.Color = clMaroon
+          Font.Height = -13
+          Font.Name = 'Arial'
+          Font.Style = [fsBold]
+          Frame.Typ = []
+          Memo.UTF8W = (
+            'Perda:')
           ParentFont = False
           Style = 'Header'
         end
@@ -6297,11 +6410,14 @@ object DataModule1: TDataModule1
         Width = 718.110700000000000000
         KeepWithData = False
         Condition = 'frxDBDataset2."cliente"'
-        object Memo5: TfrxMemoView
+        object Memo9: TfrxMemoView
           Align = baWidth
           AllowVectorExport = True
+          Top = 3.779530000000000000
           Width = 718.110717773437500000
           Height = 22.677180000000000000
+          ContentScaleOptions.Constraints.MaxIterationValue = 0
+          ContentScaleOptions.Constraints.MinIterationValue = 0
           DataField = 'cliente'
           DataSet = frxDBDataset2
           DataSetName = 'frxDBDataset2'
@@ -6332,10 +6448,35 @@ object DataModule1: TDataModule1
         DataSet = frxDBDataset2
         DataSetName = 'frxDBDataset2'
         RowCount = 0
-        object Memo6: TfrxMemoView
+        object Memo10: TfrxMemoView
           AllowVectorExport = True
-          Width = 475.000000000000000000
+          Left = 204.094620000000000000
+          Top = -1.220470000000000000
+          Width = 89.747990000000000000
           Height = 18.897650000000000000
+          ContentScaleOptions.Constraints.MaxIterationValue = 0
+          ContentScaleOptions.Constraints.MinIterationValue = 0
+          DataField = 'quantidade_canceladas'
+          DataSet = frxDBDataset2
+          DataSetName = 'frxDBDataset2'
+          Font.Charset = DEFAULT_CHARSET
+          Font.Color = clWindowText
+          Font.Height = -13
+          Font.Name = 'Arial'
+          Font.Style = []
+          Frame.Typ = []
+          Memo.UTF8W = (
+            '[frxDBDataset2."quantidade_canceladas"]')
+          ParentFont = False
+          Style = 'Data'
+        end
+        object Memo11: TfrxMemoView
+          AllowVectorExport = True
+          Left = 312.740260000000000000
+          Width = 106.262292890000000000
+          Height = 18.897650000000000000
+          ContentScaleOptions.Constraints.MaxIterationValue = 0
+          ContentScaleOptions.Constraints.MinIterationValue = 0
           DataField = 'total_cancelado'
           DataSet = frxDBDataset2
           DataSetName = 'frxDBDataset2'
@@ -6350,12 +6491,14 @@ object DataModule1: TDataModule1
           ParentFont = False
           Style = 'Data'
         end
-        object Memo7: TfrxMemoView
+        object Memo13: TfrxMemoView
           AllowVectorExport = True
-          Left = 475.000000000000000000
-          Width = 147.000000000000000000
+          Left = 448.288186190000000000
+          Width = 90.359858080000000000
           Height = 18.897650000000000000
-          DataField = 'quantidade_cancelada'
+          ContentScaleOptions.Constraints.MaxIterationValue = 0
+          ContentScaleOptions.Constraints.MinIterationValue = 0
+          DataField = 'total_perdido'
           DataSet = frxDBDataset2
           DataSetName = 'frxDBDataset2'
           Font.Charset = DEFAULT_CHARSET
@@ -6365,7 +6508,49 @@ object DataModule1: TDataModule1
           Font.Style = []
           Frame.Typ = []
           Memo.UTF8W = (
-            '[frxDBDataset2."quantidade_cancelada"]')
+            '[frxDBDataset2."total_perdido"]')
+          ParentFont = False
+          Style = 'Data'
+        end
+        object Memo14: TfrxMemoView
+          AllowVectorExport = True
+          Left = 553.766164270000000000
+          Width = 92.503215130000000000
+          Height = 18.897650000000000000
+          ContentScaleOptions.Constraints.MaxIterationValue = 0
+          ContentScaleOptions.Constraints.MinIterationValue = 0
+          DataField = 'percentual_recuperado'
+          DataSet = frxDBDataset2
+          DataSetName = 'frxDBDataset2'
+          Font.Charset = DEFAULT_CHARSET
+          Font.Color = clWindowText
+          Font.Height = -13
+          Font.Name = 'Arial'
+          Font.Style = []
+          Frame.Typ = []
+          Memo.UTF8W = (
+            '[frxDBDataset2."percentual_recuperado"]')
+          ParentFont = False
+          Style = 'Data'
+        end
+        object Memo15: TfrxMemoView
+          AllowVectorExport = True
+          Left = 650.048909400000000000
+          Width = 117.195216820000000000
+          Height = 18.897650000000000000
+          ContentScaleOptions.Constraints.MaxIterationValue = 0
+          ContentScaleOptions.Constraints.MinIterationValue = 0
+          DataField = 'percentual_perda'
+          DataSet = frxDBDataset2
+          DataSetName = 'frxDBDataset2'
+          Font.Charset = DEFAULT_CHARSET
+          Font.Color = clWindowText
+          Font.Height = -13
+          Font.Name = 'Arial'
+          Font.Style = []
+          Frame.Typ = []
+          Memo.UTF8W = (
+            '[frxDBDataset2."percentual_perda"]')
           ParentFont = False
           Style = 'Data'
         end
@@ -6391,14 +6576,14 @@ object DataModule1: TDataModule1
         Height = 26.456710000000000000
         Top = 302.362400000000000000
         Width = 718.110700000000000000
-        object Memo8: TfrxMemoView
+        object Memo16: TfrxMemoView
           Align = baWidth
           AllowVectorExport = True
           Width = 718.110717773437500000
           Frame.Typ = [ftTop]
           Frame.Width = 2.000000000000000000
         end
-        object Memo9: TfrxMemoView
+        object Memo17: TfrxMemoView
           AllowVectorExport = True
           Top = 1.000000000000000000
           Height = 22.677180000000000000
@@ -6407,7 +6592,7 @@ object DataModule1: TDataModule1
           Memo.UTF8W = (
             '[Date] [Time]')
         end
-        object Memo10: TfrxMemoView
+        object Memo18: TfrxMemoView
           Align = baRight
           AllowVectorExport = True
           Left = 642.520117773437500000
@@ -6425,7 +6610,7 @@ object DataModule1: TDataModule1
   object frxDBDataset2: TfrxDBDataset
     UserName = 'frxDBDataset2'
     CloseDataSource = False
-    DataSet = FDQueryValorTotalPendentes
+    DataSet = FDQueryValorTotalCanceladas
     BCDToCurrency = False
     DataSetOptions = []
     Left = 592
@@ -6437,11 +6622,711 @@ object DataModule1: TDataModule1
         Size = 100
       end
       item
+        FieldName = 'quantidade_canceladas'
+      end
+      item
         FieldName = 'total_cancelado'
         Size = 64
       end
       item
-        FieldName = 'quantidade_cancelada'
+        FieldName = 'total_recebido'
+        Size = 64
+      end
+      item
+        FieldName = 'total_perdido'
+        Size = 64
+      end
+      item
+        FieldName = 'percentual_recuperado'
+        Size = 64
+      end
+      item
+        FieldName = 'percentual_perda'
+        Size = 64
+      end>
+  end
+  object FDQueryPendentes: TFDQuery
+    Active = True
+    Connection = FDConnection1
+    SQL.Strings = (
+      '  SELECT'
+      '      c.nome AS cliente,'
+      '      COUNT(*) AS quantidade_pendentes,'
+      '      COALESCE(SUM(r.valor_total), 0) AS valor_total_pendente,'
+      
+        '      COALESCE(SUM(r.valor_recebido), 0) AS valor_recebido_pende' +
+        'nte,'
+      
+        '      COALESCE(SUM(r.valor_total - COALESCE(r.valor_recebido, 0)' +
+        '), 0) AS valor_a_receber,'
+      '      ROUND('
+      '          CASE'
+      '              WHEN SUM(r.valor_total) > 0'
+      
+        '              THEN (SUM(r.valor_total - COALESCE(r.valor_recebid' +
+        'o, 0)) * 100.0 / SUM(r.valor_total))'
+      '              ELSE 0'
+      '          END, 2'
+      '      ) AS percentual_pendente,'
+      '      MIN(r.data_emissao) AS primeira_emissao,'
+      '      MAX(r.data_vencimento) AS ultima_vencimento,'
+      '      ROUND('
+      '          CASE'
+      '              WHEN COUNT(*) > 0'
+      '              THEN AVG(r.valor_total)'
+      '              ELSE 0'
+      '          END, 2'
+      '      ) AS valor_medio_pendente'
+      '  FROM receitas r'
+      '  INNER JOIN ordens_servico os ON r.id_ordem_servico = os.id'
+      '  INNER JOIN clientes c ON os.id_cliente = c.id'
+      '  WHERE r.status = '#39'Pendente'#39
+      '    AND r.ativo = TRUE'
+      '    AND os.ativo = TRUE'
+      '    AND c.ativo = TRUE'
+      '    AND r.data_emissao BETWEEN '#39'2025-01-01'#39' AND '#39'2025-12-31'#39
+      '  GROUP BY c.id, c.nome'
+      '  ORDER BY valor_total_pendente DESC')
+    Left = 392
+    Top = 512
+    object FDQueryPendentescliente: TWideStringField
+      FieldName = 'cliente'
+      Origin = 'cliente'
+      Size = 100
+    end
+    object FDQueryPendentesquantidade_pendentes: TLargeintField
+      AutoGenerateValue = arDefault
+      FieldName = 'quantidade_pendentes'
+      Origin = 'quantidade_pendentes'
+      ReadOnly = True
+    end
+    object FDQueryPendentesvalor_total_pendente: TFMTBCDField
+      AutoGenerateValue = arDefault
+      FieldName = 'valor_total_pendente'
+      Origin = 'valor_total_pendente'
+      ReadOnly = True
+      Precision = 64
+      Size = 64
+    end
+    object FDQueryPendentesvalor_recebido_pendente: TFMTBCDField
+      AutoGenerateValue = arDefault
+      FieldName = 'valor_recebido_pendente'
+      Origin = 'valor_recebido_pendente'
+      ReadOnly = True
+      Precision = 64
+      Size = 64
+    end
+    object FDQueryPendentesvalor_a_receber: TFMTBCDField
+      AutoGenerateValue = arDefault
+      FieldName = 'valor_a_receber'
+      Origin = 'valor_a_receber'
+      ReadOnly = True
+      Precision = 64
+      Size = 64
+    end
+    object FDQueryPendentespercentual_pendente: TFMTBCDField
+      AutoGenerateValue = arDefault
+      FieldName = 'percentual_pendente'
+      Origin = 'percentual_pendente'
+      ReadOnly = True
+      Precision = 64
+      Size = 64
+    end
+    object FDQueryPendentesprimeira_emissao: TSQLTimeStampField
+      AutoGenerateValue = arDefault
+      FieldName = 'primeira_emissao'
+      Origin = 'primeira_emissao'
+      ProviderFlags = [pfInUpdate]
+      ReadOnly = True
+    end
+    object FDQueryPendentesultima_vencimento: TSQLTimeStampField
+      AutoGenerateValue = arDefault
+      FieldName = 'ultima_vencimento'
+      Origin = 'ultima_vencimento'
+      ProviderFlags = [pfInUpdate]
+      ReadOnly = True
+    end
+    object FDQueryPendentesvalor_medio_pendente: TFMTBCDField
+      AutoGenerateValue = arDefault
+      FieldName = 'valor_medio_pendente'
+      Origin = 'valor_medio_pendente'
+      ReadOnly = True
+      Precision = 64
+      Size = 64
+    end
+  end
+  object frxReport3: TfrxReport
+    Version = '2026.1.1'
+    DotMatrixReport = False
+    IniFile = '\Software\Fast Reports'
+    PreviewOptions.Buttons = [pbPrint, pbLoad, pbSave, pbExport, pbZoom, pbFind, pbOutline, pbPageSetup, pbTools, pbEdit, pbNavigator, pbExportQuick, pbCopy, pbSelection, pbWatermarks]
+    PreviewOptions.Zoom = 1.000000000000000000
+    PrintOptions.Printer = 'Default'
+    PrintOptions.PrintOnSheet = 0
+    ReportOptions.CreateDate = 45973.878999294000000000
+    ReportOptions.LastChange = 45973.878999294000000000
+    ScriptLanguage = 'PascalScript'
+    ScriptText.Strings = (
+      ''
+      'begin'
+      ''
+      'end.')
+    Left = 504
+    Top = 512
+    Datasets = <
+      item
+        DataSet = frxDBDataset3
+        DataSetName = 'frxDBDataset3'
+      end>
+    Variables = <>
+    Style = <
+      item
+        Name = 'Title'
+        Font.Charset = DEFAULT_CHARSET
+        Font.Color = clWhite
+        Font.Height = -16
+        Font.Name = 'Arial'
+        Font.Style = [fsBold]
+        Frame.Typ = []
+        Fill.BackColor = clGray
+      end
+      item
+        Name = 'Header'
+        Font.Charset = DEFAULT_CHARSET
+        Font.Color = clMaroon
+        Font.Height = -13
+        Font.Name = 'Arial'
+        Font.Style = [fsBold]
+        Frame.Typ = []
+      end
+      item
+        Name = 'Group header'
+        Font.Charset = DEFAULT_CHARSET
+        Font.Color = clMaroon
+        Font.Height = -13
+        Font.Name = 'Arial'
+        Font.Style = [fsBold]
+        Frame.Typ = []
+        Fill.BackColor = 16053492
+      end
+      item
+        Name = 'Data'
+        Font.Charset = DEFAULT_CHARSET
+        Font.Color = clWindowText
+        Font.Height = -13
+        Font.Name = 'Arial'
+        Font.Style = []
+        Frame.Typ = []
+      end
+      item
+        Name = 'Group footer'
+        Font.Charset = DEFAULT_CHARSET
+        Font.Color = clWindowText
+        Font.Height = -13
+        Font.Name = 'Arial'
+        Font.Style = [fsBold]
+        Frame.Typ = []
+      end
+      item
+        Name = 'Header line'
+        Font.Charset = DEFAULT_CHARSET
+        Font.Color = clWindowText
+        Font.Height = -13
+        Font.Name = 'Arial'
+        Font.Style = []
+        Frame.Typ = [ftBottom]
+        Frame.Width = 2.000000000000000000
+      end>
+    Watermarks = <>
+    object Data: TfrxDataPage
+      Height = 1000.000000000000000000
+      Width = 1000.000000000000000000
+    end
+    object Page1: TfrxReportPage
+      PaperWidth = 210.000000000000000000
+      PaperHeight = 297.000000000000000000
+      PaperSize = 9
+      LeftMargin = 10.000000000000000000
+      RightMargin = 10.000000000000000000
+      TopMargin = 10.000000000000000000
+      BottomMargin = 10.000000000000000000
+      Frame.Typ = []
+      MirrorMode = []
+      object ReportTitle1: TfrxReportTitle
+        FillType = ftBrush
+        FillGap.Top = 0
+        FillGap.Left = 0
+        FillGap.Bottom = 0
+        FillGap.Right = 0
+        Frame.Typ = []
+        Height = 26.456710000000000000
+        Top = 18.897650000000000000
+        Width = 718.110700000000000000
+        object Memo1: TfrxMemoView
+          Align = baWidth
+          AllowVectorExport = True
+          Width = 718.110717773437500000
+          Height = 22.677180000000000000
+          Font.Charset = DEFAULT_CHARSET
+          Font.Color = clWhite
+          Font.Height = -16
+          Font.Name = 'Arial'
+          Font.Style = [fsBold]
+          Frame.Typ = []
+          Fill.BackColor = clGray
+          HAlign = haCenter
+          Memo.UTF8W = (
+            'Report')
+          ParentFont = False
+          Style = 'Title'
+          VAlign = vaCenter
+        end
+      end
+      object PageHeader1: TfrxPageHeader
+        FillType = ftBrush
+        FillGap.Top = 0
+        FillGap.Left = 0
+        FillGap.Bottom = 0
+        FillGap.Right = 0
+        Frame.Typ = []
+        Height = 22.677180000000000000
+        Top = 68.031540000000000000
+        Width = 718.110700000000000000
+        object Memo2: TfrxMemoView
+          AllowVectorExport = True
+          Width = 718.110236220472000000
+          Height = 22.677180000000000000
+          Font.Charset = DEFAULT_CHARSET
+          Font.Color = clWindowText
+          Font.Height = -13
+          Font.Name = 'Arial'
+          Font.Style = []
+          Frame.Typ = [ftBottom]
+          Frame.Width = 2.000000000000000000
+          ParentFont = False
+          Style = 'Header line'
+        end
+        object Memo3: TfrxMemoView
+          AllowVectorExport = True
+          Width = 98.434613796550500000
+          Height = 22.677180000000000000
+          Font.Charset = DEFAULT_CHARSET
+          Font.Color = clMaroon
+          Font.Height = -13
+          Font.Name = 'Arial'
+          Font.Style = [fsBold]
+          Frame.Typ = []
+          Memo.UTF8W = (
+            'quantidade_pendentes')
+          ParentFont = False
+          Style = 'Header'
+        end
+        object Memo4: TfrxMemoView
+          AllowVectorExport = True
+          Left = 98.434613796550500000
+          Width = 91.167628885395800000
+          Height = 22.677180000000000000
+          Font.Charset = DEFAULT_CHARSET
+          Font.Color = clMaroon
+          Font.Height = -13
+          Font.Name = 'Arial'
+          Font.Style = [fsBold]
+          Frame.Typ = []
+          Memo.UTF8W = (
+            'valor_total_pendente')
+          ParentFont = False
+          Style = 'Header'
+        end
+        object Memo5: TfrxMemoView
+          AllowVectorExport = True
+          Left = 189.602242681946000000
+          Width = 109.004773667321000000
+          Height = 22.677180000000000000
+          Font.Charset = DEFAULT_CHARSET
+          Font.Color = clMaroon
+          Font.Height = -13
+          Font.Name = 'Arial'
+          Font.Style = [fsBold]
+          Frame.Typ = []
+          Memo.UTF8W = (
+            'valor_recebido_pendente')
+          ParentFont = False
+          Style = 'Header'
+        end
+        object Memo6: TfrxMemoView
+          AllowVectorExport = True
+          Left = 298.607016349267000000
+          Width = 70.027309143854700000
+          Height = 22.677180000000000000
+          Font.Charset = DEFAULT_CHARSET
+          Font.Color = clMaroon
+          Font.Height = -13
+          Font.Name = 'Arial'
+          Font.Style = [fsBold]
+          Frame.Typ = []
+          Memo.UTF8W = (
+            'valor_a_receber')
+          ParentFont = False
+          Style = 'Header'
+        end
+        object Memo7: TfrxMemoView
+          AllowVectorExport = True
+          Left = 368.634325493122000000
+          Width = 91.167628885395800000
+          Height = 22.677180000000000000
+          Font.Charset = DEFAULT_CHARSET
+          Font.Color = clMaroon
+          Font.Height = -13
+          Font.Name = 'Arial'
+          Font.Style = [fsBold]
+          Frame.Typ = []
+          Memo.UTF8W = (
+            'percentual_pendente')
+          ParentFont = False
+          Style = 'Header'
+        end
+        object Memo8: TfrxMemoView
+          AllowVectorExport = True
+          Left = 459.801954378518000000
+          Width = 77.294294055009500000
+          Height = 22.677180000000000000
+          Font.Charset = DEFAULT_CHARSET
+          Font.Color = clMaroon
+          Font.Height = -13
+          Font.Name = 'Arial'
+          Font.Style = [fsBold]
+          Frame.Typ = []
+          Memo.UTF8W = (
+            'primeira_emissao')
+          ParentFont = False
+          Style = 'Header'
+        end
+        object Memo9: TfrxMemoView
+          AllowVectorExport = True
+          Left = 537.096248433527000000
+          Width = 82.579373990394700000
+          Height = 22.677180000000000000
+          Font.Charset = DEFAULT_CHARSET
+          Font.Color = clMaroon
+          Font.Height = -13
+          Font.Name = 'Arial'
+          Font.Style = [fsBold]
+          Frame.Typ = []
+          Memo.UTF8W = (
+            'ultima_vencimento')
+          ParentFont = False
+          Style = 'Header'
+        end
+        object Memo10: TfrxMemoView
+          AllowVectorExport = True
+          Left = 619.675622423922000000
+          Width = 98.434613796550500000
+          Height = 22.677180000000000000
+          Font.Charset = DEFAULT_CHARSET
+          Font.Color = clMaroon
+          Font.Height = -13
+          Font.Name = 'Arial'
+          Font.Style = [fsBold]
+          Frame.Typ = []
+          Memo.UTF8W = (
+            'valor_medio_pendente')
+          ParentFont = False
+          Style = 'Header'
+        end
+      end
+      object GroupHeader1: TfrxGroupHeader
+        FillType = ftBrush
+        FillGap.Top = 0
+        FillGap.Left = 0
+        FillGap.Bottom = 0
+        FillGap.Right = 0
+        Frame.Typ = []
+        Height = 26.456710000000000000
+        Top = 151.181200000000000000
+        Width = 718.110700000000000000
+        KeepWithData = False
+        Condition = 'frxDBDataset3."cliente"'
+        object Memo11: TfrxMemoView
+          Align = baWidth
+          AllowVectorExport = True
+          Width = 718.110717773437500000
+          Height = 22.677180000000000000
+          DataField = 'cliente'
+          DataSet = frxDBDataset3
+          DataSetName = 'frxDBDataset3'
+          Font.Charset = DEFAULT_CHARSET
+          Font.Color = clMaroon
+          Font.Height = -13
+          Font.Name = 'Arial'
+          Font.Style = [fsBold]
+          Frame.Typ = []
+          Fill.BackColor = 16053492
+          Memo.UTF8W = (
+            '[frxDBDataset3."cliente"]')
+          ParentFont = False
+          Style = 'Group header'
+          VAlign = vaCenter
+        end
+      end
+      object MasterData1: TfrxMasterData
+        FillType = ftBrush
+        FillGap.Top = 0
+        FillGap.Left = 0
+        FillGap.Bottom = 0
+        FillGap.Right = 0
+        Frame.Typ = []
+        Height = 18.897650000000000000
+        Top = 200.315090000000000000
+        Width = 718.110700000000000000
+        DataSet = frxDBDataset3
+        DataSetName = 'frxDBDataset3'
+        RowCount = 0
+        object Memo12: TfrxMemoView
+          AllowVectorExport = True
+          Width = 98.434613796550500000
+          Height = 18.897650000000000000
+          DataField = 'quantidade_pendentes'
+          DataSet = frxDBDataset3
+          DataSetName = 'frxDBDataset3'
+          Font.Charset = DEFAULT_CHARSET
+          Font.Color = clWindowText
+          Font.Height = -13
+          Font.Name = 'Arial'
+          Font.Style = []
+          Frame.Typ = []
+          Memo.UTF8W = (
+            '[frxDBDataset3."quantidade_pendentes"]')
+          ParentFont = False
+          Style = 'Data'
+        end
+        object Memo13: TfrxMemoView
+          AllowVectorExport = True
+          Left = 98.434613796550500000
+          Width = 91.167628885395800000
+          Height = 18.897650000000000000
+          DataField = 'valor_total_pendente'
+          DataSet = frxDBDataset3
+          DataSetName = 'frxDBDataset3'
+          Font.Charset = DEFAULT_CHARSET
+          Font.Color = clWindowText
+          Font.Height = -13
+          Font.Name = 'Arial'
+          Font.Style = []
+          Frame.Typ = []
+          Memo.UTF8W = (
+            '[frxDBDataset3."valor_total_pendente"]')
+          ParentFont = False
+          Style = 'Data'
+        end
+        object Memo14: TfrxMemoView
+          AllowVectorExport = True
+          Left = 189.602242681946000000
+          Width = 109.004773667321000000
+          Height = 18.897650000000000000
+          DataField = 'valor_recebido_pendente'
+          DataSet = frxDBDataset3
+          DataSetName = 'frxDBDataset3'
+          Font.Charset = DEFAULT_CHARSET
+          Font.Color = clWindowText
+          Font.Height = -13
+          Font.Name = 'Arial'
+          Font.Style = []
+          Frame.Typ = []
+          Memo.UTF8W = (
+            '[frxDBDataset3."valor_recebido_pendente"]')
+          ParentFont = False
+          Style = 'Data'
+        end
+        object Memo15: TfrxMemoView
+          AllowVectorExport = True
+          Left = 298.607016349267000000
+          Width = 70.027309143854700000
+          Height = 18.897650000000000000
+          DataField = 'valor_a_receber'
+          DataSet = frxDBDataset3
+          DataSetName = 'frxDBDataset3'
+          Font.Charset = DEFAULT_CHARSET
+          Font.Color = clWindowText
+          Font.Height = -13
+          Font.Name = 'Arial'
+          Font.Style = []
+          Frame.Typ = []
+          Memo.UTF8W = (
+            '[frxDBDataset3."valor_a_receber"]')
+          ParentFont = False
+          Style = 'Data'
+        end
+        object Memo16: TfrxMemoView
+          AllowVectorExport = True
+          Left = 368.634325493122000000
+          Width = 91.167628885395800000
+          Height = 18.897650000000000000
+          DataField = 'percentual_pendente'
+          DataSet = frxDBDataset3
+          DataSetName = 'frxDBDataset3'
+          Font.Charset = DEFAULT_CHARSET
+          Font.Color = clWindowText
+          Font.Height = -13
+          Font.Name = 'Arial'
+          Font.Style = []
+          Frame.Typ = []
+          Memo.UTF8W = (
+            '[frxDBDataset3."percentual_pendente"]')
+          ParentFont = False
+          Style = 'Data'
+        end
+        object Memo17: TfrxMemoView
+          AllowVectorExport = True
+          Left = 459.801954378518000000
+          Width = 77.294294055009500000
+          Height = 18.897650000000000000
+          DataField = 'primeira_emissao'
+          DataSet = frxDBDataset3
+          DataSetName = 'frxDBDataset3'
+          Font.Charset = DEFAULT_CHARSET
+          Font.Color = clWindowText
+          Font.Height = -13
+          Font.Name = 'Arial'
+          Font.Style = []
+          Frame.Typ = []
+          Memo.UTF8W = (
+            '[frxDBDataset3."primeira_emissao"]')
+          ParentFont = False
+          Style = 'Data'
+        end
+        object Memo18: TfrxMemoView
+          AllowVectorExport = True
+          Left = 537.096248433527000000
+          Width = 82.579373990394700000
+          Height = 18.897650000000000000
+          DataField = 'ultima_vencimento'
+          DataSet = frxDBDataset3
+          DataSetName = 'frxDBDataset3'
+          Font.Charset = DEFAULT_CHARSET
+          Font.Color = clWindowText
+          Font.Height = -13
+          Font.Name = 'Arial'
+          Font.Style = []
+          Frame.Typ = []
+          Memo.UTF8W = (
+            '[frxDBDataset3."ultima_vencimento"]')
+          ParentFont = False
+          Style = 'Data'
+        end
+        object Memo19: TfrxMemoView
+          AllowVectorExport = True
+          Left = 619.675622423922000000
+          Width = 98.434613796550500000
+          Height = 18.897650000000000000
+          DataField = 'valor_medio_pendente'
+          DataSet = frxDBDataset3
+          DataSetName = 'frxDBDataset3'
+          Font.Charset = DEFAULT_CHARSET
+          Font.Color = clWindowText
+          Font.Height = -13
+          Font.Name = 'Arial'
+          Font.Style = []
+          Frame.Typ = []
+          Memo.UTF8W = (
+            '[frxDBDataset3."valor_medio_pendente"]')
+          ParentFont = False
+          Style = 'Data'
+        end
+      end
+      object GroupFooter1: TfrxGroupFooter
+        FillType = ftBrush
+        FillGap.Top = 0
+        FillGap.Left = 0
+        FillGap.Bottom = 0
+        FillGap.Right = 0
+        Frame.Typ = []
+        Top = 241.889920000000000000
+        Width = 718.110700000000000000
+        KeepWithData = False
+      end
+      object PageFooter1: TfrxPageFooter
+        FillType = ftBrush
+        FillGap.Top = 0
+        FillGap.Left = 0
+        FillGap.Bottom = 0
+        FillGap.Right = 0
+        Frame.Typ = []
+        Height = 26.456710000000000000
+        Top = 302.362400000000000000
+        Width = 718.110700000000000000
+        object Memo20: TfrxMemoView
+          Align = baWidth
+          AllowVectorExport = True
+          Width = 718.110717773437500000
+          Frame.Typ = [ftTop]
+          Frame.Width = 2.000000000000000000
+        end
+        object Memo21: TfrxMemoView
+          AllowVectorExport = True
+          Top = 1.000000000000000000
+          Height = 22.677180000000000000
+          AutoWidth = True
+          Frame.Typ = []
+          Memo.UTF8W = (
+            '[Date] [Time]')
+        end
+        object Memo22: TfrxMemoView
+          Align = baRight
+          AllowVectorExport = True
+          Left = 642.520117773437500000
+          Top = 1.000000000000000000
+          Width = 75.590600000000000000
+          Height = 22.677180000000000000
+          Frame.Typ = []
+          HAlign = haRight
+          Memo.UTF8W = (
+            'Page [Page#]')
+        end
+      end
+    end
+  end
+  object frxDBDataset3: TfrxDBDataset
+    UserName = 'frxDBDataset3'
+    CloseDataSource = False
+    DataSet = FDQueryPendentes
+    BCDToCurrency = False
+    DataSetOptions = []
+    Left = 600
+    Top = 520
+    FieldDefs = <
+      item
+        FieldName = 'cliente'
+        FieldType = fftString
+        Size = 100
+      end
+      item
+        FieldName = 'quantidade_pendentes'
+      end
+      item
+        FieldName = 'valor_total_pendente'
+        Size = 64
+      end
+      item
+        FieldName = 'valor_recebido_pendente'
+        Size = 64
+      end
+      item
+        FieldName = 'valor_a_receber'
+        Size = 64
+      end
+      item
+        FieldName = 'percentual_pendente'
+        Size = 64
+      end
+      item
+        FieldName = 'primeira_emissao'
+      end
+      item
+        FieldName = 'ultima_vencimento'
+      end
+      item
+        FieldName = 'valor_medio_pendente'
+        Size = 64
       end>
   end
 end

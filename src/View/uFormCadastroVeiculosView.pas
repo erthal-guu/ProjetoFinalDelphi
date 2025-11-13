@@ -49,8 +49,6 @@ type
     Label6: TLabel;
     Label7: TLabel;
     Label8: TLabel;
-    PnlButtonEnviar: TPanel;
-    LblEnviar: TLabel;
     EdtModelo: TEdit;
     EdtCor: TEdit;
     CmbCliente: TComboBox;
@@ -58,13 +56,19 @@ type
     EdtMarca: TEdit;
     EdtChassi: TEdit;
     EdtFabricação: TEdit;
-    PnlButtonAtualizar: TPanel;
-    LblAtualizar: TLabel;
     CmbStatus: TComboBox;
     LblStatus: TLabel;
     BtnCancelar: TSpeedButton;
     Label5: TLabel;
     ImgFecharForm: TImage;
+    PnlButtonForm: TPanel;
+    ShpButton: TShape;
+    PnlButtonAtualizar: TPanel;
+    LblAtualizar: TLabel;
+    Image2: TImage;
+    PnlButtonEnviar: TPanel;
+    LblEnviar: TLabel;
+    Image6: TImage;
 
     procedure BtnAdicionarClick(Sender: TObject);
     procedure BtnPesquisarClick(Sender: TObject);

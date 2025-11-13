@@ -11,11 +11,14 @@ type
   private
     QueryEntradas: TFDQuery;
     QueryCanceladas: TFDQuery;
+    QueryPendentes: TFDQuery;
 
   public
     function GerarRelatorioValorTotalEntradas(aDataIncio, aDataFinal: TDate)
       : TDataSet;
     function GerarRelatorioReceitasCanceladas(aDataIncio, aDataFinal: TDate)
+      : TDataSet;
+    function GerarRelatorioReceitasPendentes(aDataIncio, aDataFinal: TDate)
       : TDataSet;
 
     constructor create(Query: TFDQuery);
@@ -32,6 +35,9 @@ begin
 
   QueryCanceladas := TFDQuery.Create(nil);
   QueryCanceladas.Connection := Query.Connection;
+
+  QueryPendentes := TFDQuery.Create(nil);
+  QueryPendentes.Connection := Query.Connection;
 end;
 
 function TRelatorioRepository.GerarRelatorioValorTotalEntradas(aDataIncio,
@@ -116,9 +122,11 @@ try
   QueryCanceladas.SQL.Add('        END, 2');
   QueryCanceladas.SQL.Add('    ) AS percentual_perda');
   QueryCanceladas.SQL.Add('FROM receitas r');
-  QueryCanceladas.SQL.Add('INNER JOIN clientes c ON r.id_cliente = c.id');
+  QueryCanceladas.SQL.Add('INNER JOIN ordens_servico os ON r.id_ordem_servico = os.id');
+  QueryCanceladas.SQL.Add('INNER JOIN clientes c ON os.id_cliente = c.id');
   QueryCanceladas.SQL.Add('WHERE r.status = ''Cancelada''');
-  QueryCanceladas.SQL.Add('  AND r.ativo = TRUE');
+  QueryCanceladas.SQL.Add('  AND r.ativo = FALSE');
+  QueryCanceladas.SQL.Add('  AND os.ativo = TRUE');
   QueryCanceladas.SQL.Add('  AND c.ativo = TRUE');
   QueryCanceladas.SQL.Add('  AND r.data_emissao BETWEEN ' + DataIni + ' AND ' + DataFim);
   QueryCanceladas.SQL.Add('GROUP BY c.id, c.nome');
@@ -131,6 +139,59 @@ try
 except
   on E: Exception do
     raise Exception.Create('Erro ao gerar relatório de cancelamentos: ' + E.Message);
+end;
+end;
+
+function TRelatorioRepository.GerarRelatorioReceitasPendentes(aDataIncio, aDataFinal: TDate): TDataSet;
+var
+  DataIni, DataFim: string;
+begin
+try
+  DataIni := QuotedStr(FormatDateTime('yyyy-mm-dd', aDataIncio));
+  DataFim := QuotedStr(FormatDateTime('yyyy-mm-dd', aDataFinal));
+
+  QueryPendentes.Close;
+  QueryPendentes.SQL.Clear;
+  QueryPendentes.SQL.Add('SELECT ');
+  QueryPendentes.SQL.Add('    c.nome AS cliente,');
+  QueryPendentes.SQL.Add('    COUNT(*) AS quantidade_pendentes,');
+  QueryPendentes.SQL.Add('    COALESCE(SUM(r.valor_total), 0) AS valor_total_pendente,');
+  QueryPendentes.SQL.Add('    COALESCE(SUM(r.valor_recebido), 0) AS valor_recebido_pendente,');
+  QueryPendentes.SQL.Add('    COALESCE(SUM(r.valor_total - COALESCE(r.valor_recebido, 0)), 0) AS valor_a_receber,');
+  QueryPendentes.SQL.Add('    ROUND(');
+  QueryPendentes.SQL.Add('        CASE');
+  QueryPendentes.SQL.Add('            WHEN SUM(r.valor_total) > 0');
+  QueryPendentes.SQL.Add('            THEN (SUM(r.valor_total - COALESCE(r.valor_recebido, 0)) * 100.0 / SUM(r.valor_total))');
+  QueryPendentes.SQL.Add('            ELSE 0');
+  QueryPendentes.SQL.Add('        END, 2');
+  QueryPendentes.SQL.Add('    ) AS percentual_pendente,');
+  QueryPendentes.SQL.Add('    MIN(r.data_emissao) AS primeira_emissao,');
+  QueryPendentes.SQL.Add('    MAX(r.data_vencimento) AS ultima_vencimento,');
+  QueryPendentes.SQL.Add('    ROUND(');
+  QueryPendentes.SQL.Add('        CASE');
+  QueryPendentes.SQL.Add('            WHEN COUNT(*) > 0');
+  QueryPendentes.SQL.Add('            THEN AVG(r.valor_total)');
+  QueryPendentes.SQL.Add('            ELSE 0');
+  QueryPendentes.SQL.Add('        END, 2');
+  QueryPendentes.SQL.Add('    ) AS valor_medio_pendente');
+  QueryPendentes.SQL.Add('FROM receitas r');
+  QueryPendentes.SQL.Add('INNER JOIN ordens_servico os ON r.id_ordem_servico = os.id');
+  QueryPendentes.SQL.Add('INNER JOIN clientes c ON os.id_cliente = c.id');
+  QueryPendentes.SQL.Add('WHERE r.status = ''Pendente''');
+  QueryPendentes.SQL.Add('  AND r.ativo = TRUE');
+  QueryPendentes.SQL.Add('  AND os.ativo = TRUE');
+  QueryPendentes.SQL.Add('  AND c.ativo = TRUE');
+  QueryPendentes.SQL.Add('  AND r.data_emissao BETWEEN ' + DataIni + ' AND ' + DataFim);
+  QueryPendentes.SQL.Add('GROUP BY c.id, c.nome');
+  QueryPendentes.SQL.Add('ORDER BY valor_total_pendente DESC');
+
+  QueryPendentes.Open;
+  Result := QueryPendentes;
+  DataModule1.frxReport3.ShowReport();
+
+except
+  on E: Exception do
+    raise Exception.Create('Erro ao gerar relatório de receitas pendentes: ' + E.Message);
 end;
 end;
 

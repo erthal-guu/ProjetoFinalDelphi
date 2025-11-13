@@ -8,6 +8,7 @@ uses
      RelatorioRepository : TRelatorioRepository;
      procedure GerarRelatorioValorTotalEntrada(aDataIncio,aDataFinal:TDate);
      procedure GerarRelatorioReceitasCanceladas(aDataIncio,aDataFinal:TDate);
+     procedure GerarRelatorioReceitasPendentes(aDataIncio,aDataFinal:TDate);
      constructor Create;
    end;
 implementation
@@ -28,6 +29,11 @@ end;
 procedure TRelatorioService.GerarRelatorioValorTotalEntrada(aDataIncio,aDataFinal:TDate);
 begin
   RelatorioRepository.GerarRelatorioValorTotalEntradas(aDataIncio,aDataFinal);
+end;
+
+procedure TRelatorioService.GerarRelatorioReceitasPendentes(aDataIncio,aDataFinal:TDate);
+begin
+  RelatorioRepository.GerarRelatorioReceitasPendentes(aDataIncio,aDataFinal);
 end;
 
 end.

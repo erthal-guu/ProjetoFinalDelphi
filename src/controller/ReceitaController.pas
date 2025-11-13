@@ -14,6 +14,7 @@ type
     procedure ReceberReceita(Receita: TReceita);
     procedure DeletarReceita(const aId: Integer);
     procedure RestaurarReceita(const aId: Integer);
+    procedure AtualizarStatusAutomatico(const aID: Integer);
     function ListarReceitas: TDataSet;
     function ListarReceitasRestaurar: TDataSet;
     function ListarHistoricoReceitas: TDataSet;
@@ -21,7 +22,7 @@ type
     function CarregarOrdensServico: TDataSet;
     function CriarObjeto(aIdReceita: Integer; aValorRecebido: Currency; aDataRecebimento: TDateTime;
                          aValorTotal: Currency; aFormaPagamento: String;
-                         aObservacao: String; aStatus: String; aAtivo: Boolean): TReceita;
+                         aObservacao: String; aAtivo: Boolean): TReceita;
   end;
 
 implementation
@@ -35,10 +36,10 @@ end;
 
 function TReceitaController.CriarObjeto(aIdReceita: Integer; aValorRecebido: Currency; aDataRecebimento: TDateTime;
                                        aValorTotal: Currency; aFormaPagamento: String;
-                                       aObservacao: String; aStatus: String; aAtivo: Boolean): TReceita;
+                                       aObservacao: String; aAtivo: Boolean): TReceita;
 begin
   Result := Service.CriarObjeto(aIdReceita, aValorRecebido, aDataRecebimento,
-                               aValorTotal, aFormaPagamento, aObservacao, aStatus, aAtivo);
+                               aValorTotal, aFormaPagamento, aObservacao, aAtivo);
 end;
 
 
@@ -82,6 +83,11 @@ end;
 function TReceitaController.CarregarOrdensServico: TDataSet;
 begin
   Result := Service.CarregarOrdensServico;
+end;
+
+procedure TReceitaController.AtualizarStatusAutomatico(const aID: Integer);
+begin
+  Service.AtualizarStatusAutomatico(aID);
 end;
 
 end.
