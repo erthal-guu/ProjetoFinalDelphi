@@ -4,10 +4,7 @@ interface
 
 uses
   Winapi.Windows, Winapi.Messages, System.SysUtils, System.Variants, System.Classes, Vcl.Graphics,
-  Vcl.Controls, Vcl.Forms, Vcl.Dialogs, Vcl.StdCtrls, Vcl.ExtCtrls, Vcl.ComCtrls,
-  VclTee.TeeGDIPlus, VCLTee.Series, VCLTee.TeEngine, VCLTee.TeeProcs,
-  VCLTee.Chart, RelatorioEntradaController, Vcl.Imaging.pngimage, Data.DB,RelatoriosController,
-  VCLTee.DBChart;
+  Vcl.Controls, Vcl.Forms, Vcl.Dialogs, Vcl.StdCtrls, Vcl.ExtCtrls, Vcl.ComCtrls,RelatorioEntradaController, Vcl.Imaging.pngimage, Data.DB,RelatoriosController;
 
 type
   TFormEntradas = class(TForm)

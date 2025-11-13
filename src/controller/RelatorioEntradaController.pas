@@ -3,7 +3,7 @@
 interface
 
 uses
-  RelatorioEntradaService, uDMConexao, FireDAC.Comp.Client, VCLTee.Series,Data.DB;
+  RelatorioEntradaService, uDMConexao, FireDAC.Comp.Client,Data.DB;
 
 type
   TRelatorioEntradaController = class

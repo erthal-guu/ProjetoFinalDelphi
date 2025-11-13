@@ -688,7 +688,6 @@ object FormCadastroUsuarios: TFormCadastroUsuarios
               Align = alLeft
               BevelOuter = bvNone
               TabOrder = 6
-              ExplicitLeft = 828
               object ShpButton: TShape
                 AlignWithMargins = True
                 Left = 10
@@ -746,8 +745,8 @@ object FormCadastroUsuarios: TFormCadastroUsuarios
                   ExplicitHeight = 20
                 end
                 object Image6: TImage
-                  Left = 75
-                  Top = -7
+                  Left = 68
+                  Top = -8
                   Width = 33
                   Height = 44
                   Center = True

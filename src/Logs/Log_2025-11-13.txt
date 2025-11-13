@@ -1,0 +1,12 @@
+14:42:52 - LOGIN - Sucesso: Usuário ID 3, Nome: AdminMassa, (CPF: 000.000.000-00)
+15:27:35 - CADASTRO - ID: 0 cadastrou ordem de serviço com cliente ID: 1
+15:37:18 - ERRO - ID: 0 tentou concluir pendência inválida
+15:39:30 - ERRO - ID: 0 tentou concluir pendência inválida
+15:41:13 - ERRO - ID: 0 tentou concluir pendência inválida
+15:51:40 - PEDIDO - Usuário ID: 0 criou Pedido ID: 29 com 1 itens para Fornecedor ID: 1
+15:52:02 - CONCLUSÃO - ID: 0 concluiu pendência ID: 4 - Cliente: 1 - Descrição: Pedido #29
+16:24:53 - RECEBER - ID: 0 registrou recebimento da receita ID: 19 - Valor: 1188,00 - Status Antigo: 
+17:36:28 - CADASTRO - ID: 0 cadastrou ordem de serviço com cliente ID: 1
+17:36:56 - DELETAR - ID: 0 deletou a receita ID: 20
+17:53:55 - PEDIDO - Usuário ID: 0 criou Pedido ID: 30 com 1 itens para Fornecedor ID: 1
+17:54:27 - DELETAR - ID: 0 deletou a pendência ID: 5

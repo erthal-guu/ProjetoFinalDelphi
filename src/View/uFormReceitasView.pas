@@ -56,8 +56,6 @@ type
     LblStatus: TLabel;
     EdtValorRecebido: TEdit;
     Label5: TLabel;
-    PnlButtonAtualizar: TPanel;
-    LblAtualizar: TLabel;
     PnlDetlhamento: TPanel;
     LblDetalhamento: TLabel;
     PnlDesingDetalhamento: TPanel;
@@ -72,6 +70,11 @@ type
     DBGridMain: TDBGrid;
     EdtReceita: TEdit;
     Label7: TLabel;
+    PnlButtonForm: TPanel;
+    ShpButton: TShape;
+    PnlButtonAtualizar: TPanel;
+    LblAtualizar: TLabel;
+    Image2: TImage;
     procedure DBGridMainCellClick(Column: TColumn);
     procedure BtnDetalharClick(Sender: TObject);
     procedure BtnRestaurarClick(Sender: TObject);
@@ -96,7 +99,6 @@ type
     procedure EdtPesquisarChange(Sender: TObject);
     procedure PreencherCamposReceita;
     procedure ReceberReceita;
-    procedure EdtValorRecebidoExit(Sender: TObject);
   public
 
   end;
@@ -531,38 +533,6 @@ end;
 procedure TFormReceitas.LblAtualizarClick(Sender: TObject);
 begin
   ReceberReceita;
-end;
-
-procedure TFormReceitas.EdtValorRecebidoExit(Sender: TObject);
-var
-  ValorRecebido, ValorTotal: Currency;
-begin
-  // Se o campo estiver vazio, sai da validação
-  if Trim(EdtValorRecebido.Text) = '' then
-    Exit;
-
-  // Tenta converter o texto para Currency
-  if not TryStrToCurr(EdtValorRecebido.Text, ValorRecebido) then
-  begin
-    ShowMessage('Valor recebido inválido. Informe um valor numérico válido.');
-    EdtValorRecebido.SetFocus;
-    Exit;
-  end;
-
-  // Se tiver uma receita selecionada, pega o valor total dela
-  if Assigned(DataSourceMain.DataSet) and not DataSourceMain.DataSet.Eof then
-  begin
-    ValorTotal := DataSourceMain.DataSet.FieldByName('valor_total').AsCurrency;
-
-    // Valida se o valor recebido é maior que o valor total
-    if ValorRecebido > ValorTotal then
-    begin
-      ShowMessage(Format('ERRO: O valor recebido (R$ %.2f) não pode ser maior que o valor total (R$ %.2f).',
-        [ValorRecebido, ValorTotal]));
-      EdtValorRecebido.SetFocus;
-      EdtValorRecebido.SelectAll;
-    end;
-  end;
 end;
 
 

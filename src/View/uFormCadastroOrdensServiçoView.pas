@@ -60,8 +60,6 @@ type
     Label9: TLabel;
     Label6: TLabel;
     Label10: TLabel;
-    PnlButtonEnviar: TPanel;
-    LblEnviar: TLabel;
     CmbCliente: TComboBox;
     EdtPecas: TEdit;
     CmbServiço: TComboBox;
@@ -70,11 +68,17 @@ type
     DtimeIncio: TDateTimePicker;
     EdtPreco: TEdit;
     EdtObservacao: TEdit;
-    PnlButtonAtualizar: TPanel;
-    LblAtualizar: TLabel;
     DTimeConclusao: TDateTimePicker;
     Image1: TImage;
     Label11: TLabel;
+    PnlButtonForm: TPanel;
+    ShpButton: TShape;
+    PnlButtonEnviar: TPanel;
+    LblEnviar: TLabel;
+    Image6: TImage;
+    PnlButtonAtualizar: TPanel;
+    LblAtualizar: TLabel;
+    Image2: TImage;
 
     procedure BtnAdicionarClick(Sender: TObject);
     procedure BtnPesquisarClick(Sender: TObject);

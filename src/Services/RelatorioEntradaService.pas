@@ -4,7 +4,7 @@ interface
 
 uses
   RelatorioEntradaRepository, uDMConexao, FireDAC.Comp.Client, System.SysUtils,
-  VCLTee.Series, VCLTee.TeEngine, Graphics,System.Classes,Data.DB;
+   Graphics,System.Classes,Data.DB;
 
 type
   TRelatorioEntradaService = class

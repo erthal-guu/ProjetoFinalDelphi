@@ -51,8 +51,6 @@ type
     Label6: TLabel;
     Label7: TLabel;
     EdtObservacao: TEdit;
-    PnlButtonAtualizar: TPanel;
-    LblAtualizar: TLabel;
     BtnCancelar: TSpeedButton;
     PnlDetlhamento: TPanel;
     LblDetalhamento: TLabel;
@@ -71,6 +69,11 @@ type
     CmbParcelar: TComboBox;
     EdtPedido: TEdit;
     Label2: TLabel;
+    PnlButtonForm: TPanel;
+    ShpButton: TShape;
+    PnlButtonAtualizar: TPanel;
+    LblAtualizar: TLabel;
+    Image2: TImage;
     procedure DBGridMainCellClick(Column: TColumn);
     procedure BtnDetalharClick(Sender: TObject);
     procedure BtnRestaurarClick(Sender: TObject);
@@ -98,6 +101,7 @@ type
     procedure BtnReceberClick(Sender: TObject);
     procedure Parcelar;
     procedure CmbFormaPagamentoChange(Sender: TObject);
+    Function ValidarCampos:Boolean;
   private
     { Private declarations }
     Controller: TPendenciaController;
@@ -151,12 +155,12 @@ end;
 
 procedure TFormPendencias.BtnReceberClick(Sender: TObject);
 begin
+  PreencherCamposPendencia;
   PnlBackgrounEdit.Visible := True;
   PnLHistorico.Visible := False;
   PnlRestaurar.Visible := False;
   PnlDetlhamento.Visible := False;
   EdtPesquisar.Visible := False;
-  PreencherCamposPendencia;
 end;
 
 procedure TFormPendencias.parcelar;
@@ -422,7 +426,9 @@ end;
 
 procedure TFormPendencias.LblAtualizarClick(Sender: TObject);
 begin
+If ValidarCampos then begin
   ConcluirPendencia;
+end;
 end;
 
 procedure TFormPendencias.LimparCampos;
@@ -442,7 +448,66 @@ begin
     CmbStatus.Text := DataSourceMain.DataSet.FieldByName('status').AsString;
     EdtObservacao.Text := DataSourceMain.DataSet.FieldByName('observacao').AsString;
     EdtPedido.Text:= DataSourceMain.DataSet.FieldByName('id_pedido').AsString;
+  end else begin
+    ShowMessage('Selecione um Pendência Válida');
+    Exit;
   end;
+end;
+
+function TFormPendencias.ValidarCampos: Boolean;
+begin
+  Result := False;
+
+  if Trim(EdtPedido.Text) = '' then
+  begin
+    ShowMessage('O campo Pedido não pode ficar vazio');
+    EdtPedido.SetFocus;
+    Exit;
+  end;
+
+  if EdtDataVencimento.Date < Date then
+  begin
+    ShowMessage('A Data de Vencimento não pode ser anterior à data atual');
+    EdtDataVencimento.SetFocus;
+    Exit;
+  end;
+
+  if Trim(EdtValorTotal.Text) = '' then
+  begin
+    ShowMessage('O campo Valor Total não pode ficar vazio');
+    EdtValorTotal.SetFocus;
+    Exit;
+  end;
+
+  if CmbFormaPagamento.ItemIndex = -1 then
+  begin
+    ShowMessage('Selecione uma Forma de Pagamento válida');
+    CmbFormaPagamento.SetFocus;
+    Exit;
+  end;
+
+  if (CmbFormaPagamento.ItemIndex = 2) and (CmbParcelar.ItemIndex = -1) then
+  begin
+    ShowMessage('Selecione a quantidade de parcelas');
+    CmbParcelar.SetFocus;
+    Exit;
+  end;
+
+  if Trim(EdtObservacao.Text) = '' then
+  begin
+    ShowMessage('O campo Observação não pode ficar vazio');
+    EdtObservacao.SetFocus;
+    Exit;
+  end;
+
+  if CmbStatus.ItemIndex = -1 then
+  begin
+    ShowMessage('Selecione um Status válido');
+    CmbStatus.SetFocus;
+    Exit;
+  end;
+
+  Result := True;
 end;
 
 end.

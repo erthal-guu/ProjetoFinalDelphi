@@ -148,8 +148,7 @@ begin
   else
   begin
     ShowMessage('Selecione uma pendência válida para concluir.');
-    SalvarLog(Format('ERRO - ID: %d tentou concluir pendência inválida',
-      [IDUsuarioLogado]));
+    SalvarLog(Format('ERRO - ID: %d tentou concluir pendência inválida',[IDUsuarioLogado]));
   end;
 end;
 
