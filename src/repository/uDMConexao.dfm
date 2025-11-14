@@ -13,9 +13,7 @@ object DataModule1: TDataModule1
     Top = 288
   end
   object FDPhysPgDriverLink1: TFDPhysPgDriverLink
-    VendorLib = 
-      'C:\Users\siqueira.6989\Desktop\ProjetoFinalDelphi\src\lib\lib\li' +
-      'b\libpq.dll'
+    VendorLib = 'C:\Users\vplgu\Desktop\ProjetoFinalDelphi\src\lib\lib\libpq.dll'
     Left = 597
     Top = 289
   end
@@ -148,7 +146,7 @@ object DataModule1: TDataModule1
     PrintOptions.Printer = 'Default'
     PrintOptions.PrintOnSheet = 0
     ReportOptions.CreateDate = 45972.980654456000000000
-    ReportOptions.LastChange = 45973.567513275500000000
+    ReportOptions.LastChange = 45974.937826851850000000
     ScriptLanguage = 'PascalScript'
     ScriptText.Strings = (
       'begin'
@@ -233,6 +231,7 @@ object DataModule1: TDataModule1
       RightMargin = 10.000000000000000000
       TopMargin = 10.000000000000000000
       BottomMargin = 10.000000000000000000
+      Color = clWhite
       Frame.Typ = []
       MirrorMode = []
       object ReportTitle1: TfrxReportTitle
@@ -242,13 +241,13 @@ object DataModule1: TDataModule1
         FillGap.Bottom = 0
         FillGap.Right = 0
         Frame.Typ = []
-        Height = 219.212717300000000000
+        Height = 136.063080000000000000
         Top = 18.897650000000000000
         Width = 718.110700000000000000
         object Memo1: TfrxMemoView
           AllowVectorExport = True
           Width = 718.110717770000000000
-          Height = 136.063080000000000000
+          Height = 139.842610000000000000
           ContentScaleOptions.Constraints.MaxIterationValue = 0
           ContentScaleOptions.Constraints.MinIterationValue = 0
           Font.Charset = DEFAULT_CHARSET
@@ -257,29 +256,12 @@ object DataModule1: TDataModule1
           Font.Name = 'Arial'
           Font.Style = [fsBold]
           Frame.Typ = []
-          Fill.BackColor = clGray
+          Fill.BackColor = 13979140
           HAlign = haCenter
           Memo.UTF8W = (
             'Relat'#243'rio de Entradas Financeiras')
           ParentFont = False
-          Style = 'Title'
           VAlign = vaCenter
-        end
-        object Memo15: TfrxMemoView
-          AllowVectorExport = True
-          Top = 136.063080000000000000
-          Width = 718.110717770000000000
-          ContentScaleOptions.Constraints.MaxIterationValue = 0
-          ContentScaleOptions.Constraints.MinIterationValue = 0
-          Font.Charset = DEFAULT_CHARSET
-          Font.Color = clWindowText
-          Font.Height = -13
-          Font.Name = 'Arial'
-          Font.Style = []
-          Frame.Typ = [ftBottom]
-          Frame.Width = 2.000000000000000000
-          ParentFont = False
-          Style = 'Header line'
         end
       end
       object GroupHeader1: TfrxGroupHeader
@@ -290,7 +272,7 @@ object DataModule1: TDataModule1
         FillGap.Right = 0
         Frame.Typ = []
         Height = 26.456710000000000000
-        Top = 343.937230000000000000
+        Top = 268.346630000000000000
         Width = 718.110700000000000000
         KeepWithData = False
         Condition = 'frxDBDataset1."nome_cliente"'
@@ -306,16 +288,15 @@ object DataModule1: TDataModule1
           DataSet = frxDBDataset1
           DataSetName = 'frxDBDataset1'
           Font.Charset = DEFAULT_CHARSET
-          Font.Color = clMaroon
+          Font.Color = clNavy
           Font.Height = -13
           Font.Name = 'Arial'
           Font.Style = [fsBold]
           Frame.Typ = []
-          Fill.BackColor = 16053492
+          Fill.BackColor = 16773074
           Memo.UTF8W = (
             '[frxDBDataset1."nome_cliente"]')
           ParentFont = False
-          Style = 'Group header'
           VAlign = vaCenter
         end
       end
@@ -327,14 +308,14 @@ object DataModule1: TDataModule1
         FillGap.Right = 0
         Frame.Typ = []
         Height = 18.897650000000000000
-        Top = 393.071120000000000000
+        Top = 317.480520000000000000
         Width = 718.110700000000000000
         DataSet = frxDBDataset1
         DataSetName = 'frxDBDataset1'
         RowCount = 0
         object Memo8: TfrxMemoView
           AllowVectorExport = True
-          Left = 22.677180000000000000
+          Left = 173.858380000000000000
           Width = 100.779530000000000000
           Height = 18.897650000000000000
           ContentScaleOptions.Constraints.MaxIterationValue = 0
@@ -355,7 +336,7 @@ object DataModule1: TDataModule1
         end
         object Memo9: TfrxMemoView
           AllowVectorExport = True
-          Left = 131.015770000000000000
+          Left = 316.212740000000000000
           Width = 179.047383810000000000
           Height = 18.897650000000000000
           ContentScaleOptions.Constraints.MaxIterationValue = 0
@@ -376,7 +357,7 @@ object DataModule1: TDataModule1
         end
         object Memo10: TfrxMemoView
           AllowVectorExport = True
-          Left = 306.283623810000000000
+          Left = 449.905763810000000000
           Width = 186.779302410000000000
           Height = 18.897650000000000000
           ContentScaleOptions.Constraints.MaxIterationValue = 0
@@ -397,7 +378,7 @@ object DataModule1: TDataModule1
         end
         object Memo11: TfrxMemoView
           AllowVectorExport = True
-          Left = 561.094466220000000000
+          Left = 610.228356220000000000
           Width = 157.015770000000000000
           Height = 18.897650000000000000
           ContentScaleOptions.Constraints.MaxIterationValue = 0
@@ -424,7 +405,7 @@ object DataModule1: TDataModule1
         FillGap.Bottom = 0
         FillGap.Right = 0
         Frame.Typ = []
-        Top = 434.645950000000000000
+        Top = 359.055350000000000000
         Width = 718.110700000000000000
         KeepWithData = False
       end
@@ -436,7 +417,7 @@ object DataModule1: TDataModule1
         FillGap.Right = 0
         Frame.Typ = []
         Height = 26.456710000000000000
-        Top = 495.118430000000000000
+        Top = 419.527830000000000000
         Width = 718.110700000000000000
         object Memo12: TfrxMemoView
           Align = baWidth
@@ -474,8 +455,8 @@ object DataModule1: TDataModule1
         FillGap.Bottom = 0
         FillGap.Right = 0
         Frame.Typ = []
-        Height = 22.677180000000000000
-        Top = 260.787570000000000000
+        Height = 31.236240000000000000
+        Top = 177.637910000000000000
         Width = 718.110700000000000000
         object Memo2: TfrxMemoView
           AllowVectorExport = True
@@ -484,62 +465,25 @@ object DataModule1: TDataModule1
           ContentScaleOptions.Constraints.MaxIterationValue = 0
           ContentScaleOptions.Constraints.MinIterationValue = 0
           Font.Charset = DEFAULT_CHARSET
-          Font.Color = clWindowText
+          Font.Color = clWhite
           Font.Height = -13
           Font.Name = 'Arial'
           Font.Style = []
           Frame.Typ = [ftBottom]
           Frame.Width = 2.000000000000000000
+          Fill.BackColor = 13657865
           ParentFont = False
-          Style = 'Header line'
-        end
-        object Memo3: TfrxMemoView
-          AllowVectorExport = True
-          Left = 3.779530000000000000
-          Width = 78.102350000000000000
-          Height = 22.677180000000000000
-          ContentScaleOptions.Constraints.MaxIterationValue = 0
-          ContentScaleOptions.Constraints.MinIterationValue = 0
-          Font.Charset = DEFAULT_CHARSET
-          Font.Color = clMaroon
-          Font.Height = -13
-          Font.Name = 'Arial'
-          Font.Style = [fsBold]
-          Frame.Typ = []
-          Memo.UTF8W = (
-            'Cliente :')
-          ParentFont = False
-          Style = 'Header'
-        end
-        object Memo4: TfrxMemoView
-          AllowVectorExport = True
-          Left = 108.338590000000000000
-          Top = -3.779530000000000000
-          Width = 114.991990220000000000
-          Height = 22.677180000000000000
-          ContentScaleOptions.Constraints.MaxIterationValue = 0
-          ContentScaleOptions.Constraints.MinIterationValue = 0
-          Font.Charset = DEFAULT_CHARSET
-          Font.Color = clMaroon
-          Font.Height = -13
-          Font.Name = 'Arial'
-          Font.Style = [fsBold]
-          Frame.Typ = []
-          Memo.UTF8W = (
-            'Valor Total :')
-          ParentFont = False
-          Style = 'Header'
         end
         object Memo6: TfrxMemoView
           AllowVectorExport = True
-          Left = 294.141650220000000000
-          Top = -2.779530000000000000
+          Left = 430.204730220000000000
+          Top = 1.000000000000000000
           Width = 135.173286000000000000
           Height = 22.677180000000000000
           ContentScaleOptions.Constraints.MaxIterationValue = 0
           ContentScaleOptions.Constraints.MinIterationValue = 0
           Font.Charset = DEFAULT_CHARSET
-          Font.Color = clMaroon
+          Font.Color = clWhite
           Font.Height = -13
           Font.Name = 'Arial'
           Font.Style = [fsBold]
@@ -547,18 +491,53 @@ object DataModule1: TDataModule1
           Memo.UTF8W = (
             'Ticket M'#233'dio :')
           ParentFont = False
-          Style = 'Header'
         end
-        object Memo16: TfrxMemoView
+        object Memo17: TfrxMemoView
           AllowVectorExport = True
-          Left = 529.976346220000000000
-          Top = 0.779530000000000000
-          Width = 123.000000000000000000
+          Left = 154.960730000000000000
+          Top = 1.000000000000000000
+          Width = 135.173286000000000000
           Height = 22.677180000000000000
           ContentScaleOptions.Constraints.MaxIterationValue = 0
           ContentScaleOptions.Constraints.MinIterationValue = 0
           Font.Charset = DEFAULT_CHARSET
-          Font.Color = clMaroon
+          Font.Color = clWhite
+          Font.Height = -13
+          Font.Name = 'Arial'
+          Font.Style = [fsBold]
+          Frame.Typ = []
+          Memo.UTF8W = (
+            'Cliente :')
+          ParentFont = False
+        end
+        object Memo18: TfrxMemoView
+          AllowVectorExport = True
+          Left = 291.023810000000000000
+          Top = 1.000000000000000000
+          Width = 135.173286000000000000
+          Height = 22.677180000000000000
+          ContentScaleOptions.Constraints.MaxIterationValue = 0
+          ContentScaleOptions.Constraints.MinIterationValue = 0
+          Font.Charset = DEFAULT_CHARSET
+          Font.Color = clWhite
+          Font.Height = -13
+          Font.Name = 'Arial'
+          Font.Style = [fsBold]
+          Frame.Typ = []
+          Memo.UTF8W = (
+            'Valot Total  :')
+          ParentFont = False
+        end
+        object Memo19: TfrxMemoView
+          AllowVectorExport = True
+          Left = 582.047620000000000000
+          Top = 1.000000000000000000
+          Width = 135.173286000000000000
+          Height = 22.677180000000000000
+          ContentScaleOptions.Constraints.MaxIterationValue = 0
+          ContentScaleOptions.Constraints.MinIterationValue = 0
+          Font.Charset = DEFAULT_CHARSET
+          Font.Color = clWhite
           Font.Height = -13
           Font.Name = 'Arial'
           Font.Style = [fsBold]
@@ -566,13 +545,12 @@ object DataModule1: TDataModule1
           Memo.UTF8W = (
             'Receitas Pagas :')
           ParentFont = False
-          Style = 'Header'
         end
       end
       object Picture2: TfrxPictureView
         AllowVectorExport = True
-        Left = 102.047310000000000000
-        Top = 544.252320000000000000
+        Left = 83.149660000000000000
+        Top = 514.016080000000000000
         Width = 589.606695990000000000
         Height = 453.543594040000000000
         Frame.Typ = []
@@ -3703,7 +3681,7 @@ object DataModule1: TDataModule1
       '  FROM receitas r'
       '  INNER JOIN ordens_servico os ON r.id_ordem_servico = os.id'
       '  INNER JOIN clientes c ON os.id_cliente = c.id'
-      '  WHERE r.status = '#39'Cancelada'#39
+      '  WHERE r.status = '#39'CANCELADA'#39
       '    AND r.ativo = FALSE'
       '    AND os.ativo = TRUE'
       '    AND c.ativo = TRUE'
@@ -3772,11 +3750,10 @@ object DataModule1: TDataModule1
     PreviewOptions.Zoom = 1.000000000000000000
     PrintOptions.Printer = 'Default'
     PrintOptions.PrintOnSheet = 0
-    ReportOptions.CreateDate = 45973.834728287000000000
-    ReportOptions.LastChange = 45974.620177419000000000
+    ReportOptions.CreateDate = 45972.980654456000000000
+    ReportOptions.LastChange = 45974.955452511570000000
     ScriptLanguage = 'PascalScript'
     ScriptText.Strings = (
-      ''
       'begin'
       ''
       'end.')
@@ -3859,6 +3836,7 @@ object DataModule1: TDataModule1
       RightMargin = 10.000000000000000000
       TopMargin = 10.000000000000000000
       BottomMargin = 10.000000000000000000
+      Color = clWhite
       Frame.Typ = []
       MirrorMode = []
       object ReportTitle1: TfrxReportTitle
@@ -3868,14 +3846,13 @@ object DataModule1: TDataModule1
         FillGap.Bottom = 0
         FillGap.Right = 0
         Frame.Typ = []
-        Height = 75.590600000000000000
+        Height = 136.063080000000000000
         Top = 18.897650000000000000
         Width = 718.110700000000000000
         object Memo1: TfrxMemoView
-          Align = baWidth
           AllowVectorExport = True
-          Width = 718.110717773437500000
-          Height = 79.370130000000000000
+          Width = 718.110717770000000000
+          Height = 139.842610000000000000
           ContentScaleOptions.Constraints.MaxIterationValue = 0
           ContentScaleOptions.Constraints.MinIterationValue = 0
           Font.Charset = DEFAULT_CHARSET
@@ -3884,136 +3861,12 @@ object DataModule1: TDataModule1
           Font.Name = 'Arial'
           Font.Style = [fsBold]
           Frame.Typ = []
-          Fill.BackColor = clGray
+          Fill.BackColor = 13979140
           HAlign = haCenter
           Memo.UTF8W = (
-            'Relat'#243'rio de  Receitas Canceladas')
+            'Relat'#243'rio de Entradas Financeiras')
           ParentFont = False
-          Style = 'Title'
           VAlign = vaCenter
-        end
-      end
-      object PageHeader1: TfrxPageHeader
-        FillType = ftBrush
-        FillGap.Top = 0
-        FillGap.Left = 0
-        FillGap.Bottom = 0
-        FillGap.Right = 0
-        Frame.Typ = []
-        Height = 52.913420000000000000
-        Top = 117.165430000000000000
-        Width = 718.110700000000000000
-        object Memo2: TfrxMemoView
-          AllowVectorExport = True
-          Top = 30.236240000000000000
-          Width = 718.110236220000000000
-          Height = 22.677180000000000000
-          ContentScaleOptions.Constraints.MaxIterationValue = 0
-          ContentScaleOptions.Constraints.MinIterationValue = 0
-          Font.Charset = DEFAULT_CHARSET
-          Font.Color = clWindowText
-          Font.Height = -13
-          Font.Name = 'Arial'
-          Font.Style = []
-          Frame.Typ = [ftBottom]
-          Frame.Width = 2.000000000000000000
-          ParentFont = False
-          Style = 'Header line'
-        end
-        object Memo3: TfrxMemoView
-          AllowVectorExport = True
-          Left = 136.063080000000000000
-          Top = 30.236240000000000000
-          Width = 161.559060000000000000
-          Height = 22.677180000000000000
-          ContentScaleOptions.Constraints.MaxIterationValue = 0
-          ContentScaleOptions.Constraints.MinIterationValue = 0
-          Font.Charset = DEFAULT_CHARSET
-          Font.Color = clMaroon
-          Font.Height = -13
-          Font.Name = 'Arial'
-          Font.Style = [fsBold]
-          Frame.Typ = []
-          Memo.UTF8W = (
-            'Quantidade Cancelada :')
-          ParentFont = False
-          Style = 'Header'
-        end
-        object Memo4: TfrxMemoView
-          AllowVectorExport = True
-          Left = 297.622140000000000000
-          Top = 30.236240000000000000
-          Width = 125.159942890000000000
-          Height = 22.677180000000000000
-          ContentScaleOptions.Constraints.MaxIterationValue = 0
-          ContentScaleOptions.Constraints.MinIterationValue = 0
-          Font.Charset = DEFAULT_CHARSET
-          Font.Color = clMaroon
-          Font.Height = -13
-          Font.Name = 'Arial'
-          Font.Style = [fsBold]
-          Frame.Typ = []
-          Memo.UTF8W = (
-            ' Valor Cancelado :')
-          ParentFont = False
-          Style = 'Header'
-        end
-        object Memo6: TfrxMemoView
-          AllowVectorExport = True
-          Left = 433.170066190000000000
-          Top = 30.236240000000000000
-          Width = 97.918918080000000000
-          Height = 22.677180000000000000
-          ContentScaleOptions.Constraints.MaxIterationValue = 0
-          ContentScaleOptions.Constraints.MinIterationValue = 0
-          Font.Charset = DEFAULT_CHARSET
-          Font.Color = clMaroon
-          Font.Height = -13
-          Font.Name = 'Arial'
-          Font.Style = [fsBold]
-          Frame.Typ = []
-          Memo.UTF8W = (
-            'Total Perdido :')
-          ParentFont = False
-          Style = 'Header'
-        end
-        object Memo7: TfrxMemoView
-          AllowVectorExport = True
-          Left = 538.648044270000000000
-          Top = 30.236240000000000000
-          Width = 152.975695130000000000
-          Height = 22.677180000000000000
-          ContentScaleOptions.Constraints.MaxIterationValue = 0
-          ContentScaleOptions.Constraints.MinIterationValue = 0
-          Font.Charset = DEFAULT_CHARSET
-          Font.Color = clMaroon
-          Font.Height = -13
-          Font.Name = 'Arial'
-          Font.Style = [fsBold]
-          Frame.Typ = []
-          Memo.UTF8W = (
-            'Recuperado:')
-          ParentFont = False
-          Style = 'Header'
-        end
-        object Memo8: TfrxMemoView
-          AllowVectorExport = True
-          Left = 642.489849400000000000
-          Top = 30.236240000000000000
-          Width = 117.195216820000000000
-          Height = 22.677180000000000000
-          ContentScaleOptions.Constraints.MaxIterationValue = 0
-          ContentScaleOptions.Constraints.MinIterationValue = 0
-          Font.Charset = DEFAULT_CHARSET
-          Font.Color = clMaroon
-          Font.Height = -13
-          Font.Name = 'Arial'
-          Font.Style = [fsBold]
-          Frame.Typ = []
-          Memo.UTF8W = (
-            'Perda:')
-          ParentFont = False
-          Style = 'Header'
         end
       end
       object GroupHeader1: TfrxGroupHeader
@@ -4024,32 +3877,30 @@ object DataModule1: TDataModule1
         FillGap.Right = 0
         Frame.Typ = []
         Height = 26.456710000000000000
-        Top = 230.551330000000000000
+        Top = 268.346630000000000000
         Width = 718.110700000000000000
         KeepWithData = False
         Condition = 'frxDBDataset2."cliente"'
-        object Memo9: TfrxMemoView
+        object Memo7: TfrxMemoView
           Align = baWidth
           AllowVectorExport = True
-          Top = 3.779530000000000000
           Width = 718.110717773437500000
           Height = 22.677180000000000000
+          Visibility = [vsPreview, vsExport]
           ContentScaleOptions.Constraints.MaxIterationValue = 0
           ContentScaleOptions.Constraints.MinIterationValue = 0
-          DataField = 'cliente'
-          DataSet = frxDBDataset2
-          DataSetName = 'frxDBDataset2'
+          DataSet = frxDBDataset1
+          DataSetName = 'frxDBDataset1'
           Font.Charset = DEFAULT_CHARSET
-          Font.Color = clMaroon
+          Font.Color = clNavy
           Font.Height = -13
           Font.Name = 'Arial'
           Font.Style = [fsBold]
           Frame.Typ = []
-          Fill.BackColor = 16053492
+          Fill.BackColor = 16773074
           Memo.UTF8W = (
             '[frxDBDataset2."cliente"]')
           ParentFont = False
-          Style = 'Group header'
           VAlign = vaCenter
         end
       end
@@ -4061,16 +3912,16 @@ object DataModule1: TDataModule1
         FillGap.Right = 0
         Frame.Typ = []
         Height = 18.897650000000000000
-        Top = 279.685220000000000000
+        Top = 317.480520000000000000
         Width = 718.110700000000000000
         DataSet = frxDBDataset2
         DataSetName = 'frxDBDataset2'
         RowCount = 0
-        object Memo10: TfrxMemoView
+        object MemofrxDBDataset2quantidade_canceladas: TfrxMemoView
+          IndexTag = 1
           AllowVectorExport = True
-          Left = 204.094620000000000000
-          Top = -1.220470000000000000
-          Width = 89.747990000000000000
+          Left = 147.401670000000000000
+          Width = 75.590600000000000000
           Height = 18.897650000000000000
           ContentScaleOptions.Constraints.MaxIterationValue = 0
           ContentScaleOptions.Constraints.MinIterationValue = 0
@@ -4081,17 +3932,18 @@ object DataModule1: TDataModule1
           Font.Color = clWindowText
           Font.Height = -13
           Font.Name = 'Arial'
-          Font.Style = []
+          Font.Style = [fsBold]
           Frame.Typ = []
+          Fill.BackColor = clWhite
           Memo.UTF8W = (
             '[frxDBDataset2."quantidade_canceladas"]')
           ParentFont = False
-          Style = 'Data'
         end
-        object Memo11: TfrxMemoView
+        object MemofrxDBDataset2total_cancelado: TfrxMemoView
+          IndexTag = 1
           AllowVectorExport = True
-          Left = 312.740260000000000000
-          Width = 106.262292890000000000
+          Left = 298.582870000000000000
+          Width = 60.472480000000000000
           Height = 18.897650000000000000
           ContentScaleOptions.Constraints.MaxIterationValue = 0
           ContentScaleOptions.Constraints.MinIterationValue = 0
@@ -4102,17 +3954,18 @@ object DataModule1: TDataModule1
           Font.Color = clWindowText
           Font.Height = -13
           Font.Name = 'Arial'
-          Font.Style = []
+          Font.Style = [fsBold]
           Frame.Typ = []
+          Fill.BackColor = clWhite
           Memo.UTF8W = (
             '[frxDBDataset2."total_cancelado"]')
           ParentFont = False
-          Style = 'Data'
         end
-        object Memo13: TfrxMemoView
+        object MemofrxDBDataset2total_recebido: TfrxMemoView
+          IndexTag = 1
           AllowVectorExport = True
-          Left = 448.288186190000000000
-          Width = 90.359858080000000000
+          Left = 461.102660000000000000
+          Width = 75.590600000000000000
           Height = 18.897650000000000000
           ContentScaleOptions.Constraints.MaxIterationValue = 0
           ContentScaleOptions.Constraints.MinIterationValue = 0
@@ -4123,38 +3976,18 @@ object DataModule1: TDataModule1
           Font.Color = clWindowText
           Font.Height = -13
           Font.Name = 'Arial'
-          Font.Style = []
+          Font.Style = [fsBold]
           Frame.Typ = []
+          Fill.BackColor = clWhite
           Memo.UTF8W = (
             '[frxDBDataset2."total_perdido"]')
           ParentFont = False
-          Style = 'Data'
         end
-        object Memo14: TfrxMemoView
+        object MemofrxDBDataset2percentual_perda: TfrxMemoView
+          IndexTag = 1
           AllowVectorExport = True
-          Left = 549.986634270000000000
-          Width = 92.503215130000000000
-          Height = 18.897650000000000000
-          ContentScaleOptions.Constraints.MaxIterationValue = 0
-          ContentScaleOptions.Constraints.MinIterationValue = 0
-          DataField = 'percentual_recuperado'
-          DataSet = frxDBDataset2
-          DataSetName = 'frxDBDataset2'
-          Font.Charset = DEFAULT_CHARSET
-          Font.Color = clWindowText
-          Font.Height = -13
-          Font.Name = 'Arial'
-          Font.Style = []
-          Frame.Typ = []
-          Memo.UTF8W = (
-            '[frxDBDataset2."percentual_recuperado"]')
-          ParentFont = False
-          Style = 'Data'
-        end
-        object Memo15: TfrxMemoView
-          AllowVectorExport = True
-          Left = 650.048909400000000000
-          Width = 117.195216820000000000
+          Left = 604.724800000000000000
+          Width = 79.370130000000000000
           Height = 18.897650000000000000
           ContentScaleOptions.Constraints.MaxIterationValue = 0
           ContentScaleOptions.Constraints.MinIterationValue = 0
@@ -4165,12 +3998,12 @@ object DataModule1: TDataModule1
           Font.Color = clWindowText
           Font.Height = -13
           Font.Name = 'Arial'
-          Font.Style = []
+          Font.Style = [fsBold]
           Frame.Typ = []
+          Fill.BackColor = clWhite
           Memo.UTF8W = (
             '[frxDBDataset2."percentual_perda"]')
           ParentFont = False
-          Style = 'Data'
         end
       end
       object GroupFooter1: TfrxGroupFooter
@@ -4180,7 +4013,7 @@ object DataModule1: TDataModule1
         FillGap.Bottom = 0
         FillGap.Right = 0
         Frame.Typ = []
-        Top = 321.260050000000000000
+        Top = 359.055350000000000000
         Width = 718.110700000000000000
         KeepWithData = False
       end
@@ -4192,16 +4025,16 @@ object DataModule1: TDataModule1
         FillGap.Right = 0
         Frame.Typ = []
         Height = 26.456710000000000000
-        Top = 381.732530000000000000
+        Top = 419.527830000000000000
         Width = 718.110700000000000000
-        object Memo16: TfrxMemoView
+        object Memo12: TfrxMemoView
           Align = baWidth
           AllowVectorExport = True
           Width = 718.110717773437500000
           Frame.Typ = [ftTop]
           Frame.Width = 2.000000000000000000
         end
-        object Memo17: TfrxMemoView
+        object Memo13: TfrxMemoView
           AllowVectorExport = True
           Top = 1.000000000000000000
           Height = 22.677180000000000000
@@ -4210,7 +4043,7 @@ object DataModule1: TDataModule1
           Memo.UTF8W = (
             '[Date] [Time]')
         end
-        object Memo18: TfrxMemoView
+        object Memo14: TfrxMemoView
           Align = baRight
           AllowVectorExport = True
           Left = 642.520117773437500000
@@ -4223,12 +4056,111 @@ object DataModule1: TDataModule1
             'Page [Page#]')
         end
       end
-      object Picture1: TfrxPictureView
+      object PageHeader1: TfrxPageHeader
+        FillType = ftBrush
+        FillGap.Top = 0
+        FillGap.Left = 0
+        FillGap.Bottom = 0
+        FillGap.Right = 0
+        Frame.Typ = []
+        Height = 31.236240000000000000
+        Top = 177.637910000000000000
+        Width = 718.110700000000000000
+        object Memo2: TfrxMemoView
+          AllowVectorExport = True
+          Width = 718.110236220000000000
+          Height = 22.677180000000000000
+          ContentScaleOptions.Constraints.MaxIterationValue = 0
+          ContentScaleOptions.Constraints.MinIterationValue = 0
+          Font.Charset = DEFAULT_CHARSET
+          Font.Color = clWhite
+          Font.Height = -13
+          Font.Name = 'Arial'
+          Font.Style = []
+          Frame.Typ = [ftBottom]
+          Frame.Width = 2.000000000000000000
+          Fill.BackColor = 13657865
+          ParentFont = False
+        end
+        object Memo6: TfrxMemoView
+          AllowVectorExport = True
+          Left = 433.984260220000000000
+          Top = 1.000000000000000000
+          Width = 97.377986000000000000
+          Height = 22.677180000000000000
+          ContentScaleOptions.Constraints.MaxIterationValue = 0
+          ContentScaleOptions.Constraints.MinIterationValue = 0
+          Font.Charset = DEFAULT_CHARSET
+          Font.Color = clWhite
+          Font.Height = -13
+          Font.Name = 'Arial'
+          Font.Style = [fsBold]
+          Frame.Typ = []
+          Memo.UTF8W = (
+            'Total Perdido :')
+          ParentFont = False
+        end
+        object Memo17: TfrxMemoView
+          AllowVectorExport = True
+          Left = 117.165430000000000000
+          Top = 1.000000000000000000
+          Width = 206.984356000000000000
+          Height = 22.677180000000000000
+          ContentScaleOptions.Constraints.MaxIterationValue = 0
+          ContentScaleOptions.Constraints.MinIterationValue = 0
+          Font.Charset = DEFAULT_CHARSET
+          Font.Color = clWhite
+          Font.Height = -13
+          Font.Name = 'Arial'
+          Font.Style = [fsBold]
+          Frame.Typ = []
+          Memo.UTF8W = (
+            'Cancelamentos :')
+          ParentFont = False
+        end
+        object Memo18: TfrxMemoView
+          AllowVectorExport = True
+          Left = 279.685220000000000000
+          Top = 1.000000000000000000
+          Width = 89.818926000000000000
+          Height = 22.677180000000000000
+          ContentScaleOptions.Constraints.MaxIterationValue = 0
+          ContentScaleOptions.Constraints.MinIterationValue = 0
+          Font.Charset = DEFAULT_CHARSET
+          Font.Color = clWhite
+          Font.Height = -13
+          Font.Name = 'Arial'
+          Font.Style = [fsBold]
+          Frame.Typ = []
+          Memo.UTF8W = (
+            'Valot Total  :')
+          ParentFont = False
+        end
+        object Memo19: TfrxMemoView
+          AllowVectorExport = True
+          Left = 563.149970000000000000
+          Top = 1.000000000000000000
+          Width = 135.173286000000000000
+          Height = 22.677180000000000000
+          ContentScaleOptions.Constraints.MaxIterationValue = 0
+          ContentScaleOptions.Constraints.MinIterationValue = 0
+          Font.Charset = DEFAULT_CHARSET
+          Font.Color = clWhite
+          Font.Height = -13
+          Font.Name = 'Arial'
+          Font.Style = [fsBold]
+          Frame.Typ = []
+          Memo.UTF8W = (
+            'Percentual Perdido :')
+          ParentFont = False
+        end
+      end
+      object Picture2: TfrxPictureView
         AllowVectorExport = True
-        Left = 151.181204730000000000
-        Top = 453.543587420000000000
-        Width = 498.897960730000000000
-        Height = 464.882184040000000000
+        Left = 83.149660000000000000
+        Top = 514.016080000000000000
+        Width = 589.606695990000000000
+        Height = 453.543594040000000000
         Frame.Typ = []
         Picture.Data = {
           0954506E67496D61676589504E470D0A1A0A0000000D49484452000002680000
@@ -7311,10 +7243,9 @@ object DataModule1: TDataModule1
       end>
   end
   object FDQueryPendentes: TFDQuery
-    Active = True
     Connection = FDConnection1
     SQL.Strings = (
-      '  SELECT'
+      ' SELECT'
       '      c.nome AS cliente,'
       '      COUNT(*) AS quantidade_pendentes,'
       '      COALESCE(SUM(r.valor_total), 0) AS valor_total_pendente,'
@@ -7345,13 +7276,13 @@ object DataModule1: TDataModule1
       '  FROM receitas r'
       '  INNER JOIN ordens_servico os ON r.id_ordem_servico = os.id'
       '  INNER JOIN clientes c ON os.id_cliente = c.id'
-      '  WHERE r.status = '#39'Pendente'#39
+      '  WHERE r.status IN ('#39'PENDENTE'#39')'
       '    AND r.ativo = TRUE'
       '    AND os.ativo = TRUE'
       '    AND c.ativo = TRUE'
       '    AND r.data_emissao BETWEEN '#39'2025-01-01'#39' AND '#39'2025-12-31'#39
       '  GROUP BY c.id, c.nome'
-      '  ORDER BY valor_total_pendente DESC')
+      '  ORDER BY valor_total_pendente DESC;')
     Left = 392
     Top = 512
     object FDQueryPendentescliente: TWideStringField

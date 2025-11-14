@@ -10,3 +10,49 @@
 17:36:56 - DELETAR - ID: 0 deletou a receita ID: 20
 17:53:55 - PEDIDO - Usuário ID: 0 criou Pedido ID: 30 com 1 itens para Fornecedor ID: 1
 17:54:27 - DELETAR - ID: 0 deletou a pendência ID: 5
+19:49:01 - PEDIDO - Usuário ID: 0 criou Pedido ID: 29 com 1 itens para Fornecedor ID: 1
+19:49:10 - DELETAR - ID: 0 deletou a pendência ID: 4
+19:55:36 - PEDIDO - Usuário ID: 0 criou Pedido ID: 30 com 1 itens para Fornecedor ID: 1
+19:55:47 - DELETAR - ID: 0 deletou a pendência ID: 5
+19:57:49 - PEDIDO - Usuário ID: 0 criou Pedido ID: 31 com 1 itens para Fornecedor ID: 22
+19:57:59 - DELETAR - ID: 0 deletou a pendência ID: 6
+19:58:03 - RESTAURAR - ID: 0 restaurou a pendência ID: 5
+19:58:07 - RESTAURAR - ID: 0 restaurou a pendência ID: 6
+20:05:18 - DELETAR - ID: 0 deletou a pendência ID: 6
+20:05:22 - DELETAR - ID: 0 deletou a pendência ID: 5
+20:05:28 - RESTAURAR - ID: 0 restaurou a pendência ID: 5
+20:05:31 - RESTAURAR - ID: 0 restaurou a pendência ID: 6
+20:21:45 - DELETAR - ID: 0 deletou a pendência ID: 5
+20:21:52 - RESTAURAR - ID: 0 restaurou a pendência ID: 5
+21:00:04 - DELETAR - ID: 0 deletou a pendência ID: 5
+21:00:55 - DELETAR - ID: 0 deletou a pendência ID: 6
+21:01:38 - RESTAURAR - ID: 0 restaurou a pendência ID: 5
+21:01:44 - DELETAR - ID: 0 deletou a pendência ID: 5
+21:11:12 - RESTAURAR - ID: 0 restaurou a pendência ID: 6
+21:17:55 - RESTAURAR - ID: 0 restaurou a receita ID: 11
+21:54:07 - DELETAR - ID: 0 deletou a receita ID: 11
+21:54:55 - RESTAURAR - ID: 0 restaurou a receita ID: 5
+21:56:15 - RESTAURAR - ID: 0 restaurou a receita ID: 11
+22:10:22 - CADASTRO - ID: 0 cadastrou ordem de serviço com cliente ID: 7
+22:10:37 - CADASTRO - ID: 0 cadastrou ordem de serviço com cliente ID: 1
+23:07:24 - CADASTRO - ID: 0 cadastrou ordem de serviço com cliente ID: 5
+23:09:52 - CADASTRO - ID: 0 cadastrou ordem de serviço com cliente ID: 1
+23:11:29 - CADASTRO - ID: 0 cadastrou ordem de serviço com cliente ID: 3
+23:12:17 - CADASTRO - ID: 0 cadastrou ordem de serviço com cliente ID: 1
+23:14:49 - RECEBER - ID: 0 registrou recebimento da receita ID: 24 - Valor: 1468,50 - Status Antigo: 
+23:15:00 - RECEBER - ID: 0 registrou recebimento da receita ID: 23 - Valor: 790,50 - Status Antigo: 
+23:15:07 - RECEBER - ID: 0 registrou recebimento da receita ID: 22 - Valor: 1818,00 - Status Antigo: 
+23:24:19 - CADASTRO - ID: 0 cadastrou ordem de serviço com cliente ID: 1
+23:25:56 - RECEBER - ID: 0 registrou recebimento da receita ID: 25 - Valor: 955,00 - Status Antigo: 
+23:26:03 - RECEBER - ID: 0 registrou recebimento da receita ID: 19 - Valor: 910,00 - Status Antigo: 
+23:26:13 - RECEBER - ID: 0 registrou recebimento da receita ID: 20 - Valor: 870,00 - Status Antigo: 
+23:26:22 - RECEBER - ID: 0 registrou recebimento da receita ID: 21 - Valor: 1270,00 - Status Antigo: 
+23:41:27 - RECEBER - ID: 0 registrou recebimento da receita ID: 19 - Valor: 910,00 - Status Antigo: 
+23:41:32 - RECEBER - ID: 0 registrou recebimento da receita ID: 25 - Valor: 955,00 - Status Antigo: 
+23:41:36 - RECEBER - ID: 0 registrou recebimento da receita ID: 20 - Valor: 870,00 - Status Antigo: 
+23:43:58 - CADASTRO - ID: 0 cadastrou ordem de serviço com cliente ID: 1
+23:44:16 - RECEBER - ID: 0 registrou recebimento da receita ID: 26 - Valor: 840,00 - Status Antigo: 
+23:46:00 - CADASTRO - ID: 0 cadastrou ordem de serviço com cliente ID: 2
+23:46:45 - CADASTRO - ID: 0 cadastrou ordem de serviço com cliente ID: 2
+23:47:22 - RECEBER - ID: 0 registrou recebimento da receita ID: 28 - Valor: 1299,50 - Status Antigo: 
+23:53:37 - RECEBER - ID: 0 registrou recebimento da receita ID: 27 - Valor: 1903,25 - Status Antigo: 

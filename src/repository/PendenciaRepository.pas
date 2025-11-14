@@ -87,7 +87,7 @@ begin
   try
     FQuery.Close;
     FQuery.SQL.Clear;
-    FQuery.SQL.Add('UPDATE pendencias SET ativo = FALSE WHERE id = :id');
+    FQuery.SQL.Add('UPDATE pendencias SET ativo = FALSE, status = ''CANCELADA'' WHERE id = :id');
     FQuery.ParamByName('id').AsInteger := aID;
     FQuery.ExecSQL;
   except
@@ -119,20 +119,12 @@ begin
   try
     FQuery.Close;
     FQuery.SQL.Clear;
-    FQuery.SQL.Add('SELECT ');
-    FQuery.SQL.Add('  p.id,');
-    FQuery.SQL.Add('  p.id_pedido,');
-    FQuery.SQL.Add('  f.nome AS cliente_nome,');
-    FQuery.SQL.Add('  p.descricao,');
-    FQuery.SQL.Add('  p.valor_total,');
-    FQuery.SQL.Add('  p.data_vencimento,');
-    FQuery.SQL.Add('  p.data_criacao,');
-    FQuery.SQL.Add('  p.status,');
-    FQuery.SQL.Add('  p.observacao,');
-    FQuery.SQL.Add('  p.id_cliente');
+    FQuery.SQL.Add('SELECT p.id, p.id_pedido, f.nome AS cliente_nome, p.descricao,');
+    FQuery.SQL.Add('       p.valor_total, p.data_vencimento, p.data_criacao,');
+    FQuery.SQL.Add('       p.status, p.observacao, p.id_cliente, p.ativo');
     FQuery.SQL.Add('FROM pendencias p');
     FQuery.SQL.Add('LEFT JOIN fornecedores f ON p.id_cliente = f.id');
-    FQuery.SQL.Add('WHERE p.ativo = TRUE AND p.status <> ''CONCLUIDA''');
+    FQuery.SQL.Add('WHERE p.ativo = TRUE AND p.status = ''PENDENTE''');
     FQuery.SQL.Add('ORDER BY p.data_vencimento ASC');
     FQuery.Open;
     Result := FQuery;
@@ -147,12 +139,12 @@ begin
   try
     FQuery.Close;
     FQuery.SQL.Clear;
-    FQuery.SQL.Add('SELECT p.id, f.nome AS cliente_nome, p.descricao,');
+    FQuery.SQL.Add('SELECT p.id, p.id_pedido, f.nome AS cliente_nome, p.descricao,');
     FQuery.SQL.Add('       p.valor_total, p.data_vencimento, p.data_criacao,');
-    FQuery.SQL.Add('       p.status, p.observacao, p.ativo');
+    FQuery.SQL.Add('       p.status, p.observacao, p.id_cliente, p.ativo');
     FQuery.SQL.Add('FROM pendencias p');
     FQuery.SQL.Add('LEFT JOIN fornecedores f ON p.id_cliente = f.id');
-    FQuery.SQL.Add('WHERE p.ativo = FALSE');
+    FQuery.SQL.Add('WHERE p.ativo = FALSE AND p.status = ''CANCELADA''');
     FQuery.SQL.Add('ORDER BY p.id');
     FQuery.Open;
     Result := FQuery;
@@ -167,9 +159,9 @@ begin
   try
     FQuery.Close;
     FQuery.SQL.Clear;
-    FQuery.SQL.Add('SELECT p.id, f.nome AS cliente_nome, p.descricao,');
+    FQuery.SQL.Add('SELECT p.id, p.id_pedido, f.nome AS cliente_nome, p.descricao,');
     FQuery.SQL.Add('       p.valor_total, p.data_vencimento, p.data_criacao,');
-    FQuery.SQL.Add('       p.status, p.observacao, p.ativo');
+    FQuery.SQL.Add('       p.status, p.observacao, p.id_cliente, p.ativo');
     FQuery.SQL.Add('FROM pendencias p');
     FQuery.SQL.Add('LEFT JOIN fornecedores f ON p.id_cliente = f.id');
     FQuery.SQL.Add('ORDER BY p.id');
@@ -186,16 +178,15 @@ begin
   try
     FQuery.Close;
     FQuery.SQL.Clear;
-    FQuery.SQL.Add('SELECT p.id, f.nome AS cliente_nome, p.descricao,');
+    FQuery.SQL.Add('SELECT p.id, p.id_pedido, f.nome AS cliente_nome, p.descricao,');
     FQuery.SQL.Add('       p.valor_total, p.data_vencimento, p.data_criacao,');
-    FQuery.SQL.Add('       p.status, p.observacao, p.ativo');
+    FQuery.SQL.Add('       p.status, p.observacao, p.id_cliente, p.ativo');
     FQuery.SQL.Add('FROM pendencias p');
     FQuery.SQL.Add('LEFT JOIN fornecedores f ON p.id_cliente = f.id');
     FQuery.SQL.Add('WHERE (p.descricao ILIKE :filtro OR');
     FQuery.SQL.Add('       f.nome ILIKE :filtro OR');
-    FQuery.SQL.Add('       p.status ILIKE :filtro OR');
     FQuery.SQL.Add('       p.observacao ILIKE :filtro)');
-    FQuery.SQL.Add('  AND p.ativo = TRUE');
+    FQuery.SQL.Add('  AND p.ativo = TRUE AND p.status = ''PENDENTE''');
     FQuery.SQL.Add('ORDER BY p.data_vencimento ASC');
     FQuery.ParamByName('filtro').AsString := '%' + Trim(aFiltro) + '%';
     FQuery.Open;
@@ -252,7 +243,7 @@ begin
   try
     FQuery.Close;
     FQuery.SQL.Clear;
-    FQuery.SQL.Add('UPDATE pendencias SET ativo = TRUE WHERE id = :id');
+    FQuery.SQL.Add('UPDATE pendencias SET ativo = TRUE, status = ''PENDENTE'' WHERE id = :id');
     FQuery.ParamByName('id').AsInteger := aID;
     FQuery.ExecSQL;
   except

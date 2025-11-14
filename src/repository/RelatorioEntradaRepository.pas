@@ -32,7 +32,7 @@ begin
   try
     FQuery.Close;
     FQuery.SQL.Clear;
-    FQuery.SQL.Add('SELECT COUNT(*) as total FROM Receitas WHERE status = ''Recebido''');
+    FQuery.SQL.Add('SELECT COUNT(*) as total FROM Receitas WHERE status = ''CONCLUIDA''');
     FQuery.Open;
     Result := FQuery.FieldByName('total').AsInteger;
   except
@@ -48,14 +48,16 @@ begin
   try
     FQuery.Close;
     FQuery.SQL.Clear;
-    FQuery.SQL.Add('SELECT COALESCE(AVG(valor_total), 0) as media FROM Receitas');
+    FQuery.SQL.Add('SELECT COALESCE(AVG(valor_total), 0) AS media');
+    FQuery.SQL.Add('FROM receitas');
+    FQuery.SQL.Add('WHERE ativo = TRUE');
+    FQuery.SQL.Add('  AND status IN (''CONCLUIDA'')');
     FQuery.Open;
+
     Result := FQuery.FieldByName('media').AsFloat;
   except
     on E: Exception do
-    begin
-      raise Exception.Create('Erro ao calcular ticket médio da tabela Receitas: ' + E.Message);
-    end;
+      raise Exception.Create('Erro ao calcular ticket médio: ' + E.Message);
   end;
 end;
 

@@ -457,8 +457,8 @@ object FormPendencias: TFormPendencias
                   ParentFont = False
                 end
                 object Label5: TLabel
-                  Left = 620
-                  Top = 8
+                  Left = 621
+                  Top = 7
                   Width = 77
                   Height = 17
                   Caption = 'Observa'#231#227'o :'
@@ -495,19 +495,6 @@ object FormPendencias: TFormPendencias
                   Font.Style = []
                   ParentFont = False
                   Visible = False
-                end
-                object LblStatus: TLabel
-                  Left = 754
-                  Top = 8
-                  Width = 42
-                  Height = 17
-                  Caption = 'Status :'
-                  Font.Charset = DEFAULT_CHARSET
-                  Font.Color = clWindowText
-                  Font.Height = -13
-                  Font.Name = 'Segoe UI'
-                  Font.Style = []
-                  ParentFont = False
                 end
                 object EdtObservacao: TEdit
                   AlignWithMargins = True
@@ -564,28 +551,6 @@ object FormPendencias: TFormPendencias
                   ParentFont = False
                   TabOrder = 2
                 end
-                object CmbStatus: TComboBox
-                  AlignWithMargins = True
-                  Left = 754
-                  Top = 30
-                  Width = 100
-                  Height = 29
-                  Margins.Top = 30
-                  Margins.Bottom = 45
-                  Align = alLeft
-                  BevelOuter = bvNone
-                  Style = csDropDownList
-                  Font.Charset = DEFAULT_CHARSET
-                  Font.Color = clWindowText
-                  Font.Height = -16
-                  Font.Name = 'Segoe UI'
-                  Font.Style = []
-                  ParentFont = False
-                  TabOrder = 3
-                  Items.Strings = (
-                    'Ativo'
-                    'Inativo')
-                end
                 object CmbFormaPagamento: TComboBox
                   AlignWithMargins = True
                   Left = 303
@@ -604,7 +569,7 @@ object FormPendencias: TFormPendencias
                   Font.Name = 'Segoe UI'
                   Font.Style = []
                   ParentFont = False
-                  TabOrder = 4
+                  TabOrder = 3
                   OnChange = CmbFormaPagamentoChange
                   Items.Strings = (
                     'Dinheiro'
@@ -635,7 +600,7 @@ object FormPendencias: TFormPendencias
                   Font.Name = 'Segoe UI'
                   Font.Style = []
                   ParentFont = False
-                  TabOrder = 5
+                  TabOrder = 4
                   Visible = False
                   Items.Strings = (
                     'Parcelar em 2x  '
@@ -667,21 +632,18 @@ object FormPendencias: TFormPendencias
                   Font.Name = 'Segoe UI'
                   Font.Style = []
                   ParentFont = False
-                  TabOrder = 6
+                  TabOrder = 5
                 end
                 object PnlButtonForm: TPanel
                   AlignWithMargins = True
-                  Left = 860
+                  Left = 754
                   Top = 18
                   Width = 126
                   Height = 70
                   Margins.Top = 18
                   Align = alLeft
                   BevelOuter = bvNone
-                  TabOrder = 7
-                  ExplicitLeft = 854
-                  ExplicitTop = 19
-                  ExplicitHeight = 53
+                  TabOrder = 6
                   object ShpButton: TShape
                     AlignWithMargins = True
                     Left = 6
@@ -710,10 +672,10 @@ object FormPendencias: TFormPendencias
                     ParentBackground = False
                     TabOrder = 0
                     object LblAtualizar: TLabel
-                      Left = -59
+                      Left = 4
                       Top = 3
-                      Width = 126
-                      Height = 19
+                      Width = 63
+                      Height = 20
                       Margins.Right = 30
                       Alignment = taRightJustify
                       Caption = 'Atualizar'
@@ -1912,6 +1874,7 @@ object FormPendencias: TFormPendencias
             TabOrder = 0
             TextHint = 'Pesquisar'
             Visible = False
+            OnChange = EdtPesquisarChange
             ExplicitHeight = 28
           end
         end

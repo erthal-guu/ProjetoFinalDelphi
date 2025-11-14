@@ -16,7 +16,6 @@ type
     procedure ReceberReceita(aReceita: TReceita);
     procedure DeletarReceita(const aId: Integer);
     procedure RestaurarReceita(const aId: Integer);
-    procedure AtualizarStatusAutomatico(const aID: Integer);
     function ValidarReceita(aReceita: TReceita): Boolean;
     function ListarReceitas: TDataSet;
     function ListarReceitasRestaurar: TDataSet;
@@ -75,8 +74,6 @@ begin
   if ValidarReceita(aReceita) then begin
     Repository.ReceberReceita(aReceita);
 
-    AtualizarStatusAutomatico(aReceita.getIdReceita);
-
     SalvarLog(Format('RECEBER - ID: %d registrou recebimento da receita ID: %d - Valor: %.2f - Status Antigo: %s',
       [IDUsuarioLogado, aReceita.getIdReceita, aReceita.getValorRecebido, StatusAntigo]));
   end else begin
@@ -130,11 +127,6 @@ end;
 function TReceitaService.CarregarOrdensServico: TDataSet;
 begin
   Result := Repository.CarregarOrdensServico;
-end;
-
-procedure TReceitaService.AtualizarStatusAutomatico(const aID: Integer);
-begin
-  Repository.AtualizarStatusAutomatico(aID);
 end;
 
 end.

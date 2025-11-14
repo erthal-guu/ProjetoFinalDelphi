@@ -14,7 +14,6 @@ type
     procedure ReceberReceita(Receita: TReceita);
     procedure DeletarReceita(const aId: Integer);
     procedure RestaurarReceita(const aId: Integer);
-    procedure AtualizarStatusAutomatico(const aID: Integer);
     function ListarReceitas: TDataSet;
     function ListarReceitasRestaurar: TDataSet;
     function ListarHistoricoReceitas: TDataSet;
@@ -83,11 +82,6 @@ end;
 function TReceitaController.CarregarOrdensServico: TDataSet;
 begin
   Result := Service.CarregarOrdensServico;
-end;
-
-procedure TReceitaController.AtualizarStatusAutomatico(const aID: Integer);
-begin
-  Service.AtualizarStatusAutomatico(aID);
 end;
 
 end.

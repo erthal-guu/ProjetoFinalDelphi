@@ -92,13 +92,14 @@ type
     procedure ImgRestaurarClick(Sender: TObject);
     procedure FormShow(Sender: TObject);
     procedure LblAtualizarClick(Sender: TObject);
-    procedure CarregarReceitasRestaurar;
+    procedure CarregarGridRestaurar;
     procedure LimparCampos;
     procedure ExibirDetalhes;
     procedure CarregarGrid;
     procedure EdtPesquisarChange(Sender: TObject);
     procedure PreencherCamposReceita;
     procedure ReceberReceita;
+    procedure CarregarGridHistorico;
   public
 
   end;
@@ -125,6 +126,7 @@ begin
   CmbFormaPagamento.Items.Add('Boleto');
 
   CmbStatusReceita.Style := csSimple;
+  CmbStatusReceita.Style := csDropDown;
   CmbStatusReceita.Enabled := False;
 end;
 
@@ -305,6 +307,98 @@ begin
       ShowMessage('Erro ao carregar grid: ' + E.Message);
   end;
 end;
+procedure TFormReceitas.CarregarGridHistorico;
+begin
+    DataSourceHistorico.DataSet := Controller.ListarHistoricoReceitas;
+  DBGridHistorico.DataSource := DataSourceHistorico;
+    for var i := 0 to DBGridHistorico.Columns.Count - 1 do begin
+    DBGridHistorico.Columns[i].Title.Alignment := taCenter;
+    DBGridHistorico.Columns[i].Alignment := taCenter;
+    DBGridHistorico.Columns[i].Width := 160;
+    DBGridHistorico.Columns[i].Title.Font.Size := 15;
+  end;
+    if DBGridMain.Columns.Count >= 12 then
+    begin
+
+      DBGridMain.Columns[0].Title.Caption := 'ID';
+      DBGridMain.Columns[0].Width := 50;
+      DBGridMain.Columns[0].Title.Alignment := taCenter;
+      DBGridMain.Columns[0].Alignment := taCenter;
+
+
+      DBGridMain.Columns[1].Title.Caption := 'OS';
+      DBGridMain.Columns[1].Width := 60;
+      DBGridMain.Columns[1].Title.Alignment := taCenter;
+      DBGridMain.Columns[1].Alignment := taCenter;
+
+
+      DBGridMain.Columns[2].Title.Caption := 'Cliente ID';
+      DBGridMain.Columns[2].Width := 80;
+      DBGridMain.Columns[2].Title.Alignment := taCenter;
+      DBGridMain.Columns[2].Alignment := taCenter;
+      DBGridMain.Columns[2].FieldName := 'id_cliente';
+
+
+      DBGridMain.Columns[3].Title.Caption := 'Cliente';
+      DBGridMain.Columns[3].Width := 200;
+      DBGridMain.Columns[3].Title.Alignment := taCenter;
+      DBGridMain.Columns[3].Alignment := taCenter;
+      DBGridMain.Columns[3].FieldName := 'cliente_nome';
+
+
+      DBGridMain.Columns[4].Title.Caption := 'Valor Total';
+      DBGridMain.Columns[4].Width := 120;
+      DBGridMain.Columns[4].Title.Alignment := taCenter;
+      DBGridMain.Columns[4].Alignment := taCenter;
+
+      DBGridMain.Columns[5].Title.Caption := 'Valor Recebido';
+      DBGridMain.Columns[5].Width := 120;
+      DBGridMain.Columns[5].Title.Alignment := taCenter;
+      DBGridMain.Columns[5].Alignment := taCenter;
+
+
+      DBGridMain.Columns[6].Title.Caption := 'Status';
+      DBGridMain.Columns[6].Width := 100;
+      DBGridMain.Columns[6].Title.Alignment := taCenter;
+      DBGridMain.Columns[6].Alignment := taCenter;
+
+
+      DBGridMain.Columns[7].Title.Caption := 'Data Emissão';
+      DBGridMain.Columns[7].Width := 140;
+      DBGridMain.Columns[7].Title.Alignment := taCenter;
+      DBGridMain.Columns[7].Alignment := taCenter;
+
+
+      DBGridMain.Columns[8].Title.Caption := 'Vencimento';
+      DBGridMain.Columns[8].Width := 110;
+      DBGridMain.Columns[8].Title.Alignment := taCenter;
+      DBGridMain.Columns[8].Alignment := taCenter;
+
+
+      DBGridMain.Columns[9].Title.Caption := 'Recebimento';
+      DBGridMain.Columns[9].Width := 110;
+      DBGridMain.Columns[9].Title.Alignment := taCenter;
+      DBGridMain.Columns[9].Alignment := taCenter;
+
+      DBGridMain.Columns[10].Title.Caption := 'Forma Pagamento';
+      DBGridMain.Columns[10].Width := 150;
+      DBGridMain.Columns[10].Title.Alignment := taCenter;
+      DBGridMain.Columns[10].Alignment := taCenter;
+
+
+      DBGridMain.Columns[11].Title.Caption := 'Observação';
+      DBGridMain.Columns[11].Width := 250;
+      DBGridMain.Columns[11].Title.Alignment := taCenter;
+      DBGridMain.Columns[11].Alignment := taCenter;
+
+
+      DBGridMain.Columns[12].Title.Caption := 'Ativo';
+      DBGridMain.Columns[12].Width := 60;
+      DBGridMain.Columns[12].Title.Alignment := taCenter;
+      DBGridMain.Columns[12].Alignment := taCenter;
+      end;
+end;
+
 procedure TFormReceitas.PreencherCamposReceita;
 var
   i: Integer;
@@ -329,7 +423,7 @@ begin
   end;
 end;
 
-procedure TFormReceitas.CarregarReceitasRestaurar;
+procedure TFormReceitas.CarregarGridRestaurar;
 begin
   if Assigned(Controller) then
     Controller.Free;
@@ -353,39 +447,62 @@ end;
 procedure TFormReceitas.ExibirDetalhes;
 var
   IDReceita: Integer;
+  DataSourceAtivo: TDataSource;
 begin
-  if not Assigned(DataSourceMain.DataSet) or DataSourceMain.DataSet.Eof then
+  // Determina qual DataSource está ativo baseado no painel visível
+  if PnLHistorico.Visible then
+    DataSourceAtivo := DataSourceHistorico
+  else if PnlRestaurar.Visible then
+    DataSourceAtivo := DataSourceRestaurar
+  else
+    DataSourceAtivo := DataSourceMain;
+
+  if not Assigned(DataSourceAtivo.DataSet) or DataSourceAtivo.DataSet.Eof then
     Exit;
 
-  IDReceita := DataSourceMain.DataSet.FieldByName('id').AsInteger;
+  IDReceita := DataSourceAtivo.DataSet.FieldByName('id').AsInteger;
 
   ListBoxDetalhes.Items.Clear;
   ListBoxDetalhes.Items.Add(Format('ID: %d', [IDReceita]));
-  ListBoxDetalhes.Items.Add(Format('Ordem de Serviço: %d', [
-    DataSourceMain.DataSet.FieldByName('id_ordem_servico').AsInteger]));
-  ListBoxDetalhes.Items.Add(Format('Cliente ID: %d - %s', [
-    DataSourceMain.DataSet.FieldByName('id_cliente').AsInteger,
-    DataSourceMain.DataSet.FieldByName('cliente_nome').AsString]));
+
+  // Verifica se o campo id_ordem_servico existe antes de tentar acessá-lo
+  if DataSourceAtivo.DataSet.FindField('id_ordem_servico') <> nil then
+    ListBoxDetalhes.Items.Add(Format('Ordem de Serviço: %d', [
+      DataSourceAtivo.DataSet.FieldByName('id_ordem_servico').AsInteger]));
+
+  // Verifica se os campos de cliente existem antes de tentar acessá-los
+  if (DataSourceAtivo.DataSet.FindField('id_cliente') <> nil) and
+     (DataSourceAtivo.DataSet.FindField('cliente_nome') <> nil) then
+    ListBoxDetalhes.Items.Add(Format('Cliente ID: %d - %s', [
+      DataSourceAtivo.DataSet.FieldByName('id_cliente').AsInteger,
+      DataSourceAtivo.DataSet.FieldByName('cliente_nome').AsString]));
+
   ListBoxDetalhes.Items.Add('');
   ListBoxDetalhes.Items.Add(Format('Valor Total: R$ %.2f', [
-    DataSourceMain.DataSet.FieldByName('valor_total').AsCurrency]));
+    DataSourceAtivo.DataSet.FieldByName('valor_total').AsCurrency]));
   ListBoxDetalhes.Items.Add(Format('Valor Recebido: R$ %.2f', [
-    DataSourceMain.DataSet.FieldByName('valor_recebido').AsCurrency]));
+    DataSourceAtivo.DataSet.FieldByName('valor_recebido').AsCurrency]));
   ListBoxDetalhes.Items.Add(Format('Data Emissão: %s', [
-    FormatDateTime('dd/mm/yyyy', DataSourceMain.DataSet.FieldByName('data_emissao').AsDateTime)]));
+    FormatDateTime('dd/mm/yyyy', DataSourceAtivo.DataSet.FieldByName('data_emissao').AsDateTime)]));
   ListBoxDetalhes.Items.Add(Format('Data Vencimento: %s', [
-    FormatDateTime('dd/mm/yyyy', DataSourceMain.DataSet.FieldByName('data_vencimento').AsDateTime)]));
-  ListBoxDetalhes.Items.Add(Format('Data Recebimento: %s', [
-    FormatDateTime('dd/mm/yyyy', DataSourceMain.DataSet.FieldByName('data_recebimento').AsDateTime)]));
+    FormatDateTime('dd/mm/yyyy', DataSourceAtivo.DataSet.FieldByName('data_vencimento').AsDateTime)]));
+
+  // Verifica se data_recebimento não é nulo antes de formatar
+  if not DataSourceAtivo.DataSet.FieldByName('data_recebimento').IsNull then
+    ListBoxDetalhes.Items.Add(Format('Data Recebimento: %s', [
+      FormatDateTime('dd/mm/yyyy', DataSourceAtivo.DataSet.FieldByName('data_recebimento').AsDateTime)]))
+  else
+    ListBoxDetalhes.Items.Add('Data Recebimento: -');
+
   ListBoxDetalhes.Items.Add('');
   ListBoxDetalhes.Items.Add(Format('Forma Pagamento: %s', [
-    DataSourceMain.DataSet.FieldByName('forma_pagamento').AsString]));
+    DataSourceAtivo.DataSet.FieldByName('forma_pagamento').AsString]));
   ListBoxDetalhes.Items.Add(Format('Status: %s', [
-    DataSourceMain.DataSet.FieldByName('status').AsString]));
+    DataSourceAtivo.DataSet.FieldByName('status').AsString]));
   ListBoxDetalhes.Items.Add(Format('Observação: %s', [
-    DataSourceMain.DataSet.FieldByName('observacao').AsString]));
+    DataSourceAtivo.DataSet.FieldByName('observacao').AsString]));
   ListBoxDetalhes.Items.Add(Format('Ativo: %s', [
-    IfThen(DataSourceMain.DataSet.FieldByName('ativo').AsBoolean, 'Sim', 'Não')]));
+    IfThen(DataSourceAtivo.DataSet.FieldByName('ativo').AsBoolean, 'Sim', 'Não')]));
 
   PnlDetlhamento.Visible := True;
 end;
@@ -415,6 +532,7 @@ begin
 
   if MessageDlg('Deseja realmente excluir esta receita?', mtConfirmation, [mbYes, mbNo], 0) = mrYes then
   begin
+    PnlBackgrounEdit.Visible := False;
     IDReceita := DataSourceMain.DataSet.FieldByName('id').AsInteger;
     Controller.DeletarReceita(IDReceita);
     ShowMessage('Receita excluída com sucesso!');
@@ -425,40 +543,34 @@ end;
 procedure TFormReceitas.BtnDetalharClick(Sender: TObject);
 begin
   ExibirDetalhes;
-  PnlRestaurar.Visible := False;
-  PnLHistorico.Visible := False;
 end;
 
 procedure TFormReceitas.BtnRestaurarClick(Sender: TObject);
 begin
-  CarregarReceitasRestaurar;
   PnlRestaurar.Visible := True;
   PnlDetlhamento.Visible := False;
   PnLHistorico.Visible := False;
+  PnlBackgrounEdit.Visible := False;
+  EdtPesquisar.Visible := False;
+  CarregarGridRestaurar;
 end;
 
 procedure TFormReceitas.BtnHistoricoClick(Sender: TObject);
 begin
-  if Assigned(Controller) then
-    Controller.Free;
-  Controller := TReceitaController.Create;
-  DataSourceHistorico.DataSet := Controller.ListarHistoricoReceitas;
-  DBGridHistorico.DataSource := DataSourceHistorico;
   PnLHistorico.Visible := True;
   PnlRestaurar.Visible := False;
   PnlDetlhamento.Visible := False;
+  PnlBackgrounEdit.Visible := False;
+  EdtPesquisar.Visible := False;
+  CarregarGridHistorico;
 end;
 
 procedure TFormReceitas.BtnPesquisarClick(Sender: TObject);
 begin
   EdtPesquisar.Visible := True;
-  if EdtPesquisar.Text <> '' then
-  begin
-    DataSourceMain.DataSet := Controller.PesquisarReceitas(EdtPesquisar.Text);
-  end
-  else
-  begin
-    CarregarGrid;
+  EdtPesquisar.SetFocus;
+  If PnlRestaurar.Visible  OR PnLHistorico.Visible then begin
+    EdtPesquisar.Enabled := False;
   end;
 end;
 
@@ -473,18 +585,21 @@ end;
 procedure TFormReceitas.ImgFecharClick(Sender: TObject);
 begin
   PnlRestaurar.Visible := False;
+  EdtPesquisar.Enabled := True;
   CarregarGrid;
 end;
 
 procedure TFormReceitas.ImgFecharHistoricoClick(Sender: TObject);
 begin
   PnLHistorico.Visible := False;
+  EdtPesquisar.Enabled := True;
   CarregarGrid;
 end;
 
 procedure TFormReceitas.ImgFecharDetalhamentoClick(Sender: TObject);
 begin
   PnlDetlhamento.Visible := False;
+  CarregarGrid;
 end;
 
 procedure TFormReceitas.BtnSairClick(Sender: TObject);
@@ -508,6 +623,7 @@ begin
   PnlDetlhamento.Visible := False;
   PnLHistorico.Visible := False;
   EdtPesquisar.Visible := False;
+  CarregarGrid;
 end;
 
 procedure TFormReceitas.ImgRestaurarClick(Sender: TObject);
@@ -517,6 +633,7 @@ begin
   if not Assigned(DataSourceRestaurar.DataSet) or DataSourceRestaurar.DataSet.Eof then
   begin
     ShowMessage('Selecione uma receita para restaurar.');
+    PnlRestaurar.Visible := False;
     Exit;
   end;
 
@@ -525,7 +642,8 @@ begin
     IDReceita := DataSourceRestaurar.DataSet.FieldByName('id').AsInteger;
     Controller.RestaurarReceita(IDReceita);
     ShowMessage('Receita restaurada com sucesso!');
-    CarregarReceitasRestaurar;
+    PnlRestaurar.Visible := False;
+    CarregarGridRestaurar;
     CarregarGrid;
   end;
 end;
