@@ -72,7 +72,10 @@ uses
   RelatorioEntradaService in 'src\Services\RelatorioEntradaService.pas',
   RelatorioEntradaController in 'src\controller\RelatorioEntradaController.pas',
   uFormRelatoriosEntradasView in 'src\View\uFormRelatoriosEntradasView.pas' {FormEntradas},
-  uFormRelatoriosSaídasView in 'src\View\uFormRelatoriosSaídasView.pas' {FormSaidas};
+  uFormRelatoriosSaídasView in 'src\View\uFormRelatoriosSaídasView.pas' {FormSaidas},
+  RelatorioSaidaController in 'src\controller\RelatorioSaidaController.pas',
+  RelatorioSaidaService in 'src\Services\RelatorioSaidaService.pas',
+  RelatorioSaidaRepository in 'src\repository\RelatorioSaidaRepository.pas';
 
 {$R *.res}
 

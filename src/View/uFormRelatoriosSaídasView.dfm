@@ -11,6 +11,8 @@ object FormSaidas: TFormSaidas
   Font.Height = -12
   Font.Name = 'Segoe UI'
   Font.Style = []
+  OnCreate = FormCreate
+  OnShow = FormShow
   TextHeight = 15
   object PnlRelatorio: TPanel
     AlignWithMargins = True
@@ -63,6 +65,7 @@ object FormSaidas: TFormSaidas
         D3B02C19730192242A92F15CD4DCE82B82F83E76CEF72B8170A8B914C265CC45
         901F1F99CB5F1FFA570598A2328176F4BDDF9615D481E62FF3919E24F9015515
         0000000049454E44AE426082}
+      OnClick = ImgFecharEntradasClick
     end
     object Panel5: TPanel
       Left = 16
@@ -2587,8 +2590,8 @@ object FormSaidas: TFormSaidas
           Height = 23
           TabOrder = 1
           Items.Strings = (
-            'Pedidos Pendentes'
-            'Pedidos Conclu'#237'dos')
+            'Pend'#234'ncias Conclu'#237'das'
+            'Pend'#234'ncias Pendentes')
         end
         object DateTimeFinal: TDateTimePicker
           Left = 10
@@ -2657,6 +2660,7 @@ object FormSaidas: TFormSaidas
               Font.Style = []
               ParentColor = False
               ParentFont = False
+              OnClick = LblAdicionarClick
               ExplicitWidth = 101
               ExplicitHeight = 20
             end
@@ -2758,6 +2762,7 @@ object FormSaidas: TFormSaidas
               Font.Style = []
               ParentColor = False
               ParentFont = False
+              OnClick = Label4Click
               ExplicitWidth = 94
             end
             object Image5: TImage

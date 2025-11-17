@@ -5,7 +5,7 @@ interface
 uses
   uPendencia, PendenciaRepository, uDMConexao, System.SysUtils,
   uMainController, FireDAC.Comp.Client, Data.DB, Vcl.Dialogs,
-  System.Classes, Logs, uSession;
+  System.Classes, Logs, uSession, RelatoriosRepository;
 
 type
   TPendenciaService = class

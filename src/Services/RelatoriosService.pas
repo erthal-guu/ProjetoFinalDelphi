@@ -9,6 +9,8 @@ uses
      procedure GerarRelatorioValorTotalEntrada(aDataIncio,aDataFinal:TDate);
      procedure GerarRelatorioReceitasCanceladas(aDataIncio,aDataFinal:TDate);
      procedure GerarRelatorioReceitasPendentes(aDataIncio,aDataFinal:TDate);
+     procedure GerarRelatorioPendenciasConcluidas(aDataIncio,aDataFinal:TDate);
+     procedure GerarRelatorioPendenciasPendentes(aDataIncio,aDataFinal:TDate);
      constructor Create;
    end;
 implementation
@@ -34,6 +36,16 @@ end;
 procedure TRelatorioService.GerarRelatorioReceitasPendentes(aDataIncio,aDataFinal:TDate);
 begin
   RelatorioRepository.GerarRelatorioReceitasPendentes(aDataIncio,aDataFinal);
+end;
+
+procedure TRelatorioService.GerarRelatorioPendenciasConcluidas(aDataIncio,aDataFinal:TDate);
+begin
+  RelatorioRepository.GerarRelatorioPendenciasConcluidas(aDataIncio,aDataFinal);
+end;
+
+procedure TRelatorioService.GerarRelatorioPendenciasPendentes(aDataIncio,aDataFinal:TDate);
+begin
+  RelatorioRepository.GerarRelatorioPendenciasPendentes(aDataIncio,aDataFinal);
 end;
 
 end.

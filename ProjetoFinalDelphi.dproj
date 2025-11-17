@@ -249,6 +249,9 @@
             <Form>FormSaidas</Form>
             <FormType>dfm</FormType>
         </DCCReference>
+        <DCCReference Include="src\controller\RelatorioSaidaController.pas"/>
+        <DCCReference Include="src\Services\RelatorioSaidaService.pas"/>
+        <DCCReference Include="src\repository\RelatorioSaidaRepository.pas"/>
         <BuildConfiguration Include="Base">
             <Key>Base</Key>
         </BuildConfiguration>

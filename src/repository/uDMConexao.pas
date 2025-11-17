@@ -48,6 +48,39 @@ type
     FDQueryPendentesvalor_a_receber: TFMTBCDField;
     FDQueryPendentespercentual_pendente: TFMTBCDField;
     FDQueryPendentesvalor_medio_pendente: TBCDField;
+    FDQueryPendenciasConcluidas: TFDQuery;
+    frxReport4: TfrxReport;
+    frxDBDataset4: TfrxDBDataset;
+    FDQueryPendenciasPendentes: TFDQuery;
+    frxReport5: TfrxReport;
+    frxDBDataset5: TfrxDBDataset;
+    FDQueryPendenciasConcluidascodigo_fornecedor: TIntegerField;
+    FDQueryPendenciasConcluidasnome_fornecedor: TWideStringField;
+    FDQueryPendenciasConcluidasquantidade_pendencias_concluidas: TLargeintField;
+    FDQueryPendenciasConcluidasvalor_total_concluido: TFMTBCDField;
+    FDQueryPendenciasConcluidasticket_medio_concluido: TFMTBCDField;
+    FDQueryPendenciasConcluidasprimeira_pendencia: TDateField;
+    FDQueryPendenciasConcluidasultima_conclusao: TDateField;
+    FDQueryPendenciasConcluidasmenor_prazo: TDateField;
+    FDQueryPendenciasConcluidasmaior_prazo: TDateField;
+    FDQueryPendenciasConcluidastempo_medio_conclusao_dias: TIntegerField;
+    FDQueryPendenciasPendentescodigo_fornecedor: TIntegerField;
+    FDQueryPendenciasPendentesnome_fornecedor: TWideStringField;
+    FDQueryPendenciasPendentesquantidade_pendentes: TLargeintField;
+    FDQueryPendenciasPendentesvalor_total_pendente: TFMTBCDField;
+    FDQueryPendenciasPendentesvalor_medio_pendente: TFMTBCDField;
+    FDQueryPendenciasPendentesprimeira_pendencia: TDateField;
+    FDQueryPendenciasPendentesprazo_mais_tarde: TDateField;
+    FDQueryPendenciasPendentesprazo_mais_cedo: TDateField;
+    FDQueryPendenciasPendentesquantidade_vencidas: TLargeintField;
+    FDQueryPendenciasPendentesvalor_vencido: TFMTBCDField;
+    FDQueryPendenciasPendentesquantidade_a_vencer: TLargeintField;
+    FDQueryPendenciasPendentesvalor_a_vencer: TFMTBCDField;
+    FDQueryPendenciasPendentespercentual_vencidas: TFMTBCDField;
+    FDQueryPendentescodigo_cliente: TIntegerField;
+    FDQueryValorTotalvalor_total_geral_todas_receitas: TFMTBCDField;
+    FDQueryValorTotalCanceladasvalor_total_geral: TFMTBCDField;
+    FDQueryPendentesvalor_total_geral: TFMTBCDField;
   private
     { Private declarations }
   public

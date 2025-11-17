@@ -37,14 +37,14 @@ object FormEntradas: TFormEntradas
       Margins.Top = 8
       Align = alTop
       Alignment = taCenter
-      Caption = 'Relat'#243'rios de Entradas'
+      Caption = 'Relat'#243'rios de Receitas'
       Font.Charset = DEFAULT_CHARSET
       Font.Color = clWhite
       Font.Height = -24
       Font.Name = 'Segoe UI'
       Font.Style = [fsBold]
       ParentFont = False
-      ExplicitWidth = 256
+      ExplicitWidth = 250
     end
     object ImgFecharEntradas: TImage
       Left = 936
@@ -2591,7 +2591,7 @@ object FormEntradas: TFormEntradas
           TabOrder = 1
           Items.Strings = (
             'Receitas Recebidas'
-            'Receitas Or'#231'amentadas ou Canceladas'
+            'Receitas Canceladas'
             'Receitas Pendentes')
         end
         object DateTimeFinal: TDateTimePicker
@@ -2647,8 +2647,8 @@ object FormEntradas: TFormEntradas
               AlignWithMargins = True
               Left = 3
               Top = 6
-              Width = 101
-              Height = 20
+              Width = 199
+              Height = 25
               Margins.Top = 6
               Align = alClient
               Alignment = taCenter
@@ -2662,6 +2662,8 @@ object FormEntradas: TFormEntradas
               ParentColor = False
               ParentFont = False
               OnClick = LblAdicionarClick
+              ExplicitWidth = 101
+              ExplicitHeight = 20
             end
             object Image6: TImage
               Left = 9
@@ -2747,7 +2749,7 @@ object FormEntradas: TFormEntradas
               AlignWithMargins = True
               Left = 10
               Top = 3
-              Width = 94
+              Width = 154
               Height = 20
               Margins.Left = 10
               Align = alClient
@@ -2762,6 +2764,7 @@ object FormEntradas: TFormEntradas
               ParentColor = False
               ParentFont = False
               OnClick = Label4Click
+              ExplicitWidth = 94
             end
             object Image5: TImage
               Left = -1
@@ -2808,7 +2811,7 @@ object FormEntradas: TFormEntradas
           AlignWithMargins = True
           Left = 10
           Top = 3
-          Width = 90
+          Width = 187
           Height = 21
           Margins.Left = 10
           Align = alTop
@@ -2820,12 +2823,13 @@ object FormEntradas: TFormEntradas
           Font.Name = 'Segoe UI'
           Font.Style = [fsBold]
           ParentFont = False
+          ExplicitWidth = 90
         end
         object LblQuantidade: TLabel
           AlignWithMargins = True
           Left = 10
           Top = 30
-          Width = 16
+          Width = 187
           Height = 40
           Margins.Left = 10
           Align = alTop
@@ -2837,6 +2841,7 @@ object FormEntradas: TFormEntradas
           Font.Name = 'Segoe UI'
           Font.Style = []
           ParentFont = False
+          ExplicitWidth = 16
         end
         object Image2: TImage
           Left = 0
@@ -2882,7 +2887,7 @@ object FormEntradas: TFormEntradas
           AlignWithMargins = True
           Left = 30
           Top = 3
-          Width = 103
+          Width = 164
           Height = 21
           Margins.Left = 30
           Align = alTop
@@ -2894,12 +2899,13 @@ object FormEntradas: TFormEntradas
           Font.Name = 'Segoe UI'
           Font.Style = [fsBold]
           ParentFont = False
+          ExplicitWidth = 103
         end
         object LblTicketMedio: TLabel
           AlignWithMargins = True
           Left = 30
           Top = 30
-          Width = 16
+          Width = 164
           Height = 40
           Margins.Left = 30
           Align = alTop
@@ -2911,6 +2917,7 @@ object FormEntradas: TFormEntradas
           Font.Name = 'Segoe UI'
           Font.Style = []
           ParentFont = False
+          ExplicitWidth = 16
         end
         object Image3: TImage
           Left = -1
@@ -2962,7 +2969,7 @@ object FormEntradas: TFormEntradas
           AlignWithMargins = True
           Left = 30
           Top = 3
-          Width = 131
+          Width = 171
           Height = 21
           Margins.Left = 30
           Align = alTop
@@ -2974,12 +2981,13 @@ object FormEntradas: TFormEntradas
           Font.Name = 'Segoe UI'
           Font.Style = [fsBold]
           ParentFont = False
+          ExplicitWidth = 131
         end
         object LblTotal: TLabel
           AlignWithMargins = True
           Left = 30
           Top = 30
-          Width = 16
+          Width = 171
           Height = 40
           Margins.Left = 30
           Align = alTop
@@ -2991,6 +2999,7 @@ object FormEntradas: TFormEntradas
           Font.Name = 'Segoe UI'
           Font.Style = []
           ParentFont = False
+          ExplicitWidth = 16
         end
         object Image1: TImage
           Left = -3

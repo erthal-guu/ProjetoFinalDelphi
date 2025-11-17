@@ -113,6 +113,7 @@ end;
 
 procedure TFormHome.Sadas1Click(Sender: TObject);
 begin
+  FormSaidas.Position := poScreenCenter;
   FormSaidas.Show;
 end;
 
