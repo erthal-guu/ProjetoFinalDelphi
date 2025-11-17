@@ -52,6 +52,7 @@ begin
     QueryEntradas.Close;
     QueryEntradas.SQL.Clear;
     QueryEntradas.SQL.Add('SELECT ');
+    QueryEntradas.SQL.Add('    c.id AS codigo_cliente,');
     QueryEntradas.SQL.Add('    c.nome AS nome_cliente,');
     QueryEntradas.SQL.Add
       ('    COALESCE(SUM(r.valor_total), 0) AS valor_total_receitas,');
@@ -64,23 +65,21 @@ begin
     QueryEntradas.SQL.Add('    MIN(r.data_emissao) AS primeira_receita,');
     QueryEntradas.SQL.Add('    MAX(r.data_recebimento) AS ultima_receita,');
     QueryEntradas.SQL.Add
-      ('    COUNT(CASE WHEN r.status = ''Recebido'' THEN 1 END) AS receitas_recebidas,');
+      ('    COUNT(CASE WHEN r.status = ''CONCLUIDA'' THEN 1 END) AS receitas_concluidas,');
     QueryEntradas.SQL.Add
-      ('    COUNT(CASE WHEN r.status = ''Pendente'' THEN 1 END) AS receitas_pendentes,');
-    QueryEntradas.SQL.Add
-      ('    COUNT(CASE WHEN r.status = ''Parcial'' THEN 1 END) AS receitas_parciais,');
-    QueryEntradas.SQL.Add
-      ('    COALESCE(SUM(CASE WHEN r.status != ''Recebido'' THEN r.valor_total - COALESCE(r.valor_recebido, 0) ELSE 0 END), 0) AS valor_pendente');
+      ('    COALESCE(SUM(CASE WHEN r.status != ''CONCLUIDA'' THEN r.valor_total - COALESCE(r.valor_recebido, 0) ELSE 0 END), 0) AS valor_pendente');
     QueryEntradas.SQL.Add('FROM receitas r');
     QueryEntradas.SQL.Add
       ('INNER JOIN ordens_servico os ON r.id_ordem_servico = os.id');
     QueryEntradas.SQL.Add('INNER JOIN clientes c ON os.id_cliente = c.id');
-    QueryEntradas.SQL.Add('WHERE r.ativo = TRUE');
+    QueryEntradas.SQL.Add('WHERE r.status = ''CONCLUIDA''');
+    QueryEntradas.SQL.Add('  AND r.ativo = TRUE');
     QueryEntradas.SQL.Add('  AND r.data_emissao BETWEEN ' + DataIni + ' AND '
       + DataFim);
     QueryEntradas.SQL.Add('GROUP BY c.id, c.nome');
     QueryEntradas.SQL.Add('ORDER BY valor_total_receitas DESC');
     QueryEntradas.Open;
+    DataModule1.frxDBDataset1.DataSet := QueryEntradas;
 
     Result := QueryEntradas;
     DataModule1.frxReport1.ShowReport();
@@ -106,25 +105,11 @@ try
   QueryCanceladas.SQL.Add('    COUNT(*) AS quantidade_canceladas,');
   QueryCanceladas.SQL.Add('    COALESCE(SUM(r.valor_total), 0) AS total_cancelado,');
   QueryCanceladas.SQL.Add('    COALESCE(SUM(r.valor_recebido), 0) AS total_recebido,');
-  QueryCanceladas.SQL.Add('    COALESCE(SUM(r.valor_total - COALESCE(r.valor_recebido, 0)), 0) AS total_perdido,');
-  QueryCanceladas.SQL.Add('    ROUND(');
-  QueryCanceladas.SQL.Add('        CASE');
-  QueryCanceladas.SQL.Add('            WHEN SUM(r.valor_total) > 0');
-  QueryCanceladas.SQL.Add('            THEN (SUM(r.valor_recebido) * 100.0 / SUM(r.valor_total))');
-  QueryCanceladas.SQL.Add('            ELSE 0');
-  QueryCanceladas.SQL.Add('        END, 2');
-  QueryCanceladas.SQL.Add('    ) AS percentual_recuperado,');
-  QueryCanceladas.SQL.Add('    ROUND(');
-  QueryCanceladas.SQL.Add('        CASE');
-  QueryCanceladas.SQL.Add('            WHEN SUM(r.valor_total) > 0');
-  QueryCanceladas.SQL.Add('            THEN ((SUM(r.valor_total - COALESCE(r.valor_recebido, 0))) * 100.0 / SUM(r.valor_total))');
-  QueryCanceladas.SQL.Add('            ELSE 0');
-  QueryCanceladas.SQL.Add('        END, 2');
-  QueryCanceladas.SQL.Add('    ) AS percentual_perda');
+  QueryCanceladas.SQL.Add('    COALESCE(SUM(r.valor_total - COALESCE(r.valor_recebido, 0)), 0) AS total_perdido');
   QueryCanceladas.SQL.Add('FROM receitas r');
   QueryCanceladas.SQL.Add('INNER JOIN ordens_servico os ON r.id_ordem_servico = os.id');
   QueryCanceladas.SQL.Add('INNER JOIN clientes c ON os.id_cliente = c.id');
-  QueryCanceladas.SQL.Add('WHERE r.status = ''Cancelada''');
+  QueryCanceladas.SQL.Add('WHERE r.status = ''CANCELADA''');
   QueryCanceladas.SQL.Add('  AND r.ativo = FALSE');
   QueryCanceladas.SQL.Add('  AND os.ativo = TRUE');
   QueryCanceladas.SQL.Add('  AND c.ativo = TRUE');
@@ -133,6 +118,8 @@ try
   QueryCanceladas.SQL.Add('ORDER BY total_cancelado DESC;');
 
   QueryCanceladas.Open;
+  DataModule1.frxDBDataset2.DataSet := QueryCanceladas;
+
   Result := QueryCanceladas;
   DataModule1.frxReport2.ShowReport();
 
@@ -157,11 +144,11 @@ try
   QueryPendentes.SQL.Add('    COUNT(*) AS quantidade_pendentes,');
   QueryPendentes.SQL.Add('    COALESCE(SUM(r.valor_total), 0) AS valor_total_pendente,');
   QueryPendentes.SQL.Add('    COALESCE(SUM(r.valor_recebido), 0) AS valor_recebido_pendente,');
-  QueryPendentes.SQL.Add('    COALESCE(SUM(r.valor_total - COALESCE(r.valor_recebido, 0)), 0) AS valor_a_receber,');
+  QueryPendentes.SQL.Add('    COALESCE(SUM(r.valor_total), 0) - COALESCE(SUM(r.valor_recebido), 0) AS valor_a_receber,');
   QueryPendentes.SQL.Add('    ROUND(');
   QueryPendentes.SQL.Add('        CASE');
   QueryPendentes.SQL.Add('            WHEN SUM(r.valor_total) > 0');
-  QueryPendentes.SQL.Add('            THEN (SUM(r.valor_total - COALESCE(r.valor_recebido, 0)) * 100.0 / SUM(r.valor_total))');
+  QueryPendentes.SQL.Add('            THEN (SUM(r.valor_total) - COALESCE(SUM(r.valor_recebido), 0)) * 100.0 / SUM(r.valor_total)');
   QueryPendentes.SQL.Add('            ELSE 0');
   QueryPendentes.SQL.Add('        END, 2');
   QueryPendentes.SQL.Add('    ) AS percentual_pendente,');
@@ -177,7 +164,7 @@ try
   QueryPendentes.SQL.Add('FROM receitas r');
   QueryPendentes.SQL.Add('INNER JOIN ordens_servico os ON r.id_ordem_servico = os.id');
   QueryPendentes.SQL.Add('INNER JOIN clientes c ON os.id_cliente = c.id');
-  QueryPendentes.SQL.Add('WHERE r.status = ''Pendente''');
+  QueryPendentes.SQL.Add('WHERE r.status = ''PENDENTE''');
   QueryPendentes.SQL.Add('  AND r.ativo = TRUE');
   QueryPendentes.SQL.Add('  AND os.ativo = TRUE');
   QueryPendentes.SQL.Add('  AND c.ativo = TRUE');
@@ -186,6 +173,8 @@ try
   QueryPendentes.SQL.Add('ORDER BY valor_total_pendente DESC');
 
   QueryPendentes.Open;
+  DataModule1.frxDBDataset3.DataSet := QueryPendentes;
+
   Result := QueryPendentes;
   DataModule1.frxReport3.ShowReport();
 

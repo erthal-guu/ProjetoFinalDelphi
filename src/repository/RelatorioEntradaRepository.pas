@@ -66,7 +66,7 @@ begin
   try
     FQuery.Close;
     FQuery.SQL.Clear;
-    FQuery.SQL.Add('SELECT COALESCE(SUM(valor_total), 0) as total FROM Receitas');
+    FQuery.SQL.Add('SELECT COALESCE(SUM(valor_total), 0) as total FROM Receitas WHERE   status =''CONCLUIDA''');
     FQuery.Open;
     Result := FQuery.FieldByName('total').AsFloat;
   except

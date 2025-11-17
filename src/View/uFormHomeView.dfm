@@ -25,7 +25,7 @@
     Height = 665
     Align = alClient
     TabOrder = 0
-    object PnlLogo: TImage
+    object s: TImage
       Left = 1
       Top = 1
       Width = 1130
@@ -3068,7 +3068,7 @@
         8220088220488181020D4110044110A4C040818620088220085260A040431004
         411004293050A0210882200882141828D01004411004410A8CFF074CE8DD4E5B
         9BBB500000000049454E44AE426082}
-      ExplicitLeft = 2
+      ExplicitLeft = 0
       ExplicitTop = -1
     end
     object PnlFooter: TPanel

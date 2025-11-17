@@ -1,0 +1,3 @@
+23:12:57 - CADASTRO - ID: 0 cadastrou ordem de serviço com cliente ID: 3
+23:13:40 - CADASTRO - ID: 0 cadastrou ordem de serviço com cliente ID: 1
+23:57:09 - RECEBER - ID: 0 registrou recebimento da receita ID: 31 - Valor: 1170,00 - Status Antigo: 

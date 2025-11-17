@@ -29,9 +29,7 @@ type
     FDQueryValorTotalticket_medio_cliente: TFMTBCDField;
     FDQueryValorTotalprimeira_receita: TSQLTimeStampField;
     FDQueryValorTotalultima_receita: TSQLTimeStampField;
-    FDQueryValorTotalreceitas_recebidas: TLargeintField;
-    FDQueryValorTotalreceitas_pendentes: TLargeintField;
-    FDQueryValorTotalreceitas_parciais: TLargeintField;
+    FDQueryValorTotalreceitas_concluidas: TLargeintField;
     FDQueryValorTotalvalor_pendente: TFMTBCDField;
     FDQueryValorTotalCanceladascliente: TWideStringField;
     FDQueryValorTotalCanceladasquantidade_canceladas: TLargeintField;
@@ -44,14 +42,12 @@ type
     frxReport3: TfrxReport;
     frxDBDataset3: TfrxDBDataset;
     FDQueryPendentescliente: TWideStringField;
-    FDQueryPendentesquantidade_pendentes: TLargeintField;
-    FDQueryPendentesvalor_total_pendente: TFMTBCDField;
-    FDQueryPendentesvalor_recebido_pendente: TFMTBCDField;
+    FDQueryPendentesquantidade_pendentes: TIntegerField;
+    FDQueryPendentesvalor_total_pendente: TBCDField;
+    FDQueryPendentesvalor_recebido_pendente: TBCDField;
     FDQueryPendentesvalor_a_receber: TFMTBCDField;
     FDQueryPendentespercentual_pendente: TFMTBCDField;
-    FDQueryPendentesprimeira_emissao: TSQLTimeStampField;
-    FDQueryPendentesultima_vencimento: TSQLTimeStampField;
-    FDQueryPendentesvalor_medio_pendente: TFMTBCDField;
+    FDQueryPendentesvalor_medio_pendente: TBCDField;
   private
     { Private declarations }
   public

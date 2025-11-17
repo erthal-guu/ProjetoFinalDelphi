@@ -36,7 +36,7 @@ type
     Financeiro: TMenuItem;
     Sair: TMenuItem;
     PnlMain: TPanel;
-    PnlLogo: TImage;
+    s: TImage;
     Pendncias1: TMenuItem;
     Receitas1: TMenuItem;
     PnlFooter: TPanel;
