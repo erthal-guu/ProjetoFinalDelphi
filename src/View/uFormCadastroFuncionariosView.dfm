@@ -695,7 +695,6 @@ object FormCadastroFuncionarios: TFormCadastroFuncionarios
               ParentBackground = False
               TabOrder = 0
               Visible = False
-              ExplicitTop = 3
               object Label3: TLabel
                 Left = 156
                 Top = 8

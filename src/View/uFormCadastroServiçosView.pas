@@ -188,6 +188,7 @@ begin
   PnlEdit.Visible := False;
   PnlRestaurar.Visible := False;
   EdtPesquisar.Visible := False;
+  CarregarGrid;
 end;
 
 procedure TFormCadastroServiços.BtnEditarClick(Sender: TObject);
@@ -236,7 +237,6 @@ begin
     CadastrarServicos;
     LimparCampos;
     CarregarGrid;
-    ShowMessage('Serviço Cadastrado com sucesso!');
   end;
 end;
 
@@ -436,17 +436,22 @@ end;
 procedure TFormCadastroServiços.CadastrarServicos;
 var
   ServicoController: TServicoController;
-  IdServico: Integer;
+  Categoria, Pecas, Profissional: Integer;
+  Preco: Currency;
 begin
-  if DataSourceMain.DataSet.IsEmpty then begin
-    ShowMessage('Nenhum serviço selecionado!');
-    Exit;
-  end;
-  IdServico := DataSourceMain.DataSet.FieldByName('id').AsInteger;
-  if MessageDlg('Deseja realmente excluir este serviço?', mtConfirmation,
-    [mbYes, mbNo], 0) = mrYes then begin
-    ServicoController := TServicoController.Create;
-    ServicoController.DeletarServico(IdServico);
+  ServicoController := TServicoController.Create;
+  try
+    Categoria := Integer(CmbCategoria.Items.Objects[CmbCategoria.ItemIndex]);
+    Pecas := Integer(CmbPeças.Items.Objects[CmbPeças.ItemIndex]);
+    Profissional := Integer(CmbProfissional.Items.Objects
+      [CmbProfissional.ItemIndex]);
+    Preco := StrToCurr(StringReplace(EdtPreço.Text, ',', '.', [rfReplaceAll]));
+
+    if ServicoController.CadastrarServico(EdtNome.Text, Categoria, Preco,
+      EdtObs.Text, Pecas, Profissional) then begin
+      ShowMessage('Serviço cadastrado com sucesso!');
+    end;
+  finally
     ServicoController.Free;
   end;
 end;

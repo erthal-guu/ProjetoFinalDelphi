@@ -14,7 +14,7 @@ object DataModule1: TDataModule1
   end
   object FDPhysPgDriverLink1: TFDPhysPgDriverLink
     VendorLib = 
-      'C:\Users\vplgu\Desktop\ProjetoFinalDelphi\src\lib\lib\lib\libpq.' +
+      'C:\Users\Auditorio\Desktop\ProjetoFinalDelphi\src\lib\lib\libpq.' +
       'dll'
     Left = 485
     Top = 145
@@ -222,6 +222,11 @@ object DataModule1: TDataModule1
       Width = 1000.000000000000000000
     end
     object Page1: TfrxReportPage
+      Font.Charset = DEFAULT_CHARSET
+      Font.Color = clGreen
+      Font.Height = -13
+      Font.Name = 'Arial'
+      Font.Style = []
       PaperWidth = 210.000000000000000000
       PaperHeight = 297.000000000000000000
       PaperSize = 9
@@ -354,7 +359,7 @@ object DataModule1: TDataModule1
         object Memo20: TfrxMemoView
           IndexTag = 1
           AllowVectorExport = True
-          Left = 317.480520000000000000
+          Left = 291.023810000000000000
           Width = 75.590600000000000000
           Height = 18.897650000000000000
           ContentScaleOptions.Constraints.MaxIterationValue = 0
@@ -377,7 +382,7 @@ object DataModule1: TDataModule1
         object Memo21: TfrxMemoView
           IndexTag = 1
           AllowVectorExport = True
-          Left = 464.882190000000000000
+          Left = 449.764070000000000000
           Width = 75.590600000000000000
           Height = 18.897650000000000000
           ContentScaleOptions.Constraints.MaxIterationValue = 0
@@ -465,10 +470,18 @@ object DataModule1: TDataModule1
           Top = 1.000000000000000000
           Width = 75.590600000000000000
           Height = 22.677180000000000000
+          ContentScaleOptions.Constraints.MaxIterationValue = 0
+          ContentScaleOptions.Constraints.MinIterationValue = 0
+          Font.Charset = DEFAULT_CHARSET
+          Font.Color = clNavy
+          Font.Height = -13
+          Font.Name = 'Arial'
+          Font.Style = []
           Frame.Typ = []
           HAlign = haRight
           Memo.UTF8W = (
             'Page [Page#]')
+          ParentFont = False
         end
       end
       object PageHeader1: TfrxPageHeader
@@ -7403,7 +7416,6 @@ object DataModule1: TDataModule1
       end>
   end
   object FDQueryPendentes: TFDQuery
-    Active = True
     AfterOpen = FDQueryPendentesAfterOpen
     Connection = FDConnection1
     SQL.Strings = (
@@ -11032,45 +11044,8 @@ object DataModule1: TDataModule1
     DataSetOptions = []
     Left = 408
     Top = 400
-    FieldDefs = <
-      item
-        FieldName = 'codigo_cliente'
-      end
-      item
-        FieldName = 'cliente'
-        FieldType = fftString
-        Size = 100
-      end
-      item
-        FieldName = 'quantidade_pendentes'
-      end
-      item
-        FieldName = 'valor_total_pendente'
-        Size = 64
-      end
-      item
-        FieldName = 'valor_recebido_pendente'
-        Size = 64
-      end
-      item
-        FieldName = 'valor_a_receber'
-        Size = 64
-      end
-      item
-        FieldName = 'percentual_pendente'
-        Size = 64
-      end
-      item
-        FieldName = 'valor_medio_pendente'
-        Size = 64
-      end
-      item
-        FieldName = 'valor_total_geral'
-        Size = 64
-      end>
   end
   object FDQueryPendenciasConcluidas: TFDQuery
-    Active = True
     Connection = FDConnection1
     SQL.Strings = (
       '  SELECT'
@@ -14715,52 +14690,8 @@ object DataModule1: TDataModule1
     DataSetOptions = []
     Left = 776
     Top = 257
-    FieldDefs = <
-      item
-        FieldName = 'codigo_fornecedor'
-      end
-      item
-        FieldName = 'nome_fornecedor'
-        FieldType = fftString
-        Size = 100
-      end
-      item
-        FieldName = 'quantidade_pendencias_concluidas'
-      end
-      item
-        FieldName = 'valor_total_concluido'
-        Size = 64
-      end
-      item
-        FieldName = 'ticket_medio_concluido'
-        Size = 64
-      end
-      item
-        FieldName = 'primeira_pendencia'
-        FieldType = fftDateTime
-      end
-      item
-        FieldName = 'ultima_conclusao'
-        FieldType = fftDateTime
-      end
-      item
-        FieldName = 'menor_prazo'
-        FieldType = fftDateTime
-      end
-      item
-        FieldName = 'maior_prazo'
-        FieldType = fftDateTime
-      end
-      item
-        FieldName = 'tempo_medio_conclusao_dias'
-      end
-      item
-        FieldName = 'valor_total_geral'
-        Size = 64
-      end>
   end
   object FDQueryPendenciasPendentes: TFDQuery
-    Active = True
     Connection = FDConnection1
     SQL.Strings = (
       '  SELECT'
@@ -18445,59 +18376,5 @@ object DataModule1: TDataModule1
     DataSetOptions = []
     Left = 784
     Top = 329
-    FieldDefs = <
-      item
-        FieldName = 'codigo_fornecedor'
-      end
-      item
-        FieldName = 'nome_fornecedor'
-        FieldType = fftString
-        Size = 100
-      end
-      item
-        FieldName = 'quantidade_pendentes'
-      end
-      item
-        FieldName = 'valor_total_pendente'
-        Size = 64
-      end
-      item
-        FieldName = 'valor_medio_pendente'
-        Size = 64
-      end
-      item
-        FieldName = 'primeira_pendencia'
-        FieldType = fftDateTime
-      end
-      item
-        FieldName = 'prazo_mais_tarde'
-        FieldType = fftDateTime
-      end
-      item
-        FieldName = 'prazo_mais_cedo'
-        FieldType = fftDateTime
-      end
-      item
-        FieldName = 'quantidade_vencidas'
-      end
-      item
-        FieldName = 'valor_vencido'
-        Size = 64
-      end
-      item
-        FieldName = 'quantidade_a_vencer'
-      end
-      item
-        FieldName = 'valor_a_vencer'
-        Size = 64
-      end
-      item
-        FieldName = 'percentual_vencidas'
-        Size = 64
-      end
-      item
-        FieldName = 'valor_total_geral'
-        Size = 64
-      end>
   end
 end

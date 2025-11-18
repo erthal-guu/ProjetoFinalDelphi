@@ -14,7 +14,8 @@ type
   public
     constructor Create;
     function SalvarUsuario(Usuario: TUsuario): Boolean;
-    function CriarObjeto(aNome, aCPF, aSenha, aGrupo: String; aAtivo: Boolean): TUsuario;
+    function CriarObjeto(aNome, aCPF, aSenha, aGrupo: String; aAtivo: Boolean)
+      : TUsuario;
     procedure EditarUsuario(Usuario: TUsuario);
     procedure EditarUsuarioComSenha(Usuario: TUsuario);
     procedure DeletarUsuarios(const aId: Integer);
@@ -35,7 +36,8 @@ begin
   Repository := TCadastroRepository.Create(DataModule1.FDQuery);
 end;
 
-function TUsuarioService.CriarObjeto(aNome, aCPF, aSenha, aGrupo: String; aAtivo: Boolean): TUsuario;
+function TUsuarioService.CriarObjeto(aNome, aCPF, aSenha, aGrupo: String;
+  aAtivo: Boolean): TUsuario;
 var
   Usuario: TUsuario;
 begin
@@ -50,9 +52,8 @@ end;
 
 function TUsuarioService.ValidarUsuario(UsuarioValido: TUsuario): Boolean;
 begin
-  Result := (UsuarioValido.getNome <> '') and
-            (UsuarioValido.getCPF <> '') and
-            (UsuarioValido.getSenha <> '');
+  Result := (UsuarioValido.getNome <> '') and (UsuarioValido.getCPF <> '') and
+    (UsuarioValido.getSenha <> '');
 end;
 
 function TUsuarioService.SalvarUsuario(Usuario: TUsuario): Boolean;
@@ -66,21 +67,19 @@ begin
   if Usuario.getSenha <> '' then
     Usuario.setSenha(TBCrypt.HashPassword(Usuario.getSenha));
 
-  if ValidarUsuario(Usuario) then
-  begin
+  if ValidarUsuario(Usuario) then begin
     Repo := TCadastroRepository.Create(DataModule1.FDQuery);
     try
-      if not Repo.ExisteCPF(Usuario) then
-      begin
+      if not Repo.ExisteCPF(Usuario) then begin
         Repo.InserirUsuario(Usuario);
         SalvarLog(Format('CADASTRO - ID: %d cadastrou o usuário: %s (CPF: %s)',
           [IDUsuarioLogado, Usuario.getNome, Usuario.getCPF]));
         Result := True;
       end
-      else
-      begin
+      else begin
         ShowMessage('CPF já cadastrado.');
-        SalvarLog(Format('CADASTRO - ID: %d falhou ao cadastrar (CPF já existente: %s)',
+        SalvarLog(Format
+          ('CADASTRO - ID: %d falhou ao cadastrar (CPF já existente: %s)',
           [IDUsuarioLogado, Usuario.getCPF]));
       end;
     finally
@@ -92,30 +91,35 @@ end;
 procedure TUsuarioService.EditarUsuario(Usuario: TUsuario);
 var
   IDUsuarioLogado: Integer;
-begin
-  IDUsuarioLogado := uSession.UsuarioLogadoID;
+  begin
+    IDUsuarioLogado := uSession.UsuarioLogadoID;
 
-  if Usuario.getSenha <> '' then
-    Usuario.setSenha(TBCrypt.HashPassword(Usuario.getSenha));
-
-  Repository.EditarUsuario(Usuario);
-  SalvarLog(Format('EDITAR - ID: %d editou o usuário: %s (CPF: %s)',
-    [IDUsuarioLogado, Usuario.getNome, Usuario.getCPF]));
-end;
+    if Repository.ExisteCPF(Usuario) then begin
+      ShowMessage('Esse CPF já esta cadastrado a um Usuário');
+      exit;
+    end else begin
+      if Usuario.getSenha <> '' then
+        Usuario.setSenha(TBCrypt.HashPassword(Usuario.getSenha));
+      Repository.EditarUsuario(Usuario);
+      SalvarLog(Format('EDITAR - ID: %d editou o usuário: %s (CPF: %s)',
+        [IDUsuarioLogado, Usuario.getNome, Usuario.getCPF]));
+    end;
+  end;
 
 procedure TUsuarioService.EditarUsuarioComSenha(Usuario: TUsuario);
 var
   IDUsuarioLogado: Integer;
-begin
-  IDUsuarioLogado := uSession.UsuarioLogadoID;
+  begin
+    IDUsuarioLogado := uSession.UsuarioLogadoID;
 
-  if Usuario.getSenha <> '' then
-    Usuario.setSenha(TBCrypt.HashPassword(Usuario.getSenha));
-
-  Repository.EditarUsuarioComSenha(Usuario);
-  SalvarLog(Format('EDITAR COM SENHA - ID: %d editou o usuário: %s (CPF: %s)',
-    [IDUsuarioLogado, Usuario.getNome, Usuario.getCPF]));
-end;
+    if Repository.ExisteCPF(Usuario) then begin
+      ShowMessage('Esse CPF já esta cadastrado a um Usuário');
+    end else begin
+      Repository.EditarUsuarioComSenha(Usuario);
+      SalvarLog(Format('EDITAR - ID: %d editou o usuário: %s (CPF: %s)',
+        [IDUsuarioLogado, Usuario.getNome, Usuario.getCPF]));
+    end;
+  end;
 
 procedure TUsuarioService.DeletarUsuarios(const aId: Integer);
 var
@@ -158,4 +162,3 @@ begin
 end;
 
 end.
-

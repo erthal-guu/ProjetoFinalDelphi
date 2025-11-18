@@ -176,8 +176,9 @@ function TVeiculoRepository.ExistePlaca(aVeiculo: TVeiculo): Boolean;
 begin
   FQuery.Close;
   FQuery.SQL.Clear;
-  FQuery.SQL.Add('SELECT COUNT(*) AS Total FROM veiculos WHERE placa = :placa');
+  FQuery.SQL.Add('SELECT COUNT(*) AS Total FROM veiculos WHERE placa = :placa AND id <> :id');
   FQuery.ParamByName('placa').AsString := aVeiculo.getPlaca;
+  FQuery.ParamByName('id').AsInteger := aVeiculo.getIdVeiculo;
   FQuery.Open;
   Result := FQuery.FieldByName('Total').AsInteger > 0;
 end;
@@ -186,8 +187,9 @@ function TVeiculoRepository.ExisteChassi(aVeiculo: TVeiculo): Boolean;
 begin
   FQuery.Close;
   FQuery.SQL.Clear;
-  FQuery.SQL.Add('SELECT COUNT(*) AS Total FROM veiculos WHERE chassi = :chassi');
+  FQuery.SQL.Add('SELECT COUNT(*) AS Total FROM veiculos WHERE chassi = :chassi AND id <> :id');
   FQuery.ParamByName('chassi').AsString := aVeiculo.getChassi;
+  FQuery.ParamByName('id').AsInteger := aVeiculo.getIdVeiculo;
   FQuery.Open;
   Result := FQuery.FieldByName('Total').AsInteger > 0;
 end;

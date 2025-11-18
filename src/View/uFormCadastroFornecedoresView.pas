@@ -628,6 +628,7 @@ end;
 procedure TFormCadastroFornecedores.BtnEditarClick(Sender: TObject);
 begin
   PnlBackgrounEdit.Visible := True;
+  PnlDesignEdit.Visible := True;
   PnlEdit.Visible := True;
   PnlButtonAtualizar.Visible := True;
   PnlButtonEnviar.Visible := False;

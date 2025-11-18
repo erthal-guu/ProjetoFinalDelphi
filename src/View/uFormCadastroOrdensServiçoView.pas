@@ -1,4 +1,4 @@
-unit uFormCadastroOrdensServiçoView;
+ï»¿unit uFormCadastroOrdensServiÃ§oView;
 
 interface
 
@@ -12,7 +12,7 @@ uses
   Vcl.ComCtrls, uSession, uFormReceitasView;
 
 type
-  TFormCadastroOrdensServiço = class(TForm)
+  TFormCadastroOrdensServiÃ§o = class(TForm)
     DataSourceMain: TDataSource;
     DataSourceRestaurar: TDataSource;
     PnlMain: TPanel;
@@ -62,7 +62,7 @@ type
     Label10: TLabel;
     CmbCliente: TComboBox;
     EdtPecas: TEdit;
-    CmbServiço: TComboBox;
+    CmbServiÃ§o: TComboBox;
     CmbFuncionario: TComboBox;
     CmbVeiculo: TComboBox;
     DtimeIncio: TDateTimePicker;
@@ -111,7 +111,7 @@ type
     procedure ImgFecharRestaurarClick(Sender: TObject);
     procedure BtnRestaurarClick(Sender: TObject);
     procedure RecalcularPreco;
-    procedure CmbServiçoChange(Sender: TObject);
+    procedure CmbServiÃ§oChange(Sender: TObject);
     procedure CmbFuncionarioChange(Sender: TObject);
     procedure CmbVeiculoChange(Sender: TObject);
     function ConverterPrecoParaCurrency(const ATexto: String): Currency;
@@ -133,43 +133,43 @@ type
   end;
 
 var
-  FormCadastroOrdensServiço: TFormCadastroOrdensServiço;
+  FormCadastroOrdensServiÃ§o: TFormCadastroOrdensServiÃ§o;
 
 implementation
 
 {$R *.dfm}
 
-constructor TFormCadastroOrdensServiço.Create(AOwner: TComponent);
+constructor TFormCadastroOrdensServiÃ§o.Create(AOwner: TComponent);
 begin
   inherited;
   PecasSelecionadas := TList<Integer>.Create;
 end;
 
-destructor TFormCadastroOrdensServiço.Destroy;
+destructor TFormCadastroOrdensServiÃ§o.Destroy;
 begin
   PecasSelecionadas.Free;
   inherited;
 end;
 
-procedure TFormCadastroOrdensServiço.DTimeConclusaoClick(Sender: TObject);
+procedure TFormCadastroOrdensServiÃ§o.DTimeConclusaoClick(Sender: TObject);
 begin
   PnlPecasUsadas.Visible := false;
 end;
 
-procedure TFormCadastroOrdensServiço.DtimeIncioClick(Sender: TObject);
+procedure TFormCadastroOrdensServiÃ§o.DtimeIncioClick(Sender: TObject);
 begin
   PnlPecasUsadas.Visible := false;
 end;
 
-procedure TFormCadastroOrdensServiço.AplicarPermissoes(const Grupo: string);
+procedure TFormCadastroOrdensServiÃ§o.AplicarPermissoes(const Grupo: string);
 begin
-  if LowerCase(Trim(Grupo)) = 'mecânico' then begin
+  if LowerCase(Trim(Grupo)) = 'mecÃ¢nico' then begin
     if DBGridMain.Columns.Count > 5 then
       DBGridMain.Columns[5].Visible := false;
   end;
 end;
 
-procedure TFormCadastroOrdensServiço.BtnAdicionarClick(Sender: TObject);
+procedure TFormCadastroOrdensServiÃ§o.BtnAdicionarClick(Sender: TObject);
 begin
   PnlBackgrounEdit.Visible := True;
   PnlEdit.Visible := True;
@@ -179,7 +179,7 @@ begin
   PnlButtonAtualizar.Visible := false;
 end;
 
-procedure TFormCadastroOrdensServiço.BtnCancelarClick(Sender: TObject);
+procedure TFormCadastroOrdensServiÃ§o.BtnCancelarClick(Sender: TObject);
 begin
   PnlBackgrounEdit.Visible := false;
   PnlEdit.Visible := false;
@@ -187,19 +187,19 @@ begin
   PnlPecasUsadas.Visible := false;
 end;
 
-procedure TFormCadastroOrdensServiço.BtnPesquisarClick(Sender: TObject);
+procedure TFormCadastroOrdensServiÃ§o.BtnPesquisarClick(Sender: TObject);
 begin
   EdtPesquisar.Visible := True;
   PnlBackgrounEdit.Visible := false;
 end;
 
-procedure TFormCadastroOrdensServiço.BtnRestaurarClick(Sender: TObject);
+procedure TFormCadastroOrdensServiÃ§o.BtnRestaurarClick(Sender: TObject);
 begin
   PnlRestaurar.Visible := True;
   CarregarGridRestaurar;
 end;
 
-procedure TFormCadastroOrdensServiço.BtnSelecionarPecasClick(Sender: TObject);
+procedure TFormCadastroOrdensServiÃ§o.BtnSelecionarPecasClick(Sender: TObject);
 begin
   PnlPecasUsadas.Visible := True;
   CarregarPecasCheckList;
@@ -207,7 +207,7 @@ begin
     MarcarPecasSelecionadas(PecasSelecionadas);
 end;
 
-procedure TFormCadastroOrdensServiço.BtnConfirmarPecasClick(Sender: TObject);
+procedure TFormCadastroOrdensServiÃ§o.BtnConfirmarPecasClick(Sender: TObject);
 var
   i: Integer;
   IDsStr: String;
@@ -229,12 +229,12 @@ begin
   RecalcularPreco;
 end;
 
-procedure TFormCadastroOrdensServiço.BtnFecharModalClick(Sender: TObject);
+procedure TFormCadastroOrdensServiÃ§o.BtnFecharModalClick(Sender: TObject);
 begin
   PnlPecasUsadas.Visible := false;
 end;
 
-procedure TFormCadastroOrdensServiço.CarregarGrid;
+procedure TFormCadastroOrdensServiÃ§o.CarregarGrid;
 var
   OSService: TOrdemServicoService;
 begin
@@ -248,7 +248,7 @@ begin
   end;
 end;
 
-procedure TFormCadastroOrdensServiço.CarregarGridRestaurar;
+procedure TFormCadastroOrdensServiÃ§o.CarregarGridRestaurar;
 var
   Service: TOrdemServicoService;
 begin
@@ -262,7 +262,7 @@ begin
   end;
 end;
 
-procedure TFormCadastroOrdensServiço.CadastrarOrdemServico;
+procedure TFormCadastroOrdensServiÃ§o.CadastrarOrdemServico;
 var
   Controller: TOrdemServicoController;
   OrdemServico: TOrdemServico;
@@ -278,12 +278,12 @@ begin
         Preco := ConverterPrecoParaCurrency(EdtPreco.Text);
       except
         on E: Exception do begin
-          ShowMessage('Erro ao converter o preço: ' + E.Message);
+          ShowMessage('Erro ao converter o preÃ§o: ' + E.Message);
           Exit;
         end;
       end;
 
-      IdServico := Integer(CmbServiço.Items.Objects[CmbServiço.ItemIndex]);
+      IdServico := Integer(CmbServiÃ§o.Items.Objects[CmbServiÃ§o.ItemIndex]);
       IdFuncionario := Integer(CmbFuncionario.Items.Objects
         [CmbFuncionario.ItemIndex]);
       IdVeiculo := Integer(CmbVeiculo.Items.Objects[CmbVeiculo.ItemIndex]);
@@ -300,7 +300,7 @@ begin
           LimparCampos;
           PnlBackgrounEdit.Visible := false;
           PnlEdit.Visible := false;
-          ShowMessage('Ordem de serviço cadastrada com sucesso!');
+          ShowMessage('Ordem de serviÃ§o cadastrada com sucesso!');
           Sleep(1000);
           ShowMessage('Receita Financeira gerada com sucesso!');
         finally
@@ -315,7 +315,7 @@ begin
   end;
 end;
 
-procedure TFormCadastroOrdensServiço.CarregarComboBoxes;
+procedure TFormCadastroOrdensServiÃ§o.CarregarComboBoxes;
 var
   Controller: TOrdemServicoController;
   Lista: TStringList;
@@ -323,11 +323,11 @@ var
 begin
   Controller := TOrdemServicoController.Create;
   try
-    CmbServiço.Items.Clear;
+    CmbServiÃ§o.Items.Clear;
     Lista := Controller.CarregarServicos;
     try
       for i := 0 to Lista.Count - 1 do
-        CmbServiço.Items.AddObject(Lista[i], Lista.Objects[i]);
+        CmbServiÃ§o.Items.AddObject(Lista[i], Lista.Objects[i]);
     finally
       Lista.Free;
     end;
@@ -359,7 +359,7 @@ begin
       Lista.Free;
     end;
 
-    CmbServiço.ItemIndex := -1;
+    CmbServiÃ§o.ItemIndex := -1;
     CmbFuncionario.ItemIndex := -1;
     CmbVeiculo.ItemIndex := -1;
     CmbCliente.ItemIndex := -1;
@@ -368,7 +368,7 @@ begin
   end;
 end;
 
-procedure TFormCadastroOrdensServiço.CarregarPecasCheckList;
+procedure TFormCadastroOrdensServiÃ§o.CarregarPecasCheckList;
 var
   Controller: TOrdemServicoController;
   Lista: TStringList;
@@ -389,24 +389,24 @@ begin
   end;
 end;
 
-procedure TFormCadastroOrdensServiço.CmbClienteChange(Sender: TObject);
+procedure TFormCadastroOrdensServiÃ§o.CmbClienteChange(Sender: TObject);
 begin
   PnlPecasUsadas.Visible := false;
 end;
 
-procedure TFormCadastroOrdensServiço.CmbFuncionarioChange(Sender: TObject);
-begin
-  RecalcularPreco;
-  PnlPecasUsadas.Visible := false;
-end;
-
-procedure TFormCadastroOrdensServiço.CmbServiçoChange(Sender: TObject);
+procedure TFormCadastroOrdensServiÃ§o.CmbFuncionarioChange(Sender: TObject);
 begin
   RecalcularPreco;
   PnlPecasUsadas.Visible := false;
 end;
 
-procedure TFormCadastroOrdensServiço.CmbVeiculoChange(Sender: TObject);
+procedure TFormCadastroOrdensServiÃ§o.CmbServiÃ§oChange(Sender: TObject);
+begin
+  RecalcularPreco;
+  PnlPecasUsadas.Visible := false;
+end;
+
+procedure TFormCadastroOrdensServiÃ§o.CmbVeiculoChange(Sender: TObject);
 var
   Controller: TOrdemServicoController;
   IdVeiculo, IdCliente: Integer;
@@ -434,18 +434,18 @@ begin
   PnlPecasUsadas.Visible := false;
 end;
 
-procedure TFormCadastroOrdensServiço.configurarGrid;
+procedure TFormCadastroOrdensServiÃ§o.configurarGrid;
 begin
   if DBGridMain.Columns.Count >= 9 then begin
     DBGridMain.Columns[0].Title.Caption := 'Id';
-    DBGridMain.Columns[1].Title.Caption := 'Serviço';
-    DBGridMain.Columns[2].Title.Caption := 'Funcionário';
-    DBGridMain.Columns[3].Title.Caption := 'Veículo';
+    DBGridMain.Columns[1].Title.Caption := 'ServiÃ§o';
+    DBGridMain.Columns[2].Title.Caption := 'FuncionÃ¡rio';
+    DBGridMain.Columns[3].Title.Caption := 'VeÃ­culo';
     DBGridMain.Columns[4].Title.Caption := 'Cliente';
-    DBGridMain.Columns[5].Title.Caption := 'Preço';
-    DBGridMain.Columns[6].Title.Caption := 'Observação';
-    DBGridMain.Columns[7].Title.Caption := 'Data Início';
-    DBGridMain.Columns[8].Title.Caption := 'Data Conclusão';
+    DBGridMain.Columns[5].Title.Caption := 'PreÃ§o';
+    DBGridMain.Columns[6].Title.Caption := 'ObservaÃ§Ã£o';
+    DBGridMain.Columns[7].Title.Caption := 'Data InÃ­cio';
+    DBGridMain.Columns[8].Title.Caption := 'Data ConclusÃ£o';
     DBGridMain.Columns[9].Title.Caption := 'Ativo';
 
     for var i := 0 to 9 do begin
@@ -460,13 +460,13 @@ begin
     DBGridMain.Columns[6].Width := 200;
   end;
 
-  if LowerCase(Trim(uSession.UsuarioLogadoGrupo)) = 'mecânico' then begin
+  if LowerCase(Trim(uSession.UsuarioLogadoGrupo)) = 'mecÃ¢nico' then begin
     if DBGridMain.Columns.Count > 5 then
       DBGridMain.Columns[5].Visible := false;
   end;
 end;
 
-function TFormCadastroOrdensServiço.ConverterPrecoParaCurrency
+function TFormCadastroOrdensServiÃ§o.ConverterPrecoParaCurrency
   (const ATexto: String): Currency;
 var
   PrecoLimpo: String;
@@ -484,22 +484,22 @@ begin
     Result := StrToFloat(PrecoLimpo, FormatSettings);
   except
     on E: Exception do begin
-      raise Exception.Create('Erro ao converter preço: ' + ATexto + ' - ' +
+      raise Exception.Create('Erro ao converter preÃ§o: ' + ATexto + ' - ' +
         E.Message);
     end;
   end;
 end;
 
-procedure TFormCadastroOrdensServiço.RecalcularPreco;
+procedure TFormCadastroOrdensServiÃ§o.RecalcularPreco;
 var
   Controller: TOrdemServicoController;
   PrecoCalculado: Currency;
 begin
-  if (CmbServiço.ItemIndex >= 0) and (CmbVeiculo.ItemIndex >= 0) then begin
+  if (CmbServiÃ§o.ItemIndex >= 0) and (CmbVeiculo.ItemIndex >= 0) then begin
     Controller := TOrdemServicoController.Create;
     try
       PrecoCalculado := Controller.CalcularPrecoTotal
-        (Integer(CmbServiço.Items.Objects[CmbServiço.ItemIndex]),
+        (Integer(CmbServiÃ§o.Items.Objects[CmbServiÃ§o.ItemIndex]),
         PecasSelecionadas,
         Integer(CmbVeiculo.Items.Objects[CmbVeiculo.ItemIndex]));
       EdtPreco.Text := StringReplace(FormatFloat('0.00', PrecoCalculado),
@@ -513,17 +513,17 @@ begin
   end;
 end;
 
-procedure TFormCadastroOrdensServiço.RestaurarOrdemServico;
+procedure TFormCadastroOrdensServiÃ§o.RestaurarOrdemServico;
 var
   Controller: TOrdemServicoController;
   IdOS: Integer;
 begin
   if DataSourceRestaurar.DataSet.IsEmpty then begin
-    ShowMessage('Nenhuma ordem de serviço selecionada!');
+    ShowMessage('Nenhuma ordem de serviÃ§o selecionada!');
     Exit;
   end;
   IdOS := DBGridRestaurar.DataSource.DataSet.FieldByName('id').AsInteger;
-  if MessageDlg('Deseja realmente restaurar esta ordem de serviço?',
+  if MessageDlg('Deseja realmente restaurar esta ordem de serviÃ§o?',
     mtConfirmation, [mbYes, mbNo], 0) = mrYes then begin
     Controller := TOrdemServicoController.Create;
     try
@@ -535,19 +535,19 @@ begin
   end;
 end;
 
-procedure TFormCadastroOrdensServiço.ImgRestaurarClick(Sender: TObject);
+procedure TFormCadastroOrdensServiÃ§o.ImgRestaurarClick(Sender: TObject);
 begin
   RestaurarOrdemServico;
   CarregarGridRestaurar;
 end;
 
-function TFormCadastroOrdensServiço.ObterPecasSelecionadas: TList<Integer>;
+function TFormCadastroOrdensServiÃ§o.ObterPecasSelecionadas: TList<Integer>;
 begin
   Result := TList<Integer>.Create;
   Result.AddRange(PecasSelecionadas);
 end;
 
-procedure TFormCadastroOrdensServiço.MarcarPecasSelecionadas
+procedure TFormCadastroOrdensServiÃ§o.MarcarPecasSelecionadas
   (PecasIDs: TList<Integer>);
 var
   i, j: Integer;
@@ -565,17 +565,17 @@ begin
   end;
 end;
 
-procedure TFormCadastroOrdensServiço.EdtObservacaoClick(Sender: TObject);
+procedure TFormCadastroOrdensServiÃ§o.EdtObservacaoClick(Sender: TObject);
 begin
   PnlPecasUsadas.Visible := false;
 end;
 
-procedure TFormCadastroOrdensServiço.EdtPecasClick(Sender: TObject);
+procedure TFormCadastroOrdensServiÃ§o.EdtPecasClick(Sender: TObject);
 begin
   PnlPecasUsadas.Visible := True;
 end;
 
-procedure TFormCadastroOrdensServiço.EdtPesquisarChange(Sender: TObject);
+procedure TFormCadastroOrdensServiÃ§o.EdtPesquisarChange(Sender: TObject);
 var
   Service: TOrdemServicoService;
 begin
@@ -588,22 +588,22 @@ begin
   end;
 end;
 
-procedure TFormCadastroOrdensServiço.EdtPrecoClick(Sender: TObject);
+procedure TFormCadastroOrdensServiÃ§o.EdtPrecoClick(Sender: TObject);
 begin
   PnlPecasUsadas.Visible := false;
 end;
 
-procedure TFormCadastroOrdensServiço.ExcluirOrdemServico;
+procedure TFormCadastroOrdensServiÃ§o.ExcluirOrdemServico;
 var
   Controller: TOrdemServicoController;
   IdOS: Integer;
 begin
   if DataSourceMain.DataSet.IsEmpty then begin
-    ShowMessage('Nenhuma ordem de serviço selecionada!');
+    ShowMessage('Nenhuma ordem de serviÃ§o selecionada!');
     Exit;
   end;
   IdOS := DBGridMain.DataSource.DataSet.FieldByName('id').AsInteger;
-  if MessageDlg('Deseja realmente deletar esta ordem de serviço?',
+  if MessageDlg('Deseja realmente deletar esta ordem de serviÃ§o?',
     mtConfirmation, [mbYes, mbNo], 0) = mrYes then begin
     Controller := TOrdemServicoController.Create;
     try
@@ -615,7 +615,7 @@ begin
   end;
 end;
 
-procedure TFormCadastroOrdensServiço.PegarCamposGridOS;
+procedure TFormCadastroOrdensServiÃ§o.PegarCamposGridOS;
 var
   Preco: Currency;
   ServicoNome, FuncionarioNome, VeiculoPlaca, ClienteNome: String;
@@ -625,16 +625,16 @@ var
   IDsStr: String;
 begin
   try
-    ServicoNome := DBGridMain.DataSource.DataSet.FieldByName('Serviço')
+    ServicoNome := DBGridMain.DataSource.DataSet.FieldByName('servico_nome')
       .AsString;
-    for i := 0 to CmbServiço.Items.Count - 1 do
-      if CmbServiço.Items[i] = ServicoNome then begin
-        CmbServiço.ItemIndex := i;
+    for i := 0 to CmbServiÃ§o.Items.Count - 1 do
+      if CmbServiÃ§o.Items[i] = ServicoNome then begin
+        CmbServiÃ§o.ItemIndex := i;
         Break;
       end;
 
     FuncionarioNome := DBGridMain.DataSource.DataSet.FieldByName
-      ('Funcionário').AsString;
+      ('FuncionÃ¡rio').AsString;
     for i := 0 to CmbFuncionario.Items.Count - 1 do
       if CmbFuncionario.Items[i] = FuncionarioNome then begin
         CmbFuncionario.ItemIndex := i;
@@ -642,7 +642,7 @@ begin
       end;
 
     VeiculoPlaca := DBGridMain.DataSource.DataSet.FieldByName
-      ('Veículo').AsString;
+      ('VeÃ­culo').AsString;
     for i := 0 to CmbVeiculo.Items.Count - 1 do
       if CmbVeiculo.Items[i] = VeiculoPlaca then begin
         CmbVeiculo.ItemIndex := i;
@@ -657,15 +657,15 @@ begin
         Break;
       end;
 
-    Preco := DBGridMain.DataSource.DataSet.FieldByName('Preço').AsCurrency;
+    Preco := DBGridMain.DataSource.DataSet.FieldByName('PreÃ§o').AsCurrency;
     EdtPreco.Text := CurrToStr(Preco);
 
     EdtObservacao.Text := DBGridMain.DataSource.DataSet.FieldByName
-      ('Observação').AsString;
-    DtimeIncio.Date := DBGridMain.DataSource.DataSet.FieldByName('Data Início')
+      ('ObservaÃ§Ã£o').AsString;
+    DtimeIncio.Date := DBGridMain.DataSource.DataSet.FieldByName('Data InÃ­cio')
       .AsDateTime;
     DTimeConclusao.Date := DBGridMain.DataSource.DataSet.FieldByName
-      ('Data Conclusão').AsDateTime;
+      ('Data ConclusÃ£o').AsDateTime;
 
     IdOS := DBGridMain.DataSource.DataSet.FieldByName('id').AsInteger;
     Controller := TOrdemServicoController.Create;
@@ -693,7 +693,7 @@ begin
   end;
 end;
 
-procedure TFormCadastroOrdensServiço.BtnEditarClick(Sender: TObject);
+procedure TFormCadastroOrdensServiÃ§o.BtnEditarClick(Sender: TObject);
 begin
   PnlBackgrounEdit.Visible := True;
   PnlEdit.Visible := True;
@@ -702,12 +702,12 @@ begin
   PegarCamposGridOS;
 end;
 
-procedure TFormCadastroOrdensServiço.BtnExcluirClick(Sender: TObject);
+procedure TFormCadastroOrdensServiÃ§o.BtnExcluirClick(Sender: TObject);
 begin
   ExcluirOrdemServico;
 end;
 
-procedure TFormCadastroOrdensServiço.LblAtualizarClick(Sender: TObject);
+procedure TFormCadastroOrdensServiÃ§o.LblAtualizarClick(Sender: TObject);
 begin
   if ValidarCampos then begin
     EditarOrdemServico;
@@ -716,12 +716,12 @@ begin
   end;
 end;
 
-procedure TFormCadastroOrdensServiço.LblEnviarClick(Sender: TObject);
+procedure TFormCadastroOrdensServiÃ§o.LblEnviarClick(Sender: TObject);
 begin
   CadastrarOrdemServico;
 end;
 
-procedure TFormCadastroOrdensServiço.EditarOrdemServico;
+procedure TFormCadastroOrdensServiÃ§o.EditarOrdemServico;
 var
   Controller: TOrdemServicoController;
   OrdemServico: TOrdemServico;
@@ -730,7 +730,7 @@ var
   PecasIDs: TList<Integer>;
 begin
   if DataSourceMain.DataSet.IsEmpty then begin
-    ShowMessage('Nenhuma ordem de serviço selecionada!');
+    ShowMessage('Nenhuma ordem de serviÃ§o selecionada!');
     Exit;
   end;
 
@@ -745,12 +745,12 @@ begin
         Preco := ConverterPrecoParaCurrency(EdtPreco.Text);
       except
         on E: Exception do begin
-          ShowMessage('Erro ao converter o preço: ' + E.Message);
+          ShowMessage('Erro ao converter o preÃ§o: ' + E.Message);
           Exit;
         end;
       end;
 
-      IdServico := Integer(CmbServiço.Items.Objects[CmbServiço.ItemIndex]);
+      IdServico := Integer(CmbServiÃ§o.Items.Objects[CmbServiÃ§o.ItemIndex]);
       IdFuncionario := Integer(CmbFuncionario.Items.Objects
         [CmbFuncionario.ItemIndex]);
       IdVeiculo := Integer(CmbVeiculo.Items.Objects[CmbVeiculo.ItemIndex]);
@@ -770,7 +770,7 @@ begin
       PecasIDs := ObterPecasSelecionadas;
       try
         Controller.EditarOrdemServico(OrdemServico, PecasIDs);
-        ShowMessage('Ordem de serviço cadastrada com sucesso!');
+        ShowMessage('Ordem de serviÃ§o cadastrada com sucesso!');
         CarregarGrid;
         LimparCampos;
         Sleep(1000);
@@ -788,9 +788,9 @@ begin
   end;
 end;
 
-procedure TFormCadastroOrdensServiço.BtnSairClick(Sender: TObject);
+procedure TFormCadastroOrdensServiÃ§o.BtnSairClick(Sender: TObject);
 begin
-  if MessageDlg('Deseja realmente fechar este formulário?', mtConfirmation,
+  if MessageDlg('Deseja realmente fechar este formulÃ¡rio?', mtConfirmation,
     [mbYes, mbNo], 0) = mrYes then
     PnlBackgrounEdit.Visible := false;
   PnlEdit.Visible := false;
@@ -799,9 +799,9 @@ begin
   Close;
 end;
 
-procedure TFormCadastroOrdensServiço.FormCreate(Sender: TObject);
+procedure TFormCadastroOrdensServiÃ§o.FormCreate(Sender: TObject);
 begin
-  CmbServiço.Height := 31;
+  CmbServiÃ§o.Height := 31;
   CmbFuncionario.Height := 31;
   CmbVeiculo.Height := 31;
   CmbCliente.Height := 31;
@@ -815,7 +815,7 @@ begin
   PnlButtonEnviar.Height := 31;
 end;
 
-procedure TFormCadastroOrdensServiço.FormShow(Sender: TObject);
+procedure TFormCadastroOrdensServiÃ§o.FormShow(Sender: TObject);
 begin
   CarregarGrid;
   CarregarComboBoxes;
@@ -823,49 +823,49 @@ begin
   configurarGrid;
 end;
 
-procedure TFormCadastroOrdensServiço.ImgFecharPecasClick(Sender: TObject);
+procedure TFormCadastroOrdensServiÃ§o.ImgFecharPecasClick(Sender: TObject);
 begin
   PnlPecasUsadas.Visible := false;
 end;
 
-procedure TFormCadastroOrdensServiço.ImgFecharRestaurarClick(Sender: TObject);
+procedure TFormCadastroOrdensServiÃ§o.ImgFecharRestaurarClick(Sender: TObject);
 begin
   PnlRestaurar.Visible := false;
   CarregarGrid;
 end;
 
-function TFormCadastroOrdensServiço.ValidarCampos: Boolean;
+function TFormCadastroOrdensServiÃ§o.ValidarCampos: Boolean;
 begin
   Result := false;
-  if CmbServiço.ItemIndex = -1 then begin
-    ShowMessage('Selecione um Serviço válido');
+  if CmbServiÃ§o.ItemIndex = -1 then begin
+    ShowMessage('Selecione um ServiÃ§o vÃ¡lido');
     Exit;
   end;
   if CmbFuncionario.ItemIndex = -1 then begin
-    ShowMessage('Selecione um Funcionário válido');
+    ShowMessage('Selecione um FuncionÃ¡rio vÃ¡lido');
     Exit;
   end;
   if CmbVeiculo.ItemIndex = -1 then begin
-    ShowMessage('Selecione um Veículo válido');
+    ShowMessage('Selecione um VeÃ­culo vÃ¡lido');
     Exit;
   end;
   if CmbCliente.ItemIndex = -1 then begin
-    ShowMessage('Selecione um Cliente válido');
+    ShowMessage('Selecione um Cliente vÃ¡lido');
     Exit;
   end;
   if EdtPreco.Text = '' then begin
-    ShowMessage('O campo Preço não pode ficar vazio');
+    ShowMessage('O campo PreÃ§o nÃ£o pode ficar vazio');
     Exit;
   end;
   Result := True;
 end;
 
-procedure TFormCadastroOrdensServiço.LimparCampos;
+procedure TFormCadastroOrdensServiÃ§o.LimparCampos;
 begin
   EdtPreco.Clear;
   EdtPecas.Clear;
   EdtObservacao.Clear;
-  CmbServiço.ItemIndex := -1;
+  CmbServiÃ§o.ItemIndex := -1;
   CmbFuncionario.ItemIndex := -1;
   CmbVeiculo.ItemIndex := -1;
   CmbCliente.ItemIndex := -1;

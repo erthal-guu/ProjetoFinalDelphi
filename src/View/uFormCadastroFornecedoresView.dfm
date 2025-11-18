@@ -2181,8 +2181,6 @@
               Align = alClient
               ItemHeight = 20
               TabOrder = 0
-              ExplicitLeft = -4
-              ExplicitTop = 0
             end
             object Panel3: TPanel
               AlignWithMargins = True

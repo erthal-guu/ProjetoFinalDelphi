@@ -4,7 +4,8 @@ interface
 
 uses
   uPeças, PeçasCadastroRepository, uDMConexao, System.SysUtils,
-  FireDAC.Comp.Client, Data.DB, System.Classes, Logs, uSession;
+  FireDAC.Comp.Client, Data.DB, System.Classes, Logs, uSession, System.IOUtils,
+  VCL.Dialogs;
 
 type
   TPecaService = class
@@ -33,10 +34,9 @@ begin
   Repository := TPecaRepository.Create(DataModule1.FDQuery);
 end;
 
-function TPecaService.CriarObjeto(
-  aNome, aDescricao, aCodigoInterno: String;
-  aCategoria: Integer;
-  aUnidade, aModelo: String; aPreco: Currency; aAtivo: Boolean): TPeca;
+function TPecaService.CriarObjeto(aNome, aDescricao, aCodigoInterno: String;
+  aCategoria: Integer; aUnidade, aModelo: String; aPreco: Currency;
+  aAtivo: Boolean): TPeca;
 var
   PecaDTO: TPeca;
 begin
@@ -64,18 +64,17 @@ begin
   Result := False;
   IDUsuarioLogado := uSession.UsuarioLogadoID;
 
-  if ValidarPeca(Peca) then
-  begin
-    if not Repository.ExisteCodigoInterno(Peca) then
-    begin
+  if ValidarPeca(Peca) then begin
+    if not Repository.ExisteCodigoInterno(Peca) then begin
       Repository.InserirPeca(Peca);
-      SalvarLog(Format('CADASTRO - ID: %d cadastrou peça: %s (Código Interno: %s)',
+      SalvarLog(Format
+        ('CADASTRO - ID: %d cadastrou peça: %s (Código Interno: %s)',
         [IDUsuarioLogado, Peca.getNome, Peca.getCodigoInterno]));
       Result := True;
     end
-    else
-    begin
-      SalvarLog(Format('CADASTRO - ID: %d falhou ao cadastrar (Código Interno já existente: %s)',
+    else begin
+      SalvarLog(Format
+        ('CADASTRO - ID: %d falhou ao cadastrar (Código Interno já existente: %s)',
         [IDUsuarioLogado, Peca.getCodigoInterno]));
     end;
   end;
@@ -86,9 +85,14 @@ var
   IDUsuarioLogado: Integer;
 begin
   IDUsuarioLogado := uSession.UsuarioLogadoID;
-  Repository.EditarPeca(Peca);
-  SalvarLog(Format('EDITAR - ID: %d editou peça: %s (Código Interno: %s)',
-    [IDUsuarioLogado, Peca.getNome, Peca.getCodigoInterno]));
+  if Repository.ExisteCodigoInterno(Peca) then begin
+    ShowMessage('Esse código interno ja existe em uma Peça');
+  end
+  else begin
+    Repository.EditarPeca(Peca);
+    SalvarLog(Format('EDITAR - ID: %d editou peça: %s (Código Interno: %s)',
+      [IDUsuarioLogado, Peca.getNome, Peca.getCodigoInterno]));
+  end;
 end;
 
 procedure TPecaService.DeletarPeca(const aId: Integer);
@@ -133,16 +137,11 @@ end;
 
 function TPecaService.ValidarPeca(PecaValida: TPeca): Boolean;
 begin
-  Result :=
-    (PecaValida.getNome <> '') and
-    (PecaValida.getDescricao <> '') and
-    (PecaValida.getCodigoInterno <> '') and
-    (PecaValida.getCategoria > 0) and
-    (PecaValida.getUnidade <> '') and
-    (PecaValida.getModelo <> '') and
+  Result := (PecaValida.getNome <> '') and (PecaValida.getDescricao <> '') and
+    (PecaValida.getCodigoInterno <> '') and (PecaValida.getCategoria > 0) and
+    (PecaValida.getUnidade <> '') and (PecaValida.getModelo <> '') and
     ((PecaValida.getAtivo = True) or (PecaValida.getAtivo = False)) and
     (PecaValida.getPreço > 0);
 end;
 
 end.
-

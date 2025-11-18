@@ -160,11 +160,15 @@ var
   IDUsuarioLogado: Integer;
 begin
   IDUsuarioLogado := uSession.UsuarioLogadoID;
+  if Repository.ExisteCNPJ(Fornecedor) then begin
+  ShowMessage('Esse CNPJ já existe para um Forncedor');
+  exit ;
+  end else begin
   Repository.EditarFornecedor(Fornecedor);
   SalvarLog(Format('EDITAR - ID: %d editou fornecedor: %s (CNPJ: %s)',
     [IDUsuarioLogado, Fornecedor.getNome, Fornecedor.getCNPJ]));
 end;
-
+end;
 procedure TFornecedorService.DeletarFornecedor(const aId: Integer);
 var
   IDUsuarioLogado: Integer;

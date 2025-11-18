@@ -1,9 +1,10 @@
 unit VeiculoCadastroService;
 
 interface
+
 uses
   uVeiculo, VeiculoCadastroRepository, uDMConexao, System.SysUtils,
-  FireDAC.Comp.Client, Data.DB, System.Classes, Logs, uSession;
+  FireDAC.Comp.Client, Data.DB, System.Classes, Logs, uSession, VCL.Dialogs;
 
 type
   TVeiculoService = class
@@ -13,8 +14,8 @@ type
     constructor Create;
     destructor Destroy; override;
     function SalvarVeiculo(Veiculo: TVeiculo): Boolean;
-    function CriarObjeto(aModelo, aMarca, aChassi, aPlaca, aCor, aFabricacao: String;
-     aCliente: Integer): TVeiculo;
+    function CriarObjeto(aModelo, aMarca, aChassi, aPlaca, aCor,
+      aFabricacao: String; aCliente: Integer): TVeiculo;
     procedure EditarVeiculo(Veiculo: TVeiculo);
     function ValidarVeiculo(VeiculoValido: TVeiculo): Boolean;
     function ListarVeiculos: TDataSet;
@@ -38,9 +39,8 @@ begin
   inherited;
 end;
 
-function TVeiculoService.CriarObjeto(
-  aModelo, aMarca, aChassi, aPlaca, aCor, aFabricacao: String;
-  aCliente: Integer): TVeiculo;
+function TVeiculoService.CriarObjeto(aModelo, aMarca, aChassi, aPlaca, aCor,
+  aFabricacao: String; aCliente: Integer): TVeiculo;
 var
   Veiculo: TVeiculo;
 begin
@@ -87,6 +87,14 @@ var
   IDUsuarioLogado: Integer;
 begin
   IDUsuarioLogado := uSession.UsuarioLogadoID;
+  if Repository.ExistePlaca(Veiculo) then
+    ShowMessage('Já existe um veículo cadastrado com esta placa!');
+  exit;
+
+  if Repository.ExisteChassi(Veiculo) then
+    ShowMessage('Já existe um veículo cadastrado com este chassi!');
+  exit;
+
   Repository.EditarVeiculo(Veiculo);
   SalvarLog(Format('EDITAR - ID: %d editou veículo: %s (Placa: %s)',
     [IDUsuarioLogado, Veiculo.getModelo, Veiculo.getPlaca]));
@@ -114,13 +122,9 @@ end;
 
 function TVeiculoService.ValidarVeiculo(VeiculoValido: TVeiculo): Boolean;
 begin
-  Result :=
-    (VeiculoValido.getModelo <> '') and
-    (VeiculoValido.getMarca <> '') and
-    (VeiculoValido.getChassi <> '') and
-    (VeiculoValido.getPlaca <> '') and
-    (VeiculoValido.getCor <> '') and
-    (VeiculoValido.getFabricacao <> '') and
+  Result := (VeiculoValido.getModelo <> '') and (VeiculoValido.getMarca <> '')
+    and (VeiculoValido.getChassi <> '') and (VeiculoValido.getPlaca <> '') and
+    (VeiculoValido.getCor <> '') and (VeiculoValido.getFabricacao <> '') and
     (VeiculoValido.getCliente > 0);
 end;
 
@@ -145,4 +149,3 @@ begin
 end;
 
 end.
-

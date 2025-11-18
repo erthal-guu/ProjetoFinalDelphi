@@ -53,7 +53,7 @@ end;
 
 function TClienteController.PesquisarClientes(const aFiltro: String): TDataset;
 begin
-  Service.PesquisarClientes(aFiltro);
+  Result := Service.PesquisarClientes(aFiltro);
 end;
 
 procedure TClienteController.RestaurarClientes(const aId: Integer);

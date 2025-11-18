@@ -90,10 +90,13 @@ var
   IDUsuarioLogado: Integer;
 begin
   IDUsuarioLogado := uSession.UsuarioLogadoID;
-
-  Repository.EditarFuncionario(Funcionario);
-  SalvarLog(Format('EDITAR - ID: %d editou funcionário: %s (CPF: %s)',
+  if Repository.ExisteCPF(Funcionario) then begin
+    ShowMessage('Esse CPF ja esta cadastrado a um Funcionário');
+  end else begin
+    Repository.EditarFuncionario(Funcionario);
+    SalvarLog(Format('EDITAR - ID: %d editou funcionário: %s (CPF: %s)',
     [IDUsuarioLogado, Funcionario.getNome, Funcionario.getCPF]));
+  end;
 end;
 
 procedure TFuncionarioService.DeletarFuncionario(const aId: Integer);

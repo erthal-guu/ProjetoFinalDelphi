@@ -111,17 +111,12 @@ var
   IDUsuarioLogado: Integer;
 begin
   IDUsuarioLogado := uSession.UsuarioLogadoID;
-  try
+  if Repository.ExisteCPF(Cliente) then begin
+    ShowMessage('Esse CPF já esta cadastrado a um Cliente');
+  end else begin
     Repository.EditarClientes(Cliente);
-    SalvarLog(Format('EDITAR CLIENTE - ID: %d editou o cliente: %s (CPF: %s)',
-      [IDUsuarioLogado, Cliente.getNome, Cliente.getCPF]));
-  except
-    on E: Exception do
-    begin
-      SalvarLog(Format('EDITAR CLIENTE - ID: %d erro ao editar cliente ID: %d - %s',
-        [IDUsuarioLogado, Cliente.getIdCliente, E.Message]));
-      raise;
-    end;
+    SalvarLog(Format('EDITAR - ID: %d editou Cliente: %s (CPF: %s)',
+    [IDUsuarioLogado, Cliente.getNome, Cliente.getCPF]));
   end;
 end;
 

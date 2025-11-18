@@ -118,6 +118,8 @@ begin
   PnlDesignEdit.Visible := False;
   EdtPesquisar.Visible := False;
   PnlBackgrounEdit.Visible := False;
+  PnlRestaurar.Visible := False;
+  CarregarGrid;
 end;
 
 procedure TFormCadastroClientes.BtnEditarClick(Sender: TObject);
@@ -330,23 +332,22 @@ begin
 end;
 
 procedure TFormCadastroClientes.EdtPesquisarChange(Sender: TObject);
-var
-  ClienteService: TClienteService;
-begin
-Try
-  DataSourceClientes.DataSet := ClienteService.PesquisarClientes(EdtPesquisar.Text);
-  DBGridMain.Columns[0].Width := 50;
-  DBGridMain.Columns[1].Width := 160;
-  DBGridMain.Columns[2].Width := 160;
-  DBGridMain.Columns[3].Width := 160;
-  DBGridMain.Columns[4].Width := 160;
-  DBGridMain.Columns[5].Width := 160;
-  DBGridMain.Columns[6].Width := 50;
+  var
+    Controller: TClienteController;
+  begin
+    Controller := TClienteController.create;
+    try
+      DataSourceClientes.DataSet := Controller.PesquisarClientes(EdtPesquisar.Text);
+      DBGridMain.Columns[0].Width := 50;
+      DBGridMain.Columns[1].Width := 160;
+      DBGridMain.Columns[2].Width := 160;
+      DBGridMain.Columns[3].Width := 160;
+      DBGridMain.Columns[4].Width := 160;
+      DBGridMain.Columns[5].Width := 160;
+      DBGridMain.Columns[6].Width := 50;
   finally
-  ClienteService.Free
+  Controller.Free
 end;
-
-
 end;
 
 procedure TFormCadastroClientes.EdtTelefoneClick(Sender: TObject);

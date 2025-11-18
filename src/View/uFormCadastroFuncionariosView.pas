@@ -476,7 +476,6 @@ begin
     CadastrarFuncionarios;
     LimparCampos;
     CarregarGrid;
-    ShowMessage('Funcionário cadastrado com sucesso!');
   end;
 end;
 

@@ -179,8 +179,9 @@ function TCadastroRepository.ExisteCPF(aUsuario : TUsuario): Boolean;
 begin
   FQuery.Close;
   FQuery.SQL.Clear;
-  FQuery.SQL.Add('SELECT COUNT(*) AS Total FROM usuarios WHERE cpf = :cpf');
+  FQuery.SQL.Add('SELECT COUNT(*) AS Total FROM usuarios WHERE cpf = :cpf AND id <> :id');
   FQuery.ParamByName('cpf').AsString := aUsuario.getCPF;
+  FQuery.ParamByName('id').AsInteger := aUsuario.getId;
   FQuery.Open;
   Result := FQuery.FieldByName('Total').AsInteger > 0;
 end;

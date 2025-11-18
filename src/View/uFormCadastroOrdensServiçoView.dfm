@@ -701,7 +701,7 @@
             AlignWithMargins = True
             Left = 4
             Top = 11
-            Width = 760
+            Width = 63
             Height = 32
             Margins.Top = 10
             Align = alTop
@@ -713,7 +713,6 @@
             Font.Name = 'Segoe UI'
             Font.Style = [fsBold]
             ParentFont = False
-            ExplicitWidth = 63
           end
           object ImgFechar: TImage
             Left = 712
@@ -801,8 +800,8 @@
               AlignWithMargins = True
               Left = 4
               Top = 9
-              Width = 718
-              Height = 28
+              Width = 77
+              Height = 21
               Margins.Top = 8
               Align = alClient
               Alignment = taCenter
@@ -814,8 +813,6 @@
               Font.Style = [fsBold]
               ParentFont = False
               OnClick = BtnConfirmarPecasClick
-              ExplicitWidth = 77
-              ExplicitHeight = 21
             end
           end
         end
@@ -839,7 +836,7 @@
             AlignWithMargins = True
             Left = 3
             Top = 10
-            Width = 882
+            Width = 109
             Height = 32
             Margins.Top = 10
             Align = alTop
@@ -851,7 +848,6 @@
             Font.Name = 'Segoe UI'
             Font.Style = [fsBold]
             ParentFont = False
-            ExplicitWidth = 109
           end
           object ImgFecharRestaurar: TImage
             Left = 800
@@ -1657,7 +1653,7 @@
                 Left = 166
                 Top = 30
                 Width = 138
-                Height = 29
+                Height = 100
                 Margins.Top = 30
                 Margins.Right = 5
                 Margins.Bottom = 5
@@ -1678,7 +1674,7 @@
                 Left = 312
                 Top = 30
                 Width = 138
-                Height = 29
+                Height = 100
                 Margins.Top = 30
                 Margins.Right = 5
                 Margins.Bottom = 5
@@ -1765,7 +1761,7 @@
                 Left = 585
                 Top = 30
                 Width = 104
-                Height = 29
+                Height = 100
                 Margins.Top = 30
                 Margins.Right = 5
                 Margins.Bottom = 5
@@ -1821,8 +1817,8 @@
                   AlignWithMargins = True
                   Left = 0
                   Top = 4
-                  Width = 86
-                  Height = 22
+                  Width = 43
+                  Height = 20
                   Margins.Left = 0
                   Margins.Top = 4
                   Margins.Right = 15
@@ -1839,7 +1835,6 @@
                   ParentColor = False
                   ParentFont = False
                   OnClick = LblEnviarClick
-                  ExplicitTop = 9
                 end
                 object Image6: TImage
                   Left = 68
@@ -1882,7 +1877,7 @@
                   Left = 3
                   Top = 3
                   Width = 63
-                  Height = 19
+                  Height = 20
                   Margins.Right = 30
                   Align = alClient
                   Alignment = taCenter
@@ -1896,7 +1891,6 @@
                   ParentColor = False
                   ParentFont = False
                   OnClick = LblAtualizarClick
-                  ExplicitHeight = 20
                 end
                 object Image2: TImage
                   Left = 69

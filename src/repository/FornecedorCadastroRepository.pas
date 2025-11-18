@@ -138,8 +138,9 @@ begin
   FQuery.Close;
   FQuery.SQL.Clear;
   FQuery.SQL.Add
-    ('SELECT COUNT(*) AS Total FROM fornecedores WHERE cnpj = :cnpj');
+    ('SELECT COUNT(*) AS Total FROM fornecedores WHERE cnpj = :cnpj AND id <> :id');
   FQuery.ParamByName('cnpj').AsString := aFornecedor.getCNPJ;
+  FQuery.ParamByName('id').AsInteger := aFornecedor.getIdFornecedor;
   FQuery.Open;
   Result := FQuery.FieldByName('Total').AsInteger > 0;
 end;
@@ -256,7 +257,7 @@ begin
     FQuery.SQL.Add
       ('SELECT id, nome, razao_social, cnpj, telefone, cep, rua, numero, bairro, cidade, estado, ativo');
     FQuery.SQL.Add('FROM fornecedores');
-    FQuery.SQL.Add('WHERE (nome ILIKE :nome) OR (razao_social ILIKE :razao_social) OR (cnpj LIKE :cnpj) OR (telefone ILIKE :telefone)');
+    FQuery.SQL.Add('WHERE ((nome ILIKE :nome) OR (razao_social ILIKE :razao_social) OR (cnpj LIKE :cnpj) OR (telefone ILIKE :telefone))');
     FQuery.SQL.Add('AND ativo = TRUE');
     FQuery.SQL.Add('ORDER BY id');
     FQuery.ParamByName('nome').AsString := '%' + Trim(aFiltro) + '%';

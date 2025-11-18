@@ -51,8 +51,9 @@ function TPecaRepository.ExisteCodigoInterno(aPeca: TPeca): Boolean;
 begin
   FQuery.Close;
   FQuery.SQL.Clear;
-  FQuery.SQL.Add('SELECT COUNT(*) AS Total FROM pecas WHERE codigo_interno = :codigo_interno');
+  FQuery.SQL.Add('SELECT COUNT(*) AS Total FROM pecas WHERE codigo_interno = :codigo_interno AND id <> :id');
   FQuery.ParamByName('codigo_interno').AsString := aPeca.getCodigoInterno;
+  FQuery.ParamByName('id').AsInteger := aPeca.getIdPeca;
   FQuery.Open;
   Result := FQuery.FieldByName('Total').AsInteger > 0;
 end;

@@ -1,4 +1,4 @@
-unit ClienteCadastroRepository;
+ï»¿unit ClienteCadastroRepository;
 
 interface
 uses
@@ -68,8 +68,9 @@ function TClienteRepository.ExisteCPF(aCliente: TCliente): Boolean;
 begin
   FQuery.Close;
   FQuery.SQL.Clear;
-  FQuery.SQL.Add('SELECT COUNT(*) AS Total FROM clientes WHERE cpf = :cpf');
+  FQuery.SQL.Add('SELECT COUNT(*) AS Total FROM clientes WHERE cpf = :cpf AND id <> :id');
   FQuery.ParamByName('cpf').AsString := aCliente.getCPF;
+  FQuery.ParamByName('id').AsInteger := aCliente.getIdCliente;
   FQuery.Open;
   Result := FQuery.FieldByName('Total').AsInteger > 0;
 end;
@@ -114,7 +115,7 @@ begin
     Result := FQuery;
   except
     on E: Exception do
-      raise Exception.Create('Erro ao listar Clientes para restauração: ' + E.Message);
+      raise Exception.Create('Erro ao listar Clientes para restauraï¿½ï¿½o: ' + E.Message);
   end;
 end;
 
@@ -125,7 +126,7 @@ begin
     FQuery.SQL.Clear;
     FQuery.SQL.Add('SELECT id, nome, cpf, email,telefone,nascimento,ativo');
     FQuery.SQL.Add('FROM clientes');
-    FQuery.SQL.Add('WHERE(nome ILIKE :nome) OR (cpf LIKE :cpf) OR (telefone ILIKE :telefone)');
+    FQuery.SQL.Add('WHERE ((nome ILIKE :nome) OR (cpf LIKE :cpf) OR (telefone ILIKE :telefone))');
     FQuery.SQL.Add('AND ativo = TRUE');
     FQuery.SQL.Add('ORDER BY id');
     FQuery.ParamByName('nome').AsString   := '%' + Trim(aFiltro) + '%';

@@ -124,6 +124,7 @@ begin
   PnlEdit.Visible := False;
   PnlRestaurar.Visible := False;
   EdtPesquisar.Visible := False;
+  CarregarGrid;
 end;
 
 procedure TFormCadastroPecas.BtnPesquisarClick(Sender: TObject);
@@ -342,7 +343,6 @@ begin
     CadastrarPecas;
     LimparCampos;
     CarregarGrid;
-    ShowMessage('Peça Cadastrada com sucesso!');
   end;
 end;
 
@@ -389,7 +389,6 @@ begin
       Peca.setPreço(preco);
 
       PecaController.EditarPeca(Peca);
-      ShowMessage('Peça atualizada com sucesso!');
       CarregarGrid;
       LimparCampos;
       PnlBackgrounEdit.Visible := False;

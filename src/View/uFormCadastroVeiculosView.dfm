@@ -1275,7 +1275,6 @@
                 Align = alLeft
                 BevelOuter = bvNone
                 TabOrder = 8
-                ExplicitLeft = 845
                 object ShpButton: TShape
                   AlignWithMargins = True
                   Left = 3

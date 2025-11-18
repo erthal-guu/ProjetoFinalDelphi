@@ -1371,7 +1371,6 @@
                 Font.Style = []
                 ParentFont = False
                 TabOrder = 0
-                ExplicitLeft = 267
               end
               object EdtNome: TEdit
                 AlignWithMargins = True
@@ -1420,7 +1419,6 @@
                   'MT'
                   'LT'
                   'PCT')
-                ExplicitLeft = 608
               end
               object CmbCategoria: TComboBox
                 AlignWithMargins = True
@@ -1441,7 +1439,6 @@
                 Font.Style = []
                 ParentFont = False
                 TabOrder = 3
-                ExplicitLeft = 374
               end
               object CmbModelo: TComboBox
                 AlignWithMargins = True
@@ -1468,7 +1465,6 @@
                   'Caminh'#227'o'
                   #212'nibus'
                   'Utilit'#225'rio')
-                ExplicitLeft = 687
               end
               object EdtDescrição: TEdit
                 AlignWithMargins = True
@@ -1488,7 +1484,6 @@
                 Font.Style = []
                 ParentFont = False
                 TabOrder = 5
-                ExplicitLeft = 145
               end
               object CmbStatus: TComboBox
                 AlignWithMargins = True
@@ -1511,7 +1506,6 @@
                 Items.Strings = (
                   'Ativo'
                   'Inativo')
-                ExplicitLeft = 782
               end
               object EdtPreço: TEdit
                 AlignWithMargins = True
@@ -1532,7 +1526,6 @@
                 Font.Style = []
                 ParentFont = False
                 TabOrder = 7
-                ExplicitLeft = 522
               end
             end
             object PnlButtonForm: TPanel
@@ -1593,7 +1586,8 @@
                   ParentColor = False
                   ParentFont = False
                   OnClick = LblAtualizarClick
-                  ExplicitLeft = -2
+                  ExplicitWidth = 63
+                  ExplicitHeight = 20
                 end
                 object Image2: TImage
                   Left = 68

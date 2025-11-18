@@ -127,8 +127,10 @@ procedure TFormCadastroUsuarios.BtnCancelarClick(Sender: TObject);
 begin
   PnlBackgroundEdit.Visible := False;
   PnlEdit.Visible := False;
+  PnlDesignEdit.Visible := False;
   PnlRestaurar.Visible := False;
   EdtPesquisar.Visible := False;
+  CarregarGrid;
 end;
 
 procedure TFormCadastroUsuarios.BtnEditarClick(Sender: TObject);
@@ -435,7 +437,6 @@ begin
     Exit;
 
   IdUsuario := DBGridMain.DataSource.DataSet.FieldByName('id').AsInteger;
-
   Controller := TUsuarioController.create;
   try
     Usuario := TUsuario.create;
@@ -445,18 +446,17 @@ begin
       Usuario.SetCPF(EdtCPF.Text);
       Usuario.SetGrupo(CmbGrupo.Text);
       Usuario.setAtivo(CmbStatus.ItemIndex = 0);
+
       if (EdtSenha.Text <> '') and (EdtConfirmarSenha.Text <> '') then begin
         Usuario.setSenha(EdtSenha.Text);
-        Controller.EditarUsuario(Usuario);
-      end
-      else begin
         Controller.EditarUsuarioComSenha(Usuario);
+      end else begin
+        Controller.EditarUsuario(Usuario);
       end;
       CarregarGrid;
       LimparCampos;
       PnlBackgroundEdit.Visible := False;
       PnlDesignEdit.Visible := False;
-      ShowMessage('Usuário atualizado com sucesso!');
     finally
       Usuario.Free;
     end;

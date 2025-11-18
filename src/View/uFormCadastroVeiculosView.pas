@@ -486,7 +486,6 @@ begin
       Veiculo.setCliente(IdCliente);
 
       if VeiculoController.EditarVeiculo(Veiculo) then begin
-        ShowMessage('Veículo atualizado com sucesso!');
         CarregarGrid;
         LimparCampos;
         PnlBackgrounEdit.Visible := False;

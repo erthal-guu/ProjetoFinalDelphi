@@ -107,8 +107,9 @@ function TFuncionarioRepository.ExisteCPF(aFuncionario: TFuncionario): Boolean;
 begin
   FQuery.Close;
   FQuery.SQL.Clear;
-  FQuery.SQL.Add('SELECT COUNT(*) AS Total FROM funcionarios WHERE cpf = :cpf');
+  FQuery.SQL.Add('SELECT COUNT(*) AS Total FROM funcionarios WHERE cpf = :cpf AND id <> :id');
   FQuery.ParamByName('cpf').AsString := aFuncionario.getCPF;
+  FQuery.ParamByName('id').AsInteger := aFuncionario.getIdFuncionario;
   FQuery.Open;
   Result := FQuery.FieldByName('Total').AsInteger > 0;
 end;
@@ -150,7 +151,7 @@ begin
     FQuery.SQL.Clear;
     FQuery.SQL.Add('SELECT id, nome, cpf, rg, nascimento, telefone, cep, rua, numero, bairro, cidade, estado,tipo,ativo');
     FQuery.SQL.Add('FROM funcionarios');
-    FQuery.SQL.Add('WHERE (nome ILIKE :nome) OR (cpf LIKE :cpf) OR (telefone ILIKE :telefone) OR (tipo ILIKE :tipo)');
+    FQuery.SQL.Add('WHERE ((nome ILIKE :nome) OR (cpf LIKE :cpf) OR (telefone ILIKE :telefone) OR (tipo ILIKE :tipo))');
     FQuery.SQL.Add('AND ativo = TRUE');
     FQuery.SQL.Add('ORDER BY id');
     FQuery.ParamByName('nome').AsString      := '%' + Trim(aFiltro) + '%';
