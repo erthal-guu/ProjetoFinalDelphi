@@ -674,13 +674,19 @@
           Margins.Right = 1
           Margins.Bottom = 1
           Align = alClient
+          Font.Charset = DEFAULT_CHARSET
+          Font.Color = clWindowText
+          Font.Height = -12
+          Font.Name = 'Segoe UI'
+          Font.Style = []
+          ParentFont = False
           ReadOnly = True
           TabOrder = 0
           TitleFont.Charset = DEFAULT_CHARSET
           TitleFont.Color = clWindowText
-          TitleFont.Height = -12
+          TitleFont.Height = -19
           TitleFont.Name = 'Segoe UI'
-          TitleFont.Style = []
+          TitleFont.Style = [fsBold]
         end
         object PnlPecasUsadas: TPanel
           AlignWithMargins = True
@@ -701,7 +707,7 @@
             AlignWithMargins = True
             Left = 4
             Top = 11
-            Width = 63
+            Width = 760
             Height = 32
             Margins.Top = 10
             Align = alTop
@@ -713,6 +719,7 @@
             Font.Name = 'Segoe UI'
             Font.Style = [fsBold]
             ParentFont = False
+            ExplicitWidth = 63
           end
           object ImgFechar: TImage
             Left = 712
@@ -800,8 +807,8 @@
               AlignWithMargins = True
               Left = 4
               Top = 9
-              Width = 77
-              Height = 21
+              Width = 718
+              Height = 28
               Margins.Top = 8
               Align = alClient
               Alignment = taCenter
@@ -813,6 +820,8 @@
               Font.Style = [fsBold]
               ParentFont = False
               OnClick = BtnConfirmarPecasClick
+              ExplicitWidth = 77
+              ExplicitHeight = 21
             end
           end
         end
@@ -836,7 +845,7 @@
             AlignWithMargins = True
             Left = 3
             Top = 10
-            Width = 109
+            Width = 882
             Height = 32
             Margins.Top = 10
             Align = alTop
@@ -848,6 +857,7 @@
             Font.Name = 'Segoe UI'
             Font.Style = [fsBold]
             ParentFont = False
+            ExplicitWidth = 109
           end
           object ImgFecharRestaurar: TImage
             Left = 800
@@ -1653,7 +1663,7 @@
                 Left = 166
                 Top = 30
                 Width = 138
-                Height = 100
+                Height = 29
                 Margins.Top = 30
                 Margins.Right = 5
                 Margins.Bottom = 5
@@ -1674,7 +1684,7 @@
                 Left = 312
                 Top = 30
                 Width = 138
-                Height = 100
+                Height = 29
                 Margins.Top = 30
                 Margins.Right = 5
                 Margins.Bottom = 5
@@ -1761,7 +1771,7 @@
                 Left = 585
                 Top = 30
                 Width = 104
-                Height = 100
+                Height = 29
                 Margins.Top = 30
                 Margins.Right = 5
                 Margins.Bottom = 5
@@ -1817,8 +1827,8 @@
                   AlignWithMargins = True
                   Left = 0
                   Top = 4
-                  Width = 43
-                  Height = 20
+                  Width = 86
+                  Height = 22
                   Margins.Left = 0
                   Margins.Top = 4
                   Margins.Right = 15
@@ -1835,6 +1845,8 @@
                   ParentColor = False
                   ParentFont = False
                   OnClick = LblEnviarClick
+                  ExplicitWidth = 43
+                  ExplicitHeight = 20
                 end
                 object Image6: TImage
                   Left = 68
@@ -1877,7 +1889,7 @@
                   Left = 3
                   Top = 3
                   Width = 63
-                  Height = 20
+                  Height = 19
                   Margins.Right = 30
                   Align = alClient
                   Alignment = taCenter
@@ -1891,6 +1903,7 @@
                   ParentColor = False
                   ParentFont = False
                   OnClick = LblAtualizarClick
+                  ExplicitHeight = 20
                 end
                 object Image2: TImage
                   Left = 69

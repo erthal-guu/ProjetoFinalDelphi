@@ -172,12 +172,12 @@ begin
     FQuery.Close;
     FQuery.SQL.Clear;
     FQuery.SQL.Add
-      ('SELECT os.id, s.nome AS "Serviço", f.nome AS "Funcionário",');
+      ('SELECT os.id, s.nome AS servico_nome, f.nome AS funcionario_nome,');
     FQuery.SQL.Add
-      ('v.modelo AS "Veículo", c.nome AS "Cliente", os.preco AS "Preço",');
+      ('v.modelo AS veiculo_placa, c.nome AS cliente_nome, os.preco AS preco,');
     FQuery.SQL.Add
-      ('os.observacao AS "Observação", os.data_inicio AS "Data Início",');
-    FQuery.SQL.Add('os.data_conclusao AS "Data Conclusão", os.ativo');
+      ('os.observacao AS Observacao, os.data_inicio AS data_inicio,');
+    FQuery.SQL.Add('os.data_conclusao AS data_conclusao, os.ativo');
     FQuery.SQL.Add('FROM ordens_servico os');
     FQuery.SQL.Add('INNER JOIN servicos s ON os.id_servico = s.id');
     FQuery.SQL.Add('INNER JOIN funcionarios f ON os.id_funcionario = f.id');
@@ -232,22 +232,19 @@ begin
   FQuery.ExecSQL;
 end;
 
-function TOrdemServicoRepository.PesquisarOrdensServico(const aFiltro: String)
-  : TDataSet;
+function TOrdemServicoRepository.PesquisarOrdensServico(const aFiltro: String):TDataSet;
 begin
   try
     FQuery.Close;
     FQuery.SQL.Clear;
-    FQuery.SQL.Add
-      ('SELECT os.*, s.nome AS servico_nome, f.nome AS funcionario_nome,');
+    FQuery.SQL.Add('SELECT os.*, s.nome AS servico_nome, f.nome AS funcionario_nome,');
     FQuery.SQL.Add('v.modelo AS veiculo_placa, c.nome AS cliente_nome');
     FQuery.SQL.Add('FROM ordens_servico os');
     FQuery.SQL.Add('INNER JOIN servicos s ON os.id_servico = s.id');
     FQuery.SQL.Add('INNER JOIN funcionarios f ON os.id_funcionario = f.id');
     FQuery.SQL.Add('INNER JOIN veiculos v ON os.id_veiculo = v.id');
     FQuery.SQL.Add('INNER JOIN clientes c ON os.id_cliente = c.id');
-    FQuery.SQL.Add
-      ('WHERE (s.nome ILIKE :filtro OR c.nome ILIKE :filtro OR v.modelo ILIKE :filtro)');
+    FQuery.SQL.Add('WHERE (s.nome ILIKE :filtro OR c.nome ILIKE :filtro OR v.modelo ILIKE :filtro)');
     FQuery.SQL.Add('AND os.ativo = TRUE ORDER BY os.id');
     FQuery.ParamByName('filtro').AsString := '%' + Trim(aFiltro) + '%';
     FQuery.Open;

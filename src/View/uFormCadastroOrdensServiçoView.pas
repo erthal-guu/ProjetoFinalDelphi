@@ -582,7 +582,29 @@ begin
   Service := TOrdemServicoService.Create;
   try
     DataSourceMain.DataSet := Service.PesquisarOrdensServico(EdtPesquisar.Text);
+    if DBGridMain.Columns.Count >= 9 then begin
+    DBGridMain.Columns[0].Title.Caption := 'Id';
+    DBGridMain.Columns[1].Title.Caption := 'Serviço';
+    DBGridMain.Columns[2].Title.Caption := 'Funcionário';
+    DBGridMain.Columns[3].Title.Caption := 'Veículo';
+    DBGridMain.Columns[4].Title.Caption := 'Cliente';
+    DBGridMain.Columns[5].Title.Caption := 'Preço';
+    DBGridMain.Columns[6].Title.Caption := 'Observação';
+    DBGridMain.Columns[7].Title.Caption := 'Data Início';
+    DBGridMain.Columns[8].Title.Caption := 'Data Conclusão';
+    DBGridMain.Columns[9].Title.Caption := 'Ativo';
 
+    for var i := 0 to 9 do begin
+      DBGridMain.Columns[i].Title.Alignment := taCenter;
+      DBGridMain.Columns[i].Alignment := taCenter;
+      DBGridMain.Columns[i].Width := 140;
+      DBGridMain.Columns[i].Title.Font.Size := 15;
+    end;
+
+    DBGridMain.Columns[0].Width := 50;
+    DBGridMain.Columns[1].Width := 200;
+    DBGridMain.Columns[6].Width := 200;
+  end;
   finally
     Service.Free;
   end;
@@ -634,7 +656,7 @@ begin
       end;
 
     FuncionarioNome := DBGridMain.DataSource.DataSet.FieldByName
-      ('Funcionário').AsString;
+      ('funcionario_nome').AsString;
     for i := 0 to CmbFuncionario.Items.Count - 1 do
       if CmbFuncionario.Items[i] = FuncionarioNome then begin
         CmbFuncionario.ItemIndex := i;
@@ -642,14 +664,14 @@ begin
       end;
 
     VeiculoPlaca := DBGridMain.DataSource.DataSet.FieldByName
-      ('Veículo').AsString;
+      ('veiculo_placa').AsString;
     for i := 0 to CmbVeiculo.Items.Count - 1 do
       if CmbVeiculo.Items[i] = VeiculoPlaca then begin
         CmbVeiculo.ItemIndex := i;
         Break;
       end;
 
-    ClienteNome := DBGridMain.DataSource.DataSet.FieldByName('Cliente')
+    ClienteNome := DBGridMain.DataSource.DataSet.FieldByName('cliente_nome')
       .AsString;
     for i := 0 to CmbCliente.Items.Count - 1 do
       if CmbCliente.Items[i] = ClienteNome then begin
@@ -657,15 +679,15 @@ begin
         Break;
       end;
 
-    Preco := DBGridMain.DataSource.DataSet.FieldByName('Preço').AsCurrency;
+    Preco := DBGridMain.DataSource.DataSet.FieldByName('preco').AsCurrency;
     EdtPreco.Text := CurrToStr(Preco);
 
     EdtObservacao.Text := DBGridMain.DataSource.DataSet.FieldByName
-      ('Observação').AsString;
-    DtimeIncio.Date := DBGridMain.DataSource.DataSet.FieldByName('Data Início')
+      ('Observacao').AsString;
+    DtimeIncio.Date := DBGridMain.DataSource.DataSet.FieldByName('data_inicio')
       .AsDateTime;
     DTimeConclusao.Date := DBGridMain.DataSource.DataSet.FieldByName
-      ('Data Conclusão').AsDateTime;
+      ('data_conclusao').AsDateTime;
 
     IdOS := DBGridMain.DataSource.DataSet.FieldByName('id').AsInteger;
     Controller := TOrdemServicoController.Create;
