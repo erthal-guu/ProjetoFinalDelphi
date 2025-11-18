@@ -79,7 +79,8 @@ begin
     QueryEntradas.SQL.Add
       ('    COUNT(CASE WHEN r.status = ''CONCLUIDA'' THEN 1 END) AS receitas_concluidas,');
     QueryEntradas.SQL.Add
-      ('    COALESCE(SUM(CASE WHEN r.status != ''CONCLUIDA'' THEN r.valor_total - COALESCE(r.valor_recebido, 0) ELSE 0 END), 0) AS valor_pendente');
+      ('    COALESCE(SUM(CASE WHEN r.status != ''CONCLUIDA'' THEN r.valor_total - COALESCE(r.valor_recebido, 0) ELSE 0 END), 0) AS valor_pendente,');
+    QueryEntradas.SQL.Add('    SUM(SUM(r.valor_total)) OVER () AS valor_total_geral_todas_receitas');
     QueryEntradas.SQL.Add('FROM receitas r');
     QueryEntradas.SQL.Add
       ('INNER JOIN ordens_servico os ON r.id_ordem_servico = os.id');
@@ -131,7 +132,8 @@ try
     QueryCanceladas.SQL.Add('            THEN ((SUM(r.valor_total - COALESCE(r.valor_recebido, 0))) * 100.0 / SUM(r.valor_total))');
     QueryCanceladas.SQL.Add('            ELSE 0');
     QueryCanceladas.SQL.Add('        END, 2');
-    QueryCanceladas.SQL.Add('    ) AS percentual_perda');
+    QueryCanceladas.SQL.Add('    ) AS percentual_perda,');
+    QueryCanceladas.SQL.Add('    SUM(SUM(r.valor_total)) OVER () AS valor_total_geral');
   QueryCanceladas.SQL.Add('FROM receitas r');
   QueryCanceladas.SQL.Add('INNER JOIN ordens_servico os ON r.id_ordem_servico = os.id');
   QueryCanceladas.SQL.Add('INNER JOIN clientes c ON os.id_cliente = c.id');
@@ -185,7 +187,8 @@ try
   QueryPendentes.SQL.Add('            THEN AVG(r.valor_total)');
   QueryPendentes.SQL.Add('            ELSE 0');
   QueryPendentes.SQL.Add('        END, 2');
-  QueryPendentes.SQL.Add('    ) AS valor_medio_pendente');
+  QueryPendentes.SQL.Add('    ) AS valor_medio_pendente,');
+  QueryPendentes.SQL.Add('    SUM(SUM(r.valor_total)) OVER () AS valor_total_geral');
   QueryPendentes.SQL.Add('FROM receitas r');
   QueryPendentes.SQL.Add('INNER JOIN ordens_servico os ON r.id_ordem_servico = os.id');
   QueryPendentes.SQL.Add('INNER JOIN clientes c ON os.id_cliente = c.id');
@@ -230,7 +233,8 @@ begin
     QueryPendenciasConcluidas.SQL.Add('    0 AS ultima_conclusao,');
     QueryPendenciasConcluidas.SQL.Add('    0 AS menor_prazo,');
     QueryPendenciasConcluidas.SQL.Add('    0 AS maior_prazo,');
-    QueryPendenciasConcluidas.SQL.Add('    0 AS tempo_medio_conclusao_dias');
+    QueryPendenciasConcluidas.SQL.Add('    0 AS tempo_medio_conclusao_dias,');
+    QueryPendenciasConcluidas.SQL.Add('    SUM(SUM(p.valor_total)) OVER () AS valor_total_geral');
     QueryPendenciasConcluidas.SQL.Add('FROM pendencias p');
     QueryPendenciasConcluidas.SQL.Add('INNER JOIN fornecedores f ON p.id_fornecedor = f.id');
     QueryPendenciasConcluidas.SQL.Add('WHERE p.status = ''CONCLUIDA''');
@@ -282,7 +286,8 @@ begin
     QueryPendenciasPendentes.SQL.Add('            ELSE 0');
     QueryPendenciasPendentes.SQL.Add('        END, 2');
     QueryPendenciasPendentes.SQL.Add('    ) AS percentual_vencidas,');
-    QueryPendenciasPendentes.SQL.Add('    0 AS dias_medios_atraso');
+    QueryPendenciasPendentes.SQL.Add('    0 AS dias_medios_atraso,');
+    QueryPendenciasPendentes.SQL.Add('    SUM(SUM(p.valor_total)) OVER () AS valor_total_geral');
     QueryPendenciasPendentes.SQL.Add('FROM pendencias p');
     QueryPendenciasPendentes.SQL.Add('INNER JOIN fornecedores f ON p.id_fornecedor = f.id');
     QueryPendenciasPendentes.SQL.Add('WHERE p.status = ''PENDENTE''');

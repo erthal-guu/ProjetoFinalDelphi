@@ -41,13 +41,6 @@ type
     FDQueryPendentes: TFDQuery;
     frxReport3: TfrxReport;
     frxDBDataset3: TfrxDBDataset;
-    FDQueryPendentescliente: TWideStringField;
-    FDQueryPendentesquantidade_pendentes: TIntegerField;
-    FDQueryPendentesvalor_total_pendente: TBCDField;
-    FDQueryPendentesvalor_recebido_pendente: TBCDField;
-    FDQueryPendentesvalor_a_receber: TFMTBCDField;
-    FDQueryPendentespercentual_pendente: TFMTBCDField;
-    FDQueryPendentesvalor_medio_pendente: TBCDField;
     FDQueryPendenciasConcluidas: TFDQuery;
     frxReport4: TfrxReport;
     frxDBDataset4: TfrxDBDataset;
@@ -77,10 +70,20 @@ type
     FDQueryPendenciasPendentesquantidade_a_vencer: TLargeintField;
     FDQueryPendenciasPendentesvalor_a_vencer: TFMTBCDField;
     FDQueryPendenciasPendentespercentual_vencidas: TFMTBCDField;
-    FDQueryPendentescodigo_cliente: TIntegerField;
     FDQueryValorTotalvalor_total_geral_todas_receitas: TFMTBCDField;
     FDQueryValorTotalCanceladasvalor_total_geral: TFMTBCDField;
+    FDQueryPendentescodigo_cliente: TIntegerField;
+    FDQueryPendentescliente: TWideStringField;
+    FDQueryPendentesquantidade_pendentes: TLargeintField;
+    FDQueryPendentesvalor_total_pendente: TFMTBCDField;
+    FDQueryPendentesvalor_recebido_pendente: TFMTBCDField;
+    FDQueryPendentesvalor_a_receber: TFMTBCDField;
+    FDQueryPendentespercentual_pendente: TFMTBCDField;
+    FDQueryPendentesvalor_medio_pendente: TFMTBCDField;
     FDQueryPendentesvalor_total_geral: TFMTBCDField;
+    FDQueryPendenciasConcluidasvalor_total_geral: TFMTBCDField;
+    FDQueryPendenciasPendentesvalor_total_geral: TFMTBCDField;
+    procedure FDQueryPendentesAfterOpen(DataSet: TDataSet);
   private
     { Private declarations }
   public
@@ -94,5 +97,14 @@ implementation
 {%CLASSGROUP 'Vcl.Controls.TControl'}
 
 {$R *.dfm}
+procedure TDataModule1.FDQueryPendentesAfterOpen(DataSet: TDataSet);
+begin
+    if DataSet.FindField('valor_a_receber') <> nil then
+      TFloatField(DataSet.FieldByName('valor_a_receber')).DisplayFormat := '#,##0.00';
+
+    if DataSet.FindField('quantidade_pendentes') <> nil then
+      TIntegerField(DataSet.FieldByName('quantidade_pendentes')).DisplayFormat := '#,##0';
+  end;
 
 end.
+

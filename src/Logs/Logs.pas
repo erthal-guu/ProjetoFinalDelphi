@@ -13,7 +13,7 @@ procedure SalvarLog(const Mensagem: string);
 var
   CaminhoLog, NomeArquivo: string;
 begin
-  CaminhoLog := 'C:\Users\Auditorio\Desktop\ProjetoFinalDelphi\src\lib';
+  CaminhoLog := 'C:\Users\vplgu\Desktop\ProjetoFinalDelphi\src\Logs';
   if not TDirectory.Exists(CaminhoLog) then
     TDirectory.CreateDirectory(CaminhoLog);
   NomeArquivo := Format('%s\Log_%s.txt', [CaminhoLog, FormatDateTime('yyyy-mm-dd', Now)]);

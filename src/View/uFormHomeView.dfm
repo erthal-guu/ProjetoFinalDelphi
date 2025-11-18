@@ -3292,16 +3292,13 @@
     end
     object Relatorios: TMenuItem
       Caption = ' &Relat'#243'rios     '
-      object Entradas1: TMenuItem
+      object Entradas: TMenuItem
         Caption = 'Entradas'
-        OnClick = Entradas1Click
+        OnClick = EntradasClick
       end
-      object Sadas1: TMenuItem
+      object Saídas: TMenuItem
         Caption = 'Sa'#237'das'
-        OnClick = Sadas1Click
-      end
-      object Sadas2: TMenuItem
-        Caption = 'Servi'#231'os'
+        OnClick = SaídasClick
       end
     end
     object Financeiro: TMenuItem

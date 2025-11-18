@@ -53,9 +53,8 @@ type
     VirtualImageList: TVirtualImageList;
     ImageCollection: TImageCollection;
     Image2: TImage;
-    Entradas1: TMenuItem;
-    Sadas1: TMenuItem;
-    Sadas2: TMenuItem;
+    Entradas: TMenuItem;
+    Saídas: TMenuItem;
     procedure SairClick(Sender: TObject);
     procedure FuncionariosClick(Sender: TObject);
     procedure FornecedoresClick(Sender: TObject);
@@ -71,8 +70,8 @@ type
     procedure VerificarPermissoes;
     procedure Image1Click(Sender: TObject);
     procedure OrdensServio1Click(Sender: TObject);
-    procedure Entradas1Click(Sender: TObject);
-    procedure Sadas1Click(Sender: TObject);
+    procedure EntradasClick(Sender: TObject);
+    procedure SaídasClick(Sender: TObject);
   private
     { Private declarations }
   public
@@ -88,7 +87,7 @@ implementation
 
 
 
-procedure TFormHome.Entradas1Click(Sender: TObject);
+procedure TFormHome.EntradasClick(Sender: TObject);
 begin
 FormEntradas.Show;
 FormEntradas.Position := poScreenCenter;
@@ -111,7 +110,7 @@ begin
   Self.Hide;
 end;
 
-procedure TFormHome.Sadas1Click(Sender: TObject);
+procedure TFormHome.SaídasClick(Sender: TObject);
 begin
   FormSaidas.Position := poScreenCenter;
   FormSaidas.Show;
@@ -177,6 +176,7 @@ begin
     FormCadastroOrdensServiço.BtnExcluir.Visible := False;
     FormCadastroOrdensServiço.BtnRestaurar.Visible := False;
     Financeiro.Visible := False;
+    Saídas.Visible := False;
   end;
 
   if grupo = 'mecânico' then begin
@@ -196,6 +196,7 @@ begin
     FormCadastroOrdensServiço.EdtPesquisar.Visible := True;
     Financeiro.Visible := False;
     Movimentações.Visible := False;
+    Relatorios.Visible := False;
   end;
   end;
 
