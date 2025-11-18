@@ -1,6 +1,10 @@
 # Sistema de Oficina Mecânica
 
-Sistema desktop em Delphi para gerenciar oficinas mecânicas com clientes, serviços e financeiro.
+<p align="center">
+  <img src="src/assets/images/Logo-Branca.png" alt="SoftGear Logo" width="300"/>
+</p>
+
+Sistema desktop em Delphi desenvolvido pela **SoftGear** para gerenciar oficinas mecânicas com clientes, serviços e financeiro.
 
 ## O que faz?
 
@@ -80,4 +84,8 @@ src/
 
 ---
 
-🏎️ Feito para facilitar o dia a dia de oficinas mecânicas! 🛠️
+<p align="center">
+  <img src="src/assets/images/Logo-media.png" alt="SoftGear" width="150"/>
+</p>
+
+🏎️ **SoftGear** - Feito para facilitar o dia a dia de oficinas mecânicas! 🛠️
