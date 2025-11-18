@@ -9,12 +9,14 @@ Sistema desktop em Delphi para gerenciar oficinas mecânicas com clientes, servi
 - **🚗 Veículos:** placa, modelo, ano, vinculado ao cliente
 - **👷 Funcionários:** dados, acesso ao sistema, permissões
 - **🏪 Fornecedores:** peças e serviços fornecidos
-- **🔧 Peças:** controle de estoque, valores
+- **🔧 Peças:** controle de estoque, valores, vinculação com fornecedores
 - **🛠️ Serviços:** catálogo de serviços oferecidos
+- **👨‍💼 Usuários:** login, senha criptografada, grupo de acesso
 
 ### 🔧 Operações
 - **📋 Ordens de Serviço:** criação, edição, acompanhamento
 - **🔩 Peças Usadas:** vincula peças às ordens de serviço
+- **📦 Pedidos:** solicitação de peças aos fornecedores
 - **📊 Status:** aberto, em andamento, concluído, cancelado
 - **📚 Histórico:** serviços realizados por cliente/veículo
 
