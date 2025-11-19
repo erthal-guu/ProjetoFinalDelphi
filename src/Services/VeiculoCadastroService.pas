@@ -1,4 +1,4 @@
-unit VeiculoCadastroService;
+Ôªøunit VeiculoCadastroService;
 
 interface
 
@@ -68,16 +68,16 @@ begin
   IDUsuarioLogado := uSession.UsuarioLogadoID;
 
   if not ValidarVeiculo(Veiculo) then
-    raise Exception.Create('Dados do veÌculo inv·lidos!');
+    raise Exception.Create('Dados do ve√≠culo inv√°lidos!');
 
   if Repository.ExistePlaca(Veiculo) then
-    raise Exception.Create('J· existe um veÌculo cadastrado com esta placa!');
+    raise Exception.Create('J√° existe um ve√≠culo cadastrado com esta placa!');
 
   if Repository.ExisteChassi(Veiculo) then
-    raise Exception.Create('J· existe um veÌculo cadastrado com este chassi!');
+    raise Exception.Create('J√° existe um ve√≠culo cadastrado com este chassi!');
 
   Repository.InserirVeiculo(Veiculo);
-  SalvarLog(Format('CADASTRO - ID: %d cadastrou veÌculo: %s (Placa: %s)',
+  SalvarLog(Format('CADASTRO - ID: %d cadastrou ve√≠culo: %s (Placa: %s)',
     [IDUsuarioLogado, Veiculo.getModelo, Veiculo.getPlaca]));
   Result := True;
 end;
@@ -88,15 +88,19 @@ var
 begin
   IDUsuarioLogado := uSession.UsuarioLogadoID;
   if Repository.ExistePlaca(Veiculo) then
-    ShowMessage('J· existe um veÌculo cadastrado com esta placa!');
-  exit;
+  begin
+    ShowMessage('J√° existe um ve√≠culo cadastrado com esta placa!');
+    Exit;
+  end;
 
   if Repository.ExisteChassi(Veiculo) then
-    ShowMessage('J· existe um veÌculo cadastrado com este chassi!');
-  exit;
+  begin
+    ShowMessage('J√° existe um ve√≠culo cadastrado com este chassi!');
+    Exit;
+  end;
 
   Repository.EditarVeiculo(Veiculo);
-  SalvarLog(Format('EDITAR - ID: %d editou veÌculo: %s (Placa: %s)',
+  SalvarLog(Format('EDITAR - ID: %d editou ve√≠culo: %s (Placa: %s)',
     [IDUsuarioLogado, Veiculo.getModelo, Veiculo.getPlaca]));
 end;
 
@@ -106,7 +110,7 @@ var
 begin
   IDUsuarioLogado := uSession.UsuarioLogadoID;
   Repository.DeletarVeiculo(aId);
-  SalvarLog(Format('DELETAR - ID: %d deletou veÌculo ID: %d',
+  SalvarLog(Format('DELETAR - ID: %d deletou ve√≠culo ID: %d',
     [IDUsuarioLogado, aId]));
 end;
 
@@ -116,7 +120,7 @@ var
 begin
   IDUsuarioLogado := uSession.UsuarioLogadoID;
   Repository.RestaurarVeiculo(aId);
-  SalvarLog(Format('RESTAURAR - ID: %d restaurou veÌculo ID: %d',
+  SalvarLog(Format('RESTAURAR - ID: %d restaurou ve√≠culo ID: %d',
     [IDUsuarioLogado, aId]));
 end;
 

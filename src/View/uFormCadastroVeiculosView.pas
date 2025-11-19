@@ -197,7 +197,7 @@ begin
   DBGridMain.DataSource := DataSourceMain;
   try
     if DBGridMain.Columns.Count >= 8 then begin
-      DBGridMain.Columns[0].Title.Caption := 'Id';
+      DBGridMain.Columns[0].Title.Caption := 'ID';
       DBGridMain.Columns[1].Title.Caption := 'Modelo';
       DBGridMain.Columns[2].Title.Caption := 'Marca';
       DBGridMain.Columns[3].Title.Caption := 'Chassi';
@@ -226,13 +226,23 @@ begin
   DataSourceRestaurar.DataSet := VeiculoController.ListarVeiculosRestaurar;
   DBGridRestaurar.DataSource := DataSourceRestaurar;
   try
-    for var i := 0 to 7 do begin
-      DBGridRestaurar.Columns[i].Title.Alignment := taCenter;
-      DBGridRestaurar.Columns[i].Alignment := taCenter;
-      DBGridRestaurar.Columns[i].Width := 140;
-      DBGridRestaurar.Columns[i].Title.Font.Size := 15;
+    if DBGridRestaurar.Columns.Count >= 8 then begin
+      DBGridRestaurar.Columns[0].Title.Caption := 'Id';
+      DBGridRestaurar.Columns[1].Title.Caption := 'Modelo';
+      DBGridRestaurar.Columns[2].Title.Caption := 'Marca';
+      DBGridRestaurar.Columns[3].Title.Caption := 'Chassi';
+      DBGridRestaurar.Columns[4].Title.Caption := 'Placa';
+      DBGridRestaurar.Columns[5].Title.Caption := 'Cor';
+      DBGridRestaurar.Columns[6].Title.Caption := 'Fabricação';
+      DBGridRestaurar.Columns[7].Title.Caption := 'Cliente';
+      DBGridRestaurar.Columns[8].Title.Caption := 'Ativo';
+      for var i := 0 to 8 do begin
+        DBGridRestaurar.Columns[i].Title.Alignment := taCenter;
+        DBGridRestaurar.Columns[i].Alignment := taCenter;
+        DBGridRestaurar.Columns[i].Width := 140;
+        DBGridRestaurar.Columns[i].Title.Font.Size := 15;
+      end;
     end;
-    DBGridRestaurar.Columns[0].Width := 40;
   finally
     VeiculoController.Free;
   end;
@@ -294,15 +304,26 @@ var
 begin
   VeiculoController := TVeiculoController.Create;
   try
-    DataSourceMain.DataSet := VeiculoController.PesquisarVeiculos
-      (EdtPesquisar.Text);
-    for var i := 0 to 7 do begin
-      DBGridMain.Columns[i].Width := 140;
-      DBGridMain.Columns[i].Title.Font.Size := 15;
+    DataSourceMain.DataSet := VeiculoController.PesquisarVeiculos(EdtPesquisar.Text);
+    if DBGridMain.Columns.Count >= 8 then begin
+      DBGridMain.Columns[0].Title.Caption := 'ID';
+      DBGridMain.Columns[1].Title.Caption := 'Modelo';
+      DBGridMain.Columns[2].Title.Caption := 'Marca';
+      DBGridMain.Columns[3].Title.Caption := 'Chassi';
+      DBGridMain.Columns[4].Title.Caption := 'Placa';
+      DBGridMain.Columns[5].Title.Caption := 'Cor';
+      DBGridMain.Columns[6].Title.Caption := 'Fabricação';
+      DBGridMain.Columns[7].Title.Caption := 'Cliente';
+      DBGridMain.Columns[8].Title.Caption := 'Ativo';
+      for var i := 0 to 8 do begin
+        DBGridMain.Columns[i].Title.Alignment := taCenter;
+        DBGridMain.Columns[i].Alignment := taCenter;
+        DBGridMain.Columns[i].Width := 140;
+        DBGridMain.Columns[i].Title.Font.Size := 15;
+      end;
     end;
-    DBGridRestaurar.Columns[0].Width := 40;
   finally
-    VeiculoController.Free;
+   VeiculoController.Free;
   end;
 end;
 

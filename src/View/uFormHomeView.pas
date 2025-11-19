@@ -107,7 +107,9 @@ end;
 procedure TFormHome.Image1Click(Sender: TObject);
 begin
   MainController.ShowLogin;
-  Self.Hide;
+  Self.close;
+  Self.Free;
+  Application.CreateForm(TFormHome, FormHome);
 end;
 
 procedure TFormHome.SaídasClick(Sender: TObject);
@@ -208,22 +210,8 @@ end;
 
 procedure TFormHome.FormShow(Sender: TObject);
 begin
- if not Assigned(FormCadastroFornecedores) then
-    FormCadastroFornecedores := TFormCadastroFornecedores.Create(Application);
-
-  if not Assigned(FormCadastroPecas) then
-    FormCadastroPecas := TFormCadastroPecas.Create(Application);
-
-  if not Assigned(FormCadastroVeiculos) then
-    FormCadastroVeiculos := TFormCadastroVeiculos.Create(Application);
-
-  if not Assigned(FormCadastroServiços) then
-    FormCadastroServiços := TFormCadastroServiços.Create(Application);
-
-  if not Assigned(FormCadastroOrdensServiço) then
-    FormCadastroOrdensServiço := TFormCadastroOrdensServiço.Create(Application);
-  ExibirDadosUsuarioLogado;
   VerificarPermissoes;
+  ExibirDadosUsuarioLogado;
   FormCadastroOrdensServiço.AplicarPermissoes(uSession.UsuarioLogadoGrupo);
 
   VirtualImageList.ImageCollection := ImageCollection;

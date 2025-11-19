@@ -1,9 +1,0 @@
-05:59:55 - CADASTRO - ID: 0 cadastrou o usuário: Gustavo (CPF: 888.888.888-88)
-06:33:44 - DELETAR CLIENTE - ID: 0 deletou o cliente ID: 21
-06:33:47 - RESTAURAR CLIENTE - ID: 0 restaurou o cliente ID: 21
-06:34:13 - CADASTRO - ID: 0 cadastrou o usuário: aaaaaa (CPF: 165.416.589-16)
-06:34:18 - DELETAR - ID: 0 deletou o usuário ID: 35
-06:46:07 - LOGIN - Sucesso: Usuário ID 29, Nome: AdminMassa, (CPF: 000.000.000-00)
-06:48:21 - LOGIN - Sucesso: Usuário ID 29, Nome: AdminMassa, (CPF: 000.000.000-00)
-07:22:29 - CADASTRO - ID: 0 cadastrou ordem de serviço com cliente ID: 3
-07:22:43 - LOGIN - Sucesso: Usuário ID 29, Nome: AdminMassa, (CPF: 000.000.000-00)

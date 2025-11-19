@@ -563,13 +563,29 @@ begin
     DataSourceMain.DataSet := nil;
     DataSourceMain.DataSet := FornecedorService.PesquisarFornecedores
       (EdtPesquisar.Text);
-    for var i := 0 to DBGridMain.Columns.Count - 1 do begin
-      DBGridMain.Columns[i].Width := 140;
-      DBGridMain.Columns[i].Title.Font.Size := 15;
+    if DBGridMain.Columns.Count >= 11 then begin
+      DBGridMain.Columns[0].Title.Caption := 'Id';
+      DBGridMain.Columns[1].Title.Caption := 'Nome';
+      DBGridMain.Columns[2].Title.Caption := 'Razão Social';
+      DBGridMain.Columns[3].Title.Caption := 'CNPJ';
+      DBGridMain.Columns[4].Title.Caption := 'Telefone';
+      DBGridMain.Columns[5].Title.Caption := 'CEP';
+      DBGridMain.Columns[6].Title.Caption := 'Rua';
+      DBGridMain.Columns[7].Title.Caption := 'Número';
+      DBGridMain.Columns[8].Title.Caption := 'Bairro';
+      DBGridMain.Columns[9].Title.Caption := 'Cidade';
+      DBGridMain.Columns[10].Title.Caption := 'Estado';
+      DBGridMain.Columns[11].Title.Caption := 'Ativo';
+      for var i := 0 to 11 do begin
+        DBGridMain.Columns[i].Title.Alignment := taCenter;
+        DBGridMain.Columns[i].Alignment := taCenter;
+        DBGridMain.Columns[i].Width := 140;
+        DBGridMain.Columns[i].Title.Font.Size := 15;
+      end;
+      DBGridMain.Columns[0].Width := 50;
     end;
-    DBGridMain.Columns[0].Width := 50;
   finally
-    FornecedorService.Free;
+   FornecedorService.Free;
   end;
 end;
 

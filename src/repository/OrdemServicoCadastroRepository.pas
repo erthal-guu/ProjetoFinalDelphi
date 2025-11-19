@@ -1,4 +1,4 @@
-unit OrdemServicoCadastroRepository;
+ï»¿unit OrdemServicoCadastroRepository;
 
 interface
 
@@ -161,7 +161,7 @@ begin
   except
     on E: Exception do begin
       FQuery.Connection.Rollback;
-      raise Exception.Create('Erro ao editar ordem de serviço: ' + E.Message);
+      raise Exception.Create('Erro ao editar ordem de serviï¿½o: ' + E.Message);
     end;
   end;
 end;
@@ -189,7 +189,7 @@ begin
     Result := FQuery;
   except
     on E: Exception do
-      raise Exception.Create('Erro ao listar Ordens de Serviço: ' + E.Message);
+      raise Exception.Create('Erro ao listar Ordens de Serviï¿½o: ' + E.Message);
   end;
 end;
 
@@ -210,7 +210,7 @@ begin
   except
     on E: Exception do
       raise Exception.Create
-        ('Erro ao listar Ordens de Serviço para restauração: ' + E.Message);
+        ('Erro ao listar Ordens de Serviï¿½o para restauraï¿½ï¿½o: ' + E.Message);
   end;
 end;
 
@@ -237,8 +237,10 @@ begin
   try
     FQuery.Close;
     FQuery.SQL.Clear;
-    FQuery.SQL.Add('SELECT os.*, s.nome AS servico_nome, f.nome AS funcionario_nome,');
-    FQuery.SQL.Add('v.modelo AS veiculo_placa, c.nome AS cliente_nome');
+    FQuery.SQL.Add('SELECT os.id, s.nome AS servico_nome, f.nome AS funcionario_nome,');
+    FQuery.SQL.Add('v.modelo AS veiculo_placa, c.nome AS cliente_nome, os.preco AS preco,');
+    FQuery.SQL.Add('os.observacao AS Observacao, os.data_inicio AS data_inicio,');
+    FQuery.SQL.Add('os.data_conclusao AS data_conclusao, os.ativo');
     FQuery.SQL.Add('FROM ordens_servico os');
     FQuery.SQL.Add('INNER JOIN servicos s ON os.id_servico = s.id');
     FQuery.SQL.Add('INNER JOIN funcionarios f ON os.id_funcionario = f.id');
@@ -251,7 +253,7 @@ begin
     Result := FQuery;
   except
     on E: Exception do
-      raise Exception.Create('Erro ao buscar Ordem de Serviço: ' + E.Message);
+      raise Exception.Create('Erro ao buscar Ordem de Serviï¿½o: ' + E.Message);
   end;
 end;
 
@@ -288,7 +290,7 @@ begin
   try
     Qry.Connection := FQuery.Connection;
     Qry.SQL.Add
-      ('SELECT id, nome FROM funcionarios WHERE ativo = TRUE AND tipo = ''Mecânico'' ORDER BY nome');
+      ('SELECT id, nome FROM funcionarios WHERE ativo = TRUE AND tipo = ''MecÃ¢nico'' ORDER BY nome');
     Qry.Open;
     while not Qry.Eof do begin
       Lista.AddObject(Qry.FieldByName('nome').AsString,

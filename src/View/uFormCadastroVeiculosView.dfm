@@ -1612,7 +1612,7 @@
                 TitleFont.Color = clWindowText
                 TitleFont.Height = -19
                 TitleFont.Name = 'Segoe UI'
-                TitleFont.Style = []
+                TitleFont.Style = [fsBold]
               end
             end
           end

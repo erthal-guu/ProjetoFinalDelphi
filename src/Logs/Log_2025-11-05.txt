@@ -1,3 +1,0 @@
-15:40:42 - ERRO PEDIDO - Usuário ID: 0 - Erro ao inserir pedido: [FireDAC][Phys][PG][libpq] ERROR: column "id_pedido" of relation "pendencias" does not exist
-15:44:30 - ERRO PEDIDO - Usuário ID: 0 - Erro ao inserir pedido: [FireDAC][Phys][PG][libpq] ERROR: column "data_pagamento" of relation "pendencias" does not exist
-15:48:05 - PEDIDO - Usuário ID: 0 criou Pedido ID: 26 com 1 itens para Fornecedor ID: 27
