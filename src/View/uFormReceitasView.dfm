@@ -654,8 +654,6 @@ object FormReceitas: TFormReceitas
                 Align = alLeft
                 BevelOuter = bvNone
                 TabOrder = 1
-                ExplicitLeft = 878
-                ExplicitTop = 18
                 object ShpButton: TShape
                   AlignWithMargins = True
                   Left = 6

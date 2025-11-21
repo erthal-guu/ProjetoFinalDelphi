@@ -184,7 +184,7 @@ begin
   DBGridMain.DataSource := DataSourceMain;
   try
     if DBGridMain.Columns.Count >= 5 then begin
-      DBGridMain.Columns[0].Title.Caption := 'Id';
+      DBGridMain.Columns[0].Title.Caption := 'ID';
       DBGridMain.Columns[1].Title.Caption := 'Nome';
       DBGridMain.Columns[2].Title.Caption := 'CPF';
       DBGridMain.Columns[3].Title.Caption := 'Grupo';
@@ -240,12 +240,14 @@ begin
   if CmbGrupo.ItemIndex = -1 then
     CmbGrupo.ItemIndex := CmbGrupo.Items.IndexOf
       (DBGridMain.DataSource.DataSet.FieldByName('Grupo').AsString);
-  if DBGridMain.DataSource.DataSet.FieldByName('ativo').AsBoolean then
+  if DBGridMain.DataSource.DataSet.FieldByName('ativo').AsBoolean then begin
     CmbStatus.ItemIndex := 0
-  else
+  end
+  else begin
     CmbStatus.ItemIndex := 1;
-  EdtSenha.Clear;
-  EdtConfirmarSenha.Clear;
+    EdtSenha.Clear;
+    EdtConfirmarSenha.Clear;
+  end;
 end;
 
 procedure TFormCadastroUsuarios.CarregarGridRestaurar;
@@ -257,7 +259,7 @@ begin
   DBGridRestaurar.DataSource := DataSourceRestaurar;
   try
     if DBGridRestaurar.Columns.Count >= 5 then begin
-      DBGridRestaurar.Columns[0].Title.Caption := 'Id';
+      DBGridRestaurar.Columns[0].Title.Caption := 'ID';
       DBGridRestaurar.Columns[1].Title.Caption := 'Nome';
       DBGridRestaurar.Columns[2].Title.Caption := 'CPF';
       DBGridRestaurar.Columns[3].Title.Caption := 'Grupo';
@@ -358,7 +360,7 @@ end;
 
 procedure TFormCadastroUsuarios.LblAtualizarClick(Sender: TObject);
 begin
-   if ValidarCampos = True then begin
+  if ValidarCampos = True then begin
     EditarUsuarios;
     CarregarGrid;
   end;
@@ -450,7 +452,8 @@ begin
       if (EdtSenha.Text <> '') and (EdtConfirmarSenha.Text <> '') then begin
         Usuario.setSenha(EdtSenha.Text);
         Controller.EditarUsuarioComSenha(Usuario);
-      end else begin
+      end
+      else begin
         Controller.EditarUsuario(Usuario);
       end;
       CarregarGrid;
@@ -477,22 +480,30 @@ begin
   Controller := TUsuarioController.create;
   DataSourceMain.DataSet := Controller.PesquisarUsuarios(EdtPesquisar.Text);
 
-  DBGridMain.Columns[0].Alignment := taCenter;
-  DBGridMain.Columns[0].Alignment := taCenter;
-  DBGridMain.Columns[1].Title.Alignment := taCenter;
-  DBGridMain.Columns[1].Alignment := taCenter;
-  DBGridMain.Columns[2].Title.Alignment := taCenter;
-  DBGridMain.Columns[2].Alignment := taCenter;
-  DBGridMain.Columns[3].Title.Alignment := taCenter;
-  DBGridMain.Columns[3].Alignment := taCenter;
-  DBGridMain.Columns[4].Title.Alignment := taCenter;
-  DBGridMain.Columns[4].Alignment := taCenter;
+  if DBGridMain.Columns.Count >= 5 then begin
+    DBGridMain.Columns[0].Title.Caption := 'ID';
+    DBGridMain.Columns[1].Title.Caption := 'Nome';
+    DBGridMain.Columns[2].Title.Caption := 'CPF';
+    DBGridMain.Columns[3].Title.Caption := 'Grupo';
+    DBGridMain.Columns[4].Title.Caption := 'Ativo';
 
-  DBGridMain.Columns[0].Width := 100;
-  DBGridMain.Columns[1].Width := 191;
-  DBGridMain.Columns[2].Width := 191;
-  DBGridMain.Columns[3].Width := 191;
-  DBGridMain.Columns[4].Width := 191;
+    DBGridMain.Columns[0].Alignment := taCenter;
+    DBGridMain.Columns[0].Title.Alignment := taCenter;
+    DBGridMain.Columns[1].Title.Alignment := taCenter;
+    DBGridMain.Columns[1].Alignment := taCenter;
+    DBGridMain.Columns[2].Title.Alignment := taCenter;
+    DBGridMain.Columns[2].Alignment := taCenter;
+    DBGridMain.Columns[3].Title.Alignment := taCenter;
+    DBGridMain.Columns[3].Alignment := taCenter;
+    DBGridMain.Columns[4].Title.Alignment := taCenter;
+    DBGridMain.Columns[4].Alignment := taCenter;
+
+    DBGridMain.Columns[0].Width := 100;
+    DBGridMain.Columns[1].Width := 191;
+    DBGridMain.Columns[2].Width := 191;
+    DBGridMain.Columns[3].Width := 191;
+    DBGridMain.Columns[4].Width := 191;
+  end;
 end;
 
 end.

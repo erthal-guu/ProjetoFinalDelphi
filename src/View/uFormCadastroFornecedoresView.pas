@@ -180,7 +180,6 @@ type
     procedure DesvincularPecaFornecedor;
     procedure VincularPecaFornecedor;
     function ValidarCamposPedido: Boolean;
-    procedure EdtPesquisarRestaurarChange(Sender: TObject);
 
   private
     { Private declarations }
@@ -286,7 +285,7 @@ begin
     DataSourceMain.DataSet := FornecedorController.ListarFornecedores;
     DBGridMain.DataSource := DataSourceMain;
     if DBGridMain.Columns.Count >= 11 then begin
-      DBGridMain.Columns[0].Title.Caption := 'Id';
+      DBGridMain.Columns[0].Title.Caption := 'ID';
       DBGridMain.Columns[1].Title.Caption := 'Nome';
       DBGridMain.Columns[2].Title.Caption := 'Razão Social';
       DBGridMain.Columns[3].Title.Caption := 'CNPJ';
@@ -415,6 +414,20 @@ begin
         DBGridRestaurar.Columns[i].Width := 120;
         DBGridRestaurar.Columns[i].Title.Font.Size := 15;
       end;
+      if DBGridRestaurar.Columns.Count >= 11 then begin
+        DBGridRestaurar.Columns[0].Title.Caption := 'ID';
+        DBGridRestaurar.Columns[1].Title.Caption := 'Nome';
+        DBGridRestaurar.Columns[2].Title.Caption := 'Razão Social';
+        DBGridRestaurar.Columns[3].Title.Caption := 'CNPJ';
+        DBGridRestaurar.Columns[4].Title.Caption := 'Telefone';
+        DBGridRestaurar.Columns[5].Title.Caption := 'CEP';
+        DBGridRestaurar.Columns[6].Title.Caption := 'Rua';
+        DBGridRestaurar.Columns[7].Title.Caption := 'Número';
+        DBGridRestaurar.Columns[8].Title.Caption := 'Bairro';
+        DBGridRestaurar.Columns[9].Title.Caption := 'Cidade';
+        DBGridRestaurar.Columns[10].Title.Caption := 'Estado';
+        DBGridRestaurar.Columns[11].Title.Caption := 'Ativo';
+      end;
       DBGridRestaurar.Columns[0].Width := 50;
     end;
   finally
@@ -479,8 +492,7 @@ begin
     Exit;
     CheckBoxPeçasVinculadas.Checked := False;
     CarregarGridVincular
-  end
-  else begin
+  end else begin
     PnlButtonVincular.Visible := not PnlButtonVincular.Visible;
     PnlButtonDesvincular.Visible := not PnlButtonDesvincular.Visible;
     ListarPecaPorFornecedor;
@@ -564,7 +576,7 @@ begin
     DataSourceMain.DataSet := FornecedorService.PesquisarFornecedores
       (EdtPesquisar.Text);
     if DBGridMain.Columns.Count >= 11 then begin
-      DBGridMain.Columns[0].Title.Caption := 'Id';
+      DBGridMain.Columns[0].Title.Caption := 'ID';
       DBGridMain.Columns[1].Title.Caption := 'Nome';
       DBGridMain.Columns[2].Title.Caption := 'Razão Social';
       DBGridMain.Columns[3].Title.Caption := 'CNPJ';
@@ -584,24 +596,6 @@ begin
       end;
       DBGridMain.Columns[0].Width := 50;
     end;
-  finally
-   FornecedorService.Free;
-  end;
-end;
-
-procedure TFormCadastroFornecedores.EdtPesquisarRestaurarChange(Sender: TObject);
-var
-  FornecedorService: TFornecedorService;
-begin
-  FornecedorService := TFornecedorService.Create;
-  try
-    DataSourceRestaurar.DataSet := nil;
-    DataSourceRestaurar.DataSet := FornecedorService.PesquisarFornecedoresRestaurar(EdtPesquisar.Text);
-    for var i := 0 to DBGridMain.Columns.Count - 1 do begin
-      DBGridRestaurar.Columns[i].Width := 140;
-      DBGridRestaurar.Columns[i].Title.Font.Size := 15;
-    end;
-    DBGridRestaurar.Columns[0].Width := 50;
   finally
     FornecedorService.Free;
   end;
@@ -802,20 +796,18 @@ begin
   Controller := TFornecedorController.Create;
   try
     try
-      IdFornecedor := Integer(CmbFornecedorPedido.Items.Objects
-        [CmbFornecedorPedido.ItemIndex]);
+      IdFornecedor := Integer(CmbFornecedorPedido.Items.Objects[CmbFornecedorPedido.ItemIndex]);
       FormaPagamento := CmbFormaPagamento.Text;
       for i := 0 to ListBoxPedidos.Items.Count - 1 do begin
         PecasIDs.Add(Integer(ListBoxPedidos.Items.Objects[i]));
-        Linha := ListBoxPedidos.Items[i];
+          Linha := ListBoxPedidos.Items[i];
         PosQtd := Pos('Qtd: ', Linha);
 
         if PosQtd > 0 then begin
           Delete(Linha, 1, PosQtd + 4);
           QuantidadeStr := Copy(Linha, 1, Pos(' ', Linha) - 1);
           Quantidades.Add(StrToIntDef(QuantidadeStr, 1));
-        end
-        else begin
+        end else begin
           Quantidades.Add(1);
         end;
       end;
@@ -908,7 +900,7 @@ begin
   PnlVincularPeça.Visible := False;
   EdtPesquisar.Visible := False;
   CarregarGridRestaurar;
-  end;
+end;
 
 procedure TFormCadastroFornecedores.BtnRestaurarGridClick(Sender: TObject);
 begin
@@ -1019,6 +1011,7 @@ begin
   CarregarGrid;
   CarregarFornecedores;
   CarregarPeças;
+  AtualizarEstadoCombos;
 end;
 
 function TFormCadastroFornecedores.ValidarCampos: Boolean;
@@ -1038,13 +1031,6 @@ begin
 
   if Trim(EdtCNPJ.Text) = '' then begin
     ShowMessage('O campo CNPJ não pode ficar vazio!');
-    EdtCNPJ.SetFocus;
-    Exit;
-  end;
-
-  if Length(StringReplace(StringReplace(EdtCNPJ.Text, '.', '', [rfReplaceAll]),
-    '/', '', [rfReplaceAll]).Replace('-', '')) <> 14 then begin
-    ShowMessage('CNPJ inválido! Deve conter 14 dígitos.');
     EdtCNPJ.SetFocus;
     Exit;
   end;

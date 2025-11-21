@@ -1000,6 +1000,8 @@
               Align = alLeft
               BevelOuter = bvNone
               TabOrder = 0
+              ExplicitLeft = 3
+              ExplicitTop = -7
               object Label1: TLabel
                 Left = 20
                 Top = 8
@@ -1052,12 +1054,12 @@
                 Font.Style = []
                 ParentFont = False
               end
-              object Label2: TLabel
-                Left = 531
+              object Label6: TLabel
+                Left = 665
                 Top = 8
-                Width = 40
+                Width = 74
                 Height = 17
-                Caption = 'Pe'#231'as :'
+                Caption = 'Funcion'#225'rio :'
                 Font.Charset = DEFAULT_CHARSET
                 Font.Color = clWindowText
                 Font.Height = -13
@@ -1065,8 +1067,8 @@
                 Font.Style = []
                 ParentFont = False
               end
-              object Label6: TLabel
-                Left = 665
+              object Label2: TLabel
+                Left = 531
                 Top = 8
                 Width = 74
                 Height = 17
@@ -1119,7 +1121,7 @@
               end
               object CmbProfissional: TComboBox
                 AlignWithMargins = True
-                Left = 665
+                Left = 531
                 Top = 30
                 Width = 128
                 Height = 29
@@ -1136,6 +1138,7 @@
                 Font.Style = []
                 ParentFont = False
                 TabOrder = 2
+                ExplicitLeft = 533
               end
               object EdtPreço: TEdit
                 AlignWithMargins = True
@@ -1177,29 +1180,9 @@
                 ParentFont = False
                 TabOrder = 4
               end
-              object CmbPeças: TComboBox
-                AlignWithMargins = True
-                Left = 531
-                Top = 30
-                Width = 126
-                Height = 29
-                Margins.Top = 30
-                Margins.Right = 5
-                Margins.Bottom = 5
-                Align = alLeft
-                BevelOuter = bvNone
-                Style = csDropDownList
-                Font.Charset = DEFAULT_CHARSET
-                Font.Color = clWindowText
-                Font.Height = -16
-                Font.Name = 'Segoe UI'
-                Font.Style = []
-                ParentFont = False
-                TabOrder = 5
-              end
               object PnlButtonForm: TPanel
                 AlignWithMargins = True
-                Left = 794
+                Left = 660
                 Top = 0
                 Width = 131
                 Height = 91
@@ -1209,7 +1192,8 @@
                 Margins.Bottom = 0
                 Align = alLeft
                 BevelOuter = bvNone
-                TabOrder = 6
+                TabOrder = 5
+                ExplicitLeft = 794
                 object ShpButton: TShape
                   AlignWithMargins = True
                   Left = 10

@@ -1,9 +1,9 @@
-unit ServiçoCadastroService;
+ï»¿unit ServiÃ§oCadastroService;
 
 interface
 
 uses
-  uServiço, ServiçoCadastroRepository, uDMConexao, System.SysUtils,
+  uServiÃ§o, ServiÃ§oCadastroRepository, uDMConexao, System.SysUtils,
   FireDAC.Comp.Client, Data.DB, System.Classes, Logs, uSession;
 
 type
@@ -14,7 +14,7 @@ type
     constructor Create;
     function SalvarServico(Servico: TServico): Boolean;
     function CriarObjeto(aNome: String; aCategoria: Integer; aPreco: Currency;
-      aObservacao: String; aPecas: Integer; aProfissional: Integer): TServico;
+      aObservacao: String; aProfissional: Integer): TServico;
     procedure EditarServico(Servico: TServico);
     function ValidarServico(ServicoValido: TServico): Boolean;
     function ListarServicos: TDataSet;
@@ -23,7 +23,6 @@ type
     procedure RestaurarServico(const aId: Integer);
     function PesquisarServicos(const aFiltro: String): TDataSet;
     function CarregarCategorias: TStringList;
-    function CarregarPecas: TStringList;
     function CarregarProfissionais: TStringList;
   end;
 
@@ -36,7 +35,7 @@ end;
 
 function TServicoService.CriarObjeto(
   aNome: String; aCategoria: Integer; aPreco: Currency;
-  aObservacao: String; aPecas: Integer; aProfissional: Integer): TServico;
+  aObservacao: String; aProfissional: Integer): TServico;
 var
   ServicoDTO: TServico;
 begin
@@ -46,7 +45,6 @@ begin
     ServicoDTO.SetCategoria(aCategoria);
     ServicoDTO.SetPreco(aPreco);
     ServicoDTO.SetObservacao(aObservacao);
-    ServicoDTO.SetPecas(aPecas);
     ServicoDTO.SetProfissional(aProfissional);
     Result := ServicoDTO;
   except
@@ -65,7 +63,7 @@ begin
   if ValidarServico(Servico) then
   begin
     Repository.InserirServico(Servico);
-    SalvarLog(Format('CADASTRO - ID: %d cadastrou serviço: %s (Categoria: %d)',
+    SalvarLog(Format('CADASTRO - ID: %d cadastrou serviï¿½o: %s (Categoria: %d)',
       [IDUsuarioLogado, Servico.GetNome, Servico.GetCategoria]));
     Result := True;
   end;
@@ -77,7 +75,7 @@ var
 begin
   IDUsuarioLogado := uSession.UsuarioLogadoID;
   Repository.EditarServico(Servico);
-  SalvarLog(Format('EDITAR - ID: %d editou serviço: %s (Categoria: %d)',
+  SalvarLog(Format('EDITAR - ID: %d editou serviï¿½o: %s (Categoria: %d)',
     [IDUsuarioLogado, Servico.GetNome, Servico.GetCategoria]));
 end;
 
@@ -87,7 +85,7 @@ var
 begin
   IDUsuarioLogado := uSession.UsuarioLogadoID;
   Repository.DeletarServico(aId);
-  SalvarLog(Format('DELETAR - ID: %d deletou serviço ID: %d',
+  SalvarLog(Format('DELETAR - ID: %d deletou serviï¿½o ID: %d',
     [IDUsuarioLogado, aId]));
 end;
 
@@ -97,7 +95,7 @@ var
 begin
   IDUsuarioLogado := uSession.UsuarioLogadoID;
   Repository.RestaurarServico(aId);
-  SalvarLog(Format('RESTAURAR - ID: %d restaurou serviço ID: %d',
+  SalvarLog(Format('RESTAURAR - ID: %d restaurou serviï¿½o ID: %d',
     [IDUsuarioLogado, aId]));
 end;
 
@@ -119,11 +117,6 @@ end;
 function TServicoService.CarregarCategorias: TStringList;
 begin
   Result := Repository.CarregarCategorias;
-end;
-
-function TServicoService.CarregarPecas: TStringList;
-begin
-  Result := Repository.CarregarPecas;
 end;
 
 function TServicoService.CarregarProfissionais: TStringList;

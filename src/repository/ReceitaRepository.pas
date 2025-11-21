@@ -38,9 +38,13 @@ begin
     FQuery.SQL.Clear;
     FQuery.SQL.Add('UPDATE receitas');
     FQuery.SQL.Add('SET valor_recebido = :valor_recebido,');
-    FQuery.SQL.Add('    data_recebimento = :data_recebimento,');
+    FQuery.SQL.Add('    data_recebimento = :data_recebimentos,');
     FQuery.SQL.Add('    forma_pagamento = :forma_pagamento,');
-    FQuery.SQL.Add('    status = ''CONCLUIDA'',');
+    if aReceita.getValorRecebido >= aReceita.getValorTotal then begin
+      FQuery.SQL.Add('    status = ''CONCLUIDA'',')
+   end else begin
+      FQuery.SQL.Add('    status = ''PENDENTE'',');
+   end;
     FQuery.SQL.Add('    observacao = :observacao');
     FQuery.SQL.Add('WHERE id = :id');
 

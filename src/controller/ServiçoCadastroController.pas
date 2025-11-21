@@ -1,9 +1,9 @@
-unit ServiçoCadastroController;
+ï»¿unit ServiÃ§oCadastroController;
 
 interface
 
 uses
-  uServiço, ServiçoCadastroService, System.Classes, Data.DB, System.SysUtils;
+  uServiÃ§o, ServiÃ§oCadastroService, System.Classes, Data.DB, System.SysUtils;
 
 type
   TServicoController = class
@@ -14,7 +14,7 @@ type
     destructor Destroy; override;
     function CadastrarServico(
       aNome: String; aCategoria: Integer; aPreco: Currency;
-      aObservacao: String; aPecas: Integer; aProfissional: Integer
+      aObservacao: String; aProfissional: Integer
     ): Boolean;
     function EditarServico(Servico: TServico): Boolean;
     function ListarServicos: TDataSet;
@@ -23,7 +23,6 @@ type
     procedure RestaurarServico(const aId: Integer);
     function ListarServicosRestaurar: TDataSet;
     function CarregarCategorias: TStringList;
-    function CarregarPecas: TStringList;
     function CarregarProfissionais: TStringList;
   end;
 
@@ -42,13 +41,13 @@ end;
 
 function TServicoController.CadastrarServico(
   aNome: String; aCategoria: Integer; aPreco: Currency;
-  aObservacao: String; aPecas: Integer; aProfissional: Integer
+  aObservacao: String; aProfissional: Integer
 ): Boolean;
 var
   Servico: TServico;
 begin
   Servico := Service.CriarObjeto(
-    aNome, aCategoria, aPreco, aObservacao, aPecas, aProfissional);
+    aNome, aCategoria, aPreco, aObservacao, aProfissional);
   try
     Result := Service.SalvarServico(Servico);
   finally
@@ -94,11 +93,6 @@ end;
 function TServicoController.CarregarCategorias: TStringList;
 begin
   Result := Service.CarregarCategorias;
-end;
-
-function TServicoController.CarregarPecas: TStringList;
-begin
-  Result := Service.CarregarPecas;
 end;
 
 function TServicoController.CarregarProfissionais: TStringList;

@@ -1,4 +1,4 @@
-unit UsuarioCadastroService;
+Ôªøunit UsuarioCadastroService;
 
 interface
 
@@ -14,8 +14,7 @@ type
   public
     constructor Create;
     function SalvarUsuario(Usuario: TUsuario): Boolean;
-    function CriarObjeto(aNome, aCPF, aSenha, aGrupo: String; aAtivo: Boolean)
-      : TUsuario;
+    function CriarObjeto(aNome, aCPF, aSenha, aGrupo: String; aAtivo: Boolean): TUsuario;
     procedure EditarUsuario(Usuario: TUsuario);
     procedure EditarUsuarioComSenha(Usuario: TUsuario);
     procedure DeletarUsuarios(const aId: Integer);
@@ -72,14 +71,14 @@ begin
     try
       if not Repo.ExisteCPF(Usuario) then begin
         Repo.InserirUsuario(Usuario);
-        SalvarLog(Format('CADASTRO - ID: %d cadastrou o usu·rio: %s (CPF: %s)',
+        SalvarLog(Format('CADASTRO - ID: %d cadastrou o usu√°rio: %s (CPF: %s)',
           [IDUsuarioLogado, Usuario.getNome, Usuario.getCPF]));
         Result := True;
       end
       else begin
-        ShowMessage('CPF j· cadastrado.');
+        ShowMessage('CPF j√° cadastrado.');
         SalvarLog(Format
-          ('CADASTRO - ID: %d falhou ao cadastrar (CPF j· existente: %s)',
+          ('CADASTRO - ID: %d falhou ao cadastrar (CPF j√° existente: %s)',
           [IDUsuarioLogado, Usuario.getCPF]));
       end;
     finally
@@ -93,15 +92,14 @@ var
   IDUsuarioLogado: Integer;
   begin
     IDUsuarioLogado := uSession.UsuarioLogadoID;
-
     if Repository.ExisteCPF(Usuario) then begin
-      ShowMessage('Esse CPF j· esta cadastrado a um Usu·rio');
+      ShowMessage('Esse CPF j√° est√° cadastrado a outro Usu√°rio');
       exit;
     end else begin
       if Usuario.getSenha <> '' then
         Usuario.setSenha(TBCrypt.HashPassword(Usuario.getSenha));
       Repository.EditarUsuario(Usuario);
-      SalvarLog(Format('EDITAR - ID: %d editou o usu·rio: %s (CPF: %s)',
+      SalvarLog(Format('EDITAR - ID: %d editou o usu√°rio: %s (CPF: %s)',
         [IDUsuarioLogado, Usuario.getNome, Usuario.getCPF]));
     end;
   end;
@@ -113,10 +111,11 @@ var
     IDUsuarioLogado := uSession.UsuarioLogadoID;
 
     if Repository.ExisteCPF(Usuario) then begin
-      ShowMessage('Esse CPF j· esta cadastrado a um Usu·rio');
+      ShowMessage('Esse CPF j√° esta cadastrado a um Usu√°rio');
     end else begin
+      Usuario.setSenha(TBCrypt.HashPassword(Usuario.getSenha));
       Repository.EditarUsuarioComSenha(Usuario);
-      SalvarLog(Format('EDITAR - ID: %d editou o usu·rio: %s (CPF: %s)',
+      SalvarLog(Format('EDITAR - ID: %d editou o usu√°rio: %s (CPF: %s)',
         [IDUsuarioLogado, Usuario.getNome, Usuario.getCPF]));
     end;
   end;
@@ -127,7 +126,7 @@ var
 begin
   IDUsuarioLogado := uSession.UsuarioLogadoID;
   Repository.DeletarUsuarios(aId);
-  SalvarLog(Format('DELETAR - ID: %d deletou o usu·rio ID: %d',
+  SalvarLog(Format('DELETAR - ID: %d deletou o usu√°rio ID: %d',
     [IDUsuarioLogado, aId]));
 end;
 
@@ -137,7 +136,7 @@ var
 begin
   IDUsuarioLogado := uSession.UsuarioLogadoID;
   Repository.RestaurarUsuarios(aId);
-  SalvarLog(Format('RESTAURAR - ID: %d] restaurou o usu·rio ID: %d',
+  SalvarLog(Format('RESTAURAR - ID: %d] restaurou o usu√°rio ID: %d',
     [IDUsuarioLogado, aId]));
 end;
 

@@ -107,8 +107,7 @@ end;
 procedure TFormHome.Image1Click(Sender: TObject);
 begin
   MainController.ShowLogin;
-  Self.close;
-  Self.Free;
+  Self.Hide;
   Application.CreateForm(TFormHome, FormHome);
 end;
 

@@ -42,7 +42,7 @@ begin
     Result := FQuery;
   except
     on E: Exception do
-      raise Exception.Create('Erro ao buscar usuário por nome: ' + E.Message);
+      raise Exception.Create('Erro ao buscar usuï¿½rio por nome: ' + E.Message);
   end;
 end;
 
@@ -104,7 +104,7 @@ begin
     Result := FQuery;
   except
     on E: Exception do
-      raise Exception.Create('Erro ao listar usuários: ' + E.Message);
+      raise Exception.Create('Erro ao listar usuï¿½rios: ' + E.Message);
   end;
 end;
 
@@ -118,7 +118,7 @@ begin
     Result := FQuery;
   except
     on E: Exception do
-      raise Exception.Create('Erro ao listar usuários para restauração: ' + E.Message);
+      raise Exception.Create('Erro ao listar usuï¿½rios para restauraï¿½ï¿½o: ' + E.Message);
   end;
 end;
 
@@ -138,6 +138,27 @@ begin
     FQuery.Close;
     FQuery.SQL.Clear;
     FQuery.SQL.Add('UPDATE usuarios');
+    FQuery.SQL.Add('SET nome = :nome, cpf = :cpf, grupo = :grupo, ativo = :ativo');
+    FQuery.SQL.Add('WHERE id = :id');
+    FQuery.ParamByName('nome').AsString   := aUsuario.getNome;
+    FQuery.ParamByName('cpf').AsString    := aUsuario.getCPF;
+    FQuery.ParamByName('grupo').AsString  := aUsuario.getGrupo;
+    FQuery.ParamByName('ativo').AsBoolean := aUsuario.getAtivo;
+    FQuery.ParamByName('id').AsInteger    := aUsuario.getID;
+    FQuery.ExecSQL;
+    Result := FQuery.RowsAffected > 0;
+  except
+    on E: Exception do
+      raise Exception.Create('Erro ao editar usuï¿½rio: ' + E.Message);
+  end;
+end;
+function TCadastroRepository.EditarUsuarioComSenha(aUsuario: TUsuario): Boolean;
+begin
+  Result := False;
+  try
+    FQuery.Close;
+    FQuery.SQL.Clear;
+    FQuery.SQL.Add('UPDATE usuarios');
     FQuery.SQL.Add('SET nome = :nome, senha = :senha, cpf = :cpf, grupo = :grupo, ativo = :ativo');
     FQuery.SQL.Add('WHERE id = :id');
     FQuery.ParamByName('nome').AsString   := aUsuario.getNome;
@@ -150,28 +171,7 @@ begin
     Result := FQuery.RowsAffected > 0;
   except
     on E: Exception do
-      raise Exception.Create('Erro ao editar usuário: ' + E.Message);
-  end;
-end;
-function TCadastroRepository.EditarUsuarioComSenha(aUsuario: TUsuario): Boolean;
-begin
-  Result := False;
-  try
-    FQuery.Close;
-    FQuery.SQL.Clear;
-    FQuery.SQL.Add('UPDATE usuarios');
-    FQuery.SQL.Add('SET nome = :nome, cpf = :cpf, grupo = :grupo, ativo = :ativo');
-    FQuery.SQL.Add('WHERE id = :id');
-    FQuery.ParamByName('nome').AsString   := aUsuario.getNome;
-    FQuery.ParamByName('cpf').AsString    := aUsuario.getCPF;
-    FQuery.ParamByName('grupo').AsString  := aUsuario.getGrupo;
-    FQuery.ParamByName('ativo').AsBoolean := aUsuario.getAtivo;
-    FQuery.ParamByName('id').AsInteger    := aUsuario.getID;
-    FQuery.ExecSQL;
-    Result := FQuery.RowsAffected > 0;
-  except
-    on E: Exception do
-      raise Exception.Create('Erro ao editar usuário: ' + E.Message);
+      raise Exception.Create('Erro ao editar usuï¿½rio: ' + E.Message);
   end;
 end;
 

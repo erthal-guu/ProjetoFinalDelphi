@@ -841,7 +841,7 @@ object FormCadastroUsuarios: TFormCadastroUsuarios
         Left = 929
         Top = 54
         Width = 178
-        Height = 491
+        Height = 494
         BevelOuter = bvNone
         Color = 9521152
         ParentBackground = False
@@ -851,7 +851,7 @@ object FormCadastroUsuarios: TFormCadastroUsuarios
           Left = 19
           Top = 19
           Width = 140
-          Height = 453
+          Height = 456
           Margins.Left = 19
           Margins.Top = 19
           Margins.Right = 19
@@ -861,12 +861,13 @@ object FormCadastroUsuarios: TFormCadastroUsuarios
           Color = clBackground
           ParentBackground = False
           TabOrder = 0
+          ExplicitHeight = 453
           object PnlButton: TPanel
             AlignWithMargins = True
             Left = 1
             Top = 1
             Width = 138
-            Height = 451
+            Height = 454
             Margins.Left = 1
             Margins.Top = 1
             Margins.Right = 1
@@ -876,6 +877,7 @@ object FormCadastroUsuarios: TFormCadastroUsuarios
             Color = 15790320
             ParentBackground = False
             TabOrder = 0
+            ExplicitHeight = 451
             object BtnExcluir: TSpeedButton
               AlignWithMargins = True
               Left = 5

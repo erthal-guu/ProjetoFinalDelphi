@@ -379,6 +379,7 @@ begin
       DBGridMain.Columns[9].Width := 110;
       DBGridMain.Columns[9].Title.Alignment := taCenter;
       DBGridMain.Columns[9].Alignment := taCenter;
+      DBGridMain.Columns[9].Visible := False;
 
       DBGridMain.Columns[10].Title.Caption := 'Forma Pagamento';
       DBGridMain.Columns[10].Width := 150;
@@ -449,7 +450,6 @@ var
   IDReceita: Integer;
   DataSourceAtivo: TDataSource;
 begin
-  // Determina qual DataSource está ativo baseado no painel visível
   if PnLHistorico.Visible then
     DataSourceAtivo := DataSourceHistorico
   else if PnlRestaurar.Visible then
@@ -464,13 +464,9 @@ begin
 
   ListBoxDetalhes.Items.Clear;
   ListBoxDetalhes.Items.Add(Format('ID: %d', [IDReceita]));
-
-  // Verifica se o campo id_ordem_servico existe antes de tentar acessá-lo
   if DataSourceAtivo.DataSet.FindField('id_ordem_servico') <> nil then
     ListBoxDetalhes.Items.Add(Format('Ordem de Serviço: %d', [
       DataSourceAtivo.DataSet.FieldByName('id_ordem_servico').AsInteger]));
-
-  // Verifica se os campos de cliente existem antes de tentar acessá-los
   if (DataSourceAtivo.DataSet.FindField('id_cliente') <> nil) and
      (DataSourceAtivo.DataSet.FindField('cliente_nome') <> nil) then
     ListBoxDetalhes.Items.Add(Format('Cliente ID: %d - %s', [
@@ -486,8 +482,6 @@ begin
     FormatDateTime('dd/mm/yyyy', DataSourceAtivo.DataSet.FieldByName('data_emissao').AsDateTime)]));
   ListBoxDetalhes.Items.Add(Format('Data Vencimento: %s', [
     FormatDateTime('dd/mm/yyyy', DataSourceAtivo.DataSet.FieldByName('data_vencimento').AsDateTime)]));
-
-  // Verifica se data_recebimento não é nulo antes de formatar
   if not DataSourceAtivo.DataSet.FieldByName('data_recebimento').IsNull then
     ListBoxDetalhes.Items.Add(Format('Data Recebimento: %s', [
       FormatDateTime('dd/mm/yyyy', DataSourceAtivo.DataSet.FieldByName('data_recebimento').AsDateTime)]))
@@ -517,6 +511,7 @@ begin
   PreencherCamposReceita;
   EdtDataRecebimento.Date := Date;
   PnlBackgrounEdit.Visible := True;
+  EdtValorTotal.Enabled := False;
   PnlEdit.Visible := True;
 end;
 

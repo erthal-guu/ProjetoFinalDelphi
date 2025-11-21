@@ -33,10 +33,14 @@ begin
 end;
 
 procedure TPendenciaRepository.PagarPendencia(aPendencia: TPendencia);
+var
+  DataVencimentoCalculado: TDateTime;
 begin
   try
     FQuery.Close;
     FQuery.SQL.Clear;
+    DataVencimentoCalculado := IncMonth(aPendencia.getDataCriacao, 1);
+
     FQuery.SQL.Add('INSERT INTO pendencias (id_cliente, descricao, valor_total,');
     FQuery.SQL.Add('    data_vencimento, data_criacao, status, observacao, ativo)');
     FQuery.SQL.Add('VALUES (:id_cliente, :descricao, :valor_total,');
@@ -44,7 +48,7 @@ begin
     FQuery.ParamByName('id_cliente').AsInteger := aPendencia.getIdCliente;
     FQuery.ParamByName('descricao').AsString := aPendencia.getDescricao;
     FQuery.ParamByName('valor_total').AsCurrency := aPendencia.getValorTotal;
-    FQuery.ParamByName('data_vencimento').AsDateTime := aPendencia.getDataVencimento;
+    FQuery.ParamByName('data_vencimento').AsDateTime := DataVencimentoCalculado;
     FQuery.ParamByName('data_criacao').AsDateTime := aPendencia.getDataCriacao;
     FQuery.ParamByName('status').AsString := aPendencia.getStatus;
     FQuery.ParamByName('observacao').AsString := aPendencia.getObservacao;

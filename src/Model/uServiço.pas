@@ -1,4 +1,4 @@
-unit uServi�o;
+﻿unit uServiço;
 
 interface
 
@@ -10,7 +10,6 @@ type
     Categoria: Integer;
     Preco: Currency;
     Observacao: String;
-    Pecas: Integer;
     Profissional: Integer;
   public
     function GetId: Integer;
@@ -27,9 +26,6 @@ type
 
     function GetObservacao: String;
     procedure SetObservacao(const Value: String);
-
-    function GetPecas: Integer;
-    procedure SetPecas(const Value: Integer);
 
     function GetProfissional: Integer;
     procedure SetProfissional(const Value: Integer);
@@ -85,16 +81,6 @@ end;
 procedure TServico.SetObservacao(const Value: String);
 begin
   Observacao := Value;
-end;
-
-function TServico.GetPecas: Integer;
-begin
-  Result := Pecas;
-end;
-
-procedure TServico.SetPecas(const Value: Integer);
-begin
-  Pecas := Value;
 end;
 
 function TServico.GetProfissional: Integer;

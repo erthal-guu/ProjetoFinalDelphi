@@ -111,7 +111,7 @@ type
     procedure EdtCEPChange(Sender: TObject);
     procedure ExcluirFuncionarios;
     procedure CadastrarFuncionarios;
-    Function ValidarData : Boolean;
+    Function ValidarData: Boolean;
 
   private
     { Private declarations }
@@ -164,13 +164,14 @@ end;
 
 procedure TFormCadastroFuncionarios.BtnSairClick(Sender: TObject);
 begin
-  if MessageDlg('Deseja realmente fechar este Formulário?', mtConfirmation,[mbYes, mbNo], 0) = mrYes then begin
-  Close;
-  PnlBackgroundEdit.Visible := False;
-  PnlEdit.Visible := False;
-  PnlRestaurar.Visible := False;
-  EdtPesquisar.Visible := False;
-end;
+  if MessageDlg('Deseja realmente fechar este Formulário?', mtConfirmation,
+    [mbYes, mbNo], 0) = mrYes then begin
+    Close;
+    PnlBackgroundEdit.Visible := False;
+    PnlEdit.Visible := False;
+    PnlRestaurar.Visible := False;
+    EdtPesquisar.Visible := False;
+  end;
 end;
 
 procedure TFormCadastroFuncionarios.EdtCEPChange(Sender: TObject);
@@ -352,7 +353,7 @@ begin
   DBGridMain.DataSource := DataSourceMain;
   try
     if DBGridMain.Columns.Count >= 14 then begin
-      DBGridMain.Columns[0].Title.Caption := 'Id';
+      DBGridMain.Columns[0].Title.Caption := 'ID';
       DBGridMain.Columns[1].Title.Caption := 'Nome';
       DBGridMain.Columns[2].Title.Caption := 'CPF';
       DBGridMain.Columns[3].Title.Caption := 'RG';
@@ -436,16 +437,16 @@ begin
     .AsString;
   EdtEstado.Text := DBGridMain.DataSource.DataSet.FieldByName('estado')
     .AsString;
-
-  if DBGridMain.DataSource.DataSet.FieldByName('tipo').AsBoolean then
+  if DBGridMain.DataSource.DataSet.FieldByName('tipo').AsBoolean then begin
     CmbTipo.ItemIndex := 0
-  else
+  end else begin
     CmbTipo.ItemIndex := 1;
-
-  if DBGridMain.DataSource.DataSet.FieldByName('ativo').AsBoolean then
+  end;
+  if DBGridMain.DataSource.DataSet.FieldByName('ativo').AsBoolean then begin
     CmbStatus.ItemIndex := 0
-  else
+  end else begin
     CmbStatus.ItemIndex := 1;
+  end;
 end;
 
 procedure TFormCadastroFuncionarios.BtnEditarClick(Sender: TObject);
@@ -573,30 +574,28 @@ begin
     FuncionarioService.Free;
   end;
 end;
-Function TFormCadastroFuncionarios.ValidarData:Boolean;
+
+Function TFormCadastroFuncionarios.ValidarData: Boolean;
 var
-    dia, mes, ano: Integer;
-    dataValida: Boolean;
-  begin
-    if Length(EdtDataNascimento.Text) = 10 then
-    begin
-        dia := StrToInt(Copy(EdtDataNascimento.Text, 1, 2));
-        mes := StrToInt(Copy(EdtDataNascimento.Text, 4, 2));
-        ano := StrToInt(Copy(EdtDataNascimento.Text, 7, 4));
+  dia, mes, ano: Integer;
+  dataValida: Boolean;
+begin
+  if Length(EdtDataNascimento.Text) = 10 then begin
+    dia := StrToInt(Copy(EdtDataNascimento.Text, 1, 2));
+    mes := StrToInt(Copy(EdtDataNascimento.Text, 4, 2));
+    ano := StrToInt(Copy(EdtDataNascimento.Text, 7, 4));
 
-        dataValida := (dia >= 1) and (dia <= 31) and
-                     (mes >= 1) and (mes <= 12) and
-                     (ano > 1900) and (ano < 2100);
+    dataValida := (dia >= 1) and (dia <= 31) and (mes >= 1) and (mes <= 12) and
+      (ano > 1900) and (ano < 2100);
 
-        if not dataValida then
-        begin
-          ShowMessage('Data inválida!');
-          EdtDataNascimento.SetFocus;
-          Result := False;
-          Exit;
-        end;
-        Result := True;
+    if not dataValida then begin
+      ShowMessage('Data inválida!');
+      EdtDataNascimento.SetFocus;
+      Result := False;
+      Exit;
     end;
+    Result := True;
+  end;
 end;
 
 end.

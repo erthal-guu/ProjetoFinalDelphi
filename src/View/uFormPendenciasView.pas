@@ -144,6 +144,7 @@ end;
 procedure TFormPendencias.BtnReceberClick(Sender: TObject);
 begin
   PreencherCamposPendencia;
+  EdtDataVencimento.Enabled := False;
 end;
 
 procedure TFormPendencias.Parcelar;

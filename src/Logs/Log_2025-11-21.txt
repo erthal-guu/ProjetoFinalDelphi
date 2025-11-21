@@ -1,0 +1,88 @@
+13:14:34 - LOGIN - Sucesso: Usuário ID 3, Nome: AdminMassa, (CPF: 000.000.000-00)
+13:14:42 - LOGIN - Sucesso: Usuário ID 5, Nome: AtendenteMassa, (CPF: 222.222.222-22)
+13:14:51 - LOGIN - Sucesso: Usuário ID 6, Nome: MecanicoMassa, (CPF: 333.333.333-33)
+13:15:00 - LOGIN INVÁLIDO - Senha ou CPF incorretos: (CPF 000.000.000-00 )
+13:15:05 - LOGIN - Sucesso: Usuário ID 3, Nome: AdminMassa, (CPF: 000.000.000-00)
+13:15:53 - LOGIN - Sucesso: Usuário ID 3, Nome: AdminMassa, (CPF: 000.000.000-00)
+13:17:10 - LOGIN - Sucesso: Usuário ID 3, Nome: AdminMassa, (CPF: 000.000.000-00)
+13:17:26 - LOGIN - Sucesso: Usuário ID 3, Nome: AdminMassa, (CPF: 000.000.000-00)
+13:19:14 - EDITAR - ID: 0 editou Cliente: Gabriel Kuchma (CPF: 444.555.666-33)
+13:19:36 - EDITAR - ID: 0 editou Cliente: Helena Alves (CPF: 888.999.000-77)
+14:52:46 - PEDIDO - Usuário ID: 0 criou Pedido ID: 34 com 1 itens para Fornecedor ID: 22
+15:29:17 - PEDIDO - Usuário ID: 0 criou Pedido ID: 35 com 1 itens para Fornecedor ID: 27
+15:32:58 - PEDIDO - Usuário ID: 0 criou Pedido ID: 36 com 1 itens para Fornecedor ID: 1
+15:41:42 - CADASTRO - ID: 0 cadastrou o usuário: Admin (CPF: 111.111.111-11)
+15:42:01 - CADASTRO - ID: 0 cadastrou o usuário: Gerente (CPF: 222.222.222-22)
+15:43:08 - CADASTRO - ID: 0 cadastrou o usuário: Admin (CPF: 111.111.111-11)
+15:43:26 - CADASTRO - ID: 0 cadastrou o usuário: Gerente (CPF: 222.222.222-22)
+15:43:45 - CADASTRO - ID: 0 cadastrou o usuário: Atendente (CPF: 333.333.333-33)
+15:44:05 - CADASTRO - ID: 0 cadastrou o usuário: Mecânico (CPF: 444.444.444-44)
+15:45:05 - EDITAR - ID: 0 editou o usuário: Fabio Souza (CPF: 666.666.666-66)
+15:45:12 - EDITAR - ID: 0 editou o usuário: Gabriela Costa (CPF: 777.777.777-77)
+15:45:18 - EDITAR - ID: 0 editou o usuário: Ingrid Santos (CPF: 999.999.999-99)
+15:45:23 - EDITAR - ID: 0 editou o usuário: João Oliveira (CPF: 101.010.101-01)
+15:45:32 - EDITAR - ID: 0 editou o usuário: Karina Pires (CPF: 121.212.121-21)
+15:45:38 - EDITAR - ID: 0 editou o usuário: Lucas Mendes (CPF: 131.313.131-31)
+15:45:44 - EDITAR - ID: 0 editou o usuário: Mariana Nunes (CPF: 141.414.141-41)
+15:45:50 - EDITAR - ID: 0 editou o usuário: Olivia Alves (CPF: 161.616.161-61)
+15:45:56 - EDITAR - ID: 0 editou o usuário: Pedro Borges (CPF: 171.717.171-71)
+15:46:03 - EDITAR - ID: 0 editou o usuário: Rafael Teixeira (CPF: 191.919.191-91)
+15:46:12 - EDITAR - ID: 0 editou o usuário: Sofia Vieira (CPF: 202.020.202-02)
+15:46:20 - EDITAR - ID: 0 editou o usuário: Quiteria Assis (CPF: 181.818.181-81)
+15:46:47 - RESTAURAR - ID: 0] restaurou o usuário ID: 6
+15:46:52 - RESTAURAR - ID: 0] restaurou o usuário ID: 9
+15:46:54 - RESTAURAR - ID: 0] restaurou o usuário ID: 15
+15:46:56 - RESTAURAR - ID: 0] restaurou o usuário ID: 21
+15:47:07 - EDITAR - ID: 0 editou o usuário: Erika Lima (CPF: 555.555.555-55)
+15:47:20 - EDITAR - ID: 0 editou o usuário: Quiteria Assis (CPF: 181.818.181-81)
+15:47:53 - EDITAR - ID: 0 editou o usuário: Quiteria Assis (CPF: 181.818.181-81)
+15:50:59 - LOGIN - Sucesso: Usuário ID 1, Nome: Admin, (CPF: 111.111.111-11)
+15:53:00 - CADASTRO - ID: 1 cadastrou o usuário: kuchma (CPF: 321.321.321-32)
+15:53:34 - LOGIN - Sucesso: Usuário ID 1, Nome: Admin, (CPF: 111.111.111-11)
+15:54:26 - LOGIN - Sucesso: Usuário ID 22, Nome: kuchma, (CPF: 321.321.321-32)
+15:55:35 - DELETAR - ID: 22 deletou o usuário ID: 1
+15:55:47 - RESTAURAR - ID: 22] restaurou o usuário ID: 1
+15:56:27 - DELETAR CLIENTE - ID: 22 deletou o cliente ID: 4
+15:57:33 - CADASTRO - ID: 22 cadastrou fornecedor: boca sa (CNPJ: 32.165.498/7987-98)
+15:58:13 - VINCULAR - Peça ID: 24 vinculada ao Fornecedor ID: 34
+15:58:55 - VINCULAR - Peça ID: 31 vinculada ao Fornecedor ID: 34
+15:59:06 - FALHA AO VINCULAR - Peça ID: 31 Já está vinculada ao Fornecedor ID: 34
+15:59:10 - VINCULAR - Peça ID: 27 vinculada ao Fornecedor ID: 34
+15:59:13 - VINCULAR - Peça ID: 32 vinculada ao Fornecedor ID: 34
+16:01:21 - PEDIDO - Usuário ID: 22 criou Pedido ID: 37 com 2 itens para Fornecedor ID: 34
+16:07:40 - CADASTRO - ID: 22 cadastrou ordem de serviço com cliente ID: 2
+16:08:53 - CONCLUSÃO - ID: 22 concluiu pendência ID: 12 - Cliente: 34 - Descrição: Pedido #37
+16:09:20 - DELETAR - ID: 22 deletou a pendência ID: 10
+16:09:28 - RESTAURAR - ID: 22 restaurou a pendência ID: 10
+16:12:11 - RECEBER - ID: 22 registrou recebimento da receita ID: 29 - Valor: 300,00 - Status Antigo: 
+16:16:16 - RECEBER - ID: 0 registrou recebimento da receita ID: 31 - Valor: 300,00 - Status Antigo: 
+16:21:55 - LOGIN INVÁLIDO - Senha ou CPF incorretos: (CPF 321.321.321-32 )
+16:22:03 - LOGIN - Sucesso: Usuário ID 22, Nome: kuchma, (CPF: 321.321.321-32)
+16:29:12 - RECEBER - ID: 0 registrou recebimento da receita ID: 33 - Valor: 1000,00 - Status Antigo: 
+16:37:39 - CADASTRO - ID: 0 cadastrou serviço: aaaaaaaa (Categoria: 14)
+16:42:17 - EDITAR - ID: 0 editou o usu�rio: Erika Lima (CPF: 555.555.555-55)
+16:42:50 - EDITAR - ID: 0 editou o usu�rio: Quiteria Assis (CPF: 181.818.181-81)
+16:50:34 - EDITAR - ID: 0 editou o usu�rio: Erika Lima (CPF: 555.555.555-55)
+16:53:23 - EDITAR - ID: 0 editou o usuário: Erika Lima (CPF: 555.555.555-55)
+16:53:40 - EDITAR - ID: 0 editou o usuário: Quiteria Assis (CPF: 181.818.181-81)
+16:53:55 - EDITAR - ID: 0 editou o usuário: Fabio Souza (CPF: 666.666.666-66)
+16:53:59 - EDITAR - ID: 0 editou o usuário: Gabriela Costa (CPF: 777.777.777-77)
+16:54:05 - EDITAR - ID: 0 editou o usuário: Henrique Melo (CPF: 888.888.888-88)
+16:54:11 - EDITAR - ID: 0 editou o usuário: Ingrid Santos (CPF: 999.999.999-99)
+16:54:16 - EDITAR - ID: 0 editou o usuário: Ingrid Santos (CPF: 999.999.999-99)
+16:54:20 - EDITAR - ID: 0 editou o usuário: João Oliveira (CPF: 101.010.101-01)
+16:54:26 - EDITAR - ID: 0 editou o usuário: Karina Pires (CPF: 121.212.121-21)
+16:54:32 - EDITAR - ID: 0 editou o usuário: Lucas Mendes (CPF: 131.313.131-31)
+16:54:44 - EDITAR - ID: 0 editou o usuário: Lucas Mendes (CPF: 131.313.131-31)
+16:54:49 - EDITAR - ID: 0 editou o usuário: Mariana Nunes (CPF: 141.414.141-41)
+16:54:56 - EDITAR - ID: 0 editou o usuário: Nelson Gomes (CPF: 151.515.151-51)
+16:55:01 - EDITAR - ID: 0 editou o usuário: Olivia Alves (CPF: 161.616.161-61)
+16:55:23 - EDITAR - ID: 0 editou o usuário: Tiago Pereira (CPF: 212.121.212-12)
+16:55:48 - EDITAR - ID: 0 editou o usuário: Rafael Teixeira (CPF: 191.919.191-91)
+16:56:03 - EDITAR - ID: 0 editou o usuário: Pedro Borges (CPF: 171.717.171-71)
+16:56:11 - EDITAR - ID: 0 editou o usuário: Sofia Vieira (CPF: 202.020.202-02)
+16:57:25 - LOGIN INVÁLIDO - Usuário não encontrado: (CPF 000.000.000-00)
+16:57:27 - LOGIN INVÁLIDO - Usuário não encontrado: (CPF 000.000.000-00)
+16:57:34 - LOGIN - Sucesso: Usuário ID 1, Nome: Admin, (CPF: 111.111.111-11)
+17:00:27 - PEDIDO - Usuário ID: 0 criou Pedido ID: 38 com 1 itens para Fornecedor ID: 1
+17:00:43 - CONCLUSÃO - ID: 0 concluiu pendência ID: 13 - Cliente: 1 - Descrição: Pedido #38

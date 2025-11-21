@@ -35,14 +35,12 @@ type
     Label3: TLabel;
     Label4: TLabel;
     Label5: TLabel;
-    Label2: TLabel;
     Label6: TLabel;
     EdtNome: TEdit;
     EdtObs: TEdit;
     CmbProfissional: TComboBox;
     EdtPreço: TEdit;
     CmbCategoria: TComboBox;
-    CmbPeças: TComboBox;
     PnlGrid: TPanel;
     DBGridMain: TDBGrid;
     PnlRestaurar: TPanel;
@@ -65,6 +63,7 @@ type
     PnlButtonAtualizar: TPanel;
     LblAtualizar: TLabel;
     Image2: TImage;
+    Label2: TLabel;
 
     procedure FormCreate(Sender: TObject);
     procedure FormShow(Sender: TObject);
@@ -84,7 +83,6 @@ type
     procedure CarregarGrid;
     procedure CarregarGridRestaurar;
     procedure CarregarCategorias;
-    procedure CarregarPecas;
     procedure CarregarProfissionais;
     procedure PegarCamposGridServicos;
     procedure EditarServicos;
@@ -116,8 +114,6 @@ begin
   EdtPreço.Height := 31;
   CmbCategoria.Height := 31;
   CmbProfissional.Height := 31;
-  CmbPeças.Height := 31;
-  CmbPeças.Font.Size := 13;
   CmbProfissional.Font.Size := 13;
   CmbCategoria.Font.Size := 13;
 end;
@@ -126,7 +122,6 @@ procedure TFormCadastroServiços.FormShow(Sender: TObject);
 begin
   CarregarGrid;
   CarregarCategorias;
-  CarregarPecas;
   CarregarProfissionais;
 end;
 
@@ -137,7 +132,6 @@ begin
   EdtPreço.Clear;
   CmbCategoria.ItemIndex := -1;
   CmbProfissional.ItemIndex := -1;
-  CmbPeças.ItemIndex := -1;
 end;
 
 function TFormCadastroServiços.ValidarCampos: Boolean;
@@ -152,10 +146,6 @@ begin
   end;
   if CmbCategoria.ItemIndex = -1 then begin
     ShowMessage('Selecione uma Categoria');
-    Exit(False);
-  end;
-  if CmbPeças.ItemIndex = -1 then begin
-    ShowMessage('Selecione uma Peça');
     Exit(False);
   end;
   if CmbProfissional.ItemIndex = -1 then begin
@@ -219,11 +209,6 @@ begin
     if Integer(CmbCategoria.Items.Objects[i]) = Categoria then
       CmbCategoria.ItemIndex := i;
 
-  PecasStr := DBGridMain.DataSource.DataSet.FieldByName('peca_nome').AsString;
-  for i := 0 to CmbPeças.Items.Count - 1 do
-    if Integer(CmbPeças.Items.Objects[i]) = Pecas then
-      CmbPeças.ItemIndex := i;
-
   FuncionarioStr := DBGridMain.DataSource.DataSet.FieldByName
     ('funcionario_nome').AsString;
   for i := 0 to CmbProfissional.Items.Count - 1 do
@@ -253,7 +238,6 @@ begin
   end;
   IdServico := DataSourceMain.DataSet.FieldByName('id').AsInteger;
   Categoria := Integer(CmbCategoria.Items.Objects[CmbCategoria.ItemIndex]);
-  Pecas := Integer(CmbPeças.Items.Objects[CmbPeças.ItemIndex]);
   Profissional := Integer(CmbProfissional.Items.Objects
     [CmbProfissional.ItemIndex]);
   Preco := StrToCurr(EdtPreço.Text);
@@ -265,7 +249,6 @@ begin
     Servico.SetCategoria(Categoria);
     Servico.SetPreco(Preco);
     Servico.SetObservacao(EdtObs.Text);
-    Servico.SetPecas(Pecas);
     Servico.SetProfissional(Profissional);
 
     ServicoController := TServicoController.Create;
@@ -348,7 +331,6 @@ begin
   DBGridMain.Columns[2].Title.Caption := 'Categoria';
   DBGridMain.Columns[3].Title.Caption := 'Preço';
   DBGridMain.Columns[4].Title.Caption := 'Observação';
-  DBGridMain.Columns[5].Title.Caption := 'Peças';
   DBGridMain.Columns[6].Title.Caption := 'Funcionario';
   DBGridMain.Columns[7].Title.Caption := 'Ativo';
 end;
@@ -360,7 +342,6 @@ begin
   DBGridMain.Columns[2].Title.Caption := 'Categoria';
   DBGridMain.Columns[3].Title.Caption := 'Preço';
   DBGridMain.Columns[4].Title.Caption := 'Observação';
-  DBGridMain.Columns[5].Title.Caption := 'Peças';
   DBGridMain.Columns[6].Title.Caption := 'Funcionario';
   DBGridMain.Columns[7].Title.Caption := 'Ativo';
 end;
@@ -393,7 +374,7 @@ begin
   try
     DataSourceMain.DataSet := ServicoController.ListarServicos;
     DBGridMain.DataSource := DataSourceMain;
-    for var i := 0 to 7 do begin
+    for var i := 0 to 6 do begin
       DBGridMain.Columns[i].Title.Alignment := taCenter;
       DBGridMain.Columns[i].Alignment := taCenter;
       DBGridMain.Columns[i].Width := 140;
@@ -442,13 +423,12 @@ begin
   ServicoController := TServicoController.Create;
   try
     Categoria := Integer(CmbCategoria.Items.Objects[CmbCategoria.ItemIndex]);
-    Pecas := Integer(CmbPeças.Items.Objects[CmbPeças.ItemIndex]);
     Profissional := Integer(CmbProfissional.Items.Objects
       [CmbProfissional.ItemIndex]);
     Preco := StrToCurr(StringReplace(EdtPreço.Text, ',', '.', [rfReplaceAll]));
 
     if ServicoController.CadastrarServico(EdtNome.Text, Categoria, Preco,
-      EdtObs.Text, Pecas, Profissional) then begin
+      EdtObs.Text, Profissional) then begin
       ShowMessage('Serviço cadastrado com sucesso!');
     end;
   finally
@@ -478,26 +458,6 @@ begin
   end;
 end;
 
-procedure TFormCadastroServiços.CarregarPecas;
-var
-  ServicoController: TServicoController;
-  ListaPecas: TStringList;
-  i: Integer;
-begin
-  CmbPeças.Items.Clear;
-  ServicoController := TServicoController.Create;
-  try
-    ListaPecas := ServicoController.CarregarPecas;
-    try
-      for i := 0 to ListaPecas.Count - 1 do
-        CmbPeças.Items.AddObject(ListaPecas[i], ListaPecas.Objects[i]);
-    finally
-      ListaPecas.Free;
-    end;
-  finally
-    ServicoController.Free;
-  end;
-end;
 
 procedure TFormCadastroServiços.CarregarProfissionais;
 var
