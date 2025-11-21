@@ -1000,8 +1000,6 @@
               Align = alLeft
               BevelOuter = bvNone
               TabOrder = 0
-              ExplicitLeft = 3
-              ExplicitTop = -7
               object Label1: TLabel
                 Left = 20
                 Top = 8
@@ -1138,7 +1136,6 @@
                 Font.Style = []
                 ParentFont = False
                 TabOrder = 2
-                ExplicitLeft = 533
               end
               object EdtPreço: TEdit
                 AlignWithMargins = True
@@ -1193,7 +1190,6 @@
                 Align = alLeft
                 BevelOuter = bvNone
                 TabOrder = 5
-                ExplicitLeft = 794
                 object ShpButton: TShape
                   AlignWithMargins = True
                   Left = 10
@@ -1528,7 +1524,7 @@
                 TitleFont.Color = clWindowText
                 TitleFont.Height = -19
                 TitleFont.Name = 'Segoe UI'
-                TitleFont.Style = []
+                TitleFont.Style = [fsBold]
               end
             end
           end

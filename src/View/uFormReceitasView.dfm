@@ -1484,7 +1484,7 @@ object FormReceitas: TFormReceitas
             TitleFont.Color = clWindowText
             TitleFont.Height = -19
             TitleFont.Name = 'Segoe UI'
-            TitleFont.Style = []
+            TitleFont.Style = [fsBold]
           end
           object PnlRestaurar: TPanel
             AlignWithMargins = True
@@ -1744,7 +1744,7 @@ object FormReceitas: TFormReceitas
                   TitleFont.Color = clWindowText
                   TitleFont.Height = -19
                   TitleFont.Name = 'Segoe UI'
-                  TitleFont.Style = []
+                  TitleFont.Style = [fsBold]
                 end
               end
             end
@@ -1778,7 +1778,7 @@ object FormReceitas: TFormReceitas
               Font.Name = 'Segoe UI'
               Font.Style = [fsBold]
               ParentFont = False
-              ExplicitWidth = 161
+              ExplicitLeft = 0
             end
             object ImgFecharDetalhamento: TImage
               Left = 708

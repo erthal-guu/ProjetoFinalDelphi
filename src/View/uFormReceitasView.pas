@@ -232,61 +232,61 @@ begin
 
 
       DBGridMain.Columns[2].Title.Caption := 'Cliente ID';
-      DBGridMain.Columns[2].Width := 80;
+      DBGridMain.Columns[2].Width := 100;
       DBGridMain.Columns[2].Title.Alignment := taCenter;
       DBGridMain.Columns[2].Alignment := taCenter;
       DBGridMain.Columns[2].FieldName := 'id_cliente';
 
 
       DBGridMain.Columns[3].Title.Caption := 'Cliente';
-      DBGridMain.Columns[3].Width := 200;
+      DBGridMain.Columns[3].Width := 250;
       DBGridMain.Columns[3].Title.Alignment := taCenter;
       DBGridMain.Columns[3].Alignment := taCenter;
       DBGridMain.Columns[3].FieldName := 'cliente_nome';
 
 
       DBGridMain.Columns[4].Title.Caption := 'Valor Total';
-      DBGridMain.Columns[4].Width := 120;
+      DBGridMain.Columns[4].Width := 160;
       DBGridMain.Columns[4].Title.Alignment := taCenter;
       DBGridMain.Columns[4].Alignment := taCenter;
 
       DBGridMain.Columns[5].Title.Caption := 'Valor Recebido';
-      DBGridMain.Columns[5].Width := 120;
+      DBGridMain.Columns[5].Width := 160;
       DBGridMain.Columns[5].Title.Alignment := taCenter;
       DBGridMain.Columns[5].Alignment := taCenter;
 
 
       DBGridMain.Columns[6].Title.Caption := 'Status';
-      DBGridMain.Columns[6].Width := 100;
+      DBGridMain.Columns[6].Width := 140;
       DBGridMain.Columns[6].Title.Alignment := taCenter;
       DBGridMain.Columns[6].Alignment := taCenter;
 
 
       DBGridMain.Columns[7].Title.Caption := 'Data Emissão';
-      DBGridMain.Columns[7].Width := 140;
+      DBGridMain.Columns[7].Width := 160;
       DBGridMain.Columns[7].Title.Alignment := taCenter;
       DBGridMain.Columns[7].Alignment := taCenter;
 
 
       DBGridMain.Columns[8].Title.Caption := 'Vencimento';
-      DBGridMain.Columns[8].Width := 110;
+      DBGridMain.Columns[8].Width := 130;
       DBGridMain.Columns[8].Title.Alignment := taCenter;
       DBGridMain.Columns[8].Alignment := taCenter;
 
 
       DBGridMain.Columns[9].Title.Caption := 'Recebimento';
-      DBGridMain.Columns[9].Width := 110;
+      DBGridMain.Columns[9].Width := 130;
       DBGridMain.Columns[9].Title.Alignment := taCenter;
       DBGridMain.Columns[9].Alignment := taCenter;
 
       DBGridMain.Columns[10].Title.Caption := 'Forma Pagamento';
-      DBGridMain.Columns[10].Width := 150;
+      DBGridMain.Columns[10].Width := 170;
       DBGridMain.Columns[10].Title.Alignment := taCenter;
       DBGridMain.Columns[10].Alignment := taCenter;
 
 
       DBGridMain.Columns[11].Title.Caption := 'Observação';
-      DBGridMain.Columns[11].Width := 250;
+      DBGridMain.Columns[11].Width := 260;
       DBGridMain.Columns[11].Title.Alignment := taCenter;
       DBGridMain.Columns[11].Alignment := taCenter;
 
@@ -295,12 +295,6 @@ begin
       DBGridMain.Columns[12].Width := 60;
       DBGridMain.Columns[12].Title.Alignment := taCenter;
       DBGridMain.Columns[12].Alignment := taCenter;
-
-      for var i := 0 to 12 do
-      begin
-        DBGridMain.Columns[i].Title.Font.Size := 12;
-        DBGridMain.Columns[i].Title.Font.Style := [fsBold];
-      end;
     end;
   except
     on E: Exception do
@@ -317,86 +311,86 @@ begin
     DBGridHistorico.Columns[i].Width := 160;
     DBGridHistorico.Columns[i].Title.Font.Size := 15;
   end;
-    if DBGridMain.Columns.Count >= 12 then
+    if DBGridHistorico.Columns.Count >= 12 then
     begin
 
-      DBGridMain.Columns[0].Title.Caption := 'ID';
-      DBGridMain.Columns[0].Width := 50;
-      DBGridMain.Columns[0].Title.Alignment := taCenter;
-      DBGridMain.Columns[0].Alignment := taCenter;
+      DBGridHistorico.Columns[0].Title.Caption := 'ID';
+      DBGridHistorico.Columns[0].Width := 50;
+      DBGridHistorico.Columns[0].Title.Alignment := taCenter;
+      DBGridHistorico.Columns[0].Alignment := taCenter;
 
 
-      DBGridMain.Columns[1].Title.Caption := 'OS';
-      DBGridMain.Columns[1].Width := 60;
-      DBGridMain.Columns[1].Title.Alignment := taCenter;
-      DBGridMain.Columns[1].Alignment := taCenter;
+      DBGridHistorico.Columns[1].Title.Caption := 'OS';
+      DBGridHistorico.Columns[1].Width := 60;
+      DBGridHistorico.Columns[1].Title.Alignment := taCenter;
+      DBGridHistorico.Columns[1].Alignment := taCenter;
 
 
-      DBGridMain.Columns[2].Title.Caption := 'Cliente ID';
-      DBGridMain.Columns[2].Width := 80;
-      DBGridMain.Columns[2].Title.Alignment := taCenter;
-      DBGridMain.Columns[2].Alignment := taCenter;
-      DBGridMain.Columns[2].FieldName := 'id_cliente';
+      DBGridHistorico.Columns[2].Title.Caption := 'Cliente ID';
+      DBGridHistorico.Columns[2].Width := 100;
+      DBGridHistorico.Columns[2].Title.Alignment := taCenter;
+      DBGridHistorico.Columns[2].Alignment := taCenter;
+      DBGridHistorico.Columns[2].FieldName := 'id_cliente';
 
 
-      DBGridMain.Columns[3].Title.Caption := 'Cliente';
-      DBGridMain.Columns[3].Width := 200;
-      DBGridMain.Columns[3].Title.Alignment := taCenter;
-      DBGridMain.Columns[3].Alignment := taCenter;
-      DBGridMain.Columns[3].FieldName := 'cliente_nome';
+      DBGridHistorico.Columns[3].Title.Caption := 'Cliente';
+      DBGridHistorico.Columns[3].Width := 200;
+      DBGridHistorico.Columns[3].Title.Alignment := taCenter;
+      DBGridHistorico.Columns[3].Alignment := taCenter;
+      DBGridHistorico.Columns[3].FieldName := 'cliente_nome';
 
 
-      DBGridMain.Columns[4].Title.Caption := 'Valor Total';
-      DBGridMain.Columns[4].Width := 120;
-      DBGridMain.Columns[4].Title.Alignment := taCenter;
-      DBGridMain.Columns[4].Alignment := taCenter;
+      DBGridHistorico.Columns[4].Title.Caption := 'Valor Total';
+      DBGridHistorico.Columns[4].Width := 120;
+      DBGridHistorico.Columns[4].Title.Alignment := taCenter;
+      DBGridHistorico.Columns[4].Alignment := taCenter;
 
-      DBGridMain.Columns[5].Title.Caption := 'Valor Recebido';
-      DBGridMain.Columns[5].Width := 120;
-      DBGridMain.Columns[5].Title.Alignment := taCenter;
-      DBGridMain.Columns[5].Alignment := taCenter;
-
-
-      DBGridMain.Columns[6].Title.Caption := 'Status';
-      DBGridMain.Columns[6].Width := 100;
-      DBGridMain.Columns[6].Title.Alignment := taCenter;
-      DBGridMain.Columns[6].Alignment := taCenter;
+      DBGridHistorico.Columns[5].Title.Caption := 'Valor Recebido';
+      DBGridHistorico.Columns[5].Width := 120;
+      DBGridHistorico.Columns[5].Title.Alignment := taCenter;
+      DBGridHistorico.Columns[5].Alignment := taCenter;
 
 
-      DBGridMain.Columns[7].Title.Caption := 'Data Emissão';
-      DBGridMain.Columns[7].Width := 140;
-      DBGridMain.Columns[7].Title.Alignment := taCenter;
-      DBGridMain.Columns[7].Alignment := taCenter;
+      DBGridHistorico.Columns[6].Title.Caption := 'Status';
+      DBGridHistorico.Columns[6].Width := 100;
+      DBGridHistorico.Columns[6].Title.Alignment := taCenter;
+      DBGridHistorico.Columns[6].Alignment := taCenter;
 
 
-      DBGridMain.Columns[8].Title.Caption := 'Vencimento';
-      DBGridMain.Columns[8].Width := 110;
-      DBGridMain.Columns[8].Title.Alignment := taCenter;
-      DBGridMain.Columns[8].Alignment := taCenter;
+      DBGridHistorico.Columns[7].Title.Caption := 'Data Emissão';
+      DBGridHistorico.Columns[7].Width := 140;
+      DBGridHistorico.Columns[7].Title.Alignment := taCenter;
+      DBGridHistorico.Columns[7].Alignment := taCenter;
 
 
-      DBGridMain.Columns[9].Title.Caption := 'Recebimento';
-      DBGridMain.Columns[9].Width := 110;
-      DBGridMain.Columns[9].Title.Alignment := taCenter;
-      DBGridMain.Columns[9].Alignment := taCenter;
-      DBGridMain.Columns[9].Visible := False;
-
-      DBGridMain.Columns[10].Title.Caption := 'Forma Pagamento';
-      DBGridMain.Columns[10].Width := 150;
-      DBGridMain.Columns[10].Title.Alignment := taCenter;
-      DBGridMain.Columns[10].Alignment := taCenter;
+      DBGridHistorico.Columns[8].Title.Caption := 'Vencimento';
+      DBGridHistorico.Columns[8].Width := 110;
+      DBGridHistorico.Columns[8].Title.Alignment := taCenter;
+      DBGridHistorico.Columns[8].Alignment := taCenter;
 
 
-      DBGridMain.Columns[11].Title.Caption := 'Observação';
-      DBGridMain.Columns[11].Width := 250;
-      DBGridMain.Columns[11].Title.Alignment := taCenter;
-      DBGridMain.Columns[11].Alignment := taCenter;
+      DBGridHistorico.Columns[9].Title.Caption := 'Recebimento';
+      DBGridHistorico.Columns[9].Width := 110;
+      DBGridHistorico.Columns[9].Title.Alignment := taCenter;
+      DBGridHistorico.Columns[9].Alignment := taCenter;
+      DBGridHistorico.Columns[9].Visible := False;
+
+      DBGridHistorico.Columns[10].Title.Caption := 'Forma Pagamento';
+      DBGridHistorico.Columns[10].Width := 150;
+      DBGridHistorico.Columns[10].Title.Alignment := taCenter;
+      DBGridHistorico.Columns[10].Alignment := taCenter;
 
 
-      DBGridMain.Columns[12].Title.Caption := 'Ativo';
-      DBGridMain.Columns[12].Width := 60;
-      DBGridMain.Columns[12].Title.Alignment := taCenter;
-      DBGridMain.Columns[12].Alignment := taCenter;
+      DBGridHistorico.Columns[11].Title.Caption := 'Observação';
+      DBGridHistorico.Columns[11].Width := 250;
+      DBGridHistorico.Columns[11].Title.Alignment := taCenter;
+      DBGridHistorico.Columns[11].Alignment := taCenter;
+
+
+      DBGridHistorico.Columns[12].Title.Caption := 'Ativo';
+      DBGridHistorico.Columns[12].Width := 60;
+      DBGridHistorico.Columns[12].Title.Alignment := taCenter;
+      DBGridHistorico.Columns[12].Alignment := taCenter;
       end;
 end;
 
@@ -432,14 +426,93 @@ begin
   Controller := TReceitaController.Create;
   DataSourceRestaurar.DataSet := Controller.ListarReceitasRestaurar;
   DBGridRestaurar.DataSource := DataSourceRestaurar;
+  if DBGridRestaurar .Columns.Count >= 12 then
+    begin
+      DBGridRestaurar.Columns[0].Title.Caption := 'ID';
+      DBGridRestaurar.Columns[0].Width := 50;
+      DBGridRestaurar.Columns[0].Title.Alignment := taCenter;
+      DBGridRestaurar.Columns[0].Alignment := taCenter;
+
+
+      DBGridRestaurar.Columns[1].Title.Caption := 'OS';
+      DBGridRestaurar.Columns[1].Width := 60;
+      DBGridRestaurar.Columns[1].Title.Alignment := taCenter;
+      DBGridRestaurar.Columns[1].Alignment := taCenter;
+
+
+      DBGridRestaurar.Columns[2].Title.Caption := 'Cliente ID';
+      DBGridRestaurar.Columns[2].Width := 100;
+      DBGridRestaurar.Columns[2].Title.Alignment := taCenter;
+      DBGridRestaurar.Columns[2].Alignment := taCenter;
+      DBGridRestaurar.Columns[2].FieldName := 'id_cliente';
+
+
+      DBGridRestaurar.Columns[3].Title.Caption := 'Cliente';
+      DBGridRestaurar.Columns[3].Width := 250;
+      DBGridRestaurar.Columns[3].Title.Alignment := taCenter;
+      DBGridRestaurar.Columns[3].Alignment := taCenter;
+      DBGridRestaurar.Columns[3].FieldName := 'cliente_nome';
+
+
+      DBGridRestaurar.Columns[4].Title.Caption := 'Valor Total';
+      DBGridRestaurar.Columns[4].Width := 160;
+      DBGridRestaurar.Columns[4].Title.Alignment := taCenter;
+      DBGridRestaurar.Columns[4].Alignment := taCenter;
+
+      DBGridMain.Columns[5].Title.Caption := 'Valor Recebido';
+      DBGridMain.Columns[5].Width := 160;
+      DBGridMain.Columns[5].Title.Alignment := taCenter;
+      DBGridMain.Columns[5].Alignment := taCenter;
+
+
+      DBGridRestaurar.Columns[6].Title.Caption := 'Status';
+      DBGridRestaurar.Columns[6].Width := 140;
+      DBGridRestaurar.Columns[6].Title.Alignment := taCenter;
+      DBGridRestaurar.Columns[6].Alignment := taCenter;
+
+
+      DBGridRestaurar.Columns[7].Title.Caption := 'Data Emissão';
+      DBGridRestaurar.Columns[7].Width := 160;
+      DBGridRestaurar.Columns[7].Title.Alignment := taCenter;
+      DBGridRestaurar.Columns[7].Alignment := taCenter;
+
+
+      DBGridRestaurar.Columns[8].Title.Caption := 'Vencimento';
+      DBGridRestaurar.Columns[8].Width := 130;
+      DBGridRestaurar.Columns[8].Title.Alignment := taCenter;
+      DBGridRestaurar.Columns[8].Alignment := taCenter;
+
+
+      DBGridRestaurar.Columns[9].Title.Caption := 'Recebimento';
+      DBGridRestaurar.Columns[9].Width := 130;
+      DBGridRestaurar.Columns[9].Title.Alignment := taCenter;
+      DBGridRestaurar.Columns[9].Alignment := taCenter;
+
+      DBGridRestaurar.Columns[10].Title.Caption := 'Forma Pagamento';
+      DBGridRestaurar.Columns[10].Width := 170;
+      DBGridRestaurar.Columns[10].Title.Alignment := taCenter;
+      DBGridRestaurar.Columns[10].Alignment := taCenter;
+
+
+      DBGridRestaurar.Columns[11].Title.Caption := 'Observação';
+      DBGridRestaurar.Columns[11].Width := 260;
+      DBGridRestaurar.Columns[11].Title.Alignment := taCenter;
+      DBGridRestaurar.Columns[11].Alignment := taCenter;
+
+
+      DBGridRestaurar.Columns[12].Title.Caption := 'Ativo';
+      DBGridRestaurar.Columns[12].Width := 60;
+      DBGridRestaurar.Columns[12].Title.Alignment := taCenter;
+      DBGridRestaurar.Columns[12].Alignment := taCenter;
+    end;
 end;
 
 procedure TFormReceitas.LimparCampos;
 begin
-  EdtReceita.Text  := '';
-  EdtValorTotal.Text := '';
-  EdtValorRecebido.Text := '';
-  EdtObservacao.Text := '';
+  EdtReceita.Clear;
+  EdtValorTotal.Clear;
+  EdtValorRecebido.Clear;
+  EdtObservacao.Clear;
   CmbFormaPagamento.ItemIndex := -1;
   CmbStatusReceita.ItemIndex := -1;
   EdtDataRecebimento.Date := Date;

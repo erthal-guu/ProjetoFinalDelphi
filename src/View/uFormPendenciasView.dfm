@@ -1474,7 +1474,7 @@ object FormPendencias: TFormPendencias
             TitleFont.Color = clWindowText
             TitleFont.Height = -19
             TitleFont.Name = 'Segoe UI'
-            TitleFont.Style = []
+            TitleFont.Style = [fsBold]
           end
           object PnlRestaurar: TPanel
             AlignWithMargins = True
@@ -1621,7 +1621,7 @@ object FormPendencias: TFormPendencias
                   TitleFont.Color = clWindowText
                   TitleFont.Height = -19
                   TitleFont.Name = 'Segoe UI'
-                  TitleFont.Style = []
+                  TitleFont.Style = [fsBold]
                 end
               end
             end
@@ -1730,11 +1730,11 @@ object FormPendencias: TFormPendencias
                   ParentFont = False
                   ReadOnly = True
                   TabOrder = 0
-                  TitleFont.Charset = DEFAULT_CHARSET
+                  TitleFont.Charset = EASTEUROPE_CHARSET
                   TitleFont.Color = clWindowText
                   TitleFont.Height = -19
                   TitleFont.Name = 'Segoe UI'
-                  TitleFont.Style = []
+                  TitleFont.Style = [fsBold]
                 end
               end
             end

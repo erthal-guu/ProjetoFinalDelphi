@@ -1,9 +1,9 @@
-unit ServiçoCadastroRepository;
+ï»¿unit ServiÃ§oCadastroRepository;
 
 interface
 
 uses
-  uDMConexao, FireDAC.Comp.Client, System.SysUtils, uServiço, Data.DB, System.Classes;
+  uDMConexao, FireDAC.Comp.Client, System.SysUtils, uServiÃ§o, Data.DB, System.Classes;
 
 type
   TServicoRepository = class
@@ -67,7 +67,7 @@ begin
     Result := FQuery.RowsAffected > 0;
   except
     on E: Exception do
-      raise Exception.Create('Erro ao editar serviço: ' + E.Message);
+      raise Exception.Create('Erro ao editar serviï¿½o: ' + E.Message);
   end;
 end;
 
@@ -80,7 +80,6 @@ begin
       'SELECT s.id, s.nome, ' +
       'c.nome AS categoria_nome, ' +
       's.preco, s.observacao, ' +
-      'p.nome AS peca_nome, ' +
       'f.nome AS funcionario_nome, ' +
       's.ativo ' +
       'FROM servicos s ' +
@@ -93,7 +92,7 @@ begin
     Result := FQuery;
   except
     on E: Exception do
-      raise Exception.Create('Erro ao listar serviços: ' + E.Message);
+      raise Exception.Create('Erro ao listar serviÃ§os: ' + E.Message);
   end;
 end;
 
@@ -106,7 +105,6 @@ begin
       'SELECT s.id, s.nome, ' +
       'c.nome AS categoria_nome, ' +
       's.preco, s.observacao, ' +
-      'p.nome AS peca_nome, ' +
       'f.nome AS funcionario_nome, ' +
       's.ativo ' +
       'FROM servicos s ' +
@@ -119,7 +117,7 @@ begin
     Result := FQuery;
   except
     on E: Exception do
-      raise Exception.Create('Erro ao listar serviços para restauração: ' + E.Message);
+      raise Exception.Create('Erro ao listar serviÃ§os para restauraÃ§Ã£o: ' + E.Message);
   end;
 end;
 
@@ -149,7 +147,7 @@ begin
     FQuery.SQL.Clear;
     FQuery.SQL.Add(
       'SELECT s.id, s.nome, c.nome AS categoria_nome, s.preco, s.observacao, ' +
-      'p.nome AS peca_nome, f.nome AS funcionario_nome, s.ativo ' +
+      'f.nome AS funcionario_nome, s.ativo ' +
       'FROM servicos s ' +
       'INNER JOIN categorias c ON s.categoria = c.id ' +
       'INNER JOIN funcionarios f ON s.funcionario_id = f.id ' +
@@ -162,7 +160,7 @@ begin
     Result := FQuery;
   except
     on E: Exception do
-      raise Exception.Create('Erro ao buscar serviço por filtro: ' + E.Message);
+      raise Exception.Create('Erro ao buscar serviÃ§o por filtro: ' + E.Message);
   end;
 end;
 
@@ -214,7 +212,7 @@ begin
     on E: Exception do
     begin
       Lista.Free;
-      raise Exception.Create('Erro ao listar Peças: ' + E.Message);
+      raise Exception.Create('Erro ao listar PeÃ§as: ' + E.Message);
     end;
   end;
   Qry.Free;

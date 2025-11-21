@@ -86,3 +86,12 @@
 16:57:34 - LOGIN - Sucesso: Usuário ID 1, Nome: Admin, (CPF: 111.111.111-11)
 17:00:27 - PEDIDO - Usuário ID: 0 criou Pedido ID: 38 com 1 itens para Fornecedor ID: 1
 17:00:43 - CONCLUSÃO - ID: 0 concluiu pendência ID: 13 - Cliente: 1 - Descrição: Pedido #38
+20:27:55 - CADASTRO - ID: 0 cadastrou servi�o: Balenceamento (Categoria: 9)
+20:27:59 - DELETAR - ID: 0 deletou servi�o ID: 1
+20:28:02 - RESTAURAR - ID: 0 restaurou servi�o ID: 1
+20:53:00 - CADASTRO - ID: 0 cadastrou o usuário: Admin (CPF: 000.000.000-00)
+20:53:19 - CADASTRO - ID: 0 cadastrou o usuário: Gerente (CPF: 111.111.111-11)
+20:55:28 - CADASTRO - ID: 0 cadastrou o usuário: Adminm (CPF: 000.000.000-00)
+20:55:59 - CADASTRO - ID: 0 cadastrou o usuário: Gerente (CPF: 111.111.111-11)
+20:56:15 - CADASTRO - ID: 0 cadastrou o usuário: Atendente (CPF: 222.222.222-22)
+20:56:37 - CADASTRO - ID: 0 cadastrou o usuário: Mecânico (CPF: 333.333.333-33)

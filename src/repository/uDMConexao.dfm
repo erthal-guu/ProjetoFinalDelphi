@@ -8,13 +8,12 @@ object DataModule1: TDataModule1
       'Password=root'
       'Server=localhost'
       'DriverID=PG')
-    Connected = True
     Left = 384
     Top = 144
   end
   object FDPhysPgDriverLink1: TFDPhysPgDriverLink
     VendorLib = 
-      'C:\Users\Auditorio\Desktop\ProjetoFinalDelphi\src\lib\lib\libpq.' +
+      'C:\Users\vplgu\Desktop\ProjetoFinalDelphi\src\lib\lib\lib\libpq.' +
       'dll'
     Left = 485
     Top = 145
@@ -25,7 +24,6 @@ object DataModule1: TDataModule1
     Top = 144
   end
   object FDQueryValorTotal: TFDQuery
-    Active = True
     Connection = FDConnection1
     SQL.Strings = (
       '  SELECT'
@@ -3693,50 +3691,8 @@ object DataModule1: TDataModule1
     DataSetOptions = []
     Left = 408
     Top = 248
-    FieldDefs = <
-      item
-        FieldName = 'codigo_cliente'
-      end
-      item
-        FieldName = 'nome_cliente'
-        FieldType = fftString
-        Size = 100
-      end
-      item
-        FieldName = 'valor_total_receitas'
-        Size = 64
-      end
-      item
-        FieldName = 'valor_total_recebido'
-        Size = 64
-      end
-      item
-        FieldName = 'quantidade_ordens'
-      end
-      item
-        FieldName = 'ticket_medio_cliente'
-        Size = 64
-      end
-      item
-        FieldName = 'primeira_receita'
-      end
-      item
-        FieldName = 'ultima_receita'
-      end
-      item
-        FieldName = 'receitas_concluidas'
-      end
-      item
-        FieldName = 'valor_pendente'
-        Size = 64
-      end
-      item
-        FieldName = 'valor_total_geral_todas_receitas'
-        Size = 64
-      end>
   end
   object FDQueryValorTotalCanceladas: TFDQuery
-    Active = True
     Connection = FDConnection1
     SQL.Strings = (
       '  SELECT'
@@ -7381,39 +7337,6 @@ object DataModule1: TDataModule1
     DataSetOptions = []
     Left = 408
     Top = 320
-    FieldDefs = <
-      item
-        FieldName = 'cliente'
-        FieldType = fftString
-        Size = 100
-      end
-      item
-        FieldName = 'quantidade_canceladas'
-      end
-      item
-        FieldName = 'total_cancelado'
-        Size = 64
-      end
-      item
-        FieldName = 'total_recebido'
-        Size = 64
-      end
-      item
-        FieldName = 'total_perdido'
-        Size = 64
-      end
-      item
-        FieldName = 'percentual_recuperado'
-        Size = 64
-      end
-      item
-        FieldName = 'percentual_perda'
-        Size = 64
-      end
-      item
-        FieldName = 'valor_total_geral'
-        Size = 64
-      end>
   end
   object FDQueryPendentes: TFDQuery
     AfterOpen = FDQueryPendentesAfterOpen

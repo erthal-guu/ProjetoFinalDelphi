@@ -1,4 +1,4 @@
-unit uFormCadastroServiÁosView;
+Ôªøunit uFormCadastroServi√ßosView;
 
 interface
 
@@ -8,10 +8,10 @@ uses
   Vcl.Controls, Vcl.Forms, Vcl.Dialogs, Vcl.ExtCtrls, Data.DB, Vcl.WinXCtrls,
   Vcl.Grids, Vcl.DBGrids, Vcl.Buttons, Vcl.Mask, Vcl.StdCtrls,
   Vcl.Imaging.pngimage, Vcl.ComCtrls,
-  ServiÁoCadastroController, uServiÁo;
+  Servi√ßoCadastroController, uServi√ßo;
 
 type
-  TFormCadastroServiÁos = class(TForm)
+  TFormCadastroServi√ßos = class(TForm)
     DataSourceRestaurar: TDataSource;
     DataSourceMain: TDataSource;
     PnlMain: TPanel;
@@ -39,7 +39,7 @@ type
     EdtNome: TEdit;
     EdtObs: TEdit;
     CmbProfissional: TComboBox;
-    EdtPreÁo: TEdit;
+    EdtPre√ßo: TEdit;
     CmbCategoria: TComboBox;
     PnlGrid: TPanel;
     DBGridMain: TDBGrid;
@@ -101,47 +101,47 @@ type
   end;
 
 var
-  FormCadastroServiÁos: TFormCadastroServiÁos;
+  FormCadastroServi√ßos: TFormCadastroServi√ßos;
 
 implementation
 
 {$R *.dfm}
 
-procedure TFormCadastroServiÁos.FormCreate(Sender: TObject);
+procedure TFormCadastroServi√ßos.FormCreate(Sender: TObject);
 begin
   EdtObs.Height := 31;
   EdtNome.Height := 31;
-  EdtPreÁo.Height := 31;
+  EdtPre√ßo.Height := 31;
   CmbCategoria.Height := 31;
   CmbProfissional.Height := 31;
   CmbProfissional.Font.Size := 13;
   CmbCategoria.Font.Size := 13;
 end;
 
-procedure TFormCadastroServiÁos.FormShow(Sender: TObject);
+procedure TFormCadastroServi√ßos.FormShow(Sender: TObject);
 begin
   CarregarGrid;
   CarregarCategorias;
   CarregarProfissionais;
 end;
 
-procedure TFormCadastroServiÁos.LimparCampos;
+procedure TFormCadastroServi√ßos.LimparCampos;
 begin
   EdtNome.Clear;
   EdtObs.Clear;
-  EdtPreÁo.Clear;
+  EdtPre√ßo.Clear;
   CmbCategoria.ItemIndex := -1;
   CmbProfissional.ItemIndex := -1;
 end;
 
-function TFormCadastroServiÁos.ValidarCampos: Boolean;
+function TFormCadastroServi√ßos.ValidarCampos: Boolean;
 begin
   if EdtNome.Text = '' then begin
-    ShowMessage('O campo Nome n„o pode ficar vazio');
+    ShowMessage('O campo Nome n√£o pode ficar vazio');
     Exit(False);
   end;
-  if EdtPreÁo.Text = '' then begin
-    ShowMessage('O campo PreÁo n„o pode ficar vazio');
+  if EdtPre√ßo.Text = '' then begin
+    ShowMessage('O campo Pre√ßo n√£o pode ficar vazio');
     Exit(False);
   end;
   if CmbCategoria.ItemIndex = -1 then begin
@@ -155,7 +155,7 @@ begin
   Result := True;
 end;
 
-procedure TFormCadastroServiÁos.BtnAdicionarClick(Sender: TObject);
+procedure TFormCadastroServi√ßos.BtnAdicionarClick(Sender: TObject);
 begin
   PnlBackgrounEdit.Visible := True;
   PnlEdit.Visible := True;
@@ -166,13 +166,13 @@ begin
   PnlButtonAtualizar.Visible := False;
 end;
 
-procedure TFormCadastroServiÁos.BtnPesquisarClick(Sender: TObject);
+procedure TFormCadastroServi√ßos.BtnPesquisarClick(Sender: TObject);
 begin
   EdtPesquisar.Visible := True;
   PnlBackgrounEdit.Visible := False;
 end;
 
-procedure TFormCadastroServiÁos.BtnCancelarClick(Sender: TObject);
+procedure TFormCadastroServi√ßos.BtnCancelarClick(Sender: TObject);
 begin
   PnlBackgrounEdit.Visible := False;
   PnlEdit.Visible := False;
@@ -181,7 +181,7 @@ begin
   CarregarGrid;
 end;
 
-procedure TFormCadastroServiÁos.BtnEditarClick(Sender: TObject);
+procedure TFormCadastroServi√ßos.BtnEditarClick(Sender: TObject);
 begin
   PnlBackgrounEdit.Visible := True;
   PnlEdit.Visible := True;
@@ -191,7 +191,7 @@ begin
   PegarCamposGridServicos;
 end;
 
-procedure TFormCadastroServiÁos.PegarCamposGridServicos;
+procedure TFormCadastroServi√ßos.PegarCamposGridServicos;
 var
   Categoria, Pecas, Funcionario: Integer;
   CategoriaStr, PecasStr, FuncionarioStr: String;
@@ -200,7 +200,7 @@ begin
   EdtNome.Text := DBGridMain.DataSource.DataSet.FieldByName('nome').AsString;
   EdtObs.Text := DBGridMain.DataSource.DataSet.FieldByName
     ('observacao').AsString;
-  EdtPreÁo.Text := CurrToStr(DBGridMain.DataSource.DataSet.FieldByName('preco')
+  EdtPre√ßo.Text := CurrToStr(DBGridMain.DataSource.DataSet.FieldByName('preco')
     .AsCurrency);
 
   CategoriaStr := DBGridMain.DataSource.DataSet.FieldByName
@@ -216,7 +216,7 @@ begin
       CmbProfissional.ItemIndex := i;
 end;
 
-procedure TFormCadastroServiÁos.LblEnviarClick(Sender: TObject);
+procedure TFormCadastroServi√ßos.LblEnviarClick(Sender: TObject);
 begin
   if ValidarCampos then begin
     CadastrarServicos;
@@ -225,7 +225,7 @@ begin
   end;
 end;
 
-procedure TFormCadastroServiÁos.EditarServicos;
+procedure TFormCadastroServi√ßos.EditarServicos;
 var
   ServicoController: TServicoController;
   Servico: TServico;
@@ -233,14 +233,14 @@ var
   Preco: Currency;
 begin
   if DataSourceMain.DataSet.IsEmpty then begin
-    ShowMessage('Nenhum serviÁo selecionado!');
+    ShowMessage('Nenhum servi√ßo selecionado!');
     Exit;
   end;
   IdServico := DataSourceMain.DataSet.FieldByName('id').AsInteger;
   Categoria := Integer(CmbCategoria.Items.Objects[CmbCategoria.ItemIndex]);
   Profissional := Integer(CmbProfissional.Items.Objects
     [CmbProfissional.ItemIndex]);
-  Preco := StrToCurr(EdtPreÁo.Text);
+  Preco := StrToCurr(EdtPre√ßo.Text);
 
   Servico := TServico.Create;
   try
@@ -254,7 +254,7 @@ begin
     ServicoController := TServicoController.Create;
     try
       if ServicoController.EditarServico(Servico) then begin
-        ShowMessage('ServiÁo atualizado com sucesso!');
+        ShowMessage('Servi√ßo atualizado com sucesso!');
         LimparCampos;
         CarregarGrid;
         PnlBackgrounEdit.Visible := False;
@@ -268,7 +268,7 @@ begin
   end;
 end;
 
-procedure TFormCadastroServiÁos.LblAtualizarClick(Sender: TObject);
+procedure TFormCadastroServi√ßos.LblAtualizarClick(Sender: TObject);
 begin
   if ValidarCampos then begin
     EditarServicos;
@@ -276,26 +276,26 @@ begin
   end;
 end;
 
-procedure TFormCadastroServiÁos.BtnExcluirClick(Sender: TObject);
+procedure TFormCadastroServi√ßos.BtnExcluirClick(Sender: TObject);
 begin
   ExcluirServicos;
 end;
 
-procedure TFormCadastroServiÁos.BtnRestaurarClick(Sender: TObject);
+procedure TFormCadastroServi√ßos.BtnRestaurarClick(Sender: TObject);
 begin
   PnlRestaurar.Visible := True;
   CarregarGridRestaurar;
 end;
 
-procedure TFormCadastroServiÁos.BtnRestaurarGridClick(Sender: TObject);
+procedure TFormCadastroServi√ßos.BtnRestaurarGridClick(Sender: TObject);
 begin
   PnlRestaurar.Visible := True;
   CarregarGridRestaurar;
 end;
 
-procedure TFormCadastroServiÁos.BtnSairClick(Sender: TObject);
+procedure TFormCadastroServi√ßos.BtnSairClick(Sender: TObject);
 begin
-  if MessageDlg('Deseja realmente fechar este formul·rio?', mtConfirmation,
+  if MessageDlg('Deseja realmente fechar este formul√°rio?', mtConfirmation,
     [mbYes, mbNo], 0) = mrYes then
     Close;
   PnlBackgrounEdit.Visible := False;
@@ -304,18 +304,18 @@ begin
   EdtPesquisar.Visible := False;
 end;
 
-procedure TFormCadastroServiÁos.RestaurarServicos;
+procedure TFormCadastroServi√ßos.RestaurarServicos;
 var
   ServicoController: TServicoController;
   IdServico: Integer;
 begin
   if DataSourceRestaurar.DataSet.IsEmpty then begin
-    ShowMessage('Nenhum serviÁo selecionado!');
+    ShowMessage('Nenhum servi√ßo selecionado!');
     Exit;
   end;
 
   IdServico := DataSourceRestaurar.DataSet.FieldByName('id').AsInteger;
-  if MessageDlg('Deseja realmente restaurar este serviÁo?', mtConfirmation,
+  if MessageDlg('Deseja realmente restaurar este servi√ßo?', mtConfirmation,
     [mbYes, mbNo], 0) = mrYes then begin
     ServicoController := TServicoController.Create;
     ServicoController.RestaurarServico(IdServico);
@@ -324,49 +324,49 @@ begin
   end;
 end;
 
-procedure TFormCadastroServiÁos.TituloGridMain;
+procedure TFormCadastroServi√ßos.TituloGridMain;
 begin
   DBGridMain.Columns[0].Title.Caption := 'Id';
   DBGridMain.Columns[1].Title.Caption := 'Nome';
   DBGridMain.Columns[2].Title.Caption := 'Categoria';
-  DBGridMain.Columns[3].Title.Caption := 'PreÁo';
-  DBGridMain.Columns[4].Title.Caption := 'ObservaÁ„o';
-  DBGridMain.Columns[6].Title.Caption := 'Funcionario';
-  DBGridMain.Columns[7].Title.Caption := 'Ativo';
+  DBGridMain.Columns[3].Title.Caption := 'Pre√ßo';
+  DBGridMain.Columns[4].Title.Caption := 'Observa√ß√£o';
+  DBGridMain.Columns[5].Title.Caption := 'Funcionario';
+  DBGridMain.Columns[6].Title.Caption := 'Ativo';
 end;
 
-procedure TFormCadastroServiÁos.TituloGridRestaurar;
+procedure TFormCadastroServi√ßos.TituloGridRestaurar;
 begin
   DBGridMain.Columns[0].Title.Caption := 'Id';
   DBGridMain.Columns[1].Title.Caption := 'Nome';
   DBGridMain.Columns[2].Title.Caption := 'Categoria';
-  DBGridMain.Columns[3].Title.Caption := 'PreÁo';
-  DBGridMain.Columns[4].Title.Caption := 'ObservaÁ„o';
-  DBGridMain.Columns[6].Title.Caption := 'Funcionario';
-  DBGridMain.Columns[7].Title.Caption := 'Ativo';
+  DBGridMain.Columns[3].Title.Caption := 'Pre√ßo';
+  DBGridMain.Columns[4].Title.Caption := 'Observa√ß√£o';
+  DBGridMain.Columns[5].Title.Caption := 'Funcionario';
+  DBGridMain.Columns[6].Title.Caption := 'Ativo';
 end;
 
-procedure TFormCadastroServiÁos.ImgFecharClick(Sender: TObject);
+procedure TFormCadastroServi√ßos.ImgFecharClick(Sender: TObject);
 begin
   PnlRestaurar.Visible := False;
   CarregarGrid;
 end;
 
-procedure TFormCadastroServiÁos.ImgFecharFormClick(Sender: TObject);
+procedure TFormCadastroServi√ßos.ImgFecharFormClick(Sender: TObject);
 begin
-  if MessageDlg('Deseja realmente fechar este formul·rio?', mtConfirmation,
+  if MessageDlg('Deseja realmente fechar este formul√ßrio?', mtConfirmation,
     [mbYes, mbNo], 0) = mrYes then begin
     Close;
   end;
 end;
 
-procedure TFormCadastroServiÁos.ImgRestaurarClick(Sender: TObject);
+procedure TFormCadastroServi√ßos.ImgRestaurarClick(Sender: TObject);
 begin
   RestaurarServicos;
   CarregarGridRestaurar;
 end;
 
-procedure TFormCadastroServiÁos.CarregarGrid;
+procedure TFormCadastroServi√ßos.CarregarGrid;
 var
   ServicoController: TServicoController;
 begin
@@ -389,7 +389,7 @@ begin
   end;
 end;
 
-procedure TFormCadastroServiÁos.CarregarGridRestaurar;
+procedure TFormCadastroServi√ßos.CarregarGridRestaurar;
 var
   ServicoController: TServicoController;
 begin
@@ -414,7 +414,7 @@ begin
   end;
 end;
 
-procedure TFormCadastroServiÁos.CadastrarServicos;
+procedure TFormCadastroServi√ßos.CadastrarServicos;
 var
   ServicoController: TServicoController;
   Categoria, Pecas, Profissional: Integer;
@@ -425,18 +425,18 @@ begin
     Categoria := Integer(CmbCategoria.Items.Objects[CmbCategoria.ItemIndex]);
     Profissional := Integer(CmbProfissional.Items.Objects
       [CmbProfissional.ItemIndex]);
-    Preco := StrToCurr(StringReplace(EdtPreÁo.Text, ',', '.', [rfReplaceAll]));
+    Preco := StrToCurr(StringReplace(EdtPre√ßo.Text, ',', '.', [rfReplaceAll]));
 
     if ServicoController.CadastrarServico(EdtNome.Text, Categoria, Preco,
       EdtObs.Text, Profissional) then begin
-      ShowMessage('ServiÁo cadastrado com sucesso!');
+      ShowMessage('Servi√ßo cadastrado com sucesso!');
     end;
   finally
     ServicoController.Free;
   end;
 end;
 
-procedure TFormCadastroServiÁos.CarregarCategorias;
+procedure TFormCadastroServi√ßos.CarregarCategorias;
 var
   ServicoController: TServicoController;
   ListaCategorias: TStringList;
@@ -459,7 +459,7 @@ begin
 end;
 
 
-procedure TFormCadastroServiÁos.CarregarProfissionais;
+procedure TFormCadastroServi√ßos.CarregarProfissionais;
 var
   ServicoController: TServicoController;
   ListaProfissionais: TStringList;
@@ -481,7 +481,7 @@ begin
   end;
 end;
 
-procedure TFormCadastroServiÁos.EdtPesquisarChange(Sender: TObject);
+procedure TFormCadastroServi√ßos.EdtPesquisarChange(Sender: TObject);
 var
   ServicoController: TServicoController;
 begin
@@ -507,17 +507,17 @@ begin
   end;
 end;
 
-procedure TFormCadastroServiÁos.ExcluirServicos;
+procedure TFormCadastroServi√ßos.ExcluirServicos;
 var
   ServicoController: TServicoController;
   IdServico: Integer;
 begin
   if DataSourceMain.DataSet.IsEmpty then begin
-    ShowMessage('Nenhum serviÁo selecionado!');
+    ShowMessage('Nenhum servi√ßo selecionado!');
     Exit;
   end;
   IdServico := DataSourceMain.DataSet.FieldByName('id').AsInteger;
-  if MessageDlg('Deseja realmente excluir este serviÁo?', mtConfirmation,
+  if MessageDlg('Deseja realmente excluir este servi√ßo?', mtConfirmation,
     [mbYes, mbNo], 0) = mrYes then begin
     ServicoController := TServicoController.Create;
     ServicoController.DeletarServico(IdServico);
