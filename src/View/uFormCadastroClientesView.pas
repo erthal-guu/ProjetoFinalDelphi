@@ -212,7 +212,7 @@ begin
       DBGridMain.Columns[6].Alignment := taCenter;
 
       DBGridMain.Columns[0].Width := 50;
-      DBGridMain.Columns[1].Width := 100;
+      DBGridMain.Columns[1].Width := 160;
       DBGridMain.Columns[2].Width := 160;
       DBGridMain.Columns[3].Width := 160;
       DBGridMain.Columns[4].Width := 160;

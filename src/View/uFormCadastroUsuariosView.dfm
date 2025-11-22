@@ -861,7 +861,6 @@ object FormCadastroUsuarios: TFormCadastroUsuarios
           Color = clBackground
           ParentBackground = False
           TabOrder = 0
-          ExplicitHeight = 453
           object PnlButton: TPanel
             AlignWithMargins = True
             Left = 1
@@ -877,7 +876,6 @@ object FormCadastroUsuarios: TFormCadastroUsuarios
             Color = 15790320
             ParentBackground = False
             TabOrder = 0
-            ExplicitHeight = 451
             object BtnExcluir: TSpeedButton
               AlignWithMargins = True
               Left = 5

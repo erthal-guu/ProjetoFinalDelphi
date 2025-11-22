@@ -227,6 +227,8 @@ begin
   EdtPecas.Text := IDsStr;
   PnlPecasUsadas.Visible := false;
   RecalcularPreco;
+  CheckListBoxPecas.Clear;
+  CarregarPecasCheckList;
 end;
 
 procedure TFormCadastroOrdensServiço.BtnFecharModalClick(Sender: TObject);
@@ -848,6 +850,7 @@ end;
 procedure TFormCadastroOrdensServiço.ImgFecharPecasClick(Sender: TObject);
 begin
   PnlPecasUsadas.Visible := false;
+  CheckListBoxPecas.ClearSelection;
 end;
 
 procedure TFormCadastroOrdensServiço.ImgFecharRestaurarClick(Sender: TObject);

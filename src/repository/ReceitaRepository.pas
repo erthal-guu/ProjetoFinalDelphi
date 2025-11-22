@@ -38,7 +38,7 @@ begin
     FQuery.SQL.Clear;
     FQuery.SQL.Add('UPDATE receitas');
     FQuery.SQL.Add('SET valor_recebido = :valor_recebido,');
-    FQuery.SQL.Add('    data_recebimento = :data_recebimentos,');
+    FQuery.SQL.Add('    data_recebimento = :data_recebimento,');
     FQuery.SQL.Add('    forma_pagamento = :forma_pagamento,');
     if aReceita.getValorRecebido >= aReceita.getValorTotal then begin
       FQuery.SQL.Add('    status = ''CONCLUIDA'',')
@@ -49,7 +49,7 @@ begin
     FQuery.SQL.Add('WHERE id = :id');
 
     FQuery.ParamByName('valor_recebido').AsCurrency := aReceita.getValorRecebido;
-    FQuery.ParamByName('data_recebimento').AsDateTime := aReceita.getDataRecebimento;
+    FQuery.ParamByName('data_recebimento').AsDateTime := now;
     FQuery.ParamByName('forma_pagamento').AsString := aReceita.getFormaPagamento;
     FQuery.ParamByName('observacao').AsString := aReceita.getObservacao;
     FQuery.ParamByName('id').AsInteger := aReceita.getIdReceita;
