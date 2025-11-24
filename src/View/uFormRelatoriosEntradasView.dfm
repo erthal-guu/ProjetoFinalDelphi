@@ -2662,8 +2662,8 @@ object FormEntradas: TFormEntradas
               ParentColor = False
               ParentFont = False
               OnClick = LblAdicionarClick
-              ExplicitWidth = 101
-              ExplicitHeight = 20
+              ExplicitLeft = 9
+              ExplicitTop = 9
             end
             object Image6: TImage
               Left = 9

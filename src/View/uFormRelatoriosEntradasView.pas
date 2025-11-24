@@ -108,9 +108,6 @@ end;
 
 procedure TFormEntradas.LblAdicionarClick(Sender: TObject);
 begin
-    if MessageDlg('Deseja realmente Gerar um Relatório?', mtConfirmation,
-  [mbYes, mbNo], 0) = mrYes then
-  begin
   if CmbRelatorios.ItemIndex = 0 then begin
    RelatorioController.GerarRelatorioValorTotalEntrada(DateTimeInicio.Date,DateTimeFinal.Date);
   end else if CmbRelatorios.ItemIndex = 1 then begin
@@ -119,7 +116,6 @@ begin
   RelatorioController.GerarRelatorioReceitasPendentes(DateTimeInicio.Date,DateTimeFinal.Date);
   end;
   end;
-end;
 
 procedure TFormEntradas.LimparFiltros;
 begin

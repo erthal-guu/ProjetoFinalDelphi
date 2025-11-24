@@ -127,15 +127,11 @@ end;
 
 procedure TFormSaidas.LblAdicionarClick(Sender: TObject);
 begin
-    if MessageDlg('Deseja realmente Gerar um Relatório?', mtConfirmation,
-  [mbYes, mbNo], 0) = mrYes then
-  begin
   if CmbRelatorios.ItemIndex = 0 then begin
    RelatorioController.GerarRelatorioPendenciasConcluidas(DateTimeInicio.Date,DateTimeFinal.Date);
   end else if CmbRelatorios.ItemIndex = 1 then begin
   RelatorioController.GerarRelatorioPendenciasPendentes(DateTimeInicio.Date,DateTimeFinal.Date);
   end;
-end;
 end;
 
 procedure TFormSaidas.LimparFiltros;

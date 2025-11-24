@@ -39,3 +39,6 @@
 16:13:00 - CADASTRO - ID: 0 cadastrou ordem de serviço com cliente ID: 14
 16:13:19 - CADASTRO - ID: 0 cadastrou ordem de serviço com cliente ID: 21
 16:14:28 - CADASTRO - ID: 0 cadastrou ordem de serviço com cliente ID: 7
+16:46:51 - CADASTRO - ID: 0 cadastrou ordem de serviço com cliente ID: 14
+16:47:10 - RECEBER - ID: 0 registrou recebimento da receita ID: 15 - Valor: 0,00
+17:08:10 - LOGIN - Sucesso: Usuário ID 1, Nome: Administrador, (CPF: 000.000.000-00)
