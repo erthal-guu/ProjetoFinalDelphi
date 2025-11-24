@@ -1,0 +1,2 @@
+00:06:15 - DELETAR - ID: 0 deletou a receita ID: 10
+00:06:42 - RECEBER - ID: 0 registrou recebimento da receita ID: 12 - Valor: 5841,05

@@ -65,17 +65,14 @@ end;
 procedure TReceitaService.ReceberReceita(aReceita: TReceita);
 var
   IDUsuarioLogado: Integer;
-  StatusAntigo: String;
 begin
   IDUsuarioLogado := uSession.UsuarioLogadoID;
-
-  StatusAntigo := aReceita.getStatus;
 
   if ValidarReceita(aReceita) then begin
     Repository.ReceberReceita(aReceita);
 
-    SalvarLog(Format('RECEBER - ID: %d registrou recebimento da receita ID: %d - Valor: %.2f - Status Antigo: %s',
-      [IDUsuarioLogado, aReceita.getIdReceita, aReceita.getValorRecebido, StatusAntigo]));
+    SalvarLog(Format('RECEBER - ID: %d registrou recebimento da receita ID: %d - Valor: %.2f',
+      [IDUsuarioLogado, aReceita.getIdReceita, aReceita.getValorRecebido]));
   end else begin
     ShowMessage('Dados Inválido, Tente Novamente');
     SalvarLog(Format('ERRO - ID: %d tentou registrar recebimento inválido da receita ID: %d - Forma: %s - Valor: %.2f',

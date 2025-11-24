@@ -138,19 +138,19 @@ function TFormCadastroServiços.ValidarCampos: Boolean;
 begin
   if EdtNome.Text = '' then begin
     ShowMessage('O campo Nome não pode ficar vazio');
-    Exit(False);
+    Exit;
   end;
   if EdtPreço.Text = '' then begin
     ShowMessage('O campo Preço não pode ficar vazio');
-    Exit(False);
+    Exit;
   end;
   if CmbCategoria.ItemIndex = -1 then begin
     ShowMessage('Selecione uma Categoria');
-    Exit(False);
+    Exit;
   end;
   if CmbProfissional.ItemIndex = -1 then begin
     ShowMessage('Selecione um Profissional');
-    Exit(False);
+    Exit;
   end;
   Result := True;
 end;
@@ -229,7 +229,7 @@ procedure TFormCadastroServiços.EditarServicos;
 var
   ServicoController: TServicoController;
   Servico: TServico;
-  IdServico, Categoria, Pecas, Profissional: Integer;
+  IdServico, IdCategoria, Pecas, IdProfissional: Integer;
   Preco: Currency;
 begin
   if DataSourceMain.DataSet.IsEmpty then begin
@@ -237,24 +237,22 @@ begin
     Exit;
   end;
   IdServico := DataSourceMain.DataSet.FieldByName('id').AsInteger;
-  Categoria := Integer(CmbCategoria.Items.Objects[CmbCategoria.ItemIndex]);
-  Profissional := Integer(CmbProfissional.Items.Objects
-    [CmbProfissional.ItemIndex]);
+  IdCategoria := Integer(CmbCategoria.Items.Objects[CmbCategoria.ItemIndex]);
+  IdProfissional := Integer(CmbProfissional.Items.Objects[CmbProfissional.ItemIndex]);
   Preco := StrToCurr(EdtPreço.Text);
 
   Servico := TServico.Create;
   try
     Servico.SetId(IdServico);
     Servico.SetNome(EdtNome.Text);
-    Servico.SetCategoria(Categoria);
+    Servico.SetCategoria(IdCategoria);
     Servico.SetPreco(Preco);
     Servico.SetObservacao(EdtObs.Text);
-    Servico.SetProfissional(Profissional);
+    Servico.SetProfissional(IdProfissional);
 
     ServicoController := TServicoController.Create;
     try
       if ServicoController.EditarServico(Servico) then begin
-        ShowMessage('Serviço atualizado com sucesso!');
         LimparCampos;
         CarregarGrid;
         PnlBackgrounEdit.Visible := False;

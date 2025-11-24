@@ -75,7 +75,6 @@ type
     PnlButtonAtualizar: TPanel;
     LblAtualizar: TLabel;
     Image2: TImage;
-    procedure DBGridMainCellClick(Column: TColumn);
     procedure BtnDetalharClick(Sender: TObject);
     procedure BtnRestaurarClick(Sender: TObject);
     procedure BtnHistoricoClick(Sender: TObject);
@@ -165,7 +164,7 @@ begin
   end;
   if ValorRecebido > DataSourceMain.DataSet.FieldByName('valor_total').AsCurrency then
   begin
-    ShowMessage(Format('ERRO: O valor recebido (R$ %.2f) não pode ser maior que o valor total (R$ %.2f).',
+    ShowMessage(Format(' O valor recebido (R$ %.2f) não pode ser maior que o valor total (R$ %.2f).',
       [ValorRecebido, DataSourceMain.DataSet.FieldByName('valor_total').AsCurrency]));
     EdtValorRecebido.SetFocus;
     Exit;
@@ -201,11 +200,6 @@ begin
   end;
 end;
 
-procedure TFormReceitas.DBGridMainCellClick(Column: TColumn);
-begin
-  PreencherCamposReceita;
-end;
-
 procedure TFormReceitas.CarregarGrid;
 begin
   if Assigned(Controller) then
@@ -214,8 +208,6 @@ begin
   Controller := TReceitaController.Create;
   DataSourceMain.DataSet := Controller.ListarReceitas;
   DBGridMain.DataSource := DataSourceMain;
-
-  try
     if DBGridMain.Columns.Count >= 12 then
     begin
 
@@ -296,11 +288,8 @@ begin
       DBGridMain.Columns[12].Title.Alignment := taCenter;
       DBGridMain.Columns[12].Alignment := taCenter;
     end;
-  except
-    on E: Exception do
-      ShowMessage('Erro ao carregar grid: ' + E.Message);
   end;
-end;
+
 procedure TFormReceitas.CarregarGridHistorico;
 begin
     DataSourceHistorico.DataSet := Controller.ListarHistoricoReceitas;
@@ -313,7 +302,6 @@ begin
   end;
     if DBGridHistorico.Columns.Count >= 12 then
     begin
-
       DBGridHistorico.Columns[0].Title.Caption := 'ID';
       DBGridHistorico.Columns[0].Width := 50;
       DBGridHistorico.Columns[0].Title.Alignment := taCenter;
@@ -399,8 +387,6 @@ var
   i: Integer;
   IdOrdem: Integer;
 begin
-  if Assigned(DataSourceMain.DataSet) and not DataSourceMain.DataSet.Eof then
-  begin
     EdtValorTotal.Text := CurrToStr(DataSourceMain.DataSet.FieldByName('valor_total').AsCurrency);
     EdtValorRecebido.Text := CurrToStr(DataSourceMain.DataSet.FieldByName('valor_recebido').AsCurrency);
     EdtReceita.Text := intToStr(DataSourceMain.DataSet.FieldByName('id_ordem_servico').AsInteger);
@@ -410,13 +396,11 @@ begin
     except
       EdtDataRecebimento.Date := Date;
     end;
-
     CmbFormaPagamento.Text := DataSourceMain.DataSet.FieldByName('forma_pagamento').AsString;
     EdtObservacao.Text := DataSourceMain.DataSet.FieldByName('observacao').AsString;
     CmbStatusReceita.Text := DataSourceMain.DataSet.FieldByName('status').AsString;
     CmbStatusReceita.Enabled := False;
   end;
-end;
 
 procedure TFormReceitas.CarregarGridRestaurar;
 begin
@@ -555,10 +539,10 @@ begin
     FormatDateTime('dd/mm/yyyy', DataSourceAtivo.DataSet.FieldByName('data_emissao').AsDateTime)]));
   ListBoxDetalhes.Items.Add(Format('Data Vencimento: %s', [
     FormatDateTime('dd/mm/yyyy', DataSourceAtivo.DataSet.FieldByName('data_vencimento').AsDateTime)]));
-  if not DataSourceAtivo.DataSet.FieldByName('data_recebimento').IsNull then
+  if not DataSourceAtivo.DataSet.FieldByName('data_recebimento').IsNull then begin
     ListBoxDetalhes.Items.Add(Format('Data Recebimento: %s', [
       FormatDateTime('dd/mm/yyyy', DataSourceAtivo.DataSet.FieldByName('data_recebimento').AsDateTime)]))
-  else
+   end else begin
     ListBoxDetalhes.Items.Add('Data Recebimento: -');
 
   ListBoxDetalhes.Items.Add('');
@@ -572,6 +556,7 @@ begin
     IfThen(DataSourceAtivo.DataSet.FieldByName('ativo').AsBoolean, 'Sim', 'Não')]));
 
   PnlDetlhamento.Visible := True;
+end;
 end;
 
 procedure TFormReceitas.BtnReceberClick(Sender: TObject);

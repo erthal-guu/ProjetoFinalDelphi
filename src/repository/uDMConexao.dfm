@@ -25,8 +25,11 @@ object DataModule1: TDataModule1
     Top = 144
   end
   object FDQueryValorTotal: TFDQuery
+    Active = True
+    DetailFields = 'receitas_concluidas_detalhes'
     Connection = FDConnection1
     SQL.Strings = (
+      ''
       '  SELECT'
       '      c.id AS codigo_cliente,'
       '      c.nome AS nome_cliente,'
@@ -45,17 +48,36 @@ object DataModule1: TDataModule1
         '      COALESCE(SUM(CASE WHEN r.status != '#39'CONCLUIDA'#39' THEN r.valo' +
         'r_total - COALESCE(r.valor_recebido, 0) ELSE 0 END),'
       '   0) AS valor_pendente,'
+      ''
+      
+        '      -- Corrigido: nunca retorna NULL, sempre string vazia se n' +
+        #227'o houver receitas'
+      '      COALESCE('
+      '          STRING_AGG('
+      '              CONCAT('
+      '                  '#39'OS:'#39', r.id_ordem_servico,'
+      '                  '#39' | Valor:'#39', r.valor_total,'
+      
+        '                  '#39' | Data:'#39', TO_CHAR(r.data_emissao, '#39'DD/MM/YYY' +
+        'Y'#39'),'
+      '                  '#39' | Status:'#39', r.status,'
+      '                  '#39' | Recebido:'#39', COALESCE(r.valor_recebido, 0)'
+      '              ),'
+      '              '#39' || '#39
+      '          ),'
+      '          '#39#39
+      '      ) AS todas_receitas_detalhes,'
+      ''
       
         '      SUM(SUM(r.valor_total)) OVER () AS valor_total_geral_todas' +
         '_receitas'
       '  FROM receitas r'
       '  INNER JOIN ordens_servico os ON r.id_ordem_servico = os.id'
       '  INNER JOIN clientes c ON os.id_cliente = c.id'
-      '  WHERE r.status = '#39'CONCLUIDA'#39
-      '    AND r.ativo = TRUE'
+      '  WHERE r.ativo = TRUE'
       '    AND r.data_emissao BETWEEN '#39'2025-01-01'#39' AND '#39'2025-12-31'#39
       '  GROUP BY c.id, c.nome'
-      '  ORDER BY valor_total_receitas DESC')
+      '  ORDER BY valor_total_receitas DESC;')
     Left = 248
     Top = 248
     object FDQueryValorTotalcodigo_cliente: TIntegerField
@@ -146,6 +168,7 @@ object DataModule1: TDataModule1
     ReportOptions.LastChange = 45978.876452500000000000
     ScriptLanguage = 'PascalScript'
     ScriptText.Strings = (
+      ''
       'begin'
       ''
       'end.')
@@ -156,7 +179,15 @@ object DataModule1: TDataModule1
         DataSet = frxDBDataset1
         DataSetName = 'frxDBDataset1'
       end>
-    Variables = <>
+    Variables = <
+      item
+        Name = ' Myvars'
+        Value = Null
+      end
+      item
+        Name = 'ShowChild'
+        Value = '<ShowChild>False'
+      end>
     Style = <
       item
         Name = 'Title'
@@ -327,7 +358,7 @@ object DataModule1: TDataModule1
         FillGap.Bottom = 0
         FillGap.Right = 0
         Frame.Typ = []
-        Height = 18.897650000000000000
+        Height = 22.677180000000000000
         Top = 317.480520000000000000
         Width = 718.110700000000000000
         DataSet = frxDBDataset1
@@ -336,14 +367,15 @@ object DataModule1: TDataModule1
         object MemofrxDBDataset2quantidade_canceladas: TfrxMemoView
           IndexTag = 1
           AllowVectorExport = True
-          Left = 173.858380000000000000
+          Left = 169.078850000000000000
+          Top = 0.779530000000000000
           Width = 75.590600000000000000
           Height = 18.897650000000000000
           ContentScaleOptions.Constraints.MaxIterationValue = 0
           ContentScaleOptions.Constraints.MinIterationValue = 0
-          DataField = 'quantidade_canceladas'
-          DataSet = frxDBDataset2
-          DataSetName = 'frxDBDataset2'
+          DataField = 'codigo_cliente'
+          DataSet = frxDBDataset1
+          DataSetName = 'frxDBDataset1'
           Font.Charset = DEFAULT_CHARSET
           Font.Color = clDodgerblue
           Font.Height = -13
@@ -352,7 +384,7 @@ object DataModule1: TDataModule1
           Frame.Typ = []
           Fill.BackColor = clWhite
           Memo.UTF8W = (
-            '[frxDBDataset2."quantidade_canceladas"]')
+            '[frxDBDataset1."codigo_cliente"]')
           ParentFont = False
         end
         object Memo20: TfrxMemoView
@@ -404,12 +436,12 @@ object DataModule1: TDataModule1
         object Memo22: TfrxMemoView
           IndexTag = 1
           AllowVectorExport = True
-          Left = 634.961040000000000000
-          Width = 75.590600000000000000
+          Left = 619.842920000000000000
+          Width = 102.047310000000000000
           Height = 18.897650000000000000
+          OnPreviewClick = 'Memo22OnPreviewClick'
           ContentScaleOptions.Constraints.MaxIterationValue = 0
           ContentScaleOptions.Constraints.MinIterationValue = 0
-          DataField = 'receitas_concluidas'
           DataSet = frxDBDataset1
           DataSetName = 'frxDBDataset1'
           Font.Charset = DEFAULT_CHARSET
@@ -432,7 +464,7 @@ object DataModule1: TDataModule1
         FillGap.Right = 0
         Frame.Typ = []
         Height = 7.559060000000000000
-        Top = 359.055350000000000000
+        Top = 362.834880000000000000
         Width = 718.110700000000000000
         KeepWithData = False
       end
@@ -444,7 +476,7 @@ object DataModule1: TDataModule1
         FillGap.Right = 0
         Frame.Typ = []
         Height = 23.677180000000000000
-        Top = 427.086890000000000000
+        Top = 430.866420000000000000
         Width = 718.110700000000000000
         object Memo12: TfrxMemoView
           Align = baWidth
@@ -641,6 +673,7 @@ object DataModule1: TDataModule1
         Top = 491.338900000000000000
         Width = 910.866745990000000000
         Height = 340.157694040000000000
+        OnPreviewClick = 'Picture2OnPreviewClick'
         Frame.Typ = []
         Picture.Data = {
           0954506E67496D61676589504E470D0A1A0A0000000D49484452000002680000
@@ -3692,8 +3725,50 @@ object DataModule1: TDataModule1
     DataSetOptions = []
     Left = 408
     Top = 248
+    FieldDefs = <
+      item
+        FieldName = 'codigo_cliente'
+      end
+      item
+        FieldName = 'nome_cliente'
+        FieldType = fftString
+        Size = 100
+      end
+      item
+        FieldName = 'valor_total_receitas'
+        Size = 64
+      end
+      item
+        FieldName = 'valor_total_recebido'
+        Size = 64
+      end
+      item
+        FieldName = 'quantidade_ordens'
+      end
+      item
+        FieldName = 'ticket_medio_cliente'
+        Size = 64
+      end
+      item
+        FieldName = 'primeira_receita'
+      end
+      item
+        FieldName = 'ultima_receita'
+      end
+      item
+        FieldName = 'receitas_concluidas'
+      end
+      item
+        FieldName = 'valor_pendente'
+        Size = 64
+      end
+      item
+        FieldName = 'valor_total_geral_todas_receitas'
+        Size = 64
+      end>
   end
   object FDQueryValorTotalCanceladas: TFDQuery
+    Active = True
     Connection = FDConnection1
     SQL.Strings = (
       '  SELECT'
@@ -7338,6 +7413,39 @@ object DataModule1: TDataModule1
     DataSetOptions = []
     Left = 408
     Top = 320
+    FieldDefs = <
+      item
+        FieldName = 'cliente'
+        FieldType = fftString
+        Size = 100
+      end
+      item
+        FieldName = 'quantidade_canceladas'
+      end
+      item
+        FieldName = 'total_cancelado'
+        Size = 64
+      end
+      item
+        FieldName = 'total_recebido'
+        Size = 64
+      end
+      item
+        FieldName = 'total_perdido'
+        Size = 64
+      end
+      item
+        FieldName = 'percentual_recuperado'
+        Size = 64
+      end
+      item
+        FieldName = 'percentual_perda'
+        Size = 64
+      end
+      item
+        FieldName = 'valor_total_geral'
+        Size = 64
+      end>
   end
   object FDQueryPendentes: TFDQuery
     AfterOpen = FDQueryPendentesAfterOpen

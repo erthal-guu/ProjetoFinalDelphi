@@ -3143,7 +3143,7 @@
           end
           object Image2: TImage
             AlignWithMargins = True
-            Left = -12
+            Left = 3
             Top = -33
             Width = 86
             Height = 105

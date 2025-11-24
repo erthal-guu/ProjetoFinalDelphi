@@ -1724,6 +1724,7 @@
                 Margins.Right = 5
                 Margins.Bottom = 68
                 AutoSize = False
+                Enabled = False
                 Font.Charset = DEFAULT_CHARSET
                 Font.Color = clWindowText
                 Font.Height = -15

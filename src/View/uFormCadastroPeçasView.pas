@@ -142,7 +142,7 @@ begin
   DBGridMain.DataSource := DataSourceMain;
   try
     if DBGridMain.Columns.Count >= 8 then begin
-      DBGridMain.Columns[0].Title.Caption := 'Id';
+      DBGridMain.Columns[0].Title.Caption := 'ID';
       DBGridMain.Columns[1].Title.Caption := 'Nome';
       DBGridMain.Columns[2].Title.Caption := 'Descrição';
       DBGridMain.Columns[3].Title.Caption := 'Código Interno';
@@ -171,13 +171,23 @@ begin
   DataSourceRestaurar.DataSet := PecaService.ListarPecasRestaurar;
   DBGridRestaurar.DataSource := DataSourceRestaurar;
   try
-    for var i := 0 to 7 do begin
-      DBGridRestaurar.Columns[i].Title.Alignment := taCenter;
-      DBGridRestaurar.Columns[i].Alignment := taCenter;
-      DBGridRestaurar.Columns[i].Width := 140;
-      DBGridRestaurar.Columns[i].Title.Font.Size := 15;
+    if DBGridRestaurar.Columns.Count >= 8 then begin
+      DBGridRestaurar.Columns[0].Title.Caption := 'ID';
+      DBGridRestaurar.Columns[1].Title.Caption := 'Nome';
+      DBGridRestaurar.Columns[2].Title.Caption := 'Descrição';
+      DBGridRestaurar.Columns[3].Title.Caption := 'Código Interno';
+      DBGridRestaurar.Columns[4].Title.Caption := 'Categoria';
+      DBGridRestaurar.Columns[5].Title.Caption := 'Preço';
+      DBGridRestaurar.Columns[6].Title.Caption := 'Unidade';
+      DBGridRestaurar.Columns[7].Title.Caption := 'Modelo';
+      DBGridRestaurar.Columns[8].Title.Caption := 'Status';
+      for var i := 0 to 8 do begin
+        DBGridRestaurar.Columns[i].Title.Alignment := taCenter;
+        DBGridRestaurar.Columns[i].Alignment := taCenter;
+        DBGridRestaurar.Columns[i].Width := 140;
+        DBGridRestaurar.Columns[i].Title.Font.Size := 15;
+      end;
     end;
-    DBGridRestaurar.Columns[0].Width := 40;
   finally
     PecaService.Free;
   end;
@@ -250,11 +260,23 @@ begin
   PecaService := TPecaService.Create;
   try
     DataSourceMain.DataSet := PecaService.PesquisarPecas(EdtPesquisar.Text);
-    for var i := 0 to 7 do begin
-      DBGridMain.Columns[i].Width := 140;
-      DBGridMain.Columns[i].Title.Font.Size := 15;
+    if DBGridMain.Columns.Count >= 8 then begin
+      DBGridMain.Columns[0].Title.Caption := 'ID';
+      DBGridMain.Columns[1].Title.Caption := 'Nome';
+      DBGridMain.Columns[2].Title.Caption := 'Descrição';
+      DBGridMain.Columns[3].Title.Caption := 'Código Interno';
+      DBGridMain.Columns[4].Title.Caption := 'Categoria';
+      DBGridMain.Columns[5].Title.Caption := 'Preço';
+      DBGridMain.Columns[6].Title.Caption := 'Unidade';
+      DBGridMain.Columns[7].Title.Caption := 'Modelo';
+      DBGridMain.Columns[8].Title.Caption := 'Status';
+      for var i := 0 to 8 do begin
+        DBGridMain.Columns[i].Title.Alignment := taCenter;
+        DBGridMain.Columns[i].Alignment := taCenter;
+        DBGridMain.Columns[i].Width := 140;
+        DBGridMain.Columns[i].Title.Font.Size := 15;
+      end;
     end;
-    DBGridRestaurar.Columns[0].Width := 40;
   finally
     PecaService.Free;
   end;
@@ -374,10 +396,8 @@ begin
         ShowMessage('Selecione uma categoria válida!');
         Exit;
       end;
-
       Ativo := (CmbStatus.Text = 'Ativo');
       preco := StrToCurr(EdtPreço.Text);
-
       Peca.setIdPeca(IdPeca);
       Peca.setNome(EdtNome.Text);
       Peca.setDescricao(EdtDescrição.Text);
@@ -387,7 +407,6 @@ begin
       Peca.setModelo(CmbModelo.Text);
       Peca.setAtivo(Ativo);
       Peca.setPreço(preco);
-
       PecaController.EditarPeca(Peca);
       CarregarGrid;
       LimparCampos;

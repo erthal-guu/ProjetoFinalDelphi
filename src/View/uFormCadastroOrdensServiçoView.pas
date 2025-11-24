@@ -100,7 +100,6 @@ type
     procedure CarregarPecasCheckList;
     function ObterPecasSelecionadas: TList<Integer>;
     procedure MarcarPecasSelecionadas(PecasIDs: TList<Integer>);
-    procedure BtnSelecionarPecasClick(Sender: TObject);
     procedure BtnConfirmarPecasClick(Sender: TObject);
     procedure BtnFecharModalClick(Sender: TObject);
     procedure ImgFecharPecasClick(Sender: TObject);
@@ -114,7 +113,6 @@ type
     procedure CmbServiçoChange(Sender: TObject);
     procedure CmbFuncionarioChange(Sender: TObject);
     procedure CmbVeiculoChange(Sender: TObject);
-    function ConverterPrecoParaCurrency(const ATexto: String): Currency;
     procedure EdtPrecoClick(Sender: TObject);
     procedure EdtObservacaoClick(Sender: TObject);
     procedure DtimeIncioClick(Sender: TObject);
@@ -199,14 +197,6 @@ begin
   CarregarGridRestaurar;
 end;
 
-procedure TFormCadastroOrdensServiço.BtnSelecionarPecasClick(Sender: TObject);
-begin
-  PnlPecasUsadas.Visible := True;
-  CarregarPecasCheckList;
-  if PecasSelecionadas.Count > 0 then
-    MarcarPecasSelecionadas(PecasSelecionadas);
-end;
-
 procedure TFormCadastroOrdensServiço.BtnConfirmarPecasClick(Sender: TObject);
 var
   i: Integer;
@@ -276,24 +266,13 @@ begin
   if ValidarCampos then begin
     Controller := TOrdemServicoController.Create;
     try
-      try
-        Preco := ConverterPrecoParaCurrency(EdtPreco.Text);
-      except
-        on E: Exception do begin
-          ShowMessage('Erro ao converter o preço: ' + E.Message);
-          Exit;
-        end;
-      end;
-
       IdServico := Integer(CmbServiço.Items.Objects[CmbServiço.ItemIndex]);
-      IdFuncionario := Integer(CmbFuncionario.Items.Objects
-        [CmbFuncionario.ItemIndex]);
+      IdFuncionario := Integer(CmbFuncionario.Items.Objects[CmbFuncionario.ItemIndex]);
       IdVeiculo := Integer(CmbVeiculo.Items.Objects[CmbVeiculo.ItemIndex]);
       IdCliente := Integer(CmbCliente.Items.Objects[CmbCliente.ItemIndex]);
 
       OrdemServico := Controller.CriarObjeto(IdServico, IdFuncionario,
-        IdVeiculo, IdCliente, Preco, True, EdtObservacao.Text, DtimeIncio.Date,
-        DTimeConclusao.Date);
+        IdVeiculo, IdCliente, Preco, True, EdtObservacao.Text, DtimeIncio.Date,DTimeConclusao.Date);
       try
         PecasIDs := ObterPecasSelecionadas;
         try
@@ -456,39 +435,13 @@ begin
       DBGridMain.Columns[i].Width := 140;
       DBGridMain.Columns[i].Title.Font.Size := 15;
     end;
-
     DBGridMain.Columns[0].Width := 50;
     DBGridMain.Columns[1].Width := 200;
     DBGridMain.Columns[6].Width := 200;
   end;
-
   if LowerCase(Trim(uSession.UsuarioLogadoGrupo)) = 'mecânico' then begin
     if DBGridMain.Columns.Count > 5 then
       DBGridMain.Columns[5].Visible := false;
-  end;
-end;
-
-function TFormCadastroOrdensServiço.ConverterPrecoParaCurrency
-  (const ATexto: String): Currency;
-var
-  PrecoLimpo: String;
-  FormatSettings: TFormatSettings;
-begin
-  FormatSettings := TFormatSettings.Create;
-  FormatSettings.DecimalSeparator := '.';
-  FormatSettings.ThousandSeparator := ',';
-
-  PrecoLimpo := StringReplace(ATexto, '.', '', [rfReplaceAll]);
-  PrecoLimpo := Trim(PrecoLimpo);
-  PrecoLimpo := StringReplace(PrecoLimpo, ',', '.', [rfReplaceAll]);
-
-  try
-    Result := StrToFloat(PrecoLimpo, FormatSettings);
-  except
-    on E: Exception do begin
-      raise Exception.Create('Erro ao converter preço: ' + ATexto + ' - ' +
-        E.Message);
-    end;
   end;
 end;
 
@@ -549,14 +502,12 @@ begin
   Result.AddRange(PecasSelecionadas);
 end;
 
-procedure TFormCadastroOrdensServiço.MarcarPecasSelecionadas
-  (PecasIDs: TList<Integer>);
+procedure TFormCadastroOrdensServiço.MarcarPecasSelecionadas(PecasIDs: TList<Integer>);
 var
   i, j: Integer;
 begin
   for i := 0 to CheckListBoxPecas.Items.Count - 1 do
     CheckListBoxPecas.Checked[i] := false;
-
   for i := 0 to PecasIDs.Count - 1 do begin
     for j := 0 to CheckListBoxPecas.Items.Count - 1 do begin
       if Integer(CheckListBoxPecas.Items.Objects[j]) = PecasIDs[i] then begin
@@ -575,6 +526,9 @@ end;
 procedure TFormCadastroOrdensServiço.EdtPecasClick(Sender: TObject);
 begin
   PnlPecasUsadas.Visible := True;
+  CarregarPecasCheckList;
+  if PecasSelecionadas.Count > 0 then
+    MarcarPecasSelecionadas(PecasSelecionadas);
 end;
 
 procedure TFormCadastroOrdensServiço.EdtPesquisarChange(Sender: TObject);
@@ -765,14 +719,6 @@ begin
     try
       if not ValidarCampos then
         Exit;
-      try
-        Preco := ConverterPrecoParaCurrency(EdtPreco.Text);
-      except
-        on E: Exception do begin
-          ShowMessage('Erro ao converter o preço: ' + E.Message);
-          Exit;
-        end;
-      end;
 
       IdServico := Integer(CmbServiço.Items.Objects[CmbServiço.ItemIndex]);
       IdFuncionario := Integer(CmbFuncionario.Items.Objects
@@ -794,11 +740,11 @@ begin
       PecasIDs := ObterPecasSelecionadas;
       try
         Controller.EditarOrdemServico(OrdemServico, PecasIDs);
-        ShowMessage('Ordem de serviço cadastrada com sucesso!');
+        ShowMessage('Ordem de serviço Recasdatrada com sucesso!');
         CarregarGrid;
         LimparCampos;
         Sleep(1000);
-        ShowMessage('Receita Financeira gerada com sucesso !');
+        ShowMessage('Receita Financeira gerada novamente com sucesso !');
         PnlBackgrounEdit.Visible := false;
         PnlEdit.Visible := false;
       finally
