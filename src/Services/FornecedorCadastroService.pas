@@ -62,24 +62,24 @@ function TFornecedorService.CriarObjeto(
   aNome, aRazaoSocial, aCNPJ, aTelefone, aCEP, aRua, aNumero,
   aBairro, aCidade, aEstado: String; aAtivo: Boolean): TFornecedor;
 var
-  FornecedorDTO: TFornecedor;
+  Fornecedor: TFornecedor;
 begin
-  FornecedorDTO := TFornecedor.Create;
+  Fornecedor := TFornecedor.Create;
   try
-    FornecedorDTO.setNome(aNome);
-    FornecedorDTO.setRazaoSocial(aRazaoSocial);
-    FornecedorDTO.setCNPJ(aCNPJ);
-    FornecedorDTO.setTelefone(aTelefone);
-    FornecedorDTO.setCEP(aCEP);
-    FornecedorDTO.setRua(aRua);
-    FornecedorDTO.setNumero(aNumero);
-    FornecedorDTO.setBairro(aBairro);
-    FornecedorDTO.setCidade(aCidade);
-    FornecedorDTO.setEstado(aEstado);
-    FornecedorDTO.setAtivo(aAtivo);
-    Result := FornecedorDTO;
+    Fornecedor.setNome(aNome);
+    Fornecedor.setRazaoSocial(aRazaoSocial);
+    Fornecedor.setCNPJ(aCNPJ);
+    Fornecedor.setTelefone(aTelefone);
+    Fornecedor.setCEP(aCEP);
+    Fornecedor.setRua(aRua);
+    Fornecedor.setNumero(aNumero);
+    Fornecedor.setBairro(aBairro);
+    Fornecedor.setCidade(aCidade);
+    Fornecedor.setEstado(aEstado);
+    Fornecedor.setAtivo(aAtivo);
+    Result := Fornecedor;
   except
-    FornecedorDTO.Free;
+    Fornecedor.Free;
     raise;
   end;
 end;

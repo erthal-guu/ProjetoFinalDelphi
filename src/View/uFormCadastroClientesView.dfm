@@ -52,7 +52,7 @@ object FormCadastroClientes: TFormCadastroClientes
         TabOrder = 0
         object PnlButtonCrud: TPanel
           Left = 3
-          Top = -3
+          Top = 0
           Width = 178
           Height = 488
           BevelOuter = bvNone
@@ -1563,7 +1563,7 @@ object FormCadastroClientes: TFormCadastroClientes
             Font.Name = 'Segoe UI'
             Font.Style = [fsBold]
             ParentFont = False
-            ExplicitWidth = 109
+            ExplicitLeft = 2
           end
           object ImgFechar: TImage
             Left = 866
@@ -1697,10 +1697,12 @@ object FormCadastroClientes: TFormCadastroClientes
         Color = 6172416
         ParentBackground = False
         TabOrder = 3
+        ExplicitLeft = 1
+        ExplicitTop = -16
         object Label1: TLabel
           AlignWithMargins = True
-          Left = 541
-          Top = 15
+          Left = 524
+          Top = 13
           Width = 90
           Height = 32
           Margins.Top = 10

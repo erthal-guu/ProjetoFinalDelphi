@@ -123,7 +123,7 @@ begin
   try
     FQuery.Close;
     FQuery.SQL.Clear;
-    FQuery.SQL.Add('SELECT p.id, p.id_pedido, f.nome AS cliente_nome, p.descricao,');
+    FQuery.SQL.Add('SELECT p.id, p.id_pedido, f.nome AS fornecedor_nome, p.descricao,');
     FQuery.SQL.Add('       p.valor_total, p.data_vencimento, p.data_criacao,');
     FQuery.SQL.Add('       p.status, p.observacao, p.id_cliente, p.ativo');
     FQuery.SQL.Add('FROM pendencias p');

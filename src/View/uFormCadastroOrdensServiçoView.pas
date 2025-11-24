@@ -270,6 +270,19 @@ begin
       IdFuncionario := Integer(CmbFuncionario.Items.Objects[CmbFuncionario.ItemIndex]);
       IdVeiculo := Integer(CmbVeiculo.Items.Objects[CmbVeiculo.ItemIndex]);
       IdCliente := Integer(CmbCliente.Items.Objects[CmbCliente.ItemIndex]);
+      try
+        var ControllerCalcular := TOrdemServicoController.Create;
+        try
+          Preco := ControllerCalcular.CalcularPrecoTotal
+            (Integer(CmbServiço.Items.Objects[CmbServiço.ItemIndex]),
+            PecasSelecionadas,
+            Integer(CmbVeiculo.Items.Objects[CmbVeiculo.ItemIndex]));
+        finally
+          ControllerCalcular.Free;
+        end;
+      except
+        Preco := 0;
+      end;
 
       OrdemServico := Controller.CriarObjeto(IdServico, IdFuncionario,
         IdVeiculo, IdCliente, Preco, True, EdtObservacao.Text, DtimeIncio.Date,DTimeConclusao.Date);
@@ -725,6 +738,19 @@ begin
         [CmbFuncionario.ItemIndex]);
       IdVeiculo := Integer(CmbVeiculo.Items.Objects[CmbVeiculo.ItemIndex]);
       IdCliente := Integer(CmbCliente.Items.Objects[CmbCliente.ItemIndex]);
+      try
+        var ControllerCalc := TOrdemServicoController.Create;
+        try
+          Preco := ControllerCalc.CalcularPrecoTotal
+            (Integer(CmbServiço.Items.Objects[CmbServiço.ItemIndex]),
+            PecasSelecionadas,
+            Integer(CmbVeiculo.Items.Objects[CmbVeiculo.ItemIndex]));
+        finally
+          ControllerCalc.Free;
+        end;
+      except
+        Preco := 0;
+      end;
 
       OrdemServico.setIdOrdemServico(IdOS);
       OrdemServico.setIdServico(IdServico);

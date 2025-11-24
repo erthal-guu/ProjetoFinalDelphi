@@ -47,7 +47,6 @@ type
     BtnRestaurar: TSpeedButton;
     BtnSair: TSpeedButton;
     BtnCancelar: TSpeedButton;
-    Image1: TImage;
     Label1: TLabel;
     PnlRestaurar: TPanel;
     LblRestaurar: TLabel;
@@ -64,6 +63,7 @@ type
     PnlButtonEnviar: TPanel;
     LblEnviar: TLabel;
     Image6: TImage;
+    Image1: TImage;
     procedure BtnAdicionarClick(Sender: TObject);
     procedure BtnPesquisarClick(Sender: TObject);
     procedure FormCreate(Sender: TObject);

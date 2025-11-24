@@ -1778,7 +1778,7 @@ object FormReceitas: TFormReceitas
               Font.Name = 'Segoe UI'
               Font.Style = [fsBold]
               ParentFont = False
-              ExplicitWidth = 161
+              ExplicitLeft = 0
             end
             object ImgFecharDetalhamento: TImage
               Left = 708

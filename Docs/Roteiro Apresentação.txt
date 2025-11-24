@@ -1,0 +1,51 @@
+Inicio :
+Apresentação do slide e explicação da ideia do projeto (5 a 10 minutos).
+
+Projeto :
+Apresentação das telas de login e falando sobre os tipos de usuário no sistema
+Apresentação da tela de home no sistema, explicando o uso do main menu e o que é cada botão da tela
+Explicação de cada CRUD iniciando pelo de usuários e finalizando pelo de serviços.
+
+Usuários :
+Apresentação das Funcionalidades principais:
+Cadastro, Edição, exclusão, restauração e explicação da função de Editar usuário com senha.
+
+Clientes :
+Apresentação das Funcionalidades principais:
+Cadastro, Edição, exclusão, restauração.
+Criar um cliente que será utilizado futuramente na apresentação do sistema.
+
+Funcionários :
+Apresentação das Funcionalidades principais:
+Cadastro, Edição, exclusão, restauração e API de CEP.
+
+Fornecedores :
+Apresentação das Funcionalidades principais:
+Cadastro, Edição, exclusão, restauração, API de CEP e citando por cima os botões de Vincular e realizar um pedido e citação dos logs do sistema.
+
+Peças :
+Apresentação das Funcionalidades principais:
+Cadastro, Edição, exclusão, restauração.
+
+Veículos :
+Apresentação das Funcionalidades principais:
+Cadastro, Edição, exclusão, restauração.
+Criar um Veículo e vincular ele a um cliente que será utilizado futuramente na apresentação do sistema.
+
+Serviços :
+Apresentação das Funcionalidades principais:
+Cadastro, Edição, exclusão, restauração.
+
+Criação de um Usuário admin e mostrando os outros 3 cadastrados na base mostrando a diferença de Usuários no sistema
+
+Apresentação do Financeiro do sistema
+Introduzindo como as Receitas e Pendências são criadas no sistema:
+Vinculação de 3 peças ao novo Fornecedor cadastrado anteriormente e Realizar um pedido a ele.
+
+Criação de uma Ordem de serviço ao cliente cadastrado anteriormente.
+
+Finalização :
+Geração dos Relatórios de Entradas e Saídas Financeiras.
+
+Finalização da Apresentação:
+Agradecendo a apresentação e perguntando se há perguntas sobre o sistema.

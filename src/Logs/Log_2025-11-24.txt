@@ -1,2 +1,41 @@
 00:06:15 - DELETAR - ID: 0 deletou a receita ID: 10
 00:06:42 - RECEBER - ID: 0 registrou recebimento da receita ID: 12 - Valor: 5841,05
+14:57:02 - LOGIN - Sucesso: Usuário ID 1, Nome: Administrador, (CPF: 000.000.000-00)
+14:57:23 - LOGIN - Sucesso: Usuário ID 1, Nome: Administrador, (CPF: 000.000.000-00)
+14:57:43 - LOGIN - Sucesso: Usuário ID 1, Nome: Administrador, (CPF: 000.000.000-00)
+15:29:11 - LOGIN - Sucesso: Usuário ID 1, Nome: Administrador, (CPF: 000.000.000-00)
+15:31:26 - EDITAR - ID: 0 editou o usuário: Gerente (CPF: 111.111.111-11)
+15:31:33 - EDITAR - ID: 0 editou o usuário: Fernanda Lima Gomes (CPF: 125.158.491-60)
+15:31:39 - DELETAR - ID: 0 deletou o usuário ID: 9
+15:31:43 - RESTAURAR - ID: 0] restaurou o usuário ID: 9
+15:32:42 - CADASTRO CLIENTE - ID: 0 cadastrou o cliente: Bruno (CPF: 161.609.571-95)
+15:32:54 - EDITAR - ID: 0 editou Cliente: Bruno Tesser (CPF: 161.609.571-95)
+15:33:14 - EDITAR - ID: 0 editou Cliente: Bruno Tesser alves (CPF: 161.609.571-95)
+15:34:16 - CADASTRO - ID: 0 cadastrou fornecedor: RPinfo (CNPJ: 16.850.981/6501-65)
+15:34:30 - EDITAR - ID: 0 editou fornecedor: RPinfo Sistemas (CNPJ: 16.850.981/6501-65)
+15:34:36 - DELETAR - ID: 0 deletou fornecedor ID: 21
+15:34:40 - RESTAURAR - ID: 0 restaurou fornecedor ID: 21
+15:37:47 - CADASTRO - ID: 0 cadastrou veículo: Comander (Placa: VSI9H34)
+15:38:32 - CADASTRO - ID: 0 cadastrou ordem de serviço com cliente ID: 21
+15:39:29 - VINCULAR - Peça ID: 3 vinculada ao Fornecedor ID: 21
+15:39:32 - VINCULAR - Peça ID: 5 vinculada ao Fornecedor ID: 21
+15:39:36 - VINCULAR - Peça ID: 6 vinculada ao Fornecedor ID: 21
+15:41:11 - PEDIDO - Usuário ID: 0 criou Pedido ID: 39 com 3 itens para Fornecedor ID: 21
+15:42:09 - CADASTRO - ID: 0 cadastrou ordem de serviço com cliente ID: 21
+15:43:08 - RECEBER - ID: 0 registrou recebimento da receita ID: 12 - Valor: 6200,00
+15:43:30 - RECEBER - ID: 0 registrou recebimento da receita ID: 12 - Valor: 6311,00
+15:43:42 - RECEBER - ID: 0 registrou recebimento da receita ID: 12 - Valor: 6311,79
+15:44:35 - DELETAR - ID: 0 deletou a receita ID: 11
+15:47:41 - CONCLUSÃO - ID: 0 concluiu pendência ID: 8 - Cliente: 21 - Descrição: Pedido #39
+15:48:05 - DELETAR - ID: 0 deletou a pendência ID: 5
+15:48:14 - RESTAURAR - ID: 0 restaurou a pendência ID: 5
+15:53:42 - LOGIN - Sucesso: Usuário ID 1, Nome: Administrador, (CPF: 000.000.000-00)
+15:53:55 - LOGIN - Sucesso: Usuário ID 2, Nome: Gerente, (CPF: 111.111.111-11)
+15:54:58 - LOGIN - Sucesso: Usuário ID 3, Nome: Atendente, (CPF: 222.222.222-22)
+15:55:41 - LOGIN - Sucesso: Usuário ID 4, Nome: Mecânico, (CPF: 333.333.333-33)
+15:58:32 - CADASTRO - ID: 0 cadastrou ordem de serviço com cliente ID: 15
+16:08:48 - CADASTRO - ID: 0 cadastrou ordem de serviço com cliente ID: 21
+16:11:14 - CADASTRO - ID: 0 cadastrou ordem de serviço com cliente ID: 21
+16:13:00 - CADASTRO - ID: 0 cadastrou ordem de serviço com cliente ID: 14
+16:13:19 - CADASTRO - ID: 0 cadastrou ordem de serviço com cliente ID: 21
+16:14:28 - CADASTRO - ID: 0 cadastrou ordem de serviço com cliente ID: 7

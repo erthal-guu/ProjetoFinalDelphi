@@ -1,9 +1,12 @@
 unit ClienteCadastroService;
 
 interface
+
 uses
-  uCliente, ClienteCadastroRepository, uDMConexao, System.SysUtils, uMainController,
-  FireDAC.Comp.Client, Data.DB, BCrypt, Vcl.Dialogs, Logs, uSession, System.Classes;
+  uCliente, ClienteCadastroRepository, uDMConexao, System.SysUtils,
+  uMainController,
+  FireDAC.Comp.Client, Data.DB, BCrypt, Vcl.Dialogs, Logs, uSession,
+  System.Classes;
 
 type
   TClienteService = class
@@ -61,11 +64,9 @@ end;
 
 function TClienteService.ValidarClientes(ClienteValido: TCliente): Boolean;
 begin
-  Result := (ClienteValido.getNome <> '') and
-            (ClienteValido.getCPF <> '') and
-            (ClienteValido.getEmail <> '') and
-            (ClienteValido.getTelefone <> '') and
-            (ClienteValido.getNascimento <> '');
+  Result := (ClienteValido.getNome <> '') and (ClienteValido.getCPF <> '') and
+    (ClienteValido.getEmail <> '') and (ClienteValido.getTelefone <> '') and
+    (ClienteValido.getNascimento <> '');
 end;
 
 function TClienteService.SalvarClientes(Cliente: TCliente): Boolean;
@@ -75,30 +76,28 @@ begin
   Result := False;
   IDUsuarioLogado := uSession.UsuarioLogadoID;
 
-  if not ValidarClientes(Cliente) then
-  begin
+  if not ValidarClientes(Cliente) then begin
     ShowMessage('Preencha todos os campos obrigatórios.');
     Exit;
   end;
 
   try
-    if not Repository.ExisteCPF(Cliente) then
-    begin
+    if not Repository.ExisteCPF(Cliente) then begin
       Repository.InserirCliente(Cliente);
-      SalvarLog(Format('CADASTRO CLIENTE - ID: %d cadastrou o cliente: %s (CPF: %s)',
+      SalvarLog(Format
+        ('CADASTRO CLIENTE - ID: %d cadastrou o cliente: %s (CPF: %s)',
         [IDUsuarioLogado, Cliente.getNome, Cliente.getCPF]));
       Result := True;
     end
-    else
-    begin
+    else begin
       ShowMessage('CPF já cadastrado.');
-      SalvarLog(Format('CADASTRO CLIENTE - ID: %d falhou ao cadastrar (CPF já existente: %s)',
+      SalvarLog(Format
+        ('CADASTRO CLIENTE - ID: %d falhou ao cadastrar (CPF já existente: %s)',
         [IDUsuarioLogado, Cliente.getCPF]));
       Result := False;
     end;
   except
-    on E: Exception do
-    begin
+    on E: Exception do begin
       SalvarLog(Format('CADASTRO CLIENTE - ID: %d erro ao cadastrar: %s - %s',
         [IDUsuarioLogado, E.ClassName, E.Message]));
       raise;
@@ -113,10 +112,11 @@ begin
   IDUsuarioLogado := uSession.UsuarioLogadoID;
   if Repository.ExisteCPF(Cliente) then begin
     ShowMessage('Esse CPF já esta cadastrado a um Cliente');
-  end else begin
+  end
+  else begin
     Repository.EditarClientes(Cliente);
     SalvarLog(Format('EDITAR - ID: %d editou Cliente: %s (CPF: %s)',
-    [IDUsuarioLogado, Cliente.getNome, Cliente.getCPF]));
+      [IDUsuarioLogado, Cliente.getNome, Cliente.getCPF]));
   end;
 end;
 
@@ -130,9 +130,9 @@ begin
     SalvarLog(Format('DELETAR CLIENTE - ID: %d deletou o cliente ID: %d',
       [IDUsuarioLogado, aId]));
   except
-    on E: Exception do
-    begin
-      SalvarLog(Format('DELETAR CLIENTE - ID: %d erro ao deletar cliente ID: %d - %s',
+    on E: Exception do begin
+      SalvarLog(Format
+        ('DELETAR CLIENTE - ID: %d erro ao deletar cliente ID: %d - %s',
         [IDUsuarioLogado, aId, E.Message]));
       raise;
     end;
@@ -149,9 +149,9 @@ begin
     SalvarLog(Format('RESTAURAR CLIENTE - ID: %d restaurou o cliente ID: %d',
       [IDUsuarioLogado, aId]));
   except
-    on E: Exception do
-    begin
-      SalvarLog(Format('RESTAURAR CLIENTE - ID: %d erro ao restaurar cliente ID: %d - %s',
+    on E: Exception do begin
+      SalvarLog(Format
+        ('RESTAURAR CLIENTE - ID: %d erro ao restaurar cliente ID: %d - %s',
         [IDUsuarioLogado, aId, E.Message]));
       raise;
     end;
@@ -180,4 +180,3 @@ begin
 end;
 
 end.
-

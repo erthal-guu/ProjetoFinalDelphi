@@ -378,8 +378,8 @@ begin
   ListBoxDetalhes.Items.Clear;
   ListBoxDetalhes.Items.Add('ID: ' + DataSourceMain.DataSet.FieldByName('id')
     .AsString);
-  ListBoxDetalhes.Items.Add('Cliente: ' + DataSourceMain.DataSet.FieldByName
-    ('cliente_nome').AsString);
+  ListBoxDetalhes.Items.Add('Fornecedor: ' + DataSourceMain.DataSet.FieldByName
+    ('Fornecedor_nome').AsString);
   ListBoxDetalhes.Items.Add('Descrição: ' + DataSourceMain.DataSet.FieldByName
     ('descricao').AsString);
   ListBoxDetalhes.Items.Add('Valor: R$ ' + FormatFloat('0.00',
