@@ -44,7 +44,8 @@ object FormSaidas: TFormSaidas
       Font.Name = 'Segoe UI'
       Font.Style = [fsBold]
       ParentFont = False
-      ExplicitWidth = 285
+      ExplicitLeft = 5
+      ExplicitTop = 18
     end
     object ImgFecharEntradas: TImage
       Left = 936
@@ -69,9 +70,9 @@ object FormSaidas: TFormSaidas
     end
     object Panel5: TPanel
       Left = 16
-      Top = 48
+      Top = 56
       Width = 945
-      Height = 449
+      Height = 441
       BevelOuter = bvNone
       Color = 6172416
       ParentBackground = False
@@ -101,10 +102,10 @@ object FormSaidas: TFormSaidas
           454E44AE426082}
       end
       object PnlLogo: TImage
-        Left = 567
-        Top = 74
-        Width = 509
-        Height = 346
+        Left = 599
+        Top = 100
+        Width = 330
+        Height = 285
         Picture.Data = {
           0954506E67496D61676589504E470D0A1A0A0000000D49484452000001520000
           01100806000000E245FC880000FFFF4944415478DAECBD09DC5C55793FFE9C73
@@ -2487,8 +2488,8 @@ object FormSaidas: TFormSaidas
       end
       object Shape3: TShape
         AlignWithMargins = True
-        Left = 327
-        Top = 13
+        Left = 329
+        Top = 22
         Width = 209
         Height = 89
         Margins.Left = 0
@@ -2496,13 +2497,13 @@ object FormSaidas: TFormSaidas
         Margins.Right = 0
         Margins.Bottom = 0
         Brush.Color = 9521152
-        Pen.Color = clHighlight
+        Pen.Color = clWindowText
         Shape = stRoundRect
       end
       object Shape4: TShape
         AlignWithMargins = True
-        Left = 327
-        Top = 170
+        Left = 329
+        Top = 178
         Width = 209
         Height = 89
         Margins.Left = 0
@@ -2510,13 +2511,13 @@ object FormSaidas: TFormSaidas
         Margins.Right = 0
         Margins.Bottom = 0
         Brush.Color = 9521152
-        Pen.Color = clHighlight
+        Pen.Color = clWindowText
         Shape = stRoundRect
       end
       object Shape5: TShape
         AlignWithMargins = True
-        Left = 327
-        Top = 347
+        Left = 317
+        Top = 335
         Width = 209
         Height = 89
         Margins.Left = 0
@@ -2524,7 +2525,7 @@ object FormSaidas: TFormSaidas
         Margins.Right = 0
         Margins.Bottom = 0
         Brush.Color = 9521152
-        Pen.Color = clHighlight
+        Pen.Color = clWindowText
         Shape = stRoundRect
       end
       object Shape6: TShape
@@ -2661,8 +2662,8 @@ object FormSaidas: TFormSaidas
               ParentColor = False
               ParentFont = False
               OnClick = LblAdicionarClick
-              ExplicitLeft = 0
-              ExplicitTop = 9
+              ExplicitWidth = 101
+              ExplicitHeight = 20
             end
             object Image6: TImage
               Left = 9
@@ -2874,8 +2875,8 @@ object FormSaidas: TFormSaidas
         end
       end
       object PnlTicket: TPanel
-        Left = 335
-        Top = 351
+        Left = 325
+        Top = 339
         Width = 197
         Height = 80
         BevelOuter = bvNone
@@ -2916,7 +2917,7 @@ object FormSaidas: TFormSaidas
           Font.Name = 'Segoe UI'
           Font.Style = []
           ParentFont = False
-          ExplicitWidth = 16
+          ExplicitLeft = 22
         end
         object Image3: TImage
           Left = -1
@@ -2956,8 +2957,8 @@ object FormSaidas: TFormSaidas
         end
       end
       object PnlTotal: TPanel
-        Left = 329
-        Top = 19
+        Left = 332
+        Top = 30
         Width = 204
         Height = 66
         BevelOuter = bvNone
@@ -2980,7 +2981,7 @@ object FormSaidas: TFormSaidas
           Font.Name = 'Segoe UI'
           Font.Style = [fsBold]
           ParentFont = False
-          ExplicitWidth = 114
+          ExplicitTop = 11
         end
         object LblTotal: TLabel
           AlignWithMargins = True
@@ -2998,7 +2999,7 @@ object FormSaidas: TFormSaidas
           Font.Name = 'Segoe UI'
           Font.Style = []
           ParentFont = False
-          ExplicitWidth = 16
+          ExplicitTop = 46
         end
         object Image1: TImage
           Left = -3

@@ -44,7 +44,8 @@ object FormEntradas: TFormEntradas
       Font.Name = 'Segoe UI'
       Font.Style = [fsBold]
       ParentFont = False
-      ExplicitWidth = 250
+      ExplicitLeft = 5
+      ExplicitTop = 10
     end
     object ImgFecharEntradas: TImage
       Left = 936
@@ -69,9 +70,9 @@ object FormEntradas: TFormEntradas
     end
     object Panel5: TPanel
       Left = 16
-      Top = 48
+      Top = 56
       Width = 945
-      Height = 449
+      Height = 439
       BevelOuter = bvNone
       Color = 6172416
       ParentBackground = False
@@ -101,10 +102,10 @@ object FormEntradas: TFormEntradas
           454E44AE426082}
       end
       object PnlLogo: TImage
-        Left = 567
-        Top = 74
-        Width = 509
-        Height = 346
+        Left = 607
+        Top = 86
+        Width = 314
+        Height = 272
         Picture.Data = {
           0954506E67496D61676589504E470D0A1A0A0000000D49484452000001520000
           01100806000000E245FC880000FFFF4944415478DAECBD09DC5C55793FFE9C73
@@ -2487,8 +2488,22 @@ object FormEntradas: TFormEntradas
       end
       object Shape3: TShape
         AlignWithMargins = True
+        Left = 328
+        Top = 20
+        Width = 209
+        Height = 83
+        Margins.Left = 0
+        Margins.Top = 0
+        Margins.Right = 0
+        Margins.Bottom = 0
+        Brush.Color = 9521152
+        Pen.Color = clWindowText
+        Shape = stRoundRect
+      end
+      object Shape5: TShape
+        AlignWithMargins = True
         Left = 327
-        Top = 13
+        Top = 330
         Width = 209
         Height = 89
         Margins.Left = 0
@@ -2496,7 +2511,15 @@ object FormEntradas: TFormEntradas
         Margins.Right = 0
         Margins.Bottom = 0
         Brush.Color = 9521152
-        Pen.Color = clHighlight
+        Pen.Color = clWindowText
+        Shape = stRoundRect
+      end
+      object Shape6: TShape
+        Left = 24
+        Top = 22
+        Width = 257
+        Height = 403
+        Brush.Color = 15790320
         Shape = stRoundRect
       end
       object Shape4: TShape
@@ -2510,29 +2533,7 @@ object FormEntradas: TFormEntradas
         Margins.Right = 0
         Margins.Bottom = 0
         Brush.Color = 9521152
-        Pen.Color = clHighlight
-        Shape = stRoundRect
-      end
-      object Shape5: TShape
-        AlignWithMargins = True
-        Left = 327
-        Top = 347
-        Width = 209
-        Height = 89
-        Margins.Left = 0
-        Margins.Top = 0
-        Margins.Right = 0
-        Margins.Bottom = 0
-        Brush.Color = 9521152
-        Pen.Color = clHighlight
-        Shape = stRoundRect
-      end
-      object Shape6: TShape
-        Left = 24
-        Top = 22
-        Width = 257
-        Height = 403
-        Brush.Color = 15790320
+        Pen.Color = clWindowText
         Shape = stRoundRect
       end
       object PnlEdits: TPanel
@@ -2662,8 +2663,8 @@ object FormEntradas: TFormEntradas
               ParentColor = False
               ParentFont = False
               OnClick = LblAdicionarClick
-              ExplicitLeft = 9
-              ExplicitTop = 9
+              ExplicitWidth = 101
+              ExplicitHeight = 20
             end
             object Image6: TImage
               Left = 9
@@ -2876,7 +2877,7 @@ object FormEntradas: TFormEntradas
       end
       object PnlTicket: TPanel
         Left = 335
-        Top = 351
+        Top = 335
         Width = 197
         Height = 80
         BevelOuter = bvNone
@@ -2957,10 +2958,10 @@ object FormEntradas: TFormEntradas
         end
       end
       object PnlTotal: TPanel
-        Left = 329
-        Top = 19
-        Width = 204
-        Height = 66
+        Left = 331
+        Top = 27
+        Width = 201
+        Height = 71
         BevelOuter = bvNone
         Color = 9521152
         ParentBackground = False
@@ -2969,7 +2970,7 @@ object FormEntradas: TFormEntradas
           AlignWithMargins = True
           Left = 30
           Top = 3
-          Width = 171
+          Width = 168
           Height = 21
           Margins.Left = 30
           Align = alTop
@@ -2987,7 +2988,7 @@ object FormEntradas: TFormEntradas
           AlignWithMargins = True
           Left = 30
           Top = 30
-          Width = 171
+          Width = 168
           Height = 40
           Margins.Left = 30
           Align = alTop
@@ -2999,10 +3000,10 @@ object FormEntradas: TFormEntradas
           Font.Name = 'Segoe UI'
           Font.Style = []
           ParentFont = False
-          ExplicitWidth = 16
+          ExplicitTop = 29
         end
         object Image1: TImage
-          Left = -3
+          Left = 0
           Top = -6
           Width = 64
           Height = 110

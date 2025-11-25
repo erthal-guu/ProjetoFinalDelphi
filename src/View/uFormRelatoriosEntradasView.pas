@@ -17,7 +17,6 @@ type
     LblQuantidadeHead: TLabel;
     LblQuantidade: TLabel;
     Shape3: TShape;
-    Shape4: TShape;
     Shape5: TShape;
     PnlTicket: TPanel;
     LblTicketHead: TLabel;
@@ -48,6 +47,7 @@ type
     Image4: TImage;
     Image5: TImage;
     Image6: TImage;
+    Shape4: TShape;
     procedure FormCreate(Sender: TObject);
     procedure FormDestroy(Sender: TObject);
     procedure FormShow(Sender: TObject);

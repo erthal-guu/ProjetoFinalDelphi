@@ -20,8 +20,8 @@ object DataModule1: TDataModule1
   end
   object FDQuery: TFDQuery
     Connection = FDConnection1
-    Left = 320
-    Top = 144
+    Left = 312
+    Top = 152
   end
   object FDQueryValorTotal: TFDQuery
     DetailFields = 'receitas_concluidas_detalhes'
