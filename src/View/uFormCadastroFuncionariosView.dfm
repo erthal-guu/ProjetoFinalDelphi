@@ -1555,7 +1555,7 @@ object FormCadastroFuncionarios: TFormCadastroFuncionarios
                 Items.Strings = (
                   'Gerente'
                   'atendente'
-                  'mec'#226'nico')
+                  'Mec'#226'nico')
               end
               object PnlButtonForm: TPanel
                 Left = 740

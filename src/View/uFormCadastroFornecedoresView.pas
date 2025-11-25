@@ -965,6 +965,7 @@ procedure TFormCadastroFornecedores.BtnVincularPeçasClick(Sender: TObject);
 begin
   PnlVincularPeça.Visible := True;
   PnlBackgrounEdit.Visible := False;
+  PnlPedido.Visible := False;
   CarregarGridVincular;
 end;
 

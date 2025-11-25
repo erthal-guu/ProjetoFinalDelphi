@@ -1,2 +1,0 @@
-23:02:52 - CADASTRO - ID: 0 cadastrou ordem de serviço com cliente ID: 15
-23:08:03 - CADASTRO - ID: 0 cadastrou ordem de serviço com cliente ID: 15

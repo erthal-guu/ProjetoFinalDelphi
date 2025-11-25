@@ -543,6 +543,7 @@ object FormPendencias: TFormPendencias
                   Margins.Bottom = 30
                   Align = alLeft
                   AutoSize = False
+                  Enabled = False
                   Font.Charset = DEFAULT_CHARSET
                   Font.Color = clWindowText
                   Font.Height = -15

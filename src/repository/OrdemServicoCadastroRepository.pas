@@ -290,7 +290,7 @@ begin
   try
     Qry.Connection := FQuery.Connection;
     Qry.SQL.Add
-      ('SELECT id, nome FROM funcionarios WHERE ativo = TRUE AND tipo = ''mecânico'' ORDER BY nome');
+      ('SELECT id, nome FROM funcionarios WHERE ativo = TRUE AND tipo = ''Mecânico'' ORDER BY nome');
     Qry.Open;
     while not Qry.Eof do begin
       Lista.AddObject(Qry.FieldByName('nome').AsString,
