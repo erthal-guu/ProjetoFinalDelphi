@@ -21,7 +21,6 @@ type
     procedure DeletarFornecedor(const aID: Integer);
     procedure RestaurarFornecedor(const aID: Integer);
     function PesquisarFornecedores(const aFiltro: String): TDataSet;
-    function PesquisarFornecedoresRestaurar(const aFiltro: String): TDataSet;
     procedure VincularPecaFornecedor(const aFornecedorId, aPecaId: Integer);
     function ListarPecasVinculadas(const aFornecedorId: Integer): TDataSet;
     function CarregarFornecedores: TStringlist;
@@ -273,30 +272,6 @@ begin
   end;
 end;
 
-function TFornecedorRepository.PesquisarFornecedoresRestaurar(const aFiltro: String): TDataSet;
-begin
-  try
-    FQuery.Close;
-    FQuery.SQL.Clear;
-    FQuery.SQL.Add
-      ('SELECT id, nome, razao_social, cnpj, telefone, cep, rua, numero, bairro, cidade, estado, ativo');
-    FQuery.SQL.Add('FROM fornecedores');
-    FQuery.SQL.Add
-      ('WHERE (nome ILIKE :nome) OR (razao_social ILIKE :razao_social) OR (cnpj LIKE :cnpj) OR (telefone ILIKE :telefone)');
-    FQuery.SQL.Add('AND ativo = FALSE');
-    FQuery.SQL.Add('ORDER BY id');
-    FQuery.ParamByName('nome').AsString := '%' + Trim(aFiltro) + '%';
-    FQuery.ParamByName('razao_social').AsString := '%' + Trim(aFiltro) + '%';
-    FQuery.ParamByName('cnpj').AsString := '%' + Trim(aFiltro) + '%';
-    FQuery.ParamByName('telefone').AsString := '%' + Trim(aFiltro) + '%';
-    FQuery.Open;
-    Result := FQuery;
-  except
-    on E: Exception do
-      raise Exception.Create('Erro ao buscar Fornecedor por filtro: ' +
-        E.Message);
-  end;
-end;
 
 function TFornecedorRepository.PeçajaVinculada(const aIdFornecedor,
     aPecaId: Integer): Boolean;

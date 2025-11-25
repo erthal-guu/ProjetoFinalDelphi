@@ -13,10 +13,10 @@ object DataModule1: TDataModule1
   end
   object FDPhysPgDriverLink1: TFDPhysPgDriverLink
     VendorLib = 
-      'C:\Users\Auditorio\Desktop\ProjetoFinalDelphi\src\lib\lib\libpq.' +
+      'C:\Users\vplgu\Desktop\ProjetoFinalDelphi\src\lib\lib\lib\libpq.' +
       'dll'
-    Left = 485
-    Top = 145
+    Left = 493
+    Top = 143
   end
   object FDQuery: TFDQuery
     Connection = FDConnection1
@@ -27,48 +27,17 @@ object DataModule1: TDataModule1
     DetailFields = 'receitas_concluidas_detalhes'
     Connection = FDConnection1
     SQL.Strings = (
-      ''
       '  SELECT'
-      '      c.id AS codigo_cliente,'
       '      c.nome AS nome_cliente,'
+      '      c.id AS codigo_cliente,'
       '      COALESCE(SUM(r.valor_total), 0) AS valor_total_receitas,'
-      
-        '      COALESCE(SUM(r.valor_recebido), 0) AS valor_total_recebido' +
-        ','
-      '      COUNT(DISTINCT r.id_ordem_servico) AS quantidade_ordens,'
       '      COALESCE(AVG(r.valor_total), 0) AS ticket_medio_cliente,'
-      '      MIN(r.data_emissao) AS primeira_receita,'
-      '      MAX(r.data_recebimento) AS ultima_receita,'
       
         '      COUNT(CASE WHEN r.status = '#39'CONCLUIDA'#39' THEN 1 END) AS rece' +
         'itas_concluidas,'
       
-        '      COALESCE(SUM(CASE WHEN r.status != '#39'CONCLUIDA'#39' THEN r.valo' +
-        'r_total - COALESCE(r.valor_recebido, 0) ELSE 0 END),'
-      '   0) AS valor_pendente,'
-      ''
-      
-        '      -- Corrigido: nunca retorna NULL, sempre string vazia se n' +
-        #227'o houver receitas'
-      '      COALESCE('
-      '          STRING_AGG('
-      '              CONCAT('
-      '                  '#39'OS:'#39', r.id_ordem_servico,'
-      '                  '#39' | Valor:'#39', r.valor_total,'
-      
-        '                  '#39' | Data:'#39', TO_CHAR(r.data_emissao, '#39'DD/MM/YYY' +
-        'Y'#39'),'
-      '                  '#39' | Status:'#39', r.status,'
-      '                  '#39' | Recebido:'#39', COALESCE(r.valor_recebido, 0)'
-      '              ),'
-      '              '#39' || '#39
-      '          ),'
-      '          '#39#39
-      '      ) AS todas_receitas_detalhes,'
-      ''
-      
-        '      SUM(SUM(r.valor_total)) OVER () AS valor_total_geral_todas' +
-        '_receitas'
+        '      SUM(SUM(r.valor_total)) OVER () AS valor_total_geral_recei' +
+        'tas'
       '  FROM receitas r'
       '  INNER JOIN ordens_servico os ON r.id_ordem_servico = os.id'
       '  INNER JOIN clientes c ON os.id_cliente = c.id'
@@ -78,14 +47,14 @@ object DataModule1: TDataModule1
       '  ORDER BY valor_total_receitas DESC;')
     Left = 248
     Top = 248
-    object FDQueryValorTotalcodigo_cliente: TIntegerField
-      FieldName = 'codigo_cliente'
-      Origin = 'codigo_cliente'
-    end
     object FDQueryValorTotalnome_cliente: TWideStringField
       FieldName = 'nome_cliente'
       Origin = 'nome_cliente'
       Size = 100
+    end
+    object FDQueryValorTotalcodigo_cliente: TIntegerField
+      FieldName = 'codigo_cliente'
+      Origin = 'codigo_cliente'
     end
     object FDQueryValorTotalvalor_total_receitas: TFMTBCDField
       AutoGenerateValue = arDefault
@@ -95,20 +64,6 @@ object DataModule1: TDataModule1
       Precision = 64
       Size = 64
     end
-    object FDQueryValorTotalvalor_total_recebido: TFMTBCDField
-      AutoGenerateValue = arDefault
-      FieldName = 'valor_total_recebido'
-      Origin = 'valor_total_recebido'
-      ReadOnly = True
-      Precision = 64
-      Size = 64
-    end
-    object FDQueryValorTotalquantidade_ordens: TLargeintField
-      AutoGenerateValue = arDefault
-      FieldName = 'quantidade_ordens'
-      Origin = 'quantidade_ordens'
-      ReadOnly = True
-    end
     object FDQueryValorTotalticket_medio_cliente: TFMTBCDField
       AutoGenerateValue = arDefault
       FieldName = 'ticket_medio_cliente'
@@ -117,38 +72,16 @@ object DataModule1: TDataModule1
       Precision = 64
       Size = 64
     end
-    object FDQueryValorTotalprimeira_receita: TSQLTimeStampField
-      AutoGenerateValue = arDefault
-      FieldName = 'primeira_receita'
-      Origin = 'primeira_receita'
-      ProviderFlags = [pfInUpdate]
-      ReadOnly = True
-    end
-    object FDQueryValorTotalultima_receita: TSQLTimeStampField
-      AutoGenerateValue = arDefault
-      FieldName = 'ultima_receita'
-      Origin = 'ultima_receita'
-      ProviderFlags = [pfInUpdate]
-      ReadOnly = True
-    end
     object FDQueryValorTotalreceitas_concluidas: TLargeintField
       AutoGenerateValue = arDefault
       FieldName = 'receitas_concluidas'
       Origin = 'receitas_concluidas'
       ReadOnly = True
     end
-    object FDQueryValorTotalvalor_pendente: TFMTBCDField
+    object FDQueryValorTotalvalor_total_geral_receitas: TFMTBCDField
       AutoGenerateValue = arDefault
-      FieldName = 'valor_pendente'
-      Origin = 'valor_pendente'
-      ReadOnly = True
-      Precision = 64
-      Size = 64
-    end
-    object FDQueryValorTotalvalor_total_geral_todas_receitas: TFMTBCDField
-      AutoGenerateValue = arDefault
-      FieldName = 'valor_total_geral_todas_receitas'
-      Origin = 'valor_total_geral_todas_receitas'
+      FieldName = 'valor_total_geral_receitas'
+      Origin = 'valor_total_geral_receitas'
       ReadOnly = True
       Precision = 64
       Size = 64
@@ -163,7 +96,7 @@ object DataModule1: TDataModule1
     PrintOptions.Printer = 'Default'
     PrintOptions.PrintOnSheet = 0
     ReportOptions.CreateDate = 45972.980654456000000000
-    ReportOptions.LastChange = 45978.876452500000000000
+    ReportOptions.LastChange = 45986.031428379630000000
     ScriptLanguage = 'PascalScript'
     ScriptText.Strings = (
       ''
@@ -626,9 +559,9 @@ object DataModule1: TDataModule1
       object MemofrxDBDataset1valor_total_geral_todas_receitas: TfrxMemoView
         IndexTag = 1
         AllowVectorExport = True
-        Left = 272.126160000000000000
-        Top = 925.984850000000000000
-        Width = 158.740260000000000000
+        Left = 298.582870000000000000
+        Top = 918.425790000000000000
+        Width = 162.519790000000000000
         Height = 30.236240000000000000
         ContentScaleOptions.Constraints.MaxIterationValue = 0
         ContentScaleOptions.Constraints.MinIterationValue = 0
@@ -644,12 +577,12 @@ object DataModule1: TDataModule1
         Frame.Typ = []
         Fill.BackColor = clBtnHighlight
         Memo.UTF8W = (
-          '[frxDBDataset1."valor_total_geral_todas_receitas"]')
+          '[frxDBDataset1."valor_total_geral_receitas"]')
         ParentFont = False
       end
       object Memo15: TfrxMemoView
         AllowVectorExport = True
-        Left = 238.110393990000000000
+        Left = 264.567103990000000000
         Top = 854.173769220000000000
         Width = 222.992270730000000000
         Height = 18.897644040000000000
@@ -3731,28 +3664,8 @@ object DataModule1: TDataModule1
       '      c.nome AS cliente,'
       '      COUNT(*) AS quantidade_canceladas,'
       '      COALESCE(SUM(r.valor_total), 0) AS total_cancelado,'
-      '      COALESCE(SUM(r.valor_recebido), 0) AS total_recebido,'
-      
-        '      COALESCE(SUM(r.valor_total - COALESCE(r.valor_recebido, 0)' +
-        '), 0) AS total_perdido,'
-      '      ROUND('
-      '          CASE'
-      '              WHEN SUM(r.valor_total) > 0'
-      
-        '              THEN (SUM(r.valor_recebido) * 100.0 / SUM(r.valor_' +
-        'total))'
-      '              ELSE 0'
-      '          END, 2'
-      '      ) AS percentual_recuperado,'
-      '      ROUND('
-      '          CASE'
-      '              WHEN SUM(r.valor_total) > 0'
-      
-        '              THEN ((SUM(r.valor_total - COALESCE(r.valor_recebi' +
-        'do, 0))) * 100.0 / SUM(r.valor_total))'
-      '              ELSE 0'
-      '          END, 2'
-      '      ) AS percentual_perda,'
+      '      MAX(r.data_emissao) AS data_ultimo_cancelamento,'
+      '      COALESCE(AVG(r.valor_total), 0) AS ticket_medio_cancelado,'
       '      SUM(SUM(r.valor_total)) OVER () AS valor_total_geral'
       '  FROM receitas r'
       '  INNER JOIN ordens_servico os ON r.id_ordem_servico = os.id'
@@ -3763,8 +3676,8 @@ object DataModule1: TDataModule1
       '    AND c.ativo = TRUE'
       '    AND r.data_emissao BETWEEN '#39'2025-01-01'#39' AND '#39'2025-12-31'#39
       '  GROUP BY c.id, c.nome'
-      '  ORDER BY total_cancelado DESC')
-    Left = 248
+      '  ORDER BY total_cancelado DESC;')
+    Left = 240
     Top = 320
     object FDQueryValorTotalCanceladascliente: TWideStringField
       FieldName = 'cliente'
@@ -3785,34 +3698,17 @@ object DataModule1: TDataModule1
       Precision = 64
       Size = 64
     end
-    object FDQueryValorTotalCanceladastotal_recebido: TFMTBCDField
+    object FDQueryValorTotalCanceladasdata_ultimo_cancelamento: TSQLTimeStampField
       AutoGenerateValue = arDefault
-      FieldName = 'total_recebido'
-      Origin = 'total_recebido'
+      FieldName = 'data_ultimo_cancelamento'
+      Origin = 'data_ultimo_cancelamento'
+      ProviderFlags = [pfInUpdate]
       ReadOnly = True
-      Precision = 64
-      Size = 64
     end
-    object FDQueryValorTotalCanceladastotal_perdido: TFMTBCDField
+    object FDQueryValorTotalCanceladasticket_medio_cancelado: TFMTBCDField
       AutoGenerateValue = arDefault
-      FieldName = 'total_perdido'
-      Origin = 'total_perdido'
-      ReadOnly = True
-      Precision = 64
-      Size = 64
-    end
-    object FDQueryValorTotalCanceladaspercentual_recuperado: TFMTBCDField
-      AutoGenerateValue = arDefault
-      FieldName = 'percentual_recuperado'
-      Origin = 'percentual_recuperado'
-      ReadOnly = True
-      Precision = 64
-      Size = 64
-    end
-    object FDQueryValorTotalCanceladaspercentual_perda: TFMTBCDField
-      AutoGenerateValue = arDefault
-      FieldName = 'percentual_perda'
-      Origin = 'percentual_perda'
+      FieldName = 'ticket_medio_cancelado'
+      Origin = 'ticket_medio_cancelado'
       ReadOnly = True
       Precision = 64
       Size = 64
@@ -3835,7 +3731,7 @@ object DataModule1: TDataModule1
     PrintOptions.Printer = 'Default'
     PrintOptions.PrintOnSheet = 0
     ReportOptions.CreateDate = 45972.980654456000000000
-    ReportOptions.LastChange = 45978.877235787040000000
+    ReportOptions.LastChange = 45986.030886296300000000
     ScriptLanguage = 'PascalScript'
     ScriptText.Strings = (
       'begin'
@@ -4004,7 +3900,7 @@ object DataModule1: TDataModule1
         object MemofrxDBDataset2quantidade_canceladas: TfrxMemoView
           IndexTag = 1
           AllowVectorExport = True
-          Left = 147.401670000000000000
+          Left = 139.842610000000000000
           Width = 75.590600000000000000
           Height = 18.897650000000000000
           ContentScaleOptions.Constraints.MaxIterationValue = 0
@@ -4049,15 +3945,15 @@ object DataModule1: TDataModule1
         object MemofrxDBDataset2total_recebido: TfrxMemoView
           IndexTag = 1
           AllowVectorExport = True
-          Left = 445.984540000000000000
-          Width = 75.590600000000000000
+          Left = 468.661720000000000000
+          Width = 113.385900000000000000
           Height = 18.897650000000000000
           ContentScaleOptions.Constraints.MaxIterationValue = 0
           ContentScaleOptions.Constraints.MinIterationValue = 0
           DataSet = frxDBDataset2
           DataSetName = 'frxDBDataset2'
-          DisplayFormat.FormatStr = '%2.2m'
-          DisplayFormat.Kind = fkNumeric
+          DisplayFormat.FormatStr = 'mm.dd.yyyy'
+          DisplayFormat.Kind = fkDateTime
           Font.Charset = DEFAULT_CHARSET
           Font.Color = clGreen
           Font.Height = -13
@@ -4066,7 +3962,7 @@ object DataModule1: TDataModule1
           Frame.Typ = []
           Fill.BackColor = clWhite
           Memo.UTF8W = (
-            '[frxDBDataset2."total_perdido"]')
+            '[frxDBDataset2."data_ultimo_cancelamento"]')
           ParentFont = False
         end
         object MemofrxDBDataset2percentual_perda: TfrxMemoView
@@ -4077,6 +3973,7 @@ object DataModule1: TDataModule1
           Height = 18.897650000000000000
           ContentScaleOptions.Constraints.MaxIterationValue = 0
           ContentScaleOptions.Constraints.MinIterationValue = 0
+          DataField = 'ticket_medio_cancelado'
           DataSet = frxDBDataset2
           DataSetName = 'frxDBDataset2'
           DisplayFormat.FormatStr = '%2.2m'
@@ -4088,7 +3985,7 @@ object DataModule1: TDataModule1
           Font.Style = [fsBold]
           Frame.Typ = []
           Memo.UTF8W = (
-            '[frxDBDataset2."percentual_perda"]')
+            '[frxDBDataset2."ticket_medio_cancelado"]')
           ParentFont = False
         end
       end
@@ -4172,7 +4069,7 @@ object DataModule1: TDataModule1
           AllowVectorExport = True
           Left = 433.984260220000000000
           Top = 1.000000000000000000
-          Width = 97.377986000000000000
+          Width = 150.291406000000000000
           Height = 22.677180000000000000
           ContentScaleOptions.Constraints.MaxIterationValue = 0
           ContentScaleOptions.Constraints.MinIterationValue = 0
@@ -4183,7 +4080,7 @@ object DataModule1: TDataModule1
           Font.Style = [fsBold]
           Frame.Typ = []
           Memo.UTF8W = (
-            'Total Perdido :')
+            #218'ltimo Cancelamento :')
           ParentFont = False
         end
         object Memo17: TfrxMemoView
@@ -4224,9 +4121,9 @@ object DataModule1: TDataModule1
         end
         object Memo19: TfrxMemoView
           AllowVectorExport = True
-          Left = 582.047620000000000000
+          Left = 612.283860000000000000
           Top = 1.000000000000000000
-          Width = 135.173286000000000000
+          Width = 123.834696000000000000
           Height = 22.677180000000000000
           ContentScaleOptions.Constraints.MaxIterationValue = 0
           ContentScaleOptions.Constraints.MinIterationValue = 0
@@ -4237,12 +4134,13 @@ object DataModule1: TDataModule1
           Font.Style = [fsBold]
           Frame.Typ = []
           Memo.UTF8W = (
-            'Percentual Perdido :')
+            'Titcket M'#233'dio  :')
           ParentFont = False
         end
       end
       object Memo16: TfrxMemoView
         AllowVectorExport = True
+        Left = -7.559060000000000000
         Top = 842.835190000000000000
         Width = 740.787897770000000000
         Height = 166.299320000000000000
@@ -4279,7 +4177,7 @@ object DataModule1: TDataModule1
       end
       object Shape1: TfrxShapeView
         AllowVectorExport = True
-        Left = 15.118120000000000000
+        Left = 3.779530000000000000
         Top = 888.189550000000000000
         Width = 702.992580730000000000
         Height = 102.047304040000000000
@@ -4291,9 +4189,9 @@ object DataModule1: TDataModule1
       object MemofrxDBDataset1valor_total_geral_todas_receitas: TfrxMemoView
         IndexTag = 1
         AllowVectorExport = True
-        Left = 279.685220000000000000
-        Top = 922.205320000000000000
-        Width = 158.740260000000000000
+        Left = 287.244280000000000000
+        Top = 918.425790000000000000
+        Width = 136.063080000000000000
         Height = 30.236240000000000000
         ContentScaleOptions.Constraints.MaxIterationValue = 0
         ContentScaleOptions.Constraints.MinIterationValue = 0
@@ -7375,37 +7273,23 @@ object DataModule1: TDataModule1
     Connection = FDConnection1
     SQL.Strings = (
       '  SELECT'
-      '        c.id AS codigo_cliente,'
-      '        c.nome AS cliente,'
-      '        COUNT(*) AS quantidade_pendentes,'
-      '        COALESCE(SUM(r.valor_total), 0) AS valor_total_pendente,'
-      
-        '        COALESCE(SUM(r.valor_recebido), 0) AS valor_recebido_pen' +
-        'dente,'
-      
-        '        COALESCE(SUM(r.valor_total), 0) - COALESCE(SUM(r.valor_r' +
-        'ecebido), 0) AS valor_a_receber,'
-      '        ROUND('
-      '            CASE'
-      '                WHEN SUM(r.valor_total) > 0'
-      
-        '                THEN ((SUM(r.valor_total) - COALESCE(SUM(r.valor' +
-        '_recebido), 0)) * 100.0 / SUM(r.valor_total))'
-      '                ELSE 0'
-      '            END, 2'
-      '        ) AS percentual_pendente,'
-      '        COALESCE(AVG(r.valor_total), 0) AS valor_medio_pendente,'
-      '        SUM(SUM(r.valor_total)) OVER () AS valor_total_geral'
-      '    FROM receitas r'
-      '    INNER JOIN ordens_servico os ON r.id_ordem_servico = os.id'
-      '    INNER JOIN clientes c ON os.id_cliente = c.id'
-      '    WHERE r.status = '#39'PENDENTE'#39
-      '      AND r.ativo = TRUE'
-      '      AND os.ativo = TRUE'
-      '      AND c.ativo = TRUE'
-      '      AND r.data_emissao BETWEEN '#39'2025-01-01'#39' AND '#39'2025-12-31'#39
-      '    GROUP BY c.id, c.nome'
-      '    ORDER BY c.nome')
+      '      c.id AS codigo_cliente,'
+      '      c.nome AS cliente,'
+      '      COUNT(*) AS quantidade_pendentes,'
+      '      COALESCE(SUM(r.valor_total), 0) AS valor_total_pendente,'
+      '      COALESCE(AVG(r.valor_total), 0) AS valor_medio_pendente,'
+      '      COALESCE(SUM(r.valor_total), 0) AS valor_total_pendentes,'
+      '      SUM(SUM(r.valor_total)) OVER () AS valor_total_geral'
+      '  FROM receitas r'
+      '  INNER JOIN ordens_servico os ON r.id_ordem_servico = os.id'
+      '  INNER JOIN clientes c ON os.id_cliente = c.id'
+      '  WHERE r.status = '#39'PENDENTE'#39
+      '    AND r.ativo = TRUE'
+      '    AND os.ativo = TRUE'
+      '    AND c.ativo = TRUE'
+      '    AND r.data_emissao BETWEEN '#39'2025-01-01'#39' AND '#39'2025-12-31'#39
+      '  GROUP BY c.id, c.nome'
+      '  ORDER BY c.nome;')
     Left = 248
     Top = 400
     object FDQueryPendentescodigo_cliente: TIntegerField
@@ -7431,34 +7315,18 @@ object DataModule1: TDataModule1
       Precision = 64
       Size = 64
     end
-    object FDQueryPendentesvalor_recebido_pendente: TFMTBCDField
-      AutoGenerateValue = arDefault
-      FieldName = 'valor_recebido_pendente'
-      Origin = 'valor_recebido_pendente'
-      ReadOnly = True
-      Precision = 64
-      Size = 64
-    end
-    object FDQueryPendentesvalor_a_receber: TFMTBCDField
-      AutoGenerateValue = arDefault
-      FieldName = 'valor_a_receber'
-      Origin = 'valor_a_receber'
-      ReadOnly = True
-      Precision = 64
-      Size = 64
-    end
-    object FDQueryPendentespercentual_pendente: TFMTBCDField
-      AutoGenerateValue = arDefault
-      FieldName = 'percentual_pendente'
-      Origin = 'percentual_pendente'
-      ReadOnly = True
-      Precision = 64
-      Size = 64
-    end
     object FDQueryPendentesvalor_medio_pendente: TFMTBCDField
       AutoGenerateValue = arDefault
       FieldName = 'valor_medio_pendente'
       Origin = 'valor_medio_pendente'
+      ReadOnly = True
+      Precision = 64
+      Size = 64
+    end
+    object FDQueryPendentesvalor_total_pendentes: TFMTBCDField
+      AutoGenerateValue = arDefault
+      FieldName = 'valor_total_pendentes'
+      Origin = 'valor_total_pendentes'
       ReadOnly = True
       Precision = 64
       Size = 64
@@ -7481,7 +7349,7 @@ object DataModule1: TDataModule1
     PrintOptions.Printer = 'Default'
     PrintOptions.PrintOnSheet = 0
     ReportOptions.CreateDate = 45972.980654456000000000
-    ReportOptions.LastChange = 45978.877527824070000000
+    ReportOptions.LastChange = 45986.030603506940000000
     ScriptLanguage = 'PascalScript'
     ScriptText.Strings = (
       'begin'
@@ -7669,7 +7537,7 @@ object DataModule1: TDataModule1
         object MemofrxDBDataset3codigo_cliente: TfrxMemoView
           IndexTag = 1
           AllowVectorExport = True
-          Left = 158.740260000000000000
+          Left = 219.212740000000000000
           Width = 102.047310000000000000
           Height = 18.897650000000000000
           ContentScaleOptions.Constraints.MaxIterationValue = 0
@@ -7687,40 +7555,16 @@ object DataModule1: TDataModule1
             '[frxDBDataset3."codigo_cliente"]')
           ParentFont = False
         end
-        object MemofrxDBDataset3valor_medio_pendente: TfrxMemoView
-          IndexTag = 1
-          AllowVectorExport = True
-          Left = 623.622450000000000000
-          Width = 79.370130000000000000
-          Height = 18.897650000000000000
-          ContentScaleOptions.Constraints.MaxIterationValue = 0
-          ContentScaleOptions.Constraints.MinIterationValue = 0
-          DataSet = frxDBDataset3
-          DataSetName = 'frxDBDataset3'
-          DisplayFormat.FormatStr = '%2.2m'
-          DisplayFormat.Kind = fkNumeric
-          Font.Charset = DEFAULT_CHARSET
-          Font.Color = clCrimson
-          Font.Height = -13
-          Font.Name = 'Arial'
-          Font.Style = [fsBold]
-          Frame.Typ = []
-          Memo.UTF8W = (
-            '[frxDBDataset3."valor_medio_pendente"]')
-          ParentFont = False
-        end
         object MemofrxDBDataset3valor_a_receber: TfrxMemoView
           IndexTag = 1
           AllowVectorExport = True
-          Left = 445.984540000000000000
+          Left = 608.504330000000000000
           Width = 120.944960000000000000
           Height = 18.897650000000000000
           ContentScaleOptions.Constraints.MaxIterationValue = 0
           ContentScaleOptions.Constraints.MinIterationValue = 0
           DataSet = frxDBDataset3
           DataSetName = 'frxDBDataset3'
-          DisplayFormat.FormatStr = '%2.2m'
-          DisplayFormat.Kind = fkNumeric
           Font.Charset = DEFAULT_CHARSET
           Font.Color = clGreen
           Font.Height = -13
@@ -7728,13 +7572,13 @@ object DataModule1: TDataModule1
           Font.Style = [fsBold]
           Frame.Typ = []
           Memo.UTF8W = (
-            '[frxDBDataset3."valor_a_receber"]')
+            '[frxDBDataset3."quantidade_pendentes"]')
           ParentFont = False
         end
         object Memo10: TfrxMemoView
           IndexTag = 1
           AllowVectorExport = True
-          Left = 294.803340000000000000
+          Left = 309.921460000000000000
           Width = 102.047310000000000000
           Height = 18.897650000000000000
           ContentScaleOptions.Constraints.MaxIterationValue = 0
@@ -7751,6 +7595,28 @@ object DataModule1: TDataModule1
           Frame.Typ = []
           Memo.UTF8W = (
             '[frxDBDataset3."valor_total_pendente"]')
+          ParentFont = False
+        end
+        object MemofrxDBDataset3valor_medio_pendente: TfrxMemoView
+          IndexTag = 1
+          AllowVectorExport = True
+          Left = 453.543600000000000000
+          Width = 79.370130000000000000
+          Height = 18.897650000000000000
+          ContentScaleOptions.Constraints.MaxIterationValue = 0
+          ContentScaleOptions.Constraints.MinIterationValue = 0
+          DataSet = frxDBDataset3
+          DataSetName = 'frxDBDataset3'
+          DisplayFormat.FormatStr = '%2.2m'
+          DisplayFormat.Kind = fkNumeric
+          Font.Charset = DEFAULT_CHARSET
+          Font.Color = clCrimson
+          Font.Height = -13
+          Font.Name = 'Arial'
+          Font.Style = [fsBold]
+          Frame.Typ = []
+          Memo.UTF8W = (
+            '[frxDBDataset3."valor_medio_pendente"]')
           ParentFont = False
         end
       end
@@ -7820,7 +7686,7 @@ object DataModule1: TDataModule1
         end
         object Memo6: TfrxMemoView
           AllowVectorExport = True
-          Left = 604.063110220000000000
+          Left = 445.322850220000000000
           Top = 1.000000000000000000
           Width = 135.173286000000000000
           Height = 22.677180000000000000
@@ -7838,7 +7704,7 @@ object DataModule1: TDataModule1
         end
         object Memo18: TfrxMemoView
           AllowVectorExport = True
-          Left = 272.126160000000000000
+          Left = 309.921460000000000000
           Top = 1.000000000000000000
           Width = 135.173286000000000000
           Height = 22.677180000000000000
@@ -7856,7 +7722,7 @@ object DataModule1: TDataModule1
         end
         object Memo15: TfrxMemoView
           AllowVectorExport = True
-          Left = 166.299320000000000000
+          Left = 204.094620000000000000
           Width = 63.362216000000000000
           Height = 22.677180000000000000
           ContentScaleOptions.Constraints.MaxIterationValue = 0
@@ -7873,8 +7739,9 @@ object DataModule1: TDataModule1
         end
         object Memo8: TfrxMemoView
           AllowVectorExport = True
-          Left = 430.866420000000000000
-          Width = 135.173286000000000000
+          Left = 563.149970000000000000
+          Top = 1.000000000000000000
+          Width = 157.850466000000000000
           Height = 22.677180000000000000
           ContentScaleOptions.Constraints.MaxIterationValue = 0
           ContentScaleOptions.Constraints.MinIterationValue = 0
@@ -7885,7 +7752,7 @@ object DataModule1: TDataModule1
           Font.Style = [fsBold]
           Frame.Typ = []
           Memo.UTF8W = (
-            'Valor a Receber :')
+            'Quantidade Pendente :')
           ParentFont = False
         end
       end
@@ -11004,31 +10871,22 @@ object DataModule1: TDataModule1
     Connection = FDConnection1
     SQL.Strings = (
       '  SELECT'
-      '        f.id AS codigo_fornecedor,'
-      '        f.nome AS nome_fornecedor,'
-      '        COUNT(*) AS quantidade_pendencias_concluidas,'
-      
-        '        COALESCE(SUM(p.valor_total), 0) AS valor_total_concluido' +
-        ','
-      
-        '        COALESCE(AVG(p.valor_total), 0) AS ticket_medio_concluid' +
-        'o,'
-      '        MIN(p.data_criacao) AS primeira_pendencia,'
-      '        MAX(p.data_criacao) AS ultima_conclusao,'
-      '        MIN(p.data_vencimento) AS menor_prazo,'
-      '        MAX(p.data_vencimento) AS maior_prazo,'
-      '        0 AS tempo_medio_conclusao_dias,'
-      '        SUM(SUM(p.valor_total)) OVER () AS valor_total_geral'
-      '    FROM pendencias p'
-      '    INNER JOIN fornecedores f ON p.id_fornecedor = f.id'
-      '    WHERE p.status = '#39'CONCLUIDA'#39
-      '      AND p.ativo = TRUE'
-      '      AND f.ativo = TRUE'
-      '      AND p.data_criacao BETWEEN '#39'2025-01-01'#39' AND '#39'2025-12-31'#39
-      '    GROUP BY f.id, f.nome'
-      '    ORDER BY valor_total_concluido DESC')
-    Left = 576
-    Top = 256
+      '      f.id AS codigo_fornecedor,'
+      '      f.nome AS nome_fornecedor,'
+      '      COUNT(*) AS quantidade_pendencias_concluidas,'
+      '      COALESCE(SUM(p.valor_total), 0) AS valor_total_concluido,'
+      '      COALESCE(AVG(p.valor_total), 0) AS ticket_medio_concluido,'
+      '      SUM(SUM(p.valor_total)) OVER () AS valor_total_geral'
+      '  FROM pendencias p'
+      '  INNER JOIN fornecedores f ON p.id_fornecedor = f.id'
+      '  WHERE p.status = '#39'CONCLUIDA'#39
+      '    AND p.ativo = TRUE'
+      '    AND f.ativo = TRUE'
+      '    AND p.data_criacao BETWEEN '#39'2025-01-01'#39' AND '#39'2025-12-31'#39
+      '  GROUP BY f.id, f.nome'
+      '  ORDER BY valor_total_concluido DESC;')
+    Left = 248
+    Top = 472
     object FDQueryPendenciasConcluidascodigo_fornecedor: TIntegerField
       FieldName = 'codigo_fornecedor'
       Origin = 'codigo_fornecedor'
@@ -11060,36 +10918,6 @@ object DataModule1: TDataModule1
       Precision = 64
       Size = 64
     end
-    object FDQueryPendenciasConcluidasprimeira_pendencia: TDateField
-      AutoGenerateValue = arDefault
-      FieldName = 'primeira_pendencia'
-      Origin = 'primeira_pendencia'
-      ReadOnly = True
-    end
-    object FDQueryPendenciasConcluidasultima_conclusao: TDateField
-      AutoGenerateValue = arDefault
-      FieldName = 'ultima_conclusao'
-      Origin = 'ultima_conclusao'
-      ReadOnly = True
-    end
-    object FDQueryPendenciasConcluidasmenor_prazo: TDateField
-      AutoGenerateValue = arDefault
-      FieldName = 'menor_prazo'
-      Origin = 'menor_prazo'
-      ReadOnly = True
-    end
-    object FDQueryPendenciasConcluidasmaior_prazo: TDateField
-      AutoGenerateValue = arDefault
-      FieldName = 'maior_prazo'
-      Origin = 'maior_prazo'
-      ReadOnly = True
-    end
-    object FDQueryPendenciasConcluidastempo_medio_conclusao_dias: TIntegerField
-      AutoGenerateValue = arDefault
-      FieldName = 'tempo_medio_conclusao_dias'
-      Origin = 'tempo_medio_conclusao_dias'
-      ReadOnly = True
-    end
     object FDQueryPendenciasConcluidasvalor_total_geral: TFMTBCDField
       AutoGenerateValue = arDefault
       FieldName = 'valor_total_geral'
@@ -11108,14 +10936,14 @@ object DataModule1: TDataModule1
     PrintOptions.Printer = 'Default'
     PrintOptions.PrintOnSheet = 0
     ReportOptions.CreateDate = 45972.980654456000000000
-    ReportOptions.LastChange = 45978.876794583330000000
+    ReportOptions.LastChange = 45986.030394675920000000
     ScriptLanguage = 'PascalScript'
     ScriptText.Strings = (
       'begin'
       ''
       'end.')
-    Left = 696
-    Top = 256
+    Left = 344
+    Top = 472
     Datasets = <
       item
         DataSet = frxDBDataset4
@@ -11513,7 +11341,7 @@ object DataModule1: TDataModule1
           Font.Style = [fsBold]
           Frame.Typ = []
           Memo.UTF8W = (
-            'Valot Total  :')
+            'Valor Total  :')
           ParentFont = False
         end
         object Memo19: TfrxMemoView
@@ -14643,55 +14471,31 @@ object DataModule1: TDataModule1
     DataSet = FDQueryPendenciasConcluidas
     BCDToCurrency = False
     DataSetOptions = []
-    Left = 776
-    Top = 257
+    Left = 408
+    Top = 473
   end
   object FDQueryPendenciasPendentes: TFDQuery
     Connection = FDConnection1
     SQL.Strings = (
       '  SELECT'
-      '        f.id AS codigo_fornecedor,'
-      '        f.nome AS nome_fornecedor,'
-      '        COUNT(*) AS quantidade_pendentes,'
-      '        COALESCE(SUM(p.valor_total), 0) AS valor_total_pendente,'
-      '        COALESCE(AVG(p.valor_total), 0) AS valor_medio_pendente,'
-      '        MIN(p.data_criacao) AS primeira_pendencia,'
-      '        MAX(p.data_vencimento) AS prazo_mais_tarde,'
-      '        MIN(p.data_vencimento) AS prazo_mais_cedo,'
+      '      f.id AS codigo_fornecedor,'
+      '      f.nome AS nome_fornecedor,'
+      '      COALESCE(SUM(p.valor_total), 0) AS valor_total_pendente,'
+      '      COALESCE(AVG(p.valor_total), 0) AS valor_medio_pendente,'
       
-        '        COUNT(CASE WHEN p.data_vencimento < CURRENT_DATE THEN 1 ' +
-        'END) AS quantidade_vencidas,'
-      
-        '        COALESCE(SUM(CASE WHEN p.data_vencimento < CURRENT_DATE ' +
-        'THEN p.valor_total ELSE 0 END), 0) AS valor_vencido,'
-      
-        '        COUNT(CASE WHEN p.data_vencimento >= CURRENT_DATE THEN 1' +
-        ' END) AS quantidade_a_vencer,'
-      
-        '        COALESCE(SUM(CASE WHEN p.data_vencimento >= CURRENT_DATE' +
-        ' THEN p.valor_total ELSE 0 END), 0) AS'
-      '  valor_a_vencer,'
-      '        ROUND('
-      '            CASE'
-      '                WHEN COUNT(*) > 0'
-      
-        '                THEN (COUNT(CASE WHEN p.data_vencimento < CURREN' +
-        'T_DATE THEN 1 END) * 100.0 / COUNT(*))'
-      '                ELSE 0'
-      '            END, 2'
-      '        ) AS percentual_vencidas,'
-      '        SUM(SUM(p.valor_total)) OVER () AS valor_total_geral'
-      '    FROM pendencias p'
-      '    INNER JOIN fornecedores f ON p.id_fornecedor = f.id'
-      '    WHERE p.status = '#39'PENDENTE'#39
-      '      AND p.ativo = TRUE'
-      '      AND f.ativo = TRUE'
-      '      AND p.data_criacao BETWEEN '#39'2025-01-01'#39' AND '#39'2025-12-31'#39
-      '    GROUP BY f.id, f.nome'
-      '    ORDER BY valor_total_pendente DESC'
-      '')
-    Left = 584
-    Top = 328
+        '      COUNT(CASE WHEN p.data_vencimento >= CURRENT_DATE THEN 1 E' +
+        'ND) AS quantidade_a_pagar,'
+      '      SUM(SUM(p.valor_total)) OVER () AS valor_total_geral'
+      '  FROM pendencias p'
+      '  INNER JOIN fornecedores f ON p.id_fornecedor = f.id'
+      '  WHERE p.status = '#39'PENDENTE'#39
+      '    AND p.ativo = TRUE'
+      '    AND f.ativo = TRUE'
+      '    AND p.data_criacao BETWEEN '#39'2025-01-01'#39' AND '#39'2025-12-31'#39
+      '  GROUP BY f.id, f.nome'
+      '  ORDER BY f.nome;')
+    Left = 248
+    Top = 544
     object FDQueryPendenciasPendentescodigo_fornecedor: TIntegerField
       FieldName = 'codigo_fornecedor'
       Origin = 'codigo_fornecedor'
@@ -14701,20 +14505,6 @@ object DataModule1: TDataModule1
       Origin = 'nome_fornecedor'
       Size = 100
     end
-    object FDQueryPendenciasPendentesquantidade_pendentes: TLargeintField
-      AutoGenerateValue = arDefault
-      FieldName = 'quantidade_pendentes'
-      Origin = 'quantidade_pendentes'
-      ReadOnly = True
-    end
-    object FDQueryPendenciasPendentesvalor_total_pendente: TFMTBCDField
-      AutoGenerateValue = arDefault
-      FieldName = 'valor_total_pendente'
-      Origin = 'valor_total_pendente'
-      ReadOnly = True
-      Precision = 64
-      Size = 64
-    end
     object FDQueryPendenciasPendentesvalor_medio_pendente: TFMTBCDField
       AutoGenerateValue = arDefault
       FieldName = 'valor_medio_pendente'
@@ -14723,64 +14513,24 @@ object DataModule1: TDataModule1
       Precision = 64
       Size = 64
     end
-    object FDQueryPendenciasPendentesprimeira_pendencia: TDateField
+    object FDQueryPendenciasPendentesquantidade_a_pagar: TLargeintField
       AutoGenerateValue = arDefault
-      FieldName = 'primeira_pendencia'
-      Origin = 'primeira_pendencia'
+      FieldName = 'quantidade_a_pagar'
+      Origin = 'quantidade_a_pagar'
       ReadOnly = True
-    end
-    object FDQueryPendenciasPendentesprazo_mais_tarde: TDateField
-      AutoGenerateValue = arDefault
-      FieldName = 'prazo_mais_tarde'
-      Origin = 'prazo_mais_tarde'
-      ReadOnly = True
-    end
-    object FDQueryPendenciasPendentesprazo_mais_cedo: TDateField
-      AutoGenerateValue = arDefault
-      FieldName = 'prazo_mais_cedo'
-      Origin = 'prazo_mais_cedo'
-      ReadOnly = True
-    end
-    object FDQueryPendenciasPendentesquantidade_vencidas: TLargeintField
-      AutoGenerateValue = arDefault
-      FieldName = 'quantidade_vencidas'
-      Origin = 'quantidade_vencidas'
-      ReadOnly = True
-    end
-    object FDQueryPendenciasPendentesvalor_vencido: TFMTBCDField
-      AutoGenerateValue = arDefault
-      FieldName = 'valor_vencido'
-      Origin = 'valor_vencido'
-      ReadOnly = True
-      Precision = 64
-      Size = 64
-    end
-    object FDQueryPendenciasPendentesquantidade_a_vencer: TLargeintField
-      AutoGenerateValue = arDefault
-      FieldName = 'quantidade_a_vencer'
-      Origin = 'quantidade_a_vencer'
-      ReadOnly = True
-    end
-    object FDQueryPendenciasPendentesvalor_a_vencer: TFMTBCDField
-      AutoGenerateValue = arDefault
-      FieldName = 'valor_a_vencer'
-      Origin = 'valor_a_vencer'
-      ReadOnly = True
-      Precision = 64
-      Size = 64
-    end
-    object FDQueryPendenciasPendentespercentual_vencidas: TFMTBCDField
-      AutoGenerateValue = arDefault
-      FieldName = 'percentual_vencidas'
-      Origin = 'percentual_vencidas'
-      ReadOnly = True
-      Precision = 64
-      Size = 64
     end
     object FDQueryPendenciasPendentesvalor_total_geral: TFMTBCDField
       AutoGenerateValue = arDefault
       FieldName = 'valor_total_geral'
       Origin = 'valor_total_geral'
+      ReadOnly = True
+      Precision = 64
+      Size = 64
+    end
+    object FDQueryPendenciasPendentesvalor_total_pendente: TFMTBCDField
+      AutoGenerateValue = arDefault
+      FieldName = 'valor_total_pendente'
+      Origin = 'valor_total_pendente'
       ReadOnly = True
       Precision = 64
       Size = 64
@@ -14795,14 +14545,14 @@ object DataModule1: TDataModule1
     PrintOptions.Printer = 'Default'
     PrintOptions.PrintOnSheet = 0
     ReportOptions.CreateDate = 45972.980654456000000000
-    ReportOptions.LastChange = 45978.876994108800000000
+    ReportOptions.LastChange = 45986.028548923610000000
     ScriptLanguage = 'PascalScript'
     ScriptText.Strings = (
       'begin'
       ''
       'end.')
-    Left = 704
-    Top = 328
+    Left = 336
+    Top = 544
     Datasets = <
       item
         DataSet = frxDBDataset5
@@ -15009,7 +14759,7 @@ object DataModule1: TDataModule1
           Height = 18.897650000000000000
           ContentScaleOptions.Constraints.MaxIterationValue = 0
           ContentScaleOptions.Constraints.MinIterationValue = 0
-          DataField = 'valor_medio_pendente'
+          DataField = 'valor_total_pendente'
           DataSet = frxDBDataset5
           DataSetName = 'frxDBDataset5'
           DisplayFormat.FormatStr = '%2.2m'
@@ -15022,7 +14772,7 @@ object DataModule1: TDataModule1
           Frame.Typ = []
           Fill.BackColor = clWhite
           Memo.UTF8W = (
-            '[frxDBDataset5."valor_medio_pendente"]')
+            '[frxDBDataset5."valor_total_pendente"]')
           ParentFont = False
         end
         object Memo21: TfrxMemoView
@@ -15057,8 +14807,9 @@ object DataModule1: TDataModule1
           Height = 18.897650000000000000
           ContentScaleOptions.Constraints.MaxIterationValue = 0
           ContentScaleOptions.Constraints.MinIterationValue = 0
-          DataSet = frxDBDataset4
-          DataSetName = 'frxDBDataset4'
+          DataField = 'quantidade_a_pagar'
+          DataSet = frxDBDataset5
+          DataSetName = 'frxDBDataset5'
           Font.Charset = DEFAULT_CHARSET
           Font.Color = clCrimson
           Font.Height = -13
@@ -15067,7 +14818,7 @@ object DataModule1: TDataModule1
           Frame.Typ = []
           Fill.BackColor = clWhite
           Memo.UTF8W = (
-            '[frxDBDataset5."quantidade_a_vencer"]')
+            '[frxDBDataset5."quantidade_a_pagar"]')
           ParentFont = False
         end
       end
@@ -18329,7 +18080,7 @@ object DataModule1: TDataModule1
     DataSet = FDQueryPendenciasPendentes
     BCDToCurrency = False
     DataSetOptions = []
-    Left = 784
-    Top = 329
+    Left = 408
+    Top = 545
   end
 end

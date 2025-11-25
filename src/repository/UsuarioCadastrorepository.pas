@@ -1,4 +1,4 @@
-unit UsuarioCadastrorepository;
+﻿unit UsuarioCadastrorepository;
 
 interface
 
@@ -42,7 +42,7 @@ begin
     Result := FQuery;
   except
     on E: Exception do
-      raise Exception.Create('Erro ao buscar usu�rio por nome: ' + E.Message);
+      raise Exception.Create('Erro ao buscar usuário por nome: ' + E.Message);
   end;
 end;
 
@@ -104,7 +104,7 @@ begin
     Result := FQuery;
   except
     on E: Exception do
-      raise Exception.Create('Erro ao listar usu�rios: ' + E.Message);
+      raise Exception.Create('Erro ao listar usuários: ' + E.Message);
   end;
 end;
 
@@ -118,7 +118,7 @@ begin
     Result := FQuery;
   except
     on E: Exception do
-      raise Exception.Create('Erro ao listar usu�rios para restaura��o: ' + E.Message);
+      raise Exception.Create('Erro ao listar usuários para restauração: ' + E.Message);
   end;
 end;
 
@@ -171,7 +171,7 @@ begin
     Result := FQuery.RowsAffected > 0;
   except
     on E: Exception do
-      raise Exception.Create('Erro ao editar usu�rio: ' + E.Message);
+      raise Exception.Create('Erro ao editar usuário: ' + E.Message);
   end;
 end;
 

@@ -204,7 +204,7 @@ begin
     FQuery.SQL.Add('       forma_pagamento ILIKE :filtro OR');
     FQuery.SQL.Add('       observacao ILIKE :filtro OR');
     FQuery.SQL.Add('       status ILIKE :filtro)');
-    FQuery.SQL.Add('  AND ativo = TRUE');
+    FQuery.SQL.Add('  AND ativo = TRUE AND status = ''PENDENTE''');
     FQuery.SQL.Add('ORDER BY id');
     FQuery.ParamByName('filtro').AsString := '%' + Trim(aFiltro) + '%';
     FQuery.Open;

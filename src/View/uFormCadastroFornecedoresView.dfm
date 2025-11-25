@@ -2088,491 +2088,6 @@
           OnChange = EdtPesquisarChange
         end
       end
-      object PnlPedido: TPanel
-        Left = 17
-        Top = 74
-        Width = 923
-        Height = 475
-        BevelOuter = bvNone
-        Color = 6172416
-        ParentBackground = False
-        TabOrder = 5
-        Visible = False
-        object LblPedido: TLabel
-          AlignWithMargins = True
-          Left = 3
-          Top = 20
-          Width = 917
-          Height = 32
-          Margins.Top = 20
-          Align = alTop
-          Alignment = taCenter
-          Caption = 'Pedido'
-          Font.Charset = DEFAULT_CHARSET
-          Font.Color = clWhite
-          Font.Height = -24
-          Font.Name = 'Segoe UI'
-          Font.Style = [fsBold]
-          ParentFont = False
-          ExplicitWidth = 79
-        end
-        object ImgFecharPedido: TImage
-          Left = 861
-          Top = 22
-          Width = 25
-          Height = 25
-          Picture.Data = {
-            0954506E67496D61676589504E470D0A1A0A0000000D49484452000000180000
-            00180806000000E0773DF8000000097048597300000EC300000EC301C76FA864
-            0000001974455874536F667477617265007777772E696E6B73636170652E6F72
-            679BEE3C1A0000010F4944415478DAC5964D0AC2301085675C783A050F20F80B
-            820BC55308228A4871E10F75E752F05EAE7551F5854688A549A6A962E0D13493
-            BCAF69324DF9493423A231B485464CF4A012057E155CD6501F5A301AEEA85475
-            FC08754321DAFC00B574D34D0122548646BF20488EB92A115B0227A8094852C2
-            FCEDE1ED9094304F58DA31C45CDD706680BADF40031FC4621E433D73FD3E0052
-            88D43C17E083A46199B915603CE51E6A1BCD173DA6263177021C33318BD3DC0B
-            30667286EA99909A4DC39790FF0558768B59BCC918B2C894994D4C4517D9B5CF
-            D3B02C19730192242A92F15CD4DCE82B82F83E76CEF72B8170A8B914C265CC45
-            901F1F99CB5F1FFA570598A2328176F4BDDF9615D481E62FF3919E24F9015515
-            0000000049454E44AE426082}
-          OnClick = ImgFecharPedidoClick
-        end
-        object PnlBackgroundPedido: TPanel
-          AlignWithMargins = True
-          Left = 20
-          Top = 65
-          Width = 883
-          Height = 395
-          Margins.Left = 20
-          Margins.Top = 10
-          Margins.Right = 20
-          Margins.Bottom = 15
-          Align = alClient
-          BevelOuter = bvNone
-          Color = 9521152
-          ParentBackground = False
-          TabOrder = 0
-          object PnlDesingPedido: TPanel
-            AlignWithMargins = True
-            Left = 19
-            Top = 24
-            Width = 465
-            Height = 348
-            Margins.Left = 19
-            Margins.Top = 24
-            Margins.Right = 399
-            Margins.Bottom = 23
-            Align = alClient
-            BevelOuter = bvNone
-            Caption = 'PnlGrid'
-            Color = clBackground
-            ParentBackground = False
-            TabOrder = 1
-            object ListBoxPedidos: TListBox
-              AlignWithMargins = True
-              Left = 1
-              Top = 1
-              Width = 463
-              Height = 307
-              Margins.Left = 1
-              Margins.Top = 1
-              Margins.Right = 1
-              Margins.Bottom = 40
-              Align = alClient
-              ItemHeight = 20
-              TabOrder = 0
-            end
-            object Panel3: TPanel
-              AlignWithMargins = True
-              Left = 1
-              Top = 306
-              Width = 480
-              Height = 43
-              Margins.Left = 0
-              Margins.Top = 0
-              Margins.Right = 0
-              Margins.Bottom = 0
-              BevelOuter = bvNone
-              Color = 6172416
-              ParentBackground = False
-              TabOrder = 1
-              object Label18: TLabel
-                AlignWithMargins = True
-                Left = 3
-                Top = 10
-                Width = 474
-                Height = 30
-                Margins.Top = 10
-                Align = alClient
-                Alignment = taCenter
-                Caption = 'Cancelar'
-                Color = clWindow
-                Font.Charset = DEFAULT_CHARSET
-                Font.Color = clWhite
-                Font.Height = -15
-                Font.Name = 'Segoe UI'
-                Font.Style = [fsBold]
-                ParentColor = False
-                ParentFont = False
-                OnClick = Label18Click
-                ExplicitWidth = 59
-                ExplicitHeight = 20
-              end
-            end
-          end
-          object PnlEditPedido: TPanel
-            AlignWithMargins = True
-            Left = 511
-            Top = 31
-            Width = 362
-            Height = 346
-            Margins.Left = 0
-            Margins.Top = 60
-            Margins.Right = 20
-            Margins.Bottom = 20
-            Color = 15790320
-            ParentBackground = False
-            TabOrder = 0
-            object Label14: TLabel
-              Left = 16
-              Top = 140
-              Width = 114
-              Height = 17
-              Caption = 'Forma Pagamento :'
-              Font.Charset = DEFAULT_CHARSET
-              Font.Color = clWindowText
-              Font.Height = -13
-              Font.Name = 'Segoe UI'
-              Font.Style = []
-              ParentFont = False
-            end
-            object Label15: TLabel
-              Left = 184
-              Top = 140
-              Width = 69
-              Height = 17
-              Caption = 'Valor Total :'
-              Font.Charset = DEFAULT_CHARSET
-              Font.Color = clWindowText
-              Font.Height = -13
-              Font.Name = 'Segoe UI'
-              Font.Style = []
-              ParentFont = False
-            end
-            object Label16: TLabel
-              Left = 184
-              Top = 27
-              Width = 34
-              Height = 17
-              Caption = 'Pe'#231'a :'
-              Font.Charset = DEFAULT_CHARSET
-              Font.Color = clWindowText
-              Font.Height = -13
-              Font.Name = 'Segoe UI'
-              Font.Style = []
-              ParentFont = False
-            end
-            object Label17: TLabel
-              Left = 16
-              Top = 27
-              Width = 74
-              Height = 17
-              Caption = 'Fornecedor :'
-              Font.Charset = DEFAULT_CHARSET
-              Font.Color = clWindowText
-              Font.Height = -13
-              Font.Name = 'Segoe UI'
-              Font.Style = []
-              ParentFont = False
-            end
-            object Label19: TLabel
-              Left = 16
-              Top = 83
-              Width = 75
-              Height = 17
-              Caption = 'Quantidade :'
-              Font.Charset = DEFAULT_CHARSET
-              Font.Color = clWindowText
-              Font.Height = -13
-              Font.Name = 'Segoe UI'
-              Font.Style = []
-              ParentFont = False
-            end
-            object Label20: TLabel
-              Left = 184
-              Top = 83
-              Width = 77
-              Height = 17
-              Caption = 'Observa'#231#227'o :'
-              Font.Charset = DEFAULT_CHARSET
-              Font.Color = clWindowText
-              Font.Height = -13
-              Font.Name = 'Segoe UI'
-              Font.Style = []
-              ParentFont = False
-            end
-            object Shape2: TShape
-              AlignWithMargins = True
-              Left = 10
-              Top = 210
-              Width = 327
-              Height = 38
-              Margins.Left = 10
-              Margins.Top = 14
-              Margins.Right = 0
-              Margins.Bottom = 18
-              Brush.Color = 9521152
-              Pen.Color = clSilver
-              Shape = stRoundRect
-            end
-            object Shape3: TShape
-              AlignWithMargins = True
-              Left = 10
-              Top = 264
-              Width = 327
-              Height = 39
-              Margins.Left = 10
-              Margins.Top = 14
-              Margins.Right = 0
-              Margins.Bottom = 18
-              Brush.Color = 9521152
-              Pen.Color = clSilver
-              Shape = stRoundRect
-            end
-            object PnlAdicionar: TPanel
-              AlignWithMargins = True
-              Left = 16
-              Top = 212
-              Width = 315
-              Height = 36
-              Margins.Left = 0
-              Margins.Top = 0
-              Margins.Right = 0
-              Margins.Bottom = 0
-              BevelOuter = bvNone
-              Color = 9521152
-              ParentBackground = False
-              TabOrder = 0
-              object LblAdicionar: TLabel
-                AlignWithMargins = True
-                Left = 3
-                Top = 6
-                Width = 309
-                Height = 27
-                Margins.Top = 6
-                Align = alClient
-                Alignment = taCenter
-                Caption = 'Adicionar'
-                Color = clWhite
-                Font.Charset = DEFAULT_CHARSET
-                Font.Color = clWhite
-                Font.Height = -15
-                Font.Name = 'Segoe UI'
-                Font.Style = [fsBold]
-                ParentColor = False
-                ParentFont = False
-                OnClick = LblAdicionarClick
-                ExplicitWidth = 67
-                ExplicitHeight = 20
-              end
-              object Image4: TImage
-                Left = 174
-                Top = -11
-                Width = 70
-                Height = 56
-                Center = True
-                Picture.Data = {
-                  0954506E67496D61676589504E470D0A1A0A0000000D49484452000000100000
-                  001008060000001FF3FF61000000097048597300000EC300000EC301C76FA864
-                  0000001974455874536F667477617265007777772E696E6B73636170652E6F72
-                  679BEE3C1A0000012F4944415478DA6364A01030A20BFCFFFF5F8CE1CF9F5C20
-                  D3078855A1C2B780782B030BCB244646C6D7380DF8FFE74F08D0847940262F0E
-                  0B3F3130322632B2B0ACC33000AA79153657A1817F4043426186302239FB0E16
-                  9B2741E93C34F18F40EFA882BC0331E0F7EF66205583C5B646285D8F45AE8991
-                  95B51E66C00520A54FA201E7810618C10CF804773E23E374A09F3E4115ED81D2
-                  2E50397EA05C0654EC33D0003E4C031818FA81F825947D144A5B436971202E84
-                  C508D0007E9801E7819401895E380734C01866401390AA25D18046A0010DB068
-                  148546231F8A1246C6C90C1005B958A25105188D6F9013521050E16A20938901
-                  3F0025A4606042DA00B60359066A082829F3E3D0FC119A94D7C31D89AE02E81D
-                  11A4CCA4061202E2DB40BC05E8ECC92067A3F892814200004EF27311C9AEC8C4
-                  0000000049454E44AE426082}
-              end
-            end
-            object EdtValorTotal: TEdit
-              AlignWithMargins = True
-              Left = 184
-              Top = 164
-              Width = 145
-              Height = 29
-              Margins.Left = 20
-              Margins.Top = 30
-              Margins.Bottom = 62
-              AutoSize = False
-              Font.Charset = DEFAULT_CHARSET
-              Font.Color = clWindowText
-              Font.Height = -15
-              Font.Name = 'Segoe UI'
-              Font.Style = []
-              ParentFont = False
-              TabOrder = 1
-            end
-            object CmbFornecedorPedido: TComboBox
-              Left = 16
-              Top = 47
-              Width = 145
-              Height = 28
-              TabOrder = 2
-              OnChange = CmbFornecedorPedidoChange
-            end
-            object CmbFormaPagamento: TComboBox
-              AlignWithMargins = True
-              Left = 16
-              Top = 163
-              Width = 145
-              Height = 29
-              Margins.Top = 30
-              Margins.Right = 5
-              Margins.Bottom = 5
-              BevelOuter = bvNone
-              Style = csDropDownList
-              Font.Charset = DEFAULT_CHARSET
-              Font.Color = clWindowText
-              Font.Height = -16
-              Font.Name = 'Segoe UI'
-              Font.Style = []
-              ParentFont = False
-              TabOrder = 3
-              Items.Strings = (
-                'Dinheiro'
-                'Cart'#227'o de Cr'#233'dito'
-                'Cart'#227'o de D'#233'bito'
-                'PIX'
-                'Transfer'#234'ncia Banc'#225'ria'
-                'Boleto Banc'#225'rio'
-                'Cheque'
-                'Dep'#243'sito em Conta')
-            end
-            object EdtQuantidade: TEdit
-              AlignWithMargins = True
-              Left = 14
-              Top = 103
-              Width = 145
-              Height = 29
-              Margins.Left = 5
-              Margins.Top = 30
-              Margins.Right = 5
-              Margins.Bottom = 76
-              AutoSize = False
-              Font.Charset = DEFAULT_CHARSET
-              Font.Color = clWindowText
-              Font.Height = -15
-              Font.Name = 'Segoe UI'
-              Font.Style = []
-              ParentFont = False
-              TabOrder = 4
-              OnChange = EdtQuantidadeChange
-            end
-            object EdtObservacao: TEdit
-              AlignWithMargins = True
-              Left = 184
-              Top = 102
-              Width = 145
-              Height = 29
-              Margins.Left = 5
-              Margins.Top = 30
-              Margins.Right = 5
-              Margins.Bottom = 76
-              AutoSize = False
-              Font.Charset = DEFAULT_CHARSET
-              Font.Color = clWindowText
-              Font.Height = -15
-              Font.Name = 'Segoe UI'
-              Font.Style = []
-              ParentFont = False
-              TabOrder = 5
-            end
-            object CmbPeças: TComboBox
-              AlignWithMargins = True
-              Left = 184
-              Top = 46
-              Width = 145
-              Height = 29
-              Margins.Top = 30
-              Margins.Right = 5
-              Margins.Bottom = 5
-              BevelOuter = bvNone
-              Style = csDropDownList
-              Font.Charset = DEFAULT_CHARSET
-              Font.Color = clWindowText
-              Font.Height = -16
-              Font.Name = 'Segoe UI'
-              Font.Style = []
-              ParentFont = False
-              TabOrder = 6
-              OnChange = CmbPeçasChange
-            end
-            object PnlFinalizar: TPanel
-              AlignWithMargins = True
-              Left = 16
-              Top = 266
-              Width = 315
-              Height = 36
-              Margins.Left = 0
-              Margins.Top = 0
-              Margins.Right = 0
-              Margins.Bottom = 0
-              BevelOuter = bvNone
-              Color = 9521152
-              ParentBackground = False
-              TabOrder = 7
-              object LblFinalizar: TLabel
-                AlignWithMargins = True
-                Left = 3
-                Top = 7
-                Width = 309
-                Height = 26
-                Margins.Top = 7
-                Align = alClient
-                Alignment = taCenter
-                Caption = 'Finalizar'
-                Color = clWhite
-                Font.Charset = DEFAULT_CHARSET
-                Font.Color = clWhite
-                Font.Height = -15
-                Font.Name = 'Segoe UI'
-                Font.Style = [fsBold]
-                ParentColor = False
-                ParentFont = False
-                OnClick = LblFinalizarClick
-                ExplicitWidth = 58
-                ExplicitHeight = 20
-              end
-              object Image5: TImage
-                Left = 173
-                Top = -10
-                Width = 70
-                Height = 56
-                Center = True
-                Picture.Data = {
-                  0954506E67496D61676589504E470D0A1A0A0000000D49484452000000100000
-                  001008060000001FF3FF61000000097048597300000EC300000EC301C76FA864
-                  0000001974455874536F667477617265007777772E696E6B73636170652E6F72
-                  679BEE3C1A0000013D4944415478DA8D93BB4A03411486678CD8488C763682B5
-                  B7088AF65E1A9FC05E25221A03E25B2851A388E0F6D68217445F209581983A95
-                  8D9D766A58BFA367C338ECC21CF898D9D9F97F3833FF58E3551CC7130CEBB004
-                  A3BADC8647B8B4D636DDFDD611F6315461137A4C7A75E01CF630FAEC1AA8F80E
-                  164C583DC18A982406670C5B81E2A46A1894ADF6FC0CB900D12D8CC0A4B65314
-                  832326BB01E253284349CF41AA2A062F4CC602C533F00043BADE14837726795D
-                  38813A5C40BF279E55F1A063FCE11B44B00173700357B0A3DFF79EB86BE0B710
-                  699FC3F00AF32A2EA4B4F6DB8284A7E2FDB886559856F140C6D91C8AC1389346
-                  CA35BEE961F56688E51AA79220D518B603AED2AD63825471A32C21590C14CBC3
-                  92287FF98FE9C0FC453A2B95DF20B1DF17B12C587F879EC91A2C9BFFCF593210
-                  216CB9FB7F00B5136BF217D796B10000000049454E44AE426082}
-              end
-            end
-          end
-        end
-      end
       object PnlVincularPeça: TPanel
         Left = 18
         Top = 73
@@ -3159,6 +2674,491 @@
                   3A97FA19EF318517F460F18FCFDB650F528166D6FB5FAC7090D2C1A37C888188
                   C9F263C9517E737F26D9A844C8B2DF756F32922C03C69DA17B12D34F6877BD82
                   636C90781D9CFF0952E876F3A9ED6EED0000000049454E44AE426082}
+              end
+            end
+          end
+        end
+      end
+      object PnlPedido: TPanel
+        Left = 17
+        Top = 74
+        Width = 923
+        Height = 475
+        BevelOuter = bvNone
+        Color = 6172416
+        ParentBackground = False
+        TabOrder = 5
+        Visible = False
+        object LblPedido: TLabel
+          AlignWithMargins = True
+          Left = 3
+          Top = 20
+          Width = 917
+          Height = 32
+          Margins.Top = 20
+          Align = alTop
+          Alignment = taCenter
+          Caption = 'Pedido'
+          Font.Charset = DEFAULT_CHARSET
+          Font.Color = clWhite
+          Font.Height = -24
+          Font.Name = 'Segoe UI'
+          Font.Style = [fsBold]
+          ParentFont = False
+          ExplicitWidth = 79
+        end
+        object ImgFecharPedido: TImage
+          Left = 861
+          Top = 22
+          Width = 25
+          Height = 25
+          Picture.Data = {
+            0954506E67496D61676589504E470D0A1A0A0000000D49484452000000180000
+            00180806000000E0773DF8000000097048597300000EC300000EC301C76FA864
+            0000001974455874536F667477617265007777772E696E6B73636170652E6F72
+            679BEE3C1A0000010F4944415478DAC5964D0AC2301085675C783A050F20F80B
+            820BC55308228A4871E10F75E752F05EAE7551F5854688A549A6A962E0D13493
+            BCAF69324DF9493423A231B485464CF4A012057E155CD6501F5A301AEEA85475
+            FC08754321DAFC00B574D34D0122548646BF20488EB92A115B0227A8094852C2
+            FCEDE1ED9094304F58DA31C45CDD706680BADF40031FC4621E433D73FD3E0052
+            88D43C17E083A46199B915603CE51E6A1BCD173DA6263177021C33318BD3DC0B
+            30667286EA99909A4DC39790FF0558768B59BCC918B2C894994D4C4517D9B5CF
+            D3B02C19730192242A92F15CD4DCE82B82F83E76CEF72B8170A8B914C265CC45
+            901F1F99CB5F1FFA570598A2328176F4BDDF9615D481E62FF3919E24F9015515
+            0000000049454E44AE426082}
+          OnClick = ImgFecharPedidoClick
+        end
+        object PnlBackgroundPedido: TPanel
+          AlignWithMargins = True
+          Left = 20
+          Top = 65
+          Width = 883
+          Height = 395
+          Margins.Left = 20
+          Margins.Top = 10
+          Margins.Right = 20
+          Margins.Bottom = 15
+          Align = alClient
+          BevelOuter = bvNone
+          Color = 9521152
+          ParentBackground = False
+          TabOrder = 0
+          object PnlDesingPedido: TPanel
+            AlignWithMargins = True
+            Left = 19
+            Top = 24
+            Width = 465
+            Height = 348
+            Margins.Left = 19
+            Margins.Top = 24
+            Margins.Right = 399
+            Margins.Bottom = 23
+            Align = alClient
+            BevelOuter = bvNone
+            Caption = 'PnlGrid'
+            Color = clBackground
+            ParentBackground = False
+            TabOrder = 1
+            object ListBoxPedidos: TListBox
+              AlignWithMargins = True
+              Left = 1
+              Top = 1
+              Width = 463
+              Height = 307
+              Margins.Left = 1
+              Margins.Top = 1
+              Margins.Right = 1
+              Margins.Bottom = 40
+              Align = alClient
+              ItemHeight = 20
+              TabOrder = 0
+            end
+            object Panel3: TPanel
+              AlignWithMargins = True
+              Left = 1
+              Top = 306
+              Width = 480
+              Height = 43
+              Margins.Left = 0
+              Margins.Top = 0
+              Margins.Right = 0
+              Margins.Bottom = 0
+              BevelOuter = bvNone
+              Color = 6172416
+              ParentBackground = False
+              TabOrder = 1
+              object Label18: TLabel
+                AlignWithMargins = True
+                Left = 3
+                Top = 10
+                Width = 474
+                Height = 30
+                Margins.Top = 10
+                Align = alClient
+                Alignment = taCenter
+                Caption = 'Cancelar'
+                Color = clWindow
+                Font.Charset = DEFAULT_CHARSET
+                Font.Color = clWhite
+                Font.Height = -15
+                Font.Name = 'Segoe UI'
+                Font.Style = [fsBold]
+                ParentColor = False
+                ParentFont = False
+                OnClick = Label18Click
+                ExplicitWidth = 59
+                ExplicitHeight = 20
+              end
+            end
+          end
+          object PnlEditPedido: TPanel
+            AlignWithMargins = True
+            Left = 511
+            Top = 31
+            Width = 362
+            Height = 346
+            Margins.Left = 0
+            Margins.Top = 60
+            Margins.Right = 20
+            Margins.Bottom = 20
+            Color = 15790320
+            ParentBackground = False
+            TabOrder = 0
+            object Label14: TLabel
+              Left = 16
+              Top = 140
+              Width = 114
+              Height = 17
+              Caption = 'Forma Pagamento :'
+              Font.Charset = DEFAULT_CHARSET
+              Font.Color = clWindowText
+              Font.Height = -13
+              Font.Name = 'Segoe UI'
+              Font.Style = []
+              ParentFont = False
+            end
+            object Label15: TLabel
+              Left = 184
+              Top = 140
+              Width = 69
+              Height = 17
+              Caption = 'Valor Total :'
+              Font.Charset = DEFAULT_CHARSET
+              Font.Color = clWindowText
+              Font.Height = -13
+              Font.Name = 'Segoe UI'
+              Font.Style = []
+              ParentFont = False
+            end
+            object Label16: TLabel
+              Left = 184
+              Top = 27
+              Width = 34
+              Height = 17
+              Caption = 'Pe'#231'a :'
+              Font.Charset = DEFAULT_CHARSET
+              Font.Color = clWindowText
+              Font.Height = -13
+              Font.Name = 'Segoe UI'
+              Font.Style = []
+              ParentFont = False
+            end
+            object Label17: TLabel
+              Left = 16
+              Top = 27
+              Width = 74
+              Height = 17
+              Caption = 'Fornecedor :'
+              Font.Charset = DEFAULT_CHARSET
+              Font.Color = clWindowText
+              Font.Height = -13
+              Font.Name = 'Segoe UI'
+              Font.Style = []
+              ParentFont = False
+            end
+            object Label19: TLabel
+              Left = 16
+              Top = 83
+              Width = 75
+              Height = 17
+              Caption = 'Quantidade :'
+              Font.Charset = DEFAULT_CHARSET
+              Font.Color = clWindowText
+              Font.Height = -13
+              Font.Name = 'Segoe UI'
+              Font.Style = []
+              ParentFont = False
+            end
+            object Label20: TLabel
+              Left = 184
+              Top = 83
+              Width = 77
+              Height = 17
+              Caption = 'Observa'#231#227'o :'
+              Font.Charset = DEFAULT_CHARSET
+              Font.Color = clWindowText
+              Font.Height = -13
+              Font.Name = 'Segoe UI'
+              Font.Style = []
+              ParentFont = False
+            end
+            object Shape2: TShape
+              AlignWithMargins = True
+              Left = 10
+              Top = 210
+              Width = 327
+              Height = 38
+              Margins.Left = 10
+              Margins.Top = 14
+              Margins.Right = 0
+              Margins.Bottom = 18
+              Brush.Color = 9521152
+              Pen.Color = clSilver
+              Shape = stRoundRect
+            end
+            object Shape3: TShape
+              AlignWithMargins = True
+              Left = 10
+              Top = 264
+              Width = 327
+              Height = 39
+              Margins.Left = 10
+              Margins.Top = 14
+              Margins.Right = 0
+              Margins.Bottom = 18
+              Brush.Color = 9521152
+              Pen.Color = clSilver
+              Shape = stRoundRect
+            end
+            object PnlAdicionar: TPanel
+              AlignWithMargins = True
+              Left = 16
+              Top = 212
+              Width = 315
+              Height = 36
+              Margins.Left = 0
+              Margins.Top = 0
+              Margins.Right = 0
+              Margins.Bottom = 0
+              BevelOuter = bvNone
+              Color = 9521152
+              ParentBackground = False
+              TabOrder = 0
+              object LblAdicionar: TLabel
+                AlignWithMargins = True
+                Left = 3
+                Top = 6
+                Width = 309
+                Height = 27
+                Margins.Top = 6
+                Align = alClient
+                Alignment = taCenter
+                Caption = 'Adicionar'
+                Color = clWhite
+                Font.Charset = DEFAULT_CHARSET
+                Font.Color = clWhite
+                Font.Height = -15
+                Font.Name = 'Segoe UI'
+                Font.Style = [fsBold]
+                ParentColor = False
+                ParentFont = False
+                OnClick = LblAdicionarClick
+                ExplicitWidth = 67
+                ExplicitHeight = 20
+              end
+              object Image4: TImage
+                Left = 174
+                Top = -11
+                Width = 70
+                Height = 56
+                Center = True
+                Picture.Data = {
+                  0954506E67496D61676589504E470D0A1A0A0000000D49484452000000100000
+                  001008060000001FF3FF61000000097048597300000EC300000EC301C76FA864
+                  0000001974455874536F667477617265007777772E696E6B73636170652E6F72
+                  679BEE3C1A0000012F4944415478DA6364A01030A20BFCFFFF5F8CE1CF9F5C20
+                  D3078855A1C2B780782B030BCB244646C6D7380DF8FFE74F08D0847940262F0E
+                  0B3F3130322632B2B0ACC33000AA79153657A1817F4043426186302239FB0E16
+                  9B2741E93C34F18F40EFA882BC0331E0F7EF66205583C5B646285D8F45AE8991
+                  95B51E66C00520A54FA201E7810618C10CF804773E23E374A09F3E4115ED81D2
+                  2E50397EA05C0654EC33D0003E4C031818FA81F825947D144A5B436971202E84
+                  C508D0007E9801E7819401895E380734C01866401390AA25D18046A0010DB068
+                  148546231F8A1246C6C90C1005B958A25105188D6F9013521050E16A20938901
+                  3F0025A4606042DA00B60359066A082829F3E3D0FC119A94D7C31D89AE02E81D
+                  11A4CCA4061202E2DB40BC05E8ECC92067A3F892814200004EF27311C9AEC8C4
+                  0000000049454E44AE426082}
+              end
+            end
+            object EdtValorTotal: TEdit
+              AlignWithMargins = True
+              Left = 184
+              Top = 164
+              Width = 145
+              Height = 29
+              Margins.Left = 20
+              Margins.Top = 30
+              Margins.Bottom = 62
+              AutoSize = False
+              Font.Charset = DEFAULT_CHARSET
+              Font.Color = clWindowText
+              Font.Height = -15
+              Font.Name = 'Segoe UI'
+              Font.Style = []
+              ParentFont = False
+              TabOrder = 1
+            end
+            object CmbFornecedorPedido: TComboBox
+              Left = 16
+              Top = 47
+              Width = 145
+              Height = 28
+              TabOrder = 2
+              OnChange = CmbFornecedorPedidoChange
+            end
+            object CmbFormaPagamento: TComboBox
+              AlignWithMargins = True
+              Left = 16
+              Top = 163
+              Width = 145
+              Height = 29
+              Margins.Top = 30
+              Margins.Right = 5
+              Margins.Bottom = 5
+              BevelOuter = bvNone
+              Style = csDropDownList
+              Font.Charset = DEFAULT_CHARSET
+              Font.Color = clWindowText
+              Font.Height = -16
+              Font.Name = 'Segoe UI'
+              Font.Style = []
+              ParentFont = False
+              TabOrder = 3
+              Items.Strings = (
+                'Dinheiro'
+                'Cart'#227'o de Cr'#233'dito'
+                'Cart'#227'o de D'#233'bito'
+                'PIX'
+                'Transfer'#234'ncia Banc'#225'ria'
+                'Boleto Banc'#225'rio'
+                'Cheque'
+                'Dep'#243'sito em Conta')
+            end
+            object EdtQuantidade: TEdit
+              AlignWithMargins = True
+              Left = 14
+              Top = 103
+              Width = 145
+              Height = 29
+              Margins.Left = 5
+              Margins.Top = 30
+              Margins.Right = 5
+              Margins.Bottom = 76
+              AutoSize = False
+              Font.Charset = DEFAULT_CHARSET
+              Font.Color = clWindowText
+              Font.Height = -15
+              Font.Name = 'Segoe UI'
+              Font.Style = []
+              ParentFont = False
+              TabOrder = 4
+              OnChange = EdtQuantidadeChange
+            end
+            object EdtObservacao: TEdit
+              AlignWithMargins = True
+              Left = 184
+              Top = 102
+              Width = 145
+              Height = 29
+              Margins.Left = 5
+              Margins.Top = 30
+              Margins.Right = 5
+              Margins.Bottom = 76
+              AutoSize = False
+              Font.Charset = DEFAULT_CHARSET
+              Font.Color = clWindowText
+              Font.Height = -15
+              Font.Name = 'Segoe UI'
+              Font.Style = []
+              ParentFont = False
+              TabOrder = 5
+            end
+            object CmbPeças: TComboBox
+              AlignWithMargins = True
+              Left = 184
+              Top = 46
+              Width = 145
+              Height = 29
+              Margins.Top = 30
+              Margins.Right = 5
+              Margins.Bottom = 5
+              BevelOuter = bvNone
+              Style = csDropDownList
+              Font.Charset = DEFAULT_CHARSET
+              Font.Color = clWindowText
+              Font.Height = -16
+              Font.Name = 'Segoe UI'
+              Font.Style = []
+              ParentFont = False
+              TabOrder = 6
+              OnChange = CmbPeçasChange
+            end
+            object PnlFinalizar: TPanel
+              AlignWithMargins = True
+              Left = 16
+              Top = 266
+              Width = 315
+              Height = 36
+              Margins.Left = 0
+              Margins.Top = 0
+              Margins.Right = 0
+              Margins.Bottom = 0
+              BevelOuter = bvNone
+              Color = 9521152
+              ParentBackground = False
+              TabOrder = 7
+              object LblFinalizar: TLabel
+                AlignWithMargins = True
+                Left = 3
+                Top = 7
+                Width = 309
+                Height = 26
+                Margins.Top = 7
+                Align = alClient
+                Alignment = taCenter
+                Caption = 'Finalizar'
+                Color = clWhite
+                Font.Charset = DEFAULT_CHARSET
+                Font.Color = clWhite
+                Font.Height = -15
+                Font.Name = 'Segoe UI'
+                Font.Style = [fsBold]
+                ParentColor = False
+                ParentFont = False
+                OnClick = LblFinalizarClick
+                ExplicitWidth = 58
+                ExplicitHeight = 20
+              end
+              object Image5: TImage
+                Left = 173
+                Top = -10
+                Width = 70
+                Height = 56
+                Center = True
+                Picture.Data = {
+                  0954506E67496D61676589504E470D0A1A0A0000000D49484452000000100000
+                  001008060000001FF3FF61000000097048597300000EC300000EC301C76FA864
+                  0000001974455874536F667477617265007777772E696E6B73636170652E6F72
+                  679BEE3C1A0000013D4944415478DA8D93BB4A03411486678CD8488C763682B5
+                  B7088AF65E1A9FC05E25221A03E25B2851A388E0F6D68217445F209581983A95
+                  8D9D766A58BFA367C338ECC21CF898D9D9F97F3833FF58E3551CC7130CEBB004
+                  A3BADC8647B8B4D636DDFDD611F6315461137A4C7A75E01CF630FAEC1AA8F80E
+                  164C583DC18A982406670C5B81E2A46A1894ADF6FC0CB900D12D8CC0A4B65314
+                  832326BB01E253284349CF41AA2A062F4CC602C533F00043BADE14837726795D
+                  38813A5C40BF279E55F1A063FCE11B44B00173700357B0A3DFF79EB86BE0B710
+                  699FC3F00AF32A2EA4B4F6DB8284A7E2FDB886559856F140C6D91C8AC1389346
+                  CA35BEE961F56688E51AA79220D518B603AED2AD63825471A32C21590C14CBC3
+                  92287FF98FE9C0FC453A2B95DF20B1DF17B12C587F879EC91A2C9BFFCF593210
+                  216CB9FB7F00B5136BF217D796B10000000049454E44AE426082}
               end
             end
           end

@@ -161,7 +161,7 @@ begin
   except
     on E: Exception do begin
       FQuery.Connection.Rollback;
-      raise Exception.Create('Erro ao editar ordem de servi�o: ' + E.Message);
+      raise Exception.Create('Erro ao editar ordem de serviço: ' + E.Message);
     end;
   end;
 end;
@@ -189,7 +189,7 @@ begin
     Result := FQuery;
   except
     on E: Exception do
-      raise Exception.Create('Erro ao listar Ordens de Servi�o: ' + E.Message);
+      raise Exception.Create('Erro ao listar Ordens de Serviço: ' + E.Message);
   end;
 end;
 
@@ -210,7 +210,7 @@ begin
   except
     on E: Exception do
       raise Exception.Create
-        ('Erro ao listar Ordens de Servi�o para restaura��o: ' + E.Message);
+        ('Erro ao listar Ordens de Serviço para restauração: ' + E.Message);
   end;
 end;
 
@@ -253,7 +253,7 @@ begin
     Result := FQuery;
   except
     on E: Exception do
-      raise Exception.Create('Erro ao buscar Ordem de Servi�o: ' + E.Message);
+      raise Exception.Create('Erro ao buscar Ordem de Serviço: ' + E.Message);
   end;
 end;
 
@@ -290,7 +290,7 @@ begin
   try
     Qry.Connection := FQuery.Connection;
     Qry.SQL.Add
-      ('SELECT id, nome FROM funcionarios WHERE ativo = TRUE AND tipo = ''Mecânico'' ORDER BY nome');
+      ('SELECT id, nome FROM funcionarios WHERE ativo = TRUE AND tipo = ''mecânico'' ORDER BY nome');
     Qry.Open;
     while not Qry.Eof do begin
       Lista.AddObject(Qry.FieldByName('nome').AsString,

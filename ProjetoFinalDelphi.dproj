@@ -106,7 +106,7 @@
         <AppDPIAwarenessMode>PerMonitorV2</AppDPIAwarenessMode>
         <VerInfo_IncludeVerInfo>true</VerInfo_IncludeVerInfo>
         <VerInfo_Locale>1033</VerInfo_Locale>
-        <DCC_UnitSearchPath>C:\Users\Auditorio\Desktop\ProjetoFinalDelphi\src\DTO\bcrypt-for-delphi-master;C:\Users\siqueira.6989\Desktop\ProjetoFinalDelphi\src\DTO\bcrypt-for-delphi-master;C:\Users\vplgu\Desktop\ProjetoFinalDelphi\src\DTO\bcrypt-for-delphi-master;C:\Users\vplgu\Desktop\ProjetoFinalDelphi\src\Model;C:\Users\vplgu\Desktop\ProjetoFinalDelphi\src\bcrypt-for-delphi-master;C:\Users\siqueira.6989\Desktop\ProjetoFinalDelphi\src\bcrypt-for-delphi-master;C:\Users\Auditorio\Desktop\ProjetoFinalDelphi\src\bcrypt-for-delphi-master;$(DCC_UnitSearchPath)</DCC_UnitSearchPath>
+        <DCC_UnitSearchPath>C:\Users\Auditorio\Desktop\ProjetoFinalDelphi\src\DTO\bcrypt-for-delphi-master;C:\Users\siqueira.6989\Desktop\ProjetoFinalDelphi\src\DTO\bcrypt-for-delphi-master;C:\Users\vplgu\Desktop\ProjetoFinalDelphi\src\DTO\bcrypt-for-delphi-master;C:\Users\vplgu\Desktop\ProjetoFinalDelphi\src\Model;C:\Users\vplgu\Desktop\ProjetoFinalDelphi\src\bcrypt-for-delphi-master;C:\Users\siqueira.6989\Desktop\ProjetoFinalDelphi\src\bcrypt-for-delphi-master;C:\Users\Auditorio\Desktop\ProjetoFinalDelphi\src\bcrypt-for-delphi-master;C:\Users\vplgu\Desktop\ProjetoFinalDelphi\src\repository\bcrypt-for-delphi-master;$(DCC_UnitSearchPath)</DCC_UnitSearchPath>
         <UWP_DelphiLogo44>..\..\Downloads\Captura_de_tela_2025-10-14_164540-removebg-preview.png</UWP_DelphiLogo44>
         <UWP_DelphiLogo150>..\..\Downloads\Captura_de_tela_2025-10-14_164540-removebg-preview.png</UWP_DelphiLogo150>
     </PropertyGroup>
@@ -273,8 +273,6 @@
                     <Source Name="MainSource">ProjetoFinalDelphi.dpr</Source>
                 </Source>
                 <Excluded_Packages>
-                    <Excluded_Packages Name="$(BDSBIN)\dcloffice2k290.bpl">Microsoft Office 2000 Sample Automation Server Wrapper Components</Excluded_Packages>
-                    <Excluded_Packages Name="$(BDSBIN)\dclofficexp290.bpl">Microsoft Office XP Sample Automation Server Wrapper Components</Excluded_Packages>
                     <Excluded_Packages Name="C:\Program Files (x86)\Fast Reports\VCL\2026.1.1\Trial\LibRS29\VCL\Win32\dclfcxc29.bpl">FastCube VCL - Charting Components by Fast Reports Inc</Excluded_Packages>
                     <Excluded_Packages Name="C:\Program Files (x86)\Fast Reports\VCL\2026.1.1\Trial\LibRS29\VCL\Win32\dclfcxpTee29.bpl">FastCube VCL -  Fast Report integration TeeChart by Fast Reports Inc</Excluded_Packages>
                     <Excluded_Packages Name="C:\Program Files (x86)\Fast Reports\VCL\2026.1.1\Trial\LibRS29\VCL\Win32\dclfqbIBX29.bpl">FastQueryBuilder - IBX Engine by Fast Reports Inc</Excluded_Packages>
@@ -290,6 +288,8 @@
                     <Excluded_Packages Name="C:\Program Files (x86)\Fast Reports\VCL\2026.1.1\Trial\LibRS29\FMX\Win32\dclFMXfrxTee29.bpl">FastReport FMX - Tee Components by Fast Reports Inc</Excluded_Packages>
                     <Excluded_Packages Name="C:\Program Files (x86)\Fast Reports\VCL\2026.1.1\Trial\LibRS29\FMX\Win32\dclFMXfsIBX29.bpl">FastScript FMX - IBX Components by Fast Reports Inc</Excluded_Packages>
                     <Excluded_Packages Name="C:\Program Files (x86)\Fast Reports\VCL\2026.1.1\Trial\LibRS29\FMX\Win32\dclFMXfsTee29.bpl">FastScript FMX - Tee Components by Fast Reports Inc</Excluded_Packages>
+                    <Excluded_Packages Name="$(BDSBIN)\dcloffice2k290.bpl">Microsoft Office 2000 Sample Automation Server Wrapper Components</Excluded_Packages>
+                    <Excluded_Packages Name="$(BDSBIN)\dclofficexp290.bpl">Microsoft Office XP Sample Automation Server Wrapper Components</Excluded_Packages>
                 </Excluded_Packages>
             </Delphi.Personality>
             <Deployment Version="4">

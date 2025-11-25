@@ -24,7 +24,6 @@ type
     procedure DeletarFornecedor(const aId: Integer);
     procedure RestaurarFornecedor(const aId: Integer);
     function PesquisarFornecedores(const aFiltro: String): TDataSet;
-    function PesquisarFornecedoresRestaurar(const aFiltro: String): TDataSet;
     procedure BuscarCep(const ACep: string; out aRua, aBairro, aCidade, aEstado: string);
     Function VincularPecaAoFornecedor(aPecaID, aFornecedorID: Integer):Boolean;
     function ListarPecasPorFornecedor(aFornecedorID: Integer): TDataSet;
@@ -209,12 +208,6 @@ end;
 function TFornecedorService.PesquisarFornecedores(const aFiltro: String): TDataSet;
 begin
   Result := Repository.PesquisarFornecedores(aFiltro);
-end;
-
-function TFornecedorService.PesquisarFornecedoresRestaurar(
-  const aFiltro: String): TDataSet;
-begin
-  Result := Repository.PesquisarFornecedoresRestaurar(aFiltro);
 end;
 
 function TFornecedorService.ValidarFornecedor(FornecedorValido: TFornecedor): Boolean;
